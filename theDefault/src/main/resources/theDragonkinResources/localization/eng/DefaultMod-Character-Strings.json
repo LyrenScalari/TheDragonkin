@@ -1,0 +1,25 @@
+{
+  "theDragonkin:DefaultCharacter": {
+    "NAMES": [
+      "The Dragonkin",
+      "the dragonkin"
+    ],
+    "TEXT": [
+      "A Warrior of Fire and Faith. From a scaled origin, to Vanquish the Spires Evil..",
+      "NL You Breath Deep, and BURN the heart.",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~Obsidian~ ~Scion,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+    ]
+  },
+  "theDragonkin:Gremory": {
+    "NAMES": [
+      "The Gremory",
+      "the gremory"
+    ],
+    "TEXT": [
+      "A mysterious sorceress from far off lands, a master of all forms of magic and a master of the blade.",
+      "NL You Muster your magic and strike with all your might.",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~Sister~,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~",
+      "Choose two Schools of magic."
+    ]
+  }
+}

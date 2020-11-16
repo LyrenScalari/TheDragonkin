@@ -1,0 +1,107 @@
+{
+  "theDragonkin:GarnetScale": {
+    "NAME": "Garnet Scales",
+    "FLAVOR": "They Pulse with the Warmth of a Dragon's Fury.",
+    "DESCRIPTIONS": [
+      "At the Start of your turn, Gain 1 #yStrength and #yDexterity until the end of your turn for each #yStatus card in your hand."
+    ]
+  },
+
+  "theDragonkin:EmberCore": {
+    "NAME": "Burning Fragment",
+    "FLAVOR": "It's warm to the touch.",
+    "DESCRIPTIONS": [
+      "The First time you draw a #yStatus each turn draw a card and gain 6 Temporary HP."
+    ]
+  },
+  "theDragonkin:FernosBellows": {
+  "NAME": "Ferno's Bellows",
+  "FLAVOR": "Forge Dragon Bellows turn the slightest Spark into a Roaring Blaze.",
+  "DESCRIPTIONS": [
+    "After you Generate a #yBurn Apply 4 #yScorch to all Enemies."
+  ]
+},
+  "theDragonkin:MukySludge": {
+    "NAME": "Muky Sludge",
+    "FLAVOR": "A Toxic Sludge that can dissolve even metal.",
+    "DESCRIPTIONS": [
+      "At the end of your Turn, ALL enemies lose HP equal to their #yDissolve."
+    ]
+  },
+  "theDragonkin:TilerasShield": {
+    "NAME": "Tilera's Shield",
+    "FLAVOR": "The Aegis of Great Commander Tilera, It stopped many weapons and armored them in Golden Light.",
+    "DESCRIPTIONS": [
+      "This first time you play a card while under half HP heal 4 HP after the first card gain 6 Temporary HP instead."
+    ]
+  },
+  "theDragonkin:UthersMaul": {
+    "NAME": "Crusader Maul",
+    "FLAVOR": "The Mace of a fallen Crusader, inspiring of what you came here for.",
+    "DESCRIPTIONS": [
+      "After you Kill an enemy, Gain 1 #yZeal and gain 5 #yBlock."
+    ]
+  },
+  "theDragonkin:BookOfHymns": {
+    "NAME": "Book of Hymns",
+    "FLAVOR": "A Book of Crusader Hymns, telling tales of Heroism in the name of Naruuin.",
+    "DESCRIPTIONS": [
+      "The first time you lose #yTemporary #yHP or #yBlock each combat gain 2 #yZeal."
+    ]
+  },
+
+  "theDragonkin:Sulfurian": {
+    "NAME": "Sulfurian",
+    "FLAVOR": "The Great Mace of the Molten Core, known to incinerate anything.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn, Shuffle 3 Burns into your Drawpile after taking unblocked Damage."
+    ]
+  },
+
+  "theDragonkin:RotnestWings": {
+    "NAME": "Necrotic Wings",
+    "FLAVOR": "The Wings of the Harbinger of Pestilence, Little can avoid the Miasmic Sickness they project.",
+    "DESCRIPTIONS": [
+      "When you Debuff an enemy, reduce their #yStrength that much this turn."
+    ]
+  },
+
+  "theDragonkin:ObsidianScale": {
+    "NAME": "Obsidian Scales",
+    "FLAVOR": "These cursed Scales whisper terrible things, You feel like your Thoughts are no longer your own.",
+    "DESCRIPTIONS": ["Replaces ",
+      ". The first time each turn a #yStatus is generated Gain 2 #yStrength."
+    ]
+  },
+  "theDragonkin:PlaceholderRelic2": {
+    "NAME": "Placeholder Relic 2",
+    "FLAVOR": "You feel stronger.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, gain #b1 #yStrength."
+    ]
+  },
+  "theDragonkin:DefaultClickableRelic": {
+    "NAME": "Right-Clicky Relic",
+    "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
+    "DESCRIPTIONS": [
+      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
+      "YOU ARE MINE!"
+    ]
+  },
+  "theDragonkin:CrestofFlames": {
+    "NAME": "Burning Soulstone",
+    "FLAVOR": "This pulsing stone seethes in great ancient power.",
+    "DESCRIPTIONS": ["The first card of each #yElement played each combat deals 3 more damage or gains 3 extra #yBlock."
+    ]
+  },
+  "theDragonkin:BottledPlaceholderRelic": {
+    "NAME": "Bottled Placeholder",
+    "FLAVOR": "What is this?",
+    "DESCRIPTIONS": [
+      "Choose a card. Whenever you take play any card, draw the chosen card.",
+      "Whenever you play a card, draw ",
+      ".",
+      "Select a card to bottle for "
+    ]
+  }
+}

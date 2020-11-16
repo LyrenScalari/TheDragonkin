@@ -1,0 +1,37 @@
+{
+  "theDragonkin:Yol": {
+    "NAME": "Yol",
+    "DESCRIPTION": [
+      "Deal #b",
+      " damage to ALL enemies.",
+      " #rFire #rBreath",
+      " Word 1"
+    ]
+  },
+  "theDragonkin:Toor": {
+    "NAME": "Toor",
+    "DESCRIPTION": [
+      "Apply #b",
+      " #yScorched to ALL enemies.",
+      " #rFire #rBreath",
+      " Word 2"
+    ]
+  },
+  "theDragonkin:Shul": {
+    "NAME": "Shul",
+    "DESCRIPTION": [
+      "Gain #b",
+      " #Block",
+      " for each enemy,",
+      " for each Scorched enemy.",
+      " #rFire #rBreath",
+      " Word 3"
+    ]
+  },
+  "theDragonkin:Nid": {
+    "NAME": "Nid - Nothing",
+    "DESCRIPTION": [
+      "Adds nothing to a Shout and prevents discharging your shout naturally"
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+        "theDragonkin:MoltenScales": {
+                "NAME": "Magma Scales",
+                "DESCRIPTIONS": ["When attacked, applies #b ",
+                " #yScorch to the attacker"
+                ]
+        },
+        "theDragonkin:NecroticAura": {
+                "NAME": "Necrotic Miasma",
+                "DESCRIPTIONS": ["When you Debuff an enemy, reduce their #yStrength that much this turn."
+                ]
+        },
+        "theDragonkin:Scorch": {
+                "NAME": "Scorch",
+                "DESCRIPTIONS": ["When attacked, takes #b",
+                " additional damage,", " and reduce this by #b1"
+                ]
+        },
+        "theDragonkin:ShieldGlare": {
+                "NAME": "Shield Glare",
+                "DESCRIPTIONS": ["When attacked, ", " Stun the attacker next turn"
+                ]
+        },
+        "theDragonkin:Simulacrum": {
+                "NAME": "Simulacrum",
+                "DESCRIPTIONS": ["For the next #b", " Turns all cards played are Doubled."
+                ]
+        },
+        "theDragonkin:HolyInfusion": {
+                "NAME": "Condemnation",
+                "DESCRIPTIONS": ["In #b", " Turns, Deal #b", " damage to ALL enemies."
+                ]
+        },
+        "theDragonkin:DarkConviction": {
+                "NAME": "Cruelty",
+                "DESCRIPTIONS": ["When you #yExhaust a card gain 1 #yStrength and Deal damage to all enemies equal to your #yStrength."
+                ]
+        },
+        "theDragonkin:Staggered": {
+                "NAME": "Staggered",
+                "DESCRIPTIONS": ["Staggered Monsters are Stunned", " at the start of their next turn"
+                ]
+        },
+        "theDragonkin:Agony": {
+                "NAME": "Agony",
+                "DESCRIPTIONS": ["When you Apply #yScorched Apply #b", " #yDissolve.","When you Apply #yDissolve Apply #b"," #yScorched"
+                ]
+        },
+        "theDragonkin:HolyBarrier": {
+                "NAME": "Holy Barrier",
+                "DESCRIPTIONS": ["When you play a Holy Card, Gain #b", " Block"
+                ]
+        },
+        "theDragonkin:AshenArmor": {
+                "NAME": "Ashen Armor",
+                "DESCRIPTIONS": ["When you draw a #yStatus gain #b", " Block"
+                ]
+        },
+
+        "theDragonkin:AcidArmor": {
+                "NAME": "Acid Armor",
+                "DESCRIPTIONS": ["When you Apply a Debuff gain #b", " Block"
+                ]
+        },
+
+        "theDragonkin:Dissolve": {
+                "NAME": "Dissolve",
+                "DESCRIPTIONS": ["When you Trigger Dissolve loses #b", " HP"
+                ]
+        },
+
+        "theDragonkin:BurningRain": {
+                "NAME": "Burning Rain",
+                "DESCRIPTIONS": ["When you draw a #yStatus Attack a random enemy for #b", " damage"
+                ]
+        },
+
+        "theDragonkin:SlowBurn": {
+                "NAME": "Slow Burn",
+                "DESCRIPTIONS": ["When you Apply a Debuff this loses #b", " HP"
+                ]
+        },
+
+        "theDragonkin:NeverSurrender": {
+                "NAME": "Just a Flesh Wound!",
+                "DESCRIPTIONS": ["When you play a card while under half HP gain #b", " Block.",
+                        "At the end of your turn, while under half HP Gain 1 #yZeal if you played 3 or more cards this turn."
+                ]
+        },
+
+        "theDragonkin:DivineConvictionpower": {
+                "NAME": "Zeal",
+                "DESCRIPTIONS": ["Increases the Potency of Holy #yAttacks and #ySkills by #b"]
+        },
+
+        "theDragonkin:CrusaderFormpower": {
+                "NAME": "Crusader Form",
+                "DESCRIPTIONS": ["Gain #b", " #yZeal this turn when you play a non-Holy Card."]
+        },
+
+        "theDragonkin:NextTurnFetch": {
+                "NAME": "Next Turn Fetch",
+                "DESCRIPTIONS": ["#yFetch #b",
+                        " random",
+                        " #yAttack", " #yAttacks",
+                        " #ySkill"," #ySkills",
+                        " #yAttack or #ySkill"," #yAttacks or #ySkills",
+                        " Next Turn.",
+                        " y#Power"," #yPowers"
+                ]
+        },
+        "theDragonkin:Chill": {
+                "NAME": "Chill",
+                "DESCRIPTIONS": ["Recives #b", "0% extra damage from #yIce cards, replace this with #yFreeze if this has 10 or more stacks of this."]
+        },
+        "theDragonkin:Freeze": {
+                "NAME": "Freeze",
+                "DESCRIPTIONS": ["Recives #b", "0 damage from #yIce Cards, and receives three times damage form non-magical cards and removes this."]
+        },
+
+        "theDragonkin:Jolted": {
+                "NAME": "Jolted",
+                "DESCRIPTIONS": ["Recives #b", "0% less damage from #yThunder cards"]
+        },
+        "theDragonkin:arcana": {
+                "NAME": "Arcana",
+                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+        },
+        "theDragonkin:Resistance": {
+                "NAME": "Resistance",
+                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage",  " less damage", " to this enemy"]
+        }
+}

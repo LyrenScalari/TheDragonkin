@@ -1,0 +1,158 @@
+[
+  {
+    "NAMES": [
+      "scorch",
+      "scorched"
+    ],
+    "DESCRIPTION": "Scorched creatures take additional damage from #yAttacks, when attacked reduce this by #b1"
+  },
+  {
+    "NAMES": [
+      "zeal"
+    ],
+    "DESCRIPTION": "Increases the Potency of all Holy Attacks and Skills."
+  },
+  {
+    "NAMES": [
+      "holy"
+    ],
+    "DESCRIPTION": "Holy Attacks and Skills have all numeric values in their effect increased by #yZeal.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+  "NAMES": [
+    "fire"
+  ],
+  "DESCRIPTION": "Fire cards are not effected by #yStrength or #yDexterity. Playing a fire card gives you #yHot #yStreak until you play a non-fire card.",
+  "COLOR": "[#94bdff]"
+},
+  {
+    "NAMES": [
+      "follow-up"
+    ],
+    "DESCRIPTION": "When played add a 0 cost copy of the card without follow-up that #yPurges to you hand.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+    "PROPER_NAME": "Hot Streak",
+    "NAMES": [
+      "Hot Streak",
+      "hot_streak"
+    ],
+    "DESCRIPTION": "During your turn, if you've only played #yFire cards activate this cards Hot Streak when played."
+  },
+  {
+    "NAMES": [
+      "ice"
+    ],
+    "DESCRIPTION": "Ice cards are not effected by #yStrength or #yDexterity. Dealing damage with Ice cards applies #yChill to the target.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+    "NAMES": [
+      "chill",
+      "chilled"
+    ],
+    "DESCRIPTION": "Chilled enemies take 10% more damage per stack of chill, when a monster has 10 or more points of chill remove them and apply #yFreeze."
+  },
+  {
+    "NAMES": [
+      "freeze",
+      "frozen"
+    ],
+    "DESCRIPTION": "Frozen enemies take no #yIce damage and triple non-magical damage, remove this when effected receives non-magical damage."
+  },
+  {
+    "NAMES": [
+      "wind"
+    ],
+    "DESCRIPTION": "Wind cards are not effected by #yStrength or #yDexterity. When you play your first wind card each turn, gain #yTailwind which reduces cost of all wind cards in your hand by 1, when you play a wind card effected by tailwind, lose tailwind and gain #yGaleforce which increases the damage of your next wind card and is removed when played and replaced with tailwind.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+  "NAMES": [
+    "tailwind"
+  ],
+  "DESCRIPTION": "Wind cards in your hand cost 1 less, after you play a #yWind card, remove this from your cards and give them #yGaleforce."
+},
+  {
+    "NAMES": [
+      "galeforce"
+    ],
+    "DESCRIPTION": "Wind cards in your hand deal 4 more damage, after you play a #yWind card, remove this from your cards and give them #yTailwind."
+  },
+  {
+    "NAMES": [
+      "thunder"
+    ],
+    "DESCRIPTION": "Thunder cards are not effected by #yStrength or #yDexterity. Dealing damage with Thunder cards applies #yJolt to the target.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+    "NAMES": [
+      "jolt",
+      "jolted"
+    ],
+    "DESCRIPTION": "Jolted enemies take 10% less #yThunder damage per jolted stack."
+  },
+  {
+    "NAMES": [
+      "charged-up"
+    ],
+    "DESCRIPTION": "Increases damage and Block gain for Thunder cards.."
+  },
+  {
+  "NAMES": [
+    "dark"
+  ],
+  "DESCRIPTION": "Dark cards are not effected by #yStrength or #yDexterity. Playing dark cards will remove your #yAfterglow and can apply #yDarken.",
+  "COLOR": "[#94bdff]"
+},
+  {
+    "NAMES": [
+      "darken",
+      "darkened"
+    ],
+    "DESCRIPTION": "Darken effects are activated when you play your next non- #yLight #yMagic card, playing a light card will remove any darken effects you have."
+  },
+  {
+    "NAMES": [
+      "light"
+    ],
+    "DESCRIPTION": "Light cards are not effected by #yStrength or #yDexterity. Playing light cards will remove your #yDarken and can apply #yAfterglow.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+    "NAMES": [
+      "afterglow"
+    ],
+    "DESCRIPTION": "Afterglow effects are activated when you play your next non- #yDark #yMagic card, playing a dark card will remove any afterglow effects you have."
+  },
+  {
+    "NAMES": [
+      "arcana"
+    ],
+    "DESCRIPTION": "Increases damage and Block gain for Magic cards."
+  },
+  {
+    "NAMES": [
+      "resistance"
+    ],
+    "DESCRIPTION": "Increases Magic damage received by the target."
+  },
+  {
+    "NAMES": [
+      "dissolve"
+    ],
+    "DESCRIPTION": "Loses HP when you play certain Acid cards."
+  },
+
+  {
+    "PROPER_NAME": "Power Word",
+    "NAMES": [
+      "Power Word",
+      "power_word"
+    ],
+    "DESCRIPTION": "Add the listed Word in place of a Nid Word in your Shout Words."
+  }
+]

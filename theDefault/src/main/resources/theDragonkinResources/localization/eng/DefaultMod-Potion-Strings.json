@@ -1,0 +1,18 @@
+{
+"theDragonkin:PlaceholderPotion": {
+        "NAME": "Placeholder Potion",
+        "DESCRIPTIONS": ["Gain ", " At the end of your turn, lose ", " Strength."]
+},
+        "theDragonkin:DragonkinCommonPotion": {
+                "NAME": "Gatlok Brew",
+                "DESCRIPTIONS": ["Apply #b"," #yScorch to ALL enemies"]
+        },
+        "theDragonkin:DragonkinUncommonPotion": {
+                "NAME": "Naruuin's Glow",
+                "DESCRIPTIONS": ["Gain #b"," Temporary HP"]
+        },
+        "theDragonkin:DragonkinRarePotion": {
+                "NAME": "Draught of Fervor",
+                "DESCRIPTIONS": ["Gain #b"," #yZeal"]
+        }
+}
