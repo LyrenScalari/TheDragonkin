@@ -27,22 +27,59 @@ public class MiasmaCardMod extends DarkenCardMod {
     }
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,AbstractDungeon.player,new ResistancePower(target,stacks,time),stacks));
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            @Override
-            public void update() {
-                for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                    for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new ResistancePower(target, stacks, time), stacks));
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
                         if (m instanceof DarkenCardMod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
-                            MiasmaCardMod.super.removeOnCardPlayed(c);
                             isDone = true;
                         }
                     }
-                }
-                isDone= true;
+                });
             }
-        });
-    }
 
+        }
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        if (m instanceof DarkenCardMod) {
+                            CardModifierManager.removeSpecificModifier(c, m, true);
+                            isDone = true;
+                        }
+                    }
+                });
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        if (m instanceof DarkenCardMod) {
+                            CardModifierManager.removeSpecificModifier(c, m, true);
+                            isDone = true;
+                        }
+                    }
+                });
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        if (m instanceof DarkenCardMod) {
+                            CardModifierManager.removeSpecificModifier(c, m, true);
+                            isDone = true;
+                        }
+                    }
+                });
+            }
+        }
+    }
 }

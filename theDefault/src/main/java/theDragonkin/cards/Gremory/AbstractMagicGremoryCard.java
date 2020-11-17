@@ -10,9 +10,7 @@ package theDragonkin.cards.Gremory;
         import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
         import com.megacrit.cardcrawl.monsters.AbstractMonster;
         import com.megacrit.cardcrawl.powers.AbstractPower;
-        import theDragonkin.CardMods.AfterglowCardMod;
         import theDragonkin.CardMods.DarkenCardMod;
-        import theDragonkin.CardMods.GaleforceCardmod;
         import theDragonkin.CardMods.TailwindCardmod;
         import theDragonkin.CustomTags;
         import theDragonkin.powers.ChillPower;
@@ -78,21 +76,8 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
                 if (c.hasTag(CustomTags.Wind)) {
                     Windcards.add((AbstractMagicGremoryCard) c);
                 }
-            }
-            if (Tailwind && !Galeforce) {
-                Tailwind = false;
-                Galeforce = true;
-                for (AbstractMagicGremoryCard c : Windcards) {
-                    addToBot(new AbstractGameAction() {
-                        public void update() {
-                            CardModifierManager.addModifier(c, new GaleforceCardmod(1, GaleforceBonus, GaleforceBonus));
-                            isDone = true;
-                        }
-                    });
-                }
-            } else if (!Tailwind && Galeforce) {
+            }if (!Tailwind) {
                 Tailwind = true;
-                Galeforce = false;
                 for (AbstractMagicGremoryCard c : Windcards) {
                     addToBot(new AbstractGameAction() {
                         public void update() {
@@ -101,7 +86,7 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
                         }
                     });
                 }
-            }
+            }else{Tailwind = false;}
         }
 
         if (this.hasTag(CustomTags.Thunder)) {
@@ -118,36 +103,38 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
             });
         }
         if (this.hasTag(CustomTags.Dark)) {
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                        for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                            if (m instanceof AfterglowCardMod) {
-                                CardModifierManager.removeSpecificModifier(c, m, true);
-                                isDone = true;
-                            }
-                        }
-                    }
-                }
-            });
-            HotStreak = false;
-        }
-        if (this.hasTag(CustomTags.Light)) {
-            HotStreak = false;
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                        for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+            for (AbstractCard c : AbstractDungeon.player.hand.group)  {
+                for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                    AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                        @Override
+                        public void update() {
                             if (m instanceof DarkenCardMod) {
                                 CardModifierManager.removeSpecificModifier(c, m, true);
                                 isDone = true;
                             }
+                            isDone = true;
                         }
-                    }
+                    });
                 }
-                });
+            }
+            HotStreak = false;
+        }
+        if (this.hasTag(CustomTags.Light)) {
+            HotStreak = false;
+            for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                    AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            if (m instanceof DarkenCardMod) {
+                                CardModifierManager.removeSpecificModifier(c, m, true);
+                                isDone = true;
+                            }
+                            isDone = true;
+                        }
+                    });
+                }
+            }
         }
     }
 
@@ -182,39 +169,46 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
         FiredUpUp = false;
         GaleforceBonus = 4;
         for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
                         if (m instanceof TailwindCardmod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
                             isDone = true;
                         }
-                        if (m instanceof GaleforceCardmod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
+                        isDone = true;
                     }
-                }
-            });
+                });
+            }
         }
-
-        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
                         if (m instanceof TailwindCardmod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
                             isDone = true;
                         }
-                        if (m instanceof GaleforceCardmod) {
+                        isDone = true;
+                    }
+                });
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        if (m instanceof TailwindCardmod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
                             isDone = true;
                         }
+                        isDone = true;
                     }
-                }
-            });
+                });
+            }
         }
         for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
             for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
@@ -225,16 +219,10 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
                             CardModifierManager.removeSpecificModifier(c, m, true);
                             isDone = true;
                         }
-                        if (m instanceof GaleforceCardmod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
-                        isDone =true;
+                        isDone = true;
                     }
                 });
-
             }
         }
     }
-
 }

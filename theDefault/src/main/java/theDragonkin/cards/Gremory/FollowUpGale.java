@@ -14,7 +14,7 @@ import theDragonkin.characters.TheGremory;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 @AutoAdd.Ignore
-public class FollowUpGale extends CuttingGale {
+public class FollowUpGale extends AbstractMagicGremoryCard {
     public static final String ID = DefaultMod.makeID(FollowUpGale.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
@@ -28,12 +28,19 @@ public class FollowUpGale extends CuttingGale {
     private static final int COST = 0;
 
     public FollowUpGale() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Wind);
         purgeOnUse = true;
         MagDamage = baseMagDamage = 8;
         this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[4];
         this.name = cardStrings.EXTENDED_DESCRIPTION[1];
     }
+
+    @Override
+    public void upgrade() {
+
+    }
+
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));

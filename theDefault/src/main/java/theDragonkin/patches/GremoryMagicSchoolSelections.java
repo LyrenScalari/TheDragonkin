@@ -44,35 +44,35 @@ public class GremoryMagicSchoolSelections {
                             firstChoice = "fire";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolIce.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolIce.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             firstChoice = "ice";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolThunder.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolThunder.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             firstChoice = "thunder";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolWind.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolWind.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             firstChoice = "wind";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolDark.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolDark.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             firstChoice = "dark";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolLight.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(0).cardID.equals(SchoolLight.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
@@ -86,35 +86,35 @@ public class GremoryMagicSchoolSelections {
                             secondChoice = "fire";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolIce.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolIce.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             secondChoice = "ice";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolThunder.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolThunder.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             secondChoice = "thunder";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolWind.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolWind.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             secondChoice = "wind";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolDark.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolDark.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             secondChoice = "dark";
                             choicecount += 1;
                         }
-                        if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolLight.ID)) {
+                        else if (AbstractDungeon.gridSelectScreen.selectedCards.get(1).cardID.equals(SchoolLight.ID)) {
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
@@ -129,35 +129,35 @@ public class GremoryMagicSchoolSelections {
                                 firstChoice = "fire";
                                 choicecount += 1;
                             }
-                            if (secondChoice.equals("light")) {
+                            else if (secondChoice.equals("light")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 firstChoice = "light";
                                 choicecount += 1;
                             }
-                            if (secondChoice.equals("dark")) {
+                            else if (secondChoice.equals("dark")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 firstChoice = "dark";
                                 choicecount += 1;
                             }
-                            if (secondChoice.equals("ice")) {
+                            else if (secondChoice.equals("ice")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 firstChoice = "ice";
                                 choicecount += 1;
                             }
-                            if (secondChoice.equals("wind")) {
+                            else if (secondChoice.equals("wind")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 secondChoice = "wind";
                                 choicecount += 1;
                             }
-                            if (secondChoice.equals("thunder")) {
+                            else if (secondChoice.equals("thunder")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
@@ -172,35 +172,35 @@ public class GremoryMagicSchoolSelections {
                                 secondChoice = "fire";
                                 choicecount += 1;
                             }
-                            if (firstChoice.equals("light")) {
+                            else if (firstChoice.equals("light")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Nosferatu(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 secondChoice = "light";
                                 choicecount += 1;
                             }
-                            if (firstChoice.equals("dark")) {
+                            else if (firstChoice.equals("dark")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Miasma(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 secondChoice = "dark";
                                 choicecount += 1;
                             }
-                            if (firstChoice.equals("ice")) {
+                            else if (firstChoice.equals("ice")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Icicle(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 secondChoice = "ice";
                                 choicecount += 1;
                             }
-                            if (firstChoice.equals("wind")) {
+                            else if (firstChoice.equals("wind")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Wind(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 secondChoice = "wind";
                                 choicecount += 1;
                             }
-                            if (firstChoice.equals("thunder")) {
+                            else if (firstChoice.equals("thunder")) {
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new Thunder(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));

@@ -30,6 +30,10 @@ public class GremoryMagicSchoolChoiceOpen {
                 .filter(c -> c.rarity.equals(AbstractCard.CardRarity.SPECIAL))
                 .collect(Collectors.toList());
         if (AbstractDungeon.player.chosenClass.equals(THE_GREMORY)) {
+            GremoryMagicSchoolSelections.coderunning = true;
+            GremoryMagicSchoolSelections.firstChoice = "";
+            GremoryMagicSchoolSelections.secondChoice = "";
+            GremoryMagicSchoolSelections.choicecount = 0;
             AbstractDungeon.gridSelectScreen.open(SchoolChoices, 2, TheGremory.TEXT[3], false);
         }
     }

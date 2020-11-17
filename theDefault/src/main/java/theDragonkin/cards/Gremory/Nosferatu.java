@@ -42,29 +42,56 @@ public class Nosferatu extends AbstractMagicGremoryCard implements BranchingUpgr
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.hasTag(CustomTags.Light)){
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            for (AbstractCard c : AbstractDungeon.player.hand.group){
-                addToBot(new AbstractGameAction() {
-                    public void update() {
-                        CardModifierManager.addModifier(c, new NosferatuCardMod(1,m.lastDamageTaken/2));
-                        isDone = true;
-                    }
-                });
-            }
-            for (AbstractCard c : AbstractDungeon.player.drawPile.group){
-                addToBot(new AbstractGameAction() {
-                    public void update() {
-                        CardModifierManager.addModifier(c, new NosferatuCardMod(1,m.lastDamageTaken/2));
-                        isDone = true;
-                    }
-                });
-            }
-            for (AbstractCard c : AbstractDungeon.player.discardPile.group){
-                addToBot(new AbstractGameAction() {
-                    public void update() {
-                        CardModifierManager.addModifier(c, new NosferatuCardMod(1,m.lastDamageTaken/2));
-                        isDone = true;
-                    }
-                });
+            if (upgraded) {
+                for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                    addToBot(new AbstractGameAction() {
+                        public void update() {
+                            CardModifierManager.addModifier(c, new NosferatuCardMod(1, m.lastDamageTaken / 2));
+                            isDone = true;
+                        }
+                    });
+                }
+                for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+                    addToBot(new AbstractGameAction() {
+                        public void update() {
+                            CardModifierManager.addModifier(c, new NosferatuCardMod(1, m.lastDamageTaken / 2));
+                            isDone = true;
+                        }
+                    });
+                }
+                for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
+                    addToBot(new AbstractGameAction() {
+                        public void update() {
+                            CardModifierManager.addModifier(c, new NosferatuCardMod(1, m.lastDamageTaken / 2));
+                            isDone = true;
+                        }
+                    });
+                }
+            } else {
+                for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                    addToBot(new AbstractGameAction() {
+                        public void update() {
+                            CardModifierManager.addModifier(c, new NosferatuYCardMod(1, m.lastDamageTaken / 2));
+                            isDone = true;
+                        }
+                    });
+                }
+                for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+                    addToBot(new AbstractGameAction() {
+                        public void update() {
+                            CardModifierManager.addModifier(c, new NosferatuYCardMod(1, m.lastDamageTaken / 2));
+                            isDone = true;
+                        }
+                    });
+                }
+                for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
+                    addToBot(new AbstractGameAction() {
+                        public void update() {
+                            CardModifierManager.addModifier(c, new NosferatuYCardMod(1, m.lastDamageTaken / 2));
+                            isDone = true;
+                        }
+                    });
+                }
             }
         }
         else {

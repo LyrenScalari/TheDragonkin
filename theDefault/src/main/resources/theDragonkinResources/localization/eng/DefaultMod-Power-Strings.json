@@ -126,8 +126,9 @@
                 "NAME": "Arcana",
                 "DESCRIPTIONS": ["Magic cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
         },
-        "theDragonkin:Resistance": {
-                "NAME": "Resistance",
-                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage",  " less damage", " to this enemy"]
+
+        "theDragonkin:resistance": {
+                "NAME": "Dark Exposure",
+                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage to this enemy"]
         }
 }

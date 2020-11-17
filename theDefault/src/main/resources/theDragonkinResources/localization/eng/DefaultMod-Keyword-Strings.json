@@ -66,14 +66,21 @@
     "NAMES": [
       "wind"
     ],
-    "DESCRIPTION": "Wind cards are not effected by #yStrength or #yDexterity. When you play your first wind card each turn, gain #yTailwind which reduces cost of all wind cards in your hand by 1, when you play a wind card effected by tailwind, lose tailwind and gain #yGaleforce which increases the damage of your next wind card and is removed when played and replaced with tailwind.",
+    "DESCRIPTION": "Wind cards are not effected by #yStrength or #yDexterity. Every second wind card you play has #yTailwind reducing it's cost by 1",
+    "COLOR": "[#94bdff]"
+  },
+  {
+    "NAMES": [
+      "windstorm"
+    ],
+    "DESCRIPTION": "When #yUnleashed deal damage to all enemies. increase the effect by playing #yWind, #yIce or #yDark cards.",
     "COLOR": "[#94bdff]"
   },
   {
   "NAMES": [
     "tailwind"
   ],
-  "DESCRIPTION": "Wind cards in your hand cost 1 less, after you play a #yWind card, remove this from your cards and give them #yGaleforce."
+  "DESCRIPTION": "Every second wind card you play costs 1 less."
 },
   {
     "NAMES": [
@@ -135,10 +142,12 @@
     "DESCRIPTION": "Increases damage and Block gain for Magic cards."
   },
   {
+    "PROPER_NAME": "Dark Exposure",
     "NAMES": [
-      "resistance"
+      "Dark Exposure",
+      "dark_exposure"
     ],
-    "DESCRIPTION": "Increases Magic damage received by the target."
+    "DESCRIPTION": "Increases damage from #yMagic."
   },
   {
     "NAMES": [
@@ -146,7 +155,14 @@
     ],
     "DESCRIPTION": "Loses HP when you play certain Acid cards."
   },
-
+  {
+    "NAMES": [
+      "infuse",
+      "infusion",
+      "infusing"
+    ],
+    "DESCRIPTION": "Infusing an element puts it into your first empty slot, play cards of specific #yElements to empower it. Infusions are released activating their effect at the end of your turn, or when you begin another infusion."
+  },
   {
     "PROPER_NAME": "Power Word",
     "NAMES": [

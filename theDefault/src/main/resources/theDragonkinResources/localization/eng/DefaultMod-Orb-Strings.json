@@ -28,6 +28,16 @@
       " Word 3"
     ]
   },
+  "theDefault:DefaultOrb": {
+    "NAME": "Default Orb",
+    "DESCRIPTION": [
+      "#yPassive: At the start of your turn, draw #b",
+      " card.",
+      " cards.",
+      " NL #yEvoke: Deal #b",
+      " damage to all enemies."
+    ]
+  },
   "theDragonkin:Nid": {
     "NAME": "Nid - Nothing",
     "DESCRIPTION": [

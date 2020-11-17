@@ -418,6 +418,14 @@
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
+  "theDragonkin:Sagiate": {
+    "NAME": "Sagittae",
+    "DESCRIPTION": "thedragonkin:Infuse thedragonkin:Windstorm.",
+    "UPGRADE_DESCRIPTION": "thedragonkin:Infuse thedragonkin:Wind",
+    "EXTENDED_DESCRIPTION": ["Sagiate II","Sagiate Y",
+      "Fimbult V",
+      "thedragonkin:Infuse thedragonkin:Ice."," Purge"]
+  },
   "theDragonkin:Fire": {
     "NAME": "Fire",
     "DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage.",
@@ -428,8 +436,8 @@
   },
   "theDragonkin:Miasma": {
     "NAME": "Miasma",
-    "DESCRIPTION": "Deal !MAG! thedragonkin:Dark damage. NL thedragonkin:Darken: Apply -2 thedragonkin:Resistance for 2 turns",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Dark damage. NL thedragonkin:Darken: Apply -2 thedragonkin:Resistance for 2 turns",
+    "DESCRIPTION": "Deal !MAG! thedragonkin:Dark damage. NL thedragonkin:Darken: Apply 2 thedragonkin:Dark_Exposure for 2 turns",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Dark damage. NL thedragonkin:Darken: Apply 2 thedragonkin:Dark_Exposure for 2 turns",
     "EXTENDED_DESCRIPTION": ["Miasma II","Miasma Y",
       "Nosferatu V",
       "Deal !MAG! thedragonkin:Light damage. NL thedragonkin:Afterglow: Gain block equal to half the damage this dealt"," Purge"]
@@ -440,7 +448,7 @@
     "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Light damage. NL thedragonkin:Afterglow: Heal for half the damage this dealt.",
     "EXTENDED_DESCRIPTION": ["Nosferatu II","Nosferatu Y",
       "Miasma V",
-      "Deal !MAG! thedragonkin:Dark damage. NL thedragonkin:Darken: Apply -4 thedragonkin:Resistance for 1 turn"," Purge"]
+      "Deal !MAG! thedragonkin:Dark damage. NL thedragonkin:Darken: Apply 4 thedragonkin:Dark_Exposure for 1 turn"," Purge"]
   },
   "theDragonkin:Icicle": {
     "NAME": "Icicle",
@@ -504,7 +512,14 @@
     "DESCRIPTION": "Deal !MAG! thedragonkin:Thunder damage. NL If the traget is thedragonkin:Jolted gain 2 thedragonkin:Charged-Up this turn",
     "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Thunder damage. NL If the traget is thedragonkin:Jolted gain 4 thedragonkin:Charged-Up this turn.",
     "EXTENDED_DESCRIPTION": ["Bolting II","Bolting Y",
-      "Excalibur V","Deal !MAG! thedragonkin:Wind damage. NL If you have thedragonkin:Tailwind your thedragonkin:Galeforce gives 8 bonus damage instead of 4 this turn."," Purge"]
+      "Excalibur V","Deal !MAG! thedragonkin:Wind damage. NL If you have thedragonkin:Tailwind Deal !MAG! thedragonkin:Wind damage twice instead and thedragonkin:Follow-Up."," Purge"]
+  },
+  "theDragonkin:Excalibur": {
+    "NAME": "Excalibur",
+    "DESCRIPTION": "Deal !MAG! thedragonkin:Wind damage. NL If you have thedragonkin:Tailwind Deal !MAG! thedragonkin:Wind damage twice instead.",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Wind damage. NL If you have thedragonkin:Tailwind Deal !MAG! thedragonkin:Wind damage twice instead and thedragonkin:Follow-Up.",
+    "EXTENDED_DESCRIPTION": ["Excalibur II","Excalibur Y",
+      "Bolting V","Deal !MAG! thedragonkin:Thunder damage. NL If the traget is thedragonkin:Jolted gain 2 thedragonkin:Charged-Up this turn"," Purge"]
   },
   "theDragonkin:Ragnarok": {
     "NAME": "Ragnarok",

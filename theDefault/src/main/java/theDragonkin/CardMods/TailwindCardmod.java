@@ -47,18 +47,18 @@ public class TailwindCardmod extends AbstractCardModifier {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                    @Override
+                    public void update() {
                         if (m instanceof TailwindCardmod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
                             isDone = true;
                         }
+                        isDone = true;
                     }
-                    isDone=true;
-                }
-            });
+                });
+            }
         }
     }
 
