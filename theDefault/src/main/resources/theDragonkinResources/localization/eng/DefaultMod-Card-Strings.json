@@ -418,17 +418,9 @@
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "theDragonkin:Sagiate": {
-    "NAME": "Sagittae",
-    "DESCRIPTION": "thedragonkin:Infuse thedragonkin:Windstorm.",
-    "UPGRADE_DESCRIPTION": "thedragonkin:Infuse thedragonkin:Wind",
-    "EXTENDED_DESCRIPTION": ["Sagiate II","Sagiate Y",
-      "Fimbult V",
-      "thedragonkin:Infuse thedragonkin:Ice."," Purge"]
-  },
   "theDragonkin:Fire": {
     "NAME": "Fire",
-    "DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage.",
+    "DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: thedragonkin:Follow-Up",
     "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: thedragonkin:Follow-Up",
     "EXTENDED_DESCRIPTION": ["Fire II","Fire Y",
       "Icicle V",

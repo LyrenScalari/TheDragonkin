@@ -3,9 +3,11 @@ package theDragonkin.cards.Gremory;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
@@ -48,10 +50,10 @@ public class Blizzard extends AbstractMagicGremoryCard implements BranchingUpgra
         }
         else {
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            if (this.upgraded && HotStreak){
-                addToBot(new GainBlockAction(p,MagDamage));
-            }
-        }
+            if (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2
+                    && ((AbstractCard)AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).hasTag(CustomTags.Fire))
+                    addToBot(new GainBlockAction(p, MagDamage));
+                }
         super.use(p, m);
     }
     @Override

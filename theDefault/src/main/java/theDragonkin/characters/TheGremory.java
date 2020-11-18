@@ -66,7 +66,7 @@ public class TheGremory extends CustomPlayer {
     public static final int MAX_HP = 65;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 6;
-    public static final int ORB_SLOTS = 1;
+    public static final int ORB_SLOTS = 0;
 
     // =============== /BASE STATS/ =================
 

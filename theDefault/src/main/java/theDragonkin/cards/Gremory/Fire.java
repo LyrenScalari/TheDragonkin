@@ -3,9 +3,11 @@ package theDragonkin.cards.Gremory;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
@@ -30,14 +32,17 @@ public class Fire extends AbstractMagicGremoryCard implements BranchingUpgradesC
     public Fire() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Fire);
-        MagDamage = baseMagDamage = 8;
+        MagDamage = baseMagDamage = 4;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.hasTag(CustomTags.Fire)){
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            if (this.upgraded && HotStreak){
-                addToBot(new MakeTempCardInHandAction(new FollowUpFire()));
+            if (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2
+                    && ((AbstractCard)AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).hasTag(CustomTags.Fire)) {
+                    if (!upgraded) {
+                        addToBot(new MakeTempCardInHandAction(new FollowUpFire(false)));
+                    } else addToBot(new MakeTempCardInHandAction(new FollowUpFire(true)));
             }
         }
         else {
@@ -61,6 +66,8 @@ public class Fire extends AbstractMagicGremoryCard implements BranchingUpgradesC
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
         this.rawDescription = UPGRADE_DESCRIPTION;
+        baseMagDamage += 3;
+        MagDamageUpgraded = true;
         initializeDescription();
     }
 
@@ -69,7 +76,6 @@ public class Fire extends AbstractMagicGremoryCard implements BranchingUpgradesC
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Fire);
         tags.add(CustomTags.Ice);
-        baseMagDamage -= 5;
         MagDamageUpgraded = true;
         initializeDescription();
 

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
@@ -37,27 +38,29 @@ public class Fimbulvetr extends AbstractMagicGremoryCard implements BranchingUpg
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.hasTag(CustomTags.Ice)){
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+        if (this.hasTag(CustomTags.Ice)) {
+            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
             if (m.hasPower(FreezePower.POWER_ID)) {
-                if (this.upgraded){
-                    addToBot(new LoseHPAction(m,p,MagDamage*2));
+                if (this.upgraded) {
+                    addToBot(new LoseHPAction(m, p, MagDamage * 2));
                     addToBot(new MakeTempCardInHandAction(new FollowUpFimbulvetr()));
+                } else {
+                    addToBot(new LoseHPAction(m, p, MagDamage));
                 }
-                else {addToBot(new LoseHPAction(m,p,MagDamage));}
             }
-        }
-        else {
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            if (this.upgraded && HotStreak){
-                addToBot(new GainBlockAction(p,MagDamage));
+        } else {
+            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
+            if (this.upgraded && (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() > 0)) {
+                if (AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 1).hasTag(CustomTags.Fire)) {
+                    addToBot(new GainBlockAction(p, MagDamage));
+                }
             }
+            super.use(p, m);
         }
-        super.use(p, m);
     }
     @Override
     public void upgrade() {

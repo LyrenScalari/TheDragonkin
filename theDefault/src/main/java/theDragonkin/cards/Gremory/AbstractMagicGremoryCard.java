@@ -1,6 +1,7 @@
 package theDragonkin.cards.Gremory;
 
 
+        import basemod.BaseMod;
         import basemod.abstracts.AbstractCardModifier;
         import basemod.helpers.CardModifierManager;
         import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -18,11 +19,12 @@ package theDragonkin.cards.Gremory;
         import theDragonkin.powers.modifyMagicPower;
         import java.util.ArrayList;
 
+        import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
+
 
 public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
 
     public boolean HotStreak = false;
-    public boolean snuffed = false;
     public boolean Tailwind = false;
     public boolean Galeforce = true;
     public boolean FiredUp = false;
@@ -42,7 +44,6 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         if (this.hasTag(CustomTags.Ice)) {
-            snuffed = true;
             HotStreak = false;
             addToBot(new AbstractGameAction() {
                 public void update() {
@@ -56,9 +57,7 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
             });
         }
         if (this.hasTag(CustomTags.Fire)) {
-            if (!snuffed) {
-                HotStreak = true;
-            }
+            HotStreak = true;
             if (FiredUp) {
                 this.MagDamage += 5;
             }
@@ -67,7 +66,6 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
             }
         }
         if (this.hasTag(CustomTags.Wind)) {
-            snuffed = true;
             HotStreak = false;
             if (Windcards.size() > 0) {
                 Windcards.clear();
@@ -162,7 +160,6 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
     @Override
     public void atTurnStart() {
         HotStreak = false;
-        snuffed = false;
         Tailwind = false;
         Galeforce = true;
         FiredUp = false;

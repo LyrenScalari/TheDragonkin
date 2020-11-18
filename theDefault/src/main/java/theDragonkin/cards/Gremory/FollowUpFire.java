@@ -2,6 +2,7 @@ package theDragonkin.cards.Gremory;
 
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -30,9 +31,15 @@ public class FollowUpFire extends AbstractMagicGremoryCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Fire);
         purgeOnUse = true;
-        MagDamage = baseMagDamage = 8;
         this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[4];
         this.name = cardStrings.EXTENDED_DESCRIPTION[1];
+    }
+
+    public FollowUpFire(boolean upgraded){
+        this();
+        if (!upgraded) {
+            MagDamage = baseMagDamage = 4;
+        }else  MagDamage = baseMagDamage = 7;
     }
 
     @Override
