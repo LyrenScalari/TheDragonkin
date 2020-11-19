@@ -30,10 +30,10 @@ public class MiasmaCardMod extends DarkenCardMod {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new ResistancePower(target, stacks, time), stacks));
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            @Override
-            public void update() {
-                for (AbstractCard c : AllCards.group) {
+        for (AbstractCard c : AllCards.group) {
+            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                @Override
+                public void update() {
                     for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
                         if (m instanceof AfterglowCardMod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
@@ -42,9 +42,9 @@ public class MiasmaCardMod extends DarkenCardMod {
                         }
                         isDone = true;
                     }
+                    isDone=true;
                 }
-                isDone= true;
-            }
-        });
+            });
+        }
     }
 }

@@ -1,5 +1,6 @@
 package theDragonkin.cards.Gremory;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,7 +13,7 @@ import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 
 import static theDragonkin.DefaultMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class BraveFollowUp extends AbstractGremoryCard {
     public static final String ID = DefaultMod.makeID(VeninFollowUp.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -30,11 +31,11 @@ public class BraveFollowUp extends AbstractGremoryCard {
 
     public BraveFollowUp() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.tags.add(CustomTags.Wind);
         purgeOnUse = true;
         damage = baseDamage = DAMAGE;
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[1];
-        this.name = cardStrings.EXTENDED_DESCRIPTION[0];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
+        this.name = cardStrings.EXTENDED_DESCRIPTION[1];
+        initializeDescription();
     }
 
     @Override

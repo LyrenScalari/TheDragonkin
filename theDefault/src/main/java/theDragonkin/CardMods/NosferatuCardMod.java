@@ -35,6 +35,7 @@ public class NosferatuCardMod extends AfterglowCardMod {
                         }
                         isDone = true;
                     }
+                    isDone = true;
                 }
             });
         }

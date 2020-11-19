@@ -46,6 +46,8 @@ public class SilverSlash extends AbstractGremoryCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
         returncount = 0;
+        isEthereal = true;
+        isInnate = true;
         returnToHand = false;
     }
 
@@ -54,22 +56,18 @@ public class SilverSlash extends AbstractGremoryCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        FollowUp = this.makeCopy();
-        FollowUp.purgeOnUse = true;
-        FollowUp.rawDescription = FollowUp.description + " Purge";
-        AllCards.addToBottom(FollowUp);
+        resetReturn();
+        FollowUp = new BraveFollowUp();
+        if (this.upgraded){
+            FollowUp.upgrade();
+        }
         addToBot(new MakeTempCardInHandAction(FollowUp));
+        AllCards.addToBottom(FollowUp);
         if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() >= 2){
             for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn){
                 if (c.type == CardType.SKILL && returncount < 1){
                     returnToHand = true;
                     returncount += 1;
-                    AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            resetReturn();
-                        }
-                    });
                     break;
                 }
             }
@@ -82,6 +80,7 @@ public class SilverSlash extends AbstractGremoryCard {
     @Override
     public void atTurnStart() {
         resetReturn();
+        returncount = 0;
         super.atTurnStart();
     }
 

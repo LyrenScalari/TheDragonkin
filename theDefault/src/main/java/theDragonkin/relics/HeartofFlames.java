@@ -3,16 +3,19 @@ package theDragonkin.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
-import theDragonkin.powers.NecroticAura;
+import theDragonkin.powers.*;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makeRelicOutlinePath;
@@ -56,32 +59,49 @@ public class HeartofFlames extends CustomRelic { // You must implement things yo
     public void onCardDraw(AbstractCard card) {
     }
 
+
     @Override
     public void onUseCard(final AbstractCard c, final UseCardAction ca) {
-        if (!(c instanceof AbstractMagicGremoryCard) && !physical) {
-            c.damage += 3;
-            c.block += 3;
+        if (!(c instanceof AbstractMagicGremoryCard && !physical)){
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,StrengthPower.POWER_ID));
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,DexterityPower.POWER_ID));
             physical = true;
-        } else if (c.hasTag(CustomTags.Fire) && !fire) {
-            ((AbstractMagicGremoryCard) c).baseMagDamage += 3;
-            fire = true;
-        } else if (c.hasTag(CustomTags.Ice) && !ice) {
-            ((AbstractMagicGremoryCard) c).baseMagDamage += 3;
+        }
+        if (c.hasTag(CustomTags.Ice) && !ice){
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,DeepFrost.POWER_ID));
             ice = true;
-        } else if (c.hasTag(CustomTags.Wind) && !wind) {
-            ((AbstractMagicGremoryCard) c).baseMagDamage += 3;
-            wind = true;
-        } else if (c.hasTag(CustomTags.Thunder) && !thunder) {
-            ((AbstractMagicGremoryCard) c).baseMagDamage += 3;
+        }
+       if (c.hasTag(CustomTags.Thunder)&& !thunder){
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,ChargedUp.POWER_ID));
             thunder = true;
-        } else if (c.hasTag(CustomTags.Dark) && !dark) {
-            ((AbstractMagicGremoryCard) c).baseMagDamage += 3;
+        }
+        if (c.hasTag(CustomTags.Fire)&& !fire){
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,Kindling.POWER_ID));
+            fire = true;
+        }
+        if (c.hasTag(CustomTags.Wind)&& !wind){
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,Galeforce.POWER_ID));
+            wind = true;
+        }
+        if (c.hasTag(CustomTags.Dark)&& !dark){
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,LoptyrianShadow.POWER_ID));
             dark = true;
-        } else if (c.hasTag(CustomTags.Light) && !light) {
-            ((AbstractMagicGremoryCard) c).baseMagDamage += 3;
+        }
+        if (c.hasTag(CustomTags.Light)&& !light){
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,Luminance.POWER_ID));
             light = true;
         }
-        c.calculateCardDamage((AbstractMonster) ca.target);
+    }
+    @Override
+    public void atBattleStart() {
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,3),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DexterityPower(AbstractDungeon.player,3),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new ChargedUp(AbstractDungeon.player,3,false),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DeepFrost(AbstractDungeon.player,3,false),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new Kindling(AbstractDungeon.player,3,false),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new Galeforce(AbstractDungeon.player,3,false),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new Luminance(AbstractDungeon.player,3,false),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new LoptyrianShadow(AbstractDungeon.player,3,false),3));
     }
 
     @Override
@@ -123,4 +143,5 @@ public class HeartofFlames extends CustomRelic { // You must implement things yo
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];
     }
+
 }

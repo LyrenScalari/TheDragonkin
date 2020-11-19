@@ -2,31 +2,37 @@ package theDragonkin.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
 
-public class ArcanaPower extends AbstractPower implements modifyMagicPower {
-    public static final String POWER_ID = DefaultMod.makeID("arcana");
+public class Galeforce extends AbstractPower implements modifyMagicPower {
+    public static final String POWER_ID =  DefaultMod.makeID("Galeforce");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public boolean Remove;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Ashfall.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Ashfall32.png"));
-    public ArcanaPower(AbstractCreature owner, int amount) {
-        this.name = NAME;
-        this.ID = "arcana";
+
+    public Galeforce(AbstractCreature owner, int amount, boolean Temporary) {
+        name = NAME;
+        ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
+        this.Remove = Temporary;
+
         if (this.amount >= 999) {
             this.amount = 999;
         }
@@ -41,7 +47,7 @@ public class ArcanaPower extends AbstractPower implements modifyMagicPower {
     }
 
     public void playApplyPowerSfx() {
-        CardCrawlGame.sound.play("ATTACK_MAGIC_SLOW_2", 0.05F);
+        CardCrawlGame.sound.play("ORB_LIGHTNING_PASSIVE", 0.05F);
     }
 
     public void stackPower(int stackAmount) {
@@ -78,6 +84,13 @@ public class ArcanaPower extends AbstractPower implements modifyMagicPower {
 
     }
 
+    @Override
+    public void atEndOfTurn(final boolean isPlayer) {
+        if (Remove) {
+            addToBot(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, this, this.amount));
+        }
+    }
+
     public void updateDescription() {
         if (this.amount > 0) {
             this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
@@ -90,9 +103,18 @@ public class ArcanaPower extends AbstractPower implements modifyMagicPower {
 
     }
 
-    @Override
-    public float modifyMagicCard(AbstractMagicGremoryCard c, float magicpower) {
-        return magicpower + this.amount;
+    public float modifyBlock(float blockAmount, AbstractCard c) {
+        if (c.hasTag(CustomTags.Wind)) {
+            return (blockAmount += (float) this.amount) < 0.0F ? 0.0F : blockAmount;
+        } else return blockAmount;
     }
 
+
+    @Override
+    public float modifyMagicCard(AbstractMagicGremoryCard c, float magicpower) {
+        if (c.hasTag(CustomTags.Wind)) {
+            return magicpower + this.amount;
+        } else return magicpower;
+    }
 }
+

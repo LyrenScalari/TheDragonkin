@@ -113,6 +113,10 @@
                 "NAME": "Chill",
                 "DESCRIPTIONS": ["Recives #b", "0% extra damage from #yIce cards, replace this with #yFreeze if this has 10 or more stacks of this."]
         },
+        "theDragonkin:DeepFrost": {
+                "NAME": "Deep Frost",
+                "DESCRIPTIONS": ["Ice cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+        },
         "theDragonkin:Freeze": {
                 "NAME": "Freeze",
                 "DESCRIPTIONS": ["Recives #b", "0 damage from #yIce Cards, and receives three times damage form non-magical cards and removes this."]
@@ -121,6 +125,26 @@
         "theDragonkin:Jolted": {
                 "NAME": "Jolted",
                 "DESCRIPTIONS": ["Recives #b", "0% less damage from #yThunder cards"]
+        },
+        "theDragonkin:Charged-Up": {
+                "NAME": "Charged Up",
+                "DESCRIPTIONS": ["Thunder cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+        },
+        "theDragonkin:Galeforce": {
+                "NAME": "Galeforce",
+                "DESCRIPTIONS": ["Wind cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+        },
+        "theDragonkin:Kindling": {
+                "NAME": "Kindling",
+                "DESCRIPTIONS": ["Fire cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+        },
+        "theDragonkin:Luminance": {
+                "NAME": "Luminance",
+                "DESCRIPTIONS": ["Light cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+        },
+        "theDragonkin:LoptyrianShadow": {
+                "NAME": "Loptyrian Shadow",
+                "DESCRIPTIONS": ["Dark cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
         },
         "theDragonkin:arcana": {
                 "NAME": "Arcana",

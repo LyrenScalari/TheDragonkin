@@ -1,5 +1,6 @@
 package theDragonkin.cards.Gremory;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -17,7 +18,7 @@ import theDragonkin.powers.HuntersFocusPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 import static theDragonkin.cards.Gremory.AbstractMagicGremoryCard.AllCards;
-
+@AutoAdd.Ignore
 public class KillerFollowUp  extends AbstractGremoryCard {
 
 
@@ -52,8 +53,9 @@ public class KillerFollowUp  extends AbstractGremoryCard {
         baseDamage =DAMAGE;
         magicNumber = baseMagicNumber = 2;
         purgeOnUse = true;
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[1];
-        this.name = cardStrings.EXTENDED_DESCRIPTION[0];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
+        this.name = cardStrings.EXTENDED_DESCRIPTION[1];
+        initializeDescription();
     }
 
 

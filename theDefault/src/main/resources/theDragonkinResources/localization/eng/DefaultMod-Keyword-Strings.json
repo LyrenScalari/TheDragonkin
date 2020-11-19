@@ -43,6 +43,12 @@
   },
   {
     "NAMES": [
+      "Kindling"
+    ],
+    "DESCRIPTION": "Increases damage and Block gain for Fire cards."
+  },
+  {
+    "NAMES": [
       "ice"
     ],
     "DESCRIPTION": "Ice cards are not effected by #yStrength or #yDexterity. Dealing damage with Ice cards applies #yChill to the target.",
@@ -54,6 +60,14 @@
       "chilled"
     ],
     "DESCRIPTION": "Chilled enemies take 10% more damage per stack of chill, when a monster has 10 or more points of chill remove them and apply #yFreeze."
+  },
+  {
+    "PROPER_NAME": "Deep Frost",
+    "NAMES": [
+      "Deep Frost",
+      "deep_frost"
+    ],
+    "DESCRIPTION": "Increases damage and Block gain for Ice cards."
   },
   {
     "NAMES": [
@@ -70,13 +84,6 @@
     "COLOR": "[#94bdff]"
   },
   {
-    "NAMES": [
-      "windstorm"
-    ],
-    "DESCRIPTION": "When #yUnleashed deal damage to all enemies. increase the effect by playing #yWind, #yIce or #yDark cards.",
-    "COLOR": "[#94bdff]"
-  },
-  {
   "NAMES": [
     "tailwind"
   ],
@@ -86,7 +93,7 @@
     "NAMES": [
       "galeforce"
     ],
-    "DESCRIPTION": "Wind cards in your hand deal 4 more damage, after you play a #yWind card, remove this from your cards and give them #yTailwind."
+    "DESCRIPTION": "Increases damage and Block gain for Wind cards."
   },
   {
     "NAMES": [
@@ -106,7 +113,7 @@
     "NAMES": [
       "charged-up"
     ],
-    "DESCRIPTION": "Increases damage and Block gain for Thunder cards.."
+    "DESCRIPTION": "Increases damage and Block gain for Thunder cards."
   },
   {
   "NAMES": [
@@ -123,6 +130,14 @@
     "DESCRIPTION": "Darken effects are activated when you play your next #yMagic card #yLight card excluded, playing a light card will remove any darken effects you have."
   },
   {
+    "PROPER_NAME": "Loptyrian Shadow",
+    "NAMES": [
+      "Loptryian Shadow",
+      "loptryian_shadow"
+    ],
+    "DESCRIPTION": "Increases damage and Block gain for Ice cards."
+  },
+  {
     "NAMES": [
       "light"
     ],
@@ -130,10 +145,16 @@
     "COLOR": "[#94bdff]"
   },
   {
+  "NAMES": [
+    "afterglow"
+  ],
+  "DESCRIPTION": "Afterglow effects are activated when you play your next #yMagic card #yDark card excluded, playing a dark card will remove any afterglow effects you have."
+},
+  {
     "NAMES": [
-      "afterglow"
+      "luminance"
     ],
-    "DESCRIPTION": "Afterglow effects are activated when you play your next #yMagic card #yDark card excluded, playing a dark card will remove any afterglow effects you have."
+    "DESCRIPTION": "Increases damage and Block gain for Light cards."
   },
   {
     "NAMES": [
@@ -147,7 +168,7 @@
       "Dark Exposure",
       "dark_exposure"
     ],
-    "DESCRIPTION": "Increases damage from #yMagic."
+    "DESCRIPTION": "Increases damage from #yMagic for a limited time."
   },
   {
     "NAMES": [

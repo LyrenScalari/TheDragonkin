@@ -12,13 +12,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.CustomTags;
+import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
 
-public class ChargedUp extends AbstractPower {
-    public static final String POWER_ID = "Charged-Up";
+public class ChargedUp extends AbstractPower implements modifyMagicPower{
+    public static final String POWER_ID = DefaultMod.makeID("Charged-Up");
     private static final PowerStrings powerStrings;
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
@@ -27,7 +28,7 @@ public class ChargedUp extends AbstractPower {
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Ashfall32.png"));
     public ChargedUp(AbstractCreature owner, int amount, boolean Temporary) {
         this.name = NAME;
-        this.ID = "Charged-Up";
+        this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
         this.Remove = Temporary;
@@ -100,22 +101,17 @@ public class ChargedUp extends AbstractPower {
 
     }
 
-    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard c) {
-        if (c.hasTag(CustomTags.Thunder)) {
-            return type == DamageInfo.DamageType.NORMAL ? damage + (float) this.amount : ((AbstractMagicGremoryCard) c).MagDamage;
-        }
-        else return damage;
-    }
-    public float modifyBlock(float blockAmount, AbstractCard c) {
-        if (c.hasTag(CustomTags.Thunder)) {
-            return (blockAmount += (float) this.amount) < 0.0F ? 0.0F : blockAmount;
-        }
-        else return blockAmount;
-    }
-
     static {
-        powerStrings = CardCrawlGame.languagePack.getPowerStrings("Charged Up");
+        powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         NAME = powerStrings.NAME;
         DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    }
+
+    @Override
+    public float modifyMagicCard(AbstractMagicGremoryCard c, float magicpower) {
+        if (c.hasTag(CustomTags.Thunder)) {
+            return  magicpower + this.amount;
+        }
+        else return magicpower;
     }
 }

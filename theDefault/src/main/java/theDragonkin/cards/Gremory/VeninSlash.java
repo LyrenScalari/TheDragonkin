@@ -61,10 +61,10 @@ public class VeninSlash extends AbstractGremoryCard {
             for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn){
                 if (c.type == AbstractCard.CardType.SKILL){
                     FollowUp = new VeninFollowUp();
-                    addToBot(new MakeTempCardInHandAction(FollowUp));
                     if (this.upgraded){
                         FollowUp.upgrade();
                     }
+                    addToBot(new MakeTempCardInHandAction(FollowUp));
                     AllCards.addToBottom(FollowUp);
                     break;
                 }

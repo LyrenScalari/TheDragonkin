@@ -421,22 +421,22 @@
   "theDragonkin:SteelSlash": {
   "NAME": "Steel Strike",
   "DESCRIPTION": "Deal !D! damage. NL If you played a Skill this turn thedragonkin:Follow-Up",
-    "EXTENDED_DESCRIPTION": ["Deal !D! damage.", "Steel Followup"]
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Purge", "Steel Followup"]
   },
   "theDragonkin:SilverSlash": {
     "NAME": "Brave Strike",
-    "DESCRIPTION": "Deal !D! damage, thedragonkin:Follow-Up. NL Once per turn, if you played a Skill this turn, return this card to your hand.",
-    "EXTENDED_DESCRIPTION": ["Deal !D! damage.", "Brave Followup"]
+    "DESCRIPTION": "Innate. NL Ethereal. NL Deal !D! damage, thedragonkin:Follow-Up. NL Once per turn, if you played a Skill this turn, return this card to your hand.",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Purge", "Brave Followup"]
   },
   "theDragonkin:VeninSlash": {
     "NAME": "Venin Strike",
     "DESCRIPTION": "Deal !D! damage, Apply !M! Poison. NL If you played a Skill this turn thedragonkin:Follow-Up",
-    "EXTENDED_DESCRIPTION": ["Deal !D! damage, Apply !M! Poison.", "Venin Followup"]
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage, Apply !M! Poison. NL Purge", "Venin Followup"]
   },
   "theDragonkin:KillerSlash": {
     "NAME": "Killer Strike",
     "DESCRIPTION": "Deal !D! damage, gain !M! thedragonkin:Hunters_Focus. NL If you played a Skill this turn thedragonkin:Follow-Up",
-    "EXTENDED_DESCRIPTION": ["Deal !D! damage, gain !M! thedragonkin:Hunters_Focus.", "Killer Followup"]
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage, gain !M! thedragonkin:Hunters_Focus. NL Purge", "Killer Followup"]
   },
   "theDragonkin:DeathBlow": {
     "NAME": "Death Blow",
