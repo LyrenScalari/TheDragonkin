@@ -130,5 +130,29 @@
         "theDragonkin:resistance": {
                 "NAME": "Dark Exposure",
                 "DESCRIPTIONS": ["Magic cards Deal #b", " more damage to this enemy"]
+        },
+        "theDragonkin:Ragnarök": {
+                "NAME": "Ragnarök",
+                "DESCRIPTIONS": ["Fire cards Deal #b", " more damage until you play a non #yFire card"]
+        },
+        "theDragonkin:Ragnarok": {
+                "NAME": "Ragnarök",
+                "DESCRIPTIONS": ["Your next card will #yFollow-Up"]
+        },
+        "theDragonkin:DeathBlow": {
+                "NAME": "Death Blow",
+                "DESCRIPTIONS": ["Your next non #yMagic Attack deals", " extra damage"]
+        },
+        "theDragonkin:FiendishBlow": {
+                "NAME": "Fiendish Blow",
+                "DESCRIPTIONS": ["Your next #yMagic Attack or Skill deals", " extra damage"," and gains"," extra block"]
+        },
+        "theDragonkin:KillerBlow": {
+                "NAME": "Killer Blow",
+                "DESCRIPTIONS": ["Your next Attack gains #b", " #yHunters #yFocus"]
+        },
+        "theDragonkin:HuntersFocus": {
+                "NAME": "Hunters Focus",
+                "DESCRIPTIONS": ["When you obtain #b10 Hunters Focus your next Attack deals triple damage"]
         }
 }

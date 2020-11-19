@@ -31,24 +31,19 @@ public class FollowUpFire extends AbstractMagicGremoryCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Fire);
         purgeOnUse = true;
-        this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[4];
+        baseMagDamage = 4;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[4];
         this.name = cardStrings.EXTENDED_DESCRIPTION[1];
-    }
-
-    public FollowUpFire(boolean upgraded){
-        this();
-        if (!upgraded) {
-            MagDamage = baseMagDamage = 4;
-        }else  MagDamage = baseMagDamage = 7;
     }
 
     @Override
     public void upgrade() {
-
+        baseMagDamage += 3;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+        AllCards.removeCard(this);
     }
 }

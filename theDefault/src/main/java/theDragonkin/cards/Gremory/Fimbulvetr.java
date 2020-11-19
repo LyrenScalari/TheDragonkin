@@ -1,10 +1,8 @@
 package theDragonkin.cards.Gremory;
 
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -30,24 +28,23 @@ public class Fimbulvetr extends AbstractMagicGremoryCard implements BranchingUpg
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 2;
+    private static AbstractCard FollowUp;
 
     public Fimbulvetr() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Ice);
-        MagDamage = baseMagDamage = 6;
+        MagDamage = baseMagDamage = 18;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.hasTag(CustomTags.Ice)) {
             addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
             if (m.hasPower(FreezePower.POWER_ID)) {
                 if (this.upgraded) {
                     addToBot(new LoseHPAction(m, p, MagDamage * 2));
-                    addToBot(new MakeTempCardInHandAction(new FollowUpFimbulvetr()));
+                    FollowUp = new FollowUpFimbulvetr();
+                    addToBot(new MakeTempCardInHandAction(FollowUp));
+                    AllCards.addToBottom(FollowUp);
                 } else {
                     addToBot(new LoseHPAction(m, p, MagDamage));
                 }
@@ -56,7 +53,6 @@ public class Fimbulvetr extends AbstractMagicGremoryCard implements BranchingUpg
             addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
             if (this.upgraded && (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() > 0)) {
                 if (AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 1).hasTag(CustomTags.Fire)) {
-                    addToBot(new GainBlockAction(p, MagDamage));
                 }
             }
             super.use(p, m);
@@ -85,7 +81,8 @@ public class Fimbulvetr extends AbstractMagicGremoryCard implements BranchingUpg
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Ice);
         tags.add(CustomTags.Fire);
-        baseMagDamage += 3;
+        this.upgradeBaseCost(1);
+        baseMagDamage -= 5;
         MagDamageUpgraded = true;
         initializeDescription();
 

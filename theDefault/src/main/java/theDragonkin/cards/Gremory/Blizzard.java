@@ -1,6 +1,8 @@
 package theDragonkin.cards.Gremory;
 
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -39,8 +41,9 @@ public class Blizzard extends AbstractMagicGremoryCard implements BranchingUpgra
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.hasTag(CustomTags.Ice)){
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+            super.use(p, m);
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+            super.use(p, m);
             if (m.hasPower(ChillPower.POWER_ID)) {
                 if (!this.upgraded){
                     addToBot(new GainBlockAction(p,m.getPower(ChillPower.POWER_ID).amount*2));
@@ -53,8 +56,8 @@ public class Blizzard extends AbstractMagicGremoryCard implements BranchingUpgra
             if (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2
                     && ((AbstractCard)AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).hasTag(CustomTags.Fire))
                     addToBot(new GainBlockAction(p, MagDamage));
+                    super.use(p, m);
                 }
-        super.use(p, m);
     }
     @Override
     public void upgrade() {
@@ -79,7 +82,8 @@ public class Blizzard extends AbstractMagicGremoryCard implements BranchingUpgra
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Ice);
         tags.add(CustomTags.Fire);
-        baseMagDamage += 3;
+        this.upgradeBaseCost(2);
+        baseMagDamage += 6;
         MagDamageUpgraded = true;
         initializeDescription();
 

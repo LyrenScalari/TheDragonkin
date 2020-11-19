@@ -3,6 +3,7 @@ package theDragonkin.cards.Gremory;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,6 +29,7 @@ public class CuttingGale extends AbstractMagicGremoryCard implements BranchingUp
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
+    private static AbstractCard FollowUp;
 
     public CuttingGale() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -38,9 +40,13 @@ public class CuttingGale extends AbstractMagicGremoryCard implements BranchingUp
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.hasTag(CustomTags.Wind)) {
             addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new MakeTempCardInHandAction(new FollowUpGale()));
+            FollowUp = new FollowUpGale();
+            addToBot(new MakeTempCardInHandAction(FollowUp));
+            AllCards.addToBottom(FollowUp);
             if (upgraded && Tailwind) {
-                addToBot(new MakeTempCardInHandAction(new FollowUpGale()));
+                FollowUp = new FollowUpGale();
+                addToBot(new MakeTempCardInHandAction(FollowUp));
+                AllCards.addToBottom(FollowUp);
             }
         } else {
                 for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {

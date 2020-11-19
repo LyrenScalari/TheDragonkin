@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCar
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -30,6 +31,7 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 2;
     private static final int MAGIC = 2;
+    private static AbstractCard FollowUp;
 
     public Excalibur() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -44,7 +46,9 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
             if (Tailwind){
                 addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
                 if (this.upgraded){
-                    addToBot(new MakeTempCardInHandAction(new FollowUpExcalibur()));
+                    FollowUp = new FollowUpExcalibur();
+                    addToBot(new MakeTempCardInHandAction(FollowUp));
+                    AllCards.addToBottom(FollowUp);
                 }
             }
         }

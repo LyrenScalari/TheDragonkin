@@ -4,9 +4,11 @@ import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCar
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
@@ -32,12 +34,11 @@ public class Icicle extends AbstractMagicGremoryCard implements BranchingUpgrade
     public Icicle() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Ice);
-        MagDamage = baseMagDamage = 5;
+        MagDamage = baseMagDamage = 4;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.hasTag(CustomTags.Ice)){
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
             if (m.hasPower(ChillPower.POWER_ID)) {
                 if (this.upgraded && m.getPower(ChillPower.POWER_ID).amount > 5){
@@ -47,8 +48,9 @@ public class Icicle extends AbstractMagicGremoryCard implements BranchingUpgrade
         }
         else {
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
-            if (this.upgraded && HotStreak){
-                addToBot(new DrawCardAction(p,2));
+            if (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2
+                    && ((AbstractCard)AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).hasTag(CustomTags.Fire)) {
+                    addToBot(new DrawCardAction(p, 2));
             }
         }
         super.use(p, m);
@@ -68,6 +70,8 @@ public class Icicle extends AbstractMagicGremoryCard implements BranchingUpgrade
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
         this.rawDescription = UPGRADE_DESCRIPTION;
+        baseMagDamage += 2;
+        MagDamageUpgraded = true;
         initializeDescription();
     }
 

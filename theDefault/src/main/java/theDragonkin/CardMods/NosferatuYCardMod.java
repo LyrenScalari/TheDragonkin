@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+import static theDragonkin.cards.Gremory.AbstractMagicGremoryCard.AllCards;
+
 public class NosferatuYCardMod extends AfterglowCardMod {
     private int uses;
     private int stacks;
@@ -22,20 +24,20 @@ public class NosferatuYCardMod extends AfterglowCardMod {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,AbstractDungeon.player,stacks));
+        for (AbstractCard c : AllCards.group) {
         AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
             @Override
             public void update() {
-                for (AbstractCard c : AbstractDungeon.player.hand.group) {
                     for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
                         if (m instanceof AfterglowCardMod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
                             NosferatuYCardMod.super.removeOnCardPlayed(c);
                             isDone = true;
                         }
+                        isDone = true;
                     }
                 }
-                isDone= true;
-            }
-        });
+            });
+        }
     }
 }

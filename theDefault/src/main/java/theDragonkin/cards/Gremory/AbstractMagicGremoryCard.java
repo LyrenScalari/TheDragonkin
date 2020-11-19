@@ -7,6 +7,7 @@ package theDragonkin.cards.Gremory;
         import com.megacrit.cardcrawl.actions.AbstractGameAction;
         import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
         import com.megacrit.cardcrawl.cards.AbstractCard;
+        import com.megacrit.cardcrawl.cards.CardGroup;
         import com.megacrit.cardcrawl.characters.AbstractPlayer;
         import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
         import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -35,7 +36,7 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
     public int baseMagDamage;
     public boolean MagDamageModified;
     public boolean MagDamageUpgraded;
-
+    public static CardGroup AllCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
     public AbstractMagicGremoryCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, img, cost, type, color, rarity, target);
@@ -58,12 +59,6 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
         }
         if (this.hasTag(CustomTags.Fire)) {
             HotStreak = true;
-            if (FiredUp) {
-                this.MagDamage += 5;
-            }
-            if (FiredUpUp) {
-                this.MagDamage += 10;
-            }
         }
         if (this.hasTag(CustomTags.Wind)) {
             HotStreak = false;
@@ -101,7 +96,7 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
             });
         }
         if (this.hasTag(CustomTags.Dark)) {
-            for (AbstractCard c : AbstractDungeon.player.hand.group)  {
+            for (AbstractCard c : AllCards.group)  {
                 for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
                     AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
                         @Override
@@ -119,7 +114,7 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
         }
         if (this.hasTag(CustomTags.Light)) {
             HotStreak = false;
-            for (AbstractCard c : AbstractDungeon.player.hand.group) {
+            for (AbstractCard c : AllCards.group) {
                 for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
                     AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
                         @Override
@@ -165,61 +160,15 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
         FiredUp = false;
         FiredUpUp = false;
         GaleforceBonus = 4;
-        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        if (m instanceof TailwindCardmod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
-                        isDone = true;
-                    }
-                });
-            }
+        AllCards.clear();
+        for (AbstractCard c : AbstractDungeon.player.hand.group){
+            AllCards.addToBottom(c);
         }
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        if (m instanceof TailwindCardmod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
-                        isDone = true;
-                    }
-                });
-            }
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group){
+            AllCards.addToBottom(c);
         }
-        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        if (m instanceof TailwindCardmod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
-                        isDone = true;
-                    }
-                });
-            }
-        }
-        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        if (m instanceof TailwindCardmod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
-                        isDone = true;
-                    }
-                });
-            }
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group){
+            AllCards.addToBottom(c);
         }
     }
 }

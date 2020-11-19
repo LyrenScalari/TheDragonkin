@@ -25,6 +25,7 @@ import org.apache.logging.log4j.Logger;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.*;
+import theDragonkin.relics.HeartofFlames;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -169,6 +170,7 @@ public class TheGremory extends CustomPlayer {
     // Starting Relics
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
+        retVal.add(HeartofFlames.ID);
         return retVal;
     }
 

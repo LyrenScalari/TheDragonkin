@@ -120,7 +120,7 @@
       "darken",
       "darkened"
     ],
-    "DESCRIPTION": "Darken effects are activated when you play your next non- #yLight #yMagic card, playing a light card will remove any darken effects you have."
+    "DESCRIPTION": "Darken effects are activated when you play your next #yMagic card #yLight card excluded, playing a light card will remove any darken effects you have."
   },
   {
     "NAMES": [
@@ -133,7 +133,7 @@
     "NAMES": [
       "afterglow"
     ],
-    "DESCRIPTION": "Afterglow effects are activated when you play your next non- #yDark #yMagic card, playing a dark card will remove any afterglow effects you have."
+    "DESCRIPTION": "Afterglow effects are activated when you play your next #yMagic card #yDark card excluded, playing a dark card will remove any afterglow effects you have."
   },
   {
     "NAMES": [
@@ -156,12 +156,12 @@
     "DESCRIPTION": "Loses HP when you play certain Acid cards."
   },
   {
+    "PROPER_NAME": "Hunters Focus",
     "NAMES": [
-      "infuse",
-      "infusion",
-      "infusing"
+      "Hunters Focus",
+      "hunters_focus"
     ],
-    "DESCRIPTION": "Infusing an element puts it into your first empty slot, play cards of specific #yElements to empower it. Infusions are released activating their effect at the end of your turn, or when you begin another infusion."
+    "DESCRIPTION": "When you have 10 or more Hunters Focus your next attack does triple damage and resets Hunters Focus."
   },
   {
     "PROPER_NAME": "Power Word",

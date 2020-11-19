@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theDragonkin.powers.ResistancePower;
 
+import static theDragonkin.cards.Gremory.AbstractMagicGremoryCard.AllCards;
+
 public class MiasmaCardMod extends DarkenCardMod {
     private int uses;
     private int stacks;
@@ -28,58 +30,21 @@ public class MiasmaCardMod extends DarkenCardMod {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new ResistancePower(target, stacks, time), stacks));
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        if (m instanceof DarkenCardMod) {
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            @Override
+            public void update() {
+                for (AbstractCard c : AllCards.group) {
+                    for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                        if (m instanceof AfterglowCardMod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
+                            MiasmaCardMod.super.removeOnCardPlayed(c);
                             isDone = true;
                         }
+                        isDone = true;
                     }
-                });
+                }
+                isDone= true;
             }
-
-        }
-        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        if (m instanceof DarkenCardMod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
-                    }
-                });
-            }
-        }
-        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        if (m instanceof DarkenCardMod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
-                    }
-                });
-            }
-        }
-        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        if (m instanceof DarkenCardMod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            isDone = true;
-                        }
-                    }
-                });
-            }
-        }
+        });
     }
 }

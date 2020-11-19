@@ -1,6 +1,7 @@
 package theDragonkin.cards.Gremory;
 
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
+import theDragonkin.powers.RagnarokPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -27,12 +29,13 @@ public class Ragnarok extends AbstractMagicGremoryCard implements BranchingUpgra
     public static final CardColor COLOR = TheGremory.Enums.Gremory_Purple_Color;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 1;
+    private static final int COST = 2;
 
     public Ragnarok() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Fire);
         MagDamage = baseMagDamage = 13;
+        magicNumber = baseMagicNumber = 5;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -40,11 +43,8 @@ public class Ragnarok extends AbstractMagicGremoryCard implements BranchingUpgra
             addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
             if (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2
                     && ((AbstractCard)AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).hasTag(CustomTags.Fire)) {
-                    if (!this.upgraded) {
-                        FiredUp = true;
-                    } else {
-                        FiredUpUp = true;
-                    }
+                    addToBot(new ApplyPowerAction(p,p,new RagnarokPower(p,p,magicNumber)));
+
             } else {
                 addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
                 addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
@@ -70,6 +70,7 @@ public class Ragnarok extends AbstractMagicGremoryCard implements BranchingUpgra
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
         this.rawDescription = UPGRADE_DESCRIPTION;
+        upgradeMagicNumber(5);
         initializeDescription();
     }
 

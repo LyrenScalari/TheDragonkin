@@ -418,13 +418,45 @@
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
+  "theDragonkin:SteelSlash": {
+  "NAME": "Steel Strike",
+  "DESCRIPTION": "Deal !D! damage. NL If you played a Skill this turn thedragonkin:Follow-Up",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage.", "Steel Followup"]
+  },
+  "theDragonkin:SilverSlash": {
+    "NAME": "Brave Strike",
+    "DESCRIPTION": "Deal !D! damage, thedragonkin:Follow-Up. NL Once per turn, if you played a Skill this turn, return this card to your hand.",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage.", "Brave Followup"]
+  },
+  "theDragonkin:VeninSlash": {
+    "NAME": "Venin Strike",
+    "DESCRIPTION": "Deal !D! damage, Apply !M! Poison. NL If you played a Skill this turn thedragonkin:Follow-Up",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage, Apply !M! Poison.", "Venin Followup"]
+  },
+  "theDragonkin:KillerSlash": {
+    "NAME": "Killer Strike",
+    "DESCRIPTION": "Deal !D! damage, gain !M! thedragonkin:Hunters_Focus. NL If you played a Skill this turn thedragonkin:Follow-Up",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage, gain !M! thedragonkin:Hunters_Focus.", "Killer Followup"]
+  },
+  "theDragonkin:DeathBlow": {
+    "NAME": "Death Blow",
+    "DESCRIPTION": "Your next non-magic Attack deals !M! more damage. NL Exhaustive: !stslib:ex!."
+  },
+  "theDragonkin:FiendishBlow": {
+    "NAME": "Fiendish Blow",
+    "DESCRIPTION": "Your next magic Attack or Skill deals !M! more damage and gain !M! more Block. NL Exhaustive: !stslib:ex!."
+  },
+  "theDragonkin:KillerBlow": {
+    "NAME": "Killer Blow",
+    "DESCRIPTION": "After you play your next Attack, gain !M! thedragonkin:Hunters_Focus. NL Exhaustive: !stslib:ex!."
+  },
   "theDragonkin:Fire": {
     "NAME": "Fire",
     "DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: thedragonkin:Follow-Up",
     "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: thedragonkin:Follow-Up",
     "EXTENDED_DESCRIPTION": ["Fire II","Fire Y",
       "Icicle V",
-      "Deal !MAG! thedragonkin:Ice damage twice."," Purge"]
+      "Deal !MAG! thedragonkin:Ice damage."," Deal !MAG! thedragonkin:Fire damage. NL Purge"]
   },
   "theDragonkin:Miasma": {
     "NAME": "Miasma",
@@ -444,9 +476,9 @@
   },
   "theDragonkin:Icicle": {
     "NAME": "Icicle",
-    "DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage twice.",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage twice. NL If the target has 5 or more thedragonkin:Chill, thedragonkin:Follow-Up",
-    "EXTENDED_DESCRIPTION": ["Icicle II","Icicle Ψ",
+    "DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage.",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage. NL If the target has 5 or more thedragonkin:Chill, thedragonkin:Follow-Up",
+    "EXTENDED_DESCRIPTION": ["Icicle II","Icicle Y",
       "Fire V",
       "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: draw a card"," Purge"]
   },
@@ -469,7 +501,7 @@
 
   "theDragonkin:Blizzard": {
     "NAME": "Blizzard",
-    "DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage 3 times. NL Gain block equal to double the targets thedragonkin:Chill.",
+    "DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage twice. NL Gain block equal to double the targets thedragonkin:Chill.",
     "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage 3 times. NL Gain block equal to triple the targets thedragonkin:Chill.",
     "EXTENDED_DESCRIPTION": ["Blizzard II","Blizzard Y",
       "Volganone V",
@@ -493,11 +525,11 @@
   },
   "theDragonkin:Fimbulvetr": {
     "NAME": "Fimbulvetr",
-    "DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage 5 times. NL If the Target is thedragonkin:Frozen they lose !MAG! HP instead.",
+    "DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage. NL If the Target is thedragonkin:Frozen they lose !MAG! HP instead.",
     "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Ice damage 5 times. NL If the Target is thedragonkin:Frozen Deal double !MAG! damage instead and thedragonkin:Follow-Up.",
     "EXTENDED_DESCRIPTION": ["Fimbulvetr II","Fimbulvetr Y",
-      "Ragnarok V",
-      "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: your next thedragonkin:Hot_Streak card will thedragonkin:Follow-Up"," Purge","Deal !MAG! thedragonkin:Ice damage 5 times. NL If the Target is thedragonkin:Frozen Deal double !MAG! damage instead"]
+      "Ragnarök V",
+      "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: your next card will thedragonkin:Follow-Up"," Purge","Deal !MAG! thedragonkin:Ice damage 5 times. NL If the Target is thedragonkin:Frozen Deal double !MAG! damage instead"]
   },
   "theDragonkin:Bolting": {
     "NAME": "Bolting",
@@ -514,9 +546,9 @@
       "Bolting V","Deal !MAG! thedragonkin:Thunder damage. NL If the traget is thedragonkin:Jolted gain 2 thedragonkin:Charged-Up this turn"," Purge"]
   },
   "theDragonkin:Ragnarok": {
-    "NAME": "Ragnarok",
-    "DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: thedragonkin:Fire cards deal 5 more damage this turn.",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: thedragonkin:Fire cards deal 10 more damage this turn.",
-    "EXTENDED_DESCRIPTION": ["Ragnarok II","Ragnarok Y", "Fimbulvetr V", "Deal !MAG! thedragonkin:Ice damage 5 times."," Purge"]
+    "NAME": "Ragnarök",
+    "DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: thedragonkin:Fire cards deal !M! more damage until you play a non thedragonkin:Fire card.",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! thedragonkin:Fire damage. NL thedragonkin:Hot_Streak: thedragonkin:Fire cards deal !M! more damage  until you play a non thedragonkin:Fire card.",
+    "EXTENDED_DESCRIPTION": ["Ragnarök II","Ragnarök Y", "Fimbulvetr V", "Deal !MAG! thedragonkin:Ice damage 5 times."," Purge"]
   }
 }

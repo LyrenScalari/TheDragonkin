@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -29,6 +30,7 @@ public class Thunder extends AbstractMagicGremoryCard implements BranchingUpgrad
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
+    private static AbstractCard FollowUp;
 
     public Thunder() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -41,7 +43,9 @@ public class Thunder extends AbstractMagicGremoryCard implements BranchingUpgrad
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
             if (!m.hasPower(JoltedPower.POWER_ID) && this.upgraded) {
                     addToBot(new ApplyPowerAction(m,p,new JoltedPower(m,p,3),3));
-                    addToBot(new MakeTempCardInHandAction(new FollowUpThunder()));
+                    FollowUp = new FollowUpThunder();
+                    addToBot(new MakeTempCardInHandAction(FollowUp));
+                    AllCards.addToBottom(FollowUp);
 
             }
         }

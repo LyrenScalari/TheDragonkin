@@ -28,6 +28,7 @@ public class Fire extends AbstractMagicGremoryCard implements BranchingUpgradesC
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
+    private static AbstractCard FollowUp;
 
     public Fire() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -40,13 +41,14 @@ public class Fire extends AbstractMagicGremoryCard implements BranchingUpgradesC
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
             if (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2
                     && ((AbstractCard)AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).hasTag(CustomTags.Fire)) {
+                    FollowUp = new FollowUpFire();
                     if (!upgraded) {
-                        addToBot(new MakeTempCardInHandAction(new FollowUpFire(false)));
-                    } else addToBot(new MakeTempCardInHandAction(new FollowUpFire(true)));
+                        addToBot(new MakeTempCardInHandAction(FollowUp));
+                    } else addToBot(new MakeTempCardInHandAction(FollowUp)); FollowUp.upgrade();
+                    AllCards.addToBottom(FollowUp);
             }
         }
         else {
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
         }
         super.use(p, m);
@@ -76,6 +78,7 @@ public class Fire extends AbstractMagicGremoryCard implements BranchingUpgradesC
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Fire);
         tags.add(CustomTags.Ice);
+        baseMagDamage += 2;
         MagDamageUpgraded = true;
         initializeDescription();
 

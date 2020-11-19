@@ -437,7 +437,7 @@ public class DefaultMod implements
         BaseMod.addRelicToCustomPool(new TilerasShield(), Dragonkin_Red_COLOR);
         BaseMod.addRelicToCustomPool(new UthersMaul(), Dragonkin_Red_COLOR);
 
-        //BaseMod.addRelicToCustomPool(new HeartofFlames(), Gremory_Purple_Color);
+        BaseMod.addRelicToCustomPool(new HeartofFlames(), Gremory_Purple_Color);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         
