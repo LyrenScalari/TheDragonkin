@@ -115,68 +115,111 @@
         },
         "theDragonkin:DeepFrost": {
                 "NAME": "Deep Frost",
-                "DESCRIPTIONS": ["Ice cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+                "DESCRIPTIONS": ["Ice cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
+        },
+        "theDragonkin:DeepFrostDuration": {
+                "NAME": "Deep Frost",
+                "DESCRIPTIONS": ["Ice cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
+        },
+        "theDragonkin:DeepFrostCards": {
+                "NAME": "Deep Frost",
+                "DESCRIPTIONS": ["Your next #b"," Ice cards deals #b", " Ice card deals #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock"]
         },
         "theDragonkin:Freeze": {
                 "NAME": "Freeze",
                 "DESCRIPTIONS": ["Recives #b", "0 damage from #yIce Cards, and receives three times damage form non-magical cards and removes this."]
         },
-
         "theDragonkin:Jolted": {
                 "NAME": "Jolted",
                 "DESCRIPTIONS": ["Recives #b", "0% less damage from #yThunder cards"]
         },
         "theDragonkin:Charged-Up": {
                 "NAME": "Charged Up",
-                "DESCRIPTIONS": ["Thunder cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+                "DESCRIPTIONS": ["Thunder cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
+        },
+        "theDragonkin:Charged-UpDuration": {
+                "NAME": "Charged Up",
+                "DESCRIPTIONS": ["Thunder cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock", " for #b", " turns."]
+        },
+        "theDragonkin:Charged-UpCards": {
+                "NAME": "Charged Up",
+                "DESCRIPTIONS": ["Your next #b"," Thunder cards deals #b", " Thunder card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
         },
         "theDragonkin:Galeforce": {
                 "NAME": "Galeforce",
-                "DESCRIPTIONS": ["Wind cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+                "DESCRIPTIONS": ["Wind cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
+        },
+        "theDragonkin:GaleforceDuration": {
+                "NAME": "Galeforce",
+                "DESCRIPTIONS": ["Wind cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
+        },
+        "theDragonkin:GaleforceCards": {
+                "NAME": "Galeforce",
+                "DESCRIPTIONS": ["Your next #b"," Wind cards deals #b", " Wind card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
         },
         "theDragonkin:Kindling": {
                 "NAME": "Kindling",
-                "DESCRIPTIONS": ["Fire cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+                "DESCRIPTIONS": ["Fire cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
+        },
+        "theDragonkin:KindlingDuration": {
+                "NAME": "Kindling",
+                "DESCRIPTIONS": ["Fire cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
+        },
+        "theDragonkin:KindlingCards": {
+                "NAME": "Kindling",
+                "DESCRIPTIONS": ["Your next #b"," Fire cards deals #b", " Fire card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
         },
         "theDragonkin:Luminance": {
                 "NAME": "Luminance",
-                "DESCRIPTIONS": ["Light cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+                "DESCRIPTIONS": ["Light cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
+        },
+        "theDragonkin:LuminanceCards": {
+                "NAME": "Luminance",
+                "DESCRIPTIONS": ["Your next #b"," Light cards deals #b", " Light card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
+        },
+        "theDragonkin:LuminanceDuration": {
+                "NAME": "Luminance",
+                "DESCRIPTIONS": ["Light cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
         },
         "theDragonkin:LoptyrianShadow": {
                 "NAME": "Loptyrian Shadow",
-                "DESCRIPTIONS": ["Dark cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+                "DESCRIPTIONS": ["Dark cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
+        },
+        "theDragonkin:LoptyrianShadowDuration": {
+                "NAME": "Loptyrian Shadow",
+                "DESCRIPTIONS": ["Dark cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
+        },
+        "theDragonkin:LoptyrianShadowCards": {
+                "NAME": "Loptyrian Shadow",
+                "DESCRIPTIONS": ["Your next #b"," Dark cards deals #b", " Dark card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
         },
         "theDragonkin:arcana": {
                 "NAME": "Arcana",
-                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage and gain #b", " more #yBlock",  " less damage and gain #b", " less #yBlock"]
+                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
         },
 
         "theDragonkin:resistance": {
                 "NAME": "Dark Exposure",
-                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage to this enemy"]
+                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage to this enemy."]
         },
         "theDragonkin:Ragnarök": {
                 "NAME": "Ragnarök",
-                "DESCRIPTIONS": ["Fire cards Deal #b", " more damage until you play a non #yFire card"]
-        },
-        "theDragonkin:Ragnarok": {
-                "NAME": "Ragnarök",
-                "DESCRIPTIONS": ["Your next card will #yFollow-Up"]
+                "DESCRIPTIONS": ["Fire cards Deal #b", " more damage until you play a non #yFire card."]
         },
         "theDragonkin:DeathBlow": {
                 "NAME": "Death Blow",
-                "DESCRIPTIONS": ["Your next non #yMagic Attack deals", " extra damage"]
+                "DESCRIPTIONS": ["Your next non #yMagic Attack deals #b", " extra damage."]
         },
         "theDragonkin:FiendishBlow": {
                 "NAME": "Fiendish Blow",
-                "DESCRIPTIONS": ["Your next #yMagic Attack or Skill deals", " extra damage"," and gains"," extra block"]
+                "DESCRIPTIONS": ["Your next #yMagic Attack or Skill deals #b", " extra damage"," and gains #b"," extra block."]
         },
         "theDragonkin:KillerBlow": {
                 "NAME": "Killer Blow",
-                "DESCRIPTIONS": ["Your next Attack gains #b", " #yHunters #yFocus"]
+                "DESCRIPTIONS": ["Your next Attack gains #b", " #yHunters #yFocus."]
         },
         "theDragonkin:HuntersFocus": {
                 "NAME": "Hunters Focus",
-                "DESCRIPTIONS": ["When you obtain #b10 Hunters Focus your next Attack deals triple damage"]
+                "DESCRIPTIONS": ["When you obtain #b10 Hunters Focus your next Attack deals triple damage."]
         }
 }

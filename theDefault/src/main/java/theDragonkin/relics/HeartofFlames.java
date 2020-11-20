@@ -37,13 +37,13 @@ public class HeartofFlames extends CustomRelic { // You must implement things yo
 
     private boolean isPlayerTurn = false; // We should make sure the relic is only activateable during our turn, not the enemies'.
     private boolean used = false;
-    private boolean physical = false;
-    private boolean fire = false;
-    private boolean ice = false;
-    private boolean wind = false;
-    private boolean thunder = false;
-    private boolean dark = false;
-    private boolean light = false;
+    private static boolean physical = false;
+    private static boolean fire = false;
+    private static boolean ice = false;
+    private static boolean wind = false;
+    private static boolean thunder = false;
+    private static boolean dark = false;
+    private static boolean light = false;
 
     public HeartofFlames() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, AbstractRelic.LandingSound.HEAVY);
@@ -62,46 +62,22 @@ public class HeartofFlames extends CustomRelic { // You must implement things yo
 
     @Override
     public void onUseCard(final AbstractCard c, final UseCardAction ca) {
-        if (!(c instanceof AbstractMagicGremoryCard && !physical)){
+        if (!(c instanceof AbstractMagicGremoryCard) && !physical){
             addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,StrengthPower.POWER_ID));
             addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,DexterityPower.POWER_ID));
             physical = true;
-        }
-        if (c.hasTag(CustomTags.Ice) && !ice){
-            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,DeepFrost.POWER_ID));
-            ice = true;
-        }
-       if (c.hasTag(CustomTags.Thunder)&& !thunder){
-            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,ChargedUp.POWER_ID));
-            thunder = true;
-        }
-        if (c.hasTag(CustomTags.Fire)&& !fire){
-            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,Kindling.POWER_ID));
-            fire = true;
-        }
-        if (c.hasTag(CustomTags.Wind)&& !wind){
-            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,Galeforce.POWER_ID));
-            wind = true;
-        }
-        if (c.hasTag(CustomTags.Dark)&& !dark){
-            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,LoptyrianShadow.POWER_ID));
-            dark = true;
-        }
-        if (c.hasTag(CustomTags.Light)&& !light){
-            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,Luminance.POWER_ID));
-            light = true;
         }
     }
     @Override
     public void atBattleStart() {
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,3),3));
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DexterityPower(AbstractDungeon.player,3),3));
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new ChargedUp(AbstractDungeon.player,3,false),3));
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DeepFrost(AbstractDungeon.player,3,false),3));
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new Kindling(AbstractDungeon.player,3,false),3));
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new Galeforce(AbstractDungeon.player,3,false),3));
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new Luminance(AbstractDungeon.player,3,false),3));
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new LoptyrianShadow(AbstractDungeon.player,3,false),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new ChargedUpCards(AbstractDungeon.player,3,1),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DeepFrostCards(AbstractDungeon.player,3,1),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new KindlingCards(AbstractDungeon.player,3,1),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new GaleforceCards(AbstractDungeon.player,3,1),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new LuminanceCards(AbstractDungeon.player,3,1),3));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new LoptyrianShadowCards(AbstractDungeon.player,3,1),3));
     }
 
     @Override

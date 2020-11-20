@@ -14,6 +14,7 @@ import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ChargedUp;
+import theDragonkin.powers.ChargedUpDuration;
 import theDragonkin.powers.JoltedPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
@@ -43,7 +44,7 @@ public class Bolting extends AbstractMagicGremoryCard implements BranchingUpgrad
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.hasTag(CustomTags.Thunder)){
             if (m.hasPower(JoltedPower.POWER_ID)){
-                addToBot(new ApplyPowerAction(p,p,new ChargedUp(p,magicNumber,true)));
+                addToBot(new ApplyPowerAction(p,p,new ChargedUpDuration(p,magicNumber,1)));
             }
             addToBot(new DamageAction(m,new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
         }

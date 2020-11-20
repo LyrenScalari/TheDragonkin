@@ -14,6 +14,7 @@ import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ChargedUp;
+import theDragonkin.powers.ChargedUpDuration;
 import theDragonkin.powers.JoltedPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
@@ -54,7 +55,7 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
         }
         else {
             if (m.hasPower(JoltedPower.POWER_ID)){
-                addToBot(new ApplyPowerAction(p,p,new ChargedUp(p,magicNumber,true)));
+                addToBot(new ApplyPowerAction(p,p,new ChargedUpDuration(p,magicNumber,1)));
             }
             addToBot(new DamageAction(m,new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
         }

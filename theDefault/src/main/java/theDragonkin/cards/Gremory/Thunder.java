@@ -29,7 +29,7 @@ public class Thunder extends AbstractMagicGremoryCard implements BranchingUpgrad
     public static final CardColor COLOR = TheGremory.Enums.Gremory_Purple_Color;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static AbstractCard FollowUp;
 
     public Thunder() {

@@ -23,15 +23,13 @@ public class DeepFrost extends AbstractPower implements modifyMagicPower{
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;;
-    public boolean Remove;
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Ashfall.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Ashfall32.png"));
-    public DeepFrost(AbstractCreature owner, int amount, boolean Temporary) {
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("DeepFrost.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("DeepFrost32.png"));
+    public DeepFrost(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
-        this.Remove = Temporary;
 
         if (this.amount >= 999) {
             this.amount = 999;
@@ -54,7 +52,7 @@ public class DeepFrost extends AbstractPower implements modifyMagicPower{
         this.fontScale = 8.0F;
         this.amount += stackAmount;
         if (this.amount == 0) {
-            this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, ArcanaPower.POWER_ID));
+            this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         }
 
         if (this.amount >= 999) {
@@ -83,12 +81,7 @@ public class DeepFrost extends AbstractPower implements modifyMagicPower{
         }
 
     }
-    @Override
-    public void atEndOfTurn(final boolean isPlayer) {
-        if (Remove){
-            addToBot(new ReducePowerAction(AbstractDungeon.player,AbstractDungeon.player,this,this.amount));
-        }
-    }
+
     public void updateDescription() {
         if (this.amount > 0) {
             this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];

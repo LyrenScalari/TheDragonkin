@@ -2,14 +2,14 @@ package theDragonkin.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
@@ -17,19 +17,20 @@ import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
 
-public class Galeforce extends AbstractPower implements modifyMagicPower {
-    public static final String POWER_ID =  DefaultMod.makeID("Galeforce");
+public class KindlingCards extends TwoAmountPower implements modifyMagicPower {
+    public static final String POWER_ID =  DefaultMod.makeID("KindlingCards");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("galeforce.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("galeforce32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Kindling.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Kindling32.png"));
 
-    public Galeforce(AbstractCreature owner, int amount) {
+    public KindlingCards(AbstractCreature owner, int amount, int cards) {
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
+        amount2 = cards;
 
         if (this.amount >= 999) {
             this.amount = 999;
@@ -64,6 +65,15 @@ public class Galeforce extends AbstractPower implements modifyMagicPower {
         }
 
     }
+    @Override
+    public void onUseCard(AbstractCard c, UseCardAction action){
+        if (c.hasTag(CustomTags.Fire)) {
+            amount2 -= 1;
+            if (this.amount2 == 1) {
+                addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, this.ID));
+            }
+        }
+    }
 
     public void reducePower(int reduceAmount) {
         this.fontScale = 8.0F;
@@ -84,19 +94,25 @@ public class Galeforce extends AbstractPower implements modifyMagicPower {
 
 
     public void updateDescription() {
+        this.description = DESCRIPTIONS[0] + amount2;
+        if (amount2 > 1){
+            this.description += DESCRIPTIONS[1];
+        } else {
+            this.description += DESCRIPTIONS[2];
+        }
         if (this.amount > 0) {
-            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
+            this.description +=  this.amount + DESCRIPTIONS[3] + this.amount + DESCRIPTIONS[4];
             this.type = PowerType.BUFF;
         } else {
             int tmp = -this.amount;
-            this.description = DESCRIPTIONS[0] + tmp + DESCRIPTIONS[3] + tmp + DESCRIPTIONS[4];
+            this.description +=  tmp + DESCRIPTIONS[5] + tmp + DESCRIPTIONS[6];
             this.type = PowerType.DEBUFF;
         }
 
     }
 
     public float modifyBlock(float blockAmount, AbstractCard c) {
-        if (c.hasTag(CustomTags.Wind)) {
+        if (c.hasTag(CustomTags.Fire)) {
             return (blockAmount += (float) this.amount) < 0.0F ? 0.0F : blockAmount;
         } else return blockAmount;
     }
@@ -104,9 +120,8 @@ public class Galeforce extends AbstractPower implements modifyMagicPower {
 
     @Override
     public float modifyMagicCard(AbstractMagicGremoryCard c, float magicpower) {
-        if (c.hasTag(CustomTags.Wind)) {
+        if (c.hasTag(CustomTags.Fire)) {
             return magicpower + this.amount;
         } else return magicpower;
     }
 }
-

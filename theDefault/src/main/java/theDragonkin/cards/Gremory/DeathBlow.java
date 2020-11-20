@@ -49,7 +49,7 @@ public class DeathBlow extends AbstractGremoryCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new DeathBlowPower(p,p,magicNumber),6));
+        addToBot(new ApplyPowerAction(p,p,new DeathBlowPower(p,p,magicNumber),magicNumber));
     }
 
     //Upgraded stats.

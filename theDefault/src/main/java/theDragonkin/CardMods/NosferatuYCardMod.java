@@ -25,20 +25,19 @@ public class NosferatuYCardMod extends AfterglowCardMod {
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,AbstractDungeon.player,stacks));
         for (AbstractCard c : AllCards.group) {
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            @Override
-            public void update() {
-                    for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-                        if (m instanceof AfterglowCardMod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            NosferatuYCardMod.super.removeOnCardPlayed(c);
-                            isDone = true;
+            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    if (m instanceof AfterglowCardMod) {
+                        CardModifierManager.removeSpecificModifier(c, m, true);
+                        NosferatuYCardMod.super.removeOnCardPlayed(c);
+                        isDone = true;
                         }
                         isDone = true;
                     }
-                    isDone = true;
-                }
-            });
+                });
+            }
         }
     }
 }

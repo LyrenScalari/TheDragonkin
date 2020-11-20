@@ -91,7 +91,7 @@
   "theDragonkin:CrestofFlames": {
     "NAME": "Burning Soulstone",
     "FLAVOR": "This pulsing stone seethes in great ancient power.",
-    "DESCRIPTIONS": ["You have 3 additional #yStrength, #yDexterity, #yKindling, #yDeep #yFrost, #yCharged-Up, #yGaleforce, #yLuminance, and #yLoptyrian #yShadow each combat. NL lose them when you play a card the benefits from them."
+    "DESCRIPTIONS": ["The first card you play of each #yElement each Combat deals 3 more damage and gains 3 more Block."
     ]
   },
   "theDragonkin:BottledPlaceholderRelic": {

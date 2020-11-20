@@ -438,6 +438,11 @@
     "DESCRIPTION": "Deal !D! damage, gain !M! thedragonkin:Hunters_Focus. NL If you played a Skill this turn thedragonkin:Follow-Up",
     "EXTENDED_DESCRIPTION": ["Deal !D! damage, gain !M! thedragonkin:Hunters_Focus. NL Purge", "Killer Followup"]
   },
+  "theDragonkin:RupturedHeaven": {
+    "NAME": "Ruptured Heaven",
+    "DESCRIPTION": "deal !D! Damage to ALL enemies !M! times. NL Gain block equal to unblocked damage.  NL Exhaustive: !stslib:ex!.",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Purge", "Steel Followup"]
+  },
   "theDragonkin:DeathBlow": {
     "NAME": "Death Blow",
     "DESCRIPTION": "Your next non-magic Attack deals !M! more damage. NL Exhaustive: !stslib:ex!."

@@ -20,7 +20,7 @@ import static theDragonkin.DefaultMod.makePowerPath;
 public class KillerBlowPower extends AbstractPower {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("DeathBlow");
+    public static final String POWER_ID = DefaultMod.makeID("KillerBlow");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
