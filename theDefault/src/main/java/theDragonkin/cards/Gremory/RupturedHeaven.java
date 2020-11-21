@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import theDragonkin.DefaultMod;
+import theDragonkin.actions.RupturedHeavenAction;
 import theDragonkin.characters.TheGremory;
 
 import static theDragonkin.DefaultMod.makeCardPath;
@@ -49,19 +50,17 @@ public class RupturedHeaven extends AbstractGremoryCard {
         magicNumber = baseMagicNumber = 3;
         ExhaustiveVariable.setBaseValue(this,2);
         returnToHand = false;
+        isMultiDamage = true;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < this.magicNumber; ++i) {
-            addToBot(new DamageAllEnemiesAction(p,damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HEAVY));
-            for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                totaldamage += mo.lastDamageTaken;
-            }
+        for ( int i =0; i < magicNumber; i++) {
+            addToBot(new RupturedHeavenAction(p, DamageInfo.createDamageMatrix(damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, magicNumber));
         }
-        addToBot(new GainBlockAction(p,totaldamage));
+
     }
 
     // Upgraded stats.
