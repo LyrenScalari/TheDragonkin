@@ -26,8 +26,8 @@ public class DeathBlowPower extends AbstractPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("DeathBlow.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("DeathBlow32.png"));
 
     public DeathBlowPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -49,6 +49,7 @@ public class DeathBlowPower extends AbstractPower {
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         return type == DamageInfo.DamageType.NORMAL ? damage + (float)this.amount : damage;
     }
+
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
         if (!(card instanceof AbstractMagicGremoryCard) && card.type == AbstractCard.CardType.ATTACK) {

@@ -35,12 +35,12 @@ public class RupturedHeavenAction extends AbstractGameAction {
             int mo = AbstractDungeon.getCurrRoom().monsters.monsters.size();
 
             for( i = 0; i < mo; ++i) {
-                if (!((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(mo-1)).isDying && ((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(mo-1)).currentHealth > 0 && !((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(mo-1)).isEscaping) {
+                if (!((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).isDying && ((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(mo-1)).currentHealth > 0 && !((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).isEscaping) {
                     if (playedMusic) {
-                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(mo-1)).hb.cX, ((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(mo-1)).hb.cY, this.attackEffect, true));
+                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).hb.cX, ((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).hb.cY, this.attackEffect, true));
                     } else {
                         playedMusic = true;
-                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(mo-1)).hb.cX, ((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(mo-1)).hb.cY, this.attackEffect));
+                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).hb.cX, ((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).hb.cY, this.attackEffect));
                     }
                 }
             }

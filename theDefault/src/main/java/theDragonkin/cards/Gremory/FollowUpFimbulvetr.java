@@ -3,13 +3,12 @@ package theDragonkin.cards.Gremory;
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.FreezePower;
@@ -34,7 +33,8 @@ public class FollowUpFimbulvetr extends AbstractMagicGremoryCard {
         this.tags.add(CustomTags.Ice);
         purgeOnUse = true;
         MagDamage = baseMagDamage = 6;
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[4] + cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + cardStrings.EXTENDED_DESCRIPTION[3] + cardStrings.EXTENDED_DESCRIPTION[4];
+        initializeDescription();
         this.name = cardStrings.EXTENDED_DESCRIPTION[1];
     }
 

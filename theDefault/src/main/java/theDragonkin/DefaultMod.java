@@ -39,10 +39,7 @@ import theDragonkin.powers.Scorchpower;
 import theDragonkin.relics.*;
 import theDragonkin.util.IDCheckDontTouchPls;
 import theDragonkin.util.TextureLoader;
-import theDragonkin.variables.DefaultCustomVariable;
-import theDragonkin.variables.DefaultSecondMagicNumber;
-import theDragonkin.variables.HealDynVar;
-import theDragonkin.variables.MagicDamageDynVar;
+import theDragonkin.variables.*;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -466,6 +463,7 @@ public class DefaultMod implements
         // Add the Custom Dynamic Variables
         BaseMod.addDynamicVariable(new HealDynVar());
         BaseMod.addDynamicVariable(new MagicDamageDynVar());
+        BaseMod.addDynamicVariable(new SpellUses());
         logger.info("Add variables");
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
@@ -520,6 +518,8 @@ public class DefaultMod implements
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
+
+        BaseMod.loadCustomStringsFile(UIStrings.class, getModID() + "Resources/localization/eng/DefaultMod-UI-Strings.json");
         
         logger.info("Done edittting strings");
     }

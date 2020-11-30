@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 
@@ -23,7 +23,7 @@ public class FollowUpGale extends AbstractMagicGremoryCard {
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     public static final AbstractCard.CardColor COLOR = TheGremory.Enums.Gremory_Purple_Color;
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(Thunder.ID);
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(CuttingGale.ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 0;
 
@@ -32,7 +32,8 @@ public class FollowUpGale extends AbstractMagicGremoryCard {
         this.tags.add(CustomTags.Wind);
         purgeOnUse = true;
         MagDamage = baseMagDamage = 8;
-        this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[4];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + cardStrings.EXTENDED_DESCRIPTION[7] + cardStrings.EXTENDED_DESCRIPTION[4];
+        initializeDescription();
         this.name = cardStrings.EXTENDED_DESCRIPTION[1];
     }
 

@@ -1,0 +1,22 @@
+{
+  "TransmutationAction": {
+    "TEXT": [
+      "Choose cards to change the Element of"
+    ]
+  },
+  "WitherCard": {
+    "TEXT": [
+      "thedragonkin:Depleted. NL ",
+      "This spell is #rDepleted!",
+      "Cast Count",
+      " NL (Current value: #b",
+      ")"
+    ]
+  },
+  "ReplenishMagic": {
+    "TEXT": [
+      " Choose a Spell to replenish.",
+      " Choose ", " Spells to replenish"
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 package theDragonkin.cards.Gremory;
 
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -8,8 +9,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
+import theDragonkin.actions.WitherAction;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.JoltedPower;
 
@@ -32,12 +34,15 @@ public class Wind extends AbstractMagicGremoryCard implements BranchingUpgradesC
     public Wind() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Wind);
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] +  cardStrings.DESCRIPTION;
+        initializeDescription();
         MagDamage = baseMagDamage = 6;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.hasTag(CustomTags.Wind)){
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new WitherAction(this));
+        if (this.timesUpgraded % 2 == 0){
+            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 if (this.upgraded) {
                     FollowUp = new FollowUpWind();
                     addToBot(new MakeTempCardInHandAction(FollowUp));
@@ -45,7 +50,7 @@ public class Wind extends AbstractMagicGremoryCard implements BranchingUpgradesC
                 }
         }
         else {
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
             if (this.upgraded && !m.hasPower(JoltedPower.POWER_ID)){
                 addToBot(new GainEnergyAction(1));
             }
@@ -66,13 +71,13 @@ public class Wind extends AbstractMagicGremoryCard implements BranchingUpgradesC
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = UPGRADE_DESCRIPTION;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + UPGRADE_DESCRIPTION;
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Wind);
         tags.add(CustomTags.Thunder);
         baseMagDamage += 4;

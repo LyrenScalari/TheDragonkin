@@ -59,7 +59,7 @@
       "chill",
       "chilled"
     ],
-    "DESCRIPTION": "Chilled enemies take 10% more damage per stack of chill, when a monster has 10 or more points of chill remove them and apply #yFreeze."
+    "DESCRIPTION": "Chilled enemies take 1 more damage from #yIce cards per stack of chill, when a monster has 10 or more points of chill remove them and apply #yFreeze."
   },
   {
     "PROPER_NAME": "Deep Frost",
@@ -152,9 +152,38 @@
 },
   {
     "NAMES": [
+      "arcane"
+    ],
+    "DESCRIPTION": "Arcane cards are only effected by #yArcana and #yDark #yExposure.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+    "NAMES": [
+      "enchant",
+      "enchanted"
+    ],
+    "DESCRIPTION": "Enchanted cards are both #yPhysical and #yMagical. Being effected the same as a magic card of it's enchantment element as well as a physical card.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+    "NAMES": [
+      "transmute",
+      "transmuted"
+    ],
+    "DESCRIPTION": "Transmuted cards have their #yElement temporarily set to the transmutation's element.",
+    "COLOR": "[#94bdff]"
+  },
+  {
+    "NAMES": [
       "luminance"
     ],
     "DESCRIPTION": "Increases damage and Block gain for Light cards."
+  },
+  {
+    "NAMES": [
+      "cure"
+    ],
+    "DESCRIPTION": "Removed the listed number of debuffs from yourself, and perform the listed action equal to it's potency."
   },
   {
     "NAMES": [
@@ -184,6 +213,20 @@
     ],
     "DESCRIPTION": "When you have 10 or more Hunters Focus your next attack does triple damage and resets Hunters Focus."
   },
+  {
+  "PROPER_NAME": "Casts",
+  "NAMES": [
+    "casts"
+  ],
+  "DESCRIPTION": "When you play a spell card, reduce it's cast count by 1. When a spell's cast count is 0, it becomes #yDepleted and unplayable. When resting at rest sites you may choose 1 spell to restore all casts of.."
+},
+  {
+  "PROPER_NAME": "Depleted",
+  "NAMES": [
+    "depleted"
+  ],
+  "DESCRIPTION": "#yUnplayable until #yCasts are restored at a rest site or at the end of the Act."
+},
   {
     "PROPER_NAME": "Power Word",
     "NAMES": [

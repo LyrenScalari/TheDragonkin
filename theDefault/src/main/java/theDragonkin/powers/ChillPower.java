@@ -5,13 +5,11 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.util.TextureLoader;
@@ -26,8 +24,8 @@ public class ChillPower extends AbstractPower implements OnReceivePowerPower , m
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Chill.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Chill32.png"));
 
     public ChillPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -48,8 +46,8 @@ public class ChillPower extends AbstractPower implements OnReceivePowerPower , m
     }
     @Override
     public float modifyMagicCard(AbstractMagicGremoryCard c, float magicpower) {
-        if (c.hasTag(CustomTags.Thunder)) {
-            return (magicpower * (1.0F + (float)this.amount * 0.1F));
+        if (c.hasTag(CustomTags.Ice)) {
+            return (magicpower + this.amount);
         }
         else return magicpower;
     }

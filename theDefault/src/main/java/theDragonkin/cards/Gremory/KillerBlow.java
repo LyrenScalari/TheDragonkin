@@ -41,7 +41,7 @@ public class KillerBlow extends AbstractGremoryCard {
     public KillerBlow() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-        baseMagicNumber = 2;
+        magicNumber = baseMagicNumber = 2;
         ExhaustiveVariable.setBaseValue(this, 2);
         this.tags.add(AbstractCard.CardTags.STARTER_DEFEND); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
     }

@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ArcanaPower;
@@ -28,18 +28,21 @@ public class Thoron extends AbstractMagicGremoryCard implements BranchingUpgrade
     public static final CardColor COLOR = TheGremory.Enums.Gremory_Purple_Color;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int MAGIC = 1;
 
     public Thoron() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Thunder);
         magicNumber = baseMagicNumber = MAGIC;
-        MagDamage = baseMagDamage = 15;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] +  cardStrings.DESCRIPTION;
+        initializeDescription();
+        MagDamage = baseMagDamage = 10;
+        isMultiDamage = true;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.hasTag(CustomTags.Thunder)){
+        if (this.timesUpgraded % 2 == 0){
             for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (!mo.hasPower(JoltedPower.POWER_ID)){
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new ArcanaPower(p,magicNumber),magicNumber));
@@ -69,13 +72,13 @@ public class Thoron extends AbstractMagicGremoryCard implements BranchingUpgrade
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = UPGRADE_DESCRIPTION;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + UPGRADE_DESCRIPTION;
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Thunder);
         tags.add(CustomTags.Wind);
         baseMagDamage -= 6;

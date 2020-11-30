@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.util.TextureLoader;
@@ -20,8 +21,8 @@ public class ArcanaPower extends AbstractPower implements modifyMagicPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Ashfall.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Ashfall32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Arcana.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Arcana32.png"));
     public ArcanaPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = "arcana";
@@ -76,6 +77,13 @@ public class ArcanaPower extends AbstractPower implements modifyMagicPower {
             this.amount = -999;
         }
 
+    }
+
+    @Override
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard c) {
+        if (c.hasTag(CustomTags.Enchanted)) {
+            return damage + amount;
+        }else return damage;
     }
 
     public void updateDescription() {

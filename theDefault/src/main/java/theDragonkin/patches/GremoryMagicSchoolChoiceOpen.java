@@ -3,14 +3,11 @@ package theDragonkin.patches;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.neow.NeowEvent;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-import theDragonkin.CustomTags;
-import theDragonkin.cards.Gremory.*;
+import theDragonkin.util.CustomTags;
 import theDragonkin.characters.TheGremory;
 
 import java.util.ArrayList;

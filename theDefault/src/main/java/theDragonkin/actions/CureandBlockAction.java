@@ -1,0 +1,37 @@
+package theDragonkin.actions;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import java.util.ArrayList;
+
+public class CureandBlockAction extends AbstractGameAction {
+    private AbstractCreature c;
+    private static int removecount;
+    private static ArrayList<AbstractPower> Debuffs;
+    public AbstractPower DebufftoRemove;
+
+    public CureandBlockAction(AbstractCreature target,int numbertoRemove) {
+        this.c = target;
+        removecount = numbertoRemove;
+        this.duration = 0.5F;
+        for (AbstractPower p : this.c.powers) {
+            if (p.type == AbstractPower.PowerType.DEBUFF) {
+                Debuffs.add(p);
+            }
+        }
+    }
+
+    public void update() {
+        for (int i = 0; i < removecount; ++i) {
+            DebufftoRemove = Debuffs.get(AbstractDungeon.cardRandomRng.random(Debuffs.size()));
+            addToTop(new GainBlockAction(AbstractDungeon.player,AbstractDungeon.player,DebufftoRemove.amount));
+            addToTop(new RemoveSpecificPowerAction(target,AbstractDungeon.player,DebufftoRemove));
+        }
+    }
+}

@@ -1,6 +1,7 @@
 package theDragonkin.cards.Gremory;
 
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -11,7 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ChillPower;
@@ -29,17 +30,19 @@ public class Icicle extends AbstractMagicGremoryCard implements BranchingUpgrade
     public static final CardColor COLOR = TheGremory.Enums.Gremory_Purple_Color;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    private static final int COST = 1;
+    private static final int COST = 0;
 
     public Icicle() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Ice);
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] +  cardStrings.DESCRIPTION;
+        initializeDescription();
         MagDamage = baseMagDamage = 4;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.hasTag(CustomTags.Ice)){
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+        if (this.timesUpgraded % 2 == 0){
+            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             if (m.hasPower(ChillPower.POWER_ID)) {
                 if (this.upgraded && m.getPower(ChillPower.POWER_ID).amount > 5){
                     addToBot(new MakeTempCardInHandAction(new FollowUpIcicle()));
@@ -47,7 +50,7 @@ public class Icicle extends AbstractMagicGremoryCard implements BranchingUpgrade
             }
         }
         else {
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
             if (AbstractDungeon.actionManager.cardsPlayedThisCombat.size() >= 2
                     && ((AbstractCard)AbstractDungeon.actionManager.cardsPlayedThisCombat.get(AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2)).hasTag(CustomTags.Fire)) {
                     addToBot(new DrawCardAction(p, 2));
@@ -69,7 +72,7 @@ public class Icicle extends AbstractMagicGremoryCard implements BranchingUpgrade
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = UPGRADE_DESCRIPTION;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + UPGRADE_DESCRIPTION;
         baseMagDamage += 2;
         MagDamageUpgraded = true;
         initializeDescription();
@@ -77,8 +80,9 @@ public class Icicle extends AbstractMagicGremoryCard implements BranchingUpgrade
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Ice);
+        this.updateCost(1);
         tags.add(CustomTags.Fire);
         baseMagDamage += 2;
         MagDamageUpgraded = true;

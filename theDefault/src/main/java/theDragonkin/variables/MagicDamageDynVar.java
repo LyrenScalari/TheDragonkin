@@ -15,7 +15,7 @@ public class MagicDamageDynVar extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractMagicGremoryCard)card).MagDamageModified;
+        return ((AbstractMagicGremoryCard)card).MagDamage > ((AbstractMagicGremoryCard)card).baseMagDamage;
         // Set to true if the value is modified from the base value.
     }
 

@@ -9,12 +9,10 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -22,13 +20,11 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.*;
 import theDragonkin.relics.HeartofFlames;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 import static theDragonkin.DefaultMod.*;
 import static theDragonkin.characters.TheGremory.Enums.Gremory_Purple_Color;
@@ -67,6 +63,7 @@ public class TheGremory extends CustomPlayer {
     public static final int MAX_HP = 65;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 6;
+    public static int BASE_MAGIC_REPLENISH = 2;
     public static final int ORB_SLOTS = 0;
 
     // =============== /BASE STATS/ =================
@@ -275,6 +272,8 @@ public class TheGremory extends CustomPlayer {
     // The vampire events refer to the base game characters as "brother", "sister",
     // and "broken one" respectively.This method should return a String containing
     // the full text that will be displayed as the first screen of the vampires event.
+
+
     @Override
     public String getVampireText() {
         return TEXT[2];

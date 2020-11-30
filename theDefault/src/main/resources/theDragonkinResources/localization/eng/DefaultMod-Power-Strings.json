@@ -111,7 +111,7 @@
         },
         "theDragonkin:Chill": {
                 "NAME": "Chill",
-                "DESCRIPTIONS": ["Recives #b", "0% extra damage from #yIce cards, replace this with #yFreeze if this has 10 or more stacks of this."]
+                "DESCRIPTIONS": ["Recives #b", " extra damage from #yIce cards, replace this with #yFreeze if this has 10 or more stacks of this."]
         },
         "theDragonkin:DeepFrost": {
                 "NAME": "Deep Frost",
@@ -195,7 +195,7 @@
         },
         "theDragonkin:arcana": {
                 "NAME": "Arcana",
-                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
+                "DESCRIPTIONS": ["Magic cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
         },
 
         "theDragonkin:resistance": {

@@ -2,14 +2,13 @@ package theDragonkin.cards.Gremory;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 
@@ -45,6 +44,7 @@ public class SteelSlash extends AbstractGremoryCard {
 
     public SteelSlash(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
+        this.tags.add(CustomTags.Physical);
         baseDamage =DAMAGE;
     }
 

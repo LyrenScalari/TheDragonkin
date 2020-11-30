@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 
@@ -30,8 +30,9 @@ public class FollowUpIcicle extends AbstractMagicGremoryCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Ice);
         purgeOnUse = true;
-        MagDamage = baseMagDamage = 5;
-        this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[4];
+        MagDamage = baseMagDamage = 4;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[4];
+        initializeDescription();
         this.name = cardStrings.EXTENDED_DESCRIPTION[1];
     }
 
@@ -42,7 +43,6 @@ public class FollowUpIcicle extends AbstractMagicGremoryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
         addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
     }
 }

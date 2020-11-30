@@ -1,8 +1,12 @@
 package theDragonkin.cards.Gremory;
 
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,10 +14,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
+import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
+import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.ChargedUp;
 import theDragonkin.powers.ChargedUpDuration;
 import theDragonkin.powers.JoltedPower;
 
@@ -38,14 +44,20 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Wind);
         magicNumber = baseMagicNumber = MAGIC;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] +  cardStrings.DESCRIPTION;
+        initializeDescription();
         MagDamage = baseMagDamage = 10;
+        isMultiDamage = true;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.hasTag(CustomTags.Wind)){
-            addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+        if (this.timesUpgraded % 2 == 0){
+            addToBot(new VFXAction(new WhirlwindEffect()));
+            addToBot(new DamageAllEnemiesAction(p,multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            addToBot(new VFXAction(new CleaveEffect()));
             if (Tailwind){
-                addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+                addToBot(new DamageAllEnemiesAction(p,multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                addToBot(new VFXAction(new CleaveEffect()));
                 if (this.upgraded){
                     FollowUp = new FollowUpExcalibur();
                     addToBot(new MakeTempCardInHandAction(FollowUp));
@@ -57,7 +69,9 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
             if (m.hasPower(JoltedPower.POWER_ID)){
                 addToBot(new ApplyPowerAction(p,p,new ChargedUpDuration(p,magicNumber,1)));
             }
-            addToBot(new DamageAction(m,new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new VFXAction(new ShockWaveEffect(m.hb_x,m.hb_y, Color.YELLOW, ShockWaveEffect.ShockWaveType.CHAOTIC)));
+            addToBot(new VFXAction(new ShockWaveEffect(m.hb_x,m.hb_y, Color.GOLD, ShockWaveEffect.ShockWaveType.CHAOTIC)));
+            addToBot(new DamageAction(m,new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         }
         super.use(p, m);
     }
@@ -75,13 +89,13 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = UPGRADE_DESCRIPTION;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + UPGRADE_DESCRIPTION;
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Wind);
         tags.add(CustomTags.Thunder);
         baseMagDamage += 4;

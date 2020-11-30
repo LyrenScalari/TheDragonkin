@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.HuntersFocusPower;
@@ -46,6 +47,7 @@ public class KillerSlash extends AbstractGremoryCard {
     public KillerSlash(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
+        this.tags.add(CustomTags.Physical);
         magicNumber = baseMagicNumber = 2;
         returnToHand = false;
     }

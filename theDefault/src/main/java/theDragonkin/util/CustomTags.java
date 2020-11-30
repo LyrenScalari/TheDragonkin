@@ -1,4 +1,4 @@
-package theDragonkin;
+package theDragonkin.util;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -6,6 +6,12 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags HOLY_CARD;
+    @SpireEnum
+    public static AbstractCard.CardTags Physical;
+    @SpireEnum
+    public static AbstractCard.CardTags Arcane;
+    @SpireEnum
+    public static AbstractCard.CardTags Enchanted;
     @SpireEnum
     public static AbstractCard.CardTags Fire;
     @SpireEnum

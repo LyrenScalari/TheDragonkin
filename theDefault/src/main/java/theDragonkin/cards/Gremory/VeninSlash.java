@@ -10,9 +10,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.HuntersFocusPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 import static theDragonkin.cards.Gremory.AbstractMagicGremoryCard.AllCards;
@@ -48,6 +48,7 @@ public class VeninSlash extends AbstractGremoryCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
         magicNumber = baseMagicNumber = 3;
+        this.tags.add(CustomTags.Physical);
         returnToHand = false;
     }
 

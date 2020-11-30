@@ -40,7 +40,7 @@ public class FiendishBlow extends AbstractGremoryCard {
     public FiendishBlow() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-        baseMagicNumber = 6;
+        magicNumber = baseMagicNumber = 6;
         ExhaustiveVariable.setBaseValue(this, 2);
         this.tags.add(AbstractCard.CardTags.STARTER_DEFEND); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
     }

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 
@@ -33,6 +33,7 @@ public class BraveFollowUp extends AbstractGremoryCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         purgeOnUse = true;
         damage = baseDamage = DAMAGE;
+        this.tags.add(CustomTags.Physical);
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
         this.name = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeDescription();

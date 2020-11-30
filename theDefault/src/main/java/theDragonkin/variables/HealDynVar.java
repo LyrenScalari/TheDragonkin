@@ -16,7 +16,7 @@ public class HealDynVar extends DynamicVariable {
     @Override
     public boolean isModified(AbstractCard card)
     {
-        return HealModified;
+        return card.heal != card.baseHeal;
         // Set to true if the value is modified from the base value.
     }
 

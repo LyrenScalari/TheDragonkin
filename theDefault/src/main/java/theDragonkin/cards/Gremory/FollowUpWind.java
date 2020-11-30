@@ -1,6 +1,7 @@
 package theDragonkin.cards.Gremory;
 
 import basemod.AutoAdd;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -8,7 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
+import theDragonkin.util.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 
@@ -32,7 +33,8 @@ public class FollowUpWind extends AbstractMagicGremoryCard {
         this.tags.add(CustomTags.Wind);
         purgeOnUse = true;
         MagDamage = baseMagDamage = 6;
-        this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[4];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[4];
+        initializeDescription();
         this.name = cardStrings.EXTENDED_DESCRIPTION[1];
     }
 
@@ -43,6 +45,6 @@ public class FollowUpWind extends AbstractMagicGremoryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 }
