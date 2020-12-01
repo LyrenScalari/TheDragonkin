@@ -20,6 +20,13 @@
     "COLOR": "[#94bdff]"
   },
   {
+    "NAMES": [
+      "antiquity"
+    ],
+    "DESCRIPTION": "You may only have 1 Antiquity power active. Playing an Antiquity power will override other Antiquity powers you may have.",
+    "COLOR": "[#94bdff]"
+  },
+  {
   "NAMES": [
     "fire"
   ],
@@ -34,6 +41,13 @@
     "COLOR": "[#94bdff]"
   },
   {
+    "NAMES": [
+      "invoke"
+    ],
+    "DESCRIPTION": "Choose one of the listed card and activate it's effect.",
+    "COLOR": "[#94bdff]"
+  },
+  {
     "PROPER_NAME": "Hot Streak",
     "NAMES": [
       "Hot Streak",
@@ -43,7 +57,7 @@
   },
   {
     "NAMES": [
-      "Kindling"
+      "kindling"
     ],
     "DESCRIPTION": "Increases damage and Block gain for Fire cards."
   },
@@ -162,7 +176,7 @@
       "enchant",
       "enchanted"
     ],
-    "DESCRIPTION": "Enchanted cards are both #yPhysical and #yMagical. Being effected the same as a magic card of it's enchantment element as well as a physical card.",
+    "DESCRIPTION": "Enchanted cards are both #yPhysical and #yMagical. Being affected the same as a magic card of it's enchantment element as well as a physical card.",
     "COLOR": "[#94bdff]"
   },
   {
@@ -223,7 +237,8 @@
   {
   "PROPER_NAME": "Depleted",
   "NAMES": [
-    "depleted"
+    "depleted",
+    "deplete"
   ],
   "DESCRIPTION": "#yUnplayable until #yCasts are restored at a rest site or at the end of the Act."
 },

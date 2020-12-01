@@ -143,7 +143,7 @@ public class DefaultMod implements
     private static final String ATTACK_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/bg_attack_gremory.png";
     private static final String SKILL_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/bg_skill_gremory.png";
     private static final String POWER_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/bg_power_gremory.png";
-    private static final String ENERGY_ORB_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/card_gremory_purple_orb.png";
+    private static final String ENERGY_ORB_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/gremory_purple_orb.png";
     
     // Character assets
     public static final String THE_DRAGONKIN_SHOULDER_1 = "theDragonkinResources/images/char/defaultCharacter/Dragonkinshoulder.png";

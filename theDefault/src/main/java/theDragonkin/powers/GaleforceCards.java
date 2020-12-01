@@ -69,7 +69,7 @@ public class GaleforceCards extends TwoAmountPower implements modifyMagicPower {
     public void onUseCard(AbstractCard c, UseCardAction action){
         if (c.hasTag(CustomTags.Wind)) {
             amount2 -= 1;
-            if (this.amount2 == 1) {
+            if (this.amount2 < 1) {
                 addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, this.ID));
             }
         }

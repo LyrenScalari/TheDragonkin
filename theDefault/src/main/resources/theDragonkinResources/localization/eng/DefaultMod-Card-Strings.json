@@ -296,7 +296,7 @@
 
   "theDragonkin:HolyBarrier": {
     "NAME": "Divine Shield",
-    "DESCRIPTION": "Until the end of your next turn whenever you play a [#94bdff]Holy[] card gain, !M! Temporary_HP. NL Exhaustive: !stslib:ex!. NL thedragonkin:Holy"
+    "DESCRIPTION": "Until the end of your next turn whenever you play a thedragonkin:Holy card gain, !M! Temporary_HP. NL Exhaustive: !stslib:ex!. NL thedragonkin:Holy"
   },
 
   "theDragonkin:ShieldGlare": {
@@ -460,6 +460,46 @@
   "theDragonkin:KillerBlow": {
     "NAME": "Killer Blow",
     "DESCRIPTION": "After you play your next Attack, gain !M! thedragonkin:Hunters_Focus. NL Exhaustive: !stslib:ex!."
+  },
+  "theDragonkin:StalkingHuntress": {
+    "NAME": "Duelist's Patience",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! thedragonkin:Hunters_Focus."
+  },
+  "theDragonkin:BeyondTheClouds": {
+    "NAME": "Beyond The Clouds",
+    "DESCRIPTION": "thedragonkin:Invoke - NL *Wind's *Song, *Flower's *Ambition, *Immaculate *Snow, or *Moon's *March . NL Exhaust."
+  },
+  "theDragonkin:ImmaculateSnow": {
+    "NAME": "Immaculate Snow",
+    "DESCRIPTION": "thedragonkin:Ice cards cost 1 less. NL thedragonkin:Chill effects all elements except thedragonkin:Fire."
+  },
+  "theDragonkin:FlowersAmbition": {
+    "NAME": "Flower's Ambition",
+    "DESCRIPTION": "thedragonkin:Fire cards cost 1 less. NL While you have thedragonkin:Hot_Streak you have 3 thedragonkin:Kindling."
+  },
+  "theDragonkin:MoonsMarch": {
+    "NAME": "Moon's March",
+    "DESCRIPTION": "Physical cards cost 1 less. NL After you thedragonkin:Deplete a spell, gain 3 Stregnth."
+  },
+  "theDragonkin:WindsSong": {
+    "NAME": "Wind's Song",
+    "DESCRIPTION": "thedragonkin:Wind cards cost 1 less. NL you keep your thedragonkin:Tailwind between turns."
+  },
+  "theDragonkin:HorizonEdge": {
+    "NAME": "The Horizon Edge",
+    "DESCRIPTION": "thedragonkin:Antiquity. NL Your first physical card each turn is played !M! extra times."
+  },
+  "theDragonkin:Blutgang": {
+    "NAME": "Blutgang",
+    "DESCRIPTION": "thedragonkin:Antiquity. NL At the start of your turn, Permanently thedragonkin:Enchant a card in your hand."
+  },
+  "theDragonkin:FierceasFire": {
+    "NAME": "Fierce as Fire",
+    "DESCRIPTION": "After you thedragonkin:Deplete a spell, gain [E] [E] and your next spell deals !M! extra damage and gains !M! more block."
+  },
+  "theDragonkin:SwiftasWind": {
+    "NAME": "Swift as Wind",
+    "DESCRIPTION": "After dealing or receiving unblocked damage, gain !M! thedragonkin:Hunters_Focus."
   },
   "theDragonkin:Fire": {
     "NAME": "Fire",

@@ -21,7 +21,9 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDragonkin.DefaultMod;
-import theDragonkin.cards.Gremory.*;
+import theDragonkin.cards.Gremory.Attacks.GremoryStrike;
+import theDragonkin.cards.Gremory.Attacks.Magic.Fire;
+import theDragonkin.cards.Gremory.Skills.GremoryDefend;
 import theDragonkin.relics.HeartofFlames;
 
 import java.util.ArrayList;

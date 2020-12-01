@@ -26,4 +26,6 @@ public class CustomTags {
     public static AbstractCard.CardTags Light;
     @SpireEnum
     public static AbstractCard.CardTags School;
+    @SpireEnum
+    public static AbstractCard.CardTags Relic;
 }
