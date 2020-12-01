@@ -7,7 +7,7 @@ import theDragonkin.cards.AbstractDefaultCard;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
-public class AbstractInvokeCard extends AbstractGremoryCard {
+public abstract class AbstractInvokeCard extends AbstractGremoryCard {
 
     // "How come BlazingBreath extends CustomCard and not DynamicCard like all the rest?"
 
