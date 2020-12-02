@@ -51,7 +51,7 @@ public class Miasma extends AbstractMagicGremoryCard implements BranchingUpgrade
             addToBot(new VFXAction(new CollectorStakeEffect(m.hb_x,m.hb_y)));
             for (AbstractCard c : AllCards.group) {
                 if (c instanceof AbstractMagicGremoryCard) {
-                    if (!c.hasTag(CustomTags.Light)) {
+                    if (!c.hasTag(CustomTags.Light) && (c.target == CardTarget.ENEMY || c.target == CardTarget.ALL_ENEMY)) {
                         addToBot(new AbstractGameAction() {
                             public void update() {
                                 CardModifierManager.addModifier(c, new MiasmaCardMod(1, 2, 2));

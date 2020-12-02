@@ -263,7 +263,6 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
                     });
                 }
             }
-            HotStreak = false;
         }
         if (this.hasTag(CustomTags.Light)) {
             HotStreak = false;

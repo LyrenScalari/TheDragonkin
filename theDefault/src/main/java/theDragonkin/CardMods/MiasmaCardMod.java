@@ -32,13 +32,13 @@ public class MiasmaCardMod extends DarkenCardMod {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new ResistancePower(target, stacks, time), stacks));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new CollectorCurseEffect(target.hb_x,target.hb_y)));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new CollectorCurseEffect(target.drawX,target.drawY)));
         for (AbstractCard c : AllCards.group) {
             for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
             AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
                 @Override
                 public void update() {
-                        if (m instanceof AfterglowCardMod) {
+                        if (m instanceof DarkenCardMod) {
                             CardModifierManager.removeSpecificModifier(c, m, true);
                             MiasmaCardMod.super.removeOnCardPlayed(c);
                             isDone = true;
