@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 
 public class WindTransmute extends AbstractCardModifier {
     public AbstractCard.CardTags Startingtag;

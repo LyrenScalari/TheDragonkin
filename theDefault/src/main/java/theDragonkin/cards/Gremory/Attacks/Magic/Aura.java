@@ -26,7 +26,7 @@ import theDragonkin.actions.CureandBlockAction;
 import theDragonkin.actions.CureandHealAction;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

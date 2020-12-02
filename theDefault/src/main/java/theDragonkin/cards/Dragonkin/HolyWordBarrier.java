@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
 

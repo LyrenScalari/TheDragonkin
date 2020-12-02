@@ -19,7 +19,7 @@ import theDragonkin.CardMods.MiasmaCardMod;
 import theDragonkin.CardMods.NosferatuCardMod;
 import theDragonkin.CardMods.NosferatuYCardMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 

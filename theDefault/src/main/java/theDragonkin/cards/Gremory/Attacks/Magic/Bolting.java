@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.cards.Gremory.FollowUps.FollowUpExcaliburY;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ChargedUpDuration;

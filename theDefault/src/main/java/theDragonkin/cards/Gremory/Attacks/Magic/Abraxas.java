@@ -25,7 +25,7 @@ import theDragonkin.CardMods.DarkTransmute;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

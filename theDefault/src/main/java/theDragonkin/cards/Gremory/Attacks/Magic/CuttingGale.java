@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.cards.Gremory.FollowUps.FollowUpGale;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.JoltedPower;

@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.vfx.scene.LightFlareLEffect;
 import theDragonkin.CardMods.MiasmaCardMod;
 import theDragonkin.CardMods.NosferatuYCardMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 

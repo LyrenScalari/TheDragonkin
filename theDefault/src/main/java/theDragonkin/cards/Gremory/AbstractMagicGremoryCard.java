@@ -6,6 +6,7 @@ package theDragonkin.cards.Gremory;
         import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
         import com.megacrit.cardcrawl.cards.AbstractCard;
         import com.megacrit.cardcrawl.cards.CardGroup;
+        import com.megacrit.cardcrawl.cards.DamageInfo;
         import com.megacrit.cardcrawl.characters.AbstractPlayer;
         import com.megacrit.cardcrawl.core.CardCrawlGame;
         import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,7 +16,8 @@ package theDragonkin.cards.Gremory;
         import theDragonkin.CardMods.AfterglowCardMod;
         import theDragonkin.CardMods.DarkenCardMod;
         import theDragonkin.CardMods.TailwindCardmod;
-        import theDragonkin.util.CustomTags;
+        import theDragonkin.powers.WindsSong;
+        import theDragonkin.CustomTags;
         import theDragonkin.actions.WitherAction;
         import theDragonkin.powers.ChillPower;
         import theDragonkin.powers.JoltedPower;
@@ -61,7 +63,7 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
             this.misc = this.baseMisc;
         }
         if (this.rarity == CardRarity.SPECIAL){
-            this.baseMisc = 1;
+            this.baseMisc = 2;
             this.misc = this.baseMisc;
         }
     }
@@ -287,7 +289,7 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
     public void calculateCardDamage(AbstractMonster mo) {
         float temp = baseMagDamage;
         super.calculateCardDamage(mo);
-        if (!this.isMultiDamage) {
+        if (!this.isMultiDamage && this.target == CardTarget.ENEMY) {
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 if (p instanceof modifyMagicPower) {
                     temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
@@ -300,6 +302,20 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
             }
             this.MagDamage = (int) temp;
         }
+        else if (this.target != CardTarget.SELF){
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof modifyMagicPower) {
+                    temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
+                }
+            }
+        }
+        else if (this.isMultiDamage){
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof modifyMagicPower) {
+                    temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
+                }
+            }
+        }
     }
 
 
@@ -307,20 +323,22 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
     @Override
     public void atTurnStart() {
         HotStreak = false;
-        Tailwind = false;
-        Galeforce = true;
         FiredUp = false;
         FiredUpUp = false;
         GaleforceBonus = 4;
         AllCards.clear();
-        for (AbstractCard c : AbstractDungeon.player.hand.group){
-            AllCards.addToBottom(c);
-        }
-        for (AbstractCard c : AbstractDungeon.player.drawPile.group){
-            AllCards.addToBottom(c);
-        }
-        for (AbstractCard c : AbstractDungeon.player.discardPile.group){
-            AllCards.addToBottom(c);
+        if (!(AbstractDungeon.player.hasPower(WindsSong.POWER_ID))) {
+            Tailwind = false;
+            Galeforce = true;
+            for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                AllCards.addToBottom(c);
+            }
+            for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+                AllCards.addToBottom(c);
+            }
+            for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
+                AllCards.addToBottom(c);
+            }
         }
     }
 }

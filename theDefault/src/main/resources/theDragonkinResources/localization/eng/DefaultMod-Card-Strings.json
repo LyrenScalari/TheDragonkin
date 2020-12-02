@@ -445,6 +445,7 @@
     "EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Purge", "Steel Followup"]
   },
   "theDragonkin:BeastFang": {
+
     "NAME": "Beast Fang",
     "DESCRIPTION": "thedragonkin:Enchanted. NL Deal !D! damage. NL thedragonkin:Enchant your physical cards for !M! turns.",
     "EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Purge", "Steel Followup"]
@@ -467,7 +468,91 @@
   },
   "theDragonkin:BeyondTheClouds": {
     "NAME": "Beyond The Clouds",
-    "DESCRIPTION": "thedragonkin:Invoke - NL *Wind's *Song, *Flower's *Ambition, *Immaculate *Snow, or *Moon's *March . NL Exhaust."
+    "DESCRIPTION": "Choose a *Season *of *Warfare to play. NL Exhaust."
+  },
+  "theDragonkin:CautiousStance": {
+    "NAME": "Cautious Stance",
+    "DESCRIPTION": "Gain !B! Block. NL If there's at least 2 enemies and none intend to attack, Block is not removed at the start of your next turn."
+  },
+  "theDragonkin:Restore": {
+    "NAME": "Restore",
+    "DESCRIPTION": "Gain !MAG! Block. NL Gain !M! Regen. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !MAG! Block. NL Gain !M! Regen. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Restore II","Restore Y",
+      "Jormungandr V",
+      "Gain !MAG! Block. NL Reduce Targets Strength by !M! this turn. NL Exhaustive: !stslib:ex! NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+  },
+  "theDragonkin:Jormungandr": {
+    "NAME": "Jormungandr",
+    "DESCRIPTION": "Gain !MAG! Block. NL Reduce Targets Strength by !M! this turn. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !MAG! Block. NL Reduce Targets Strength by !M! this turn. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Jormungandr II","Jormungandr Y",
+      "Restore V",
+      "Gain !MAG! Block. NL Gain !M! Regen. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+  },
+  "theDragonkin:ShadowMeld": {
+    "NAME": "Shadow Meld",
+    "DESCRIPTION": "Gain !M! Intangible. NL Shuffle !M! Voids into your Draw pile. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !M! Intangible. NL Shuffle !M! Voids into your Draw pile. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Shadow Meld II","hadow Meld Y",
+      "Physic V",
+      "Gain !MAG! Block. NL Gain !M! Temporary_HP. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+  },
+  "theDragonkin:BurstingGlyph": {
+    "NAME": "Bursting Gylph",
+    "DESCRIPTION": "Gain !MAG! Block. NL When your Block is broken next, Deal !MAG! damage to ALL enemies. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !MAG! Block. NL When your Block is broken next, Deal !MAG! damage to ALL enemies. NL thedragonkin:Casts: !Gremory:Spells! ",
+    "EXTENDED_DESCRIPTION": ["Bursting Gylph II","Bursting Gylph Y",
+      "Ice Block V",
+      "Gain !MAG! Block, Gain no [E] next turn. Block is not removed at the start of your next turn. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
+  },
+  "theDragonkin:IceBlock": {
+    "NAME": "Ice Block",
+    "DESCRIPTION": "Gain !MAG! Block, Gain no [E] next turn. Block is not removed at the start of your next turn. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !MAG! Block, Gain no [E] next turn. Block is not removed at the start of your next 2 turns. NL thedragonkin:Casts: !Gremory:Spells! ",
+    "EXTENDED_DESCRIPTION": ["Ice Block II","Ice Block Y",
+      "Bursting Gylph V",
+      "Gain !MAG! Block. NL When your Block is broken next, Deal !MAG! damage to ALL enemies. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
+  },
+  "theDragonkin:Jetstream": {
+    "NAME": "Jetstream",
+    "DESCRIPTION": "Gain !M! Dexterity until this end of your turn. NL if this is Discounted gain [E] [E]. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !M! Dexterity until this end of your turn. NL if this is Discounted gain [E] [E]. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Jetstream II","Jetstream Y",
+      "Petrify V",
+      "Stun a Non thedragonkin:Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is thedragonkin:Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+  },
+  "theDragonkin:Petrify": {
+    "NAME": "Petrify",
+    "DESCRIPTION": "Stun a Non thedragonkin:Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is thedragonkin:Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Stun a Non thedragonkin:Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is thedragonkin:Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Petrify II","Petrify Y",
+      "Jetstream V",
+      "Gain 3 Dexterity until this end of your turn. NL if this is Discounted gain [E] [E].  NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+  },
+  "theDragonkin:Loptous": {
+    "NAME": "Loptous",
+    "DESCRIPTION": "Apply !M! thedragonkin:Dark_Exposure to ALL enemies for 99 turns. NL thedragonkin:Deplete your thedragonkin:Light Spells. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Apply !M! thedragonkin:Dark_Exposure to ALL enemies for 99 turns. NL thedragonkin:Deplete your thedragonkin:Light Spells. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Loptous II","Loptous Y",
+      "Naga V",
+      "thedragonkin:Cure EVERYONE Fully and Gain thedragonkin:Luminance and Block. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+  },
+  "theDragonkin:Ward": {
+    "NAME": "Ward",
+    "DESCRIPTION": "Gain !MAG! Block. NL Gain !MAG! Block at the start of your turn, reduce it by 1 each turn. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !MAG! Block. NL Gain !MAG! Block at the start of your turn, reduce it by 1 each turn. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Ward II","Ward Y",
+      "Hel V",
+      "Gain Plated Armor equal to half the targets Poison. NL remove all targets Poison. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+  },
+  "theDragonkin:Silence": {
+    "NAME": "Silence",
+    "DESCRIPTION": "Remove ALL Buffs from target. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Remove ALL Buffs from ALL enemies. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Silence II","Silence Y",
+      "Bohr V",
+      "Reduce your HP to 1, gain 3 times that much Temporary HP. NL Gain no Block from cards this combat. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
   },
   "theDragonkin:ImmaculateSnow": {
     "NAME": "Immaculate Snow",
@@ -475,7 +560,7 @@
   },
   "theDragonkin:FlowersAmbition": {
     "NAME": "Flower's Ambition",
-    "DESCRIPTION": "thedragonkin:Fire cards cost 1 less. NL While you have thedragonkin:Hot_Streak you have 3 thedragonkin:Kindling."
+    "DESCRIPTION": "thedragonkin:Fire cards cost 1 less. NL Your Fire cards have Hot Streak, Gain 1 Kindling until the end of your next turn"
   },
   "theDragonkin:MoonsMarch": {
     "NAME": "Moon's March",
@@ -623,8 +708,8 @@
   },
   "theDragonkin:Excalibur": {
     "NAME": "Excalibur",
-    "DESCRIPTION": "Deal !MAG! damage to ALL enemies. NL If you have thedragonkin:Tailwind Deal !MAG! damage to ALL enemies twice instead. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage to ALL enemies. NL If you have thedragonkin:Tailwind Deal !MAG! damage to ALL enemies twice instead and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage to ALL enemies. NL If this costs less then 2, Deal !MAG! damage to ALL enemies twice instead. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage to ALL enemies. NL If this costs less then 2, Deal !MAG! damage to ALL enemies twice instead and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Excalibur II","Excalibur Y",
       "Bolting V","Deal !MAG! damage. NL If the traget is thedragonkin:Jolted gain 2 thedragonkin:Charged-Up this turn"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
   },

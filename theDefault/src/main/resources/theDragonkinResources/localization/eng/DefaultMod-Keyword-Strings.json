@@ -41,19 +41,12 @@
     "COLOR": "[#94bdff]"
   },
   {
-    "NAMES": [
-      "invoke"
-    ],
-    "DESCRIPTION": "Choose one of the listed card and activate it's effect.",
-    "COLOR": "[#94bdff]"
-  },
-  {
     "PROPER_NAME": "Hot Streak",
     "NAMES": [
       "Hot Streak",
       "hot_streak"
     ],
-    "DESCRIPTION": "During your turn, if you've only played #yFire cards activate this cards Hot Streak when played."
+    "DESCRIPTION": "During your turn, if the last card you played was a #yFire card activate the following effect."
   },
   {
     "NAMES": [

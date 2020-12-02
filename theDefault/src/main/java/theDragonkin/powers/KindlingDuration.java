@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.util.TextureLoader;
@@ -67,10 +67,10 @@ public class KindlingDuration extends TwoAmountPower implements modifyMagicPower
     }
     @Override
     public void atEndOfTurn(final boolean isPlayer){
-        if (this.amount == 1){
+        amount2 -= 1;
+        if (this.amount2 < 1){
             addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,this.ID));
         }
-        amount2 =- 1;
     }
 
     public void reducePower(int reduceAmount) {

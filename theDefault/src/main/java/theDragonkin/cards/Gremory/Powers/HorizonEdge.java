@@ -1,13 +1,12 @@
 package theDragonkin.cards.Gremory.Powers;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -48,6 +47,7 @@ public class HorizonEdge extends AbstractGremoryCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.HorizonEdge(p,p)));
     }
 
     //Upgraded stats.

@@ -197,7 +197,10 @@
                 "NAME": "Arcana",
                 "DESCRIPTIONS": ["Magic cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
         },
-
+        "theDragonkin:ArcanaCards": {
+                "NAME": "Arcana",
+                "DESCRIPTIONS": ["Your next #b"," Magic cards deals #b", " Magic card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
+        },
         "theDragonkin:resistance": {
                 "NAME": "Dark Exposure",
                 "DESCRIPTIONS": ["Magic cards Deal #b", " more damage to this enemy."]
@@ -221,5 +224,45 @@
         "theDragonkin:HuntersFocus": {
                 "NAME": "Hunters Focus",
                 "DESCRIPTIONS": ["When you obtain #b10 Hunters Focus your next Attack deals triple damage."]
+        },
+        "theDragonkin:FlowersAmbition": {
+                "NAME": "Season of Warfare - Spring",
+                "DESCRIPTIONS": ["Fire cards cost 1 less. Your Fire cards have Hot Streak, Gain 1 #yKindling until the end of your next turn"]
+        },
+        "theDragonkin:ImmaculateSnow": {
+                "NAME": "Season of Warfare - Winter",
+                "DESCRIPTIONS": ["Ice cards cost 1 less. #yChill effects all elements except #yFire."]
+        },
+        "theDragonkin:MoonsMarch": {
+                "NAME": "Season of Warfare - Autumn",
+                "DESCRIPTIONS": ["Physical cards cost 1 less. After you #yDeplete a spell, gain 3 #yStrength."]
+        },
+        "theDragonkin:WindsSong": {
+                "NAME": "Season of Warfare - Summer",
+                "DESCRIPTIONS": ["Wind cards cost 1 less. Keep #yTailwind between turns."]
+        },
+        "theDragonkin:Blutgang": {
+                "NAME": "Blutgang",
+                "DESCRIPTIONS": ["#yAntiquity. At the start of your turn, choose a card in your hand permanently #yEnchant it"]
+        },
+        "theDragonkin:HorizonEdge": {
+                "NAME": "The Horizon Edge",
+                "DESCRIPTIONS": ["#yAntiquity. The first physical card you play each turn is play 2 additional times"]
+        },
+        "theDragonkin:FierceasFire": {
+                "NAME": "Fierce as Fire",
+                "DESCRIPTIONS": ["After you #yDeplete a spell, gain 2 Energy and you next spell does 9 more damage and gains 9 more Block."]
+        },
+        "theDragonkin:SwiftasWind": {
+                "NAME": "Swift as Wind",
+                "DESCRIPTIONS": ["After dealing or receiving unblocked damage gain #b"," #yHunter's #yFocus"]
+        },
+        "theDragonkin:BurstingWardPower": {
+                "NAME": "Trap Ward",
+                "DESCRIPTIONS": ["When your block breaks next deal #b"," damage to ALL enemies."]
+        },
+        "theDragonkin:WardPower": {
+                "NAME": "Ward",
+                "DESCRIPTIONS": ["At the start of your turn, gain #b"," Block, and reduce this by 1"]
         }
 }

@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.cards.Gremory.FollowUps.VeninFollowUp;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 

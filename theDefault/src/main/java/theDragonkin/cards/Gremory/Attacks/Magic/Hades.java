@@ -23,7 +23,7 @@ import com.megacrit.cardcrawl.vfx.scene.LightFlareLEffect;
 import theDragonkin.CardMods.AbraxasCardMod;
 import theDragonkin.CardMods.DarkTransmute;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 
@@ -62,9 +62,7 @@ public class Hades extends AbstractMagicGremoryCard implements BranchingUpgrades
             addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
             addToBot(new SelectCardsInHandAction(magicNumber,cardStrings.EXTENDED_DESCRIPTION[7],false,false,
                     c -> !(c.hasTag(CustomTags.Dark)) && (c instanceof AbstractMagicGremoryCard || c.hasTag(CustomTags.Enchanted)),
-                    list -> {
-                        list.forEach(this::transmute);
-                    }));
+                    list -> list.forEach(this::transmute)));
         }
         else{
             addToBot(new VFXAction(new LightFlareLEffect(animx,animy)));

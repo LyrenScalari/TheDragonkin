@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.cards.Gremory.FollowUps.BraveFollowUp;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 

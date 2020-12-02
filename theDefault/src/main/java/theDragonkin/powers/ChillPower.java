@@ -7,9 +7,10 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.util.TextureLoader;
@@ -46,7 +47,7 @@ public class ChillPower extends AbstractPower implements OnReceivePowerPower , m
     }
     @Override
     public float modifyMagicCard(AbstractMagicGremoryCard c, float magicpower) {
-        if (c.hasTag(CustomTags.Ice)) {
+        if ((c.hasTag(CustomTags.Ice)) || (AbstractDungeon.player.hasPower(ImmaculateSnow.POWER_ID) && !(c.hasTag(CustomTags.Fire)))) {
             return (magicpower + this.amount);
         }
         else return magicpower;

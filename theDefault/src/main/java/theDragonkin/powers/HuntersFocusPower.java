@@ -48,7 +48,7 @@ public class HuntersFocusPower extends AbstractPower implements modifyMagicPower
 
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
-        if (this.amount >= 10) {
+        if (this.amount >= 10 && card.type == AbstractCard.CardType.ATTACK) {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.source,this));
         }
     }

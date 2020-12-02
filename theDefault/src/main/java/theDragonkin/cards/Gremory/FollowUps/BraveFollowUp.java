@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.cards.Gremory.Attacks.SilverSlash;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 
 public class BeastFangEnchantmentCardmod extends AbstractCardModifier {
     private int duration;
@@ -46,7 +46,7 @@ public class BeastFangEnchantmentCardmod extends AbstractCardModifier {
     }
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return "Enchanted. NL " + rawDescription;
+        return "thedragonkin:Enchanted. NL " + rawDescription;
     }
 
     @Override

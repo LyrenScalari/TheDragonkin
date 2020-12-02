@@ -18,7 +18,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
@@ -27,15 +26,12 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theDragonkin.cards.Dragonkin.AbstractDragonkinCard;
-import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.events.IdentityCrisisEvent;
 import theDragonkin.potions.DragonkinCommonPotion;
 import theDragonkin.potions.DragonkinRarePotion;
 import theDragonkin.potions.DragonkinUncommonPotion;
-import theDragonkin.powers.Scorchpower;
+import theDragonkin.powers.*;
 import theDragonkin.relics.*;
 import theDragonkin.util.IDCheckDontTouchPls;
 import theDragonkin.util.TextureLoader;
@@ -322,6 +318,26 @@ public class DefaultMod implements
             for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, AbstractDungeon.player,
                         new Scorchpower(mo,AbstractDungeon.player, 2), 2));
+            }
+        }
+        if (AbstractDungeon.player.hasPower(WindsSong.POWER_ID)){
+            if (card.hasTag(CustomTags.Wind) && card.cost > 0){
+                card.cost -= 1;
+            }
+        }
+        if (AbstractDungeon.player.hasPower(ImmaculateSnow.POWER_ID)){
+            if (card.hasTag(CustomTags.Ice) && card.cost > 0){
+                card.cost -= 1;
+            }
+        }
+        if (AbstractDungeon.player.hasPower(FlowersAmbition.POWER_ID)){
+            if (card.hasTag(CustomTags.Fire) && card.cost > 0){
+                card.cost -= 1;
+            }
+        }
+        if (AbstractDungeon.player.hasPower(MoonsMarch.POWER_ID)){
+            if (card.hasTag(CustomTags.Physical) && card.cost > 0){
+                card.cost -= 1;
             }
         }
     }

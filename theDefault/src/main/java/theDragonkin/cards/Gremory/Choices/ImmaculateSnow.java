@@ -1,12 +1,13 @@
 package theDragonkin.cards.Gremory.Choices;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
-import theDragonkin.util.CustomTags;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -25,6 +26,11 @@ public class ImmaculateSnow extends AbstractMagicGremoryCard {
 
     public ImmaculateSnow() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+    }
+
+    public void onChoseThisOption() {
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
+                new theDragonkin.powers.ImmaculateSnow(AbstractDungeon.player,AbstractDungeon.player)));
     }
 
     @Override

@@ -23,7 +23,7 @@ import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 
 import basemod.abstracts.CustomOrb;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 
 import static theDragonkin.DefaultMod.makeOrbPath;

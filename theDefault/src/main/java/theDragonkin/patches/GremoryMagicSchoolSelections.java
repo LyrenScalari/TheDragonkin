@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.neow.NeowEvent;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theDragonkin.cards.Gremory.Attacks.Magic.*;
 import theDragonkin.cards.Gremory.Choices.*;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

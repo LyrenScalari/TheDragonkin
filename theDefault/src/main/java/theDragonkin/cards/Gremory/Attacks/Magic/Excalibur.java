@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
@@ -20,7 +19,7 @@ import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.cards.Gremory.FollowUps.FollowUpExcalibur;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ChargedUpDuration;
@@ -42,6 +41,7 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
     private static final int COST = 2;
     private static final int MAGIC = 2;
     private static AbstractCard FollowUp;
+    private int windcounter;
 
     public Excalibur() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -58,18 +58,13 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
             addToBot(new VFXAction(new WhirlwindEffect()));
             addToBot(new DamageAllEnemiesAction(p,MagDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HEAVY));
             addToBot(new VFXAction(new CleaveEffect()));
-            if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() >= 2){
-                for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn){
-                    if (c.hasTag(CustomTags.Wind)){
-                        addToBot(new DamageAllEnemiesAction(p,MagDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HEAVY));
-                        addToBot(new VFXAction(new CleaveEffect()));
-                        if (this.upgraded){
-                            FollowUp = new FollowUpExcalibur();
-                            addToBot(new MakeTempCardInHandAction(FollowUp));
-                            AllCards.addToBottom(FollowUp);
-                        }
-                        break;
-                    }
+            if (this.cost < 2) {
+                addToBot(new DamageAllEnemiesAction(p, MagDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                addToBot(new VFXAction(new CleaveEffect()));
+                if (Excalibur.this.upgraded) {
+                    FollowUp = new FollowUpExcalibur();
+                    addToBot(new MakeTempCardInHandAction(FollowUp));
+                    AllCards.addToBottom(FollowUp);
                 }
             }
         }

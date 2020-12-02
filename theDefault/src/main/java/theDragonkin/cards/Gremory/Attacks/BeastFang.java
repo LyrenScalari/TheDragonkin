@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CardMods.BeastFangEnchantmentCardmod;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 

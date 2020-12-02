@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.cards.Gremory.FollowUps.FollowUpFire;
-import theDragonkin.util.CustomTags;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.actions.WitherAction;
 import theDragonkin.characters.TheGremory;
