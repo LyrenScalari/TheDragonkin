@@ -11,7 +11,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class AvengingWrath extends AbstractDragonkinCard {
+public class AvengingWrath extends AbstractHolyBonusCard {
 
     public static final String ID = DefaultMod.makeID(AvengingWrath.class.getSimpleName());
     public static final String IMG = makeCardPath("AvengingWrath.png");

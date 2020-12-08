@@ -11,7 +11,7 @@ import theDragonkin.powers.NextTurnFetchpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class HonorBound extends AbstractDragonkinCard {
+public class HonorBound extends AbstractHolyBonusCard {
 
     public static final String ID = DefaultMod.makeID(HonorBound.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
@@ -32,15 +32,13 @@ public class HonorBound extends AbstractDragonkinCard {
 
     public HonorBound() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseDamage = DAMAGE;
         tags.add(CustomTags.HOLY_CARD);
-        baseMagicNumber = magicNumber = MAGIC;
 
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new NextTurnFetchpower(p,p,baseMagicNumber,false,false),baseMagicNumber));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new NextTurnFetchpower(p,p,1,false,false),1));
     }
 
     @Override

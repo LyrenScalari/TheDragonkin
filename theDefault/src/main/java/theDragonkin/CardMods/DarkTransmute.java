@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theDragonkin.CustomTags;
+import theDragonkin.DefaultMod;
 
 public class DarkTransmute extends AbstractCardModifier {
     public AbstractCard.CardTags Startingtag;

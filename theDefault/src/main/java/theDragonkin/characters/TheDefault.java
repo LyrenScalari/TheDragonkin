@@ -25,7 +25,7 @@ import theDragonkin.cards.Dragonkin.BlazingBreath;
 import theDragonkin.cards.Dragonkin.Defend;
 import theDragonkin.cards.Dragonkin.HolySmite;
 import theDragonkin.cards.Dragonkin.Strike;
-import theDragonkin.relics.GarnetScale;
+import theDragonkin.relics.Dragonkin.GarnetScale;
 
 import java.util.ArrayList;
 

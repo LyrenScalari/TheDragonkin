@@ -1,8 +1,18 @@
 package theDragonkin.cards.Gremory;
 
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
+import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import theDragonkin.CustomTags;
 import theDragonkin.cards.AbstractDefaultCard;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
@@ -16,6 +26,10 @@ public abstract class AbstractGremoryCard extends AbstractDefaultCard {
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
+
+       // private static HashMap<CardTags, String> smallOrbMap;
+       // private static HashMap<CardTags, String> largeOrbMap;
+
 public AbstractGremoryCard(final String id,
 final String img,
 final int cost,

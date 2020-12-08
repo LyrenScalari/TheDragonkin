@@ -1,6 +1,8 @@
 package theDragonkin.cards.Gremory.Attacks.Magic;
 
+import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
@@ -27,6 +29,9 @@ import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.CustomTags;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class Abraxas extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -43,11 +48,20 @@ public class Abraxas extends AbstractMagicGremoryCard implements BranchingUpgrad
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 2;
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
     public Abraxas() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Light);
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] +  cardStrings.DESCRIPTION;
+        TrapTooltip = new ArrayList<>();
+        setOrbTexture(DefaultMod.Light_SMALL_ORB,DefaultMod.Light_LARGE_ORB);
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Light"), BaseMod.getKeywordDescription("thedragonkin:Light")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Afterglow"), BaseMod.getKeywordDescription("thedragonkin:Afterglow")));
+        getCustomTooltips();
+        this.rawDescription =   cardStrings.DESCRIPTION;
         magicNumber = baseMagicNumber = 1;
         initializeDescription();
         MagDamage = baseMagDamage = 15;
@@ -56,7 +70,7 @@ public class Abraxas extends AbstractMagicGremoryCard implements BranchingUpgrad
     public void use(AbstractPlayer p, AbstractMonster m) {
         animx = m.drawX;
         animy = m.drawY;
-        if (this.timesUpgraded % 2 == 0) {
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])) {
             addToBot(new VFXAction(new LightFlareLEffect(animx,animy)));
             addToBot(new VFXAction(new LightningEffect(animx,animy)));
             addToBot(new VFXAction(new ShockWaveEffect(animx, animy, Color.YELLOW, ShockWaveEffect.ShockWaveType.ADDITIVE)));
@@ -93,7 +107,7 @@ public class Abraxas extends AbstractMagicGremoryCard implements BranchingUpgrad
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            if (isBranchUpgrade()) {
+            if (this.isBranchUpgrade()) {
                 branchUpgrade();
             } else {
                 baseUpgrade();
@@ -159,20 +173,23 @@ public class Abraxas extends AbstractMagicGremoryCard implements BranchingUpgrad
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + UPGRADE_DESCRIPTION;
-        tags.remove(CustomTags.Dark);
-        tags.add(CustomTags.Light);
-        this.isMultiDamage = true;
-        this.upgradeMagicNumber(4);
-        this.upgradeBaseCost(1);
+        this.rawDescription = UPGRADE_DESCRIPTION;
+        upgradeMagicNumber(1);
+        MagDamageUpgraded = true;
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
-        upgradeMagicNumber(1);
-        MagDamageUpgraded = true;
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
+        tags.remove(CustomTags.Light);
+        tags.add(CustomTags.Dark);
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Dark"), BaseMod.getKeywordDescription("thedragonkin:Dark")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Darken"), BaseMod.getKeywordDescription("thedragonkin:Darken")));
+        setOrbTexture(DefaultMod.Dark_SMALL_ORB,DefaultMod.Dark_LARGE_ORB);
+        this.upgradeMagicNumber(4);
+        this.upgradeBaseCost(1);
         initializeDescription();
 
     }

@@ -12,7 +12,7 @@ import theDragonkin.powers.CrusaderFormpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class CrusaderForm extends AbstractDragonkinCard {
+public class CrusaderForm extends AbstractHolyBonusCard{
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -38,7 +38,6 @@ public class CrusaderForm extends AbstractDragonkinCard {
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
 
-    private static final int MAGIC = 1;
 
     // /STAT DECLARATION/
 
@@ -46,7 +45,6 @@ public class CrusaderForm extends AbstractDragonkinCard {
     public CrusaderForm() {
 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = MAGIC;
         this.tags.add(CustomTags.HOLY_CARD);
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.
 

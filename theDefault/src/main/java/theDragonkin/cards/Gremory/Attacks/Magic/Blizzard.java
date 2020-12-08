@@ -1,5 +1,7 @@
 package theDragonkin.cards.Gremory.Attacks.Magic;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -16,6 +18,9 @@ import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ChillPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class Blizzard extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -30,17 +35,27 @@ public class Blizzard extends AbstractMagicGremoryCard implements BranchingUpgra
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 1;
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
     public Blizzard() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Ice);
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] +  cardStrings.DESCRIPTION;
+        setOrbTexture(DefaultMod.Ice_SMALL_ORB,DefaultMod.Ice_LARGE_ORB);
+        TrapTooltip = new ArrayList<>();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Ice"), BaseMod.getKeywordDescription("thedragonkin:Ice")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Chill"), BaseMod.getKeywordDescription("thedragonkin:Chill")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Freeze"), BaseMod.getKeywordDescription("thedragonkin:Freeze")));
+        getCustomTooltips();
+        this.rawDescription =   cardStrings.DESCRIPTION;
         initializeDescription();
         MagDamage = baseMagDamage = 6;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.timesUpgraded % 2 == 0){
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])){
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
             super.use(p, m);
             addToBot(new DamageAction(m, new DamageInfo(p,MagDamage, DamageInfo.DamageType.NORMAL)));
@@ -64,7 +79,7 @@ public class Blizzard extends AbstractMagicGremoryCard implements BranchingUpgra
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            if (isBranchUpgrade()) {
+            if (this.isBranchUpgrade()) {
                 branchUpgrade();
             } else {
                 baseUpgrade();
@@ -74,15 +89,20 @@ public class Blizzard extends AbstractMagicGremoryCard implements BranchingUpgra
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + UPGRADE_DESCRIPTION;
+        this.rawDescription = UPGRADE_DESCRIPTION;
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Ice);
         tags.add(CustomTags.Fire);
+        setOrbTexture(DefaultMod.Fire_SMALL_ORB,DefaultMod.Fire_LARGE_ORB);
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Fire"), BaseMod.getKeywordDescription("thedragonkin:Fire")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Hot_Streak"), BaseMod.getKeywordDescription("thedragonkin:Hot_Streak")));
+        getCustomTooltips();
         this.upgradeBaseCost(2);
         baseMagDamage += 6;
         MagDamageUpgraded = true;

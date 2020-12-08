@@ -13,12 +13,12 @@
   },
   "theDragonkin:HolySmite": {
     "NAME": "Holy Smite",
-    "DESCRIPTION": "Deal !D! damage !M! Times. NL apply !M! Weak and Vulnerable. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage !M! Times. NL apply !M! Weak and Vulnerable."
   },
 
   "theDragonkin:HammerOfWrath": {
     "NAME": "Hammer Of Wrath",
-    "DESCRIPTION": "Deal !D! damage. NL If you're under half HP, deals double damage and gain 1 thedragonkin:Zeal. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage. NL If you're under half HP, deals double damage and gain 1 thedragonkin:Zeal."
   },
 
   "theDragonkin:AcidBreath": {
@@ -34,7 +34,7 @@
 
   "theDragonkin:DesperateMeasures": {
     "NAME": "Desperate Measures",
-    "DESCRIPTION": "Gain !B! Block. NL Heal !H! HP. NL You cannot gain block from cards for 2 turns. NL Purge. NL thedragonkin:Holy"
+    "DESCRIPTION": "Gain !B! Block. NL Heal !H! HP. NL You cannot gain block from cards for 2 turns. NL Purge."
   },
 
   "theDragonkin:DarkWhispers": {
@@ -49,7 +49,7 @@
 
   "theDragonkin:WhateverTheCost": {
     "NAME": "Whatever The Cost",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Lose 5 HP. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Lose 5 HP."
   },
 
   "theDragonkin:VenomDrench": {
@@ -110,12 +110,12 @@
 
   "theDragonkin:JusticeStrike": {
     "NAME": "Justice Strike",
-    "DESCRIPTION": "Deals !M! more damage each time you lose HP this combat. NL Deal !D! damage. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deals !M! more damage each time you lose HP this combat. NL Deal !D! damage."
   },
 
   "theDragonkin:AvengingWrath": {
     "NAME": "Avenging Wrath",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. if you're under half HP deal !D! damage to a random enemy !M! more times. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage to a random enemy. if you're under half HP deal !D! damage to a random enemy !M! more times."
   },
 
   "theDragonkin:Sizzle": {
@@ -126,11 +126,11 @@
 
   "theDragonkin:Condemnation": {
     "NAME": "Condemnation",
-    "DESCRIPTION": "In 3 turns, Deal !D! damage to ALL enemies. NL Purge. NL thedragonkin:Holy"
+    "DESCRIPTION": "In 3 turns, Deal !D! damage to ALL enemies. NL Purge."
   },
   "theDragonkin:HallowedGround": {
     "NAME": "Hallowed Ground",
-    "DESCRIPTION": "Deal !D! damage to all enemies, gain !M! Temporary_HP for each enemy. NL Exhaustive: !stslib:ex!. NL thedragonkin:Holy."
+    "DESCRIPTION": "Deal !D! damage to all enemies, gain !M! Temporary_HP for each enemy. NL Exhaustive: !stslib:ex!."
   },
   "theDragonkin:Wildfire": {
     "NAME": "Wildfire",
@@ -147,7 +147,7 @@
   },
   "theDragonkin:SanctuaryShield": {
     "NAME": "Sanctuary Shield",
-    "DESCRIPTION": "Gains !M! more Block each time you lose HP this combat. NL Gain !B! Block. NL thedragonkin:Holy"
+    "DESCRIPTION": "Gains !M! more Block each time you lose HP this combat. NL Gain !B! Block."
   },
 
   "theDragonkin:DragonRage": {
@@ -186,7 +186,7 @@
 
   "theDragonkin:HolyShock": {
     "NAME": "Holy Shock",
-    "DESCRIPTION": "Deal !D! damage. NL Enemy loses !M! Strength this turn. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage. NL Enemy loses !M! Strength this turn."
   },
 
   "theDragonkin:BurningRage": {
@@ -196,7 +196,7 @@
 
   "theDragonkin:HolyWordBarrier": {
     "NAME": "Holy Barrier",
-    "DESCRIPTION": "Gain !M! Temporary HP. Exhaustive: !stslib:ex!. NL thedragonkin:Holy"
+    "DESCRIPTION": "Gain !M! Temporary HP. Exhaustive: !stslib:ex!."
   },
 
   "theDragonkin:FlameWard": {
@@ -206,17 +206,17 @@
 
   "theDragonkin:HammerofJustice": {
     "NAME": "Hammer of Justice",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! thedragonkin:Zeal. NL Exhaust. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! thedragonkin:Zeal. NL Exhaust."
   },
 
   "theDragonkin:DivineStorm": {
     "NAME": "Divine Storm",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Exhaust. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Exhaust."
   },
 
   "theDragonkin:DivineJolt": {
     "NAME": "Penance Shock",
-    "DESCRIPTION": "Deal !D! damage. NL apply !M! Weak to a random enemy !M! times. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage. NL apply !M! Weak to a random enemy !M! times."
   },
 
   "theDragonkin:InexorableAssault": {
@@ -226,7 +226,7 @@
 
   "theDragonkin:ForJustice": {
     "NAME": "For Justice!",
-    "DESCRIPTION": "Deal !D! damage. NL Next turn, Fetch !M! random Skills from your draw pile. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage. NL Next turn, Fetch !M! random Skills from your draw pile."
   },
 
   "theDragonkin:AshBreath": {
@@ -251,7 +251,7 @@
 
   "theDragonkin:Cauterize": {
     "NAME": "Cauterize",
-    "DESCRIPTION": "Heal !H! HP. Gain !M! thedragonkin:Scorched. NL Exhaust."
+    "DESCRIPTION": "Heal 15 HP. Gain !M! thedragonkin:Scorched. NL Exhaust."
   },
 
   "theDragonkin:CinderStorm": {
@@ -266,7 +266,7 @@
 
   "theDragonkin:LightArmor": {
     "NAME": "Holy Aegis",
-    "DESCRIPTION": "Gain !B! Block !M! times. NL thedragonkin:Holy"
+    "DESCRIPTION": "Gain !B! Block !M! times."
   },
 
   "theDragonkin:NeverSurrender": {
@@ -276,7 +276,8 @@
 
   "theDragonkin:FlashofLight": {
     "NAME": "Flash of Light",
-    "DESCRIPTION": "Heal !H! HP. NL Gain !M! Temporary_HP. NL Exhaust. NL thedragonkin:Holy"
+    "DESCRIPTION": "Heal 4 HP. NL Gain !M! Temporary_HP. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Heal 6 HP. NL Gain !M! Temporary_HP. NL Exhaust."
   },
 
   "theDragonkin:FireStarter": {
@@ -286,17 +287,17 @@
 
   "theDragonkin:DivineFire": {
     "NAME": "Holy Fire",
-    "DESCRIPTION": "Deal !D! damage. NL apply !M! thedragonkin:Scorch. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage. NL apply !M! thedragonkin:Scorch."
   },
 
   "theDragonkin:GoldenFlames": {
     "NAME": "Golden Flame",
-    "DESCRIPTION": "Deal !D! damage. NL gain !M! Temporary_HP. NL Exhaust. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage. NL gain !M! Temporary_HP. NL Exhaust."
   },
 
   "theDragonkin:HolyBarrier": {
     "NAME": "Divine Shield",
-    "DESCRIPTION": "Until the end of your next turn whenever you play a thedragonkin:Holy card gain, !M! Temporary_HP. NL Exhaustive: !stslib:ex!. NL thedragonkin:Holy"
+    "DESCRIPTION": "Until the end of your next turn whenever you play a [#94bdff]Holy[] card gain, !M! Temporary_HP. NL Exhaustive: !stslib:ex!."
   },
 
   "theDragonkin:ShieldGlare": {
@@ -307,7 +308,7 @@
   "theDragonkin:Subdue": {
     "NAME": "Subdue",
     "DESCRIPTION": "Reduce an enemy's Attack to 1 this turn. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "\"Reduce an enemy's Attack to 1 this turn. NL Exhaustive: !stslib:ex!."
+    "UPGRADE_DESCRIPTION": "Reduce an enemy's Attack to 1 this turn. NL Exhaustive: !stslib:ex!."
   },
 
   "theDragonkin:ShieldBash": {
@@ -317,17 +318,17 @@
 
   "theDragonkin:AncestralSeance": {
     "NAME": "Ancestral Seance",
-    "DESCRIPTION": "Choose 1 of 3 non- thedragonkin:Holy Dragonkin cards to add to your hand it costs 0 until played."
+    "DESCRIPTION": "Choose 1 of 3 non-[#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played."
   },
 
   "theDragonkin:DivinePrayer": {
     "NAME": "Divine Prayer",
-    "DESCRIPTION": "Choose 1 of 3 thedragonkin:Holy Dragonkin cards to add to your hand it costs 0 until played."
+    "DESCRIPTION": "Choose 1 of 3 [#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played."
   },
 
   "theDragonkin:HolyFlask": {
     "NAME": "Holy Flask",
-    "DESCRIPTION": "Apply !M! thedragonkin:Dissolve to a random enemy !M! times. NL thedragonkin:Holy"
+    "DESCRIPTION": "Apply !M! thedragonkin:Dissolve to a random enemy !M! times."
   },
 
   "theDragonkin:TwinBreath": {
@@ -342,7 +343,7 @@
 
   "theDragonkin:ChainsOfTruth": {
     "NAME": "Chains of Truth",
-    "DESCRIPTION": "Deal !D! damage to all enemies. NL Apply !M! Vulnerable to all enemies. NL thedragonkin:Holy"
+    "DESCRIPTION": "Deal !D! damage to all enemies. NL Apply !M! Vulnerable to all enemies."
   },
 
   "theDragonkin:DivineVision": {
@@ -357,7 +358,7 @@
 
   "theDragonkin:CrusaderForm": {
   "NAME": "Crusader Form",
-  "DESCRIPTION": "When you play a non- thedragonkin:Holy card, gain 2 thedragonkin:Zeal this turn."
+  "DESCRIPTION": "When you play a non-[#94bdff]Holy[] card, gain 2 thedragonkin:Zeal this turn."
 },
 
   "theDragonkin:CrimsonSimulacrum": {
@@ -474,6 +475,37 @@
     "NAME": "Cautious Stance",
     "DESCRIPTION": "Gain !B! Block. NL If there's at least 2 enemies and none intend to attack, Block is not removed at the start of your next turn."
   },
+  "theDragonkin:Meditation": {
+    "NAME": "Meditation",
+    "DESCRIPTION": "Fleeting. NL Replenish !M! Spells in your deck."
+  },
+  "theDragonkin:TheColorofSunrise": {
+    "NAME": "The Color of Sunrise",
+    "DESCRIPTION": "Grave. Autoplay. NL Draw a card. NL If your hand only has thedragonkin:Fire Cards, Shuffle *Raging *Storm into your Drawpile.",
+    "UPGRADE_DESCRIPTION": "Autoplay. NL Draw a card. NL If your hand only has thedragonkin:Fire Cards, Shuffle *Raging *Storm+ into your Drawpile."
+  },
+  "theDragonkin:TheEdgeofDawn": {
+    "NAME": "The Edge of Dawn",
+    "DESCRIPTION": "Grave. Ethereal. NL Can only be played if your discard pile or draw pile is empty. NL Deal !D! damage to ALL enemies. NL Choose one to shuffle into your drawpile *Atrocity, *Falling *Star or *Hoarfrost.",
+    "UPGRADE_DESCRIPTION": "Grave. Retain. NL Can only be played if your discard pile or draw pile is empty. NL Deal !D! damage to ALL enemies. NL Choose one to shuffle into your drawpile *Atrocity, *Falling *Star or *Hoarfrost.",
+    "EXTENDED_DESCRIPTION":["My draw pile or discard pile NL must be #rEmpty."]
+  },
+  "theDragonkin:Aymr": {
+    "NAME": "Raging Storm",
+    "DESCRIPTION": "When Drawn, Deal !D! damage to all enemies. NL  Deal !D! damage to and apply !M! Weak, Vulnerable ALL enemies. NL Gain 2 Strength and thedragonkin:Arcana"
+  },
+  "theDragonkin:Atrocity": {
+    "NAME": "Atrocity",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! Strength and Vigor."
+  },
+  "theDragonkin:FallingStar": {
+    "NAME": "Falling Star",
+    "DESCRIPTION": "Deal !D! damage to an enemy !M! Times. NL Gain !B! Block. NL Block is not removed at the start of your next 2 turns."
+  },
+  "theDragonkin:Hoarfrost": {
+    "NAME": "Hoarfrost",
+    "DESCRIPTION": "When Drawn or played, Apply !M! thedragonkin:Chill to ALL Enemies. NL ALL enemies lose HP equal to twice their *Chill. NL Gain Block equal to twice the *Chill of ALL enemies."
+  },
   "theDragonkin:Restore": {
     "NAME": "Restore",
     "DESCRIPTION": "Gain !MAG! Block. NL Gain !M! Regen. NL Exhaustive: !stslib:ex!. NL thedragonkin:Casts: !Gremory:Spells!",
@@ -516,16 +548,28 @@
   },
   "theDragonkin:Jetstream": {
     "NAME": "Jetstream",
-    "DESCRIPTION": "Gain !M! Dexterity until this end of your turn. NL if this is Discounted gain [E] [E]. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Gain !M! Dexterity until this end of your turn. NL if this is Discounted gain [E] [E]. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Gain !M! Dexterity until the end of your turn. NL if this is Discounted gain [E] [E]. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !M! Dexterity until the end of your turn. NL if this is Discounted gain [E] [E]. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Jetstream II","Jetstream Y",
       "Petrify V",
-      "Stun a Non thedragonkin:Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is thedragonkin:Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+      "Stun a Non *Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is thedragonkin:Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+  },
+  "theDragonkin:Haste": {
+    "NAME": "Haste",
+    "DESCRIPTION": "Draw !M! Cards. NL if this is Discounted shuffle 2 *Fodlan *Winds into your drawpile. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Draw !M! Cards. NL if this is Discounted shuffle 2 *Fodlan *Winds into your drawpile. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Haste II","Haste Y",
+      "Static Cage V",
+      "Stun ALL enemies. Gain 1 less [E] and draw 1 less card nex turn. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+  },
+  "theDragonkin:FodlanWinds": {
+    "NAME": "Fodlan Winds",
+    "DESCRIPTION": "Autoplay. NL Draw !M! Card. NL Deal !MAG! damage to two random enemies."
   },
   "theDragonkin:Petrify": {
     "NAME": "Petrify",
-    "DESCRIPTION": "Stun a Non thedragonkin:Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is thedragonkin:Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Stun a Non thedragonkin:Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is thedragonkin:Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Stun a Non *Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is *Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Stun a Non *Jolted enemy, Gain !M! thedragonkin:Charged-Up instead if the target is *Jolted. NL Exhaust. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Petrify II","Petrify Y",
       "Jetstream V",
       "Gain 3 Dexterity until this end of your turn. NL if this is Discounted gain [E] [E].  NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
@@ -580,27 +624,29 @@
   },
   "theDragonkin:FierceasFire": {
     "NAME": "Fierce as Fire",
-    "DESCRIPTION": "After you thedragonkin:Deplete a spell, gain [E] [E] and your next spell deals !M! extra damage and gains !M! more block."
+    "DESCRIPTION": "After you thedragonkin:Deplete a spell, gain [E] [E] and your next spell deals !M! extra damage and gains !M! more block.",
+    "UPGRADE_DESCRIPTION": "After you thedragonkin:Deplete a spell,gain [E] [E] [E] and your next spell deals !M! extra damage and gains !M! more block."
   },
   "theDragonkin:SwiftasWind": {
     "NAME": "Swift as Wind",
-    "DESCRIPTION": "After dealing or receiving unblocked damage, gain !M! thedragonkin:Hunters_Focus."
+    "DESCRIPTION": "After dealing or receiving unblocked damage, gain !M! thedragonkin:Hunters_Focus.",
+    "EXTENDED_DESCRIPTION": [" Innate"]
   },
   "theDragonkin:Fire": {
     "NAME": "Fire",
-    "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Hot_Streak: thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Hot_Streak: thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells! ",
+    "DESCRIPTION": "Deal !MAG! damage. NL *Hot_Streak: thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL *Hot_Streak: thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells! ",
     "EXTENDED_DESCRIPTION": ["Fire II","Fire Y",
       "Icicle V",
       "Deal !MAG! damage. NL thedragonkin:Casts: !Gremory:Spells!"," Deal !MAG! damage. NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
   },
   "theDragonkin:Miasma": {
     "NAME": "Miasma",
-    "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Darken: Apply 2 thedragonkin:Dark_Exposure for 2 turns. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Darken: Apply 2 thedragonkin:Dark_Exposure for 2 turns. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage. NL *Darken: Apply 2 thedragonkin:Dark_Exposure for 2 turns. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL *Darken: Apply 2 thedragonkin:Dark_Exposure for 2 turns. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Miasma II","Miasma Y",
       "Nosferatu V",
-      "Deal !MAG! damage. NL thedragonkin:Afterglow: Gain block equal to half the damage this dealt. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+      "Deal !MAG! damage. NL *Afterglow: Gain block equal to half the damage this dealt. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
   },
   "theDragonkin:Mire": {
     "NAME": "Mire",
@@ -612,19 +658,19 @@
   },
   "theDragonkin:Hades": {
     "NAME": "Hades",
-    "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Transmute a card in your hand to thedragonkin:Dark until it's played. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Transmute a card in your hand to *Dark until it's played. NL thedragonkin:Casts: !Gremory:Spells!",
     "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Transmute !M! cards in your hand to thedragonkin:Dark until it's played. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Hades II","Hades Y",
       "Abraxas V",
-      "Deal !MAG! damage to ALL enemies. NL thedragonkin:Afterglow: Targeted enemy loses !M! Strength this turn. NL thedragonkin:Casts: !Gremory:Spells!",", NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "," Transmute to dark"]
+      "Deal !MAG! damage to ALL enemies. NL *Afterglow: Targeted enemy loses !M! Strength this turn. NL thedragonkin:Casts: !Gremory:Spells!",", NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "," Transmute to dark"]
   },
   "theDragonkin:Nosferatu": {
     "NAME": "Nosferatu",
-    "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Afterglow: Gain Block equal to half the damage this dealt. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Afterglow: Heal for half the damage this dealt. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage. NL *Afterglow: Gain Block equal to half the damage this dealt. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL *Afterglow: Heal for half the damage this dealt. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Nosferatu II","Nosferatu Y",
       "Miasma V",
-      "Deal !MAG! damage. NL thedragonkin:Darken: Apply 4 thedragonkin:Dark_Exposure for 1 turn. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+      "Deal !MAG! damage. NL *Darken: Apply 4 thedragonkin:Dark_Exposure for 1 turn. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
   },
   "theDragonkin:Aura": {
     "NAME": "Aura",
@@ -636,27 +682,27 @@
   },
   "theDragonkin:Abraxas": {
     "NAME": "Abraxas",
-    "DESCRIPTION": "Deal !MAG! damage to ALL enemies.  NL thedragonkin:Afterglow: Targeted enemy loses !M! Strength this turn. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage to ALL enemies.  NL thedragonkin:Afterglow: Targeted enemy loses !M! Strength this turn. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage to ALL enemies.  NL *Afterglow: Targeted enemy loses !M! Strength this turn. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage to ALL enemies.  NL *Afterglow: Targeted enemy loses !M! Strength this turn. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Abraxas II","Abraxas Y",
       "Hades V",
-      "Deal !MAG! damage. NL thedragonkin:Transmute a card in your hand to thedragonkin:Dark until it's played."," NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
+      "Deal !MAG! damage. NL thedragonkin:Transmute a card in your hand to *Dark until it's played."," NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
   },
   "theDragonkin:Icicle": {
     "NAME": "Icicle",
     "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL If the target has 5 or more thedragonkin:Chill, thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL If the target has 5 or more *Chill, thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Icicle II","Icicle Y",
       "Fire V",
-      "Deal !MAG! damage. NL thedragonkin:Hot_Streak: draw a card. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
+      "Deal !MAG! damage. NL *Hot_Streak: draw a card. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
   },
   "theDragonkin:Thunder": {
     "NAME": "Thunder",
     "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL If the target no thedragonkin:Jolted apply 3 thedragonkin:Jolted and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL If the target is not *Jolted apply 3 extra *Jolted and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Thunder II","Thunder Y",
       "Wind V",
-      "Deal !MAG! damage. NL If you have thedragonkin:Galeforce draw 2 cards. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+      "Deal !MAG! damage. NL If this is discounted draw 2 cards. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
   },
   "theDragonkin:Wind": {
     "NAME": "Wind",
@@ -664,59 +710,59 @@
     "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Wind II","Wind Y",
       "Thunder V",
-      "Deal !MAG! damage. NL If the target is not thedragonkin:Jolted gain 1 [E]. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+      "Deal !MAG! damage. NL If the target is not *Jolted gain 1 [E]. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
   },
 
   "theDragonkin:Blizzard": {
     "NAME": "Blizzard",
-    "DESCRIPTION": "Deal !MAG! damage twice. NL Gain block equal to double the targets thedragonkin:Chill. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage 3 times. NL Gain block equal to triple the targets thedragonkin:Chill. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage twice. NL Gain block equal to double the targets *Chill. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage 3 times. NL Gain block equal to triple the targets *Chill. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Blizzard II","Blizzard Y",
       "Volganone V",
-      "Deal !MAG! damage. NL thedragonkin:Hot_Streak: Gain !MAG! Block. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
+      "Deal !MAG! damage. NL *Hot_Streak: Gain !MAG! Block. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
   },
   "theDragonkin:Thoron": {
     "NAME": "Thoron",
     "DESCRIPTION": "Deal !MAG! damage to ALL Enemies. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage to ALL Enemies. NL Gain !M! thedragonkin:Arcana for each target with 0 thedragonkin:Jolted. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage to ALL Enemies. NL Gain !M! thedragonkin:Arcana for each target with 0 *Jolted. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Thoron II","Thoron Y",
       "Cutting Gale V",
-      "Deal !MAG! damage. NL If you have thedragonkin:Tailwind Gain !MAG! Block. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+      "Deal !MAG! damage. NL If this is discounted Gain !MAG! Block. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
   },
   "theDragonkin:CuttingGale": {
     "NAME": "Cutting Gale",
     "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Follow-Up. NL If you have thedragonkin:Tailwind thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Follow-Up. NL If this is discounted thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Cutting Gale II","Cutting Gale Y",
       "Thoron V",
-      "Deal !MAG! damage to ALL Enemies. NL If no targets are thedragonkin:Jolted gain 2 [E]. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL ","Deal !MAG! damage."]
+      "Deal !MAG! damage to ALL Enemies. NL If no targets are *Jolted gain 2 [E]. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL ","Deal !MAG! damage."]
   },
   "theDragonkin:Fimbulvetr": {
     "NAME": "Fimbulvetr",
-    "DESCRIPTION": "Deal !MAG! damage. NL If the Target is thedragonkin:Frozen they lose !MAG! HP instead. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL If the Target is thedragonkin:Frozen Deal double !MAG! damage instead and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage. NL If the Target is *Frozen they lose !MAG! HP instead. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL If the Target is *Frozen Deal they lose double !MAG! HP instead and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Fimbulvetr II","Fimbulvetr Y",
       "Ragnarök V",
-      "Deal !MAG! damage. NL thedragonkin:Hot_Streak: your next card will thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
+      "Deal !MAG! damage. NL thedragonkin:Hot_Streak: Next turn, thedragonkin:Transmute up to 3 Spells in your hand to *Fire. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
   },
   "theDragonkin:Bolting": {
     "NAME": "Bolting",
-    "DESCRIPTION": "Deal !MAG! damage. NL If the traget is thedragonkin:Jolted gain 2 thedragonkin:Charged-Up this turn. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG!r damage. NL If the traget is thedragonkin:Jolted gain 4 thedragonkin:Charged-Up this turn. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage. NL If the traget is *Jolted gain 2 thedragonkin:Charged-Up this turn. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG!r damage. NL If the traget is *Jolted gain 4 thedragonkin:Charged-Up this turn. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Bolting II","Bolting Y",
-      "Excalibur V","Deal !MAG! damage to ALL enemies. NL If you have thedragonkin:Tailwind Deal !MAG! damage to ALL enemies twice instead and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+      "Excalibur V","Deal !MAG! damage to ALL enemies. NL If this is discounted Deal !MAG! damage to ALL enemies twice instead and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
   },
   "theDragonkin:Excalibur": {
     "NAME": "Excalibur",
-    "DESCRIPTION": "Deal !MAG! damage to ALL enemies. NL If this costs less then 2, Deal !MAG! damage to ALL enemies twice instead. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage to ALL enemies. NL If this costs less then 2, Deal !MAG! damage to ALL enemies twice instead and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
+    "DESCRIPTION": "Deal !MAG! damage to ALL enemies. NL If this is discounted, Deal !MAG! damage to ALL enemies twice instead. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage to ALL enemies. NL If this is discounted, Deal !MAG! damage to ALL enemies twice instead and thedragonkin:Follow-Up. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Excalibur II","Excalibur Y",
-      "Bolting V","Deal !MAG! damage. NL If the traget is thedragonkin:Jolted gain 2 thedragonkin:Charged-Up this turn"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
+      "Bolting V","Deal !MAG! damage. NL If the traget is *Jolted gain 2 thedragonkin:Charged-Up this turn"," NL Purge.","thedragonkin:Thunder. NL ","thedragonkin:Wind. NL "]
   },
   "theDragonkin:Ragnarok": {
     "NAME": "Ragnarök",
-    "DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Hot_Streak: thedragonkin:Fire cards deal !M! more damage until you play a non thedragonkin:Fire card. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL thedragonkin:Hot_Streak: thedragonkin:Fire cards deal !M! more damage  until you play a non thedragonkin:Fire card. NL thedragonkin:Casts: !Gremory:Spells!",
-    "EXTENDED_DESCRIPTION": ["Ragnarök II","Ragnarök Y", "Fimbulvetr V", "Deal !MAG! damage. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
+    "DESCRIPTION": "Deal !MAG! damage. NL *Hot_Streak: *Fire cards deal !M! more damage until you play a non *Fire card. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL *Hot_Streak: *Fire cards deal !M! more damage  until you play a non *Fire card. NL thedragonkin:Casts: !Gremory:Spells!",
+    "EXTENDED_DESCRIPTION": ["Ragnarök II","Ragnarök Y", "Fimbulvetr V", "Deal !MAG! damage. NL If the Target is *Frozen they lose !MAG! HP instead., NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
   }
 }

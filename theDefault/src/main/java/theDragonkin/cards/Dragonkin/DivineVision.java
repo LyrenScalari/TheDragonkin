@@ -13,7 +13,7 @@ import theDragonkin.powers.DivineConvictionpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class DivineVision extends AbstractDragonkinCard {
+public class DivineVision extends AbstractHolyBonusCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -44,8 +44,7 @@ public class DivineVision extends AbstractDragonkinCard {
     public DivineVision() {
 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.baseMagicNumber = 1;
-        this.magicNumber = baseMagicNumber;
+        this.magicNumber = baseMagicNumber = 1;
         this.tags.add(CustomTags.HOLY_CARD);
 
     }
@@ -53,7 +52,9 @@ public class DivineVision extends AbstractDragonkinCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m, new DivineConvictionpower(p,m,this.magicNumber), this.magicNumber));
+        if (this.upgraded){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m, new DivineConvictionpower(p,m,2), 2));
+        } else AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m, new DivineConvictionpower(p,m,1), 1));
     }
 
     //Upgraded stats.

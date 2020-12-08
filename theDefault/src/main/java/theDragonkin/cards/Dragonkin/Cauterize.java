@@ -34,7 +34,6 @@ public class Cauterize extends AbstractDragonkinCard {
     public Cauterize() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        baseHeal = 15;
         tags.add(CustomTags.HOLY_CARD);
         tags.add(CardTags.HEALING);
         baseMagicNumber = magicNumber = MAGIC;
@@ -44,7 +43,7 @@ public class Cauterize extends AbstractDragonkinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,baseHeal));
+        AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,15));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new Scorchpower(p,p,baseMagicNumber)));
     }
 
@@ -52,7 +51,6 @@ public class Cauterize extends AbstractDragonkinCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
             upgradeBaseCost(UPGRADED_COST);
             upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();

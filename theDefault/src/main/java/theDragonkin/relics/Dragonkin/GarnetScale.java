@@ -1,4 +1,4 @@
-package theDragonkin.relics;
+package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;

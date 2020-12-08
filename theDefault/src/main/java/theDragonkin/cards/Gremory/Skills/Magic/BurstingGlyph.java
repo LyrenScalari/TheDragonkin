@@ -1,5 +1,7 @@
 package theDragonkin.cards.Gremory.Skills.Magic;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -15,6 +17,9 @@ import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.BurstingWardPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class BurstingGlyph extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -29,10 +34,19 @@ public class BurstingGlyph extends AbstractMagicGremoryCard implements Branching
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 2;
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
     public BurstingGlyph() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Fire);
+        TrapTooltip = new ArrayList<>();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Fire"), BaseMod.getKeywordDescription("thedragonkin:Fire")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Hot_Streak"), BaseMod.getKeywordDescription("thedragonkin:Hot_Streak")));
+        setOrbTexture(DefaultMod.Fire_SMALL_ORB,DefaultMod.Fire_LARGE_ORB);
+        getCustomTooltips();
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[4] + cardStrings.DESCRIPTION;
         initializeDescription();
         isMultiDamage = true;
@@ -42,7 +56,7 @@ public class BurstingGlyph extends AbstractMagicGremoryCard implements Branching
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.timesUpgraded % 2 == 0) {
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])) {
             addToBot(new GainBlockAction(p,MagDamage));
             addToBot(new ApplyPowerAction(p,p,new BurstingWardPower(p,p,MagDamage)));
         } else {
@@ -67,7 +81,7 @@ public class BurstingGlyph extends AbstractMagicGremoryCard implements Branching
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[4] + UPGRADE_DESCRIPTION;
+        this.rawDescription = UPGRADE_DESCRIPTION;
         upgradeMagicNumber(1);
         MagDamageUpgraded = true;
         initializeDescription();
@@ -75,10 +89,16 @@ public class BurstingGlyph extends AbstractMagicGremoryCard implements Branching
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription =cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Fire);
         tags.add(CustomTags.Ice);
-        baseMagDamage -= 20;
+        setOrbTexture(DefaultMod.Ice_SMALL_ORB,DefaultMod.Ice_LARGE_ORB);
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Ice"), BaseMod.getKeywordDescription("thedragonkin:Ice")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Chill"), BaseMod.getKeywordDescription("thedragonkin:Chill")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Freeze"), BaseMod.getKeywordDescription("thedragonkin:Freeze")));
+        getCustomTooltips();
+        baseMagDamage += 20;
         MagDamageUpgraded = true;
         initializeDescription();
 

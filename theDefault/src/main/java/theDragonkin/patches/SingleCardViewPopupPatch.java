@@ -28,17 +28,33 @@ public class SingleCardViewPopupPatch {
             float previewCardHeight = 0;
 
             if (arcanaCard != null) {
-                priestessPreviewCard = arcanaCard.CardPreview1.makeStatEquivalentCopy();
-                emperorPreviewCard = arcanaCard.CardPreview2.makeStatEquivalentCopy();
-                judgementPreviewCard = arcanaCard.CardPreview3.makeStatEquivalentCopy();
-                deathPreviewCard = arcanaCard.CardPreview4.makeStatEquivalentCopy();
+                if (arcanaCard.CardPreview1 != null){
+                    priestessPreviewCard = arcanaCard.CardPreview1.makeStatEquivalentCopy();
+                }
+                if (arcanaCard.CardPreview2 != null){
+                    emperorPreviewCard = arcanaCard.CardPreview2.makeStatEquivalentCopy();
+                }
+                if (arcanaCard.CardPreview3 != null){
+                    judgementPreviewCard = arcanaCard.CardPreview3.makeStatEquivalentCopy();
+                }
+                if (arcanaCard.CardPreview4 != null){
+                    deathPreviewCard = arcanaCard.CardPreview4.makeStatEquivalentCopy();
+                }
+
                 previewCardHeight = priestessPreviewCard.hb.height;
                 if (card.upgraded) {
-                    priestessPreviewCard.upgrade();
-                    emperorPreviewCard.upgrade();
-                    foolPreviewCard.upgrade();
-                    judgementPreviewCard.upgrade();
-                    deathPreviewCard.upgrade();
+                    if (arcanaCard.CardPreview1 != null){
+                        priestessPreviewCard.upgrade();
+                    }
+                    if (arcanaCard.CardPreview2 != null){
+                        emperorPreviewCard.upgrade();
+                    }
+                    if (arcanaCard.CardPreview3 != null){
+                        judgementPreviewCard.upgrade();
+                    }
+                    if (arcanaCard.CardPreview4 != null){
+                        deathPreviewCard.upgrade();
+                    }
                 }
             }
 
@@ -50,24 +66,11 @@ public class SingleCardViewPopupPatch {
             float yPosition2 = card.current_y + previewCardHeight * 2.70f;
             float yPosition3 = card.current_y + previewCardHeight * 2.95f;
 
-            if (priestessPreviewCard != null) {
-                priestessPreviewCard.drawScale = (float) (drawScale * 1.15);
-                priestessPreviewCard.current_x = xPosition1;
-                priestessPreviewCard.current_y = yPosition1;
-                priestessPreviewCard.render(sb);
-            }
-
             if (emperorPreviewCard != null) {
                 emperorPreviewCard.drawScale = (float) (drawScale * 1.15);
                 emperorPreviewCard.current_x = xPosition1;
                 emperorPreviewCard.current_y = yPosition2;
                 emperorPreviewCard.render(sb);
-            }
-            if (foolPreviewCard != null) {
-                foolPreviewCard.drawScale = (float) (drawScale * 1.15);
-                foolPreviewCard.current_x = xPosition3;
-                foolPreviewCard.current_y = yPosition3;
-                foolPreviewCard.render(sb);
             }
 
             if (judgementPreviewCard != null) {
@@ -81,6 +84,18 @@ public class SingleCardViewPopupPatch {
                 deathPreviewCard.current_x = xPosition2;
                 deathPreviewCard.current_y = yPosition1;
                 deathPreviewCard.render(sb);
+            }
+            if (priestessPreviewCard != null && deathPreviewCard != null) {
+                priestessPreviewCard.drawScale = (float) (drawScale * 1.15);
+                priestessPreviewCard.current_x = xPosition1;
+                priestessPreviewCard.current_y = yPosition1;
+                priestessPreviewCard.render(sb);
+            }
+            else if (priestessPreviewCard != null && deathPreviewCard == null){
+                priestessPreviewCard.drawScale = (float) (drawScale * 1.15);
+                priestessPreviewCard.current_x = xPosition3;
+                priestessPreviewCard.current_y = yPosition1;
+                priestessPreviewCard.render(sb);
             }
         }
         private static class Locator extends SpireInsertLocator {

@@ -1,4 +1,4 @@
-package theDragonkin.potions;
+package theDragonkin.potions.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
+import theDragonkin.DefaultMod;
+import theDragonkin.potions.PlaceholderPotion;
 import theDragonkin.powers.Scorchpower;
 
 public class DragonkinCommonPotion extends AbstractPotion {
@@ -26,7 +28,7 @@ public class DragonkinCommonPotion extends AbstractPotion {
     public DragonkinCommonPotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
         super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.BOTTLE, PotionColor.SMOKE);
-
+        this.labOutlineColor = DefaultMod.DEFAULT_GRAY;
         // Potency is the damage/magic number equivalent of potions.
         potency = getPotency();
 
@@ -64,15 +66,15 @@ public class DragonkinCommonPotion extends AbstractPotion {
                 this.addToBot(new VFXAction(new FireBurstParticleEffect(mo.hb.cX, mo.hb.cY), 0.1F));
             });
             for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, AbstractDungeon.player,
-                        new Scorchpower(mo,AbstractDungeon.player, potency), potency));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, target,
+                        new Scorchpower(mo,target, potency), potency));
             }
         }
     }
 
     @Override
     public AbstractPotion makeCopy() {
-        return new PlaceholderPotion();
+        return new DragonkinCommonPotion();
     }
 
     // This is your potency.

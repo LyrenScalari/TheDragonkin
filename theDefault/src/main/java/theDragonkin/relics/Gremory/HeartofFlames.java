@@ -1,4 +1,4 @@
-package theDragonkin.relics;
+package theDragonkin.relics.Gremory;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
@@ -36,13 +36,6 @@ public class HeartofFlames extends CustomRelic { // You must implement things yo
 
     private boolean isPlayerTurn = false; // We should make sure the relic is only activateable during our turn, not the enemies'.
     private boolean used = false;
-    private static boolean physical = false;
-    private static boolean fire = false;
-    private static boolean ice = false;
-    private static boolean wind = false;
-    private static boolean thunder = false;
-    private static boolean dark = false;
-    private static boolean light = false;
 
     public HeartofFlames() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, AbstractRelic.LandingSound.HEAVY);
@@ -61,16 +54,9 @@ public class HeartofFlames extends CustomRelic { // You must implement things yo
 
     @Override
     public void onUseCard(final AbstractCard c, final UseCardAction ca) {
-        if (!(c instanceof AbstractMagicGremoryCard) && !physical){
-            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,StrengthPower.POWER_ID));
-            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,DexterityPower.POWER_ID));
-            physical = true;
-        }
     }
     @Override
     public void atBattleStart() {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,3),3));
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DexterityPower(AbstractDungeon.player,3),3));
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new ChargedUpCards(AbstractDungeon.player,3,1),3));
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DeepFrostCards(AbstractDungeon.player,3,1),3));
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new KindlingCards(AbstractDungeon.player,3,1),3));
@@ -85,13 +71,6 @@ public class HeartofFlames extends CustomRelic { // You must implement things yo
     }
 
     public void onVictory() {
-        physical = false;
-        fire = false;
-        ice = false;
-        wind = false;
-        thunder = false;
-        dark = false;
-        light = false;
     }
 
     @Override

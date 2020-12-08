@@ -1,21 +1,10 @@
-package theDragonkin.relics;
+package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theDragonkin.DefaultMod;
+import theDragonkin.relics.Dragonkin.GarnetScale;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makeRelicOutlinePath;

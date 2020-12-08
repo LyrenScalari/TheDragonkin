@@ -1,5 +1,7 @@
 package theDragonkin.cards.Gremory.Attacks.Magic;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -22,6 +24,9 @@ import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ChargedUpDuration;
 import theDragonkin.powers.JoltedPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class Bolting extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -38,18 +43,27 @@ public class Bolting extends AbstractMagicGremoryCard implements BranchingUpgrad
     private static final int COST = 1;
     private static final int MAGIC = 2;
     private static AbstractCard FollowUp;
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
     public Bolting() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Thunder);
         magicNumber = baseMagicNumber = MAGIC;
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] +  cardStrings.DESCRIPTION;
+        this.rawDescription =  cardStrings.DESCRIPTION;
+        TrapTooltip = new ArrayList<>();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Thunder"), BaseMod.getKeywordDescription("thedragonkin:Thunder")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Jolted"), BaseMod.getKeywordDescription("thedragonkin:Jolted")));
+        getCustomTooltips();
+        setOrbTexture(DefaultMod.Thunder_SMALL_ORB,DefaultMod.Thunder_LARGE_ORB);
         initializeDescription();
         MagDamage = baseMagDamage = 16;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.timesUpgraded % 2 == 0){
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])){
             if (m.hasPower(JoltedPower.POWER_ID)){
                 addToBot(new ApplyPowerAction(p,p,new ChargedUpDuration(p,magicNumber,1)));
             }
@@ -87,16 +101,21 @@ public class Bolting extends AbstractMagicGremoryCard implements BranchingUpgrad
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] +UPGRADE_DESCRIPTION;
+        this.rawDescription = UPGRADE_DESCRIPTION;
         upgradeMagicNumber(2);
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Thunder);
         tags.add(CustomTags.Wind);
+        setOrbTexture(DefaultMod.Wind_SMALL_ORB,DefaultMod.Wind_LARGE_ORB);
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Wind"), BaseMod.getKeywordDescription("thedragonkin:Wind")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Tailwind"), BaseMod.getKeywordDescription("thedragonkin:Tailwind")));
+        getCustomTooltips();
         baseMagDamage -= 8;
         this.isMultiDamage = true;
         MagDamageUpgraded = true;

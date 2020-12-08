@@ -1,10 +1,10 @@
-package theDragonkin.relics;
+package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.watcher.TriggerMarksAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -14,7 +14,7 @@ import theDragonkin.util.TextureLoader;
 import static theDragonkin.DefaultMod.makeRelicOutlinePath;
 import static theDragonkin.DefaultMod.makeRelicPath;
 
-public class EmberCore extends CustomRelic { // You must implement things you want to use from StSlib
+public class MukySludge extends CustomRelic { // You must implement things you want to use from StSlib
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
      * StSLib for Clickable Relics
@@ -23,17 +23,17 @@ public class EmberCore extends CustomRelic { // You must implement things you wa
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("EmberCore");
+    public static final String ID = DefaultMod.makeID("MukySludge");
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("EmberCore.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("EmberCore.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("MukySludge.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("MukySludge.png"));
     // You can also have a relic be only usable once per combat. Check out Hubris for more examples, including other StSlib things.
 
     private boolean isPlayerTurn = false; // We should make sure the relic is only activateable during our turn, not the enemies'.
     private  boolean used = false;
 
-    public EmberCore() {
-        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.CLINK);
+    public MukySludge() {
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.MAGICAL);
         tips.clear();
         tips.add(new PowerTip(name, description));
     }
@@ -44,12 +44,8 @@ public class EmberCore extends CustomRelic { // You must implement things you wa
 
     @Override
     public void onCardDraw(AbstractCard card){
-        if (card.type == AbstractCard.CardType.STATUS && !used){
-            addToBot(new DrawCardAction(1));
-            addToBot(new AddTemporaryHPAction(AbstractDungeon.player,AbstractDungeon.player,6));
-            used = true;
-        }
     }
+
     @Override
     public void atTurnStart(){
         used = false;
@@ -58,6 +54,7 @@ public class EmberCore extends CustomRelic { // You must implement things you wa
     @Override
     public void onPlayerEndTurn() {
         used = false;
+        addToBot(new TriggerMarksAction(null));
     }
 
     // Description
@@ -67,4 +64,3 @@ public class EmberCore extends CustomRelic { // You must implement things you wa
     }
 
 }
-

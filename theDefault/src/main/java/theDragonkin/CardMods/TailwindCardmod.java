@@ -62,8 +62,8 @@ public class TailwindCardmod extends AbstractCardModifier {
         }
     }
 
-    @Override
-    public void atEndOfTurn(AbstractCard card, CardGroup group) {
+    public void atTurnStart(AbstractCard card, CardGroup group) {
+        card.setCostForTurn(card.costForTurn - this.cost);
     }
 
     @Override

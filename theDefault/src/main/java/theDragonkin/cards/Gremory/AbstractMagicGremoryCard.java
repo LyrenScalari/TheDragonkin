@@ -16,6 +16,7 @@ package theDragonkin.cards.Gremory;
         import theDragonkin.CardMods.AfterglowCardMod;
         import theDragonkin.CardMods.DarkenCardMod;
         import theDragonkin.CardMods.TailwindCardmod;
+        import theDragonkin.DefaultMod;
         import theDragonkin.powers.WindsSong;
         import theDragonkin.CustomTags;
         import theDragonkin.actions.WitherAction;

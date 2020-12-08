@@ -1,5 +1,7 @@
 package theDragonkin.cards.Gremory.Attacks.Magic;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -25,6 +27,9 @@ import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ChargedUpDuration;
 import theDragonkin.powers.JoltedPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -33,7 +38,7 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
 
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheGremory.Enums.Gremory_Purple_Color;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -42,23 +47,32 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
     private static final int MAGIC = 2;
     private static AbstractCard FollowUp;
     private int windcounter;
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
 
     public Excalibur() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Wind);
+        setOrbTexture(DefaultMod.Wind_SMALL_ORB,DefaultMod.Wind_LARGE_ORB);
+        TrapTooltip = new ArrayList<>();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Wind"), BaseMod.getKeywordDescription("thedragonkin:Wind")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Tailwind"), BaseMod.getKeywordDescription("thedragonkin:Tailwind")));
         magicNumber = baseMagicNumber = MAGIC;
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] +  cardStrings.DESCRIPTION;
+        this.rawDescription = cardStrings.DESCRIPTION;
         initializeDescription();
         MagDamage = baseMagDamage = 10;
         isMultiDamage = true;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.timesUpgraded % 2 == 0){
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])){
             addToBot(new VFXAction(new WhirlwindEffect()));
             addToBot(new DamageAllEnemiesAction(p,MagDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HEAVY));
             addToBot(new VFXAction(new CleaveEffect()));
-            if (this.cost < 2) {
+            if (this.costForTurn < 2) {
                 addToBot(new DamageAllEnemiesAction(p, MagDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HEAVY));
                 addToBot(new VFXAction(new CleaveEffect()));
                 if (Excalibur.this.upgraded) {
@@ -101,6 +115,13 @@ public class Excalibur extends AbstractMagicGremoryCard implements BranchingUpgr
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Wind);
         tags.add(CustomTags.Thunder);
+        setOrbTexture(DefaultMod.Thunder_SMALL_ORB,DefaultMod.Thunder_LARGE_ORB);
+        this.isMultiDamage = false;
+        this.target = CardTarget.ENEMY;
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Thunder"), BaseMod.getKeywordDescription("thedragonkin:Thunder")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Jolted"), BaseMod.getKeywordDescription("thedragonkin:Jolted")));
+        getCustomTooltips();
         baseMagDamage += 4;
         this.upgradeBaseCost(1);
         upgradeMagicNumber(1);

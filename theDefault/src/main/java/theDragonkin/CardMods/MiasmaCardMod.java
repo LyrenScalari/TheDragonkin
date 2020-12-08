@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
 import theDragonkin.powers.ResistancePower;
 
@@ -31,21 +32,44 @@ public class MiasmaCardMod extends DarkenCardMod {
     }
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new ResistancePower(target, stacks, time), stacks));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new CollectorCurseEffect(target.drawX,target.drawY)));
-        for (AbstractCard c : AllCards.group) {
-            for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                        if (m instanceof DarkenCardMod) {
-                            CardModifierManager.removeSpecificModifier(c, m, true);
-                            MiasmaCardMod.super.removeOnCardPlayed(c);
+        if (card.target != AbstractCard.CardTarget.ALL_ENEMY) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new ResistancePower(target, stacks, time), stacks));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new CollectorCurseEffect(target.drawX, target.drawY)));
+            for (AbstractCard c : AllCards.group) {
+                for (AbstractCardModifier m : CardModifierManager.modifiers(c)) {
+                    AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            if (m instanceof DarkenCardMod) {
+                                CardModifierManager.removeSpecificModifier(c, m, true);
+                                MiasmaCardMod.super.removeOnCardPlayed(c);
+                                isDone = true;
+                            }
                             isDone = true;
                         }
-                        isDone = true;
-                    }
-                });
+                    });
+                }
+            }
+        }
+        else {
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, AbstractDungeon.player, new ResistancePower(m, stacks, time), stacks));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new CollectorCurseEffect(m.drawX, m.drawY)));
+            }
+            for (AbstractCard c : AllCards.group) {
+                for (AbstractCardModifier mo : CardModifierManager.modifiers(c)) {
+                    AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            if (mo instanceof DarkenCardMod) {
+                                CardModifierManager.removeSpecificModifier(c, mo, true);
+                                MiasmaCardMod.super.removeOnCardPlayed(c);
+                                isDone = true;
+                            }
+                            isDone = true;
+                        }
+                    });
+                }
             }
         }
     }

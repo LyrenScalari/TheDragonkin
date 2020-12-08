@@ -2,6 +2,8 @@ package theDragonkin.cards.Gremory.Powers;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
@@ -27,7 +29,7 @@ public class SwiftasWind extends AbstractGremoryCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheGremory.Enums.Gremory_Purple_Color;
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
@@ -55,6 +57,8 @@ public class SwiftasWind extends AbstractGremoryCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            isInnate = true;
+            this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0] + cardStrings.DESCRIPTION;
             initializeDescription();
         }
     }

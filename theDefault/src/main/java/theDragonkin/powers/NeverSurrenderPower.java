@@ -48,7 +48,7 @@ public class NeverSurrenderPower extends AbstractPower implements CloneablePower
 
     @Override
     public void onUseCard(final AbstractCard c , final UseCardAction ca){
-            if (owner.currentHealth < owner.maxHealth / 2){
+            if (owner.currentHealth < (double)(owner.maxHealth) / 2){
                 this.flash();
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner,amount));
             }

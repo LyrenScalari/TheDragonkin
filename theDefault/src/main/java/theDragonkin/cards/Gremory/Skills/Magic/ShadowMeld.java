@@ -1,5 +1,7 @@
 package theDragonkin.cards.Gremory.Skills.Magic;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
@@ -21,6 +23,9 @@ import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class ShadowMeld extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -37,11 +42,19 @@ public class ShadowMeld extends AbstractMagicGremoryCard implements BranchingUpg
     private static final int COST = 2;
     private static float animx;
     private static float animy;
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
     public ShadowMeld() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Dark);
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.DESCRIPTION;
+        TrapTooltip = new ArrayList<>();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Dark"), BaseMod.getKeywordDescription("thedragonkin:Dark")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Darken"), BaseMod.getKeywordDescription("thedragonkin:Darken")));
+        setOrbTexture(DefaultMod.Dark_SMALL_ORB,DefaultMod.Dark_LARGE_ORB);
+        this.rawDescription = cardStrings.DESCRIPTION;
         initializeDescription();
         MagDamage = baseMagDamage = 10;
         magicNumber = baseMagicNumber = 2;
@@ -50,7 +63,7 @@ public class ShadowMeld extends AbstractMagicGremoryCard implements BranchingUpg
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.timesUpgraded % 2 == 0) {
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePower(p, magicNumber)));
             AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new VoidCard(), magicNumber, true, false));
         } else {
@@ -74,16 +87,21 @@ public class ShadowMeld extends AbstractMagicGremoryCard implements BranchingUpg
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + UPGRADE_DESCRIPTION;
+        this.rawDescription = UPGRADE_DESCRIPTION;
         upgradeMagicNumber(1);
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[4] + cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Dark);
         tags.add(CustomTags.Light);
+        setOrbTexture(DefaultMod.Light_SMALL_ORB,DefaultMod.Light_LARGE_ORB);
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Light"), BaseMod.getKeywordDescription("thedragonkin:Light")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Afterglow"), BaseMod.getKeywordDescription("thedragonkin:Afterglow")));
+        getCustomTooltips();
         upgradeMagicNumber(4);
         MagDamageUpgraded = true;
         initializeDescription();

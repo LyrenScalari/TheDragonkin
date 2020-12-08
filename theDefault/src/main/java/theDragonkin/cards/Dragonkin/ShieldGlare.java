@@ -4,13 +4,14 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.ShieldGlarepower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class ShieldGlare extends AbstractDragonkinCard {
+public class ShieldGlare extends AbstractHolyBonusCard {
 
     public static final String ID = DefaultMod.makeID(ShieldGlare.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -35,6 +36,7 @@ public class ShieldGlare extends AbstractDragonkinCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
+        tags.add(CustomTags.HOLY_CARD);
         this.exhaust = true;
 
     }

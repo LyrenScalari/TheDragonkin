@@ -1,5 +1,7 @@
 package theDragonkin.cards.Gremory.Attacks.Magic;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -21,6 +23,9 @@ import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class Mire extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -37,12 +42,20 @@ public class Mire extends AbstractMagicGremoryCard implements BranchingUpgradesC
     private static final int COST = 1;
     private static float animx;
     private static float animy;
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
 
     public Mire() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Dark);
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] +  cardStrings.DESCRIPTION;
+        TrapTooltip = new ArrayList<>();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Dark"), BaseMod.getKeywordDescription("thedragonkin:Dark")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Darken"), BaseMod.getKeywordDescription("thedragonkin:Darken")));
+        setOrbTexture(DefaultMod.Dark_SMALL_ORB,DefaultMod.Dark_LARGE_ORB);
+        this.rawDescription =  cardStrings.DESCRIPTION;
         initializeDescription();
         magicNumber = baseMagicNumber = 4;
         MagDamage = baseMagDamage = 8;
@@ -51,7 +64,7 @@ public class Mire extends AbstractMagicGremoryCard implements BranchingUpgradesC
     public void use(AbstractPlayer p, AbstractMonster m) {
         animx = m.drawX;
         animy = m.drawY;
-        if (this.timesUpgraded % 2 == 0) {
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])) {
             addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
             addToBot(new ApplyPowerAction(m,p,new PoisonPower(m,p,magicNumber)));
             addToBot(new VFXAction(new CollectorStakeEffect(animx,animy)));
@@ -79,7 +92,7 @@ public class Mire extends AbstractMagicGremoryCard implements BranchingUpgradesC
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[6] + UPGRADE_DESCRIPTION;
+        this.rawDescription = UPGRADE_DESCRIPTION;
         baseMagDamage += 2;
         upgradeMagicNumber(1);
         initializeDescription();
@@ -87,9 +100,14 @@ public class Mire extends AbstractMagicGremoryCard implements BranchingUpgradesC
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Dark);
         tags.add(CustomTags.Light);
+        setOrbTexture(DefaultMod.Light_SMALL_ORB,DefaultMod.Light_LARGE_ORB);
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Light"), BaseMod.getKeywordDescription("thedragonkin:Light")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Afterglow"), BaseMod.getKeywordDescription("thedragonkin:Afterglow")));
+        getCustomTooltips();
         baseMagDamage += 5;
         upgradeMagicNumber(-3);
         ExhaustiveVariable.upgrade(this,3);

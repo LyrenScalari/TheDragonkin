@@ -1,5 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,6 +12,7 @@ import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.actions.CustomDiscoveryAction;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static theDragonkin.DefaultMod.makeCardPath;
@@ -25,7 +28,17 @@ public class AncestralSeance extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Dragonkin_Red_COLOR;
     public CardGroup NonHoly = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        if (TrapTooltip == null)
+        {
+            TrapTooltip = new ArrayList<>();
+            TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Holy"), BaseMod.getKeywordDescription("thedragonkin:Holy")));
+            TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Zeal"), BaseMod.getKeywordDescription("thedragonkin:Zeal")));
+        }
+        return TrapTooltip;
+    }
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
 

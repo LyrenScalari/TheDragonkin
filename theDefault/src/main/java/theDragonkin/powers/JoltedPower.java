@@ -34,7 +34,7 @@ public class JoltedPower extends AbstractPower implements modifyMagicPower{
         this.amount = amount;
         this.source = source;
 
-        type = PowerType.DEBUFF;
+        type = PowerType.BUFF;
         isTurnBased = false;
 
         // We load those txtures here.

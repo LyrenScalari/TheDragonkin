@@ -54,7 +54,7 @@
     "NAME": "Sulfurian",
     "FLAVOR": "The Great Mace of the Molten Core, known to incinerate anything.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn, Shuffle 3 Burns into your Drawpile after taking unblocked Damage."
+      "Gain [E] at the start of your turn, Shuffle 1 Burns into your Discard pile after taking unblocked Damage."
     ]
   },
 

@@ -28,14 +28,13 @@ public class FlashofLight extends AbstractHolyBonusCard {
 
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int MAGIC = 7;
+    private static final int MAGIC = 6;
     private static final int UPGRADE_MAGIC = 3;
 
 
     public FlashofLight() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        baseHeal = DAMAGE;
         tags.add(CustomTags.HOLY_CARD);
         tags.add(CardTags.HEALING);
         baseMagicNumber = magicNumber = MAGIC;
@@ -45,8 +44,10 @@ public class FlashofLight extends AbstractHolyBonusCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new HealAction(p,p,baseHeal));
+        if (this.upgraded){
+            AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,6));
+        }else AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,4));
+
         AbstractDungeon.actionManager.addToBottom(
                 new AddTemporaryHPAction(p,p,magicNumber));
     }
@@ -57,7 +58,6 @@ public class FlashofLight extends AbstractHolyBonusCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            baseHeal += UPGRADE_PLUS_DMG;
             upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }

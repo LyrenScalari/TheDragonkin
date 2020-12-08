@@ -1,5 +1,7 @@
 package theDragonkin.cards.Gremory.Skills.Magic;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -20,6 +22,9 @@ import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.ResistancePower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class Loptous extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -36,11 +41,19 @@ public class Loptous extends AbstractMagicGremoryCard implements BranchingUpgrad
     private static final int COST = 2;
     private static float animx;
     private static float animy;
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
     public Loptous() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Dark);
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.DESCRIPTION;
+        TrapTooltip = new ArrayList<>();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Dark"), BaseMod.getKeywordDescription("thedragonkin:Dark")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Darken"), BaseMod.getKeywordDescription("thedragonkin:Darken")));
+        setOrbTexture(DefaultMod.Dark_SMALL_ORB,DefaultMod.Dark_LARGE_ORB);
+        this.rawDescription = cardStrings.DESCRIPTION;
         initializeDescription();
         MagDamage = baseMagDamage = 10;
         magicNumber = baseMagicNumber = 6;
@@ -49,7 +62,7 @@ public class Loptous extends AbstractMagicGremoryCard implements BranchingUpgrad
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.timesUpgraded % 2 == 0) {
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])) {
             for (AbstractMonster mo: AbstractDungeon.getCurrRoom().monsters.monsters){
                 addToBot(new ApplyPowerAction(mo,p,new ResistancePower(mo,magicNumber,99)));
             }
@@ -82,16 +95,21 @@ public class Loptous extends AbstractMagicGremoryCard implements BranchingUpgrad
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + UPGRADE_DESCRIPTION;
+        this.rawDescription = UPGRADE_DESCRIPTION;
         upgradeMagicNumber(1);
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[4] + cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription =cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Dark);
         tags.add(CustomTags.Light);
+        setOrbTexture(DefaultMod.Light_SMALL_ORB,DefaultMod.Light_LARGE_ORB);
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Light"), BaseMod.getKeywordDescription("thedragonkin:Light")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Afterglow"), BaseMod.getKeywordDescription("thedragonkin:Afterglow")));
+        getCustomTooltips();
         MagDamageUpgraded = true;
         initializeDescription();
 

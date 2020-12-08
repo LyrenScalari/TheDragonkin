@@ -28,11 +28,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.potions.DragonkinCommonPotion;
-import theDragonkin.potions.DragonkinRarePotion;
-import theDragonkin.potions.DragonkinUncommonPotion;
+import theDragonkin.potions.Dragonkin.DragonkinCommonPotion;
+import theDragonkin.potions.Dragonkin.DragonkinRarePotion;
+import theDragonkin.potions.Dragonkin.DragonkinUncommonPotion;
+import theDragonkin.potions.Gremory.MagicHerbTea;
+import theDragonkin.potions.Gremory.ShadowofZahras;
+import theDragonkin.potions.Gremory.SpringWater;
 import theDragonkin.powers.*;
-import theDragonkin.relics.*;
+import theDragonkin.relics.Dragonkin.*;
+import theDragonkin.relics.Gremory.HeartofFlames;
 import theDragonkin.util.IDCheckDontTouchPls;
 import theDragonkin.util.TextureLoader;
 import theDragonkin.variables.*;
@@ -116,7 +120,10 @@ public class DefaultMod implements
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
   
-    // Card backgrounds - The actual rectangular card.
+    // Card backgrounds - The actual rectangular card
+
+    public static final String HOLY_LARGE_ORB = "theDragonkinResources/images/1024/card_Dragonkin_Holy_orb.png";
+    public static final String HOLY_SMALL_ORB = "theDragonkinResources/images/512/card_Dragonkin_Holy_orb.png";
     private static final String ATTACK_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_power_default_gray.png";
@@ -140,7 +147,55 @@ public class DefaultMod implements
     private static final String SKILL_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/bg_skill_gremory.png";
     private static final String POWER_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/bg_power_gremory.png";
     private static final String ENERGY_ORB_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/gremory_purple_orb.png";
-    
+    public static final String Fire_LARGE_ORB = "theDragonkinResources/images/1024/card_Fire_orb.png";
+    public static final String Fire_SMALL_ORB = "theDragonkinResources/images/512/card_Fire_orb.png";
+    public static final String Ice_LARGE_ORB = "theDragonkinResources/images/1024/card_Ice_orb.png";
+    public static final String Ice_SMALL_ORB = "theDragonkinResources/images/512/card_Ice_orb.png";
+    public static final String Thunder_LARGE_ORB = "theDragonkinResources/images/1024/card_Thunder_orb.png";
+    public static final String Thunder_SMALL_ORB = "theDragonkinResources/images/512/card_Thunder_orb.png";
+    public static final String Wind_LARGE_ORB = "theDragonkinResources/images/1024/card_Wind_orb.png";
+    public static final String Wind_SMALL_ORB = "theDragonkinResources/images/512/card_Wind_orb.png";
+    public static final String Dark_LARGE_ORB = "theDragonkinResources/images/1024/card_Dark_orb.png";
+    public static final String Dark_SMALL_ORB = "theDragonkinResources/images/512/card_Dark_orb.png";
+    public static final String Light_LARGE_ORB = "theDragonkinResources/images/1024/card_Light_orb.png";
+    public static final String Light_SMALL_ORB = "theDragonkinResources/images/512/card_Light_orb.png";
+
+    public static final String SPRING_LARGE_ORB = "theDragonkinResources/images/1024/card_special_flower.png";
+    public static final String SPRING_SMALL_ORB = "theDragonkinResources/images/512/card_special_flower.png";
+    public static final String SPRING_LARGE_ATTACK_FRAME = "theDragonkinResources/images/1024/bg_attack_special_flower.png";
+    public static final String SPRING_LARGE_SKILL_FRAME = "theDragonkinResources/images/1024/bg_skill_special_flower.png";
+    public static final String SPRING_LARGE_POWER_FRAME ="theDragonkinResources/images/1024/bg_power_special_flower.png";
+    public static final String SPRING_SMALL_ATTACK_FRAME = "theDragonkinResources/images/512/bg_attack_special_flower.png";
+    public static final String SPRING_SMALL_SKILL_FRAME = "theDragonkinResources/images/512/bg_skill_special_flower.png";
+    public static final String SPRING_SMALL_POWER_FRAME = "theDragonkinResources/images/512/bg_power_special_flower.png";
+
+    public static final String SUMMER_LARGE_ORB = "theDragonkinResources/images/1024/card_Summer_orb.png";
+    public static final String SUMMER_SMALL_ORB = "theDragonkinResources/images/512/card_Summer_orb.png";
+    public static final String SUMMER_LARGE_ATTACK_FRAME = "theDragonkinResources/images/1024/bg_attack_special_wind.png";
+    public static final String SUMMER_LARGE_SKILL_FRAME = "theDragonkinResources/images/1024/bg_skill_special_wind.png";
+    public static final String SUMMER_LARGE_POWER_FRAME ="theDragonkinResources/images/1024/bg_power_special_wind.png";
+    public static final String SUMMER_SMALL_ATTACK_FRAME = "theDragonkinResources/images/512/bg_attack_special_wind.png";
+    public static final String SUMMER_SMALL_SKILL_FRAME = "theDragonkinResources/images/512/bg_skill_special_wind.png";
+    public static final String SUMMER_SMALL_POWER_FRAME = "theDragonkinResources/images/512/bg_power_special_wind.png";
+
+    public static final String AUTUMN_LARGE_ORB = "theDragonkinResources/images/1024/card_Autumn_orb.png";
+    public static final String AUTUMN_SMALL_ORB = "theDragonkinResources/images/512/card_Autumn_orb.png";
+    public static final String AUTUMN_LARGE_ATTACK_FRAME = "theDragonkinResources/images/1024/bg_attack_special_moon.png";
+    public static final String AUTUMN_LARGE_SKILL_FRAME = "theDragonkinResources/images/1024/bg_skill_special_moon.png";
+    public static final String AUTUMN_LARGE_POWER_FRAME ="theDragonkinResources/images/1024/bg_power_special_moon.png";
+    public static final String AUTUMN_SMALL_ATTACK_FRAME = "theDragonkinResources/images/512/bg_attack_special_moon.png";
+    public static final String AUTUMN_SMALL_SKILL_FRAME = "theDragonkinResources/images/512/bg_skill_special_moon.png";
+    public static final String AUTUMN_SMALL_POWER_FRAME = "theDragonkinResources/images/512/bg_power_special_moon.png";
+
+    public static final String WINTER_LARGE_ORB = "theDragonkinResources/images/1024/card_Winter_orb.png";
+    public static final String WINTER_SMALL_ORB = "theDragonkinResources/images/512/card_Winter_orb.png";
+    public static final String WINTER_LARGE_ATTACK_FRAME = "theDragonkinResources/images/1024/bg_attack_special_snow.png";
+    public static final String WINTER_LARGE_SKILL_FRAME = "theDragonkinResources/images/1024/bg_skill_special_snow.png";
+    public static final String WINTER_LARGE_POWER_FRAME ="theDragonkinResources/images/1024/bg_power_special_snow.png";
+    public static final String WINTER_SMALL_ATTACK_FRAME = "theDragonkinResources/images/512/bg_attack_special_snow.png";
+    public static final String WINTER_SMALL_SKILL_FRAME = "theDragonkinResources/images/512/bg_skill_special_snow.png";
+    public static final String WINTER_SMALL_POWER_FRAME = "theDragonkinResources/images/512/bg_power_special_snow.png";
+
     // Character assets
     public static final String THE_DRAGONKIN_SHOULDER_1 = "theDragonkinResources/images/char/defaultCharacter/Dragonkinshoulder.png";
     public static final String THE_DRAGONKIN_SHOULDER_2 = "theDragonkinResources/images/char/defaultCharacter/Dragonkinshoulder2.png";
@@ -423,9 +478,13 @@ public class DefaultMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(DragonkinCommonPotion.class, Color.FIREBRICK , null, Color.LIGHT_GRAY,DragonkinCommonPotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
-        BaseMod.addPotion(DragonkinUncommonPotion.class, Color.YELLOW ,Color.SKY , null, DragonkinUncommonPotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
-        BaseMod.addPotion(DragonkinRarePotion.class, Color.GOLDENROD ,Color.RED , null, DragonkinRarePotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
+        BaseMod.addPotion(DragonkinCommonPotion.class, Color.FIREBRICK.cpy() , null, Color.LIGHT_GRAY.cpy(),DragonkinCommonPotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
+        BaseMod.addPotion(DragonkinUncommonPotion.class, Color.YELLOW.cpy() ,Color.SKY.cpy() , null, DragonkinUncommonPotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
+        BaseMod.addPotion(DragonkinRarePotion.class, Color.GOLDENROD.cpy() ,Color.RED.cpy() , null, DragonkinRarePotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
+
+        BaseMod.addPotion(MagicHerbTea.class, Color.CHARTREUSE.cpy() , Color.GREEN.cpy(), null,MagicHerbTea.POTION_ID, TheGremory.Enums.THE_GREMORY);
+        BaseMod.addPotion(SpringWater.class, Color.SKY.cpy() ,Color.BLUE.cpy() , Color.TEAL, SpringWater.POTION_ID, TheGremory.Enums.THE_GREMORY);
+        BaseMod.addPotion(ShadowofZahras.class, Color.BLACK.cpy() ,Color.DARK_GRAY.cpy() , null, ShadowofZahras.POTION_ID, TheGremory.Enums.THE_GREMORY);
         logger.info("Done editing potions");
     }
     

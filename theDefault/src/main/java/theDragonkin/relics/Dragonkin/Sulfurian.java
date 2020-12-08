@@ -1,7 +1,8 @@
-package theDragonkin.relics;
+package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -61,7 +62,7 @@ public class Sulfurian extends CustomRelic { // You must implement things you wa
 
     @Override
     public void wasHPLost(int damageAmount) {
-        addToBot(new MakeTempCardInDrawPileAction(new Burn(),3,true,false));
+        addToBot(new MakeTempCardInDiscardAction(new Burn(),1));
     }
 
     public void onEquip() {

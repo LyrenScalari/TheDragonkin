@@ -1,5 +1,6 @@
 package theDragonkin.cards.Gremory.Choices;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;

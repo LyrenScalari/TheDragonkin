@@ -14,5 +14,17 @@
         "theDragonkin:DragonkinRarePotion": {
                 "NAME": "Draught of Fervor",
                 "DESCRIPTIONS": ["Gain #b"," #yZeal"]
+        },
+        "theDragonkin:MagicHerbTea": {
+                "NAME": "Magic Herb Tea",
+                "DESCRIPTIONS": ["Gain #b"," #yArcana"]
+        },
+        "theDragonkin:SpringWater": {
+                "NAME": "Spring Water",
+                "DESCRIPTIONS": ["#rExperimental #rMay #rNot #rFunction #rAs #rExpected. NL Choose #b"," Spells in your deck to #yReplenish."]
+        },
+        "theDragonkin:ShadowofZahras": {
+                "NAME": "Shadow of Zahras",
+                "DESCRIPTIONS": ["rExperimental #rMay #rNot #rFunction #rAs #rExpected. NL Choose 1 of 4 #yDark Spells, add it to your hand and Main Deck."]
         }
 }

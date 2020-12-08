@@ -24,7 +24,7 @@ import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.Attacks.GremoryStrike;
 import theDragonkin.cards.Gremory.Attacks.Magic.Fire;
 import theDragonkin.cards.Gremory.Skills.GremoryDefend;
-import theDragonkin.relics.HeartofFlames;
+import theDragonkin.relics.Gremory.HeartofFlames;
 
 import java.util.ArrayList;
 

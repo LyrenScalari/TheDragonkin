@@ -33,7 +33,7 @@ public class FierceasFire extends AbstractPower implements NonStackablePower {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public FierceasFire(final AbstractCreature owner, final AbstractCreature source) {
+    public FierceasFire(final AbstractCreature owner, final AbstractCreature source,int energy,int power) {
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;

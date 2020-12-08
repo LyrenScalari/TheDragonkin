@@ -1,5 +1,7 @@
 package theDragonkin.cards.Gremory.Skills.Magic;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
@@ -20,6 +22,9 @@ import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.powers.WardPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class Silence extends AbstractMagicGremoryCard implements BranchingUpgradesCard {
@@ -36,17 +41,26 @@ public class Silence extends AbstractMagicGremoryCard implements BranchingUpgrad
     private static final int COST = 1;
     private static float animx;
     private static float animy;
-
+    private static ArrayList<TooltipInfo> TrapTooltip;
+    @Override
+    public List<TooltipInfo> getCustomTooltipsTop() {
+        return TrapTooltip;
+    }
     public Silence() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Light);
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[4] +  cardStrings.DESCRIPTION;
+        TrapTooltip = new ArrayList<>();
+        setOrbTexture(DefaultMod.Light_SMALL_ORB,DefaultMod.Light_LARGE_ORB);
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Light"), BaseMod.getKeywordDescription("thedragonkin:Light")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Afterglow"), BaseMod.getKeywordDescription("thedragonkin:Afterglow")));
+        getCustomTooltips();
+        this.rawDescription =  cardStrings.DESCRIPTION;
         initializeDescription();
         ExhaustiveVariable.setBaseValue(this,2);
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.timesUpgraded % 2 == 0){
+        if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])){
             if (!this.upgraded){
                 for (AbstractPower po : m.powers){
                     if (po.type == AbstractPower.PowerType.BUFF){
@@ -84,16 +98,20 @@ public class Silence extends AbstractMagicGremoryCard implements BranchingUpgrad
 
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[4] + UPGRADE_DESCRIPTION;
+        this.rawDescription = UPGRADE_DESCRIPTION;
         this.target = CardTarget.ALL_ENEMY;
         initializeDescription();
     }
 
     public void branchUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + cardStrings.EXTENDED_DESCRIPTION[3];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Light);
         tags.add(CustomTags.Dark);
+        TrapTooltip.clear();
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Dark"), BaseMod.getKeywordDescription("thedragonkin:Dark")));
+        TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Darken"), BaseMod.getKeywordDescription("thedragonkin:Darken")));
+        setOrbTexture(DefaultMod.Dark_SMALL_ORB,DefaultMod.Dark_LARGE_ORB);
         this.upgradeBaseCost(2);
         this.target = CardTarget.SELF;
         ExhaustiveVariable.upgrade(this,-1);

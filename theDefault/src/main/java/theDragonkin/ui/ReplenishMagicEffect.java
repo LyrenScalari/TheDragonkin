@@ -54,10 +54,20 @@ public class ReplenishMagicEffect extends AbstractGameEffect {
             AbstractDungeon.gridSelectScreen.selectedCards.forEach(c -> {
                 c.misc = ((AbstractMagicGremoryCard) c).baseMisc;
                 c.applyPowers();
+                if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT){
+                    for (AbstractCard ca : AbstractMagicGremoryCard.AllCards.group){
+                        if (ca.uuid == c.uuid){
+                            ca.misc = ((AbstractMagicGremoryCard) ca).baseMisc;
+                            ca.applyPowers();
+                        }
+                    }
+                }
                 AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
                 AbstractDungeon.topLevelEffects.add(new CardGlowBorder(c));
                 choseCard = true;
-                ((RestRoom) AbstractDungeon.getCurrRoom()).fadeIn();
+                if (AbstractDungeon.getCurrRoom().phase == RestRoom.RoomPhase.INCOMPLETE || AbstractDungeon.getCurrRoom().phase == RestRoom.RoomPhase.COMPLETE) {
+                    ((RestRoom) AbstractDungeon.getCurrRoom()).fadeIn();
+                }
             });
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             this.isDone = true;
@@ -73,12 +83,15 @@ public class ReplenishMagicEffect extends AbstractGameEffect {
         }
         if(this.duration < 0.0f) {
             this.isDone = true;
+            AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                 // complete room and bring up continue button
-                if(CampfireUI.hidden) {
+                if(CampfireUI.hidden && (AbstractDungeon.getCurrRoom().phase == RestRoom.RoomPhase.INCOMPLETE || AbstractDungeon.getCurrRoom().phase == RestRoom.RoomPhase.COMPLETE)) {
                     AbstractRoom.waitTimer = 0.0f;
-                    AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                     // this is where the fire sound actually should cut off, logically.
                     ((RestRoom) AbstractDungeon.getCurrRoom()).cutFireSound();
+                }
+                else {
+
                 }
             }
         }

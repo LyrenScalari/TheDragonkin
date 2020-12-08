@@ -28,4 +28,12 @@ public class CustomTags {
     public static AbstractCard.CardTags School;
     @SpireEnum
     public static AbstractCard.CardTags Relic;
+    @SpireEnum
+    public static AbstractCard.CardTags Autumn;
+    @SpireEnum
+    public static AbstractCard.CardTags Winter;
+    @SpireEnum
+    public static AbstractCard.CardTags Spring;
+    @SpireEnum
+    public static AbstractCard.CardTags Summer;
 }
