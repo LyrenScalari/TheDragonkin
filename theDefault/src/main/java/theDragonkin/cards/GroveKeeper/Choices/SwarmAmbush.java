@@ -38,6 +38,7 @@ public class SwarmAmbush extends AbstractGroveKeeperCard {
     private static final int COST = 1;
     private static final int DAMAGE = 2;    // DAMAGE = 6
     private static final int UPGRADE_PLUS_DMG = 1;  // UPGRADE_PLUS_DMG = 4
+    public static int swarmcount = 0;
     public SwarmAmbush() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DAMAGE;
@@ -68,43 +69,31 @@ public class SwarmAmbush extends AbstractGroveKeeperCard {
 
     public static int countCards() {
         int count = 0;
-        Iterator var1 = AbstractDungeon.player.hand.group.iterator();
-
-        AbstractCard c;
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
             if (isStrike(c)) {
                 ++count;
             }
         }
 
-        var1 = AbstractDungeon.player.drawPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
             if (isStrike(c)) {
                 ++count;
             }
         }
 
-        var1 = AbstractDungeon.player.discardPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
-            if (isStrike(c)) {
-                ++count;
-            }
-        }
-        var1 = AbstractDungeon.player.exhaustPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (isStrike(c)) {
                 ++count;
             }
         }
 
-        return count;
+        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
+            if (isStrike(c)) {
+                ++count;
+            }
+        }
+        swarmcount = count;
+        return swarmcount;
     }
 
     public static boolean isStrike(AbstractCard c) {
@@ -112,7 +101,8 @@ public class SwarmAmbush extends AbstractGroveKeeperCard {
     }
     public void calculateCardDamage(AbstractMonster mo) {
         int realBaseMagic = this.baseMagicNumber;
-        this.baseMagicNumber += realBaseMagic * countCards();
+        this.baseMagicNumber = realBaseMagic * countCards();
+        magicNumber = baseMagicNumber;
         super.calculateCardDamage(mo);
         this.baseMagicNumber = realBaseMagic;
         this.isMagicNumberModified = this.magicNumber != this.baseMagicNumber;
@@ -120,7 +110,8 @@ public class SwarmAmbush extends AbstractGroveKeeperCard {
 
     public void applyPowers() {
         int realBaseMagic = this.baseMagicNumber;
-        this.baseMagicNumber += realBaseMagic * countCards();
+        this.baseMagicNumber = realBaseMagic * countCards();
+        magicNumber = baseMagicNumber;
         super.applyPowers();
         this.baseMagicNumber = realBaseMagic;
         this.isMagicNumberModified = this.magicNumber != this.baseMagicNumber;

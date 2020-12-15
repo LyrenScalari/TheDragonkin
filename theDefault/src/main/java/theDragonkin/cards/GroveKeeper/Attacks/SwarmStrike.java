@@ -37,6 +37,7 @@ public class SwarmStrike extends AbstractChooseOneCard {
 
     private static final int DAMAGE = 2;    // DAMAGE = 6
     private static final int UPGRADE_PLUS_DMG = 1;  // UPGRADE_PLUS_DMG = 4
+    public static int swarmcount = 0;
     public SwarmStrike() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         this.baseDamage = 2;
@@ -73,58 +74,46 @@ public class SwarmStrike extends AbstractChooseOneCard {
 
     }
 
-    public static int countCards() {
+    public int countCards() {
         int count = 0;
-        Iterator var1 = AbstractDungeon.player.hand.group.iterator();
-
-        AbstractCard c;
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
             if (isStrike(c)) {
                 ++count;
             }
         }
 
-        var1 = AbstractDungeon.player.drawPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
             if (isStrike(c)) {
                 ++count;
             }
         }
 
-        var1 = AbstractDungeon.player.discardPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (isStrike(c)) {
                 ++count;
             }
         }
 
-        var1 = AbstractDungeon.player.exhaustPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
+        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
             if (isStrike(c)) {
                 ++count;
             }
         }
-
-        return count;
+        swarmcount = count;
+        return swarmcount;
     }
 
-    public static boolean isStrike(AbstractCard c) {
+    public boolean isStrike(AbstractCard c) {
         return c instanceof SwarmStrike;
     }
 
     public void calculateCardDamage(AbstractMonster mo) {
         int realBaseDamage = this.baseDamage;
-        this.baseDamage += realBaseDamage * countCards();
+        this.baseDamage = realBaseDamage * swarmcount;
         int realBaseMagic = this.baseMagicNumber;
-        this.baseMagicNumber += realBaseMagic * countCards();
-        super.applyPowers();
+        this.baseMagicNumber = realBaseMagic * swarmcount;
+        magicNumber = baseMagicNumber;
+        super.calculateCardDamage(mo);
         this.baseDamage = realBaseDamage;
         this.isDamageModified = this.damage != this.baseDamage;
         this.baseMagicNumber = realBaseMagic;
@@ -133,9 +122,10 @@ public class SwarmStrike extends AbstractChooseOneCard {
 
     public void applyPowers() {
         int realBaseDamage = this.baseDamage;
-        this.baseDamage += realBaseDamage * countCards();
+        this.baseDamage = realBaseDamage * swarmcount;
         int realBaseMagic = this.baseMagicNumber;
-        this.baseMagicNumber += realBaseMagic * countCards();
+        this.baseMagicNumber = realBaseMagic * swarmcount;
+        magicNumber = baseMagicNumber;
         super.applyPowers();
         this.baseDamage = realBaseDamage;
         this.isDamageModified = this.damage != this.baseDamage;
