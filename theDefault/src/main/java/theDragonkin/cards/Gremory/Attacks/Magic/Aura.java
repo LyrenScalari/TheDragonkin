@@ -115,14 +115,13 @@ public class Aura extends AbstractMagicGremoryCard implements BranchingUpgradesC
     }
 
     public void baseUpgrade() {
-        name = cardStrings.EXTENDED_DESCRIPTION[2];
-        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
+        name = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeDescription();
     }
 
     public void branchUpgrade() {
-        name = cardStrings.EXTENDED_DESCRIPTION[0];
-        this.rawDescription = UPGRADE_DESCRIPTION;
+        name = cardStrings.EXTENDED_DESCRIPTION[2];
+        this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[3];
         tags.remove(CustomTags.Light);
         tags.add(CustomTags.Dark);
         TrapTooltip.clear();

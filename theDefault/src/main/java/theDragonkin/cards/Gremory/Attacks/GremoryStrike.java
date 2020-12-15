@@ -35,7 +35,7 @@ public class GremoryStrike extends AbstractGremoryCard {
     private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
 
     private static final int DAMAGE = 6;    // DAMAGE = 6
-    private static final int UPGRADE_PLUS_DMG = 4;  // UPGRADE_PLUS_DMG = 4
+    private static final int UPGRADE_PLUS_DMG = 3;  // UPGRADE_PLUS_DMG = 4
 
     // /STAT DECLARATION/
 

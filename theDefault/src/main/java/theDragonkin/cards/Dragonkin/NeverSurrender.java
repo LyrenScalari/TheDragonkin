@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.NeverSurrenderPower;
+import theDragonkin.powers.Dragonkin.NeverSurrenderPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

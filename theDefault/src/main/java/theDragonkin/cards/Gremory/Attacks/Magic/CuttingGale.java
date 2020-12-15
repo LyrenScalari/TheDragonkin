@@ -17,7 +17,7 @@ import theDragonkin.cards.Gremory.FollowUps.FollowUpGale;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.JoltedPower;
+import theDragonkin.powers.Gremory.JoltedPower;
 
 import java.util.ArrayList;
 import java.util.List;

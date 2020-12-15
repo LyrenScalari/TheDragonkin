@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.SlowBurnpower;
+import theDragonkin.powers.Dragonkin.SlowBurnpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

@@ -18,7 +18,7 @@ import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.ArcanaPower;
+import theDragonkin.powers.Gremory.ArcanaPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 @AutoAdd.Ignore

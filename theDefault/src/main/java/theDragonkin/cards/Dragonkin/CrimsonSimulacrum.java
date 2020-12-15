@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.SimulacrumPower;
+import theDragonkin.powers.Dragonkin.SimulacrumPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

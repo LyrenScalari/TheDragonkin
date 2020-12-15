@@ -384,34 +384,7 @@
     "NAME": "Magma Scales",
     "DESCRIPTION": "Inflict !M! thedragonkin:Scorch on Attackers when Attacked."
   },
-  "theDragonkin:SchoolFire": {
-    "NAME": "Student of Fire",
-    "DESCRIPTION": "Gain 3 copies of *Fire"
-  },
-  "theDragonkin:SchoolIce": {
-  "NAME": "Student of Ice",
-  "DESCRIPTION": "Gain 3 copies of *Icicle"
-},
-  "theDragonkin:SchoolWind": {
-    "NAME": "Student of Wind",
-    "DESCRIPTION": "Gain 3 copies of *Wind"
-  },
-  "theDragonkin:SchoolThunder": {
-    "NAME": "Student of Thunder",
-    "DESCRIPTION": "Gain 3 copies of *Thunder"
-  },
-  "theDragonkin:SchoolDark": {
-    "NAME": "Student of Dark",
-    "DESCRIPTION": "Gain 3 copies of *Miasma"
-  },
-  "theDragonkin:SchoolLight": {
-    "NAME": "Student of Light",
-    "DESCRIPTION": "Gain 3 copies of *Nosferatu"
-  },
-  "theDragonkin:SchoolDouble": {
-    "NAME": "Double Down",
-    "DESCRIPTION": "Gain 3 copies of your first choice's spell."
-  },
+
   "theDragonkin:GremoryDefend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
@@ -446,7 +419,6 @@
     "EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Purge", "Steel Followup"]
   },
   "theDragonkin:BeastFang": {
-
     "NAME": "Beast Fang",
     "DESCRIPTION": "thedragonkin:Enchanted. NL Deal !D! damage. NL thedragonkin:Enchant your physical cards for !M! turns.",
     "EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Purge", "Steel Followup"]
@@ -643,7 +615,7 @@
   "theDragonkin:Miasma": {
     "NAME": "Miasma",
     "DESCRIPTION": "Deal !MAG! damage. NL *Darken: Apply 2 thedragonkin:Dark_Exposure for 2 turns. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL *Darken: Apply 2 thedragonkin:Dark_Exposure for 2 turns. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL *Darken: Apply 2 thedragonkin:Dark_Exposure for 3 turns. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Miasma II","Miasma Y",
       "Nosferatu V",
       "Deal !MAG! damage. NL *Afterglow: Gain block equal to half the damage this dealt. NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Light. NL ","thedragonkin:Dark. NL "]
@@ -764,5 +736,99 @@
     "DESCRIPTION": "Deal !MAG! damage. NL *Hot_Streak: *Fire cards deal !M! more damage until you play a non *Fire card. NL thedragonkin:Casts: !Gremory:Spells!",
     "UPGRADE_DESCRIPTION": "Deal !MAG! damage. NL *Hot_Streak: *Fire cards deal !M! more damage  until you play a non *Fire card. NL thedragonkin:Casts: !Gremory:Spells!",
     "EXTENDED_DESCRIPTION": ["Ragnarök II","Ragnarök Y", "Fimbulvetr V", "Deal !MAG! damage. NL If the Target is *Frozen they lose !MAG! HP instead., NL thedragonkin:Casts: !Gremory:Spells!"," NL Purge.","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
+  },
+
+  "theDragonkin:GrovekeeperDefend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Solar 2: Apply !M! Weak to ALL enemies."
+  },
+  "theDragonkin:GrovekeeperStrike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Lunar 2: Apply !M! Vulnerable."
+  },
+  "theDragonkin:Moonfire": {
+    "NAME": "Moonfire",
+    "DESCRIPTION": "Apply !M! thedragonkin:Moonstruck. NL thedragonkin:Lunar 4: Gain [E]."
+  },
+  "theDragonkin:Starfire": {
+    "NAME": "Starfire",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Lunar 4: Deal double damage.",
+    "EXTENDED_DESCRIPTION": [" I must have #r4 #ror #rmore #bLunar #bAlignment to play that."]
+  },
+  "theDragonkin:Starfall": {
+    "NAME": "Starfall",
+    "DESCRIPTION": "Choose One - Deal !D! damage or Deal !AltD! damage to ALL enemies.",
+    "EXTENDED_DESCRIPTION": [" I must have #r4 #ror #rmore #bLunar #bAlignment to play that."]
+  },
+  "theDragonkin:Starlord": {
+    "NAME": "Starlord",
+    "DESCRIPTION": "Deal !D! damage.",
+    "EXTENDED_DESCRIPTION": [" I must have #r4 #ror #rmore #bLunar #bAlignment to play that."]
+  },
+  "theDragonkin:StellarDrift": {
+    "NAME": "Stellar Drift",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
+    "EXTENDED_DESCRIPTION": [" I must have #r4 #ror #rmore #bLunar #bAlignment to play that."]
+  },
+  "theDragonkin:Starsurge": {
+    "NAME": "Starsurge",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Lunar 3: Deal !D! damage to ALL enemies."
+  },
+  "theDragonkin:Moonglow": {
+    "NAME": "Moonglow",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Lunar 3: Gain !B! Block. NL thedragonkin:Lunar 2: gain !M! temporary Dexterity."
+  },
+  "theDragonkin:Moonrise": {
+    "NAME": "Moonrise",
+    "DESCRIPTION": "Gain [E] and Draw a card. NL thedragonkin:Solar 2: Lose half your Solar thedragonkin:Alignment and Convert your Solar thedragonkin:Alignment to Lunar instead."
+  },
+  "theDragonkin:Wrath": {
+    "NAME": "Nature's Wrath",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Solar 2: Apply !M! Weak. NL thedragonkin:Lunar 2: Deal !D! damage and Apply !M! thedragonkin:Moonstruck.",
+    "EXTENDED_DESCRIPTION": ["Solar Wrath", "Lunar Wrath","Deal !D! damage. NL Apply !M! Weak", "Deal !D! damage twice. NL Apply !M! thedragonkin:Moonstruck."]
+  },
+  "theDragonkin:Sunfire": {
+    "NAME": "Sunfire",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Solar 2: Apply !M! thedragonkin:Sunburn."
+  },
+  "theDragonkin:Sunrise": {
+    "NAME": "Sunrise",
+    "DESCRIPTION": "Gain [E] and Draw a card. NL thedragonkin:Lunar 2: Lose half your Lunar thedragonkin:Alignment and Convert your Lunar thedragonkin:Alignment to Solar instead"
+  },
+  "theDragonkin:InvigoratingSeeds": {
+    "NAME": "Invigorating Seeds",
+    "DESCRIPTION": "Channel 1 thedragonkin:Invigorating_Bloom"
+  },
+  "theDragonkin:Thornwhip": {
+    "NAME": "Thorn Whip",
+    "DESCRIPTION": "Deal !D! damage. NL Channel 1 thedragonkin:Hungry_Bloom"
+  },
+  "theDragonkin:EntanglingRoots": {
+    "NAME": "Entangling Roots",
+    "DESCRIPTION": "Apply !M! thedragonkin:Entangle. NL Exhaust."
+  },
+  "theDragonkin:StingingSwarm": {
+    "NAME": "Stinging Swarm",
+    "DESCRIPTION": "Whenever you are attacked, apply !M! Poison back."
+  },
+  "theDragonkin:Everbloom": {
+    "NAME": "Everbloom",
+    "DESCRIPTION": "Gain !M! thedragonkin:Nature_Power. Choose a Mystic Flower, Channel it twice."
+  },
+  "theDragonkin:EverbloomInvig": {
+    "NAME": "Everbloom Invigorating",
+    "DESCRIPTION": "Channel 2 thedragonkin:Invigorating_Bloom."
+  },
+  "theDragonkin:EverbloomToxic ": {
+    "NAME": "Everbloom Toxic ",
+    "DESCRIPTION": "Channel 2 thedragonkin:Toxic_Bloom."
+  },
+  "theDragonkin:EverbloomThorn": {
+    "NAME": "Everbloom Hungry",
+    "DESCRIPTION": "Channel 2 thedragonkin:Hungry_Bloom."
+  },
+  "theDragonkin:EverbloomPrimal": {
+    "NAME": "Everbloom Primal",
+    "DESCRIPTION": "Channel 2 thedragonkin:Primal_Bloom."
   }
 }

@@ -6,7 +6,6 @@ package theDragonkin.cards.Gremory;
         import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
         import com.megacrit.cardcrawl.cards.AbstractCard;
         import com.megacrit.cardcrawl.cards.CardGroup;
-        import com.megacrit.cardcrawl.cards.DamageInfo;
         import com.megacrit.cardcrawl.characters.AbstractPlayer;
         import com.megacrit.cardcrawl.core.CardCrawlGame;
         import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -16,13 +15,12 @@ package theDragonkin.cards.Gremory;
         import theDragonkin.CardMods.AfterglowCardMod;
         import theDragonkin.CardMods.DarkenCardMod;
         import theDragonkin.CardMods.TailwindCardmod;
-        import theDragonkin.DefaultMod;
-        import theDragonkin.powers.WindsSong;
+        import theDragonkin.powers.Gremory.WindsSong;
         import theDragonkin.CustomTags;
         import theDragonkin.actions.WitherAction;
-        import theDragonkin.powers.ChillPower;
-        import theDragonkin.powers.JoltedPower;
-        import theDragonkin.powers.modifyMagicPower;
+        import theDragonkin.powers.Gremory.ChillPower;
+        import theDragonkin.powers.Gremory.JoltedPower;
+        import theDragonkin.powers.Gremory.modifyMagicPower;
         import java.util.ArrayList;
 
 
@@ -51,20 +49,20 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
 
     public AbstractMagicGremoryCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, img, cost, type, color, rarity, target);
-        if (this.rarity == CardRarity.COMMON){
+        if (this.cost == 0){
+            this.baseMisc = 21;
+            this.misc = this.baseMisc;
+        }
+        if (this.cost == 1){
+            this.baseMisc = 15;
+            this.misc = this.baseMisc;
+        }
+        if (this.cost == 2){
             this.baseMisc = 9;
             this.misc = this.baseMisc;
         }
-        if (this.rarity == CardRarity.UNCOMMON){
-            this.baseMisc = 6;
-            this.misc = this.baseMisc;
-        }
-        if (this.rarity == CardRarity.RARE){
-            this.baseMisc = 3;
-            this.misc = this.baseMisc;
-        }
-        if (this.rarity == CardRarity.SPECIAL){
-            this.baseMisc = 2;
+        if (this.cost == 3){
+            this.baseMisc = 5;
             this.misc = this.baseMisc;
         }
     }

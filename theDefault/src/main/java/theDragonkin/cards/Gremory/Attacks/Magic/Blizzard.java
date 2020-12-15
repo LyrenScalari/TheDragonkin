@@ -16,7 +16,7 @@ import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.ChillPower;
+import theDragonkin.powers.Gremory.ChillPower;
 
 import java.util.ArrayList;
 import java.util.List;

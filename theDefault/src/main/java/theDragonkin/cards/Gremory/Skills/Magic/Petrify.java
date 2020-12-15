@@ -14,11 +14,10 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
-import theDragonkin.actions.WitherAction;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.ChargedUp;
-import theDragonkin.powers.JoltedPower;
+import theDragonkin.powers.Gremory.ChargedUp;
+import theDragonkin.powers.Gremory.JoltedPower;
 
 import java.util.ArrayList;
 import java.util.List;

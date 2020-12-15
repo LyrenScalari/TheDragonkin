@@ -52,7 +52,7 @@ public class FierceasFire extends AbstractGremoryCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.FierceasFire(p,p,defaultSecondMagicNumber,magicNumber)));
+        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.Gremory.FierceasFire(p,p,defaultSecondMagicNumber,magicNumber)));
     }
 
     //Upgraded stats.

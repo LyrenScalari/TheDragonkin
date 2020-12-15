@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theDragonkin.DefaultMod;
-import theDragonkin.powers.DivineConvictionpower;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 
 public class DragonkinRarePotion extends AbstractPotion {
 

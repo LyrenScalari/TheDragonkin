@@ -6,7 +6,6 @@ import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCar
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,10 +16,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
-import theDragonkin.cards.Gremory.FollowUps.FollowUpFimbulvetr;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.FreezePower;
-import theDragonkin.powers.RagnarokPower;
+import theDragonkin.powers.Gremory.FreezePower;
+import theDragonkin.powers.Gremory.RagnarokPower;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.NextTurnFetchpower;
-import theDragonkin.powers.Scorchpower;
+import theDragonkin.powers.Dragonkin.NextTurnFetchpower;
+import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

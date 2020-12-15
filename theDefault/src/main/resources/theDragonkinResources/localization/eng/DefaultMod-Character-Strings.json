@@ -18,8 +18,18 @@
     "TEXT": [
       "A mysterious sorceress from far off lands, a master of all forms of magic and a master of the blade.",
       "NL You Muster your magic and strike with all your might.",
-      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~Sister~,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~",
-      "Choose two Schools of magic"
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~Sister~,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+    ]
+  },
+  "theDragonkin:GroveKeeper": {
+    "NAMES": [
+      "The Grovekeeper",
+      "the grovekeeper"
+    ],
+    "TEXT": [
+      "A stalwart guardian of nature, however the Spire Blight has brought ruin to the Grove she swore to protect, with the might of nature, tooth and claw she fights.",
+      "NL You muster Elrath and Telratha's Fury and take your vengeance.",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~Envoy~ ~of~ ~Telratha~,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
     ]
   }
 }

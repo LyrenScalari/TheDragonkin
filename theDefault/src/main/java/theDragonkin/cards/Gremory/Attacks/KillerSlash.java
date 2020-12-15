@@ -14,7 +14,7 @@ import theDragonkin.cards.Gremory.FollowUps.KillerFollowUp;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.HuntersFocusPower;
+import theDragonkin.powers.Gremory.HuntersFocusPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 import static theDragonkin.cards.Gremory.AbstractMagicGremoryCard.AllCards;

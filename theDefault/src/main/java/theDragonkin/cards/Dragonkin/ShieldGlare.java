@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.ShieldGlarepower;
+import theDragonkin.powers.Dragonkin.ShieldGlarepower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

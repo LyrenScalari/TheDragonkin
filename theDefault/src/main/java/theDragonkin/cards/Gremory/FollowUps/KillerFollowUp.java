@@ -15,7 +15,7 @@ import theDragonkin.cards.Gremory.Attacks.KillerSlash;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.HuntersFocusPower;
+import theDragonkin.powers.Gremory.HuntersFocusPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

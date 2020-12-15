@@ -16,7 +16,7 @@ import theDragonkin.cards.Gremory.FollowUps.FollowUpFimbulvetr;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.FreezePower;
+import theDragonkin.powers.Gremory.FreezePower;
 
 import java.util.ArrayList;
 import java.util.List;

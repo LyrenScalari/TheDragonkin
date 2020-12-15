@@ -28,10 +28,13 @@ public class CureandBlockAction extends AbstractGameAction {
     }
 
     public void update() {
-        for (int i = 0; i < removecount; ++i) {
-            DebufftoRemove = Debuffs.remove((AbstractDungeon.cardRandomRng.random(Debuffs.size()-1)));
-            addToTop(new GainBlockAction(AbstractDungeon.player,AbstractDungeon.player,DebufftoRemove.amount));
-            addToTop(new RemoveSpecificPowerAction(target,AbstractDungeon.player,DebufftoRemove));
+        if (Debuffs.size() > 0) {
+            for (int i = 0; i < removecount; ++i) {
+                DebufftoRemove = Debuffs.remove((AbstractDungeon.cardRandomRng.random(Debuffs.size() - 1)));
+                addToTop(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, DebufftoRemove.amount));
+                addToTop(new RemoveSpecificPowerAction(target, AbstractDungeon.player, DebufftoRemove));
+            }
+            isDone = true;
         }
         isDone = true;
     }

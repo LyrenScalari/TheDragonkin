@@ -57,9 +57,9 @@ public class Blutgang extends AbstractGremoryCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(1,"Enchant",false,true, c -> !(c.hasTag(CustomTags.Enchanted) || c instanceof AbstractMagicGremoryCard),
                 list -> list.forEach(this::enchant)));
-        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.Blutgang(p,p)));
+        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.Gremory.Blutgang(p,p)));
         for (AbstractPower po : p.powers){
-            if (po.ID.equals(theDragonkin.powers.Blutgang.POWER_ID)){
+            if (po.ID.equals(theDragonkin.powers.Gremory.Blutgang.POWER_ID)){
                 addToBot(new RemoveSpecificPowerAction(p,p,po));
             }
         }

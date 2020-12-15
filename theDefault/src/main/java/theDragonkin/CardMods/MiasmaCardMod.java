@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
-import theDragonkin.powers.ResistancePower;
+import theDragonkin.powers.Gremory.ResistancePower;
 
 import static theDragonkin.cards.Gremory.AbstractMagicGremoryCard.AllCards;
 

@@ -109,6 +109,7 @@
                         " y#Power"," #yPowers"
                 ]
         },
+
         "theDragonkin:Chill": {
                 "NAME": "Chill",
                 "DESCRIPTIONS": ["Recives #b", " extra damage from #yIce cards, replace this with #yFreeze if this has 10 or more stacks of this."]
@@ -264,5 +265,22 @@
         "theDragonkin:WardPower": {
                 "NAME": "Ward",
                 "DESCRIPTIONS": ["At the start of your turn, gain #b"," Block, and reduce this by 1"]
+        },
+
+        "theDragonkin:AlignmentPower":{
+                "NAME": "Alignment",
+                "DESCRIPTIONS": ["Current Alignment :", " Neutral +", " #ySolar ", " #bLunar "," Neutral -"," Neutral"]
+        },
+        "theDragonkin:Moonstruck": {
+                "NAME": "Moonstruck",
+                "DESCRIPTIONS": ["Loses #b", " HP the next #b", " time", " times", " you play a #bLunar card."]
+        },
+        "theDragonkin:Sunburn": {
+                "NAME": "Sunburn",
+                "DESCRIPTIONS": ["Gain #b", " Block the next #b", " time", " times", " you play a #ySolar card on this enemy."]
+        },
+        "theDragonkin:EntangledPower": {
+                "NAME": "Entangled",
+                "DESCRIPTIONS": ["At the start of this monsters turn reduce this by 1 then #yStun it if it intends to attack"]
         }
 }

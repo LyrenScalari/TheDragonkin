@@ -21,6 +21,7 @@
     "DESCRIPTION": "[#94bdff]Holy[] Attacks and Skills have all numeric values in their effect increased by #yZeal.",
     "COLOR": "[#94bdff]"
   },
+
   {
     "NAMES": [
       "antiquity"
@@ -28,6 +29,7 @@
     "DESCRIPTION": "You may only have 1 Antiquity power active. Playing an Antiquity power will override other Antiquity powers you may have.",
     "COLOR": "[#94bdff]"
   },
+
   {
   "NAMES": [
     "Fire",
@@ -36,6 +38,7 @@
   "DESCRIPTION": "Fire cards are not effected by #yStrength or #yDexterity. Playing a fire card gives you #yHot #yStreak until you play a non-fire card.",
   "COLOR": "[#94bdff]"
 },
+
   {
     "NAMES": [
       "Follow-up",
@@ -45,6 +48,7 @@
     "DESCRIPTION": "When played add a 0 cost copy of the card without follow-up that #yPurges to you hand.",
     "COLOR": "[#94bdff]"
   },
+
   {
     "PROPER_NAME": "Hot Streak",
     "NAMES": [
@@ -54,12 +58,14 @@
     ],
     "DESCRIPTION": "During your turn, if the last card you played was a #yFire card activate the following effect."
   },
+
   {
     "NAMES": [
       "kindling"
     ],
     "DESCRIPTION": "Increases damage and Block gain for Fire cards."
   },
+
   {
     "NAMES": [
       "Ice",
@@ -68,6 +74,7 @@
     "DESCRIPTION": "Ice cards are not effected by #yStrength or #yDexterity. Dealing damage with Ice cards applies #yChill to the target.",
     "COLOR": "[#94bdff]"
   },
+
   {
     "NAMES": [
       "Chill",
@@ -76,6 +83,7 @@
     ],
     "DESCRIPTION": "Chilled enemies take 1 more damage from #yIce cards per stack of chill, when a monster has 10 or more points of chill remove them and apply #yFreeze."
   },
+
   {
     "NAMES": [
       "Freeze",
@@ -84,6 +92,7 @@
     ],
     "DESCRIPTION": "Frozen enemies take no #yIce damage and triple non-magical damage, remove this when effected receives non-magical damage."
   },
+
   {
     "PROPER_NAME": "Deep Frost",
     "NAMES": [
@@ -92,6 +101,7 @@
     ],
     "DESCRIPTION": "Increases damage and Block gain for Ice cards."
   },
+
   {
     "NAMES": [
       "Wind",
@@ -100,6 +110,7 @@
     "DESCRIPTION": "Wind cards are not effected by #yStrength or #yDexterity. Every second wind card you play has #yTailwind reducing it's cost by 1",
     "COLOR": "[#94bdff]"
   },
+
   {
   "NAMES": [
     "Tailwind",
@@ -107,12 +118,14 @@
   ],
   "DESCRIPTION": "Every second wind card you play costs 1 less."
 },
+
   {
     "NAMES": [
       "galeforce"
     ],
     "DESCRIPTION": "Increases damage and Block gain for Wind cards."
   },
+
   {
     "NAMES": [
       "Thunder",
@@ -121,6 +134,7 @@
     "DESCRIPTION": "Thunder cards are not effected by #yStrength or #yDexterity. Dealing damage with Thunder cards applies #yJolt to the target.",
     "COLOR": "[#94bdff]"
   },
+
   {
     "NAMES": [
       "Jolt",
@@ -130,12 +144,14 @@
     ],
     "DESCRIPTION": "Jolted enemies take 10% less #yThunder damage per jolted stack."
   },
+
   {
     "NAMES": [
       "charged-up"
     ],
     "DESCRIPTION": "Increases damage and Block gain for Thunder cards."
   },
+
   {
   "NAMES": [
     "Dark",
@@ -144,6 +160,7 @@
   "DESCRIPTION": "Dark cards are not effected by #yStrength or #yDexterity. Playing dark cards will remove your #yAfterglow and can apply #yDarken.",
   "COLOR": "[#94bdff]"
 },
+
   {
     "NAMES": [
       "Darken",
@@ -152,14 +169,16 @@
     ],
     "DESCRIPTION": "Darken effects are activated when you play your next #yMagic card #yLight card excluded, playing a light card will remove any darken effects you have."
   },
+
   {
     "PROPER_NAME": "Loptyrian Shadow",
     "NAMES": [
       "Loptryian Shadow",
       "loptryian_shadow"
     ],
-    "DESCRIPTION": "Increases damage and Block gain for Ice cards."
+    "DESCRIPTION": "Increases damage and Block gain for Dark cards."
   },
+
   {
     "NAMES": [
       "Light",
@@ -168,6 +187,7 @@
     "DESCRIPTION": "Light cards are not effected by #yStrength or #yDexterity. Playing light cards will remove your #yDarken and can apply #yAfterglow.",
     "COLOR": "[#94bdff]"
   },
+
   {
   "NAMES": [
     "Afterglow",
@@ -175,6 +195,7 @@
   ],
   "DESCRIPTION": "Afterglow effects are activated when you play your next #yMagic card #yDark card excluded, playing a dark card will remove any afterglow effects you have."
 },
+
   {
     "NAMES": [
       "arcane"
@@ -182,6 +203,7 @@
     "DESCRIPTION": "Arcane cards are only effected by #yArcana and #yDark #yExposure.",
     "COLOR": "[#94bdff]"
   },
+
   {
     "NAMES": [
       "enchant",
@@ -190,6 +212,7 @@
     "DESCRIPTION": "Enchanted cards are both #yPhysical and #yMagical. Being affected the same as a magic card of it's enchantment element as well as a physical card.",
     "COLOR": "[#94bdff]"
   },
+
   {
     "NAMES": [
       "transmute",
@@ -198,24 +221,28 @@
     "DESCRIPTION": "Transmuted cards have their #yElement temporarily set to the transmutation's element.",
     "COLOR": "[#94bdff]"
   },
+
   {
     "NAMES": [
       "luminance"
     ],
     "DESCRIPTION": "Increases damage and Block gain for Light cards."
   },
+
   {
     "NAMES": [
       "cure"
     ],
     "DESCRIPTION": "Removed the listed number of debuffs from yourself, and perform the listed action equal to it's potency."
   },
+
   {
     "NAMES": [
       "arcana"
     ],
     "DESCRIPTION": "Increases damage and Block gain for Magic cards."
   },
+
   {
     "PROPER_NAME": "Dark Exposure",
     "NAMES": [
@@ -225,12 +252,14 @@
     ],
     "DESCRIPTION": "Increases damage from #yMagic for a limited time."
   },
+
   {
     "NAMES": [
       "dissolve"
     ],
     "DESCRIPTION": "Loses HP when you play certain Acid cards."
   },
+
   {
     "PROPER_NAME": "Hunters Focus",
     "NAMES": [
@@ -239,13 +268,15 @@
     ],
     "DESCRIPTION": "When you have 10 or more Hunters Focus your next attack does triple damage and resets Hunters Focus."
   },
+
   {
   "PROPER_NAME": "Casts",
   "NAMES": [
     "casts"
   ],
-  "DESCRIPTION": "When you play a spell card, reduce it's cast count by 1. When a spell's cast count is 0, it becomes #yDepleted and unplayable. When resting at rest sites you may choose 1 spell to restore all casts of.."
+  "DESCRIPTION": "When you play a spell card, reduce it's cast count by 1. When a spell's cast count is 0, it becomes #yDepleted and unplayable. At rest sites you can Rest to Heal and Replenish spells or Meditate to replenish more spells."
 },
+
   {
   "PROPER_NAME": "Depleted",
   "NAMES": [
@@ -253,13 +284,84 @@
     "deplete"
   ],
   "DESCRIPTION": "#yUnplayable until #yCasts are restored at a rest site or at the end of the Act."
-},
+  },
+
   {
-    "PROPER_NAME": "Power Word",
     "NAMES": [
-      "Power Word",
-      "power_word"
+      "alignment"
     ],
-    "DESCRIPTION": "Add the listed Word in place of a Nid Word in your Shout Words."
+    "DESCRIPTION": "Play #bLunar or #ySolar cards to modify your alignment, leaving Neutral alignment at 2 or more points of either type."
+  },
+
+  {
+  "NAMES": [
+    "lunar"
+  ],
+  "DESCRIPTION": "Perform the listed action if your #bLunar #bAligntment is equal or greater then the listed value."
+  },
+  {
+    "NAMES": [
+      "solar"
+    ],
+    "DESCRIPTION": "Perform the listed action if your #ySolar #yAligntment is equal or greater then the listed value."
+  },
+  {
+    "NAMES": [
+      "moonstruck"
+    ],
+    "DESCRIPTION": "Moonstruck enemies Lose HP equal to your #bLunar #bAlignment when you play a #bLunar card a limited number of times."
+  },
+  {
+    "NAMES": [
+      "sunburn"
+    ],
+    "DESCRIPTION": "Sunburned enemies Give you Block equal to your #ySolar #yAlignment when you play #ySolar cards on them limited number of times."
+  },
+  {
+    "NAMES": [
+      "entangled",
+      "entangle"
+    ],
+    "DESCRIPTION": "Entangled enemies become #yStunned at the start of their turn if they intend to Attack."
+  },
+  {
+    "PROPER_NAME": "Nature Power",
+    "NAMES": [
+      "Nature Power",
+      "nature_power"
+    ],
+    "DESCRIPTION": "Increases the duration of #yMystic #yFlowers."
+  },
+  {
+    "PROPER_NAME": "Invigorating Bloom",
+    "NAMES": [
+      "Invigorating Bloom",
+      "invigorating_bloom"
+    ],
+    "DESCRIPTION": "Mystic Flower: Gain 1 energy and increase Healing done by this each turn. When #yEvoked Heal 1 HP per turn this was Channeled."
+  },
+  {
+    "PROPER_NAME": "Hungry Bloom",
+    "NAMES": [
+      "Hungry Bloom",
+      "hungry_bloom"
+    ],
+    "DESCRIPTION": "Mystic Flower: Deal damage to a random enemy and increase Block gained by this each turn. When #yEvoked Gain Block equal to the damage this dealt."
+  },
+  {
+    "PROPER_NAME": "Toxic Bloom",
+    "NAMES": [
+      "Toxic Bloom",
+      "toxic_bloom"
+    ],
+    "DESCRIPTION": "Mystic Flower: Deal damage to ALL #yPoisoned enemies and increase the poison this applies each turn. When #yEvoked Apply poison to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Primal Bloom",
+    "NAMES": [
+      "Primal Bloom",
+      "primal_bloom"
+    ],
+    "DESCRIPTION": "Mystic Flower: Increase the power of your non-primal bloom passive effects each turn. When #yEvoked Activate the passive effects of your other Mystic Flowers.."
   }
 ]

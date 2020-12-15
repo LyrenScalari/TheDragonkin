@@ -33,7 +33,7 @@ public class MoonsMarch extends AbstractMagicGremoryCard {
     }
     public void onChoseThisOption() {
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                new theDragonkin.powers.MoonsMarch(AbstractDungeon.player,AbstractDungeon.player)));
+                new theDragonkin.powers.Gremory.MoonsMarch(AbstractDungeon.player,AbstractDungeon.player)));
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.DelayStunpower;
+import theDragonkin.powers.Dragonkin.DelayStunpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

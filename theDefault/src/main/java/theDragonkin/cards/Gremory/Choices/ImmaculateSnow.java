@@ -34,7 +34,7 @@ public class ImmaculateSnow extends AbstractMagicGremoryCard {
 
     public void onChoseThisOption() {
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                new theDragonkin.powers.ImmaculateSnow(AbstractDungeon.player,AbstractDungeon.player)));
+                new theDragonkin.powers.Gremory.ImmaculateSnow(AbstractDungeon.player,AbstractDungeon.player)));
     }
 
     @Override

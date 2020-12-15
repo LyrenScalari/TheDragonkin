@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.AcidArmorpower;
+import theDragonkin.powers.Dragonkin.AcidArmorpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -40,7 +40,7 @@ public class AcidArmor extends AbstractDragonkinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new AcidArmorpower(p,p,block)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new AcidArmorpower(p,p,magicNumber)));
 
     }
 

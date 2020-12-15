@@ -1,6 +1,5 @@
 package theDragonkin.cards.Gremory.Skills;
 
-import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,8 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.HuntersFocusPower;
-import theDragonkin.powers.KillerBlowPower;
+import theDragonkin.powers.Gremory.HuntersFocusPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

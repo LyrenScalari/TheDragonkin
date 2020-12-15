@@ -55,22 +55,36 @@ public class Miasma extends AbstractMagicGremoryCard implements BranchingUpgrade
         this.rawDescription =  cardStrings.DESCRIPTION;
         initializeDescription();
         MagDamage = baseMagDamage = 7;
-        this.misc = 9;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.name.equals(cardStrings.NAME) || this.name.equals(cardStrings.EXTENDED_DESCRIPTION[0])) {
             addToBot(new DamageAction(m, new DamageInfo(p, MagDamage, DamageInfo.DamageType.NORMAL)));
             addToBot(new VFXAction(new CollectorStakeEffect(m.hb_x,m.hb_y)));
-            for (AbstractCard c : AllCards.group) {
-                if (c instanceof AbstractMagicGremoryCard) {
-                    if (!c.hasTag(CustomTags.Light) && (c.target == CardTarget.ENEMY || c.target == CardTarget.ALL_ENEMY || c.target == CardTarget.SELF_AND_ENEMY)) {
-                        addToBot(new AbstractGameAction() {
-                            public void update() {
-                                CardModifierManager.addModifier(c, new MiasmaCardMod(1, 2, 2));
-                                isDone = true;
-                            }
-                        });
+            if (!this.upgraded) {
+                for (AbstractCard c : AllCards.group) {
+                    if (c instanceof AbstractMagicGremoryCard) {
+                        if (!c.hasTag(CustomTags.Light) && (c.target == CardTarget.ENEMY || c.target == CardTarget.ALL_ENEMY || c.target == CardTarget.SELF_AND_ENEMY)) {
+                            addToBot(new AbstractGameAction() {
+                                public void update() {
+                                    CardModifierManager.addModifier(c, new MiasmaCardMod(1, 2, 2));
+                                    isDone = true;
+                                }
+                            });
+                        }
+                    }
+                }
+            } else {
+                for (AbstractCard c : AllCards.group) {
+                    if (c instanceof AbstractMagicGremoryCard) {
+                        if (!c.hasTag(CustomTags.Light) && (c.target == CardTarget.ENEMY || c.target == CardTarget.ALL_ENEMY || c.target == CardTarget.SELF_AND_ENEMY)) {
+                            addToBot(new AbstractGameAction() {
+                                public void update() {
+                                    CardModifierManager.addModifier(c, new MiasmaCardMod(1, 2, 3));
+                                    isDone = true;
+                                }
+                            });
+                        }
                     }
                 }
             }

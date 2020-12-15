@@ -15,9 +15,8 @@ import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.cards.Gremory.FollowUps.FollowUpWind;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
-import theDragonkin.actions.WitherAction;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.JoltedPower;
+import theDragonkin.powers.Gremory.JoltedPower;
 
 import java.util.ArrayList;
 import java.util.List;

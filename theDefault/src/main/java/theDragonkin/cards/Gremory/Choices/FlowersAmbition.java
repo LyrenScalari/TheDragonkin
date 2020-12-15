@@ -35,7 +35,7 @@ public class FlowersAmbition extends AbstractMagicGremoryCard {
     }
     public void onChoseThisOption() {
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                new theDragonkin.powers.FlowersAmbition(AbstractDungeon.player,AbstractDungeon.player)));
+                new theDragonkin.powers.Gremory.FlowersAmbition(AbstractDungeon.player,AbstractDungeon.player)));
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

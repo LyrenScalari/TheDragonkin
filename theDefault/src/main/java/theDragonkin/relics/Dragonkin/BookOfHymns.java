@@ -2,11 +2,9 @@ package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseBlockRelic;
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseTempHpRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -14,10 +12,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theDragonkin.DefaultMod;
-import theDragonkin.powers.DivineConvictionpower;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.util.TextureLoader;
 
-import static com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase.COMBAT;
 import static theDragonkin.DefaultMod.makeRelicOutlinePath;
 import static theDragonkin.DefaultMod.makeRelicPath;
 

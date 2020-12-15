@@ -1,8 +1,6 @@
 package theDragonkin.cards.Gremory.Skills;
 
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.FleetingField;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,7 +10,6 @@ import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.HuntersFocusPower;
 import theDragonkin.ui.ReplenishMagicEffect;
 
 import static theDragonkin.DefaultMod.makeCardPath;

@@ -49,7 +49,7 @@ public class SwiftasWind extends AbstractGremoryCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.SwiftasWind(p,p,1)));
+        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.Gremory.SwiftasWind(p,p,1)));
     }
 
     //Upgraded stats.

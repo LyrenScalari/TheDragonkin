@@ -32,13 +32,13 @@ public abstract class AbstractGremoryCard extends AbstractDefaultCard {
 
 public AbstractGremoryCard(final String id,
 final String img,
-final int cost,
-final CardType type,
-final CardColor color,
-final CardRarity rarity,
-final CardTarget target) {
+        final int cost,
+        final CardType type,
+        final CardColor color,
+        final CardRarity rarity,
+        final CardTarget target) {
 
-        super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
+                super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
 
         }
 

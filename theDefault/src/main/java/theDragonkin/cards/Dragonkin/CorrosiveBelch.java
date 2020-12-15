@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.AcidMarkPower;
+import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

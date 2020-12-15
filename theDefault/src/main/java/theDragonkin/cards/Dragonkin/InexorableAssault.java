@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.NextTurnFetchpower;
+import theDragonkin.powers.Dragonkin.NextTurnFetchpower;
 import static com.megacrit.cardcrawl.cards.AbstractCard.CardType.ATTACK;
 import static theDragonkin.DefaultMod.makeCardPath;
 

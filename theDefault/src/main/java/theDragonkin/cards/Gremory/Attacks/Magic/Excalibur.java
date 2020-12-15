@@ -24,8 +24,8 @@ import theDragonkin.cards.Gremory.FollowUps.FollowUpExcalibur;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.ChargedUpDuration;
-import theDragonkin.powers.JoltedPower;
+import theDragonkin.powers.Gremory.ChargedUpDuration;
+import theDragonkin.powers.Gremory.JoltedPower;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -36,4 +36,10 @@ public class CustomTags {
     public static AbstractCard.CardTags Spring;
     @SpireEnum
     public static AbstractCard.CardTags Summer;
+    @SpireEnum
+    public static AbstractCard.CardTags Solar;
+    @SpireEnum
+    public static AbstractCard.CardTags Lunar;
+    @SpireEnum
+    public static AbstractCard.CardTags Neutral;
 }

@@ -13,8 +13,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import theDragonkin.DefaultMod;
-import theDragonkin.potions.PlaceholderPotion;
-import theDragonkin.powers.Scorchpower;
+import theDragonkin.powers.Dragonkin.Scorchpower;
 
 public class DragonkinCommonPotion extends AbstractPotion {
 

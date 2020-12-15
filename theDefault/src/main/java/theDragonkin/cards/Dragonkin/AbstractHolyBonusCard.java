@@ -6,7 +6,7 @@ import  com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DefaultMod;
-import theDragonkin.powers.DivineConvictionpower;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 
 import java.util.ArrayList;
 import java.util.List;

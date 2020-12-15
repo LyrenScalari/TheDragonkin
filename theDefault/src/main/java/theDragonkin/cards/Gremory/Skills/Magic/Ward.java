@@ -17,7 +17,7 @@ import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.WardPower;
+import theDragonkin.powers.Gremory.WardPower;
 
 import java.util.ArrayList;
 import java.util.List;

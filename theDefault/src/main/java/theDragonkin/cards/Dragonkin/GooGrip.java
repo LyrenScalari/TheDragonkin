@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.AcidMarkPower;
+import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

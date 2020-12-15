@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.mod.stslib.actions.defect.EvokeSpecificOrbAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -25,18 +26,19 @@ import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import basemod.abstracts.CustomOrb;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
+import theDragonkin.actions.InvigoratingBloomPassiveAction;
 
 import static theDragonkin.DefaultMod.makeOrbPath;
 
-public class DefaultOrb extends CustomOrb implements OnUseCardOrb {
+public class DefaultOrb extends CustomOrb {
 
     // Standard ID/Description
     public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
 
-    private static final int PASSIVE_AMOUNT = 3;
-    private static final int EVOKE_AMOUNT = 1;
+    private static final int PASSIVE_AMOUNT = 4;
+    private static final int EVOKE_AMOUNT = 4;
 
     // Animation Rendering Numbers - You can leave these at default, or play around with them and see what they change.
     private float vfxTimer = 1.0f;
@@ -69,7 +71,6 @@ public class DefaultOrb extends CustomOrb implements OnUseCardOrb {
         }
     }
 
-    @Override
     public void applyFocus() {
         passiveAmount = basePassiveAmount;
         evokeAmount = baseEvokeAmount;
@@ -78,8 +79,6 @@ public class DefaultOrb extends CustomOrb implements OnUseCardOrb {
     @Override
     public void onEvoke() { // 1.On Orb Evoke
 
-        AbstractDungeon.actionManager.addToBottom( // 2.Damage all enemies
-                new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
         // The damage matrix is how orb damage all enemies actions have to be assigned. For regular cards that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
 
 
@@ -90,11 +89,15 @@ public class DefaultOrb extends CustomOrb implements OnUseCardOrb {
 
     @Override
     public void onStartOfTurn() {// 1.At the start of your turn.
+        this.evokeAmount -= 1;
         AbstractDungeon.actionManager.addToBottom(// 2.This orb will have a flare effect
                 new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
 
         AbstractDungeon.actionManager.addToBottom(// 3. And draw you cards.
-                new DrawCardAction(AbstractDungeon.player, passiveAmount));
+                new InvigoratingBloomPassiveAction());
+        if (evokeAmount <= 1){
+            AbstractDungeon.actionManager.addToBottom(new EvokeSpecificOrbAction(this));
+        }
     }
 
     @Override
@@ -141,10 +144,4 @@ public class DefaultOrb extends CustomOrb implements OnUseCardOrb {
         return new DefaultOrb();
     }
 
-    @Override
-    public void onUseCardOrb(AbstractCard card, UseCardAction action) {
-        if (card.hasTag(CustomTags.Wind) ||card.hasTag(CustomTags.Dark)||card.hasTag(CustomTags.Ice)){
-            baseEvokeAmount += 1;
-        }
-    }
 }

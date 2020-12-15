@@ -18,5 +18,13 @@
       " Choose a Spell to replenish.",
       " Choose ", " Spells to replenish"
     ]
+  },
+  "MeditateOption": {
+    "TEXT": [
+      " Meditate",
+      " Replenish ",
+      " Spell",
+      " Spells"
+    ]
   }
 }

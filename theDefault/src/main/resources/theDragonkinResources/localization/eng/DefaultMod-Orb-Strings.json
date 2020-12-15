@@ -1,33 +1,4 @@
 {
-  "theDragonkin:Yol": {
-    "NAME": "Yol",
-    "DESCRIPTION": [
-      "Deal #b",
-      " damage to ALL enemies.",
-      " #rFire #rBreath",
-      " Word 1"
-    ]
-  },
-  "theDragonkin:Toor": {
-    "NAME": "Toor",
-    "DESCRIPTION": [
-      "Apply #b",
-      " #yScorched to ALL enemies.",
-      " #rFire #rBreath",
-      " Word 2"
-    ]
-  },
-  "theDragonkin:Shul": {
-    "NAME": "Shul",
-    "DESCRIPTION": [
-      "Gain #b",
-      " #Block",
-      " for each enemy,",
-      " for each Scorched enemy.",
-      " #rFire #rBreath",
-      " Word 3"
-    ]
-  },
   "theDefault:DefaultOrb": {
     "NAME": "Default Orb",
     "DESCRIPTION": [
@@ -38,10 +9,51 @@
       " damage to all enemies."
     ]
   },
-  "theDragonkin:Nid": {
-    "NAME": "Nid - Nothing",
+  "theDragonkin:InvigoratingBloom": {
+    "NAME": "Invigorating Bloom",
     "DESCRIPTION": [
-      "Adds nothing to a Shout and prevents discharging your shout naturally"
+      "#yPassive: At the start of your turn, Gain 1 Energy and increase the Healing done by this by 1.",
+      "",
+      " NL #yEvokes in #b",
+      " turns ",
+      " turn ",
+      " NL #yEvoke: Heal #b"
+    ]
+  },
+  "theDragonkin:ThornBloom": {
+    "NAME": "Hungry Bloom",
+    "DESCRIPTION": [
+      "#yPassive: At the start of your turn, Deal #b",
+      " Damage to a random enemy and increase Block gained by this by #b",
+      " NL #yEvokes in #b",
+      " turns ",
+      " turn ",
+      " NL #yEvoke: Gain #b",
+      " Block"
+    ]
+  },
+  "theDragonkin:ToxicBloom": {
+    "NAME": "Toxic Bloom",
+    "DESCRIPTION": [
+      "#yPassive: At the start of your turn, Deal #b",
+      " Damage to ALL #yPoisoned enemies and increase #Poison applied by this by #b",
+      " NL #yEvokes in #b",
+      " turns ",
+      " turn ",
+      " NL #yEvoke: Apply #b",
+      " Poison to ALL enemies."
+    ]
+  },
+  "theDragonkin:PrimalBloom": {
+    "NAME": "Primal Bloom",
+    "DESCRIPTION": [
+      "#yPassive: At the start of your turn Non-Primal Bloom #yPassive effects are increased by #b",
+      "",
+      " NL #yEvokes in #b",
+      " turns ",
+      " turn ",
+      " NL #yEvoke: Activate the passive effects of your other Blooms.",
+      " "
     ]
   }
 }

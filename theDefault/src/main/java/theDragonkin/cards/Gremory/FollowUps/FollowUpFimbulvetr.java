@@ -13,7 +13,7 @@ import theDragonkin.cards.Gremory.Attacks.Magic.Icicle;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.FreezePower;
+import theDragonkin.powers.Gremory.FreezePower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 @AutoAdd.Ignore

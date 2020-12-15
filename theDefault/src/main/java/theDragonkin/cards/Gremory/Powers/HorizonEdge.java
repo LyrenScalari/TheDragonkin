@@ -47,7 +47,7 @@ public class HorizonEdge extends AbstractGremoryCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.HorizonEdge(p,p)));
+        addToBot(new ApplyPowerAction(p,p,new theDragonkin.powers.Gremory.HorizonEdge(p,p)));
     }
 
     //Upgraded stats.

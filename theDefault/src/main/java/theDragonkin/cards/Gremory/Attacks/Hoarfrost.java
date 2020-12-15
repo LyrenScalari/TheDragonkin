@@ -15,7 +15,7 @@ import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.ChillPower;
+import theDragonkin.powers.Gremory.ChillPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 @AutoAdd.Ignore

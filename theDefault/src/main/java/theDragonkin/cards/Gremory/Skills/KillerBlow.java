@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.powers.KillerBlowPower;
+import theDragonkin.powers.Gremory.KillerBlowPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 

@@ -28,13 +28,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.characters.TheGremory;
+import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.potions.Dragonkin.DragonkinCommonPotion;
 import theDragonkin.potions.Dragonkin.DragonkinRarePotion;
 import theDragonkin.potions.Dragonkin.DragonkinUncommonPotion;
 import theDragonkin.potions.Gremory.MagicHerbTea;
 import theDragonkin.potions.Gremory.ShadowofZahras;
 import theDragonkin.potions.Gremory.SpringWater;
-import theDragonkin.powers.*;
+import theDragonkin.powers.Dragonkin.Scorchpower;
+import theDragonkin.powers.Gremory.FlowersAmbition;
+import theDragonkin.powers.Gremory.ImmaculateSnow;
+import theDragonkin.powers.Gremory.MoonsMarch;
+import theDragonkin.powers.Gremory.WindsSong;
 import theDragonkin.relics.Dragonkin.*;
 import theDragonkin.relics.Gremory.HeartofFlames;
 import theDragonkin.util.IDCheckDontTouchPls;
@@ -48,6 +53,7 @@ import java.util.Properties;
 
 import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
 import static theDragonkin.characters.TheGremory.Enums.Gremory_Purple_Color;
+import static theDragonkin.characters.TheGroveKeeper.Enums.GroveKeeper_Forest_Color;
 
 //TODO: DON'T MASS RENAME/REFACTOR
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -107,6 +113,7 @@ public class DefaultMod implements
     // Character Color
     public static final Color DEFAULT_GRAY = CardHelper.getColor(209.0f, 53.0f, 18.0f);
     public static final Color GREMORY_PURPLE = CardHelper.getColor(150.0f, 19.0f, 186.0f);
+    public static final Color GROVEKEEPER_FOREST = CardHelper.getColor(00.0f, 173.0f, 17.0f);
     
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -122,26 +129,49 @@ public class DefaultMod implements
   
     // Card backgrounds - The actual rectangular card
 
+    //Grovekeeper
+    public static final String Neutral_LARGE_ORB = "theDragonkinResources/images/1024/GroveKeeperOrb_N.png";
+    public static final String Neutral_SMALL_ORB = "theDragonkinResources/images/512/GroveKeeperOrb_N.png";
+    public static final String Solar_LARGE_ORB = "theDragonkinResources/images/1024/GroveKeeperOrb_S.png";
+    public static final String Solar_SMALL_ORB = "theDragonkinResources/images/512/GroveKeeperOrb_S.png";
+    public static final String Lunar_LARGE_ORB = "theDragonkinResources/images/1024/GroveKeeperOrb_M.png";
+    public static final String Lunar_SMALL_ORB = "theDragonkinResources/images/512/GroveKeeperOrb_M.png";
+    private static final String ATTACK_FOREST = "theDragonkinResources/images/512/GKBG_Attack.png";
+    private static final String SKILL_FOREST = "theDragonkinResources/images/512/GKBG_Skill.png";
+    private static final String POWER_FOREST = "theDragonkinResources/images/512/GKBG_Power.png";
+
+    private static final String ENERGY_ORB_FOREST = "theDragonkinResources/images/512/GroveKeeperOrb_N.png";
+    private static final String FOREST_ENERGY_ORB = "theDragonkinResources/images/512/forest_small_orb.png";
+
+    private static final String FOREST_ATTACK_PORTRAIT = "theDragonkinResources/images/1024/GKBG_Attack.png";
+    private static final String FOREST_SKILL_PORTRAIT = "theDragonkinResources/images/1024/GKBG_Skill.png";
+    private static final String FOREST_POWER_GRAY_PORTRAIT = "theDragonkinResources/images/1024/GKBG_Power.png";
+    private static final String ENERGY_ORB_FOREST_PORTRAIT = "theDragonkinResources/images/1024/GroveKeeperOrb_N.png";
+
+    // Dragonkin
+
     public static final String HOLY_LARGE_ORB = "theDragonkinResources/images/1024/card_Dragonkin_Holy_orb.png";
     public static final String HOLY_SMALL_ORB = "theDragonkinResources/images/512/card_Dragonkin_Holy_orb.png";
     private static final String ATTACK_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_power_default_gray.png";
 
-    private static final String ATTACK_GREMORY_PURPLE = "theDragonkinResources/images/512/bg_attack_gremory.png";
-    private static final String SKILL_GREMORY_PURPLE = "theDragonkinResources/images/512/bg_skill_gremory.png";
-    private static final String POWER_GREMORY_PURPLE = "theDragonkinResources/images/512/bg_power_gremory.png";
-    
     private static final String ENERGY_ORB_DEFAULT_GRAY = "theDragonkinResources/images/512/card_default_gray_orb.png";
     private static final String CARD_ENERGY_ORB = "theDragonkinResources/images/512/card_small_orb.png";
-
-    private static final String ENERGY_ORB_GREMORY_PURPLE = "theDragonkinResources/images/512/card_gremory_purple_orb.png";
-    private static final String GREMORY_CARD_ENERGY_ORB = "theDragonkinResources/images/512/card_gremory_orb.png";
     
     private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/bg_power_default_gray.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/card_default_gray_orb.png";
+
+
+    // Gremory
+    private static final String ATTACK_GREMORY_PURPLE = "theDragonkinResources/images/512/bg_attack_gremory.png";
+    private static final String SKILL_GREMORY_PURPLE = "theDragonkinResources/images/512/bg_skill_gremory.png";
+    private static final String POWER_GREMORY_PURPLE = "theDragonkinResources/images/512/bg_power_gremory.png";
+
+    private static final String ENERGY_ORB_GREMORY_PURPLE = "theDragonkinResources/images/512/card_gremory_purple_orb.png";
+    private static final String GREMORY_CARD_ENERGY_ORB = "theDragonkinResources/images/512/card_gremory_orb.png";
 
     private static final String ATTACK_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/bg_attack_gremory.png";
     private static final String SKILL_GREMORY_PURPLE_PORTRAIT = "theDragonkinResources/images/1024/bg_skill_gremory.png";
@@ -202,6 +232,7 @@ public class DefaultMod implements
     public static final String THE_DRAGONKIN_CORPSE = "theDragonkinResources/images/char/defaultCharacter/DragonkinCorpse.png";
     private static final String THE_DEFAULT_BUTTON = "theDragonkinResources/images/charSelect/DefaultCharacterButton.png";
     private static final String THE_GREMORY_BUTTON = "theDragonkinResources/images/charSelect/GremoryButton.png";
+    private static final String THE_GROVEKEEPER_BUTTON = "theDragonkinResources/images/charSelect/ButtonGrove.png";
     private static final String THE_DEFAULT_PORTRAIT = "theDragonkinResources/images/charSelect/DefaultCharacterPortraitBG.png";
     public static final String THE_DEFAULT_SHOULDER_1 = "theDragonkinResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "theDragonkinResources/images/char/defaultCharacter/shoulder2.png";
@@ -291,6 +322,12 @@ public class DefaultMod implements
                 ATTACK_GREMORY_PURPLE, SKILL_GREMORY_PURPLE, POWER_GREMORY_PURPLE, ENERGY_ORB_GREMORY_PURPLE,
                 ATTACK_GREMORY_PURPLE_PORTRAIT, SKILL_GREMORY_PURPLE_PORTRAIT, POWER_GREMORY_PURPLE_PORTRAIT,
                 ENERGY_ORB_GREMORY_PURPLE_PORTRAIT, GREMORY_CARD_ENERGY_ORB);
+
+        BaseMod.addColor(GroveKeeper_Forest_Color, GROVEKEEPER_FOREST, GROVEKEEPER_FOREST, GROVEKEEPER_FOREST,
+                GROVEKEEPER_FOREST, GROVEKEEPER_FOREST, GROVEKEEPER_FOREST, GROVEKEEPER_FOREST,
+                ATTACK_FOREST, SKILL_FOREST, POWER_FOREST, ENERGY_ORB_FOREST,
+                FOREST_ATTACK_PORTRAIT, FOREST_SKILL_PORTRAIT,FOREST_POWER_GRAY_PORTRAIT,
+                ENERGY_ORB_FOREST_PORTRAIT, FOREST_ENERGY_ORB);
         
         logger.info("Done creating the color");
         
@@ -412,9 +449,14 @@ public class DefaultMod implements
         BaseMod.addCharacter(new TheGremory("the Gremory", TheGremory.Enums.THE_GREMORY),
                 THE_GREMORY_BUTTON, THE_DEFAULT_PORTRAIT, TheGremory.Enums.THE_GREMORY);
 
+        BaseMod.addCharacter(new TheGroveKeeper("the Grovekeeper", TheGroveKeeper.Enums.THE_GROVEKEEPER),
+                THE_GROVEKEEPER_BUTTON, THE_DEFAULT_PORTRAIT, TheGroveKeeper.Enums.THE_GROVEKEEPER);
+
         receiveEditPotions();
 
         logger.info("Added " + TheDefault.Enums.THE_DRAGONKIN.toString());
+        logger.info("Added " + TheGremory.Enums.THE_GREMORY.toString());
+        logger.info("Added " + TheGroveKeeper.Enums.THE_GROVEKEEPER.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -537,6 +579,7 @@ public class DefaultMod implements
         pathCheck();
         // Add the Custom Dynamic Variables
         BaseMod.addDynamicVariable(new HealDynVar());
+        BaseMod.addDynamicVariable(new GrovekeeperSecondDamage());
         BaseMod.addDynamicVariable(new MagicDamageDynVar());
         BaseMod.addDynamicVariable(new SpellUses());
         logger.info("Add variables");
@@ -547,6 +590,7 @@ public class DefaultMod implements
         logger.info("Adding cards");
         new AutoAdd("DragonkinMod").packageFilter("theDragonkin.cards.Dragonkin").setDefaultSeen(true).cards();
         new AutoAdd("DragonkinMod").packageFilter("theDragonkin.cards.Gremory").setDefaultSeen(true).cards();
+        new AutoAdd("DragonkinMod").packageFilter("theDragonkin.cards.GroveKeeper").setDefaultSeen(true).cards();
 
         logger.info("Done adding cards!");
         logger.info("Added: " + BaseMod.getCardCount(Dragonkin_Red_COLOR) + " Cards");

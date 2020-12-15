@@ -33,7 +33,7 @@ public class WindsSong extends AbstractMagicGremoryCard {
     }
     public void onChoseThisOption() {
         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                new theDragonkin.powers.WindsSong(AbstractDungeon.player,AbstractDungeon.player)));
+                new theDragonkin.powers.Gremory.WindsSong(AbstractDungeon.player,AbstractDungeon.player)));
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

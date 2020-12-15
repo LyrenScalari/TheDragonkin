@@ -16,8 +16,9 @@ import theDragonkin.ui.ReplenishMagicEffect;
 @SpirePatch(clz = RestOption.class, method = "useOption")
 public class MagicReplenishStartPatch {
     public static void Postfix(){
-        CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+
         final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("ReplenishMagic");
+        CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group) {
             if (card instanceof AbstractMagicGremoryCard && ((AbstractMagicGremoryCard) card).misc != ((AbstractMagicGremoryCard) card).baseMisc) {
                 group.addToBottom(card);

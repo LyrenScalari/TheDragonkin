@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.HeartBuffEffect;
 import theDragonkin.DefaultMod;
-import theDragonkin.powers.ArcanaPower;
+import theDragonkin.powers.Gremory.ArcanaPower;
 
 public class MagicHerbTea extends AbstractPotion {
 

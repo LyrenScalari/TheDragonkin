@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Scorchpower;
+import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 // "How come this card extends CustomCard and not DynamicCard like all the rest?"

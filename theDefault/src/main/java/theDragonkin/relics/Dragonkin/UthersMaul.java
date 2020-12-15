@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theDragonkin.DefaultMod;
-import theDragonkin.powers.DivineConvictionpower;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makeRelicOutlinePath;
