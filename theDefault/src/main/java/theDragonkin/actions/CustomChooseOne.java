@@ -6,10 +6,12 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
+import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -19,21 +21,17 @@ public class CustomChooseOne  extends AbstractGameAction
 {
     private CardGroup group;
     private int numberOfCards;
+    private AbstractMonster target;
     private boolean allowSkip;
     private boolean retrieveCard;
     private Consumer<AbstractCard> callback;
-
-    public CustomChooseOne(CardGroup group)
-    {
-        this(group, 3, false, null);
-    }
-
-    public CustomChooseOne(CardGroup group, int number, boolean allowSkip, Consumer<AbstractCard> callback)
+    public CustomChooseOne(CardGroup group, int number, boolean allowSkip, AbstractMonster Target, Consumer<AbstractCard> callback)
     {
         AbstractChooseOneCard.lastchoice.clear();
         AbstractChooseOneCard.lastchoices.clear();
         AbstractChooseOneCard.Roadsuntraveled.clear();
         this.group = group;
+        this.target = Target;
         this.numberOfCards = number;
         this.allowSkip = allowSkip;
         this.callback = callback;
@@ -41,9 +39,14 @@ public class CustomChooseOne  extends AbstractGameAction
         this.duration = Settings.ACTION_DUR_FAST;
     }
 
+    public CustomChooseOne(CardGroup group, AbstractMonster Target)
+    {
+        this(group, 2, false, Target, null);
+    }
+
     public CustomChooseOne(CardGroup group, int number)
     {
-        this(group, number, false, null);
+        this(group, number, false,null, null);
     }
 
     @Override
@@ -97,12 +100,22 @@ public class CustomChooseOne  extends AbstractGameAction
         } else {
             if (!this.retrieveCard) {
                 if (AbstractDungeon.cardRewardScreen.discoveryCard != null) {
-                    AbstractCard disCard = AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy();
+                    AbstractGroveKeeperCard disCard = (AbstractGroveKeeperCard) AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy();
                     AbstractChooseOneCard.lastchoices = group;
                     AbstractChooseOneCard.lastchoice.addToBottom(disCard);
                     group.removeCard(disCard);
                     AbstractChooseOneCard.Roadsuntraveled = group;
-                    disCard.onChoseThisOption();
+                    if (disCard.target == AbstractCard.CardTarget.ENEMY){
+                        disCard.calculateCardDamage(this.target);
+                        disCard.applyPowers();
+                        disCard.onChoseThisOption(this.target);
+                    } else {
+                        disCard.calculateCardDamage(null);
+
+                        disCard.applyPowers();
+                        disCard.onChoseThisOption(null);
+                    }
+
                     disCard.current_x = -1000.0F * Settings.scale;
 
                     if (callback != null) callback.accept(disCard);

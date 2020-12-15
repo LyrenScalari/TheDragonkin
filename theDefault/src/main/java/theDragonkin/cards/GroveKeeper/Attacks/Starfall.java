@@ -37,6 +37,7 @@ public class Starfall extends AbstractChooseOneCard {
         GrovekeeperSecondDamage = BaseGrovekeeperSecondDamage = DAMAGE2;
         this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
         NextChoices.addToBottom(new StellarDrift());
+        NextChoices.addToBottom(new Starlord());
     }
 
     @Override
@@ -47,12 +48,11 @@ public class Starfall extends AbstractChooseOneCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        NextChoices.addToBottom(new Starlord(abstractMonster));
         if (upgraded){
             for (AbstractCard c : NextChoices.group){
                 c.upgrade();
             }
         }
-        addToBot(new CustomChooseOne(NextChoices,2,false, c ->{}));
+        addToBot(new CustomChooseOne(NextChoices,abstractMonster));
     }
 }

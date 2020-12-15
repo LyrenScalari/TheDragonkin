@@ -1,7 +1,12 @@
 package theDragonkin.cards.GroveKeeper;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
 import theDragonkin.cards.AbstractDefaultCard;
 import theDragonkin.powers.GroveKeeper.AlignmentPower;
 
@@ -38,6 +43,9 @@ public abstract class AbstractGroveKeeperCard extends AbstractDefaultCard {
         BaseGrovekeeperSecondDamage += amount;
         GrovekeeperSecondDamage = BaseGrovekeeperSecondDamage;
         isGrovekeeperSecondDamageModified = true;
+    }
+
+    public void onChoseThisOption(AbstractMonster target) {
     }
 
     @Override
