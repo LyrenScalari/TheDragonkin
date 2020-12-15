@@ -282,5 +282,9 @@
         "theDragonkin:EntangledPower": {
                 "NAME": "Entangled",
                 "DESCRIPTIONS": ["At the start of this monsters turn reduce this by 1 then #yStun it if it intends to attack"]
+        },
+        "theDragonkin:RoadLessTraveledPower": {
+                "NAME": "Twin Roads",
+                "DESCRIPTIONS": ["After you play a Choose One card, shuffle a copy of ALL choices you didn't choose into your draw pile with #yPurge."," Purge. NL "]
         }
 }

@@ -757,7 +757,7 @@
   },
   "theDragonkin:Starfall": {
     "NAME": "Starfall",
-    "DESCRIPTION": "Choose One - Deal !D! damage or Deal !AltD! damage to ALL enemies.",
+    "DESCRIPTION": "thedragonkin:Crossroads - Deal !AltD! damage or Deal !D! damage to ALL enemies.",
     "EXTENDED_DESCRIPTION": [" I must have #r4 #ror #rmore #bLunar #bAlignment to play that."]
   },
   "theDragonkin:Starlord": {
@@ -810,6 +810,22 @@
   "theDragonkin:StingingSwarm": {
     "NAME": "Stinging Swarm",
     "DESCRIPTION": "Whenever you are attacked, apply !M! Poison back."
+  },
+  "theDragonkin:SwarmStrike": {
+    "NAME": "Swarm Strike",
+    "DESCRIPTION": " thedragonkin:Duplicate. NL  thedragonkin:Crossroads: Deal !D! Damage or Apply !M! Poison. NL Deals 2 additional damage and applies 1 more Poison for each copy in play. NL Exhaust."
+  },
+  "theDragonkin:SwarmAssault": {
+    "NAME": "Swarm Assault",
+    "DESCRIPTION": "Deal !D! Damage."
+  },
+  "theDragonkin:SwarmAmbush": {
+    "NAME": "Swarm Ambush",
+    "DESCRIPTION": " Apply !M! Poison."
+  },
+  "theDragonkin:TheRoadLessTraveled": {
+    "NAME": "The Road Less Traveled",
+    "DESCRIPTION": "After you play a thedragonkin:Crossroads card, shuffle a copy of the unselected choices into your discard pile and give them Purge"
   },
   "theDragonkin:Everbloom": {
     "NAME": "Everbloom",

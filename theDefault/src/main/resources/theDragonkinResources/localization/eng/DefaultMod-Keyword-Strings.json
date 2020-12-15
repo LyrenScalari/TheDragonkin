@@ -325,6 +325,20 @@
     "DESCRIPTION": "Entangled enemies become #yStunned at the start of their turn if they intend to Attack."
   },
   {
+    "NAMES": [
+      "Duplicate",
+      "duplicate"
+    ],
+    "DESCRIPTION": "Create an exact copy of this card in the discard pile on use."
+  },
+  {
+    "NAMES": [
+      "Crossroads",
+      "crossroads"
+    ],
+    "DESCRIPTION": "Choose one of the listed effects to use."
+  },
+  {
     "PROPER_NAME": "Nature Power",
     "NAMES": [
       "Nature Power",

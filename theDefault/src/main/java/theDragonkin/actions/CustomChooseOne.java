@@ -111,7 +111,6 @@ public class CustomChooseOne  extends AbstractGameAction
                         disCard.onChoseThisOption(this.target);
                     } else {
                         disCard.calculateCardDamage(null);
-
                         disCard.applyPowers();
                         disCard.onChoseThisOption(null);
                     }
