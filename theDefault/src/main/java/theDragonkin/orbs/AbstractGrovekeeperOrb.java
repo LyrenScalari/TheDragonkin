@@ -1,8 +1,12 @@
 package theDragonkin.orbs;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.*;
+
+import java.util.ArrayList;
 
 public abstract class AbstractGrovekeeperOrb extends AbstractOrb {
     private String passiveDescription;
@@ -27,6 +31,16 @@ public abstract class AbstractGrovekeeperOrb extends AbstractOrb {
     }
     public void applyNaturePower(){
 
+    }
+
+    public AbstractOrb getRandomBloom(boolean useCardRng) {
+        ArrayList<AbstractOrb> orbs = new ArrayList();
+        orbs.add(new InvigoratingBloom());
+        orbs.add(new LifeBloom());
+        orbs.add(new ToxicBloom());
+        orbs.add(new ThornBloom());
+        orbs.add(new PrimalBloom());
+        return useCardRng ? (AbstractOrb)orbs.get(AbstractDungeon.cardRandomRng.random(orbs.size() - 1)) : (AbstractOrb)orbs.get(MathUtils.random(orbs.size() - 1));
     }
 
     @Override

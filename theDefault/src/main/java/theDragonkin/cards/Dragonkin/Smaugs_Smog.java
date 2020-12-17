@@ -26,8 +26,8 @@ public static final CardColor COLOR=TheDefault.Enums.Dragonkin_Red_COLOR;
 private static final int COST=2;
 private static final int UPGRADED_COST=2;
 
-private static final int POTENCY=3;
-private static final int UPGRADE_PLUS_POTENCY=2;
+private static final int POTENCY=10;
+private static final int UPGRADE_PLUS_POTENCY=8;
 private static final int MAGIC=1;
 private static final int UPGRADE_MAGIC=0;
 
@@ -46,12 +46,8 @@ public void use(AbstractPlayer p,AbstractMonster m) {
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 for (AbstractPower power : mo.powers){
                         if (power.type == AbstractPower.PowerType.DEBUFF) {
-                                int max = Math.max(1, power.amount);
-                                for (int i = 0; i < max; ++i) {
-                                        AbstractDungeon.actionManager.addToBottom(
-                                                new DamageAction(mo, new DamageInfo(p, baseDamage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-
-                                }
+                                AbstractDungeon.actionManager.addToBottom(
+                                        new DamageAction(mo, new DamageInfo(p, baseDamage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                         }
                 }
         }

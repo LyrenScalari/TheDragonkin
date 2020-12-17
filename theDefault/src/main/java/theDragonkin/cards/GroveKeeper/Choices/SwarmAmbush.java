@@ -1,5 +1,6 @@
 package theDragonkin.cards.GroveKeeper.Choices;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -21,7 +22,7 @@ import theDragonkin.characters.TheGroveKeeper;
 import java.util.Iterator;
 
 import static theDragonkin.DefaultMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class SwarmAmbush extends AbstractGroveKeeperCard {
     public static final String ID = DefaultMod.makeID(SwarmAmbush.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -41,7 +42,7 @@ public class SwarmAmbush extends AbstractGroveKeeperCard {
     public static int swarmcount = 0;
     public SwarmAmbush() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DAMAGE;
+        magicNumber = baseMagicNumber = 2;
         this.tags.add(CustomTags.Neutral);
     }
     public SwarmAmbush(int magic, AbstractMonster enemy) {
@@ -59,7 +60,7 @@ public class SwarmAmbush extends AbstractGroveKeeperCard {
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(Target,AbstractDungeon.player,new PoisonPower(Target,AbstractDungeon.player,magicNumber)));
+        addToBot(new ApplyPowerAction(m,AbstractDungeon.player,new PoisonPower(Target,AbstractDungeon.player,magicNumber)));
     }
 
     @Override
@@ -100,6 +101,7 @@ public class SwarmAmbush extends AbstractGroveKeeperCard {
         return c instanceof SwarmStrike;
     }
     public void calculateCardDamage(AbstractMonster mo) {
+        countCards();
         int realBaseMagic = this.baseMagicNumber;
         this.baseMagicNumber = realBaseMagic * countCards();
         magicNumber = baseMagicNumber;
@@ -109,6 +111,7 @@ public class SwarmAmbush extends AbstractGroveKeeperCard {
     }
 
     public void applyPowers() {
+        countCards();
         int realBaseMagic = this.baseMagicNumber;
         this.baseMagicNumber = realBaseMagic * countCards();
         magicNumber = baseMagicNumber;

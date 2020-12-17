@@ -35,13 +35,13 @@ public class SwarmStrike extends AbstractChooseOneCard {
     private static final int COST = 1;  // COST = 1
     private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
 
-    private static final int DAMAGE = 2;    // DAMAGE = 6
+    private static final int DAMAGE = 4;    // DAMAGE = 6
     private static final int UPGRADE_PLUS_DMG = 1;  // UPGRADE_PLUS_DMG = 4
     public static int swarmcount = 0;
     public SwarmStrike() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
-        this.baseDamage = 2;
-        this.baseMagicNumber = 1;
+        this.baseDamage = 4;
+        this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.tags.add(CardTags.STRIKE);
         this.exhaust = true;
@@ -56,6 +56,9 @@ public class SwarmStrike extends AbstractChooseOneCard {
                 c.upgrade();
             }
         }
+        AbstractChooseOneCard.lastchoice.clear();
+        AbstractChooseOneCard.Roadsuntraveled.clear();
+        AbstractChooseOneCard.lastchoices.clear();
         addToBot(new ChooseOneAction(NextChoices));
         addToBot(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
     }
@@ -108,6 +111,7 @@ public class SwarmStrike extends AbstractChooseOneCard {
     }
 
     public void calculateCardDamage(AbstractMonster mo) {
+        countCards();
         int realBaseDamage = this.baseDamage;
         this.baseDamage = realBaseDamage * swarmcount;
         int realBaseMagic = this.baseMagicNumber;
@@ -121,6 +125,7 @@ public class SwarmStrike extends AbstractChooseOneCard {
     }
 
     public void applyPowers() {
+        countCards();
         int realBaseDamage = this.baseDamage;
         this.baseDamage = realBaseDamage * swarmcount;
         int realBaseMagic = this.baseMagicNumber;

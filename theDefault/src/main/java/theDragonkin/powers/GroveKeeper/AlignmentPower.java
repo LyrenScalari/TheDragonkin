@@ -8,8 +8,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.sun.org.apache.xpath.internal.functions.FuncFloor;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
+import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
@@ -43,22 +45,30 @@ public class AlignmentPower extends TwoAmountPower {
         }
 
     public void ConvertAlignment(boolean half){
-        if (amount < amount2 && half){
-            amount = amount2 / 2;
-            amount2 = 0;
-        } else {
-            amount2 = amount / 2;
-            amount = 0;
-        }
-        if (amount < amount2 && !half){
-            amount = amount2;
-            amount2 = 0;
-        } else {
-            amount2 = amount;
-            amount = 0;
-        }
-    }
+            if (half) {
+                if (amount < amount2) {
+                    amount = amount2 / 2;
+                    amount2 = 0;
+                } else {
+                    amount2 = amount / 2;
+                    amount = 0;
+                }
 
+            } else {
+                if (amount < amount2) {
+                    amount = amount2;
+                    amount2 = 0;
+                } else {
+                    amount2 = amount;
+                    amount = 0;
+                }
+            }
+        updateDescription();
+    }
+    @Override
+    public void onVictory(){
+        AbstractGroveKeeperCard.alignmentgiven = false;
+    }
     @Override
     public void onUseCard(AbstractCard c, UseCardAction action){
             if (c.hasTag(CustomTags.Solar)){

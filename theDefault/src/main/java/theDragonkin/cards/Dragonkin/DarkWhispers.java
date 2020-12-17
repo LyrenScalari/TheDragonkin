@@ -26,9 +26,9 @@ public class DarkWhispers extends AbstractDragonkinCard {
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 9;
+    private static final int POTENCY = 12;
     private static final int UPGRADE_PLUS_POTENCY = 3;
-    private static final int MAGIC = 1;
+    private static final int MAGIC = 2;
     private static final int UPGRADE_MAGIC = 1;
 
     public DarkWhispers() {

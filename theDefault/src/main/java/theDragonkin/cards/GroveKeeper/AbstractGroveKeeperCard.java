@@ -6,8 +6,10 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
 import theDragonkin.cards.AbstractDefaultCard;
+import theDragonkin.powers.GroveKeeper.AbstractUpdatingTwoAmountPower;
 import theDragonkin.powers.GroveKeeper.AlignmentPower;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
@@ -18,7 +20,7 @@ public abstract class AbstractGroveKeeperCard extends AbstractDefaultCard {
     public int GrovekeeperSecondDamage;
     public int BaseGrovekeeperSecondDamage;
     public boolean upgradedGrovekeeperSecondDamage;
-
+    public static boolean alignmentgiven = false;
     public AbstractGroveKeeperCard(final String id,
                                    final String img,
                                    final int cost,

@@ -1,5 +1,6 @@
 package theDragonkin.cards.GroveKeeper.Choices;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -19,7 +20,7 @@ import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
 
 import static theDragonkin.DefaultMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class Starlord extends AbstractGroveKeeperCard {
     public static final String ID = DefaultMod.makeID(Starlord.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

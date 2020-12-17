@@ -16,6 +16,11 @@
                 " additional damage,", " and reduce this by #b1"
                 ]
         },
+        "theDragonkin:TempEnergyDown": {
+                "NAME": "Drained",
+                "DESCRIPTIONS": ["At the start of your turn lose "
+                ]
+        },
         "theDragonkin:ShieldGlare": {
                 "NAME": "Shield Glare",
                 "DESCRIPTIONS": ["When attacked, ", " Stun the attacker next turn"
@@ -270,6 +275,10 @@
         "theDragonkin:AlignmentPower":{
                 "NAME": "Alignment",
                 "DESCRIPTIONS": ["Current Alignment :", " Neutral +", " #ySolar ", " #bLunar "," Neutral -"," Neutral"]
+        },
+        "theDragonkin:NaturePower":{
+                "NAME": "Nature Power",
+                "DESCRIPTIONS": ["#yMystic #yFlowers last #b", " Turns longer.", " When you channel #yMystic #yFlowers channel #b", " extra."]
         },
         "theDragonkin:Moonstruck": {
                 "NAME": "Moonstruck",

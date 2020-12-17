@@ -1,9 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -28,9 +26,9 @@ public class ObsidianRite extends AbstractDragonkinCard {
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
 
-    private static final int POTENCY = 15;
-    private static final int UPGRADE_PLUS_POTENCY = 5;
-    private static final int MAGIC = 2;
+    private static final int POTENCY = 13;
+    private static final int UPGRADE_PLUS_POTENCY = 3;
+    private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 1;
 
     public ObsidianRite() {
@@ -46,9 +44,11 @@ public class ObsidianRite extends AbstractDragonkinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p,baseDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(p,p,new StrengthPower(p,magicNumber),magicNumber));
-        addToBot(new LoseHPAction(p,p,5, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        addToBot(new ExhaustAction(magicNumber,true,false,false));
+        for (int i = 0; i < this.magicNumber; ++i) {
+            addToBot(new DamageRandomEnemyAction(new DamageInfo(p,damage), AbstractGameAction.AttackEffect.FIRE));
+        }
     }
 
     @Override

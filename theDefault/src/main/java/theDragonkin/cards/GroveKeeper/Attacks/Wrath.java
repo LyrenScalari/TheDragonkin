@@ -48,7 +48,7 @@ public class Wrath extends AbstractGroveKeeperCard {
     private static final int COST = 2;  // COST = 1
     private static final int UPGRADED_COST = 0; // UPGRADED_COST = 1
 
-    private static final int DAMAGE = 8;    // DAMAGE = 6
+    private static final int DAMAGE = 12;    // DAMAGE = 6
     private static final int UPGRADE_PLUS_DMG = 4;  // UPGRADE_PLUS_DMG = 4
 
     // /STAT DECLARATION/
@@ -66,11 +66,11 @@ public class Wrath extends AbstractGroveKeeperCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(p, new DamageInfo(p,damage), AbstractGameAction.AttackEffect.SMASH));
+        addToBot(new DamageAction(m, new DamageInfo(p,damage), AbstractGameAction.AttackEffect.SMASH));
         if (p.hasPower(AlignmentPower.POWER_ID)) {
             if (((TwoAmountPower)p.getPower(AlignmentPower.POWER_ID)).amount2 >= 2) {
                 addToBot(new VFXAction(new CollectorCurseEffect(m.drawX,m.drawY)));
-                addToBot(new DamageAction(p, new DamageInfo(p,damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                addToBot(new DamageAction(m, new DamageInfo(p,damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 addToBot(new ApplyPowerAction(m,p,new Moonstruck(m,p,magicNumber)));
             } else if (p.getPower(AlignmentPower.POWER_ID).amount >= 2){
                 addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
@@ -88,6 +88,7 @@ public class Wrath extends AbstractGroveKeeperCard {
                 this.tags.remove(CustomTags.Neutral);
                 this.tags.add(CustomTags.Lunar);
                 this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
+                initializeDescription();
             }
         } else if (AbstractDungeon.player.hasPower(AlignmentPower.POWER_ID) && AbstractDungeon.player.getPower(AlignmentPower.POWER_ID).amount >= 2){
             this.name = cardStrings.EXTENDED_DESCRIPTION[0];
@@ -98,6 +99,7 @@ public class Wrath extends AbstractGroveKeeperCard {
                 this.tags.remove(CustomTags.Neutral);
                 this.tags.add(CustomTags.Solar);
                 this.setOrbTexture(DefaultMod.Solar_SMALL_ORB,DefaultMod.Solar_LARGE_ORB);
+                initializeDescription();
             }
         } else {
             this.name = cardStrings.NAME;
@@ -108,6 +110,7 @@ public class Wrath extends AbstractGroveKeeperCard {
                 this.tags.remove(CustomTags.Solar);
                 this.tags.add(CustomTags.Neutral);
                 this.setOrbTexture(DefaultMod.Neutral_SMALL_ORB,DefaultMod.Neutral_LARGE_ORB);
+                initializeDescription();
             }
         }
     }

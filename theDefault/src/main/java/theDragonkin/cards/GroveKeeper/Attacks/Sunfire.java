@@ -1,6 +1,5 @@
-package theDragonkin.cards.GroveKeeper.Skills;
+package theDragonkin.cards.GroveKeeper.Attacks;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -9,11 +8,9 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
-import theDragonkin.characters.TheDefault;
 import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.powers.GroveKeeper.AlignmentPower;
 import theDragonkin.powers.GroveKeeper.Sunburn;
@@ -54,7 +51,6 @@ public class Sunfire extends AbstractGroveKeeperCard {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = 2;
         this.tags.add(CustomTags.Solar);
-        this.tags.add(CardTags.STARTER_STRIKE);
         this.setOrbTexture(DefaultMod.Solar_SMALL_ORB,DefaultMod.Solar_LARGE_ORB);
     }
 

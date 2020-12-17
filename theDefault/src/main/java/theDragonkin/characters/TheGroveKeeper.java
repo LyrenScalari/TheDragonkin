@@ -24,8 +24,7 @@ import theDragonkin.DefaultMod;
 import theDragonkin.cards.GroveKeeper.Attacks.GrovekeeperStrike;
 import theDragonkin.cards.GroveKeeper.Attacks.Moonfire;
 import theDragonkin.cards.GroveKeeper.Skills.GrovekeeperDefend;
-import theDragonkin.cards.GroveKeeper.Skills.Sunfire;
-import theDragonkin.relics.Gremory.HeartofFlames;
+import theDragonkin.cards.GroveKeeper.Attacks.Sunfire;
 
 import java.util.ArrayList;
 

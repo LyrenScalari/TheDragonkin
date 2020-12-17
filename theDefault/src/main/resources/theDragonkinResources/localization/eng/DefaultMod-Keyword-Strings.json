@@ -344,13 +344,15 @@
       "Nature Power",
       "nature_power"
     ],
-    "DESCRIPTION": "Increases the duration of #yMystic #yFlowers."
+    "DESCRIPTION": "Increases the number of #yMystic #yFlowers channeled, and their duration."
   },
   {
     "PROPER_NAME": "Invigorating Bloom",
     "NAMES": [
       "Invigorating Bloom",
-      "invigorating_bloom"
+      "invigorating_bloom",
+      "Invigorating Blooms",
+      "invigorating_blooms"
     ],
     "DESCRIPTION": "Mystic Flower: Gain 1 energy and increase Healing done by this each turn. When #yEvoked Heal 1 HP per turn this was Channeled."
   },
@@ -358,15 +360,19 @@
     "PROPER_NAME": "Hungry Bloom",
     "NAMES": [
       "Hungry Bloom",
-      "hungry_bloom"
+      "hungry_bloom",
+      "Hungry Blooms",
+      "hungry_blooms"
     ],
     "DESCRIPTION": "Mystic Flower: Deal damage to a random enemy and increase Block gained by this each turn. When #yEvoked Gain Block equal to the damage this dealt."
   },
   {
     "PROPER_NAME": "Toxic Bloom",
     "NAMES": [
-      "Toxic Bloom",
-      "toxic_bloom"
+        "Toxic Bloom",
+        "toxic_bloom",
+        "Toxic Blooms",
+        "toxic_blooms"
     ],
     "DESCRIPTION": "Mystic Flower: Deal damage to ALL #yPoisoned enemies and increase the poison this applies each turn. When #yEvoked Apply poison to ALL enemies."
   },
@@ -374,8 +380,20 @@
     "PROPER_NAME": "Primal Bloom",
     "NAMES": [
       "Primal Bloom",
-      "primal_bloom"
+      "primal_bloom",
+      "Primal Blooms",
+      "primal_blooms"
     ],
     "DESCRIPTION": "Mystic Flower: Increase the power of your non-primal bloom passive effects each turn. When #yEvoked Activate the passive effects of your other Mystic Flowers.."
+  },
+  {
+    "PROPER_NAME": "Life Bloom",
+    "NAMES": [
+      "Life Bloom",
+      "Life Blooms",
+      "life_bloom",
+      "life_blooms"
+    ],
+    "DESCRIPTION": "Mystic Flower: Gain #yTemporary #yHP and increase the #yTemporary #yHP this gives  each turn. When #yEvoked Gain #yTemporary #yHP and lose 3 #yDexterity."
   }
 ]

@@ -19,7 +19,7 @@ import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
 
-public class Sunburn extends TwoAmountPower {
+public class Sunburn extends AbstractUpdatingTwoAmountPower {
     public AbstractCreature source;
     public static final String POWER_ID = DefaultMod.makeID("Sunburn");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -30,6 +30,7 @@ public class Sunburn extends TwoAmountPower {
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
     public Sunburn(final AbstractCreature owner, final AbstractCreature source,int amount) {
+        super(owner,owner,amount);
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
@@ -46,13 +47,18 @@ public class Sunburn extends TwoAmountPower {
     }
     @Override
     public void onUseCard(AbstractCard c, UseCardAction action){
-        this.amount2 = (AbstractDungeon.player.getPower(AlignmentPower.POWER_ID).amount);
         if (c.hasTag(CustomTags.Solar) && action.target == owner){
             addToBot(new GainBlockAction(AbstractDungeon.player,(AbstractDungeon.player.getPower(AlignmentPower.POWER_ID).amount)));
             addToBot(new ReducePowerAction(owner,owner,this,1));
         }
         updateDescription();
     }
+    @Override
+    public void UpdateAmount2 (){
+        this.amount2 = (AbstractDungeon.player.getPower(AlignmentPower.POWER_ID).amount);
+        updateDescription();
+    }
+
     @Override
     public void updateDescription() {
         this.amount2 = (AbstractDungeon.player.getPower(AlignmentPower.POWER_ID).amount);

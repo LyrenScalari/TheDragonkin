@@ -1,5 +1,6 @@
 package theDragonkin.cards.GroveKeeper.Choices;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -21,7 +22,7 @@ import theDragonkin.characters.TheGroveKeeper;
 import java.util.Iterator;
 
 import static theDragonkin.DefaultMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class SwarmAssault extends AbstractGroveKeeperCard {
     public static final String ID = DefaultMod.makeID(SwarmAssault.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -36,7 +37,7 @@ public class SwarmAssault extends AbstractGroveKeeperCard {
     public AbstractMonster Target;
     public DamageInfo.DamageType dmgType = DamageInfo.DamageType.NORMAL;
     private static final int COST = 1;
-    private static final int DAMAGE = 2;    // DAMAGE = 6
+    private static final int DAMAGE = 4;    // DAMAGE = 6
     private static final int UPGRADE_PLUS_DMG = 1;  // UPGRADE_PLUS_DMG = 4
     public static int swarmcount = 0;
     public SwarmAssault() {
@@ -59,7 +60,7 @@ public class SwarmAssault extends AbstractGroveKeeperCard {
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(Target,new DamageInfo(AbstractDungeon.player,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DamageAction(m,new DamageInfo(AbstractDungeon.player,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
     @Override

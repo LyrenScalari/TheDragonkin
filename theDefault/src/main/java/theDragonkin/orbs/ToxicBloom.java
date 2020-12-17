@@ -16,6 +16,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.vfx.GlowyFireEyesEffect;
+import com.megacrit.cardcrawl.vfx.PetalEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
@@ -86,7 +88,7 @@ public class ToxicBloom extends AbstractGrovekeeperOrb {
     public void onStartOfTurn() {// 1.At the start of your turn.
         this.evokeAmount -= 1;
         AbstractDungeon.actionManager.addToBottom(// 2.This orb will have a flare effect
-                new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.valueOf((String.valueOf(DefaultMod.GROVEKEEPER_FOREST)))), 0.1f));
+                new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
 
         AbstractDungeon.actionManager.addToBottom(// 3. And draw you cards.
                 new DamageRandomEnemyAction(new DamageInfo(AbstractDungeon.player,passiveAmount, DamageInfo.DamageType.THORNS), BLUNT_HEAVY));
@@ -105,7 +107,7 @@ public class ToxicBloom extends AbstractGrovekeeperOrb {
         angle += Gdx.graphics.getDeltaTime() * 45.0f;
         vfxTimer -= Gdx.graphics.getDeltaTime();
         if (vfxTimer < 0.0f) {
-            AbstractDungeon.effectList.add(new DarkOrbPassiveEffect(cX, cY)); // This is the purple-sparkles in the orb. You can change this to whatever fits your orb.
+            AbstractDungeon.effectList.add(new GlowyFireEyesEffect(cX, cY)); // This is the purple-sparkles in the orb. You can change this to whatever fits your orb.
             vfxTimer = MathUtils.random(vfxIntervalMin, vfxIntervalMax);
         }
     }

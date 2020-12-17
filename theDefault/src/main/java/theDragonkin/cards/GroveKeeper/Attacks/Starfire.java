@@ -75,6 +75,27 @@ public class Starfire extends AbstractGroveKeeperCard {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
         }
     }
+    public void calculateCardDamage(AbstractMonster mo) {
+        if (AbstractDungeon.player.hasPower(AlignmentPower.POWER_ID) && ((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2 >= 4) {
+            int realBaseDamage = this.baseDamage;
+            this.baseDamage = realBaseDamage * 2;
+            magicNumber = baseMagicNumber;
+            super.calculateCardDamage(mo);
+            this.baseDamage = realBaseDamage;
+            this.isDamageModified = this.damage != this.baseDamage;
+        }
+    }
+
+    public void applyPowers() {
+        if (AbstractDungeon.player.hasPower(AlignmentPower.POWER_ID) && ((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2 >= 4) {
+            int realBaseDamage = this.baseDamage;
+            this.baseDamage = realBaseDamage * 2;
+            magicNumber = baseMagicNumber;
+            super.applyPowers();
+            this.baseDamage = realBaseDamage;
+            this.isDamageModified = this.damage != this.baseDamage;
+        }
+    }
     // Upgraded stats.
     @Override
     public void upgrade() {

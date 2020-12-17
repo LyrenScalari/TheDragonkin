@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
@@ -24,8 +25,8 @@ public class ForbiddenMagic extends AbstractDragonkinCard {
 
     private static final int POTENCY = 10;
     private static final int UPGRADE_PLUS_POTENCY = 4;
-    private static final int MAGIC = 0;
-    private static final int UPGRADE_MAGIC = 0;
+    private static final int MAGIC = 2;
+    private static final int UPGRADE_MAGIC = -1;
 
     public ForbiddenMagic() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -39,6 +40,7 @@ public class ForbiddenMagic extends AbstractDragonkinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ForbiddenMagicAction(p, m, this.damage, this.damageTypeForTurn, this.freeToPlayOnce, this.energyOnUse));
+        addToBot(new DiscardAction(p,p,magicNumber,true));
     }
 
     @Override

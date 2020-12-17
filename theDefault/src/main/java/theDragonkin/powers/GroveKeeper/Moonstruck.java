@@ -17,7 +17,7 @@ import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
 
-public class Moonstruck extends TwoAmountPower {
+public class Moonstruck extends AbstractUpdatingTwoAmountPower {
     public AbstractCreature source;
     public static final String POWER_ID = DefaultMod.makeID("Moonstruck");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -28,6 +28,7 @@ public class Moonstruck extends TwoAmountPower {
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
     public Moonstruck(final AbstractCreature owner, final AbstractCreature source,int amount) {
+        super(owner,owner,amount);
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
@@ -44,13 +45,18 @@ public class Moonstruck extends TwoAmountPower {
     }
     @Override
     public void onUseCard(AbstractCard c, UseCardAction action){
-        this.amount2 = (((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2);
         if (c.hasTag(CustomTags.Lunar)){
             addToBot(new LoseHPAction(owner,owner,((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2));
             addToBot(new ReducePowerAction(owner,owner,this,1));
         }
         updateDescription();
     }
+    @Override
+    public void UpdateAmount2 (){
+        this.amount2 = (((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2);
+        updateDescription();
+    }
+
     @Override
     public void updateDescription() {
         this.amount2 = (((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2);

@@ -36,7 +36,7 @@
     "NAME": "Toxic Bloom",
     "DESCRIPTION": [
       "#yPassive: At the start of your turn, Deal #b",
-      " Damage to ALL #yPoisoned enemies and increase #Poison applied by this by #b",
+      " Damage to ALL #yPoisoned enemies and increase #yPoison applied by this by #b",
       " NL #yEvokes in #b",
       " turns ",
       " turn ",
@@ -54,6 +54,18 @@
       " turn ",
       " NL #yEvoke: Activate the passive effects of your other Blooms.",
       " "
+    ]
+  },
+  "theDragonkin:LifeBloom": {
+    "NAME": "Life Bloom",
+    "DESCRIPTION": [
+      "#yPassive: At the start of your turn Gain #b",
+      " #yTemporary #yHP and increase #yTemporary #yHP given.",
+      " NL #yEvokes in #b",
+      " turns ",
+      " turn ",
+      " NL #yEvoke: Gain #b",
+      " #yTemporary #yHP and Lose 3 #yDexterity."
     ]
   }
 }

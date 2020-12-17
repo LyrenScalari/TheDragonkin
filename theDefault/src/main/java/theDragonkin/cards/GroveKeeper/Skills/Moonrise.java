@@ -59,7 +59,11 @@ public class Moonrise extends AbstractGroveKeeperCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (p.hasPower(AlignmentPower.POWER_ID)) {
             if (p.getPower(AlignmentPower.POWER_ID).amount >= 2) {
+                if (!upgraded) {
                     addToBot(new ConvertAlignmentAction(true));
+                } else {
+                    addToBot(new ConvertAlignmentAction(false));
+                }
             }
         }
     }
@@ -70,20 +74,13 @@ public class Moonrise extends AbstractGroveKeeperCard {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
         }
     }
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        if (AbstractDungeon.player.hasPower(AlignmentPower.POWER_ID) && ((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2 >= 2) {
-            return true;
-        } else {
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-            return false;
-        }
-    }
+
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(0);
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }
