@@ -34,7 +34,12 @@ public class ReplenishMagicEffect extends AbstractGameEffect {
     public ReplenishMagicEffect(int NumtoReplenish, CardGroup group) {
         this.duration = DUR;
         this.screenColor.a = 0.0f;
-        replenishcount = NumtoReplenish;
+
+        if (NumtoReplenish > group.size()){
+            replenishcount = group.size();
+        } else {
+            replenishcount = NumtoReplenish;
+        }
         Group = group;
         AbstractDungeon.gridSelectScreen.selectedCards.clear();
         AbstractDungeon.overlayMenu.proceedButton.hide();
