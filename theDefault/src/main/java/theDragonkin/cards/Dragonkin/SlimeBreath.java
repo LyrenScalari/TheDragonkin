@@ -31,11 +31,11 @@ public class SlimeBreath extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
 
     private static final int POTENCY = 35;
-    private static final int UPGRADE_PLUS_POTENCY = 16;
+    private static final int UPGRADE_PLUS_POTENCY = 15;
     private static final int MAGIC = 2;
     private static final int UPGRADE_MAGIC = -1;
 
@@ -71,9 +71,7 @@ public class SlimeBreath extends AbstractDragonkinCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(2);
             upgradeDamage(UPGRADE_PLUS_POTENCY);
-            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
     }

@@ -294,7 +294,7 @@
   },
   "theDragonkin:BindingSlime": {
     "NAME": "Void Shell",
-    "DESCRIPTION": "Gain !B! block. NL Next turn, lose "
+    "DESCRIPTION": "Gain !B! block. NL Don't lose Block at the start of your next turn. NL Next turn, lose "
   },
   "theDragonkin:SlimeBreath": {
     "NAME": "Void Blade",

@@ -37,12 +37,6 @@ public class TempEnergyDown extends TwoAmountPower {
             sb.append("[E] ");
         }
 
-        if (powerStrings.DESCRIPTIONS[1].isEmpty()) {
-            sb.append(LocalizedStrings.PERIOD);
-        } else {
-            sb.append(powerStrings.DESCRIPTIONS[1]);
-        }
-
         this.description = sb.toString();
     }
 

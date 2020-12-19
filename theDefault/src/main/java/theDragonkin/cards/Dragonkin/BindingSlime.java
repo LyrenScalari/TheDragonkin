@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import theDragonkin.DefaultMod;
@@ -22,11 +23,11 @@ public class BindingSlime extends AbstractDragonkinCard {
 
 
     private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
 
     private static final int POTENCY = 30;
@@ -49,6 +50,7 @@ public class BindingSlime extends AbstractDragonkinCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p,block));
         addToBot(new ApplyPowerAction(p,p,new TempEnergyDown(p,magicNumber,magicNumber,false)));
+        addToBot(new ApplyPowerAction(p,p,new BlurPower(p,1)));
     }
     @Override
     public void initializeDescription(){
@@ -64,9 +66,7 @@ public class BindingSlime extends AbstractDragonkinCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(2);
             upgradeBlock(UPGRADE_PLUS_POTENCY);
-            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
     }
