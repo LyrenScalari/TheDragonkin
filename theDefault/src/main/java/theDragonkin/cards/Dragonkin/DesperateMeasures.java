@@ -35,7 +35,7 @@ public class DesperateMeasures extends AbstractHolyBonusCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
-        heal = baseHeal = MAGIC;
+       defaultSecondMagicNumber = defaultBaseSecondMagicNumber = MAGIC;
         tags.add(CustomTags.HOLY_CARD);
         baseMagicNumber = magicNumber = MAGIC;
         purgeOnUse = true;

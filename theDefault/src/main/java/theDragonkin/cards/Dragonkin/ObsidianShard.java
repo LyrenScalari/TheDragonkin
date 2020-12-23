@@ -52,6 +52,7 @@ public class ObsidianShard extends AbstractDragonkinCard {
         baseDamage =DAMAGE;
         magicNumber = baseMagicNumber = 1;
         AutoplayField.autoplay.set(this,true);
+        this.exhaust = true;
     }
 
 

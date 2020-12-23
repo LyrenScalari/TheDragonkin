@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import theDragonkin.DefaultMod;
 import theDragonkin.cards.AbstractDefaultCard;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
@@ -25,5 +26,10 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
 
         super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
 
+    }
+    @Override
+    public void atTurnStart() {
+        super.atTurnStart();
+        DefaultMod.WasDrained = false;
     }
 }

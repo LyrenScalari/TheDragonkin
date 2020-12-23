@@ -86,10 +86,6 @@
     "NAME": "Hallowed Ground",
     "DESCRIPTION": "Deal !D! damage to all enemies, gain !M! Temporary_HP for each enemy. NL Exhaustive: !stslib:ex!."
   },
-  "theDragonkin:Wildfire": {
-    "NAME": "Wildfire",
-    "DESCRIPTION": "Exhaust a card in your hand, apply scorch equal to triple it's cost. NL Next Turn Fetch cards of the same type equal to it's cost."
-  },
   "theDragonkin:Catacylsm": {
     "NAME": "Cataclysm",
     "DESCRIPTION": "Double ALL enemies' thedragonkin:Scorch and thedragonkin:Dissolve. NL ALL enemies lose HP equal to their thedragonkin:Dissolve. NL Place an Insanity on top of your draw pile. NL Purge."
@@ -114,13 +110,13 @@
   },
   "theDragonkin:JabCross": {
     "NAME": "Jab Cross",
-    "DESCRIPTION": "Deal !D! damage. NL Fetch a Skill from your draw pile.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Fetch !M! Skills from your draw pile."
+    "DESCRIPTION": "Deal !D! damage. NL Next turn, Fetch a random Skill from your draw pile.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Next turn, Fetch !M! random Skills from your draw pile."
   },
   "theDragonkin:ParryandRiposte": {
     "NAME": "Parry and Riposte",
-    "DESCRIPTION": "Gain !B! Block. NL Fetch an Attack from your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Fetch !M! Attacks from your draw pile."
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, Fetch a random Attack from your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Next turn, Fetch !M! random Attacks from your draw pile."
   },
   "theDragonkin:AcidRain": {
     "NAME": "Acid Rain",
@@ -140,7 +136,7 @@
   },
   "theDragonkin:FlameWard": {
     "NAME": "Flame Ward",
-    "DESCRIPTION": "Gain !B! Block. NL Add 2 Burns to your discard pile."
+    "DESCRIPTION": "Gain !B! Block. NL Add !M! Burns to your discard pile."
   },
   "theDragonkin:HammerofJustice": {
     "NAME": "Hammer of Justice",
@@ -148,7 +144,7 @@
   },
   "theDragonkin:DivineStorm": {
     "NAME": "Divine Storm",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage to a random enemy X + !M! times. NL Exhaust."
   },
   "theDragonkin:DivineJolt": {
     "NAME": "Penance Shock",
@@ -156,7 +152,7 @@
   },
   "theDragonkin:InexorableAssault": {
     "NAME": "Indomitable",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, Fetch 1 random Attack from your draw pile."
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, Fetch 1 Attack or Skill from your draw pile."
   },
   "theDragonkin:ForJustice": {
     "NAME": "For Justice!",
@@ -176,7 +172,7 @@
   },
   "theDragonkin:Ashfall": {
     "NAME": "Ashfall",
-    "DESCRIPTION": "When you draw a Status card, Attack a random enemy for !D! damage."
+    "DESCRIPTION": "When you draw a Status card, Attack a random enemy for !M! damage."
   },
   "theDragonkin:Cauterize": {
     "NAME": "Cauterize",
@@ -205,7 +201,12 @@
   },
   "theDragonkin:FireStarter": {
     "NAME": "Fire Starter",
-    "DESCRIPTION": "Draw all Burns from your draw pile gain 1 [E] for each."
+    "DESCRIPTION": "Exhaust your hand, for !M2! turns at the start of your turn gain ",
+    "EXTENDED_DESCRIPTION": [" [E] for each card Exhausted"]
+  },
+  "theDragonkin:Wildfire": {
+    "NAME": "Wildfire",
+    "DESCRIPTION": "Apply !M2! thedragonkin:Scorch to a random enemy and gain !B! Block X Times."
   },
   "theDragonkin:DivineFire": {
     "NAME": "Holy Fire",
@@ -213,11 +214,11 @@
   },
   "theDragonkin:GoldenFlames": {
     "NAME": "Golden Flame",
-    "DESCRIPTION": "Deal !D! damage. NL gain !M! Temporary_HP. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL gain !M!  NL Exhaust."
   },
   "theDragonkin:HolyBarrier": {
     "NAME": "Divine Shield",
-    "DESCRIPTION": "Until the end of your next turn whenever you play a [#94bdff]Holy[] card gain, !M! Temporary_HP. NL Exhaustive: !stslib:ex!."
+    "DESCRIPTION": "Gain !M2! Temporary_HP X + !M! Times.  NL Exhaustive: !stslib:ex!."
   },
   "theDragonkin:ShieldGlare": {
     "NAME": "Shield Glare",
@@ -234,11 +235,11 @@
   },
   "theDragonkin:AncestralSeance": {
     "NAME": "Ancestral Seance",
-    "DESCRIPTION": "Choose 1 of 3 non-[#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played."
+    "DESCRIPTION": "Choose 1 of 3 non-[#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played. NL Exhaust"
   },
   "theDragonkin:DivinePrayer": {
     "NAME": "Divine Prayer",
-    "DESCRIPTION": "Choose 1 of 3 [#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played."
+    "DESCRIPTION": "Choose 1 of 3 [#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played. NL Exhaust"
   },
   "theDragonkin:HolyFlask": {
     "NAME": "Holy Flask",
@@ -272,13 +273,13 @@
     "NAME": "Crimson Simulacrum",
     "DESCRIPTION": "Lose Half your HP. NL ALL cards played for the next 3 turns are played Twice. NL Exhaust."
   },
-  "theDragonkin:DarkConviction": {
-    "NAME": "Dark Conviction",
-    "DESCRIPTION": "When you Exhaust a card Gain 1 Strength, and Deal damage to all enemies equal to your Strength."
-  },
   "theDragonkin:DesperateMeasures": {
     "NAME": "Desperate Measures",
-    "DESCRIPTION": "Gain !B! Block. NL Heal !H! HP. NL You cannot gain block from cards for 2 turns. NL Purge."
+    "DESCRIPTION": "Gain !B! Block. NL Heal !M2! HP. NL You cannot gain block from cards for 2 turns. NL Purge."
+  },
+  "theDragonkin:DarkConviction": {
+    "NAME": "Dark Conviction",
+    "DESCRIPTION": "When you Exhaust a card Gain 1 Strength. When you lose [E] Deal damage to all enemies equal to your Strength."
   },
   "theDragonkin:ObsidianRite": {
     "NAME": "Obsidian Rite",
@@ -286,31 +287,40 @@
   },
   "theDragonkin:DarkWhispers": {
     "NAME": "Dark Whispers",
-    "DESCRIPTION": "Deal !D! damage. NL draw !M! cards. NL Randomize the cost of all cards in your hand."
+    "DESCRIPTION": "Deal !D! damage. For the next !M! turns, after you Exhaust a card gain !M2! energy."
   },
   "theDragonkin:ForbiddenMagic": {
     "NAME": "Forbidden Magics",
-    "DESCRIPTION": "Deal !D! damage X times to a random enemy. NL discard !M! random cards."
+    "DESCRIPTION": "Choose One - lose [E] X times or Lose [E] at the start of your next X turns. NL Deal !D! damage X times to a random enemy."
+  },
+  "theDragonkin:VantaBlack": {
+    "NAME": "Vanta Black",
+    "DESCRIPTION": "Lose [E] X times."
+  },
+  "theDragonkin:DarkTide": {
+    "NAME": "Dark Tide",
+    "DESCRIPTION": "Lose [E] at the start of your next X turns"
   },
   "theDragonkin:BindingSlime": {
     "NAME": "Void Shell",
-    "DESCRIPTION": "Gain !B! block. NL Don't lose Block at the start of your next turn. NL Next turn, lose "
+    "DESCRIPTION": "Gain !B! block. NL If your Exhaust pile has less then !M! cards, Next turn, lose "
   },
   "theDragonkin:SlimeBreath": {
-    "NAME": "Void Blade",
-    "DESCRIPTION": "Deal !D! Damage. NL  Next turn, lose "
+    "NAME": "Vorpal Blade",
+    "DESCRIPTION": "Deal !D! Damage. NL if you didn't lose [E] this turn Next turn, lose "
   },
   "theDragonkin:SludgeWave": {
     "NAME": "Dark Influence",
-    "DESCRIPTION": "Discard !M! cards randomly. NL Draw !M! Less cards next turn. NL Next turn, gain "
+    "DESCRIPTION": "For !M! turns at the start of your turn, Exhaust !M2! non-Status Card and gain ",
+    "EXTENDED_DESCRIPTION": ["For !M! turns, Exhaust !M2! non-Status Cards and gain "]
   },
   "theDragonkin:SludgeBomb": {
     "NAME": "Obsidian Hail",
-    "DESCRIPTION": "Lose !M! HP. NL Deal !D! damage to ALL enemies. NL Shuffle !M! *Obsidian *Shards into your draw pile."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL for !M! turns after you Lose [E] shuffle !M2! *Obsidian *Shards into your draw pile."
   },
   "theDragonkin:ObsidianShard": {
     "NAME": "Obsidian Shard",
-    "DESCRIPTION": "Autoplay. NL Draw !M! card. NL Deal !D! damage to a random enemy."
+    "DESCRIPTION": "Autoplay. NL Draw !M! card. NL Deal !D! damage to a random enemy. NL Exhaust."
   },
   "theDragonkin:EmberSwipe":{
     "NAME": "Ember Swipe",

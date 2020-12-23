@@ -35,8 +35,8 @@ public class SlimeBreath extends AbstractDragonkinCard {
     private static final int UPGRADED_COST = 2;
 
     private static final int POTENCY = 35;
-    private static final int UPGRADE_PLUS_POTENCY = 15;
-    private static final int MAGIC = 2;
+    private static final int UPGRADE_PLUS_POTENCY = 10;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = -1;
 
     public SlimeBreath() {
@@ -54,8 +54,10 @@ public class SlimeBreath extends AbstractDragonkinCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new CollectorCurseEffect(m.drawX,m.drawY)));
         addToBot(new DamageAction(m,new DamageInfo(p,damage)));
-        addToBot(new VFXAction(new DarkSmokePuffEffect(p.drawX,p.drawY)));
-        addToBot(new ApplyPowerAction(p,p,new TempEnergyDown(p,magicNumber,magicNumber,false)));
+        if (!DefaultMod.WasDrained) {
+            addToBot(new VFXAction(new DarkSmokePuffEffect(p.drawX, p.drawY)));
+            addToBot(new ApplyPowerAction(p, p, new TempEnergyDown(p, magicNumber, 1, false)));
+        }
     }
     @Override
     public void initializeDescription(){

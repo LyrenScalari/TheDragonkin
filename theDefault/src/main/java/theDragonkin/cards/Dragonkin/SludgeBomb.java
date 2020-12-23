@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.vfx.DarkSmokePuffEffect;
 import com.megacrit.cardcrawl.vfx.combat.*;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.ObsidianHailPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -31,8 +32,8 @@ public class SludgeBomb extends AbstractDragonkinCard {
 
     private static final int POTENCY = 10;
     private static final int UPGRADE_PLUS_POTENCY = 4;
-    private static final int MAGIC = 5;
-    private static final int UPGRADE_MAGIC = 3;
+    private static final int MAGIC = 2;
+    private static final int UPGRADE_MAGIC = 1;
 
     public SludgeBomb() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -41,19 +42,18 @@ public class SludgeBomb extends AbstractDragonkinCard {
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         cardsToPreview = new ObsidianShard();
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
 
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new DarkSmokePuffEffect(p.drawX,p.drawY)));
-        addToBot(new VFXAction(new InflameEffect(p)));
-        addToBot(new LoseHPAction(p,p,magicNumber));
         addToBot(new VFXAction(new WhirlwindEffect()));
         addToBot(new VFXAction(new CleaveEffect()));
         addToBot(new DamageAllEnemiesAction(p,multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
-        addToBot(new VFXAction(new IceShatterEffect(p.drawX,p.drawY)));
-        addToBot(new MakeTempCardInDrawPileAction(new ObsidianShard(),magicNumber,true,false));
+        addToBot(new VFXAction(new DarkSmokePuffEffect(p.drawX,p.drawY)));
+        addToBot(new VFXAction(new InflameEffect(p)));
+        addToBot(new ApplyPowerAction(p,p,new ObsidianHailPower(p,p,magicNumber,defaultSecondMagicNumber)));
     }
 
     @Override

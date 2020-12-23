@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -35,6 +36,7 @@ import theDragonkin.potions.Dragonkin.DragonkinUncommonPotion;
 import theDragonkin.potions.Gremory.MagicHerbTea;
 import theDragonkin.potions.Gremory.ShadowofZahras;
 import theDragonkin.potions.Gremory.SpringWater;
+import theDragonkin.powers.Dragonkin.AbstractVoidPower;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 import theDragonkin.powers.Gremory.FlowersAmbition;
 import theDragonkin.powers.Gremory.ImmaculateSnow;
@@ -101,7 +103,7 @@ public class DefaultMod implements
     public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
     public static boolean ObsidianMight = false;
-
+    public static boolean WasDrained = false;
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "The Dragonkin";
     private static final String AUTHOR = "Lyren"; // And pretty soon - You!
@@ -398,7 +400,12 @@ public class DefaultMod implements
         DefaultMod defaultmod = new DefaultMod();
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
-
+    public static void receiveEnergyChanged(int energyDelta) {
+        AbstractDungeon.player.powers.stream()
+                .filter(power -> power instanceof AbstractVoidPower)
+                .forEach(power -> ((AbstractVoidPower) power).onEnergyChanged(energyDelta));
+        WasDrained = true;
+    }
     public static void onGenerateCardMidcombat(AbstractCard card) {
         if (AbstractDungeon.player.hasRelic(ObsidianScale.ID) && card.type == AbstractCard.CardType.STATUS && !ObsidianMight){
             AbstractDungeon.player.getRelic(ObsidianScale.ID).flash();

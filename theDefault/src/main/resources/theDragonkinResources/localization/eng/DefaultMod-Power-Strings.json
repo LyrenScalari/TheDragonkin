@@ -16,9 +16,34 @@
                 " additional damage,", " and reduce this by #b1"
                 ]
         },
+        "theDragonkin:DarkConviction": {
+                "NAME": "Cruelty",
+                "DESCRIPTIONS": ["When you #yExhaust a card gain #b", " #yStrength. After you lose [E] Deal damage to all enemies equal to your #yStrength."
+                ]
+        },
         "theDragonkin:TempEnergyDown": {
-                "NAME": "Drained",
+                "NAME": "Exerted",
                 "DESCRIPTIONS": ["At the start of your turn lose "
+                ]
+        },
+        "theDragonkin:DarkWhispers": {
+                "NAME": "Dark Whispers",
+                "DESCRIPTIONS": ["For #b"," turns "," turn "," When you #yExhaust a card gain "
+                ]
+        },
+        "theDragonkin:DarkEnergy": {
+                "NAME": "Dark Energy",
+                "DESCRIPTIONS": ["For #b"," turns "," turn ","At the start of your turn Exhaust #b", " card", " cards", " and gain"
+                ]
+        },
+        "theDragonkin:ObsidianHail": {
+                "NAME": "Obsidian Hail",
+                "DESCRIPTIONS": ["For #b"," turns "," turn "," When you lose Energy shuffle #b", " Obsidian Shard", " Obsidian Shards"
+                ]
+        },
+        "theDragonkin:FireStarterPower": {
+                "NAME": "Fired Up!",
+                "DESCRIPTIONS": ["For #b"," turns at the start of your turn gain "
                 ]
         },
         "theDragonkin:ShieldGlare": {
@@ -34,11 +59,6 @@
         "theDragonkin:HolyInfusion": {
                 "NAME": "Condemnation",
                 "DESCRIPTIONS": ["In #b", " Turns, Deal #b", " damage to ALL enemies."
-                ]
-        },
-        "theDragonkin:DarkConviction": {
-                "NAME": "Cruelty",
-                "DESCRIPTIONS": ["When you #yExhaust a card gain 1 #yStrength and Deal damage to all enemies equal to your #yStrength."
                 ]
         },
         "theDragonkin:Staggered": {
@@ -114,6 +134,8 @@
                         " y#Power"," #yPowers"
                 ]
         },
+
+
 
         "theDragonkin:Chill": {
                 "NAME": "Chill",

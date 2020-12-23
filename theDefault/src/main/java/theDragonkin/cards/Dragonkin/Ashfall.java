@@ -27,8 +27,8 @@ public class Ashfall extends AbstractDragonkinCard {
 
     private static final int POTENCY = 8;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int MAGIC = 0;
-    private static final int UPGRADE_MAGIC = 0;
+    private static final int MAGIC = 8;
+    private static final int UPGRADE_MAGIC = 3;
 
     public Ashfall() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -44,14 +44,13 @@ public class Ashfall extends AbstractDragonkinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p,p, new AshfallPower(p,p, baseDamage)));
+                new ApplyPowerAction(p,p, new AshfallPower(p,p, magicNumber)));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
             upgradeBaseCost(UPGRADED_COST);
             upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();

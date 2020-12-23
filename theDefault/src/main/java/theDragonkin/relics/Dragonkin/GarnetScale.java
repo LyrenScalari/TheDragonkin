@@ -39,6 +39,7 @@ public class GarnetScale extends CustomRelic{ // You must implement things you w
     private boolean isPlayerTurn = false; // We should make sure the relic is only activateable during our turn, not the enemies'.
     private  boolean used = false;
     public int Statuscount = 0;
+    public int burncount = 0;
 
     public GarnetScale() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.CLINK);
@@ -64,7 +65,7 @@ public class GarnetScale extends CustomRelic{ // You must implement things you w
                             new LoseStrengthPower(AbstractDungeon.player, Statuscount), Statuscount));
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                             new StrengthPower(AbstractDungeon.player, Statuscount), Statuscount));
-                    AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, Statuscount));
+                    AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, burncount));
                 }
                 isDone = true;
             }
@@ -75,6 +76,9 @@ public class GarnetScale extends CustomRelic{ // You must implement things you w
     public void onCardDraw(AbstractCard card) {
         if (card.type == AbstractCard.CardType.STATUS) {
             Statuscount += 1;
+            if (card.cardID.equals(Burn.ID)){
+             burncount += 1;
+            }
         }
     }
 
@@ -86,6 +90,7 @@ public void atTurnStart(){
     @Override
     public void onPlayerEndTurn() {
         Statuscount = 0;
+        burncount = 0;
     }
 
 

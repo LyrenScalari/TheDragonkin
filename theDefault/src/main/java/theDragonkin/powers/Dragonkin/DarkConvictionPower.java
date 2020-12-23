@@ -3,8 +3,11 @@ package theDragonkin.powers.Dragonkin;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,14 +15,17 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.combat.IceShatterEffect;
 import theDragonkin.DefaultMod;
+import theDragonkin.cards.Dragonkin.ObsidianShard;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
 
-public class DarkConvictionPower extends AbstractPower{
+public class DarkConvictionPower extends AbstractVoidPower {
 
     public AbstractCreature source;
     AbstractPower p = AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID);
@@ -72,17 +78,24 @@ public class DarkConvictionPower extends AbstractPower{
     @Override
     public void onExhaust(AbstractCard card) {
         this.flash();
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,1),1));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,amount),amount));
+    }
+    @Override
+    public void onEnergyChanged(int e) {
         if (AbstractDungeon.player.hasPower(StrengthPower.POWER_ID)) {
-            addToBot(new DamageAllEnemiesAction(AbstractDungeon.player,
-                    AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
+                addToBot(new LoseHPAction(m,m,AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount, AbstractGameAction.AttackEffect.FIRE));
+            }
+        } else {
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
+                addToBot(new LoseHPAction(m,m,1, AbstractGameAction.AttackEffect.FIRE));
+            }
         }
     }
 
-
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
 
     }
 }

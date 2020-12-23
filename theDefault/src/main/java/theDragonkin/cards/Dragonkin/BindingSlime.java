@@ -27,13 +27,13 @@ public class BindingSlime extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 30;
-    private static final int UPGRADE_PLUS_POTENCY = 15;
-    private static final int MAGIC = 2;
-    private static final int UPGRADE_MAGIC = -1;
+    private static final int POTENCY = 25;
+    private static final int UPGRADE_PLUS_POTENCY = 5;
+    private static final int MAGIC = 15;
+    private static final int UPGRADE_MAGIC = -5;
 
     public BindingSlime() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -49,8 +49,9 @@ public class BindingSlime extends AbstractDragonkinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p,block));
-        addToBot(new ApplyPowerAction(p,p,new TempEnergyDown(p,magicNumber,magicNumber,false)));
-        addToBot(new ApplyPowerAction(p,p,new BlurPower(p,1)));
+        if (p.exhaustPile.size() < magicNumber) {
+            addToBot(new ApplyPowerAction(p, p, new TempEnergyDown(p, magicNumber, 1, false)));
+        }
     }
     @Override
     public void initializeDescription(){
@@ -67,6 +68,7 @@ public class BindingSlime extends AbstractDragonkinCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_POTENCY);
+            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
     }

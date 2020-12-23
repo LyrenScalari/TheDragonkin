@@ -7,7 +7,9 @@ import com.megacrit.cardcrawl.actions.utility.DrawPileToHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
@@ -23,7 +25,7 @@ public class FireStarter extends AbstractDragonkinCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
 
@@ -36,28 +38,37 @@ public class FireStarter extends AbstractDragonkinCard {
     public FireStarter() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
-
+        magicNumber = baseMagicNumber = 0;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[0];
+        initializeDescription();
     }
-
+    public void applyPowers() {
+        this.magicNumber = AbstractDungeon.player.hand.size();
+        initializeDescription();
+    }
+    public void initializeDescription(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(cardStrings.DESCRIPTION);
+        for (int i = 0; i < this.magicNumber; ++i) {
+            sb.append("[E] ");
+        }
+        if (this.magicNumber == 0){
+            sb.append(cardStrings.EXTENDED_DESCRIPTION[0]);
+        }
+        rawDescription = sb.toString();
+        super.initializeDescription();
+    }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
-            if (c.cardID.equals(Burn.ID)) {
-                addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.drawPile, b -> {
-                    return b.cardID.equals(Burn.ID);
-                }, 1));
-                AbstractDungeon.actionManager.addToBottom((new GainEnergyAction(1)));
-            }
 
-        }
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeDefaultSecondMagicNumber(1);
             initializeDescription();
         }
     }

@@ -2,6 +2,7 @@ package theDragonkin.cards.Dragonkin;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.FetchAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,7 +12,10 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.NextTurnFetchpower;
 
+import static com.megacrit.cardcrawl.cards.AbstractCard.CardType.ATTACK;
+import static com.megacrit.cardcrawl.cards.AbstractCard.CardType.SKILL;
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class JabCross extends AbstractDragonkinCard {
@@ -49,7 +53,7 @@ public class JabCross extends AbstractDragonkinCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(
-                new FetchAction(AbstractDungeon.player.drawPile, c -> {return c.type == CardType.SKILL;},magicNumber));
+                new ApplyPowerAction(p, p, new NextTurnFetchpower(p, p, magicNumber, SKILL, true,true)));;
     }
 
     @Override

@@ -42,7 +42,9 @@ public class DivinePrayer extends AbstractHolyBonusCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         tags.add(CustomTags.HOLY_CARD);
+        tags.add(CardTags.HEALING);
         baseMagicNumber = magicNumber = MAGIC;
+        this.exhaust = true;
         Holy.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
                 .stream()
                 .filter(c -> c.color == Dragonkin_Red_COLOR)

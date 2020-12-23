@@ -1,6 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.FetchAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,7 +10,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.NextTurnFetchpower;
 
+import static com.megacrit.cardcrawl.cards.AbstractCard.CardType.ATTACK;
 import static theDragonkin.DefaultMod.makeCardPath;
 
 public class ParryandRiposte extends AbstractDragonkinCard {
@@ -47,7 +50,7 @@ public class ParryandRiposte extends AbstractDragonkinCard {
         AbstractDungeon.actionManager.addToBottom(
                 new GainBlockAction(p,block));
         AbstractDungeon.actionManager.addToBottom(
-                new FetchAction(AbstractDungeon.player.drawPile, c -> {return c.type == CardType.ATTACK;},magicNumber));
+                new ApplyPowerAction(p, p, new NextTurnFetchpower(p, p, magicNumber, ATTACK, true,true)));
     }
 
     @Override

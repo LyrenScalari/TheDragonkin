@@ -34,7 +34,6 @@ public class Cauterize extends AbstractDragonkinCard {
     public Cauterize() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        tags.add(CustomTags.HOLY_CARD);
         tags.add(CardTags.HEALING);
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;

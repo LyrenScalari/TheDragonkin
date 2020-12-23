@@ -23,7 +23,7 @@ public class AncestralSeance extends AbstractDragonkinCard {
     public static final String ID = DefaultMod.makeID(AncestralSeance.class.getSimpleName());
     public static final String IMG = makeCardPath("AncestralSeance.png");
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Dragonkin_Red_COLOR;
@@ -53,6 +53,8 @@ public class AncestralSeance extends AbstractDragonkinCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
+        this.exhaust = true;
+        tags.add(CardTags.HEALING);
         NonHoly.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
                 .stream()
                 .filter(c -> c.color == Dragonkin_Red_COLOR)

@@ -3,7 +3,7 @@
     "NAME": "Garnet Scales",
     "FLAVOR": "They Pulse with the Warmth of a Dragon's Fury.",
     "DESCRIPTIONS": [
-      "At the Start of your turn, Gain 1 #yStrength and #yDexterity until the end of your turn for each #yStatus card in your hand."
+      "At the Start of your turn, Gain 1 #yStrength and #yDexterity until the end of your turn for each #yStatus card in your hand and Draw a card for each #yBurn in your hand."
     ]
   },
 

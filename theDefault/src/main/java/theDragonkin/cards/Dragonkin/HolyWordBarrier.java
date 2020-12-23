@@ -38,7 +38,7 @@ public class HolyWordBarrier extends AbstractHolyBonusCard {
     private static final int BLOCK = 4;
     private static final int UPGRADE_PLUS_BLOCK = 4;
     private static final int MAGIC = 5;
-    private static final int UPGRADE_MAGIC = 4;
+    private static final int UPGRADE_MAGIC = 3;
 
 
     // /STAT DECLARATION/

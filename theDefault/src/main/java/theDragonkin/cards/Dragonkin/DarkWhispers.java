@@ -1,6 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.unique.RandomizeHandCostAction;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.DarkWhispersPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -37,14 +39,14 @@ public class DarkWhispers extends AbstractDragonkinCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
 
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new DrawCardAction(p,magicNumber));
-        addToBot(new RandomizeHandCostAction());
+        addToBot(new ApplyPowerAction(p,p,new DarkWhispersPower(p,p,defaultSecondMagicNumber,magicNumber)));
 
     }
 

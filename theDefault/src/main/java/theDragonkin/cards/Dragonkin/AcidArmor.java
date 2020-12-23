@@ -26,8 +26,8 @@ public class AcidArmor extends AbstractDragonkinCard {
 
     private static final int POTENCY = 3;
     private static final int UPGRADE_PLUS_DMG = 1;
-    private static final int MAGIC = 0;
-    private static final int UPGRADE_MAGIC = 0;
+    private static final int MAGIC = 3;
+    private static final int UPGRADE_MAGIC = 1;
 
     public AcidArmor() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

@@ -9,12 +9,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
+import com.megacrit.cardcrawl.powers.DarkEmbracePower;
 import com.megacrit.cardcrawl.powers.DrawReductionPower;
 import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
 import com.megacrit.cardcrawl.vfx.DarkSmokePuffEffect;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.DarkEnergyPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -34,7 +36,7 @@ public class SludgeWave extends AbstractDragonkinCard {
 
     private static final int POTENCY = 3;
     private static final int UPGRADE_PLUS_POTENCY = 1;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 0;
 
     public SludgeWave() {
@@ -42,7 +44,8 @@ public class SludgeWave extends AbstractDragonkinCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-        baseMagicNumber = magicNumber = MAGIC;
+        baseMagicNumber = magicNumber = 1;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         initializeDescription();
     }
     public void applyPowers() {
@@ -51,7 +54,9 @@ public class SludgeWave extends AbstractDragonkinCard {
     @Override
     public void initializeDescription(){
         StringBuilder sb = new StringBuilder();
-        sb.append(cardStrings.DESCRIPTION);
+        if (magicNumber < 2){
+            sb.append(cardStrings.EXTENDED_DESCRIPTION[0]);
+        } else sb.append(cardStrings.DESCRIPTION);
         for (int i = 0; i < this.magicNumber; ++i) {
             sb.append("[E] ");
         }
@@ -60,11 +65,9 @@ public class SludgeWave extends AbstractDragonkinCard {
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DiscardAction(p,p,magicNumber,true));
         addToBot(new VFXAction(new CollectorCurseEffect(p.drawX,p.drawY)));
-        addToBot(new ApplyPowerAction(p,p, new DrawReductionPower(p,magicNumber),magicNumber));
+        addToBot(new ApplyPowerAction(p,p,new DarkEnergyPower(p,p,magicNumber,defaultSecondMagicNumber)));
         addToBot(new VFXAction(new DarkSmokePuffEffect(p.drawX,p.drawY)));
-        addToBot(new ApplyPowerAction(p,p, new EnergizedPower(p,magicNumber)));
     }
 
     @Override
@@ -72,6 +75,7 @@ public class SludgeWave extends AbstractDragonkinCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_POTENCY);
+            upgradeDefaultSecondMagicNumber(1);
             initializeDescription();
         }
     }

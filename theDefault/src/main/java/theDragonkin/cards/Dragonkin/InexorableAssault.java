@@ -22,10 +22,10 @@ public class InexorableAssault extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int UPGRADED_COST = 0;
 
-    private static final int DAMAGE = 9;
+    private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 0;
@@ -43,15 +43,14 @@ public class InexorableAssault extends AbstractDragonkinCard {
         AbstractDungeon.actionManager.addToBottom(
                 new GainBlockAction(p, p, DAMAGE));
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new NextTurnFetchpower(p, p, magicNumber, ATTACK, true,true)));
+                new ApplyPowerAction(p, p, new NextTurnFetchpower(p, p, magicNumber, false,true)));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeBlock(UPGRADE_PLUS_DMG);
             initializeDescription();
         }
     }

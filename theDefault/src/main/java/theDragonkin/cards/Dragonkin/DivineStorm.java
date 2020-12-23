@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
@@ -34,10 +35,10 @@ public class DivineStorm extends AbstractHolyBonusCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
-    private static final int COST = 2;
+    private static final int COST = -1;
     private static final int DAMAGE = 14;
     private static final int UPGRADE_PLUS_DMG = 0;
-
+    public static int repeats = 0;
     // /STAT DECLARATION/
 
 
@@ -53,12 +54,16 @@ public class DivineStorm extends AbstractHolyBonusCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-        for (int i = 0; i < this.magicNumber; ++i) {
-            AbstractDungeon.actionManager.addToBottom(
-                    new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.LIGHTNING));
+        if (AbstractDungeon.player.hasRelic("Chemical X")) {
+            repeats += 2;
+            AbstractDungeon.player.getRelic("Chemical X").flash();
         }
-
+        repeats += EnergyPanel.totalCount;
+        for (int i = 0; i < this.magicNumber + repeats; ++i) {
+            AbstractDungeon.actionManager.addToBottom(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.LIGHTNING));
+            }
+        EnergyPanel.useEnergy(EnergyPanel.totalCount);
+        repeats = 0;
     }
 
     //Upgraded stats.
