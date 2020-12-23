@@ -27,6 +27,9 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theDragonkin.cards.Dragonkin.AbstractDragonkinCard;
+import theDragonkin.cards.Gremory.AbstractGremoryCard;
+import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.characters.TheGremory;
 import theDragonkin.characters.TheGroveKeeper;
@@ -105,9 +108,9 @@ public class DefaultMod implements
     public static boolean ObsidianMight = false;
     public static boolean WasDrained = false;
     //This is for the in-game mod settings panel.
-    private static final String MODNAME = "The Dragonkin";
+    private static final String MODNAME = "Dragonkin";
     private static final String AUTHOR = "Lyren"; // And pretty soon - You!
-    private static final String DESCRIPTION = "A Warrior of Fire and Faith, Determined to purge the evil of the Spire.";
+    private static final String DESCRIPTION = "4 new Spire slaying hero's rise from origins far beyond the spire. each with varied tools and skills for climbing the tower and escaping to return to their lives";
     
     // =============== INPUT TEXTURE LOCATION =================
     
@@ -595,9 +598,9 @@ public class DefaultMod implements
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
         
         logger.info("Adding cards");
-        new AutoAdd("DragonkinMod").packageFilter("theDragonkin.cards.Dragonkin").setDefaultSeen(true).cards();
-        new AutoAdd("DragonkinMod").packageFilter("theDragonkin.cards.Gremory").setDefaultSeen(true).cards();
-        new AutoAdd("DragonkinMod").packageFilter("theDragonkin.cards.GroveKeeper").setDefaultSeen(true).cards();
+        new AutoAdd("DragonkinMod").packageFilter(AbstractDragonkinCard.class).setDefaultSeen(true).cards();
+        new AutoAdd("DragonkinMod").packageFilter(AbstractGremoryCard.class).setDefaultSeen(true).cards();
+        new AutoAdd("DragonkinMod").packageFilter(AbstractGroveKeeperCard.class).setDefaultSeen(true).cards();
 
         logger.info("Done adding cards!");
         logger.info("Added: " + BaseMod.getCardCount(Dragonkin_Red_COLOR) + " Cards");
