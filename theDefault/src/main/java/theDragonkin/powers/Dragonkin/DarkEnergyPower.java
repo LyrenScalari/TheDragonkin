@@ -6,6 +6,7 @@ import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandActio
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -50,9 +51,14 @@ public class DarkEnergyPower extends TwoAmountPower implements OnReceivePowerPow
         updateDescription();
     }
     public void atStartOfTurnPostDraw() {
-        addToBot(new SelectCardsInHandAction(amount," Exhaust",false,false, c -> c.type == AbstractCard.CardType.STATUS, list -> {
-            list.forEach(c -> addToBot(new ExhaustSpecificCardAction(c,AbstractDungeon.player.hand)));
-        }));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                addToBot(new SelectCardsInHandAction(DarkEnergyPower.super.amount, " Exhaust", false, false, c -> c.type != AbstractCard.CardType.STATUS, list -> {
+                    list.forEach(c -> addToBot(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand)));
+            }));
+                this.isDone = true;
+            }});
         addToBot(new GainEnergyAction(amount));
         amount2 -= 1;
         if (amount2 < 1){
@@ -71,6 +77,7 @@ public class DarkEnergyPower extends TwoAmountPower implements OnReceivePowerPow
             sb.append(DESCRIPTIONS[1]);
         }
         sb.append(DESCRIPTIONS[3]);
+        sb.append(amount);
         if (amount < 2){
             sb.append(DESCRIPTIONS[4]);
         } else {

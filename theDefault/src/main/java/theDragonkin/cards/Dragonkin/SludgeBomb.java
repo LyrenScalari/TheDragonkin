@@ -53,7 +53,7 @@ public class SludgeBomb extends AbstractDragonkinCard {
         addToBot(new DamageAllEnemiesAction(p,multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
         addToBot(new VFXAction(new DarkSmokePuffEffect(p.drawX,p.drawY)));
         addToBot(new VFXAction(new InflameEffect(p)));
-        addToBot(new ApplyPowerAction(p,p,new ObsidianHailPower(p,p,magicNumber,defaultSecondMagicNumber)));
+        addToBot(new ApplyPowerAction(p,p,new ObsidianHailPower(p,p,defaultSecondMagicNumber,magicNumber)));
     }
 
     @Override

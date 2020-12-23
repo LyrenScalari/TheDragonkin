@@ -214,7 +214,7 @@
   },
   "theDragonkin:GoldenFlames": {
     "NAME": "Golden Flame",
-    "DESCRIPTION": "Deal !D! damage. NL gain !M!  NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL gain !M! Temporary_HP. NL Exhaust."
   },
   "theDragonkin:HolyBarrier": {
     "NAME": "Divine Shield",
@@ -287,7 +287,7 @@
   },
   "theDragonkin:DarkWhispers": {
     "NAME": "Dark Whispers",
-    "DESCRIPTION": "Deal !D! damage. For the next !M! turns, after you Exhaust a card gain !M2! energy."
+    "DESCRIPTION": "Deal !D! damage. NL For the next !M! turns, after you Exhaust a card gain !M2! energy."
   },
   "theDragonkin:ForbiddenMagic": {
     "NAME": "Forbidden Magics",
@@ -303,7 +303,7 @@
   },
   "theDragonkin:BindingSlime": {
     "NAME": "Void Shell",
-    "DESCRIPTION": "Gain !B! block. NL If your Exhaust pile has less then !M! cards, Next turn, lose "
+    "DESCRIPTION": "Gain !B! block. NL If your Exhaust pile has less then !M2! cards, Next turn, lose "
   },
   "theDragonkin:SlimeBreath": {
     "NAME": "Vorpal Blade",
@@ -311,8 +311,8 @@
   },
   "theDragonkin:SludgeWave": {
     "NAME": "Dark Influence",
-    "DESCRIPTION": "For !M! turns at the start of your turn, Exhaust !M2! non-Status Card and gain ",
-    "EXTENDED_DESCRIPTION": ["For !M! turns, Exhaust !M2! non-Status Cards and gain "]
+    "DESCRIPTION": "For !M2! turns at the start of your turn, Exhaust !M! non-Status Card and gain ",
+    "EXTENDED_DESCRIPTION": ["For !M2! turns at the start of your turn, Exhaust !M! non-Status Cards and gain "]
   },
   "theDragonkin:SludgeBomb": {
     "NAME": "Obsidian Hail",
@@ -328,7 +328,7 @@
   },
   "theDragonkin:MagmaScales": {
     "NAME": "Magma Scales",
-    "DESCRIPTION": "Inflict !M! thedragonkin:Scorch on Attackers when Attacked."
+    "DESCRIPTION": "When attacked apply !M! thedragonkin:Scorch back."
   },
 
 

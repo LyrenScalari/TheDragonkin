@@ -55,8 +55,8 @@ public class SludgeWave extends AbstractDragonkinCard {
     public void initializeDescription(){
         StringBuilder sb = new StringBuilder();
         if (magicNumber < 2){
-            sb.append(cardStrings.EXTENDED_DESCRIPTION[0]);
-        } else sb.append(cardStrings.DESCRIPTION);
+            sb.append(cardStrings.DESCRIPTION);
+        } else sb.append(cardStrings.EXTENDED_DESCRIPTION[0]);
         for (int i = 0; i < this.magicNumber; ++i) {
             sb.append("[E] ");
         }

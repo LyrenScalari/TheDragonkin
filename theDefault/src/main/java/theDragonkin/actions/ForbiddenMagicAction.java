@@ -28,7 +28,7 @@ public class ForbiddenMagicAction extends AbstractGameAction {
     private AbstractMonster m;
     private DamageInfo.DamageType damageTypeForTurn;
     private int energyOnUse;
-    public static  ArrayList<AbstractCard> stanceChoices = new ArrayList();
+    public ArrayList<AbstractCard> stanceChoices;
     public ForbiddenMagicAction(AbstractPlayer p, AbstractMonster m, int damage, DamageInfo.DamageType damageTypeForTurn, boolean freeToPlayOnce, int energyOnUse) {
         this.p = p;
         this.m = m;
@@ -38,9 +38,6 @@ public class ForbiddenMagicAction extends AbstractGameAction {
         this.actionType = AbstractGameAction.ActionType.SPECIAL;
         this.damageTypeForTurn = damageTypeForTurn;
         this.energyOnUse = energyOnUse;
-
-        stanceChoices.add(new VantaBlack());
-        stanceChoices.add(new DarkTide());
     }
 
     public void update() {
@@ -55,12 +52,14 @@ public class ForbiddenMagicAction extends AbstractGameAction {
         }
 
         if (effect > 0) {
+            ArrayList<AbstractCard> stanceChoices = new ArrayList();
+            stanceChoices.add(new VantaBlack());
+            stanceChoices.add(new DarkTide());
             addToBot(new ChooseOneAction(stanceChoices));
             for(int i = 0; i < effect; ++i) {
                 this.addToBot(new DamageRandomEnemyAction(new DamageInfo(AbstractDungeon.player,this.damage,this.damageTypeForTurn),AttackEffect.FIRE));
             }
         }
-
         this.isDone = true;
     }
 }

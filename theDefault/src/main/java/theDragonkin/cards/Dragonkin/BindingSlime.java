@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.TempEnergyDown;
+import theDragonkin.variables.DefaultSecondMagicNumber;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -32,7 +33,7 @@ public class BindingSlime extends AbstractDragonkinCard {
 
     private static final int POTENCY = 25;
     private static final int UPGRADE_PLUS_POTENCY = 5;
-    private static final int MAGIC = 15;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = -5;
 
     public BindingSlime() {
@@ -41,6 +42,7 @@ public class BindingSlime extends AbstractDragonkinCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 15;
         initializeDescription();
     }
     public void applyPowers() {
@@ -49,7 +51,7 @@ public class BindingSlime extends AbstractDragonkinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p,block));
-        if (p.exhaustPile.size() < magicNumber) {
+        if (p.exhaustPile.size() < defaultSecondMagicNumber) {
             addToBot(new ApplyPowerAction(p, p, new TempEnergyDown(p, magicNumber, 1, false)));
         }
     }
@@ -68,7 +70,7 @@ public class BindingSlime extends AbstractDragonkinCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_POTENCY);
-            upgradeMagicNumber(UPGRADE_MAGIC);
+            upgradeDefaultSecondMagicNumber(-5);
             initializeDescription();
         }
     }

@@ -22,7 +22,7 @@ public class VantaBlack extends AbstractDragonkinCard {
 
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -33,6 +33,7 @@ public class VantaBlack extends AbstractDragonkinCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
     }
     public void onChoseThisOption() {
+        this.use(AbstractDungeon.player,null);
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
