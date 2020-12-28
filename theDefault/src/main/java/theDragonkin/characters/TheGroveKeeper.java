@@ -23,8 +23,11 @@ import org.apache.logging.log4j.Logger;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.GroveKeeper.Attacks.GrovekeeperStrike;
 import theDragonkin.cards.GroveKeeper.Attacks.Moonfire;
+import theDragonkin.cards.GroveKeeper.Attacks.ReapingSlash;
 import theDragonkin.cards.GroveKeeper.Skills.GrovekeeperDefend;
 import theDragonkin.cards.GroveKeeper.Attacks.Sunfire;
+import theDragonkin.relics.Gremory.HeartofFlames;
+import theDragonkin.relics.Grovekeeper.GrovekeeperStarting;
 
 import java.util.ArrayList;
 
@@ -104,7 +107,7 @@ public class TheGroveKeeper extends CustomPlayer {
         super(name, setClass, orbTextures,
                 "theDragonkinResources/images/char/defaultCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "theDragonkinResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+                        "theDragonkinResources/images/char/TheGrovekeeper/Grovekeeper.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================
@@ -161,10 +164,10 @@ public class TheGroveKeeper extends CustomPlayer {
         retVal.add(GrovekeeperDefend.ID);
         retVal.add(Sunfire.ID);
         retVal.add(Sunfire.ID);
-        retVal.add(Sunfire.ID);
         retVal.add(Moonfire.ID);
         retVal.add(Moonfire.ID);
-        retVal.add(Moonfire.ID);
+        retVal.add(ReapingSlash.ID);
+        retVal.add(ReapingSlash.ID);
 
         return retVal;
     }
@@ -172,6 +175,7 @@ public class TheGroveKeeper extends CustomPlayer {
     // Starting Relics
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
+        retVal.add(GrovekeeperStarting.ID);
         return retVal;
     }
 

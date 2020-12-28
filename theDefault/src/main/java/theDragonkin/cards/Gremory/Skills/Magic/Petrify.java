@@ -49,6 +49,7 @@ public class Petrify extends AbstractMagicGremoryCard implements BranchingUpgrad
         TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Thunder"), BaseMod.getKeywordDescription("thedragonkin:Thunder")));
         TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Jolted"), BaseMod.getKeywordDescription("thedragonkin:Jolted")));
         getCustomTooltips();
+        this.exhaust = true;
         this.rawDescription =  cardStrings.DESCRIPTION;
         initializeDescription();
         magicNumber = baseMagicNumber = 2;

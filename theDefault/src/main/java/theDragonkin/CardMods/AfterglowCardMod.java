@@ -19,4 +19,8 @@ public class AfterglowCardMod extends AbstractCardModifier {
     public AbstractCardModifier makeCopy() {
         return null;
     }
+    @Override
+    public String identifier(AbstractCard card){
+        return "Afterglow";
+    }
 }

@@ -1,29 +1,28 @@
 package theDragonkin.cards.GroveKeeper.Skills;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ThornsPower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
-import theDragonkin.orbs.LifeBloom;
-import theDragonkin.orbs.ToxicBloom;
 import theDragonkin.powers.GroveKeeper.AlignmentPower;
-import theDragonkin.powers.GroveKeeper.NaturePower;
+import theDragonkin.powers.GroveKeeper.NatrualSpikesPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class GaiaSeeds extends AbstractGroveKeeperCard {
+public class ThornShield  extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(GaiaSeeds.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID(ThornShield.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
@@ -35,36 +34,35 @@ public class GaiaSeeds extends AbstractGroveKeeperCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheGroveKeeper.Enums.GroveKeeper_Forest_Color;
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 2;
-    private static final int BLOCK = 5;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+
+    private static final int COST = 1;
+    private static final int BLOCK = 8;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
 
 
     // /STAT DECLARATION/
 
 
-    public GaiaSeeds() {
+    public ThornShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = 1;
+        magicNumber = baseMagicNumber = 4;
         this.tags.add(CustomTags.Neutral);
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < this.magicNumber; ++i) {
-            addToBot(new ChannelAction(new LifeBloom()));
-        }
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
+        addToBot(new ApplyPowerAction(p,p,new NatrualSpikesPower(p,p,magicNumber,1)));
     }
-
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(1);
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeMagicNumber(1);
             initializeDescription();
         }
     }

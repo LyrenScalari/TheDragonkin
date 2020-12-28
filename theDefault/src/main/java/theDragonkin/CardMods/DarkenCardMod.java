@@ -20,4 +20,8 @@ public class DarkenCardMod extends AbstractCardModifier {
     public AbstractCardModifier makeCopy() {
         return this;
     }
+    @Override
+    public String identifier(AbstractCard card){
+        return "Darken";
+    }
 }

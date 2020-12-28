@@ -50,7 +50,7 @@ public class IceBlock extends AbstractMagicGremoryCard implements BranchingUpgra
         getCustomTooltips();
         initializeDescription();
         isMultiDamage = true;
-        MagDamage = baseMagDamage = 35;
+        MagDamage = baseMagDamage = 30;
         magicNumber = baseMagicNumber = 1;
     }
 
@@ -83,7 +83,7 @@ public class IceBlock extends AbstractMagicGremoryCard implements BranchingUpgra
     public void baseUpgrade() {
         name = cardStrings.EXTENDED_DESCRIPTION[0];
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[5] + UPGRADE_DESCRIPTION;
-        upgradeMagicNumber(1);
+        MagDamage += 20;
         MagDamageUpgraded = true;
         initializeDescription();
     }
@@ -98,7 +98,7 @@ public class IceBlock extends AbstractMagicGremoryCard implements BranchingUpgra
         TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Hot_Streak"), BaseMod.getKeywordDescription("thedragonkin:Hot_Streak")));
         getCustomTooltips();
         setOrbTexture(DefaultMod.Fire_SMALL_ORB,DefaultMod.Fire_LARGE_ORB);
-        baseMagDamage -= 20;
+        baseMagDamage -= 10;
         MagDamageUpgraded = true;
         initializeDescription();
 

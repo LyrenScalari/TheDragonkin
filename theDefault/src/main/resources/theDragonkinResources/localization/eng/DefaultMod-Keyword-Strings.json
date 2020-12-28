@@ -318,6 +318,22 @@
     "DESCRIPTION": "Sunburned enemies Give you Block equal to your #ySolar #yAlignment when you play #ySolar cards on them limited number of times."
   },
   {
+    "PROPER_NAME": "Natural Spikes",
+    "NAMES": [
+      "Natural Spikes",
+      "natural_spikes"
+    ],
+    "DESCRIPTION": "Natural Spikes damage attackers, but are dulled when you receive unblocked damage."
+  },
+  {
+    "PROPER_NAME": "Energy Shield",
+    "NAMES": [
+      "Energy Shield",
+      "energy_shield"
+    ],
+    "DESCRIPTION": "Increases block gained by your next block card."
+  },
+  {
     "NAMES": [
       "entangled",
       "entangle"
@@ -344,7 +360,16 @@
       "Nature Power",
       "nature_power"
     ],
-    "DESCRIPTION": "Increases the number of #yMystic #yFlowers channeled, and their duration."
+    "DESCRIPTION": "Increases the Potency of #yMystic #yFlower #yHarvest Effects."
+  },
+  {
+    "NAMES": [
+      "Harvest",
+      "harvest",
+      "harvested",
+      "Harvested"
+    ],
+    "DESCRIPTION": "Reduce the passive power of the specified #yMystic #yFlower the specified amount if you have one Channeled and activate the listed effect."
   },
   {
     "PROPER_NAME": "Invigorating Bloom",
@@ -352,9 +377,11 @@
       "Invigorating Bloom",
       "invigorating_bloom",
       "Invigorating Blooms",
-      "invigorating_blooms"
+      "invigorating_blooms",
+      "Invigorating",
+      "invigorating"
     ],
-    "DESCRIPTION": "Mystic Flower: Gain 1 energy and increase Healing done by this each turn. When #yEvoked Heal 1 HP per turn this was Channeled."
+    "DESCRIPTION": "Mystic Flower: When #yHarvested Draw a card. When Evoked Gain [E] equal to the number of times this was #yHarvested."
   },
   {
     "PROPER_NAME": "Hungry Bloom",
@@ -362,9 +389,11 @@
       "Hungry Bloom",
       "hungry_bloom",
       "Hungry Blooms",
-      "hungry_blooms"
+      "hungry_blooms",
+      "Hungry",
+      "hungry"
     ],
-    "DESCRIPTION": "Mystic Flower: Deal damage to a random enemy and increase Block gained by this each turn. When #yEvoked Gain Block equal to the damage this dealt."
+    "DESCRIPTION": "Mystic Flower: When #yHarvested damage a random enemy. When Evoked Gain #yVigor."
   },
   {
     "PROPER_NAME": "Toxic Bloom",
@@ -372,9 +401,11 @@
         "Toxic Bloom",
         "toxic_bloom",
         "Toxic Blooms",
-        "toxic_blooms"
+        "toxic_blooms",
+        "Toxic",
+        "toxic"
     ],
-    "DESCRIPTION": "Mystic Flower: Deal damage to ALL #yPoisoned enemies and increase the poison this applies each turn. When #yEvoked Apply poison to ALL enemies."
+    "DESCRIPTION": "Mystic Flower: When #yHarvested Apply #yPoison to a random enemy. When #yEvoked Gain #yBlock."
   },
   {
     "PROPER_NAME": "Primal Bloom",
@@ -382,9 +413,11 @@
       "Primal Bloom",
       "primal_bloom",
       "Primal Blooms",
-      "primal_blooms"
+      "primal_blooms",
+      "Primal",
+      "primal"
     ],
-    "DESCRIPTION": "Mystic Flower: Increase the power of your non-primal bloom passive effects each turn. When #yEvoked Activate the passive effects of your other Mystic Flowers.."
+    "DESCRIPTION": "Mystic Flower: When #yHarvested Gain #yNatural #ySpikes. When #yEvoked Lose #yNatural #ySpikes."
   },
   {
     "PROPER_NAME": "Life Bloom",
@@ -392,8 +425,10 @@
       "Life Bloom",
       "Life Blooms",
       "life_bloom",
-      "life_blooms"
+      "life_blooms",
+      "Life",
+      "life"
     ],
-    "DESCRIPTION": "Mystic Flower: Gain #yTemporary #yHP and increase the #yTemporary #yHP this gives  each turn. When #yEvoked Gain #yTemporary #yHP and lose 3 #yDexterity."
+    "DESCRIPTION": "Mystic Flower: When #yHarvested Gain #yTemporary #yHP. When #yEvoked Heal."
   }
 ]

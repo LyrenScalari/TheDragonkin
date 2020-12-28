@@ -452,8 +452,8 @@
   },
   "theDragonkin:BurstingGlyph": {
     "NAME": "Bursting Gylph",
-    "DESCRIPTION": "Gain !MAG! Block. NL When your Block is broken next, Deal !MAG! damage to ALL enemies. NL thedragonkin:Casts: !Gremory:Spells!",
-    "UPGRADE_DESCRIPTION": "Gain !MAG! Block. NL When your Block is broken next, Deal !MAG! damage to ALL enemies. NL thedragonkin:Casts: !Gremory:Spells! ",
+    "DESCRIPTION": "Gain !MAG! Block. NL Deal !MAG! damage to the next enemy that tries to attack you. NL thedragonkin:Casts: !Gremory:Spells!",
+    "UPGRADE_DESCRIPTION": "Gain !MAG! Block. NL Deal !MAG! damage to the next enemy that tries to attack you. NL thedragonkin:Casts: !Gremory:Spells! ",
     "EXTENDED_DESCRIPTION": ["Bursting Gylph II","Bursting Gylph Y",
       "Ice Block V",
       "Gain !MAG! Block, Gain no [E] next turn. Block is not removed at the start of your next turn. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
@@ -464,7 +464,7 @@
     "UPGRADE_DESCRIPTION": "Gain !MAG! Block, Gain no [E] next turn. Block is not removed at the start of your next 2 turns. NL thedragonkin:Casts: !Gremory:Spells! ",
     "EXTENDED_DESCRIPTION": ["Ice Block II","Ice Block Y",
       "Bursting Gylph V",
-      "Gain !MAG! Block. NL When your Block is broken next, Deal !MAG! damage to ALL enemies. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
+      "Gain !MAG! Block. NL Deal !MAG! damage to the next enemy that tries to attack you. NL thedragonkin:Casts: !Gremory:Spells!","thedragonkin:Fire. NL ","thedragonkin:Ice. NL "]
   },
   "theDragonkin:Jetstream": {
     "NAME": "Jetstream",
@@ -695,6 +695,10 @@
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Lunar 2: Apply !M! Vulnerable."
   },
+  "theDragonkin:ReapingSlash": {
+    "NAME": "Reaping Slash",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Harvest !M! to gain !M2! Temporary_HP"
+  },
   "theDragonkin:Moonfire": {
     "NAME": "Moonfire",
     "DESCRIPTION": "Apply !M! thedragonkin:Moonstruck. NL thedragonkin:Lunar 4: Gain [E]."
@@ -745,6 +749,10 @@
     "NAME": "Solar Flare",
     "DESCRIPTION": "Apply !M! Temporary Strength down. NL thedragonkin:Solar 3: Apply !M2! Temporary Strength down to ALL enemies."
   },
+  "theDragonkin:HealingSun": {
+    "NAME": "Restoring Sun",
+    "DESCRIPTION": "Gain !M! Temporary_HP. NL thedragonkin:Hungry thedragonkin:Harvest !M2! to thedragonkin:Duplicate. NL Exhaust."
+  },
   "theDragonkin:Sunrise": {
     "NAME": "Sunrise",
     "DESCRIPTION": "Gain [E] and Draw a card. NL thedragonkin:Lunar 2: Lose half your Lunar thedragonkin:Alignment and Convert your Lunar thedragonkin:Alignment to Solar instead",
@@ -770,10 +778,58 @@
     "DESCRIPTION": "Channel !M! random Mystical Flower",
     "UPGRADE_DESCRIPTION": "Channel !M! random Mystical Flowers"
   },
+  "theDragonkin:MagicSpores": {
+    "NAME": "Vivid Spores",
+    "DESCRIPTION": "Apply !M! Poison, Weak or Vulnerable randomly to each enemy. NL Gain !M! thedragonkin:Natural_Spikes, thedragonkin:Energy_Shield or Vigor randomly.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Poison, Weak or Vulnerable randomly to each enemy twice. NL Gain !M! thedragonkin:Natural_Spikes, thedragonkin:Energy_Shield or Vigor randomly twice."
+  },
   "theDragonkin:Thornwhip": {
     "NAME": "Thorn Whip",
     "DESCRIPTION": "Deal !D! damage. NL Channel !M! thedragonkin:Hungry_Bloom",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Channel !M! thedragonkin:Hungry_Bloom"
+  },
+  "theDragonkin:Cleansing": {
+    "NAME": "Earthen Inversion",
+    "DESCRIPTION": "thedragonkin:Life thedragonkin:Harvest !M! to Channel 1 thedragonkin:Toxic_Bloom. NL thedragonkin:Toxic thedragonkin:Harvest !M! to Channel 1 thedragonkin:Primal_Bloom",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Channel !M! thedragonkin:Hungry_Bloom"
+  },
+  "theDragonkin:ParalyticSpores": {
+    "NAME": "Paralytic Spores",
+    "DESCRIPTION": "thedragonkin:Toxic thedragonkin:Harvest !M! to Apply !M2! thedragonkin:Entangle to each Poisoned enemy. NL Exhaust."
+  },
+  "theDragonkin:NettleStrike": {
+    "NAME": "Nettle Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M2! thedragonkin:Natural_Spikes.  NL thedragonkin:Toxic thedragonkin:Harvest !M! to Gain !M2! thedragonkin:Natural_Spikes."
+  },
+  "theDragonkin:Sunburst": {
+    "NAME": "Sunburst",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Invigorating thedragonkin:Harvest !M2! to gain !M! Block. NL thedragonkin:Life thedragonkin:Harvest !M2! to gain !M! Temporary_HP."
+  },
+  "theDragonkin:CresentCulling": {
+    "NAME": "Cresent Culling",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Hungry or thedragonkin:Life thedragonkin:Harvest !M!. NL thedragonkin:Lunar 2: thedragonkin:Hungry or thedragonkin:Life thedragonkin:Harvest !M!.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Hungry or thedragonkin:Life thedragonkin:Harvest !M!. NL thedragonkin:Lunar 2: thedragonkin:Hungry or thedragonkin:Life thedragonkin:Harvest !M!."
+  },
+  "theDragonkin:PrimalSwipe": {
+    "NAME": "Primal Swipe",
+    "DESCRIPTION": "Deal !AltD! damage. NL Deal !D! damage to all other enemies. NL thedragonkin:Primal thedragonkin:Harvest 1.",
+    "UPGRADE_DESCRIPTION": "Deal !AltD! damage. NL Deal !D! damage to all other enemies. NL thedragonkin:Primal thedragonkin:Harvest 1."
+  },
+  "theDragonkin:ThornShield": {
+    "NAME": "Thorn Shield",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! thedragonkin:Natural_Spikes."
+  },
+  "theDragonkin:NaturesWisdom": {
+    "NAME": "Natures Wisdom",
+    "DESCRIPTION": "thedragonkin:Crossroads: Choose a Mystic Flower and Channel it or thedragonkin:Harvest your Mystic Flowers completely Draw a Card and Gain [E] for each."
+  },
+  "theDragonkin:TimetoSow": {
+    "NAME": "Time to Sow",
+    "DESCRIPTION": "Choose a Mystic Flower and Channel it."
+  },
+  "theDragonkin:TimetoReap": {
+    "NAME": "Time to Reap",
+    "DESCRIPTION": "thedragonkin:Harvest your Mystic Flowers completely Draw a Card and Gain [E] for each."
   },
   "theDragonkin:EntanglingRoots": {
     "NAME": "Entangling Roots",
@@ -785,7 +841,11 @@
   },
   "theDragonkin:SwarmStrike": {
     "NAME": "Swarm Strike",
-    "DESCRIPTION": " thedragonkin:Duplicate. NL  thedragonkin:Crossroads - Deal !D! Damage or Apply !M! Poison. NL Deals 2 additional damage and applies 1 more Poison for each copy in play. NL Exhaust."
+    "DESCRIPTION": "thedragonkin:Duplicate. NL  thedragonkin:Crossroads - Deal !D! Damage or Apply !M! Poison. NL Deals 2 additional damage and applies 1 more Poison for each copy in play. NL Exhaust."
+  },
+  "theDragonkin:AncientSpores": {
+    "NAME": "Ancient Spores",
+    "DESCRIPTION": "Gain !M! thedragonkin:Natural_Spikes. NL Channel !M2! thedragonkin:Primal_Bloom."
   },
   "theDragonkin:BranchingPaths": {
     "NAME": "Branching Paths",
@@ -822,23 +882,27 @@
   },
   "theDragonkin:Everbloom": {
     "NAME": "Everbloom",
-    "DESCRIPTION": "Gain !M! thedragonkin:Nature_Power. Choose a Mystic Flower, Channel it twice."
+    "DESCRIPTION": "Gain !M! thedragonkin:Nature_Power. NL Choose a Mystic Flower, Channel it."
   },
   "theDragonkin:EverbloomInvig": {
-    "NAME": "Everbloom Invigorating",
-    "DESCRIPTION": "Channel 2 thedragonkin:Invigorating_Bloom."
+    "NAME": "Invigorating Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Invigorating_Bloom."
   },
-  "theDragonkin:EverbloomToxic ": {
-    "NAME": "Everbloom Toxic ",
-    "DESCRIPTION": "Channel 2 thedragonkin:Toxic_Bloom."
+  "theDragonkin:EverbloomToxic": {
+    "NAME": "Toxic Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Toxic_Bloom."
   },
   "theDragonkin:EverbloomThorn": {
-    "NAME": "Everbloom Hungry",
-    "DESCRIPTION": "Channel 2 thedragonkin:Hungry_Bloom."
+    "NAME": "Hungry Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Hungry_Bloom."
+  },
+  "theDragonkin:EverbloomLife": {
+    "NAME": "Life Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Life_Bloom."
   },
   "theDragonkin:EverbloomPrimal": {
-    "NAME": "Everbloom Primal",
-    "DESCRIPTION": "Channel 2 thedragonkin:Primal_Bloom."
+    "NAME": "Primal Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Primal_Bloom."
   }
 
 

@@ -88,7 +88,34 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
 
     @Override
     public void applyPowers() {
-
+        float temp = baseMagDamage;
+        float tempmagic = baseMagicNumber;
+        if (!this.isMultiDamage && this.target == CardTarget.ENEMY) {
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof modifyMagicPower) {
+                    temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
+                    tempmagic = ((modifyMagicPower) p).modifyMagicCard(this, tempmagic);
+                }
+            }
+        }
+        else if (this.target != CardTarget.SELF){
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof modifyMagicPower) {
+                    temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
+                    tempmagic = ((modifyMagicPower) p).modifyMagicCard(this, tempmagic);
+                }
+            }
+        }
+        else if (this.isMultiDamage){
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof modifyMagicPower) {
+                    temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
+                    tempmagic = ((modifyMagicPower) p).modifyMagicCard(this, tempmagic);
+                }
+            }
+        }
+        this.MagDamage = (int) temp;
+        this.magicNumber = (int) tempmagic;
         if (!this.isDepleted && ((this.baseMisc > 0 && this.misc <= 0) || (this.baseMisc < 0 && this.misc >= 0))){
             onDepleted();
         } else if (this.isDepleted && ((this.baseMisc < 0 && this.misc < 0) || (this.baseMisc > 0 && this.misc > 0))){
@@ -103,9 +130,8 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
         // Only do base applyPowers for cards in hand. This causes their displayed dmg/block to change based on in-battle effects.
         if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(this)) super.applyPowers();
         this.isMultiDamage = tmp;
-
+        super.applyPowers();
     }
-
     public void onDepleted(){
         if (this.isDepleted) return;
 
@@ -179,7 +205,7 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        if (this.hasTag(CustomTags.Ice)) {
+        if (this.hasTag(CustomTags.Ice) && this.target != CardTarget.SELF) {
             HotStreak = false;
             addToBot(new AbstractGameAction() {
                 public void update() {
@@ -287,23 +313,20 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
     public void calculateCardDamage(AbstractMonster mo) {
         float temp = baseMagDamage;
         super.calculateCardDamage(mo);
+        float tempmagic = baseMagicNumber;
         if (!this.isMultiDamage && this.target == CardTarget.ENEMY) {
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 if (p instanceof modifyMagicPower) {
                     temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
+                    tempmagic = ((modifyMagicPower) p).modifyMagicCard(this, tempmagic);
                 }
             }
-            for (AbstractPower p : mo.powers) {
-                if (p instanceof modifyMagicPower) {
-                    temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
-                }
-            }
-            this.MagDamage = (int) temp;
         }
         else if (this.target != CardTarget.SELF){
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 if (p instanceof modifyMagicPower) {
                     temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
+                    tempmagic = ((modifyMagicPower) p).modifyMagicCard(this, tempmagic);
                 }
             }
         }
@@ -311,11 +334,13 @@ public abstract class AbstractMagicGremoryCard extends AbstractGremoryCard {
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 if (p instanceof modifyMagicPower) {
                     temp = ((modifyMagicPower) p).modifyMagicCard(this, temp);
+                    tempmagic = ((modifyMagicPower) p).modifyMagicCard(this, tempmagic);
                 }
             }
         }
+        this.MagDamage = (int) temp;
+        this.magicNumber = (int) tempmagic;
     }
-
 
 
     @Override

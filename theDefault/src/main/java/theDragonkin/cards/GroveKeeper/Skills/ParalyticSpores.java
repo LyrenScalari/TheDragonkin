@@ -1,29 +1,32 @@
 package theDragonkin.cards.GroveKeeper.Skills;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
+import theDragonkin.orbs.AbstractGrovekeeperOrb;
 import theDragonkin.orbs.LifeBloom;
+import theDragonkin.orbs.PrimalBloom;
 import theDragonkin.orbs.ToxicBloom;
-import theDragonkin.powers.GroveKeeper.AlignmentPower;
-import theDragonkin.powers.GroveKeeper.NaturePower;
+import theDragonkin.powers.GroveKeeper.EntangledPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class GaiaSeeds extends AbstractGroveKeeperCard {
+public class ParalyticSpores extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(GaiaSeeds.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID(ParalyticSpores.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
@@ -44,18 +47,28 @@ public class GaiaSeeds extends AbstractGroveKeeperCard {
     // /STAT DECLARATION/
 
 
-    public GaiaSeeds() {
+    public ParalyticSpores() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = 1;
+        magicNumber = baseMagicNumber = 6;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        this.exhaust = true;
         this.tags.add(CustomTags.Neutral);
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < this.magicNumber; ++i) {
-            addToBot(new ChannelAction(new LifeBloom()));
+        for (AbstractOrb orb : p.orbs){
+            if (orb instanceof ToxicBloom){
+                ((AbstractGrovekeeperOrb) orb).onHarvest(magicNumber);
+                for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+                    if (mo.hasPower(PoisonPower.POWER_ID)){
+                        addToBot(new ApplyPowerAction(mo,p,new EntangledPower(mo,p,2)));
+                    }
+                }
+                break;
+            }
         }
     }
 
@@ -64,7 +77,7 @@ public class GaiaSeeds extends AbstractGroveKeeperCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(1);
+            upgradeDefaultSecondMagicNumber(1);
             initializeDescription();
         }
     }

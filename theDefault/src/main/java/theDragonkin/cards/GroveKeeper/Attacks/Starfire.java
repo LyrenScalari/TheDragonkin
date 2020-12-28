@@ -60,11 +60,7 @@ public class Starfire extends AbstractGroveKeeperCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (AbstractDungeon.player.hasPower(AlignmentPower.POWER_ID) && ((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2 >= 4) {
-            addToBot(new DamageAction(m, new DamageInfo(p, damage*2)));
-        } else {
             addToBot(new DamageAction(m, new DamageInfo(p, damage)));
-        }
     }
 
     public void triggerOnGlowCheck() {

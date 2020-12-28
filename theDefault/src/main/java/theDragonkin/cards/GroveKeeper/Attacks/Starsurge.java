@@ -57,6 +57,7 @@ public class Starsurge extends AbstractGroveKeeperCard {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = 2;
         this.tags.add(CustomTags.Lunar);
+        isMultiDamage = true;
         this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
     }
 
@@ -64,7 +65,6 @@ public class Starsurge extends AbstractGroveKeeperCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new CollectorCurseEffect(p.drawX,p.drawY)));
         addToBot(new VFXAction(new InversionBeamEffect(p.drawX)));
         addToBot(new DamageAllEnemiesAction(p,multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         if (p.hasPower(AlignmentPower.POWER_ID)) {

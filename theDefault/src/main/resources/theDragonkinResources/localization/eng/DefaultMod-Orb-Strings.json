@@ -12,60 +12,48 @@
   "theDragonkin:InvigoratingBloom": {
     "NAME": "Invigorating Bloom",
     "DESCRIPTION": [
-      "#yPassive: At the start of your turn, Gain 1 Energy and increase the Healing done by this by 1.",
-      "",
-      " NL #yEvokes in #b",
-      " turns ",
-      " turn ",
-      " NL #yEvoke: Heal #b"
+      "#yHarvest: Draw a Card.",
+      " NL #yEvoke: Gain ",
+      " NL Passive Power #b"
     ]
   },
   "theDragonkin:ThornBloom": {
     "NAME": "Hungry Bloom",
     "DESCRIPTION": [
-      "#yPassive: At the start of your turn, Deal #b",
-      " Damage to a random enemy and increase Block gained by this by #b",
-      " NL #yEvokes in #b",
-      " turns ",
-      " turn ",
+      "#yHarvest: Deal #b",
+      " damage to a random enemy.",
       " NL #yEvoke: Gain #b",
-      " Block"
+      " #yVigor.",
+      " NL Passive Power #b"
     ]
   },
   "theDragonkin:ToxicBloom": {
     "NAME": "Toxic Bloom",
     "DESCRIPTION": [
-      "#yPassive: At the start of your turn, Deal #b",
-      " Damage to ALL #yPoisoned enemies and increase #yPoison applied by this by #b",
-      " NL #yEvokes in #b",
-      " turns ",
-      " turn ",
-      " NL #yEvoke: Apply #b",
-      " Poison to ALL enemies."
+      "#yHarvest: Apply #b",
+      " #yPoison to a random enemy.",
+      " NL #yEvoke: Gain #b",
+      " #yBlock.",
+      " NL Passive Power #b"
     ]
   },
   "theDragonkin:PrimalBloom": {
     "NAME": "Primal Bloom",
     "DESCRIPTION": [
-      "#yPassive: At the start of your turn Non-Primal Bloom #yPassive effects are increased by #b",
-      "",
-      " NL #yEvokes in #b",
-      " turns ",
-      " turn ",
-      " NL #yEvoke: Activate the passive effects of your other Blooms.",
-      " "
+      "#yHarvest: Gain #b",
+      " #yNatrual #ySpikes.",
+      " NL #yEvoke: Lose #b",
+      " #yNatrual #ySpikes.",
+      " NL Passive Power #b"
     ]
   },
   "theDragonkin:LifeBloom": {
     "NAME": "Life Bloom",
     "DESCRIPTION": [
-      "#yPassive: At the start of your turn Gain #b",
-      " #yTemporary #yHP and increase #yTemporary #yHP given.",
-      " NL #yEvokes in #b",
-      " turns ",
-      " turn ",
-      " NL #yEvoke: Gain #b",
-      " #yTemporary #yHP and Lose 3 #yDexterity."
+      "#yHarvest: Gain #b",
+      " Temporary HP.",
+      " NL #yEvoke: Heal #b",
+      " NL Passive Power #b"
     ]
   }
 }

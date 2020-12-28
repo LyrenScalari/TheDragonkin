@@ -5,9 +5,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.actions.defect.EvokeSpecificOrbAction;
+import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -20,6 +23,7 @@ import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import theDragonkin.DefaultMod;
+import theDragonkin.powers.GroveKeeper.NatrualSpikesPower;
 import theDragonkin.powers.GroveKeeper.NaturePower;
 
 import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.BLUNT_HEAVY;
@@ -32,9 +36,9 @@ public static final String ORB_ID = DefaultMod.makeID("PrimalBloom");
 private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
 public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
 
-private static int PASSIVE_AMOUNT = 1;
-private static int EVOKE_AMOUNT = 5;
-private static int BASEEVOKE_AMOUNT = 4;
+private static int PASSIVE_AMOUNT = 5;
+private static int EVOKE_AMOUNT = 6;
+private static int BASEEVOKE_AMOUNT = 5;
 private static int CURRENTBONUS = 0;
 private static int Healcounter = 0;
 
@@ -47,7 +51,7 @@ private static final float PI_4 = 12.566371f;
 
 
 public PrimalBloom() {
-        super(ORB_ID, orbString.NAME, PASSIVE_AMOUNT, EVOKE_AMOUNT, DESCRIPTIONS[1], DESCRIPTIONS[4], makeOrbPath("default_orb.png"));
+        super(ORB_ID, orbString.NAME, PASSIVE_AMOUNT, EVOKE_AMOUNT,DESCRIPTIONS[0], DESCRIPTIONS[2], makeOrbPath("default_orb.png"));
         updateDescription();
         baseEvokeAmount = evokeAmount = EVOKE_AMOUNT;
         basePassiveAmount = passiveAmount = PASSIVE_AMOUNT;
@@ -55,54 +59,40 @@ public PrimalBloom() {
         channelAnimTimer = 0.5f;
         }
 
-@Override
-public void updateDescription() { // Set the on-hover description of the orb
-        super.applyFocus(); // Apply Focus (Look at the next method)
-        if (evokeAmount < 2) {
-        description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1] + passiveAmount + DESCRIPTIONS[2] + evokeAmount + DESCRIPTIONS[4] + DESCRIPTIONS[5] + Healcounter + DESCRIPTIONS[6];
-        } else description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1] + passiveAmount + DESCRIPTIONS[2] + evokeAmount + DESCRIPTIONS[3]  + DESCRIPTIONS[5] + Healcounter + DESCRIPTIONS[6];
-        }
-@Override
-public void applyNaturePower() {
-        if (AbstractDungeon.player.hasPower(NaturePower.POWER_ID)) {
-        baseEvokeAmount = evokeAmount + AbstractDungeon.player.getPower(NaturePower.POWER_ID).amount;
-        evokeAmount += AbstractDungeon.player.getPower(NaturePower.POWER_ID).amount;
-        CURRENTBONUS = AbstractDungeon.player.getPower(NaturePower.POWER_ID).amount;
-        }
-        }
-
-@Override
-public void onEvoke() { // 1.On Orb Evoke
-
-        // The damage matrix is how orb damage all enemies actions have to be assigned. For regular cards that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
-        for (AbstractOrb orb : AbstractDungeon.player.orbs){
-        if (orb instanceof AbstractGrovekeeperOrb){
-        orb.onStartOfTurn();
-        }
+        @Override
+        public void updateDescription() { // Set the on-hover description of the orb
+                super.applyFocus(); // Apply Focus (Look at the next method)
+                StringBuilder sb = new StringBuilder();
+                sb.append(DESCRIPTIONS[0]);
+                sb.append(evokeAmount);
+                sb.append(DESCRIPTIONS[1]);
+                sb.append(DESCRIPTIONS[2]);
+                sb.append(evokeAmount - 2);
+                sb.append(DESCRIPTIONS[3]);
+                sb.append(DESCRIPTIONS[4]);
+                sb.append(passiveAmount);
+                this.description = sb.toString();
         }
 
-        AbstractDungeon.actionManager.addToBottom(new SFXAction("DEATH_STINGER")); // 3.And play a Jingle Sound.
-        // For a list of sound effects you can use, look under com.megacrit.cardcrawl.audio.SoundMaster - you can see the list of keys you can use there. As far as previewing what they sound like, open desktop-1.0.jar with something like 7-Zip and go to audio. Reference the file names provided. (Thanks fiiiiilth)
+        @Override
+        public void onEvoke() { // 1.On Orb Evoke
+
+                // The damage matrix is how orb damage all enemies actions have to be assigned. For regular cards that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
+                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player,AbstractDungeon.player,NatrualSpikesPower.POWER_ID,evokeAmount - 2));
+                AbstractDungeon.actionManager.addToBottom(new SFXAction("STANCE_ENTER_CALM")); // 3.And play a Jingle Sound.
+                // For a list of sound effects you can use, look under com.megacrit.cardcrawl.audio.SoundMaster - you can see the list of keys you can use there. As far as previewing what they sound like, open desktop-1.0.jar with something like 7-Zip and go to audio. Reference the file names provided. (Thanks fiiiiilth)
 
         }
 
-@Override
-public void onStartOfTurn() {// 1.At the start of your turn.
-        this.evokeAmount -= 1;
-        AbstractDungeon.actionManager.addToBottom(// 2.This orb will have a flare effect
-        new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.DARK), 0.1f));
-
-        for (AbstractOrb orb : AbstractDungeon.player.orbs){
-        if (orb instanceof AbstractGrovekeeperOrb){
-        orb.passiveAmount += 1;
-        }
-        }
-        this.Healcounter += passiveAmount;
-        this.passiveAmount += passiveAmount;
-        if (evokeAmount <= 1){
-        AbstractDungeon.actionManager.addToBottom(new EvokeSpecificOrbAction(this));
-        }
-        updateDescription();
+        @Override
+        public void onHarvest(int HarvestRedux){
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
+                        new NatrualSpikesPower(AbstractDungeon.player,AbstractDungeon.player,evokeAmount,1),evokeAmount));
+                this.passiveAmount -= HarvestRedux;
+                if (this.passiveAmount <= 0){
+                        AbstractDungeon.actionManager.addToBottom(new EvokeSpecificOrbAction(this));
+                }
+                updateDescription();
         }
 
 @Override

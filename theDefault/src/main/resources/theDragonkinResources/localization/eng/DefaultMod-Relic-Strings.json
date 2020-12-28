@@ -94,6 +94,14 @@
     "DESCRIPTIONS": ["The first card you play of each #yElement each Combat deals 3 more damage and gains 3 more Block."
     ]
   },
+
+  "theDragonkin:GrovekeeperStarting": {
+    "NAME": "Shattered Charm",
+    "FLAVOR": "A Fractured Charm that once Symbolized a Defender of Nature. Broken when the owner is exiled.",
+    "DESCRIPTIONS": ["At the start of each combat #yChannel 1 #yHungry #yBloom."
+    ]
+  },
+
   "theDragonkin:BottledPlaceholderRelic": {
     "NAME": "Bottled Placeholder",
     "FLAVOR": "What is this?",

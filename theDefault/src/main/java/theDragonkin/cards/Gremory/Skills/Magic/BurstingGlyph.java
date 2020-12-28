@@ -84,6 +84,7 @@ public class BurstingGlyph extends AbstractMagicGremoryCard implements Branching
         this.rawDescription = UPGRADE_DESCRIPTION;
         upgradeMagicNumber(1);
         MagDamageUpgraded = true;
+        baseMagDamage += 10;
         initializeDescription();
     }
 
@@ -98,7 +99,7 @@ public class BurstingGlyph extends AbstractMagicGremoryCard implements Branching
         TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Chill"), BaseMod.getKeywordDescription("thedragonkin:Chill")));
         TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Freeze"), BaseMod.getKeywordDescription("thedragonkin:Freeze")));
         getCustomTooltips();
-        baseMagDamage += 20;
+        baseMagDamage += 30;
         MagDamageUpgraded = true;
         initializeDescription();
 

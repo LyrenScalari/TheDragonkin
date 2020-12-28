@@ -1,23 +1,29 @@
 package theDragonkin.cards.GroveKeeper.Choices;
 
 import basemod.AutoAdd;
+import basemod.devcommands.draw.Draw;
+import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
+import theDragonkin.orbs.AbstractGrovekeeperOrb;
 import theDragonkin.orbs.InvigoratingBloom;
-import theDragonkin.orbs.ThornBloom;
+import theDragonkin.relics.Grovekeeper.GrovekeeperStarting;
 
 import static theDragonkin.DefaultMod.makeCardPath;
-
 @AutoAdd.Ignore
-public class EverbloomInvig extends AbstractGroveKeeperCard {
-    public static final String ID = DefaultMod.makeID(EverbloomInvig.class.getSimpleName());
+public class TimetoReap extends AbstractGroveKeeperCard {
+    public static final String ID = DefaultMod.makeID(TimetoReap.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
 
@@ -29,11 +35,20 @@ public class EverbloomInvig extends AbstractGroveKeeperCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     private static final int COST = 2;
 
-    public EverbloomInvig() {
+    public TimetoReap() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
     }
     public void onChoseThisOption() {
-        addToBot(new ChannelAction(new InvigoratingBloom()));
+        for (AbstractOrb orb : AbstractDungeon.player.orbs){
+            if (orb instanceof AbstractGrovekeeperOrb){
+                ((AbstractGrovekeeperOrb) orb).onHarvest(orb.passiveAmount);
+                addToBot(new GainEnergyAction(1));
+                addToBot(new DrawCardAction(AbstractDungeon.player,1));
+                if (AbstractDungeon.player.hasRelic(GrovekeeperStarting.ID)){
+                    addToBot(new AddTemporaryHPAction(AbstractDungeon.player,AbstractDungeon.player,5));
+                }
+            }
+        }
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

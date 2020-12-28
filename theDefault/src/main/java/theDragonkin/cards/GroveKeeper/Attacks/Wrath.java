@@ -58,7 +58,7 @@ public class Wrath extends AbstractGroveKeeperCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = 2;
-        this.tags.add(CustomTags.Lunar);
+        this.tags.add(CustomTags.Neutral);
         this.setOrbTexture(DefaultMod.Neutral_SMALL_ORB,DefaultMod.Neutral_LARGE_ORB);
     }
 

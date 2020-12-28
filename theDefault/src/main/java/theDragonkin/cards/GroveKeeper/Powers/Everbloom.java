@@ -13,10 +13,7 @@ import theDragonkin.cards.Gremory.Choices.ImmaculateSnow;
 import theDragonkin.cards.Gremory.Choices.MoonsMarch;
 import theDragonkin.cards.Gremory.Choices.WindsSong;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
-import theDragonkin.cards.GroveKeeper.Choices.EverbloomInvig;
-import theDragonkin.cards.GroveKeeper.Choices.EverbloomPrimal;
-import theDragonkin.cards.GroveKeeper.Choices.EverbloomThorn;
-import theDragonkin.cards.GroveKeeper.Choices.EverbloomToxic;
+import theDragonkin.cards.GroveKeeper.Choices.*;
 import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.powers.GroveKeeper.NaturePower;
 import theDragonkin.powers.GroveKeeper.SwarmPower;
@@ -70,6 +67,7 @@ public class Everbloom extends AbstractGroveKeeperCard {
         stanceChoices.add(new EverbloomThorn());
         stanceChoices.add(new EverbloomPrimal());
         stanceChoices.add(new EverbloomToxic());
+        stanceChoices.add(new EverbloomLife());
         AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(p,p,new NaturePower(p,p,magicNumber)));
         addToBot(new ChooseOneAction(stanceChoices));

@@ -4,6 +4,8 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -29,6 +31,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDragonkin.cards.Dragonkin.AbstractDragonkinCard;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
+import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.characters.TheGremory;
@@ -47,15 +50,19 @@ import theDragonkin.powers.Gremory.MoonsMarch;
 import theDragonkin.powers.Gremory.WindsSong;
 import theDragonkin.relics.Dragonkin.*;
 import theDragonkin.relics.Gremory.HeartofFlames;
+import theDragonkin.relics.Grovekeeper.GrovekeeperStarting;
 import theDragonkin.util.IDCheckDontTouchPls;
 import theDragonkin.util.TextureLoader;
 import theDragonkin.variables.*;
 
+import javax.smartcardio.Card;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import static theDragonkin.cards.Gremory.AbstractMagicGremoryCard.AllCards;
 import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
 import static theDragonkin.characters.TheGremory.Enums.Gremory_Purple_Color;
 import static theDragonkin.characters.TheGroveKeeper.Enums.GroveKeeper_Forest_Color;
@@ -442,6 +449,18 @@ public class DefaultMod implements
                 card.cost -= 1;
             }
         }
+        for (AbstractCard c : AllCards.group){
+            if (c instanceof AbstractMagicGremoryCard && CardModifierManager.hasModifier(c,"Afterglow") && !card.hasTag(CustomTags.Dark)){
+                ArrayList modtoapply = CardModifierManager.getModifiers(c,"Afterglow");
+                CardModifierManager.addModifier(card, (AbstractCardModifier) modtoapply.get(0));
+                break;
+            }
+            if (c instanceof AbstractMagicGremoryCard && CardModifierManager.hasModifier(c,"Darken") && !card.hasTag(CustomTags.Light)){
+                ArrayList modtoapply = CardModifierManager.getModifiers(c,"Darken");
+                CardModifierManager.addModifier(card, (AbstractCardModifier) modtoapply.get(0));
+                break;
+            }
+        }
     }
 
     // ============== /SUBSCRIBE, CREATE THE Dragonkin_Red_COLOR, INITIALIZE/ =================
@@ -562,6 +581,8 @@ public class DefaultMod implements
         BaseMod.addRelicToCustomPool(new UthersMaul(), Dragonkin_Red_COLOR);
 
         BaseMod.addRelicToCustomPool(new HeartofFlames(), Gremory_Purple_Color);
+
+        BaseMod.addRelicToCustomPool(new GrovekeeperStarting(), GroveKeeper_Forest_Color);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         
