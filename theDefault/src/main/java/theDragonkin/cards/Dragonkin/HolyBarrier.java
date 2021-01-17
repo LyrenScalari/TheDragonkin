@@ -2,22 +2,17 @@ package theDragonkin.cards.Dragonkin;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
-import theDragonkin.actions.TwinRoadsDiscardAction;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.HolyBarrierpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class HolyBarrier extends AbstractHolyBonusCard {
+public class HolyBarrier extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(HolyBarrier.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

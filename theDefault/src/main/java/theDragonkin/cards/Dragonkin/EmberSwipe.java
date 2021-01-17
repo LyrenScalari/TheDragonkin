@@ -13,7 +13,7 @@ import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class EmberSwipe extends AbstractDragonkinCard {
+public class EmberSwipe extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

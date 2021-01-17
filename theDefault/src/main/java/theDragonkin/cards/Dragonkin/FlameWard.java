@@ -11,7 +11,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class FlameWard extends AbstractDragonkinCard {
+public class FlameWard extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(FlameWard.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

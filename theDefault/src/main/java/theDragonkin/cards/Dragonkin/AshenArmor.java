@@ -11,7 +11,7 @@ import theDragonkin.powers.Dragonkin.AshenArmorpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class AshenArmor extends AbstractDragonkinCard {
+public class AshenArmor extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(AshenArmor.class.getSimpleName());
     public static final String IMG = makeCardPath("AshenArmor.png");

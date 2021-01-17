@@ -13,7 +13,7 @@ import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class DivineVision extends AbstractHolyBonusCard {
+public class DivineVision extends AbstractHolyCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

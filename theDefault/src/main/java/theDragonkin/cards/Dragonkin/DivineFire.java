@@ -14,7 +14,7 @@ import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class DivineFire extends AbstractHolyBonusCard {
+public class DivineFire extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(DivineFire.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

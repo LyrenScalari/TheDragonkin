@@ -14,7 +14,7 @@ import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class GooGrip extends AbstractDragonkinCard {
+public class GooGrip extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(GooGrip.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

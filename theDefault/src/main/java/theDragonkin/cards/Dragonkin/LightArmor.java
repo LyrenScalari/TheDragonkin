@@ -9,7 +9,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class LightArmor extends AbstractHolyBonusCard {
+public class LightArmor extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(LightArmor.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

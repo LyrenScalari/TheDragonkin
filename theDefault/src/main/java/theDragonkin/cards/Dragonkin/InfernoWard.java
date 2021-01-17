@@ -14,7 +14,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class InfernoWard extends AbstractDragonkinCard {
+public class InfernoWard extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

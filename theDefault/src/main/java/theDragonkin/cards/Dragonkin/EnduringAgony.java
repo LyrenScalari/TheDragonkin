@@ -10,7 +10,7 @@ import theDragonkin.powers.Dragonkin.EnduringAgonypower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class EnduringAgony extends AbstractDragonkinCard {
+public class EnduringAgony extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(EnduringAgony.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

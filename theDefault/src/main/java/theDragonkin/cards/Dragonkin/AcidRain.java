@@ -13,7 +13,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class AcidRain extends AbstractDragonkinCard {
+public class AcidRain extends AbstractPrimalCard{
 
     public static final String ID = DefaultMod.makeID(AcidRain.class.getSimpleName());
     public static final String IMG = makeCardPath("AcidRain.png");

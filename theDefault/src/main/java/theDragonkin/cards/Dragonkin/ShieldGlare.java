@@ -11,7 +11,7 @@ import theDragonkin.powers.Dragonkin.ShieldGlarepower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class ShieldGlare extends AbstractHolyBonusCard {
+public class ShieldGlare extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(ShieldGlare.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

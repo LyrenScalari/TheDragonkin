@@ -12,7 +12,7 @@ import theDragonkin.powers.Dragonkin.CrusaderFormpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class CrusaderForm extends AbstractHolyBonusCard{
+public class CrusaderForm extends AbstractHolyCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

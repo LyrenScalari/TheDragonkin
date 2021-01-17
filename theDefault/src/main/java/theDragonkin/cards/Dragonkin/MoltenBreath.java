@@ -10,11 +10,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.DragonBreaths.MoltenBreathEffect;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class MoltenBreath extends AbstractDragonkinCard {
+public class MoltenBreath extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -38,8 +39,8 @@ public class MoltenBreath extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
-    private static final int COST = 1;
-    private static final int BLOCK = 14;
+    private static final int COST = 2;
+    private static final int BLOCK = 10;
     private static final int UPGRADE_PLUS_BLOCK = 4;
 
 
@@ -48,18 +49,15 @@ public class MoltenBreath extends AbstractDragonkinCard {
 
     public MoltenBreath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseBlock = BLOCK;
-        this.baseMagicNumber = 2;
-        this.magicNumber = this.baseMagicNumber;
+        damage = baseDamage = 10;
+        block = baseBlock = BLOCK;
+        this.magicNumber = this.baseMagicNumber = 4;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m,p,  new Scorchpower(m,p,this.magicNumber),magicNumber,false, AbstractGameAction.AttackEffect.FIRE));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Burn(), magicNumber));
+        addToBot(new ApplyPowerAction(p,p,new MoltenBreathEffect(damage,block,magicNumber)));
     }
 
     //Upgraded stats.
@@ -68,7 +66,8 @@ public class MoltenBreath extends AbstractDragonkinCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
-            upgradeMagicNumber(1);
+            upgradeDamage(UPGRADE_PLUS_BLOCK);
+            upgradeMagicNumber(2);
             initializeDescription();
         }
     }

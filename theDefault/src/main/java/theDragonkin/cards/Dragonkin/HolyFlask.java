@@ -12,7 +12,7 @@ import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class HolyFlask extends AbstractHolyBonusCard {
+public class HolyFlask extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(HolyFlask.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

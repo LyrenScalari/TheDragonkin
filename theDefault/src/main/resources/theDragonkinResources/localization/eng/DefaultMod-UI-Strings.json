@@ -1,4 +1,10 @@
 {
+  "theDragonkin:UIText": {
+    "TEXT": [
+      " NL Exhaust"
+    ]
+  },
+
   "TransmutationAction": {
     "TEXT": [
       "Choose cards to change the Element of"

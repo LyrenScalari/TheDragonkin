@@ -15,7 +15,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class Detox extends AbstractDragonkinCard {
+public class Detox extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(Detox.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

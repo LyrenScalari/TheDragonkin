@@ -12,7 +12,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class DivineStorm extends AbstractHolyBonusCard {
+public class DivineStorm extends AbstractHolyCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

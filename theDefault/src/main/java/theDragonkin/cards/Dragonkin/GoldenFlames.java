@@ -13,7 +13,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class GoldenFlames extends AbstractHolyBonusCard {
+public class GoldenFlames extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(GoldenFlames.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

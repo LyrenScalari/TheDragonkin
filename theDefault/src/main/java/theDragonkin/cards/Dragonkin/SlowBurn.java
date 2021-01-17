@@ -10,7 +10,7 @@ import theDragonkin.powers.Dragonkin.SlowBurnpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class SlowBurn extends AbstractDragonkinCard {
+public class SlowBurn extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(SlowBurn.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

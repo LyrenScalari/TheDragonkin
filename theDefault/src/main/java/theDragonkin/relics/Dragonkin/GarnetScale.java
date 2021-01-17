@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
@@ -16,6 +17,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theDragonkin.DefaultMod;
+import theDragonkin.cards.Dragonkin.AbstractHolyCard;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makeRelicOutlinePath;
@@ -53,33 +55,16 @@ public class GarnetScale extends CustomRelic{ // You must implement things you w
 
     @Override
     public void atTurnStartPostDraw() {
-        addToBot(new AbstractGameAction() {
-            public void update() {
-                if (Statuscount > 0) {
-                    flash();
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-                            new LoseDexterityPower(AbstractDungeon.player, Statuscount), Statuscount));
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-                            new DexterityPower(AbstractDungeon.player, Statuscount), Statuscount));
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-                            new LoseStrengthPower(AbstractDungeon.player, Statuscount), Statuscount));
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-                            new StrengthPower(AbstractDungeon.player, Statuscount), Statuscount));
-                    AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, burncount));
-                }
-                isDone = true;
-            }
-        });
     }
-
+    @Override
+    public void onUseCard(final AbstractCard c , final UseCardAction ca){
+        if (c instanceof AbstractHolyCard){
+            this.flash();
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,4));
+        }
+    }
     @Override
     public void onCardDraw(AbstractCard card) {
-        if (card.type == AbstractCard.CardType.STATUS) {
-            Statuscount += 1;
-            if (card.cardID.equals(Burn.ID)){
-             burncount += 1;
-            }
-        }
     }
 
 @Override

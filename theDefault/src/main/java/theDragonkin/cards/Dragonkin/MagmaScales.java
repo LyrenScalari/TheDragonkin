@@ -13,7 +13,7 @@ import theDragonkin.powers.Dragonkin.MoltenScalesPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class MagmaScales extends AbstractDragonkinCard {
+public class MagmaScales extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

@@ -1,8 +1,4 @@
 {
-  "theDragonkin:BlazingBreath": {
-    "NAME": "Blazing Breath",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonkin:Scorch. NL shuffle 2 Burns into your draw pile."
-  },
   "theDragonkin:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
@@ -15,30 +11,75 @@
     "NAME": "Holy Smite",
     "DESCRIPTION": "Deal !D! damage !M! Times. NL apply !M! Weak and Vulnerable."
   },
-  "theDragonkin:HammerOfWrath": {
-    "NAME": "Hammer Of Wrath",
-    "DESCRIPTION": "Deal !D! damage. NL If you're under half HP, deals double damage and gain 1 thedragonkin:Zeal."
+  "theDragonkin:BlazingBreath": {
+    "NAME": "Blazing Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Deal !D! damage. NL Apply !M! thedragonkin:Scorch."
   },
   "theDragonkin:AcidBreath": {
     "NAME": "Acidic Breath",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak."
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Deal !D! damage. NL Apply !M! Weak."
   },
-  "theDragonkin:WhateverTheCost": {
-    "NAME": "Whatever The Cost",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Lose 5 HP."
+  "theDragonkin:Smaugs_Smog": {
+    "NAME": "Smaug's Smog",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Deal !D! damage. NL Gain !B! Block. NL Apply !M! Vulnerable."
   },
-  "theDragonkin:VenomDrench": {
-    "NAME": "Venom Drench",
-    "DESCRIPTION": "Gain !B! Block, gain !M! more block for the potency of each debuff the target has."
+  "theDragonkin:MiasmicBreath": {
+    "NAME": "Miasma Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Apply !M! thedragonkin:Dissolve. NL ALL enemies lose HP Equal to their thedragonkin:Dissolve."
+  },
+  "theDragonkin:MoltenBreath": {
+    "NAME": "Molten Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Deal !D! damage. NL Gain !B! Block. NL Apply !M! thedragonkin:Scorch."
+  },
+  "theDragonkin:FlameBreath": {
+    "NAME": "Flame Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Deal !D! damage."
+  },
+  "theDragonkin:TwinBreath": {
+    "NAME": "Twin Breath",
+    "DESCRIPTION": "Add *Corrosive *Breath to your hand. NL thedragonkin:Dragon_Breath. NL Deal !D! Damage. NL Apply !M! thedragonkin:Scorch.",
+    "UPGRADE_DESCRIPTION": "Add *Corrosive *Breath+ to your hand. NL thedragonkin:Dragon_Breath. NL Deal !D! Damage. NL Apply !M! thedragonkin:Scorch."
+  },
+  "theDragonkin:CorrosiveBreath": {
+    "NAME": "Corrosive Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Apply !M! thedragonkin:Dissolve. NL ALL enemies lose HP Equal to their thedragonkin:Dissolve. NL Exhaust."
+  },
+  "theDragonkin:AshBreath": {
+    "NAME": "Ash Breath",
+    "DESCRIPTION": "Exhaust a Status in your hand to return this to your hand. thedragonkin:Dragon_Breath. NL Gain !B! Block. NL Deal !D! damage."
+  },
+  "theDragonkin:AkatirnsDecree": {
+    "NAME": "Akatirn's Decree",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Deal !D! damage. NL Apply !M! Weak and Vulnerable. NL Remove all debuffs from yourself."
+  },
+  "theDragonkin:DivineBreath": {
+    "NAME": "Divine Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Deal !D! damage. NL Gain !M! thedragonkin:Zeal. NL Exhaust."
+  },
+  "theDragonkin:PrismaticBreath": {
+    "NAME": "Prismatic Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Gain !M! Temporary_HP. NL Gain !M2! thedragonkin:Zeal.  NL Exhaust."
+  },
+  "theDragonkin:RevelationBreath": {
+    "NAME": "Revelation Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Deal !D! damage. NL Gain !M! Temporary_HP."
+  },
+  "theDragonkin:SandBreath": {
+    "NAME": "Sand Breath",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Gain !M! Temporary_HP. NL Apply !M2! Weak."
+  },
+  "theDragonkin:VoiceofOrder": {
+    "NAME": "Voice of Order",
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Gain !B! Block. NL Apply !M! Weak and Vulnerable."
+  },
+  "theDragonkin:HammerOfWrath": {
+    "NAME": "Hammer Of Wrath",
+    "DESCRIPTION": "Deal !D! damage. NL gain !M! thedragonkin:Zeal. NL Exhaust."
   },
   "theDragonkin:Detox": {
     "NAME": "Detox",
     "DESCRIPTION": "Ethereal. NL Gain !M! Strength and Dexterity for each Debuff an enemy has. NL Halve each one. NL Exhaust",
     "UPGRADE_DESCRIPTION": "Gain !M! Strength and Dexterity for each Debuff an enemy has. NL Exhaust"
-  },
-  "theDragonkin:Smaugs_Smog": {
-    "NAME": "Smaug's Smog",
-    "DESCRIPTION": "ALL enemies lose !D! HP for each Debuff they have."
   },
   "theDragonkin:GooGrip": {
   "NAME": "Choking Goo",
@@ -57,21 +98,9 @@
     "NAME": "Enduring Agony",
     "DESCRIPTION": "Whenever you Apply thedragonkin:Dissolve Apply !M! thedragonkin:Scorch. NL Whenever you Apply thedragonkin:Scorch Apply !M! thedragonkin:Dissolve"
   },
-  "theDragonkin:MiasmicBreath": {
-    "NAME": "Miasma Breath",
-    "DESCRIPTION": "Apply !M! thedragonkin:Dissolve. NL ALL enemies lose HP Equal to their thedragonkin:Dissolve."
-  },
   "theDragonkin:PlagueSwipe": {
     "NAME": "Plague Swipe",
     "DESCRIPTION": "Apply !M! thedragonkin:Dissolve to ALL Enemies. NL ALL enemies lose HP Equal to their thedragonkin:Dissolve."
-  },
-  "theDragonkin:JusticeStrike": {
-    "NAME": "Justice Strike",
-    "DESCRIPTION": "Deals !M! more damage each time you lose HP this combat. NL Deal !D! damage."
-  },
-  "theDragonkin:AvengingWrath": {
-    "NAME": "Avenging Wrath",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. if you're under half HP deal !D! damage to a random enemy !M! more times."
   },
   "theDragonkin:Sizzle": {
     "NAME": "Sizzle",
@@ -80,43 +109,11 @@
   },
   "theDragonkin:Condemnation": {
     "NAME": "Condemnation",
-    "DESCRIPTION": "In 3 turns, Deal !D! damage to ALL enemies. NL Purge."
+    "DESCRIPTION": "In 3 turns, Deal !D! damage to ALL enemies."
   },
   "theDragonkin:HallowedGround": {
     "NAME": "Hallowed Ground",
     "DESCRIPTION": "Deal !D! damage to all enemies, gain !M! Temporary_HP for each enemy. NL Exhaustive: !stslib:ex!."
-  },
-  "theDragonkin:Catacylsm": {
-    "NAME": "Cataclysm",
-    "DESCRIPTION": "Double ALL enemies' thedragonkin:Scorch and thedragonkin:Dissolve. NL ALL enemies lose HP equal to their thedragonkin:Dissolve. NL Place an Insanity on top of your draw pile. NL Purge."
-  },
-  "theDragonkin:Insanity": {
-    "NAME": "Insanity",
-    "DESCRIPTION": "Unplayable. Cannot be Exhausted. NL When drawn become Confused, gain 1 less energy and draw 1 less card at the start of your turn"
-  },
-  "theDragonkin:SanctuaryShield": {
-    "NAME": "Sanctuary Shield",
-    "DESCRIPTION": "Gains !M! more Block each time you lose HP this combat. NL Gain !B! Block."
-  },
-  "theDragonkin:DragonRage": {
-    "NAME": "Draconic Fury",
-    "DESCRIPTION": "Deal !D! damage. NL Fetch an Attack from your draw pile.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Fetch !M! Attacks from your draw pile."
-  },
-  "theDragonkin:Unbreakable": {
-    "NAME": "Unbreakable",
-    "DESCRIPTION": "Gain !B! Block. NL Fetch a Skill from your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Fetch !M! Skills from your draw pile."
-  },
-  "theDragonkin:JabCross": {
-    "NAME": "Jab Cross",
-    "DESCRIPTION": "Deal !D! damage. NL Next turn, Fetch a random Skill from your draw pile.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Next turn, Fetch !M! random Skills from your draw pile."
-  },
-  "theDragonkin:ParryandRiposte": {
-    "NAME": "Parry and Riposte",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, Fetch a random Attack from your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Next turn, Fetch !M! random Attacks from your draw pile."
   },
   "theDragonkin:AcidRain": {
     "NAME": "Acid Rain",
@@ -128,7 +125,21 @@
   },
   "theDragonkin:BurningRage": {
     "NAME": "Burning Rage",
-    "DESCRIPTION": "Deal !D! damage. NL apply !M! thedragonkin:Scorch. NL thedragonkin:Scorched : Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage. NL apply !M! thedragonkin:Scorch. NL thedragonkin:Scorched : Gain !M2! thedragonkin:Fury."
+  },
+  "theDragonkin:Ravage": {
+    "NAME": "Ravage",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! thedragonkin:Fury."
+  },
+  "theDragonkin:Flashpoint": {
+    "NAME": "Flashpoint",
+    "DESCRIPTION": "Draw !M2! card. NL Gain !M! thedragonkin:Fury.",
+    "UPGRADE_DESCRIPTION": "Draw !M2! cards. NL Gain !M! thedragonkin:Fury."
+  },
+  "theDragonkin:BurnAfterReading": {
+    "NAME": "Burn After Reading",
+    "DESCRIPTION": "Draw !M! cards, Exhaust them when played this turn.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards, Exhaust them when played this turn."
   },
   "theDragonkin:HolyWordBarrier": {
     "NAME": "Holy Barrier",
@@ -138,29 +149,14 @@
     "NAME": "Flame Ward",
     "DESCRIPTION": "Gain !B! Block. NL Add !M! Burns to your discard pile."
   },
-  "theDragonkin:HammerofJustice": {
-    "NAME": "Hammer of Justice",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! thedragonkin:Zeal. NL Exhaust."
-  },
   "theDragonkin:DivineStorm": {
     "NAME": "Divine Storm",
     "DESCRIPTION": "Deal !D! damage to a random enemy X + !M! times. NL Exhaust."
   },
   "theDragonkin:DivineJolt": {
     "NAME": "Penance Shock",
-    "DESCRIPTION": "Deal !D! damage. NL apply !M! Weak to a random enemy !M! times."
-  },
-  "theDragonkin:InexorableAssault": {
-    "NAME": "Indomitable",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, Fetch 1 Attack or Skill from your draw pile."
-  },
-  "theDragonkin:ForJustice": {
-    "NAME": "For Justice!",
-    "DESCRIPTION": "Deal !D! damage. NL Next turn, Fetch !M! random Skills from your draw pile."
-  },
-  "theDragonkin:AshBreath": {
-    "NAME": "Ash Breath",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonkin:Scorched and Add !M! Burns to your Discard for each burn in your draw pile."
+    "DESCRIPTION": "Deal !D! damage and apply !M! Weak to a random enemy.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage and apply !M! Weak to a random enemy !M! times."
   },
   "theDragonkin:AshenArmor": {
     "NAME": "Ashen Armor",
@@ -182,31 +178,14 @@
   "NAME": "Cinderstorm",
   "DESCRIPTION": "Exhaust all Status cards in your hand, deal !D! damage to a random enemy for each."
 },
-  "theDragonkin:HonorBound": {
-    "NAME": "Honor Bound",
-    "DESCRIPTION": "At the Start of your turn Fetch 1 Attack or Skill."
-  },
   "theDragonkin:LightArmor": {
     "NAME": "Holy Aegis",
     "DESCRIPTION": "Gain !B! Block !M! times."
-  },
-  "theDragonkin:NeverSurrender": {
-    "NAME": "Never Surrender!",
-    "DESCRIPTION": "When you play a card while under half HP gain !M! Block."
   },
   "theDragonkin:FlashofLight": {
     "NAME": "Flash of Light",
     "DESCRIPTION": "Heal 4 HP. NL Gain !M! Temporary_HP. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Heal 6 HP. NL Gain !M! Temporary_HP. NL Exhaust."
-  },
-  "theDragonkin:FireStarter": {
-    "NAME": "Fire Starter",
-    "DESCRIPTION": "Exhaust your hand, for !M2! turns at the start of your turn gain ",
-    "EXTENDED_DESCRIPTION": [" [E] for each card Exhausted"]
-  },
-  "theDragonkin:Wildfire": {
-    "NAME": "Wildfire",
-    "DESCRIPTION": "Apply !M2! thedragonkin:Scorch to a random enemy and gain !B! Block X Times."
   },
   "theDragonkin:DivineFire": {
     "NAME": "Holy Fire",
@@ -218,7 +197,7 @@
   },
   "theDragonkin:HolyBarrier": {
     "NAME": "Divine Shield",
-    "DESCRIPTION": "Gain !M2! Temporary_HP X + !M! Times.  NL Exhaustive: !stslib:ex!."
+    "DESCRIPTION": "Gain !M2! Temporary_HP X + !M! Times.  NL Exhaust."
   },
   "theDragonkin:ShieldGlare": {
     "NAME": "Shield Glare",
@@ -227,7 +206,7 @@
   "theDragonkin:Subdue": {
     "NAME": "Subdue",
     "DESCRIPTION": "Reduce an enemy's Attack to 1 this turn. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Reduce an enemy's Attack to 1 this turn. NL Exhaustive: !stslib:ex!."
+    "UPGRADE_DESCRIPTION": "Retain. NL Reduce an enemy's Attack to 1 this turn. NL Exhaust."
   },
   "theDragonkin:ShieldBash": {
     "NAME": "Shield Bash",
@@ -235,19 +214,38 @@
   },
   "theDragonkin:AncestralSeance": {
     "NAME": "Ancestral Seance",
-    "DESCRIPTION": "Choose 1 of 3 non-[#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played. NL Exhaust"
+    "DESCRIPTION": "Choose 1 of !M! [#fe513a]Primal[] cards. NL Add it to your hand it costs 0 this turn. NL Exhaust."
   },
   "theDragonkin:DivinePrayer": {
     "NAME": "Divine Prayer",
-    "DESCRIPTION": "Choose 1 of 3 [#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played. NL Exhaust"
+    "DESCRIPTION": "Choose 1 of !M! [#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played. NL Exhaust"
+  },
+  "theDragonkin:MagnussCorona": {
+    "NAME": "Magnus's Corona",
+    "DESCRIPTION": "After you release a thedragonkin:Dragon_Breath gain !M! thedragonkin:Fury."
+  },
+  "theDragonkin:StormFront": {
+    "NAME": "Storm Cell",
+    "DESCRIPTION": "After you release !M! or more thedragonkin:Dragon_Breaths in a turn, Shuffle a *Divine *Wind into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Innate. NL After you release !M! or more thedragonkin:Dragon_Breaths in a turn, Shuffle a *Divine *Wind into your draw pile"
+  },
+  "theDragonkin:DivineWind": {
+    "NAME": "Divine Wind",
+    "DESCRIPTION": "Autoplay. NL Deal !D! damage to ALL enemies. NL Draw !M! Card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Autoplay. NL Deal !D! damage to ALL enemies. NL Draw !M! Cards. NL Exhaust."
+  },
+  "theDragonkin:DeepBreath": {
+    "NAME": "Tirnoch's Patience",
+    "DESCRIPTION": "Gain !M! Block for each thedragonkin:Dragon_Breath stored. NL Do not Release your thedragonkin:Dragon_Breaths this turn.",
+    "EXTENDED_DESCRIPTION": ["NL (You gain !B! Block)"]
+  },
+  "theDragonkin:ControlledBreath": {
+    "NAME": "Controlled Breath",
+    "DESCRIPTION": "Deal !D! damage. NL Do not Release your thedragonkin:Dragon_Breaths this turn."
   },
   "theDragonkin:HolyFlask": {
     "NAME": "Holy Flask",
     "DESCRIPTION": "Apply !M! thedragonkin:Dissolve to a random enemy !M! times."
-  },
-  "theDragonkin:TwinBreath": {
-    "NAME": "Twin Breath",
-    "DESCRIPTION": "Apply !M! thedragonkin:Scorch. NL Apply !M! thedragonkin:Dissolve."
   },
   "theDragonkin:InfernoWard": {
     "NAME": "Inferno Ward",
@@ -261,67 +259,10 @@
     "NAME": "Divine Vision",
     "DESCRIPTION": "Gain !M! thedragonkin:Zeal."
   },
-  "theDragonkin:MoltenBreath": {
-    "NAME": "Molten Breath",
-    "DESCRIPTION": "Gain !B! Block NL Apply !M! thedragonkin:Scorch. NL Add 3 Burns to your hand."
-  },
   "theDragonkin:CrusaderForm": {
   "NAME": "Crusader Form",
   "DESCRIPTION": "When you play a non-[#94bdff]Holy[] card, gain 2 thedragonkin:Zeal this turn."
 },
-  "theDragonkin:CrimsonSimulacrum": {
-    "NAME": "Crimson Simulacrum",
-    "DESCRIPTION": "Lose Half your HP. NL ALL cards played for the next 3 turns are played Twice. NL Exhaust."
-  },
-  "theDragonkin:DesperateMeasures": {
-    "NAME": "Desperate Measures",
-    "DESCRIPTION": "Gain !B! Block. NL Heal !M2! HP. NL You cannot gain block from cards for 2 turns. NL Purge."
-  },
-  "theDragonkin:DarkConviction": {
-    "NAME": "Dark Conviction",
-    "DESCRIPTION": "When you Exhaust a card Gain 1 Strength. When you lose [E] Deal damage to all enemies equal to your Strength."
-  },
-  "theDragonkin:ObsidianRite": {
-    "NAME": "Obsidian Rite",
-    "DESCRIPTION": "Gain !M! Strength. NL Exhaust !M! cards in your hand randomly. NL Deal !D! Damage to a random enemy !M! Times. NL Exhaust."
-  },
-  "theDragonkin:DarkWhispers": {
-    "NAME": "Dark Whispers",
-    "DESCRIPTION": "Deal !D! damage. NL For the next !M! turns, after you Exhaust a card gain !M2! energy."
-  },
-  "theDragonkin:ForbiddenMagic": {
-    "NAME": "Forbidden Magics",
-    "DESCRIPTION": "Choose One - lose [E] X times or Lose [E] at the start of your next X turns. NL Deal !D! damage X times to a random enemy."
-  },
-  "theDragonkin:VantaBlack": {
-    "NAME": "Vanta Black",
-    "DESCRIPTION": "Lose [E] X times."
-  },
-  "theDragonkin:DarkTide": {
-    "NAME": "Dark Tide",
-    "DESCRIPTION": "Lose [E] at the start of your next X turns"
-  },
-  "theDragonkin:BindingSlime": {
-    "NAME": "Void Shell",
-    "DESCRIPTION": "Gain !B! block. NL If your Exhaust pile has less then !M2! cards, Next turn, lose "
-  },
-  "theDragonkin:SlimeBreath": {
-    "NAME": "Vorpal Blade",
-    "DESCRIPTION": "Deal !D! Damage. NL if you didn't lose [E] this turn Next turn, lose "
-  },
-  "theDragonkin:SludgeWave": {
-    "NAME": "Dark Influence",
-    "DESCRIPTION": "For !M2! turns at the start of your turn, Exhaust !M! non-Status Card and gain ",
-    "EXTENDED_DESCRIPTION": ["For !M2! turns at the start of your turn, Exhaust !M! non-Status Cards and gain "]
-  },
-  "theDragonkin:SludgeBomb": {
-    "NAME": "Obsidian Hail",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL for !M! turns after you Lose [E] shuffle !M2! *Obsidian *Shards into your draw pile."
-  },
-  "theDragonkin:ObsidianShard": {
-    "NAME": "Obsidian Shard",
-    "DESCRIPTION": "Autoplay. NL Draw !M! card. NL Deal !D! damage to a random enemy. NL Exhaust."
-  },
   "theDragonkin:EmberSwipe":{
     "NAME": "Ember Swipe",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Apply !M! thedragonkin:Scorch NL to ALL enemies "
@@ -329,6 +270,10 @@
   "theDragonkin:MagmaScales": {
     "NAME": "Magma Scales",
     "DESCRIPTION": "When attacked apply !M! thedragonkin:Scorch back."
+  },
+  "theDragonkin:Insanity": {
+    "NAME": "Insanity",
+    "DESCRIPTION": "Unplayable. Cannot be Exhausted. NL When drawn become Confused, gain 1 less energy and draw 1 less card at the start of your turn"
   },
 
 

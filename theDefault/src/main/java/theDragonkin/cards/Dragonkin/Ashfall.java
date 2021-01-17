@@ -11,7 +11,7 @@ import theDragonkin.powers.Dragonkin.AshfallPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class Ashfall extends AbstractDragonkinCard {
+public class Ashfall extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(Ashfall.class.getSimpleName());
     public static final String IMG = makeCardPath("AshFall.png");
@@ -35,8 +35,6 @@ public class Ashfall extends AbstractDragonkinCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-
-        tags.add(CustomTags.HOLY_CARD);
         baseMagicNumber = magicNumber = MAGIC;
 
     }

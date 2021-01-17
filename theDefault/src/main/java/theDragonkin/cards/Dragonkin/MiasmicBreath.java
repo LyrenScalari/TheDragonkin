@@ -8,10 +8,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.AcidMarkPower;
+import theDragonkin.powers.Dragonkin.DragonBreaths.MiasmicBreathEffect;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class MiasmicBreath extends AbstractDragonkinCard {
+public class MiasmicBreath extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(MiasmicBreath.class.getSimpleName());
     public static final String IMG = makeCardPath("MiasmicBreath.png");
@@ -32,17 +33,13 @@ public class MiasmicBreath extends AbstractDragonkinCard {
 
     public MiasmicBreath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
-        block = baseBlock = POTENCY;
-        heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = POTENCY;
 
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p, new AcidMarkPower(m,p,magicNumber)));
-        AbstractDungeon.actionManager.addToBottom(new TriggerMarksAction(this));
+        addToBot(new ApplyPowerAction(p,p,new MiasmicBreathEffect(magicNumber,this)));
     }
 
     @Override

@@ -2,8 +2,15 @@ package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theDragonkin.DefaultMod;
+import theDragonkin.cards.Dragonkin.AbstractHolyCard;
+import theDragonkin.cards.Dragonkin.AbstractPrimalCard;
+import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.relics.Dragonkin.GarnetScale;
 import theDragonkin.util.TextureLoader;
 
@@ -56,19 +63,23 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
         }
     }
 
-
+    @Override
+    public void onUseCard(final AbstractCard c , final UseCardAction ca){
+        if (c instanceof AbstractPrimalCard){
+            this.flash();
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new FuryPower(AbstractDungeon.player,AbstractDungeon.player,4)));
+        }
+    }
     @Override
     public void atPreBattle() {
 
     }
     @Override
     public void atTurnStart(){
-        DefaultMod.ObsidianMight = false;
     }
 
     @Override
     public void onPlayerEndTurn() {
-        DefaultMod.ObsidianMight = false;
     }
 
 

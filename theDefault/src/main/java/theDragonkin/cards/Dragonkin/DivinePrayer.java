@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import static theDragonkin.DefaultMod.makeCardPath;
 import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
 
-public class DivinePrayer extends AbstractHolyBonusCard {
+public class DivinePrayer extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(DivinePrayer.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -33,7 +33,7 @@ public class DivinePrayer extends AbstractHolyBonusCard {
 
     private static final int POTENCY = 0;
     private static final int UPGRADE_PLUS_DMG = 0;
-    private static final int MAGIC = 0;
+    private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 0;
 
     public DivinePrayer() {
@@ -48,7 +48,7 @@ public class DivinePrayer extends AbstractHolyBonusCard {
         Holy.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
                 .stream()
                 .filter(c -> c.color == Dragonkin_Red_COLOR)
-                .filter(c -> c.hasTag(CustomTags.HOLY_CARD))
+                .filter(c -> c instanceof AbstractHolyCard)
                 .filter(c -> !c.hasTag(CardTags.HEALING))
                 .filter(c -> !c.rarity.equals(CardRarity.BASIC))
                 .collect(Collectors.toList());
@@ -57,7 +57,7 @@ public class DivinePrayer extends AbstractHolyBonusCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new CustomDiscoveryAction(Holy,3,false, card -> card.freeToPlayOnce = true));
+        AbstractDungeon.actionManager.addToBottom(new CustomDiscoveryAction(Holy,magicNumber,false, card -> card.freeToPlayOnce = true));
     }
 
     @Override

@@ -106,18 +106,33 @@
                 ]
         },
 
-        "theDragonkin:NeverSurrender": {
-                "NAME": "Just a Flesh Wound!",
-                "DESCRIPTIONS": ["When you play a card while under half HP gain #b", " Block.",
-                        "At the end of your turn, while under half HP Gain 1 #yZeal if you played 3 or more cards this turn."
+        "theDragonkin:MagnussCorona": {
+                "NAME": "Magnus's Corona",
+                "DESCRIPTIONS": ["After you release a #yDragon #yBreath gain #b", " #yFury."
                 ]
         },
-
+        "theDragonkin:StormFront": {
+                "NAME": "Storm Front",
+                "DESCRIPTIONS": ["After you release #b", " or more #yDragon #yBreaths shuffle #b", " #yDivine #yWind into your draw pile."," #yDivine #yWinds into your draw pile."
+                ]
+        },
+        "theDragonkin:DeepBreath": {
+                "NAME": "Deep Breath",
+                "DESCRIPTIONS": ["Do not Release your #yDragon #yBreaths this turn."
+                ]
+        },
         "theDragonkin:DivineConvictionpower": {
                 "NAME": "Zeal",
-                "DESCRIPTIONS": ["Increases the Potency of Holy #yAttacks and #ySkills by #b"]
+                "DESCRIPTIONS": ["Increases Holy card damage and Block gain #b", "NL Increases Holy card other values #b"]
         },
-
+        "theDragonkin:FuryPower": {
+                "NAME": "Fury",
+                "DESCRIPTIONS": ["Increases Primal card damage #b", " NL Decreases Primal card block #b"," NL Increases Primal card other values #b"]
+        },
+        "theDragonkin:Subdued": {
+                "NAME": "Subdued",
+                "DESCRIPTIONS": ["This monster can deal no more than #b1 damage."]
+        },
         "theDragonkin:CrusaderFormpower": {
                 "NAME": "Crusader Form",
                 "DESCRIPTIONS": ["Gain #b", " #yZeal this turn when you play a non-Holy Card."]

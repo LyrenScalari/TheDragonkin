@@ -13,7 +13,7 @@ import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class CorrosiveBelch extends AbstractDragonkinCard {
+public class CorrosiveBelch extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(CorrosiveBelch.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

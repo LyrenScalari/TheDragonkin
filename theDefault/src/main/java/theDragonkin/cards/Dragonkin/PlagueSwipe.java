@@ -11,7 +11,7 @@ import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class PlagueSwipe extends AbstractDragonkinCard {
+public class PlagueSwipe extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(PlagueSwipe.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

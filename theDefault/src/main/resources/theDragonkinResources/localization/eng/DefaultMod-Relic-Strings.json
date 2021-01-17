@@ -3,7 +3,7 @@
     "NAME": "Garnet Scales",
     "FLAVOR": "They Pulse with the Warmth of a Dragon's Fury.",
     "DESCRIPTIONS": [
-      "At the Start of your turn, Gain 1 #yStrength and #yDexterity until the end of your turn for each #yStatus card in your hand and Draw a card for each #yBurn in your hand."
+      "After you play a [#94bdff]Holy[] card, gain #b4 #yBlock."
     ]
   },
 
@@ -70,7 +70,7 @@
     "NAME": "Obsidian Scales",
     "FLAVOR": "These cursed Scales whisper terrible things, You feel like your Thoughts are no longer your own.",
     "DESCRIPTIONS": ["Replaces ",
-      ". The first time each turn a #yStatus is generated Gain 2 #yStrength."
+      ". NL After you play a [#fe513a]Primal[] card, gain #b4 #yFury."
     ]
   },
   "theDragonkin:PlaceholderRelic2": {

@@ -24,7 +24,6 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -42,7 +41,6 @@ import theDragonkin.potions.Dragonkin.DragonkinUncommonPotion;
 import theDragonkin.potions.Gremory.MagicHerbTea;
 import theDragonkin.potions.Gremory.ShadowofZahras;
 import theDragonkin.potions.Gremory.SpringWater;
-import theDragonkin.powers.Dragonkin.AbstractVoidPower;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 import theDragonkin.powers.Gremory.FlowersAmbition;
 import theDragonkin.powers.Gremory.ImmaculateSnow;
@@ -55,7 +53,6 @@ import theDragonkin.util.IDCheckDontTouchPls;
 import theDragonkin.util.TextureLoader;
 import theDragonkin.variables.*;
 
-import javax.smartcardio.Card;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -164,6 +161,8 @@ public class DefaultMod implements
 
     public static final String HOLY_LARGE_ORB = "theDragonkinResources/images/1024/card_Dragonkin_Holy_orb.png";
     public static final String HOLY_SMALL_ORB = "theDragonkinResources/images/512/card_Dragonkin_Holy_orb.png";
+    public static final String PRIMAL_LARGE_ORB = "theDragonkinResources/images/1024/Dragonkin_PrimalOrb.png";
+    public static final String PRIMAL_SMALL_ORB = "theDragonkinResources/images/512/Dragonkin_PrimalOrb.png";
     private static final String ATTACK_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_power_default_gray.png";
@@ -410,19 +409,7 @@ public class DefaultMod implements
         DefaultMod defaultmod = new DefaultMod();
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
-    public static void receiveEnergyChanged(int energyDelta) {
-        AbstractDungeon.player.powers.stream()
-                .filter(power -> power instanceof AbstractVoidPower)
-                .forEach(power -> ((AbstractVoidPower) power).onEnergyChanged(energyDelta));
-        WasDrained = true;
-    }
     public static void onGenerateCardMidcombat(AbstractCard card) {
-        if (AbstractDungeon.player.hasRelic(ObsidianScale.ID) && card.type == AbstractCard.CardType.STATUS && !ObsidianMight){
-            AbstractDungeon.player.getRelic(ObsidianScale.ID).flash();
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                    new StrengthPower(AbstractDungeon.player,2),2));
-            ObsidianMight = true;
-        }
         if (AbstractDungeon.player.hasRelic(FernosBellows.ID) && card.cardID.equals(Burn.ID) && !AbstractDungeon.actionManager.turnHasEnded){
             for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, AbstractDungeon.player,
@@ -475,17 +462,17 @@ public class DefaultMod implements
         BaseMod.addCharacter(new TheDefault("the Dragonkin", TheDefault.Enums.THE_DRAGONKIN),
                 THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DRAGONKIN);
 
-        BaseMod.addCharacter(new TheGremory("the Gremory", TheGremory.Enums.THE_GREMORY),
-                THE_GREMORY_BUTTON, THE_DEFAULT_PORTRAIT, TheGremory.Enums.THE_GREMORY);
+        //BaseMod.addCharacter(new TheGremory("the Gremory", TheGremory.Enums.THE_GREMORY),
+                //THE_GREMORY_BUTTON, THE_DEFAULT_PORTRAIT, TheGremory.Enums.THE_GREMORY);
 
-        BaseMod.addCharacter(new TheGroveKeeper("the Grovekeeper", TheGroveKeeper.Enums.THE_GROVEKEEPER),
-                THE_GROVEKEEPER_BUTTON, THE_DEFAULT_PORTRAIT, TheGroveKeeper.Enums.THE_GROVEKEEPER);
+        //BaseMod.addCharacter(new TheGroveKeeper("the Grovekeeper", TheGroveKeeper.Enums.THE_GROVEKEEPER),
+                //THE_GROVEKEEPER_BUTTON, THE_DEFAULT_PORTRAIT, TheGroveKeeper.Enums.THE_GROVEKEEPER);
 
         receiveEditPotions();
 
         logger.info("Added " + TheDefault.Enums.THE_DRAGONKIN.toString());
-        logger.info("Added " + TheGremory.Enums.THE_GREMORY.toString());
-        logger.info("Added " + TheGroveKeeper.Enums.THE_GROVEKEEPER.toString());
+        //logger.info("Added " + TheGremory.Enums.THE_GREMORY.toString());
+        //logger.info("Added " + TheGroveKeeper.Enums.THE_GROVEKEEPER.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -553,9 +540,9 @@ public class DefaultMod implements
         BaseMod.addPotion(DragonkinUncommonPotion.class, Color.YELLOW.cpy() ,Color.SKY.cpy() , null, DragonkinUncommonPotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
         BaseMod.addPotion(DragonkinRarePotion.class, Color.GOLDENROD.cpy() ,Color.RED.cpy() , null, DragonkinRarePotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
 
-        BaseMod.addPotion(MagicHerbTea.class, Color.CHARTREUSE.cpy() , Color.GREEN.cpy(), null,MagicHerbTea.POTION_ID, TheGremory.Enums.THE_GREMORY);
-        BaseMod.addPotion(SpringWater.class, Color.SKY.cpy() ,Color.BLUE.cpy() , Color.TEAL, SpringWater.POTION_ID, TheGremory.Enums.THE_GREMORY);
-        BaseMod.addPotion(ShadowofZahras.class, Color.BLACK.cpy() ,Color.DARK_GRAY.cpy() , null, ShadowofZahras.POTION_ID, TheGremory.Enums.THE_GREMORY);
+       // BaseMod.addPotion(MagicHerbTea.class, Color.CHARTREUSE.cpy() , Color.GREEN.cpy(), null,MagicHerbTea.POTION_ID, TheGremory.Enums.THE_GREMORY);
+       // BaseMod.addPotion(SpringWater.class, Color.SKY.cpy() ,Color.BLUE.cpy() , Color.TEAL, SpringWater.POTION_ID, TheGremory.Enums.THE_GREMORY);
+       // BaseMod.addPotion(ShadowofZahras.class, Color.BLACK.cpy() ,Color.DARK_GRAY.cpy() , null, ShadowofZahras.POTION_ID, TheGremory.Enums.THE_GREMORY);
         logger.info("Done editing potions");
     }
     
@@ -580,9 +567,9 @@ public class DefaultMod implements
         BaseMod.addRelicToCustomPool(new TilerasShield(), Dragonkin_Red_COLOR);
         BaseMod.addRelicToCustomPool(new UthersMaul(), Dragonkin_Red_COLOR);
 
-        BaseMod.addRelicToCustomPool(new HeartofFlames(), Gremory_Purple_Color);
+        //BaseMod.addRelicToCustomPool(new HeartofFlames(), Gremory_Purple_Color);
 
-        BaseMod.addRelicToCustomPool(new GrovekeeperStarting(), GroveKeeper_Forest_Color);
+        //BaseMod.addRelicToCustomPool(new GrovekeeperStarting(), GroveKeeper_Forest_Color);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         
@@ -609,10 +596,10 @@ public class DefaultMod implements
         //Ignore this
         pathCheck();
         // Add the Custom Dynamic Variables
-        BaseMod.addDynamicVariable(new HealDynVar());
-        BaseMod.addDynamicVariable(new GrovekeeperSecondDamage());
-        BaseMod.addDynamicVariable(new MagicDamageDynVar());
-        BaseMod.addDynamicVariable(new SpellUses());
+       // BaseMod.addDynamicVariable(new HealDynVar());
+        //BaseMod.addDynamicVariable(new GrovekeeperSecondDamage());
+       // BaseMod.addDynamicVariable(new MagicDamageDynVar());
+        //BaseMod.addDynamicVariable(new SpellUses());
         logger.info("Add variables");
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
@@ -620,8 +607,8 @@ public class DefaultMod implements
         
         logger.info("Adding cards");
         new AutoAdd("DragonkinMod").packageFilter(AbstractDragonkinCard.class).setDefaultSeen(true).cards();
-        new AutoAdd("DragonkinMod").packageFilter(AbstractGremoryCard.class).setDefaultSeen(true).cards();
-        new AutoAdd("DragonkinMod").packageFilter(AbstractGroveKeeperCard.class).setDefaultSeen(true).cards();
+       // new AutoAdd("DragonkinMod").packageFilter(AbstractGremoryCard.class).setDefaultSeen(true).cards();
+       // new AutoAdd("DragonkinMod").packageFilter(AbstractGroveKeeperCard.class).setDefaultSeen(true).cards();
 
         logger.info("Done adding cards!");
         logger.info("Added: " + BaseMod.getCardCount(Dragonkin_Red_COLOR) + " Cards");
@@ -642,7 +629,7 @@ public class DefaultMod implements
         logger.info("Beginning to edit strings for mod with ID: " + getModID());
         
         // CardStrings
-        BaseMod.loadCustomStringsFile(CardStrings.class,
+        BaseMod.        loadCustomStringsFile(CardStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Card-Strings.json");
         
         // PowerStrings

@@ -2,23 +2,26 @@ package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.SubduedPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class Subdue extends AbstractHolyBonusCard {
+public class Subdue extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(Subdue.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("Skill.png");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
@@ -28,7 +31,7 @@ public class Subdue extends AbstractHolyBonusCard {
 
     private static final int POTENCY = 0;
     private static final int UPGRADE_PLUS_DMG = 0;
-    private static final int MAGIC = 0;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 0;
 
     public Subdue() {
@@ -41,24 +44,17 @@ public class Subdue extends AbstractHolyBonusCard {
         this.exhaust = true;
 
     }
-
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int enemyStrength = 0;
-        if (m.hasPower(StrengthPower.POWER_ID)){
-            enemyStrength = m.getPower(StrengthPower.POWER_ID).amount;
-        }
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new StrengthPower(m, -((m.getIntentBaseDmg() + enemyStrength)-1))));
-        if (!m.hasPower("Artifact")) {
-            this.addToBot(new ApplyPowerAction(m, p, new GainStrengthPower(m, (m.getIntentBaseDmg() + + enemyStrength)-1)));
-        }
+        addToBot(new ApplyPowerAction(m,p,new SubduedPower(m,p,magicNumber)));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            this.retain = true;
+            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             updateCost(UPGRADED_COST);
             initializeDescription();
         }

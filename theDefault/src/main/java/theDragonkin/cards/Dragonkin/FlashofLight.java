@@ -11,7 +11,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class FlashofLight extends AbstractHolyBonusCard {
+public class FlashofLight extends AbstractHolyCard {
 
 
     public static final String ID = DefaultMod.makeID(FlashofLight.class.getSimpleName());

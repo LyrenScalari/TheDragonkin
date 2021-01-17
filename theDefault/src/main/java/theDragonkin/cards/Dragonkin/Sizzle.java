@@ -12,7 +12,7 @@ import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class Sizzle extends AbstractDragonkinCard {
+public class Sizzle extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(Sizzle.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

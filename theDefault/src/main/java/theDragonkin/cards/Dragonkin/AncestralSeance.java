@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import static theDragonkin.DefaultMod.makeCardPath;
 import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
 
-public class AncestralSeance extends AbstractDragonkinCard {
+public class AncestralSeance extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(AncestralSeance.class.getSimpleName());
     public static final String IMG = makeCardPath("AncestralSeance.png");
@@ -28,23 +28,12 @@ public class AncestralSeance extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Dragonkin_Red_COLOR;
     public CardGroup NonHoly = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-    private static ArrayList<TooltipInfo> TrapTooltip;
-    @Override
-    public List<TooltipInfo> getCustomTooltipsTop() {
-        if (TrapTooltip == null)
-        {
-            TrapTooltip = new ArrayList<>();
-            TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Holy"), BaseMod.getKeywordDescription("thedragonkin:Holy")));
-            TrapTooltip.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Zeal"), BaseMod.getKeywordDescription("thedragonkin:Zeal")));
-        }
-        return TrapTooltip;
-    }
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
 
     private static final int POTENCY = 0;
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 0;
+    private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 0;
 
     public AncestralSeance() {
@@ -58,7 +47,7 @@ public class AncestralSeance extends AbstractDragonkinCard {
         NonHoly.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
                 .stream()
                 .filter(c -> c.color == Dragonkin_Red_COLOR)
-                .filter(c -> !c.hasTag(CustomTags.HOLY_CARD))
+                .filter(c -> c instanceof AbstractPrimalCard)
                 .filter(c -> !c.hasTag(CardTags.HEALING))
                 .filter(c -> !c.rarity.equals(CardRarity.BASIC))
                 .collect(Collectors.toList());
@@ -66,7 +55,7 @@ public class AncestralSeance extends AbstractDragonkinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new CustomDiscoveryAction(NonHoly,3,false, card -> card.freeToPlayOnce = true));
+        AbstractDungeon.actionManager.addToBottom(new CustomDiscoveryAction(NonHoly,magicNumber,false, card -> card.freeToPlayOnce = true));
     }
 
     @Override

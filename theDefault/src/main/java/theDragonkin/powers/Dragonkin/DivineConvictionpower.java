@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
+import theDragonkin.cards.Dragonkin.AbstractHolyCard;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
@@ -50,7 +51,7 @@ public class DivineConvictionpower extends AbstractPower implements CloneablePow
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
-        if (card.hasTag(CustomTags.HOLY_CARD)){
+        if (card instanceof AbstractHolyCard){
             damage = damage + this.amount;
         }
         return super.atDamageGive(damage, type, card);
@@ -58,7 +59,7 @@ public class DivineConvictionpower extends AbstractPower implements CloneablePow
 
     @Override
     public float modifyBlock(float block, AbstractCard card) {
-        if (card.hasTag(CustomTags.HOLY_CARD)){
+        if (card instanceof AbstractHolyCard){
             block = block + this.amount;
         }
         return super.modifyBlock(block, card);
@@ -75,7 +76,11 @@ public class DivineConvictionpower extends AbstractPower implements CloneablePow
     // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount;
+        if (amount < 5){
+            description = powerStrings.DESCRIPTIONS[0] + amount;
+        } else {
+            description = powerStrings.DESCRIPTIONS[0] + amount + powerStrings.DESCRIPTIONS[1] + amount/5;
+        }
     }
 
     @Override

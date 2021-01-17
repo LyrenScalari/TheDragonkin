@@ -17,7 +17,7 @@ import static theDragonkin.DefaultMod.makeCardPath;
 
 
 // public class HolyShock extends AbstractDragonkinCard
-public class HolyShock extends AbstractHolyBonusCard {
+public class HolyShock extends AbstractHolyCard {
 
 
     // TEXT DECLARATION

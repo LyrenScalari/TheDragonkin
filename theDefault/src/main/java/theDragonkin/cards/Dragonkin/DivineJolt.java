@@ -14,7 +14,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class DivineJolt extends AbstractHolyBonusCard {
+public class DivineJolt extends AbstractHolyCard {
 
     /*
      * "Hey, I wanna make a bunch of cards now." - You, probably.

@@ -52,19 +52,17 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType dt) {
-        return damage;
+        return damage + this.amount;
     }
 
     @Override
-
     public int onAttacked(DamageInfo di, int d){
-        if (di.type == DamageInfo.DamageType.NORMAL) {
+        if (di.type != DamageInfo.DamageType.HP_LOSS) {
             this.flash();
             AbstractDungeon.actionManager.addToBottom(
                     new ReducePowerAction(this.owner, this.owner, this, 1));
-            return d + this.amount;
         }
-        return d;
+            return d;
     }
 
     // Note: If you want to apply an effect when a power is being applied you have 3 options:

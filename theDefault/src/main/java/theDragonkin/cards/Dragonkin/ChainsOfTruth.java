@@ -14,7 +14,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class ChainsOfTruth extends AbstractHolyBonusCard {
+public class ChainsOfTruth extends AbstractHolyCard {
 
 
     public static final String ID = DefaultMod.makeID(ChainsOfTruth.class.getSimpleName());

@@ -15,7 +15,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class HolySmite extends AbstractHolyBonusCard {
+public class HolySmite extends AbstractHolyCard {
 
     /*
      * "Hey, I wanna make a bunch of cards now." - You, probably.

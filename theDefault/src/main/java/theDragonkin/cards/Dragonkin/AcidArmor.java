@@ -10,7 +10,7 @@ import theDragonkin.powers.Dragonkin.AcidArmorpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class AcidArmor extends AbstractDragonkinCard {
+public class AcidArmor extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(AcidArmor.class.getSimpleName());
     public static final String IMG = makeCardPath("AcidArmor.png");

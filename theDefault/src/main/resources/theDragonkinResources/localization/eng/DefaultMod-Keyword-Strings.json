@@ -11,18 +11,43 @@
       "zeal",
       "Zeal"
     ],
-    "DESCRIPTION": "Increases the Potency of all [#94bdff]Holy[] Attacks and Skills."
+    "DESCRIPTION": "#yZeal modifies [#94bdff]Holy[] cards."
   },
   {
     "NAMES": [
       "holy",
       "Holy"
     ],
-    "DESCRIPTION": "[#94bdff]Holy[] Attacks and Skills have all numeric values in their effect increased by #yZeal.",
+    "DESCRIPTION": "[#94bdff]Holy[] Cards deal more damage and have increased #yBlock gain equal to your #yZeal. NL [#94bdff]Holy[] Cards also have their other values increased by #b1 for every #b5 points of Zeal.",
     "COLOR": "[#94bdff]"
   },
-
   {
+    "NAMES": [
+      "primal",
+      "Primal"
+    ],
+    "DESCRIPTION": "[#fe513a]Primal[] Attacks consume #yFury to increase damage by half the #yFury amount. NL [#fe513a]Primal[] card #yBlock Gain is reduced by #b1 but their extra effects are increased by #b1 per #b10 stacks of #yFury."
+  },
+  {
+    "NAMES": [
+      "fury",
+      "Fury"
+    ],
+    "DESCRIPTION": "#yFury modifies [#fe513a]Primal[] cards and is increased by unblocked attack damage."
+  },
+  {
+    "PROPER_NAME": "Dragon Breath",
+    "NAMES": [
+      "Dragon Breath",
+      "Dragon Breaths",
+      "Dragon_Breath",
+      "Dragon_Breaths",
+      "dragon_breath",
+      "dragon_breaths"
+    ],
+    "DESCRIPTION": "At the end of turn, Split all Effects listed after this equally between ALL enemies. NL Each #yDragon #yBreath increases Future Breaths damage by #b2 and other values by #b1 this turn."
+  },
+ {
     "NAMES": [
       "antiquity"
     ],
@@ -353,82 +378,5 @@
       "crossroads"
     ],
     "DESCRIPTION": "Choose one of the listed effects to use."
-  },
-  {
-    "PROPER_NAME": "Nature Power",
-    "NAMES": [
-      "Nature Power",
-      "nature_power"
-    ],
-    "DESCRIPTION": "Increases the Potency of #yMystic #yFlower #yHarvest Effects."
-  },
-  {
-    "NAMES": [
-      "Harvest",
-      "harvest",
-      "harvested",
-      "Harvested"
-    ],
-    "DESCRIPTION": "Reduce the passive power of the specified #yMystic #yFlower the specified amount if you have one Channeled and activate the listed effect."
-  },
-  {
-    "PROPER_NAME": "Invigorating Bloom",
-    "NAMES": [
-      "Invigorating Bloom",
-      "invigorating_bloom",
-      "Invigorating Blooms",
-      "invigorating_blooms",
-      "Invigorating",
-      "invigorating"
-    ],
-    "DESCRIPTION": "Mystic Flower: When #yHarvested Draw a card. When Evoked Gain [E] equal to the number of times this was #yHarvested."
-  },
-  {
-    "PROPER_NAME": "Hungry Bloom",
-    "NAMES": [
-      "Hungry Bloom",
-      "hungry_bloom",
-      "Hungry Blooms",
-      "hungry_blooms",
-      "Hungry",
-      "hungry"
-    ],
-    "DESCRIPTION": "Mystic Flower: When #yHarvested damage a random enemy. When Evoked Gain #yVigor."
-  },
-  {
-    "PROPER_NAME": "Toxic Bloom",
-    "NAMES": [
-        "Toxic Bloom",
-        "toxic_bloom",
-        "Toxic Blooms",
-        "toxic_blooms",
-        "Toxic",
-        "toxic"
-    ],
-    "DESCRIPTION": "Mystic Flower: When #yHarvested Apply #yPoison to a random enemy. When #yEvoked Gain #yBlock."
-  },
-  {
-    "PROPER_NAME": "Primal Bloom",
-    "NAMES": [
-      "Primal Bloom",
-      "primal_bloom",
-      "Primal Blooms",
-      "primal_blooms",
-      "Primal",
-      "primal"
-    ],
-    "DESCRIPTION": "Mystic Flower: When #yHarvested Gain #yNatural #ySpikes. When #yEvoked Lose #yNatural #ySpikes."
-  },
-  {
-    "PROPER_NAME": "Life Bloom",
-    "NAMES": [
-      "Life Bloom",
-      "Life Blooms",
-      "life_bloom",
-      "life_blooms",
-      "Life",
-      "life"
-    ],
-    "DESCRIPTION": "Mystic Flower: When #yHarvested Gain #yTemporary #yHP. When #yEvoked Heal."
   }
 ]

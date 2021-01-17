@@ -13,7 +13,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class CinderStorm extends AbstractDragonkinCard {
+public class CinderStorm extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(CinderStorm.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

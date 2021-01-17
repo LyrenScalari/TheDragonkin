@@ -10,7 +10,7 @@ import theDragonkin.powers.Dragonkin.HolyBombPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class Condemnation extends AbstractHolyBonusCard {
+public class Condemnation extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(Condemnation.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -36,7 +36,6 @@ public class Condemnation extends AbstractHolyBonusCard {
         heal = baseHeal = POTENCY;
         tags.add(CustomTags.HOLY_CARD);
         baseMagicNumber = magicNumber = MAGIC;
-        purgeOnUse = true;
 
     }
 

@@ -12,7 +12,7 @@ import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
-public class Cauterize extends AbstractDragonkinCard {
+public class Cauterize extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(Cauterize.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
