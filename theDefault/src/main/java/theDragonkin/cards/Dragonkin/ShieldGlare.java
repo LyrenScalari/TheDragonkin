@@ -36,7 +36,6 @@ public class ShieldGlare extends AbstractHolyCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        tags.add(CustomTags.HOLY_CARD);
         this.exhaust = true;
 
     }

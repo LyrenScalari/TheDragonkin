@@ -17,5 +17,26 @@
       "[Leave]",
       "Select card to remove."
     ]
+  },
+  "theDragonkin:AncientAltar": {
+    "NAME": "Ancient Altar",
+    "DESCRIPTIONS": [
+      "You duck off the main path and stumble upon what seems to be an Abandoned Altar. Garnet and Obsidian trappings, and at it's center a great obsidian visage of what can only be #p~The~ #p~World~ #p~Eater~ not far from the Statue lies an old lectern with what could only be a scripture dedicated to The World Eater.",
+      " While no Holy place as it looks at first glance. The Mad Aspect was nothing if not #r~powerful~.",
+      "You Meditate in this Altar of dark power, a Vision comes to you. of Fire a Brimstone the Obsidian Visage of the World Eater rising from the Darkness, and the spirits claimed by his rage form an inky black pool a Font of Madness. one that whispers a powerful technique that comes with a #rPrice.",
+      "you regain focus with newfound power... the whispers will probably haunt you #rForever.",
+      "You cannot accept this power, your mind fades from the vision and back to the altar and are left wondering what might have been.",
+      "The World Eaters Power has no place in your repertoire, and nobody should worship the bringer of worlds end. You Strike the Obsidian Statue with all your might, it falls to pieces. leaving only a Sunblessed Charm within, you can't help but wonder if your choice was correct.",
+      "The Tome was just as Expected full of various ~#pBlasphemies~ one notable passage included a simple cleansing ritual, one not based in madness oddly. not far from a ritual you know well, with all the materials available you perform the ritual and feel your mind clear."
+      ],
+    "OPTIONS": [
+      "[Meditate] #gReceive Meteor Storm. #rBecome #rCursed - #rInsanity",
+      "[Destroy] #gObtain #ga #gspecial #gRelic. #rBecome #rCursed - #rDoubt",
+      "[Read] #gRemove #ga #gcard #gfrom #gyour #gdeck.",
+      "[Leave]",
+      "[Accept] #gReceive Meteor Storm. #rBecome #rCursed - #rInsanity",
+      "[Refuse]",
+      "Select card to remove."
+    ]
   }
 }

@@ -48,8 +48,7 @@ public class HolyWordBarrier extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
-        this.tags.add(CustomTags.HOLY_CARD);
-        ExhaustiveVariable.setBaseValue(this, 3);
+        ExhaustiveVariable.setBaseValue(this, 2);
     }
 
     // Actions the card should do.

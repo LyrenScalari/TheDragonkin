@@ -41,7 +41,7 @@ public class HolyShock extends AbstractHolyCard {
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
 
-    private static final int DAMAGE = 8;
+    private static final int DAMAGE = 12;
     private static final int UPGRADE_PLUS_DMG = 2;
 
     // /STAT DECLARATION/
@@ -52,7 +52,6 @@ public class HolyShock extends AbstractHolyCard {
         baseDamage = DAMAGE;
         this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
-        this.tags.add(CustomTags.HOLY_CARD);
     }
 
 

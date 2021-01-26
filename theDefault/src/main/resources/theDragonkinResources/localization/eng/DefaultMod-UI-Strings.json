@@ -1,10 +1,16 @@
 {
   "theDragonkin:UIText": {
     "TEXT": [
-      " NL Exhaust"
+      " NL Exhaust",
+      "Ethereal NL ",
+      "Exhaust"
     ]
   },
-
+  "dragonkin:DragonbreathDisplay\"": {
+    "TEXT": [
+      "Stored Dragonbreaths - "
+    ]
+  },
   "TransmutationAction": {
     "TEXT": [
       "Choose cards to change the Element of"

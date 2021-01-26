@@ -27,7 +27,7 @@ public class ShieldBash extends AbstractDragonkinCard {
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 12;
+    private static final int POTENCY = 14;
     private static final int UPGRADE_PLUS_POTENCY = 2;
     private static final int MAGIC = 0;
     private static final int UPGRADE_MAGIC = 0;

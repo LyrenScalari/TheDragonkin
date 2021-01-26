@@ -1,13 +1,17 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.DragonBreaths.AcidBreathEffect;
@@ -24,29 +28,84 @@ public class AcidBreath extends AbstractPrimalCard {
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
 
     private static final int POTENCY = 8;
-    private static final int UPGRADE_PLUS_POTENCY = 4;
-    private static final int MAGIC = 2;
-    private static final int UPGRADE_MAGIC = 2;
+    private static final int UPGRADE_PLUS_POTENCY = 2;
+    private static final int MAGIC = 1;
+    private static final int UPGRADE_MAGIC = 1;
 
     public AcidBreath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;
-        block = baseBlock = POTENCY;
-        heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
+        realBaseDamage = POTENCY;
+        realBaseMagic = POTENCY;
+        tags.add(CustomTags.Dragon_Breath);
 
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new AcidBreathEffect(damage,magicNumber)));
+        addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[1],(float) 0.5,(float) 2.0));
+        addToBot(new ApplyPowerAction(p,p,new AcidBreathEffect(baseDamage,baseMagicNumber,this)));
     }
-
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int realBaseDamage = this.baseDamage;
+        int realBaseMagic = this.baseMagicNumber;
+        int diviser = (int)AbstractDungeon.getCurrRoom().monsters.monsters.stream().filter(it -> !it.isDeadOrEscaped()).count();
+        if (AbstractDungeon.getCurrRoom().monsters.monsters.stream().filter(it -> !it.isDeadOrEscaped()).count() > 1){
+            isMultiDamage = true;
+            this.baseDamage =  (int)Math.ceil(((float)realBaseDamage / diviser));
+            this.baseMagicNumber = (int) Math.ceil(((float)realBaseMagic / diviser));
+            super.calculateCardDamage(mo);
+            this.baseDamage = realBaseDamage;
+            this.isDamageModified = this.damage != this.baseDamage;
+            this.baseMagicNumber = realBaseMagic;
+            this.isMagicNumberModified = this.magicNumber != this.baseMagicNumber;
+            rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
+            initializeDescription();
+        } else {
+            isMultiDamage = false;
+            super.calculateCardDamage(mo);
+            this.baseDamage = realBaseDamage;
+            this.isDamageModified = this.damage != this.baseDamage;
+            this.baseMagicNumber = realBaseMagic;
+            this.isMagicNumberModified = this.magicNumber != this.baseMagicNumber;
+            rawDescription = cardStrings.DESCRIPTION;
+            initializeDescription();
+        }
+    }
+    @Override
+    public void applyPowers() {
+        int realBaseDamage = this.baseDamage;
+        int realBaseMagic = this.baseMagicNumber;
+        int diviser = (int)AbstractDungeon.getCurrRoom().monsters.monsters.stream().filter(it -> !it.isDeadOrEscaped()).count();
+        if (AbstractDungeon.getCurrRoom().monsters.monsters.stream().filter(it -> !it.isDeadOrEscaped()).count() > 1){
+            isMultiDamage = true;
+            this.baseDamage =  (int)Math.ceil(((float)realBaseDamage / diviser));
+            this.baseMagicNumber = (int) Math.ceil(((float)realBaseMagic / diviser));
+            super.applyPowers();
+            this.baseDamage = realBaseDamage;
+            this.isDamageModified = this.damage != this.baseDamage;
+            this.baseMagicNumber = realBaseMagic;
+            this.isMagicNumberModified = this.magicNumber != this.baseMagicNumber;
+            rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
+            initializeDescription();
+        } else {
+            isMultiDamage = false;
+            super.applyPowers();
+            this.baseDamage = realBaseDamage;
+            this.isDamageModified = this.damage != this.baseDamage;
+            this.baseMagicNumber = realBaseMagic;
+            this.isMagicNumberModified = this.magicNumber != this.baseMagicNumber;
+            rawDescription = cardStrings.DESCRIPTION;
+            initializeDescription();
+        }
+    }
     @Override
     public void upgrade() {
         if (!upgraded) {

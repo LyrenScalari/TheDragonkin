@@ -1,7 +1,11 @@
 package theDragonkin.cards.Dragonkin;
 
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.AbstractDefaultCard;
+import theDragonkin.powers.CustomBoss.CurseofTonges;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
@@ -27,9 +31,20 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
         super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
 
     }
+    public int realBaseDamage;
+    public int realBaseMagic;
     @Override
     public void atTurnStart() {
         super.atTurnStart();
         DefaultMod.WasDrained = false;
+    }
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m){
+        if (this.hasTag(CustomTags.Dragon_Breath)){
+            if (p.hasPower(CurseofTonges.POWER_ID)){
+                return false;
+            }
+        } else super.canUse(p,m);
+        return true;
     }
 }

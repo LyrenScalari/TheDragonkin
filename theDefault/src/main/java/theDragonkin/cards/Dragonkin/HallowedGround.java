@@ -38,7 +38,6 @@ public class HallowedGround extends AbstractHolyCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-        tags.add(CustomTags.HOLY_CARD);
         baseMagicNumber = magicNumber = MAGIC;
         ExhaustiveVariable.setBaseValue(this, 2);
     }

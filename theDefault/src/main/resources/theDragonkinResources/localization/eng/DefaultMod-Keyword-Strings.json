@@ -4,7 +4,21 @@
       "scorch",
       "scorched"
     ],
-    "DESCRIPTION": "Scorched creatures take additional damage from #yAttacks, when attacked reduce this by #b1"
+    "DESCRIPTION": "Scorched creatures take additional damage from #yAttacks, when attacked reduce this by half"
+  },
+  {
+    "NAMES": [
+      "fading",
+      "Fading"
+    ],
+    "DESCRIPTION": "Becomes unplayable after being played the listed number of times."
+  },
+  {
+    "NAMES": [
+      "faded",
+      "Faded"
+    ],
+    "DESCRIPTION": "Cannot be Played or Upgraded."
   },
   {
     "NAMES": [

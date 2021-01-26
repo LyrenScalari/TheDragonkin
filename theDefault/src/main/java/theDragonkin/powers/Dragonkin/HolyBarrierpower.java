@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
+import theDragonkin.cards.Dragonkin.AbstractHolyCard;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
@@ -51,7 +52,7 @@ public class HolyBarrierpower extends AbstractPower  implements CloneablePowerIn
 
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
-        if (card.hasTag(CustomTags.HOLY_CARD)){
+        if (card instanceof AbstractHolyCard){
             AbstractDungeon.actionManager.addToBottom(new AddTemporaryHPAction(AbstractDungeon.player,AbstractDungeon.player,amount));
         }
     }

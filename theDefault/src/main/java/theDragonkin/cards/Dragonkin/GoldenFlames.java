@@ -27,7 +27,7 @@ public class GoldenFlames extends AbstractHolyCard {
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 8;
+    private static final int POTENCY = 10;
     private static final int UPGRADE_PLUS_POTENCY = 3;
     private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 2;
@@ -37,7 +37,6 @@ public class GoldenFlames extends AbstractHolyCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-        tags.add(CustomTags.HOLY_CARD);
         baseMagicNumber = magicNumber = MAGIC;
         this.exhaust = true;
 

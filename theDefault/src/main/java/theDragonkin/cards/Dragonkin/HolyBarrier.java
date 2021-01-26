@@ -36,8 +36,7 @@ public class HolyBarrier extends AbstractHolyCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = POTENCY;
-        tags.add(CustomTags.HOLY_CARD);
-        ExhaustiveVariable.setBaseValue(this, 3);
+        exhaust = true;
         baseMagicNumber = magicNumber = MAGIC;
 
     }

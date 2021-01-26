@@ -59,8 +59,8 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
     public int onAttacked(DamageInfo di, int d){
         if (di.type != DamageInfo.DamageType.HP_LOSS) {
             this.flash();
-            AbstractDungeon.actionManager.addToBottom(
-                    new ReducePowerAction(this.owner, this.owner, this, 1));
+            AbstractDungeon.actionManager.addToTop(
+                    new ReducePowerAction(this.owner, this.owner, this, (int)Math.ceil((float)amount/2)));
         }
             return d;
     }

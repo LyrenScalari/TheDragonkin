@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.cards.Dragonkin.AbstractPrimalCard;
@@ -73,6 +75,13 @@ public class FuryPower extends AbstractPower implements CloneablePowerInterface 
             this.flash();
             AbstractDungeon.actionManager.addToBottom(
                     new ReducePowerAction(this.owner, this.owner, this, 1));
+        }
+    }
+    @Override
+    public void wasHPLost(DamageInfo info, int damageAmount) {
+        if (damageAmount > 0 && info.owner == this.owner && info.type != DamageInfo.DamageType.HP_LOSS) {
+            this.flash();
+            this.addToTop(new ApplyPowerAction(this.owner, this.owner, new FuryPower(owner,owner,damageAmount), this.amount));
         }
     }
     // note: If you want to apply an effect when a power is being applied you have 3 options:

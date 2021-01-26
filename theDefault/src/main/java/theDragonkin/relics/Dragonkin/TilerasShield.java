@@ -1,14 +1,17 @@
 package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
+import basemod.interfaces.RelicGetSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theDragonkin.DefaultMod;
 import theDragonkin.util.TextureLoader;
 
@@ -40,37 +43,9 @@ public class TilerasShield extends CustomRelic { // You must implement things yo
     }
 
     @Override
-    public void atPreBattle() {
+    public void onEquip() {
+        AbstractDungeon.actionManager.addToBottom(new HealAction(AbstractDungeon.player,AbstractDungeon.player,AbstractDungeon.player.relics.size()));
     }
-
-    @Override
-    public void onCardDraw(AbstractCard card){
-    }
-
-    @Override
-    public void onUseCard(final AbstractCard c , final UseCardAction ca){
-        if (AbstractDungeon.player.currentHealth < AbstractDungeon.player.maxHealth / 2){
-            this.flash();
-            if (!used){
-                addToBot(new HealAction(AbstractDungeon.player,AbstractDungeon.player,4));
-                used = true;
-            }
-            else{
-                addToBot(new AddTemporaryHPAction(AbstractDungeon.player,AbstractDungeon.player,6));
-            }
-        }
-    }
-
-    @Override
-    public void atTurnStart(){
-        used = false;
-    }
-
-    @Override
-    public void onPlayerEndTurn() {
-        used = false;
-    }
-
     // Description
     @Override
     public String getUpdatedDescription() {

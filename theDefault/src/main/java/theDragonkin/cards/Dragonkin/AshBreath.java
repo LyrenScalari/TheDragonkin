@@ -1,6 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -9,7 +10,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
@@ -23,7 +26,7 @@ public class AshBreath extends AbstractPrimalCard {
 
     public static final String ID = DefaultMod.makeID(AshBreath.class.getSimpleName());
     public static final String IMG = makeCardPath("AshBreath.png");
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -47,7 +50,8 @@ public class AshBreath extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
-        addToBot(new ApplyPowerAction(p,p,new AshBreathEffect(block,damage)));
+        addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[1],(float) 0.5,(float) 2.0));
+        addToBot(new ApplyPowerAction(p,p,new AshBreathEffect(block,baseDamage,this)));
         for (AbstractCard c : AbstractDungeon.player.hand.group){
             if (c.type == CardType.STATUS){
                 addToBot(new ExhaustSpecificCardAction(c,AbstractDungeon.player.hand));
@@ -64,7 +68,7 @@ public class AshBreath extends AbstractPrimalCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_MAGIC);
+            upgradeBlock(2);
             initializeDescription();
         }
     }

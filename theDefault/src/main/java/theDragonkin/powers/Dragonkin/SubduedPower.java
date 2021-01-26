@@ -1,6 +1,7 @@
 package theDragonkin.powers.Dragonkin;
 
 import basemod.interfaces.CloneablePowerInterface;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -43,7 +44,7 @@ public class SubduedPower extends AbstractPower implements CloneablePowerInterfa
     }
     @Override
     public void atEndOfTurn(final boolean isplayer) {
-        reducePower(1);
+        addToBot(new ReducePowerAction(owner,owner,this,1));
     }
     @Override
     public void updateDescription() {

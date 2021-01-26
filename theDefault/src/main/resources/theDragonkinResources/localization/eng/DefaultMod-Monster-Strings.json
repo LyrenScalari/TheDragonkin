@@ -1,0 +1,23 @@
+{
+  "TheDragonkin:TheAcolyte": {
+    "MOVES": [
+      "Cursed Blade",
+      "Corruption",
+      "Shadowburn",
+      "CurseofMisfortune",
+      "Mind Maze",
+      "Rain of Fire",
+      "Curse of Exhaustion",
+      "Drain Life",
+      "Chaos Bolt"
+    ],
+    "NAME": "The Acolyte",
+    "DIALOG": [
+      "~Hi,~ ~Zu'ufen~ ~Qahnaarhi.~",
+      "~Care~ ~to~ ~dance~ ~with #r~death?~",
+      "~Zoroxhiil~ ~drem.~ ~Aal~ ~faal~ ~Rahofanhiaaz.~ ~Zu'unis.~",
+      "~You,~ ~i~ ~will~ ~enjoy~ ~killing~ ~you~.",
+      "~Make~ ~your~ ~peace.~ ~May~ ~the~ ~gods~ ~have~ ~mercy,~ ~i~ ~cannot~"
+    ]
+  }
+}

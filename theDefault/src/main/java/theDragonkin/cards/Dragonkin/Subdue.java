@@ -21,7 +21,7 @@ public class Subdue extends AbstractHolyCard {
     public static final String IMG = makeCardPath("Skill.png");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
@@ -39,7 +39,6 @@ public class Subdue extends AbstractHolyCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-        tags.add(CustomTags.HOLY_CARD);
         baseMagicNumber = magicNumber = MAGIC;
         this.exhaust = true;
 

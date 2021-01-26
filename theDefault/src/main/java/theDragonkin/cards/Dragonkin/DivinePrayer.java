@@ -41,7 +41,6 @@ public class DivinePrayer extends AbstractHolyCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-        tags.add(CustomTags.HOLY_CARD);
         tags.add(CardTags.HEALING);
         baseMagicNumber = magicNumber = MAGIC;
         this.exhaust = true;

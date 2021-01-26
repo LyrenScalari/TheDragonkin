@@ -34,7 +34,6 @@ public class Condemnation extends AbstractHolyCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-        tags.add(CustomTags.HOLY_CARD);
         baseMagicNumber = magicNumber = MAGIC;
 
     }

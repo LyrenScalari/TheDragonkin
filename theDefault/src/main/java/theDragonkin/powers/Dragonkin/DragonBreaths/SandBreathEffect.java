@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -20,10 +21,11 @@ public class SandBreathEffect extends AbstractDragonBreathPower{
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public SandBreathEffect (int Weak , int Bonus){
+    public SandBreathEffect (int Weak , int Bonus, AbstractCard source){
+        sourcecard = source;
         name = NAME;
         ID = POWER_ID;
-        amount = (int) Math.ceil((float)Weak / AbstractDungeon.getCurrRoom().monsters.monsters.stream().filter(it -> !it.isDeadOrEscaped()).count());
+        amount = Weak;
         Zealamt = Bonus;
     }
 
@@ -31,7 +33,7 @@ public class SandBreathEffect extends AbstractDragonBreathPower{
     public void onBreath() {
         addToBot(new AddTemporaryHPAction(owner, owner, Zealamt+(BreathCount)));
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new ApplyPowerAction(m,owner,new WeakPower(m,Zealamt+(BreathCount),false)));
+            addToBot(new ApplyPowerAction(m,owner,new WeakPower(m,amount+(BreathCount),false)));
         }
     }
 }

@@ -132,8 +132,8 @@ public class TheDefault extends CustomPlayer {
 
         // =============== TEXT BUBBLE LOCATION =================
 
-        dialogX = (drawX + 0.0F * Settings.scale); // set location for text bubbles
-        dialogY = (drawY + 220.0F * Settings.scale); // you can just copy these values
+        dialogX = (drawX + 80.0F * Settings.scale); // set location for text bubbles
+        dialogY = (drawY + 300.0F * Settings.scale); // you can just copy these values
 
         // =============== /TEXT BUBBLE LOCATION/ =================
 
@@ -281,6 +281,10 @@ public class TheDefault extends CustomPlayer {
     @Override
     public String getVampireText() {
         return TEXT[2];
+    }
+    public String getSensoryStoneText()
+    {
+        return TEXT[3];
     }
 
 }

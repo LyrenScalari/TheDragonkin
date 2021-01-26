@@ -6,12 +6,16 @@ import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import theDragonkin.cards.Dragonkin.DivineWind;
+import theDragonkin.powers.CustomBoss.CurseofTonges;
 import theDragonkin.powers.Dragonkin.DeepBreathPower;
 import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.powers.Dragonkin.MagnussCoronaPower;
@@ -21,10 +25,11 @@ import theDragonkin.util.TextureLoader;
 import static theDragonkin.DefaultMod.makePowerPath;
 
 public abstract class AbstractDragonBreathPower extends TwoAmountPower implements InvisiblePower , NonStackablePower {
-    public int BreathDelay = 1;
+    public static int BreathDelay = 1;
     public int BreathCount = 0;
     public static boolean toExhale = false;
     public static boolean Exhaled = false;
+    public static AbstractCard sourcecard;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
@@ -49,8 +54,10 @@ public abstract class AbstractDragonBreathPower extends TwoAmountPower implement
         if (toExhale && !Exhaled){
             for (AbstractPower p : AbstractDungeon.player.powers){
                 if (p instanceof AbstractDragonBreathPower){
+                    addToBot(new VFXAction(new WhirlwindEffect()));
                     ((AbstractDragonBreathPower) p).onBreath();
                     BreathCount += 1;
+                    System.out.println(BreathCount);
                     if (AbstractDungeon.player.hasPower(MagnussCoronaPower.POWER_ID)){
                         addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new FuryPower(AbstractDungeon.player,AbstractDungeon.player,
                                 AbstractDungeon.player.getPower(MagnussCoronaPower.POWER_ID).amount), AbstractDungeon.player.getPower(MagnussCoronaPower.POWER_ID).amount));

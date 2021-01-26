@@ -5,12 +5,14 @@ import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.abstracts.AbstractCardModifier;
+import basemod.eventUtil.AddEventParams;
 import basemod.helpers.CardModifierManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.compression.lzma.Base;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -20,27 +22,31 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
+import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.beyond.AwakenedOne;
+import com.megacrit.cardcrawl.monsters.beyond.TimeEater;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.util.Strings;
+import theDragonkin.Monsters.TheAcolyte;
 import theDragonkin.cards.Dragonkin.AbstractDragonkinCard;
 import theDragonkin.cards.Gremory.AbstractGremoryCard;
 import theDragonkin.cards.Gremory.AbstractMagicGremoryCard;
-import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.characters.TheGremory;
-import theDragonkin.characters.TheGroveKeeper;
+import theDragonkin.events.AncientAltar;
 import theDragonkin.potions.Dragonkin.DragonkinCommonPotion;
 import theDragonkin.potions.Dragonkin.DragonkinRarePotion;
 import theDragonkin.potions.Dragonkin.DragonkinUncommonPotion;
-import theDragonkin.potions.Gremory.MagicHerbTea;
-import theDragonkin.potions.Gremory.ShadowofZahras;
-import theDragonkin.potions.Gremory.SpringWater;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 import theDragonkin.powers.Gremory.FlowersAmbition;
 import theDragonkin.powers.Gremory.ImmaculateSnow;
@@ -48,7 +54,8 @@ import theDragonkin.powers.Gremory.MoonsMarch;
 import theDragonkin.powers.Gremory.WindsSong;
 import theDragonkin.relics.Dragonkin.*;
 import theDragonkin.relics.Gremory.HeartofFlames;
-import theDragonkin.relics.Grovekeeper.GrovekeeperStarting;
+import theDragonkin.util.DragonbreathPanel;
+import theDragonkin.util.EasyInfoDisplayPanel;
 import theDragonkin.util.IDCheckDontTouchPls;
 import theDragonkin.util.TextureLoader;
 import theDragonkin.variables.*;
@@ -99,7 +106,9 @@ public class DefaultMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber ,
+        RelicGetSubscriber,
+        StartGameSubscriber{
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
@@ -510,7 +519,12 @@ public class DefaultMod implements
         });
         
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
-        
+        BaseMod.addMonster("TheAcolyte", () -> new MonsterGroup(new AbstractMonster[] {
+                new TheAcolyte(),
+        }));
+        BaseMod.addBoss(TheBeyond.ID, TheAcolyte.ID,
+                "theDragonkinResources/images/TheAcolyteMap.png",
+                "theDragonkinResources/images/bossOutlineTheAcolyte.png");
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
         
@@ -522,6 +536,16 @@ public class DefaultMod implements
         // Essentially, you need to patch the game and say "if a player is not playing my character class, remove the event from the pool"
         
         // =============== /EVENTS/ =================
+        AddEventParams eventParams = new AddEventParams.Builder(AncientAltar.ID, AncientAltar.class) // for this specific event
+                .dungeonID(Exordium.ID) // The dungeon (act) this event will appear in
+                .playerClass(TheDefault.Enums.THE_DRAGONKIN) // Character specific event
+                .create();
+        AddEventParams eventParams2 = new AddEventParams.Builder(AncientAltar.ID, AncientAltar.class) // for this specific event
+                .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
+                .playerClass(TheDefault.Enums.THE_DRAGONKIN) // Character specific event
+                .create();
+        // Add the event
+        BaseMod.addEvent(eventParams);
         logger.info("Done loading badge Image and mod options");
     }
     
@@ -565,7 +589,8 @@ public class DefaultMod implements
         BaseMod.addRelicToCustomPool(new RotnestWings(), Dragonkin_Red_COLOR);
         BaseMod.addRelicToCustomPool(new Sulfurian(), Dragonkin_Red_COLOR);
         BaseMod.addRelicToCustomPool(new TilerasShield(), Dragonkin_Red_COLOR);
-        BaseMod.addRelicToCustomPool(new UthersMaul(), Dragonkin_Red_COLOR);
+        BaseMod.addRelicToCustomPool(new BottledVoice(), Dragonkin_Red_COLOR);
+        BaseMod.addRelicToCustomPool(new SunblessedCharm(), Dragonkin_Red_COLOR);
 
         //BaseMod.addRelicToCustomPool(new HeartofFlames(), Gremory_Purple_Color);
 
@@ -581,7 +606,8 @@ public class DefaultMod implements
         UnlockTracker.markRelicAsSeen(BookOfHymns.ID);
         UnlockTracker.markRelicAsSeen(Sulfurian.ID);
         UnlockTracker.markRelicAsSeen(TilerasShield.ID);
-        UnlockTracker.markRelicAsSeen(UthersMaul.ID);
+        UnlockTracker.markRelicAsSeen(BottledVoice.ID);
+        UnlockTracker.markRelicAsSeen(SunblessedCharm.ID);
         logger.info("Done adding relics!");
     }
     
@@ -598,16 +624,17 @@ public class DefaultMod implements
         // Add the Custom Dynamic Variables
        // BaseMod.addDynamicVariable(new HealDynVar());
         //BaseMod.addDynamicVariable(new GrovekeeperSecondDamage());
-       // BaseMod.addDynamicVariable(new MagicDamageDynVar());
-        //BaseMod.addDynamicVariable(new SpellUses());
+        BaseMod.addDynamicVariable(new MagicDamageDynVar());
+        BaseMod.addDynamicVariable(new SpellUses());
         logger.info("Add variables");
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
+        BaseMod.addDynamicVariable(new FadingVar());
         
         logger.info("Adding cards");
         new AutoAdd("DragonkinMod").packageFilter(AbstractDragonkinCard.class).setDefaultSeen(true).cards();
-       // new AutoAdd("DragonkinMod").packageFilter(AbstractGremoryCard.class).setDefaultSeen(true).cards();
+        //new AutoAdd("DragonkinMod").packageFilter(AbstractGremoryCard.class).setDefaultSeen(true).cards();
        // new AutoAdd("DragonkinMod").packageFilter(AbstractGroveKeeperCard.class).setDefaultSeen(true).cards();
 
         logger.info("Done adding cards!");
@@ -657,6 +684,8 @@ public class DefaultMod implements
                 getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
 
         BaseMod.loadCustomStringsFile(UIStrings.class, getModID() + "Resources/localization/eng/DefaultMod-UI-Strings.json");
+
+        BaseMod.loadCustomStringsFile(MonsterStrings.class, getModID() + "Resources/localization/eng/DefaultMod-Monster-Strings.json");
         
         logger.info("Done edittting strings");
     }
@@ -693,5 +722,17 @@ public class DefaultMod implements
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
+    }
+
+    @Override
+    public void receiveRelicGet(AbstractRelic abstractRelic) {
+        if (AbstractDungeon.player.hasRelic(TilerasShield.ID)) {
+            AbstractDungeon.player.increaseMaxHp(3, true);
+        }
+    }
+
+    @Override
+    public void receiveStartGame() {
+        EasyInfoDisplayPanel.specialDisplays.add(new DragonbreathPanel());
     }
 }

@@ -51,7 +51,7 @@ public class DivineJolt extends AbstractHolyCard {
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     private static final int DAMAGE = 9;
     private static final int UPGRADE_PLUS_DMG = 2;  // UPGRADE_PLUS_DMG = 2
@@ -64,7 +64,6 @@ public class DivineJolt extends AbstractHolyCard {
     baseDamage =DAMAGE;
     this.baseMagicNumber = 1;
     this.magicNumber = baseMagicNumber;
-    this.tags.add(CustomTags.HOLY_CARD);
 }
 
 

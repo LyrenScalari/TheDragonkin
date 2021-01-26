@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 public class CustomTags {
     @SpireEnum
-    public static AbstractCard.CardTags HOLY_CARD;
+    public static AbstractCard.CardTags Dragon_Breath;
     @SpireEnum
     public static AbstractCard.CardTags Physical;
     @SpireEnum

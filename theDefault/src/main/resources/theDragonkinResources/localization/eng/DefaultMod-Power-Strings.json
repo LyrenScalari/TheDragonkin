@@ -16,9 +16,9 @@
                 " additional damage,", " and reduce this by #b1"
                 ]
         },
-        "theDragonkin:DarkConviction": {
-                "NAME": "Cruelty",
-                "DESCRIPTIONS": ["When you #yExhaust a card gain #b", " #yStrength. After you lose [E] Deal damage to all enemies equal to your #yStrength."
+        "theDragonkin:Madness": {
+                "NAME": "Madness",
+                "DESCRIPTIONS": ["At the start of your turn add #b", " #yHaunting #yVoice to your hand.", " #yHaunting #yVoices to your hand"
                 ]
         },
         "theDragonkin:TempEnergyDown": {
@@ -150,7 +150,36 @@
                 ]
         },
 
-
+        "theDragonkin:ShadowCurse": {
+                "NAME": "Pain",
+                "DESCRIPTIONS": ["For #b", " turns,"," turn"," At the start of your turn add #b", " a #ySuffering to your hand."
+                ]
+        },
+        "theDragonkin:CurseofTonges": {
+                "NAME": "Tongue Tied",
+                "DESCRIPTIONS": ["For #b", " turns,"," turn"," you may not play or release #yDragon #yBreaths"
+                ]
+        },
+        "theDragonkin:MindMaze": {
+                "NAME": "Mind Maze",
+                "DESCRIPTIONS": ["Your next #b"," draws"," draw"," is #yDiscarded and adds a random #yCurse to your hand"
+                ]
+        },
+        "theDragonkin:Exhaustion": {
+                "NAME": "Exhausted",
+                "DESCRIPTIONS": ["For #b", " turns,"," turn"," at the start of your turn #yExhaust a card in your hand, if it's a #yCurse Lose [E]."
+                ]
+        },
+        "theDragonkin:DarkRitual": {
+                "NAME": "Dark Ritual",
+                "DESCRIPTIONS": ["At the Start of The Acolyte's turn, increases by the number of #yCurses in your hand, discard and draw piles. NL The rituals power effects The Acolytes Available moves. NL after gaining #b"," Dark Ritual the Acolyte will use Chaos Bolt, and increase the Ritual required."
+                ]
+        },
+        "theDragonkin:CursedPower": {
+                "NAME": "Black Magic",
+                "DESCRIPTIONS": ["The Acolyte gains twice as much #yDark #yRitual."
+                ]
+        },
 
         "theDragonkin:Chill": {
                 "NAME": "Chill",

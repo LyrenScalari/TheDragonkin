@@ -38,6 +38,7 @@ public class DeepBreath extends AbstractPrimalCard {
 
     public DeepBreath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        retain = true;
         block = baseBlock = 0;
         baseMagicNumber = magicNumber = MAGIC;
         exhaust = true;

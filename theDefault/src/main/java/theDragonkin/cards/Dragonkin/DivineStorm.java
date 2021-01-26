@@ -1,9 +1,12 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theDragonkin.CustomTags;
@@ -24,7 +27,7 @@ public class DivineStorm extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(DivineStorm.class.getSimpleName());
     public static final String IMG = makeCardPath("DivineStorm.png");
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     // /TEXT DECLARATION/
 
 
@@ -36,7 +39,7 @@ public class DivineStorm extends AbstractHolyCard {
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
     private static final int COST = -1;
-    private static final int DAMAGE = 14;
+    private static final int DAMAGE = 15;
     private static final int UPGRADE_PLUS_DMG = 0;
     public static int repeats = 0;
     // /STAT DECLARATION/
@@ -45,10 +48,9 @@ public class DivineStorm extends AbstractHolyCard {
     public DivineStorm() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        this.baseMagicNumber = 2;
+        this.baseMagicNumber = 0;
         this.magicNumber = baseMagicNumber;
         this.exhaust = true;
-        this.tags.add(CustomTags.HOLY_CARD);
     }
 
     // Actions the card should do.
@@ -59,6 +61,7 @@ public class DivineStorm extends AbstractHolyCard {
             AbstractDungeon.player.getRelic("Chemical X").flash();
         }
         repeats += EnergyPanel.totalCount;
+        addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[0],1.25f,1.50f));
         for (int i = 0; i < this.magicNumber + repeats; ++i) {
             AbstractDungeon.actionManager.addToBottom(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.LIGHTNING));
             }
@@ -71,7 +74,8 @@ public class DivineStorm extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
+            retain = true;
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

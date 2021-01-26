@@ -44,17 +44,14 @@ public class DivineVision extends AbstractHolyCard {
     public DivineVision() {
 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = baseMagicNumber = 1;
-        this.tags.add(CustomTags.HOLY_CARD);
+        this.magicNumber = baseMagicNumber = 2;
 
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        if (this.upgraded){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m, new DivineConvictionpower(p,m,2), 2));
-        } else AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m, new DivineConvictionpower(p,m,1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m, new DivineConvictionpower(p,m,magicNumber), magicNumber));
     }
 
     //Upgraded stats.
@@ -62,7 +59,7 @@ public class DivineVision extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            upgradeMagicNumber(2);
             initializeDescription();
         }
     }

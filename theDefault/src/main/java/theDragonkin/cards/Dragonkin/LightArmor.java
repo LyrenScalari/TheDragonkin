@@ -12,7 +12,7 @@ import static theDragonkin.DefaultMod.makeCardPath;
 public class LightArmor extends AbstractHolyCard {
 
     public static final String ID = DefaultMod.makeID(LightArmor.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("Skill.png");
 
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -23,7 +23,7 @@ public class LightArmor extends AbstractHolyCard {
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 4;
+    private static final int POTENCY = 5;
     private static final int UPGRADE_PLUS_POTENCY = 1;
     private static final int MAGIC = 2;
     private static final int UPGRADE_MAGIC = 1;
@@ -33,7 +33,6 @@ public class LightArmor extends AbstractHolyCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-        tags.add(CustomTags.HOLY_CARD);
         baseMagicNumber = magicNumber = MAGIC;
 
     }

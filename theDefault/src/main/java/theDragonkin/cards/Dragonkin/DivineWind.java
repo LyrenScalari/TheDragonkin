@@ -4,7 +4,9 @@ import basemod.AutoAdd;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -21,6 +23,7 @@ import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.DragonBreaths.AbstractDragonBreathPower;
+import theDragonkin.powers.Dragonkin.DragonBreaths.DivineWindEffect;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 @AutoAdd.Ignore
@@ -31,11 +34,11 @@ public class DivineWind extends AbstractHolyCard {
 
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int UPGRADED_COST = 1;
 
     private static final int POTENCY = 10;
@@ -47,24 +50,17 @@ public class DivineWind extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        this.exhaust = true;
         AutoplayField.autoplay.set(this,true);
+        exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new WhirlwindEffect()));
-        addToBot(new VFXAction(new CleaveEffect()));
-        addToBot(new DamageAllEnemiesAction(p,damage, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
         addToBot(new DrawCardAction(p,magicNumber));
+        addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[0],(float) 0.5,(float) 2.0));
+        addToBot(new ApplyPowerAction(p,p,new DivineWindEffect(baseDamage,0,this)));
     }
-    public void applyPowers() {
-        if (magicNumber > 1){
-            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            super.applyPowers();
-            this.initializeDescription();
-        }
-    }
+
     @Override
     public void upgrade() {
         if (!upgraded) {

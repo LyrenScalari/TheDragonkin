@@ -15,7 +15,7 @@ public class FlashofLight extends AbstractHolyCard {
 
 
     public static final String ID = DefaultMod.makeID(FlashofLight.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("Skill.png");
 
 
     private static final CardRarity RARITY = CardRarity.RARE;
@@ -29,15 +29,15 @@ public class FlashofLight extends AbstractHolyCard {
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int MAGIC = 6;
-    private static final int UPGRADE_MAGIC = 3;
+    private static final int UPGRADE_MAGIC = 4;
 
 
     public FlashofLight() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        tags.add(CustomTags.HOLY_CARD);
         tags.add(CardTags.HEALING);
         baseMagicNumber = magicNumber = MAGIC;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
         this.exhaust = true;
 
     }
@@ -45,8 +45,8 @@ public class FlashofLight extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.upgraded){
-            AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,6));
-        }else AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,4));
+            AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,10));
+        }else AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,6));
 
         AbstractDungeon.actionManager.addToBottom(
                 new AddTemporaryHPAction(p,p,magicNumber));
@@ -59,6 +59,7 @@ public class FlashofLight extends AbstractHolyCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_MAGIC);
+            upgradeDefaultSecondMagicNumber(4);
             initializeDescription();
         }
     }

@@ -41,7 +41,7 @@ public class HammerOfWrath extends AbstractDragonkinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, 2*damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
             addToBot(new ApplyPowerAction(p,p,new DivineConvictionpower(p,p,magicNumber),1));
     }
 

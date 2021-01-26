@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DefaultMod;
+import theDragonkin.cards.Dragonkin.AbstractHolyCard;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
@@ -51,7 +52,7 @@ public class CrusaderFormpower extends AbstractPower implements CloneablePowerIn
 
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
-        if (!card.hasTag(CustomTags.HOLY_CARD)) {
+        if (!(card instanceof AbstractHolyCard)) {
             this.flash();
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
                         new DivineConvictionpower(owner, owner, amount), amount));
@@ -73,7 +74,7 @@ public class CrusaderFormpower extends AbstractPower implements CloneablePowerIn
     public void atEndOfTurn(final boolean isPlayer) {
         int count = 0;
         for (final AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-            if (!c.hasTag(CustomTags.HOLY_CARD)) {
+            if (!(c instanceof AbstractHolyCard)) {
                 ++count; // At the end of your turn, increase the count by 1 for each card that gave Zeal played this turn
             }
         }
