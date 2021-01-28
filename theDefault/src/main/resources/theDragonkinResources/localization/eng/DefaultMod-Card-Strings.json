@@ -80,8 +80,8 @@
   },
   "theDragonkin:SandBreath": {
     "NAME": "Sand Breath",
-    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Gain !M! Temporary_HP. NL Apply !M2! Weak.",
-    "EXTENDED_DESCRIPTION": ["thedragonkin:Dragon_Breath. NL Gain !M! Temporary_HP. NL Apply !M2! Weak to ALL enemies.","Klo"]
+    "DESCRIPTION": "thedragonkin:Dragon_Breath. NL Gain !M2! Temporary_HP. NL Apply !M! Weak.",
+    "EXTENDED_DESCRIPTION": ["thedragonkin:Dragon_Breath. NL Gain !M2! Temporary_HP. NL Apply !M! Weak to ALL enemies.","Klo"]
   },
   "theDragonkin:VoiceofOrder": {
     "NAME": "Voice of Order",

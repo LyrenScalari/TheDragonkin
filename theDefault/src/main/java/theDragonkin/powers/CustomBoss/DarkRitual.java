@@ -75,13 +75,12 @@ public class DarkRitual extends TwoAmountPower {
     public void increaseLimit(int incamt){
         amount = 0;
         amount2 += incamt;
+        updateDescription();
     }
     @Override
     public void updateDescription() {
         StringBuilder sb = new StringBuilder();
         sb.append(DESCRIPTIONS[0]);
-        sb.append(amount2);
-        sb.append(DESCRIPTIONS[1]);
         description = sb.toString();
     }
 }

@@ -76,7 +76,7 @@ public class BlazingBreath extends AbstractPrimalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[1],(float) 0.5,(float) 1.0));
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p,p,  new BlazingBreathEffect(baseDamage,baseMagicNumber,this)));
+                new ApplyPowerAction(p,p,  new BlazingBreathEffect(damage,magicNumber,this)));
 
     }
     @Override

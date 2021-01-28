@@ -3,6 +3,7 @@ package theDragonkin.powers.Dragonkin.DragonBreaths;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.watcher.TriggerMarksAction;
@@ -24,26 +25,26 @@ public class MoltenBreathEffect extends AbstractDragonBreathPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public int block;
-    public int scorch;
     public MoltenBreathEffect (int Damage, int Block, int Scorch, AbstractCard source){
+        super();
         sourcecard = source;
         name = NAME;
         ID = POWER_ID;
-        amount = Damage;
-        scorch = (int) Math.ceil((float)Scorch / AbstractDungeon.getCurrRoom().monsters.monsters.stream().filter(it -> !it.isDeadOrEscaped()).count());
-        block = Block;
+        amount = Damage+((BreathCount -1) * 2);
+        amount4 = Scorch+((BreathCount -1));
+        amount3 = Block+((BreathCount -1));
     }
 
     @Override
     public void onBreath(){
-        addToBot(new VFXAction(new ScreenOnFireEffect()));
-        addToBot(new VFXAction(new SweepingBeamEffect(owner.drawX,owner.drawY,false)));
-        addToBot(new GainBlockAction(owner,block+(BreathCount)));
-        addToBot(new DamageAllEnemiesAction((AbstractPlayer) owner,amount+(BreathCount*2),
-                DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+        addToBot(new VFXAction(new SweepingBeamEffect(owner.drawX,owner.drawY, AbstractDungeon.player.flipHorizontal), 0.4F));
+        addToBot(new GainBlockAction(owner,amount3+(BreathCount)));
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            addToBot(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount,
+                    DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+        }
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new ApplyPowerAction(m,owner,new Scorchpower(m,owner,scorch+(BreathCount))));
+            addToBot(new ApplyPowerAction(m,owner,new Scorchpower(m,owner,amount4)));
         }
     }
 }

@@ -116,7 +116,7 @@ public class MoltenBreath extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[1],(float) 0.5,(float) 2.0));
-        addToBot(new ApplyPowerAction(p,p,new MoltenBreathEffect(baseDamage,block,baseMagicNumber,this)));
+        addToBot(new ApplyPowerAction(p,p,new MoltenBreathEffect(damage,block,magicNumber,this)));
     }
 
     //Upgraded stats.

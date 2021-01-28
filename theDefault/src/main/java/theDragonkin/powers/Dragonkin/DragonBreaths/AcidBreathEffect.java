@@ -2,6 +2,7 @@ package theDragonkin.powers.Dragonkin.DragonBreaths;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -21,19 +22,20 @@ public class AcidBreathEffect extends AbstractDragonBreathPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public AcidBreathEffect(int Damage, int Bonus, AbstractCard source){
+        super();
         sourcecard = source;
         name = NAME;
         ID = POWER_ID;
-        amount = Damage;
-        Scorchamt = Bonus;
+        amount = Damage + ((BreathCount -1)* 2);
+        amount4 = Bonus + ((BreathCount -1));
     }
 
     @Override
     public void onBreath(){
-        addToBot(new DamageAllEnemiesAction((AbstractPlayer) owner,amount+(BreathCount*2), DamageInfo.DamageType.THORNS,
-                AbstractGameAction.AttackEffect.POISON));
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new ApplyPowerAction(m,owner,new WeakPower(m,Scorchamt+(BreathCount*2),false)));
+            addToBot(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount,
+                    DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.POISON));
+            addToBot(new ApplyPowerAction(m,owner,new WeakPower(m,amount4,false)));
         }
     }
 }

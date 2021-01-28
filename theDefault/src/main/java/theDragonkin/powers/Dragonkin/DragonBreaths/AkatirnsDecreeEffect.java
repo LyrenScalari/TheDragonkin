@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -16,6 +17,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
+import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 import theDragonkin.DefaultMod;
 
 public class AkatirnsDecreeEffect extends AbstractDragonBreathPower{
@@ -25,20 +27,23 @@ public class AkatirnsDecreeEffect extends AbstractDragonBreathPower{
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public AkatirnsDecreeEffect (int Damage, int Bonus, AbstractCard source){
+        super();
         sourcecard = source;
         name = NAME;
         ID = POWER_ID;
-        amount =Damage;
-        Scorchamt = (int) Math.ceil((float)Bonus /AbstractDungeon.getCurrRoom().monsters.monsters.stream().filter(it -> !it.isDeadOrEscaped()).count());
+        amount =Damage +((BreathCount -1)*2);
+        amount4 = Bonus + (BreathCount -1);
     }
 
     @Override
     public void onBreath(){
-        addToBot(new VFXAction(new LightFlareParticleEffect(owner.drawX,owner.drawY, Color.GOLD.cpy())));
-        addToBot(new DamageAllEnemiesAction((AbstractPlayer) owner,(int)amount+(BreathCount*2), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+        AbstractPlayer p = AbstractDungeon.player;
+        this.addToBot(new VFXAction(p, new MindblastEffect(p.dialogX, p.dialogY, p.flipHorizontal), 0.1F));
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new ApplyPowerAction(m,owner,new WeakPower(m,Scorchamt+(BreathCount),false)));
-            addToBot(new ApplyPowerAction(m,owner,new VulnerablePower(m,(int) Scorchamt+(BreathCount),false)));
+            addToBot(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount,
+                    DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
+            addToBot(new ApplyPowerAction(m,owner,new WeakPower(m,amount4,false)));
+            addToBot(new ApplyPowerAction(m,owner,new VulnerablePower(m,amount4,false)));
         }
         addToBot(new RemoveAllPowersAction(owner,true));
     }

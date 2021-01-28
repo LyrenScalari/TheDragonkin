@@ -20,16 +20,17 @@ public class PrismaticBreathEffect extends AbstractDragonBreathPower{
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public PrismaticBreathEffect (int TempHP , int Zeal, AbstractCard source){
+        super();
         sourcecard = source;
         name = NAME;
         ID = POWER_ID;
-        amount = TempHP;
-        Zealamt = Zeal;
+        amount3 = TempHP+((BreathCount -1));
+        amount5 = Zeal+((BreathCount -1));
     }
 
     @Override
     public void onBreath() {
-        addToBot(new AddTemporaryHPAction(owner, owner, amount+(BreathCount)));
-        addToBot(new ApplyPowerAction(owner, owner, new DivineConvictionpower(owner, owner, Zealamt+(BreathCount))));
+        addToBot(new AddTemporaryHPAction(owner, owner, amount3));
+        addToBot(new ApplyPowerAction(owner, owner, new DivineConvictionpower(owner, owner, amount5)));
     }
 }

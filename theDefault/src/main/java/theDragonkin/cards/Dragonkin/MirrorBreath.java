@@ -46,7 +46,6 @@ public class MirrorBreath extends AbstractPrimalCard {
         // Temp HP + Weak
         this.magicNumber = this.baseMagicNumber = 6;
         this.defaultSecondMagicNumber = this.defaultBaseSecondMagicNumber = 4;
-        tags.add(CustomTags.Dragon_Breath);
     }
 
     // Actions the card should do.
@@ -79,6 +78,7 @@ public class MirrorBreath extends AbstractPrimalCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeBaseCost(0);
             initializeDescription();
         }
     }

@@ -73,9 +73,8 @@ public class SlowBurnpower extends AbstractPower implements OnReceivePowerPower 
 
     @Override
     public boolean onReceivePower(AbstractPower p, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (p.type == PowerType.DEBUFF){
+        if (p.type == PowerType.DEBUFF && abstractCreature1 != this.owner){
                 AbstractDungeon.actionManager.addToBottom(new LoseHPAction(owner,owner,amount));
-
         }
         return true;
     }

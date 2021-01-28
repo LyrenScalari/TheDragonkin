@@ -2,6 +2,7 @@ package theDragonkin.powers.Dragonkin.DragonBreaths;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -16,25 +17,25 @@ import theDragonkin.DefaultMod;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 
 public class TwinBreathEffect extends AbstractDragonBreathPower {
-    public int Scorch;
     public static final String POWER_ID = DefaultMod.makeID("SmaugsSmog");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public TwinBreathEffect (int Damage , int Scorch, AbstractCard source){
+        super();
         sourcecard = source;
         name = NAME;
         ID = POWER_ID;
-        amount = Damage;
-        this.Scorch = Scorch;
+        amount = Damage + ((BreathCount -1) * 2);
+        amount4 = Scorch + ((BreathCount -1));
     }
 
     @Override
     public void onBreath() {
-        addToBot(new DamageAllEnemiesAction((AbstractPlayer) owner,amount+(BreathCount*2),
-                DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new ApplyPowerAction(m,owner,new Scorchpower(m,owner,Scorch+(BreathCount))));
+            addToBot(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount,
+                    DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+            addToBot(new ApplyPowerAction(m,owner,new Scorchpower(m,owner,amount4 )));
         }
     }
 }

@@ -47,7 +47,7 @@ public class TwinBreath extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[2],(float) 0.5,(float) 2.0));
-        addToBot(new ApplyPowerAction(p,p,new TwinBreathEffect(baseDamage,baseMagicNumber,this)));
+        addToBot(new ApplyPowerAction(p,p,new TwinBreathEffect(damage,magicNumber,this)));
         if (upgraded){
             cardsToPreview.upgrade();
             addToBot(new MakeTempCardInHandAction(cardsToPreview));

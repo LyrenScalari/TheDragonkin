@@ -3,6 +3,7 @@ package theDragonkin.powers.Dragonkin.DragonBreaths;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.watcher.TriggerMarksAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,18 +25,21 @@ private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getP
 public static final String NAME = powerStrings.NAME;
 public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 public DivineBreathEffect (int Damage , int Bonus, AbstractCard source){
+        super();
         sourcecard = source;
         name = NAME;
         ID = POWER_ID;
-        amount = Damage;
-        Zealamt = Bonus;
+        amount = Damage + ((BreathCount -1) * 2);
+        amount5 = Bonus + ((BreathCount -1));
         }
 
 @Override
 public void onBreath(){
         addToBot(new VFXAction(new LaserBeamEffect(owner.drawX,owner.drawY)));
-        addToBot(new DamageAllEnemiesAction((AbstractPlayer) owner,amount+(BreathCount*2),
-                DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
-        addToBot(new ApplyPowerAction(owner,owner,new DivineConvictionpower(owner,owner,Zealamt+(BreathCount))));
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                addToBot(new DamageAction(m, new DamageInfo(AbstractDungeon.player, amount,
+                        DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
+        }
+        addToBot(new ApplyPowerAction(owner,owner,new DivineConvictionpower(owner,owner,amount5)));
         }
 }

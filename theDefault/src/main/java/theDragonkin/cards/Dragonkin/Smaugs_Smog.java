@@ -44,7 +44,7 @@ public Smaugs_Smog() {
 @Override
 public void use(AbstractPlayer p,AbstractMonster m) {
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[1],(float) 0.5,(float) 2.0));
-        addToBot(new ApplyPowerAction(p,p,new SmaugsSmogEffect(baseDamage,block,baseMagicNumber,this)));
+        addToBot(new ApplyPowerAction(p,p,new SmaugsSmogEffect(damage,block,magicNumber,this)));
 }
         @Override
         public void calculateCardDamage(AbstractMonster mo) {

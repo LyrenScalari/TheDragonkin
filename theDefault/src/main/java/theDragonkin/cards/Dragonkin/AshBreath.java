@@ -51,7 +51,7 @@ public class AshBreath extends AbstractPrimalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[1],(float) 0.5,(float) 2.0));
-        addToBot(new ApplyPowerAction(p,p,new AshBreathEffect(block,baseDamage,this)));
+        addToBot(new ApplyPowerAction(p,p,new AshBreathEffect(block,damage,this)));
         for (AbstractCard c : AbstractDungeon.player.hand.group){
             if (c.type == CardType.STATUS){
                 addToBot(new ExhaustSpecificCardAction(c,AbstractDungeon.player.hand));

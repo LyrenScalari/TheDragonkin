@@ -58,7 +58,7 @@ public class DivineWind extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DrawCardAction(p,magicNumber));
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[0],(float) 0.5,(float) 2.0));
-        addToBot(new ApplyPowerAction(p,p,new DivineWindEffect(baseDamage,0,this)));
+        addToBot(new ApplyPowerAction(p,p,new DivineWindEffect(damage,this)));
     }
 
     @Override

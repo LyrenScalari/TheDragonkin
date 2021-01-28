@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -12,11 +13,12 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DefaultMod;
 import theDragonkin.powers.Dragonkin.DragonBreaths.AbstractDragonBreathPower;
+import theDragonkin.powers.GroveKeeper.NatrualSpikesPower;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DefaultMod.makePowerPath;
 
-public class DeepBreathPower extends AbstractPower implements CloneablePowerInterface {
+public class DeepBreathPower extends AbstractPower implements CloneablePowerInterface,OnReceivePowerPower {
     public AbstractCreature source;
 
     public static final String POWER_ID = DefaultMod.makeID("DeepBreath");
@@ -47,6 +49,17 @@ public class DeepBreathPower extends AbstractPower implements CloneablePowerInte
                 ((TwoAmountPower)p).amount2 += 1;
             }
         }
+    }
+    @Override
+    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
+        if (abstractPower.ID.equals(this.ID)){
+            for (AbstractPower p : AbstractDungeon.player.powers){
+                if (p instanceof AbstractDragonBreathPower){
+                    ((AbstractDragonBreathPower) p).amount2 += 1;
+                }
+            }
+        }
+        return true;
     }
     @Override
     public void atEndOfTurn(final boolean isplayer) {

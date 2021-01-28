@@ -1,12 +1,37 @@
 {
   "theDragonkin:UIText": {
     "TEXT": [
-      " NL Exhaust",
-      "Ethereal NL ",
-      "Exhaust"
+      " damage",
+      " #rScorch",
+      " #gBlock",
+      " #gTemporary #gHP",
+      " #rWeak",
+      " #rVulnerable",
+      " #yZeal",
+      "- ",
+      ", ",
+      " #rDissolve",
+      " damage twice",
+      " #gBlock twice"
     ]
   },
-  "dragonkin:DragonbreathDisplay\"": {
+  "theDragonkin:CardmodStrings": {
+    "TEXT": [
+      " NL Exhaust",
+      "Ethereal NL ",
+      "Exhaust",
+      "Retain NL"
+    ]
+  },
+  "TheDragonkin:CurseAttack": {
+    "TEXT": [
+      "Ritual Attack",
+      "This enemy intends to NL deal #b",
+      " damage and ",
+      "Empower itself and the Ritual."
+    ]
+  },
+  "theDragonkin:DragonbreathDisplay": {
     "TEXT": [
       "Stored Dragonbreaths - "
     ]

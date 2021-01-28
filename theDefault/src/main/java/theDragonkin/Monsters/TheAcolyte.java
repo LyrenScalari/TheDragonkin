@@ -1,7 +1,9 @@
 package theDragonkin.Monsters;
 
+import actlikeit.RazIntent.CustomIntent;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
+import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
@@ -29,6 +31,8 @@ import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.CustomBoss.*;
 import theDragonkin.powers.Dragonkin.Scorchpower;
+import theDragonkin.ui.CurseAttack;
+import theDragonkin.ui.CurseAttackEnum;
 import theDragonkin.util.TranslateSpeech;
 
 import java.util.HashMap;
@@ -45,7 +49,7 @@ public class TheAcolyte extends AbstractBossMonster {
     private boolean firstTurn = true;
     private int TurnCoutner = 0;
     protected boolean damageInfoSet = false;
-    private static int RitualThreshold = 15;
+    private static int RitualThreshold = 5;
     private final static byte CursedBlade = 0;
     private final static byte Corruption = 1;
     private final static byte Shadowburn = 2;
@@ -76,7 +80,7 @@ public class TheAcolyte extends AbstractBossMonster {
         addMove(MindMaze, Intent.STRONG_DEBUFF, -1);// Discard your next 2 Draws and replace them with random curses
         addMove(CurseofMisfortune , Intent.STRONG_DEBUFF, -1);//  Shuffle all curses from your exhaust pile into your draw pile player draws 1 more card next turn.
         addMove(DrainLife, Intent.ATTACK_BUFF, 35);// 35 Damage, Boss Heals equal to unblocked damage.
-        addMove(ChaosBolt, Intent.ATTACK_BUFF, 50);// 50 Damage, +5 Str, +5 Ritual Threshold
+        addMove(ChaosBolt, CurseAttackEnum.CURSE_ATTACK_INTENT, 50);// 50 Damage, +5 Str, +5 Ritual Threshold
     }
 
     public void usePreBattleAction() {
@@ -135,7 +139,6 @@ public class TheAcolyte extends AbstractBossMonster {
             case CursedBlade:
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, info, AbstractGameAction.AttackEffect.SLASH_HEAVY));
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(), 1, true, false));
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(), 1, true, false));
                 if (AbstractDungeon.ascensionLevel >= 9){
                     AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(), 1, true, false));
                 }
@@ -170,9 +173,14 @@ public class TheAcolyte extends AbstractBossMonster {
             case CurseofMisfortune:
                 for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
                     if (c.type == AbstractCard.CardType.CURSE){
-                        AbstractDungeon.actionManager.addToBottom(new ShowCardAction(c));
-                        AbstractDungeon.player.exhaustPile.group.remove(c);
-                        AbstractDungeon.player.drawPile.addToRandomSpot(c);
+                        addToBot(new AbstractGameAction() {
+                                     public void update() {
+                                         AbstractDungeon.actionManager.addToBottom(new ShowCardAction(c));
+                                         AbstractDungeon.player.exhaustPile.group.remove(c);
+                                         AbstractDungeon.player.drawPile.addToRandomSpot(c);
+                                         isDone = true;
+                                     }
+                        });
                     }
                 }
                 TurnCoutner ++;
@@ -185,8 +193,6 @@ public class TheAcolyte extends AbstractBossMonster {
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, info, AbstractGameAction.AttackEffect.FIRE));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this,this,new StrengthPower(this,5),5));
                 ((DarkRitual)this.getPower(DarkRitual.POWER_ID)).increaseLimit(5);
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(),
-                        1, true, false));
                 TurnCoutner ++;
                 break;
         }
@@ -221,7 +227,7 @@ public class TheAcolyte extends AbstractBossMonster {
             setMoveShortcut(CursedBlade,MOVES[0]);
         }
         else if (this.hasPower(DarkRitual.POWER_ID)){
-            if (this.getPower(DarkRitual.POWER_ID).amount >= RitualThreshold){
+            if (this.getPower(DarkRitual.POWER_ID).amount >= ((TwoAmountPower)this.getPower(DarkRitual.POWER_ID)).amount2){
                 setMoveShortcut(ChaosBolt,MOVES[8]);
             }
             else if (TurnCoutner >= 4){

@@ -43,8 +43,8 @@ public class SandBreath extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Temp HP + Weak
-        this.magicNumber = this.baseMagicNumber = 4;
-        this.defaultSecondMagicNumber = this.defaultBaseSecondMagicNumber = 6;
+        this.magicNumber = this.baseMagicNumber = 1;
+        this.defaultSecondMagicNumber = this.defaultBaseSecondMagicNumber = 2;
         tags.add(CustomTags.Dragon_Breath);
     }
 

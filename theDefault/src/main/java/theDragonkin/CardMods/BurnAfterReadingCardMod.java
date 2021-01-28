@@ -17,7 +17,7 @@ import java.util.Objects;
 public class BurnAfterReadingCardMod extends AbstractCardModifier {
     private int duration;
     private boolean wasExhaust = false;
-    private UIStrings uiStrings =  CardCrawlGame.languagePack.getUIString("theDragonkin:UIText");
+    private UIStrings uiStrings =  CardCrawlGame.languagePack.getUIString("theDragonkin:CardmodStrings");
     public BurnAfterReadingCardMod (int length) {
         duration = length;
     }

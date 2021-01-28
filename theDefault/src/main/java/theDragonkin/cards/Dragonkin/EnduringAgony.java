@@ -48,7 +48,7 @@ public class EnduringAgony extends AbstractPrimalCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_POTENCY);
+            upgradeBaseCost(1);
             initializeDescription();
         }
     }

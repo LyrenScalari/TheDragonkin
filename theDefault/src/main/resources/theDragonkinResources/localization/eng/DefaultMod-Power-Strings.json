@@ -172,7 +172,7 @@
         },
         "theDragonkin:DarkRitual": {
                 "NAME": "Dark Ritual",
-                "DESCRIPTIONS": ["At the Start of The Acolyte's turn, increases by the number of #yCurses in your hand, discard and draw piles. NL The rituals power effects The Acolytes Available moves. NL after gaining #b"," Dark Ritual the Acolyte will use Chaos Bolt, and increase the Ritual required."
+                "DESCRIPTIONS": ["At the Start of The Acolyte's turn, increases by the number of #yCurses in your hand, discard and draw piles."
                 ]
         },
         "theDragonkin:CursedPower": {

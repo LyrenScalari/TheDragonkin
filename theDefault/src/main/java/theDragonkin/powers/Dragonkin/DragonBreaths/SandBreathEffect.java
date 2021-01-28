@@ -22,18 +22,19 @@ public class SandBreathEffect extends AbstractDragonBreathPower{
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public SandBreathEffect (int Weak , int Bonus, AbstractCard source){
+        super();
         sourcecard = source;
         name = NAME;
         ID = POWER_ID;
-        amount = Weak;
-        Zealamt = Bonus;
+        amount4 = Weak+((BreathCount -1));
+        amount3 = Bonus+((BreathCount -1));
     }
 
     @Override
     public void onBreath() {
-        addToBot(new AddTemporaryHPAction(owner, owner, Zealamt+(BreathCount)));
+        addToBot(new AddTemporaryHPAction(owner, owner, amount3));
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new ApplyPowerAction(m,owner,new WeakPower(m,amount+(BreathCount),false)));
+            addToBot(new ApplyPowerAction(m,owner,new WeakPower(m,amount4,false)));
         }
     }
 }

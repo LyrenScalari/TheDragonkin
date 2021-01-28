@@ -52,7 +52,7 @@ public class VoiceofOrder  extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[1],(float) 0.5,(float) 2.0));
-        addToBot(new ApplyPowerAction(p,p,new VoiceofOrderEffect(block,baseMagicNumber,this)));
+        addToBot(new ApplyPowerAction(p,p,new VoiceofOrderEffect(block,magicNumber,this)));
     }
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
@@ -113,7 +113,7 @@ public class VoiceofOrder  extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
+            upgradeBlock(2);
             initializeDescription();
         }
     }

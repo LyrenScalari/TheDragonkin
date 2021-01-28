@@ -1,17 +1,12 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DefaultMod;
-import theDragonkin.powers.Dragonkin.InsanityPower;
 
 import static theDragonkin.DefaultMod.makeCardPath;
 
@@ -26,7 +21,7 @@ public class Suffering extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.CURSE;
     public static final CardColor COLOR = CardColor.CURSE;
 
-    private static final int COST = 0;
+    private static final int COST = -2;
     private static final int UPGRADED_COST = -2;
 
     private static final int POTENCY = 0;
@@ -41,6 +36,10 @@ public class Suffering extends AbstractDragonkinCard {
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         isEthereal = true;
+    }
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m){
+        return false;
     }
 
     @Override

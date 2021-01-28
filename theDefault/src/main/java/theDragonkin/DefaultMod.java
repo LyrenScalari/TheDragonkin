@@ -1,5 +1,6 @@
 package theDragonkin;
 
+import actlikeit.RazIntent.CustomIntent;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
@@ -54,6 +55,7 @@ import theDragonkin.powers.Gremory.MoonsMarch;
 import theDragonkin.powers.Gremory.WindsSong;
 import theDragonkin.relics.Dragonkin.*;
 import theDragonkin.relics.Gremory.HeartofFlames;
+import theDragonkin.ui.CurseAttack;
 import theDragonkin.util.DragonbreathPanel;
 import theDragonkin.util.EasyInfoDisplayPanel;
 import theDragonkin.util.IDCheckDontTouchPls;
@@ -257,6 +259,9 @@ public class DefaultMod implements
     public static final String THE_DEFAULT_SHOULDER_1 = "theDragonkinResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "theDragonkinResources/images/char/defaultCharacter/shoulder2.png";
     public static final String THE_DEFAULT_CORPSE = "theDragonkinResources/images/char/defaultCharacter/corpse.png";
+
+    public static final String CURSEATTACK_INTENT = "theDragonkinResources/images/ui/intent/CurseAttack_Above.png";
+    public static final String CURSEATTACK_TOOLTIP = "theDragonkinResources/images/ui/intent/CurseAttack_Tooltip.png";
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "theDragonkinResources/images/Badge.png";
@@ -526,7 +531,7 @@ public class DefaultMod implements
                 "theDragonkinResources/images/TheAcolyteMap.png",
                 "theDragonkinResources/images/bossOutlineTheAcolyte.png");
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-
+        CustomIntent.add(new CurseAttack());
         
         // =============== EVENTS =================
         
