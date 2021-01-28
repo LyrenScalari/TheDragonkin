@@ -13,7 +13,7 @@
         "theDragonkin:Scorch": {
                 "NAME": "Scorch",
                 "DESCRIPTIONS": ["When attacked, takes #b",
-                " additional damage,", " and reduce this by #b1"
+                " additional damage,", " and reduce this by half"
                 ]
         },
         "theDragonkin:Madness": {
@@ -167,7 +167,7 @@
         },
         "theDragonkin:Exhaustion": {
                 "NAME": "Exhausted",
-                "DESCRIPTIONS": ["For #b", " turns,"," turn"," at the start of your turn #yExhaust a card in your hand, if it's a #yCurse Lose [E]."
+                "DESCRIPTIONS": ["For #b", " turns,"," turn"," at the start of your turn #yExhaust a card in your hand, if it's a #yCurse Lose [E] ."
                 ]
         },
         "theDragonkin:DarkRitual": {

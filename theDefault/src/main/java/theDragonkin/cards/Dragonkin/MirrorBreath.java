@@ -52,7 +52,7 @@ public class MirrorBreath extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[0],(float) 0.5,(float) 2.0));
-        for (int i = AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 2; i > 0; i--){
+        for (int i = AbstractDungeon.actionManager.cardsPlayedThisCombat.size() -1; i >= 0; i--){
             if (AbstractDungeon.actionManager.cardsPlayedThisCombat.get(i).hasTag(CustomTags.Dragon_Breath) && !AbstractDungeon.actionManager.cardsPlayedThisCombat.get(i).purgeOnUse){
 
                 AbstractCard tmp = AbstractDungeon.actionManager.cardsPlayedThisCombat.get(i).makeSameInstanceOf();

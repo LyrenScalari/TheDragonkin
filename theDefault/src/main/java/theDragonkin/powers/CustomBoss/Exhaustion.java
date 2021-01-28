@@ -20,7 +20,7 @@ public class Exhaustion extends AbstractPower implements NonStackablePower {
     AbstractPower p = AbstractDungeon.player.getPower(Exhaustion.POWER_ID);
     public static final String POWER_ID = DefaultMod.makeID("Exhaustion");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    private UIStrings uiStrings =  CardCrawlGame.languagePack.getUIString("theDragonkin:UIText");
+    private UIStrings uiStrings =  CardCrawlGame.languagePack.getUIString("theDragonkin:CardmodStrings");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public int delay = 2;
@@ -47,15 +47,16 @@ public class Exhaustion extends AbstractPower implements NonStackablePower {
     public void atStartOfTurnPostDraw() {
         addToBot(new AbstractGameAction() {
             public void update() {
-                addToTop(new SelectCardsInHandAction(1,uiStrings.TEXT[2],false,false, null,list ->{
+                addToTop(new SelectCardsInHandAction(1,uiStrings.TEXT[2],false,false, (c) ->true,list ->{
                     if (list.get(0).type == AbstractCard.CardType.CURSE){
                         addToTop(new LoseEnergyAction(1));
                     }
                     addToTop(new ExhaustSpecificCardAction(list.get(0),AbstractDungeon.player.hand));
-                    isDone = true;
                 }));
+                isDone = true;
             }
         });
+        addToBot(new ReducePowerAction(owner,owner,this,1));
     }
     @Override
     public void updateDescription() {

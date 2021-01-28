@@ -172,19 +172,20 @@ public class TheAcolyte extends AbstractBossMonster {
                 break;
             case CurseofMisfortune:
                 for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
-                    if (c.type == AbstractCard.CardType.CURSE){
-                        addToBot(new AbstractGameAction() {
-                                     public void update() {
-                                         AbstractDungeon.actionManager.addToBottom(new ShowCardAction(c));
-                                         AbstractDungeon.player.exhaustPile.group.remove(c);
-                                         AbstractDungeon.player.drawPile.addToRandomSpot(c);
-                                         isDone = true;
-                                     }
-                        });
-                    }
+                if (c.type == AbstractCard.CardType.CURSE){
+                    addToBot(new AbstractGameAction() {
+                        public void update() {
+                            c.unfadeOut();
+                            AbstractDungeon.actionManager.addToBottom(new ShowCardAction(c));
+                            AbstractDungeon.player.exhaustPile.group.remove(c);
+                            AbstractDungeon.player.drawPile.addToRandomSpot(c);
+                            isDone = true;
+                        }
+                    });
                 }
-                TurnCoutner ++;
-                break;
+            }
+            TurnCoutner ++;
+            break;
             case DrainLife:
                 AbstractDungeon.actionManager.addToBottom(new VampireDamageAction(AbstractDungeon.player, info, AbstractGameAction.AttackEffect.FIRE));
                 TurnCoutner ++;
