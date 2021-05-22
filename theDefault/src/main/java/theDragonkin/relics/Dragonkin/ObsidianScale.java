@@ -3,19 +3,16 @@ package theDragonkin.relics.Dragonkin;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theDragonkin.DefaultMod;
-import theDragonkin.cards.Dragonkin.AbstractHolyCard;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.AbstractPrimalCard;
 import theDragonkin.powers.Dragonkin.FuryPower;
-import theDragonkin.relics.Dragonkin.GarnetScale;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-import static theDragonkin.DefaultMod.makeRelicPath;
+import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+import static theDragonkin.DragonkinMod.makeRelicPath;
 
 public class ObsidianScale extends CustomRelic { // You must implement things you want to use from StSlib
     /*
@@ -26,11 +23,11 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("ObsidianScale");
+    public static final String ID = DragonkinMod.makeID("ObsidianScale");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("ObsidianScale.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("ObsidianScale.png"));
-
+    private  boolean used = false;
     public ObsidianScale() {
         super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.CLINK);
     }
@@ -42,10 +39,10 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
         String name = new GarnetScale().name;
         StringBuilder sb = new StringBuilder();
         for (String word : name.split(" ")) {
-            sb.append("[#").append(DefaultMod.DEFAULT_GRAY.toString()).append("]").append(word).append("[] ");
+            sb.append("[#").append(DragonkinMod.DEFAULT_GRAY.toString()).append("]").append(word).append("[] ");
         }
         sb.setLength(sb.length()-1);
-        sb.append("[#").append(DefaultMod.DEFAULT_GRAY.toString()).append("]");
+        sb.append("[#").append(DragonkinMod.DEFAULT_GRAY.toString()).append("]");
 
         return DESCRIPTIONS[0] + sb.toString() + DESCRIPTIONS[1];
     }
@@ -65,26 +62,22 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
 
     @Override
     public void onUseCard(final AbstractCard c , final UseCardAction ca){
-        if (c instanceof AbstractPrimalCard){
+        if (c instanceof AbstractPrimalCard && !used){
             this.flash();
+            used = true;
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new FuryPower(AbstractDungeon.player,AbstractDungeon.player,4)));
         }
-    }
-    @Override
-    public void atPreBattle() {
-
-    }
-    @Override
-    public void atTurnStart(){
     }
 
     @Override
     public void onPlayerEndTurn() {
+        used = false;
     }
 
 
     @Override
     public void onVictory() {
+        used = false;
     }
 
     // Description

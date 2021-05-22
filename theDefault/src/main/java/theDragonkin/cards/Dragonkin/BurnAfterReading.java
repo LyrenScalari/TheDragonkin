@@ -5,15 +5,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.actions.BurnAfterReadingFollowUpAction;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class BurnAfterReading extends AbstractPrimalCard {
 
-    public static final String ID = DefaultMod.makeID(BurnAfterReading.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(BurnAfterReading.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
@@ -41,6 +41,7 @@ public class BurnAfterReading extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DrawCardAction(magicNumber,new BurnAfterReadingFollowUpAction()));
+        super.use(p,m);
     }
 
     @Override

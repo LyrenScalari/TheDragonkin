@@ -9,19 +9,18 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.AbstractHolyCard;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makePowerPath;
+import static theDragonkin.DragonkinMod.makePowerPath;
 
 //Gain 1 dex for the turn for each card played.
 
 public class DivineConvictionpower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("DivineConvictionpower");
+    public static final String POWER_ID = DragonkinMod.makeID("DivineConvictionpower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -79,7 +78,7 @@ public class DivineConvictionpower extends AbstractPower implements CloneablePow
         if (amount < 5){
             description = powerStrings.DESCRIPTIONS[0] + amount;
         } else {
-            description = powerStrings.DESCRIPTIONS[0] + amount + powerStrings.DESCRIPTIONS[1] + amount/5;
+            description = powerStrings.DESCRIPTIONS[0] + amount;
         }
     }
 

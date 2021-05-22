@@ -6,12 +6,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class DivineVision extends AbstractHolyCard {
 
@@ -23,7 +22,7 @@ public class DivineVision extends AbstractHolyCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(DivineVision.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(DivineVision.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -44,7 +43,7 @@ public class DivineVision extends AbstractHolyCard {
     public DivineVision() {
 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = baseMagicNumber = 2;
+        this.magicNumber = baseMagicNumber = 3;
 
     }
     

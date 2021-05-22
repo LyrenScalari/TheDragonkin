@@ -2,25 +2,17 @@ package theDragonkin.powers.GroveKeeper;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makePowerPath;
+import static theDragonkin.DragonkinMod.makePowerPath;
 
 public class NaturePower extends AbstractUpdatingTwoAmountPower {
     public AbstractCreature source;
-    public static final String POWER_ID = DefaultMod.makeID("NaturePower");
+    public static final String POWER_ID = DragonkinMod.makeID("NaturePower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

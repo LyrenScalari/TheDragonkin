@@ -11,20 +11,19 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 import basemod.AutoAdd;
 
 @AutoAdd.Ignore
 public class KickintheDoor extends AbstractGroveKeeperCard {
-    public static final String ID = DefaultMod.makeID(KickintheDoor.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(KickintheDoor.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -43,7 +42,7 @@ public class KickintheDoor extends AbstractGroveKeeperCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         this.tags.add(CustomTags.Lunar);
-        this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
+        this.setOrbTexture(DragonkinMod.Lunar_SMALL_ORB, DragonkinMod.Lunar_LARGE_ORB);
     }
     public KickintheDoor(int dmg, AbstractMonster enemy) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

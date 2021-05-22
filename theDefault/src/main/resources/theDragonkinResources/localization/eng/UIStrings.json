@@ -1,0 +1,80 @@
+{
+  "theDragonkin:UIText": {
+    "TEXT": [
+      " damage",
+      " #rScorch",
+      " #gBlock",
+      " #gDivine #gArmor",
+      " #rWeak",
+      " #rVulnerable",
+      " #yZeal",
+      "- ",
+      ", ",
+      " #rDissolve",
+      " damage twice",
+      " #gBlock twice",
+      " #gTrigger #gALL #genemies #rDissolve"
+    ]
+  },
+  "theDragonkin:CardmodStrings": {
+    "TEXT": [
+      " NL Exhaust",
+      "Ethereal NL ",
+      "Exhaust",
+      "Retain NL "
+    ]
+  },
+  "theDragonkin:DragonsHoardRewardStrings": {
+    "TEXT": [
+      " Gold ",
+      " Rare Card Reward "
+    ]
+  },
+  "theDragonkin:BattalionSlotErrorText": {
+    "TEXT": [
+      "My Battalion slots are #rFull!",
+      "I have no Battalion slots!"
+    ]
+  },
+  "TheDragonkin:CurseAttack": {
+    "TEXT": [
+      "Ritual Attack",
+      "This enemy intends to NL deal #b",
+      " damage and ",
+      "Empower itself and the Ritual."
+    ]
+  },
+  "theDragonkin:DragonbreathDisplay": {
+    "TEXT": [
+      "Stored Dragonbreaths - "
+    ]
+  },
+  "TransmutationAction": {
+    "TEXT": [
+      "Choose cards to change the Element of"
+    ]
+  },
+  "WitherCard": {
+    "TEXT": [
+      "thedragonkin:Depleted. NL ",
+      "This spell is #rDepleted!",
+      "Cast Count",
+      " NL (Current value: #b",
+      ")"
+    ]
+  },
+  "ReplenishMagic": {
+    "TEXT": [
+      " Choose a Spell to replenish.",
+      " Choose ", " Spells to replenish"
+    ]
+  },
+  "MeditateOption": {
+    "TEXT": [
+      " Meditate",
+      " Replenish ",
+      " Spell",
+      " Spells"
+    ]
+  }
+}

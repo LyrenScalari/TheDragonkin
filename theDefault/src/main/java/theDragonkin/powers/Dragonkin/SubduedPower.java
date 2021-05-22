@@ -2,18 +2,17 @@ package theDragonkin.powers.Dragonkin;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 
 public class SubduedPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("Subdued");
+    public static final String POWER_ID = DragonkinMod.makeID("Subdued");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -27,7 +26,7 @@ public class SubduedPower extends AbstractPower implements CloneablePowerInterfa
         this.amount = amount;
         this.source = source;
 
-        type = PowerType.BUFF;
+        type = PowerType.DEBUFF;
         isTurnBased = false;
 
         // We load those txtures here.
@@ -52,6 +51,6 @@ public class SubduedPower extends AbstractPower implements CloneablePowerInterfa
     }
     @Override
     public AbstractPower makeCopy() {
-        return new AcidMarkPower(owner, source, amount);
+        return new SubduedPower(owner, source, amount);
     }
 }

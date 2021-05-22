@@ -2,27 +2,23 @@ package theDragonkin.cards.GroveKeeper.Skills;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ThornsPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
-import theDragonkin.powers.GroveKeeper.AlignmentPower;
 import theDragonkin.powers.GroveKeeper.NatrualSpikesPower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class ThornShield  extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(ThornShield.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(ThornShield.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/

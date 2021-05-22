@@ -8,19 +8,19 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class DivineFire extends AbstractHolyCard {
 
-    public static final String ID = DefaultMod.makeID(DivineFire.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(DivineFire.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
@@ -28,10 +28,10 @@ public class DivineFire extends AbstractHolyCard {
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 12;
+    private static final int POTENCY = 8;
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 2;
-    private static final int UPGRADE_MAGIC = 2;
+    private static final int MAGIC = 3;
+    private static final int UPGRADE_MAGIC = 1;
 
     public DivineFire() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -39,7 +39,8 @@ public class DivineFire extends AbstractHolyCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-
+        tags.add(CustomTags.Radiant);
+        RadiantExchange = 1;
     }
 
     @Override

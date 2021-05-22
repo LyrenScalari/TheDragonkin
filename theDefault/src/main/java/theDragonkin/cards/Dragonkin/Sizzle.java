@@ -6,15 +6,16 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.CustomTags;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Sizzle extends AbstractPrimalCard {
 
-    public static final String ID = DefaultMod.makeID(Sizzle.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Sizzle.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -39,16 +40,20 @@ public class Sizzle extends AbstractPrimalCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
+        tags.add(CustomTags.Acid_Activator);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.hasPower(AcidMarkPower.POWER_ID) && !this.upgraded) {
-            addToBot(new LoseHPAction(m, p, m.getPower(AcidMarkPower.POWER_ID).amount));
+        if (!upgraded) {
+            if (m.hasPower(AcidMarkPower.POWER_ID)) {
+                addToBot(new LoseHPAction(m, p, m.getPower(AcidMarkPower.POWER_ID).amount));
+            }
         }
         else {
             addToBot(new TriggerMarksAction(this));
         }
+        super.use(p,m);
     }
 
     @Override
@@ -56,6 +61,7 @@ public class Sizzle extends AbstractPrimalCard {
         if (!upgraded) {
             upgradeName();
             this.rawDescription = UPGRADE_DESCRIPTION;
+            target = CardTarget.ALL_ENEMY;
             initializeDescription();
         }
     }

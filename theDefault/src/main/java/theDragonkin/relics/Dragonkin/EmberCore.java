@@ -2,17 +2,17 @@ package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
+import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-import static theDragonkin.DefaultMod.makeRelicPath;
+import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+import static theDragonkin.DragonkinMod.makeRelicPath;
 
 public class EmberCore extends CustomRelic { // You must implement things you want to use from StSlib
     /*
@@ -23,7 +23,7 @@ public class EmberCore extends CustomRelic { // You must implement things you wa
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("EmberCore");
+    public static final String ID = DragonkinMod.makeID("EmberCore");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("EmberCore.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("EmberCore.png"));
@@ -46,7 +46,7 @@ public class EmberCore extends CustomRelic { // You must implement things you wa
     public void onCardDraw(AbstractCard card){
         if (card.type == AbstractCard.CardType.STATUS && !used){
             addToBot(new DrawCardAction(1));
-            addToBot(new AddTemporaryHPAction(AbstractDungeon.player,AbstractDungeon.player,6));
+            addToBot(new GainDivineArmorAction(AbstractDungeon.player,AbstractDungeon.player,6));
             used = true;
         }
     }

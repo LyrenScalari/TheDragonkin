@@ -6,20 +6,19 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CustomDiscoveryAction;
 import theDragonkin.characters.TheDefault;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
 
 public class DivinePrayer extends AbstractHolyCard {
 
-    public static final String ID = DefaultMod.makeID(DivinePrayer.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(DivinePrayer.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 

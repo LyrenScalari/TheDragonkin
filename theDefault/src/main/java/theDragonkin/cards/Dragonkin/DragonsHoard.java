@@ -1,17 +1,14 @@
 package theDragonkin.cards.Dragonkin;
 
 import basemod.AutoAdd;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rewards.chests.AbstractChest;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.util.DragonsHoardLinkedReward;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 @AutoAdd.Ignore
 public class DragonsHoard extends AbstractDragonkinCard {
 
@@ -24,7 +21,7 @@ public class DragonsHoard extends AbstractDragonkinCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(DragonsHoard.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(DragonsHoard.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
     // /TEXT DECLARATION/

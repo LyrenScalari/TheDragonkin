@@ -3,28 +3,26 @@ package theDragonkin.cards.GroveKeeper.Skills;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.powers.GroveKeeper.AlignmentPower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Moonglow extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(Moonglow.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Moonglow.class.getSimpleName());
     public static final String IMG = makeCardPath("Defend.png");
 
     // /TEXT DECLARATION/
@@ -50,7 +48,7 @@ public class Moonglow extends AbstractGroveKeeperCard {
         baseBlock = BLOCK;
         magicNumber = baseMagicNumber = 2;
         this.tags.add(CustomTags.Lunar);
-        this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
+        this.setOrbTexture(DragonkinMod.Lunar_SMALL_ORB, DragonkinMod.Lunar_LARGE_ORB);
     }
 
     // Actions the card should do.

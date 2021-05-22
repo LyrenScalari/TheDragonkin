@@ -7,20 +7,18 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.actions.DualChoiceRefresh;
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
-import theDragonkin.cards.GroveKeeper.Attacks.Starfall;
 import theDragonkin.cards.GroveKeeper.Choices.*;
 import theDragonkin.characters.TheGroveKeeper;
-import theDragonkin.variables.DefaultSecondMagicNumber;
 
 import java.util.ArrayList;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class BranchingPaths extends AbstractChooseOneCard {
-    public static final String ID = DefaultMod.makeID(BranchingPaths.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(BranchingPaths.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
     private static final AbstractCard.CardRarity RARITY = CardRarity.RARE;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;

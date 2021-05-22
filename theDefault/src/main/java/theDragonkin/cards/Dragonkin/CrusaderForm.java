@@ -3,14 +3,14 @@ package theDragonkin.cards.Dragonkin;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.CrusaderFormpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class CrusaderForm extends AbstractHolyCard {
 
@@ -22,9 +22,9 @@ public class CrusaderForm extends AbstractHolyCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(CrusaderForm.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(CrusaderForm.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     // /TEXT DECLARATION/
 
 
@@ -46,14 +46,16 @@ public class CrusaderForm extends AbstractHolyCard {
 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.
+        magicNumber = baseMagicNumber = 4;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        isEthereal = true;
 
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new CrusaderFormpower(p, p, 2), 2));
+        addToBot(new ApplyPowerAction(p, p, new CrusaderFormpower(p, p, magicNumber,defaultBaseSecondMagicNumber), magicNumber));
     }
 
     //Upgraded stats.
@@ -61,7 +63,8 @@ public class CrusaderForm extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            isEthereal = false;
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

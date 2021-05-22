@@ -7,28 +7,23 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
-import theDragonkin.cards.Gremory.Choices.FlowersAmbition;
-import theDragonkin.cards.Gremory.Choices.ImmaculateSnow;
-import theDragonkin.cards.Gremory.Choices.MoonsMarch;
-import theDragonkin.cards.Gremory.Choices.WindsSong;
+import theDragonkin.DragonkinMod;;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.cards.GroveKeeper.Choices.*;
 import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.powers.GroveKeeper.NaturePower;
-import theDragonkin.powers.GroveKeeper.SwarmPower;
 
 import java.util.ArrayList;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Everbloom extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(Everbloom.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
-    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("Strike.png");
+    public static final String ID = DragonkinMod.makeID(Everbloom.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 

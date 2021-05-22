@@ -1,35 +1,27 @@
 package theDragonkin.relics.Dragonkin;
 
+        import basemod.AutoAdd;
         import basemod.abstracts.CustomBottleRelic;
         import basemod.abstracts.CustomRelic;
         import basemod.abstracts.CustomSavable;
         import com.badlogic.gdx.graphics.Texture;
-        import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
-        import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-        import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
-        import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-        import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
         import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
-        import com.megacrit.cardcrawl.actions.utility.UseCardAction;
         import com.megacrit.cardcrawl.cards.AbstractCard;
         import com.megacrit.cardcrawl.cards.CardGroup;
         import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
         import com.megacrit.cardcrawl.helpers.FontHelper;
         import com.megacrit.cardcrawl.helpers.PowerTip;
-        import com.megacrit.cardcrawl.monsters.AbstractMonster;
-        import com.megacrit.cardcrawl.relics.AbstractRelic;
         import com.megacrit.cardcrawl.rooms.AbstractRoom;
         import theDragonkin.CustomTags;
-        import theDragonkin.DefaultMod;
+        import theDragonkin.DragonkinMod;
         import theDragonkin.patches.relics.BottledPlaceholderField;
-        import theDragonkin.powers.Dragonkin.DivineConvictionpower;
         import theDragonkin.util.TextureLoader;
 
         import java.util.function.Predicate;
 
-        import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-        import static theDragonkin.DefaultMod.makeRelicPath;
-
+        import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+        import static theDragonkin.DragonkinMod.makeRelicPath;
+@AutoAdd.Ignore
 public class BottledVoice extends CustomRelic implements CustomBottleRelic, CustomSavable<Integer> {
 // This file will show you how to use 2 things - (Mostly) The Custom Bottle Relic and the Custom Savable - they go hand in hand.
 
@@ -48,7 +40,7 @@ public class BottledVoice extends CustomRelic implements CustomBottleRelic, Cust
 
 
         // ID, images, text.
-        public static final String ID = DefaultMod.makeID("BottledVoice");
+        public static final String ID = DragonkinMod.makeID("BottledVoice");
         private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("BottledPlaceholder.png"));
         private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("BottledPlaceholder.png"));
 

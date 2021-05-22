@@ -1,31 +1,24 @@
 package theDragonkin.cards.GroveKeeper.Attacks;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.red.PerfectedStrike;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
-import theDragonkin.cards.GroveKeeper.Choices.Starlord;
-import theDragonkin.cards.GroveKeeper.Choices.StellarDrift;
 import theDragonkin.cards.GroveKeeper.Choices.SwarmAmbush;
 import theDragonkin.cards.GroveKeeper.Choices.SwarmAssault;
 import theDragonkin.characters.TheGroveKeeper;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class SwarmStrike extends AbstractChooseOneCard {
-    public static final String ID = DefaultMod.makeID(SwarmStrike .class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
-    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("Strike.png");
+    public static final String ID = DragonkinMod.makeID(SwarmStrike .class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.

@@ -4,8 +4,6 @@ import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theDragonkin.cards.AbstractDefaultCard;
 
-import static theDragonkin.DefaultMod.makeID;
-
 public class DefaultSecondMagicNumber extends DynamicVariable {
 
 //For in-depth comments, check the other variable(DefaultCustomVariable). It's nearly identical.

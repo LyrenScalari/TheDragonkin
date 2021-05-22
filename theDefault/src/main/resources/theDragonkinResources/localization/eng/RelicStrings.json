@@ -1,0 +1,132 @@
+{
+  "theDragonkin:GarnetScale": {
+    "NAME": "Garnet Scales",
+    "FLAVOR": "They Pulse with the Warmth of a Dragon's Fury.",
+    "DESCRIPTIONS": [
+      "After you play your first [#94bdff]Holy[] card each turn, gain #b4 #yBlock."
+    ]
+  },
+
+  "theDragonkin:EmberCore": {
+    "NAME": "Sunlight Fragment",
+    "FLAVOR": "It's warm to the touch.",
+    "DESCRIPTIONS": [
+      "The First time you draw a #yStatus each turn draw a card and gain #b6 #yDivine #yArmor."
+    ]
+  },
+  "theDragonkin:FernosBellows": {
+  "NAME": "Ferno's Bellows",
+  "FLAVOR": "Forge Dragon Bellows turn the slightest Spark into a Roaring Blaze.",
+  "DESCRIPTIONS": [
+    "After you Generate a #yBurn Apply #b2 #yScorch to all Enemies."
+  ]
+},
+  "theDragonkin:MukySludge": {
+    "NAME": "Muky Sludge",
+    "FLAVOR": "A Toxic Sludge that can dissolve even metal.",
+    "DESCRIPTIONS": [
+      "At the end of your Turn, ALL enemies lose HP equal to their #yDissolve."
+    ]
+  },
+  "theDragonkin:TilerasShield": {
+    "NAME": "Tilera's Shield",
+    "FLAVOR": "The Aegis of Great Commander Tilera, It stopped many weapons and armored her in Golden Light.",
+    "DESCRIPTIONS": [
+      "Upon pickup, heal #b1 for each relic you have. \n Whenever you obtain a relic, gain #b3 max HP."
+    ]
+  },
+  "theDragonkin:BottledVoice": {
+    "NAME": "Bottled Voice",
+    "FLAVOR": "\"Zulko,\nGol Ahrk,\nPahfen Honhiin Rein!\" \n - Paarthuunir",
+    "DESCRIPTIONS": [
+      "Upon pickup, choose a #yDragon #yBreath. Play it at the start of each combat.",
+      "Choose a card for ",
+      "Play ",
+      " at the start of combat."
+    ]
+  },
+  "theDragonkin:BookOfHymns": {
+    "NAME": "Book of Hymns",
+    "FLAVOR": "A Book of Crusader Hymns, telling tales of Heroism in the name of Naruuin.",
+    "DESCRIPTIONS": [
+      "The first time you lose #yBlock each combat gain #b2 #yZeal."
+    ]
+  },
+
+  "theDragonkin:Sulfurian": {
+    "NAME": "Sulfurian",
+    "FLAVOR": "The Great Mace of the Molten Core, known to incinerate anything.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. \n Shuffle #b1 Burns into your Discard pile after taking unblocked damage."
+    ]
+  },
+
+  "theDragonkin:RotnestWings": {
+    "NAME": "Crystallized Dragonbreath",
+    "FLAVOR": "An Airborne Deposition of gaseous Dragonbreath, simply bottling this substance as a gas has countless alchemical applications.",
+    "DESCRIPTIONS": [
+      "You first #yDragon #yBreath played each turn Costs #b0 and draws you a card. \n Your #yDragon #yBreaths take an extra turn to release."
+    ]
+  },
+
+  "theDragonkin:ObsidianScale": {
+    "NAME": "Obsidian Scales",
+    "FLAVOR": "These cursed Scales whisper terrible things, You feel like your Thoughts are no longer your own.",
+    "DESCRIPTIONS": ["Replaces ",
+      ". NL After you play your first [#fe513a]Primal[] card each turn, gain #b4 #yFury."
+    ]
+  },
+
+  "theDragonkin:SunblessedCharm": {
+    "NAME": "Sunblessed Charm",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Gain #b1 #yZeal at the start of each combat."
+    ]
+  },
+
+  "theDragonkin:PlaceholderRelic2": {
+    "NAME": "Placeholder Relic 2",
+    "FLAVOR": "You feel stronger.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, gain #b1 #yStrength."
+    ]
+  },
+  "theDragonkin:DefaultClickableRelic": {
+    "NAME": "Right-Clicky Relic",
+    "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
+    "DESCRIPTIONS": [
+      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
+      "YOU ARE MINE!"
+    ]
+  },
+  "theDragonkin:CrestofFlames": {
+    "NAME": "Burning Soulstone",
+    "FLAVOR": "This pulsing stone seethes in great ancient power.",
+    "DESCRIPTIONS": ["The first card you play of each #yElement each Combat deals 3 more damage and gains 3 more Block."
+    ]
+  },
+  "theDragonkin:BlackHeart": {
+    "NAME": "Blackened Heart",
+    "FLAVOR": "Resolve and divine flame forever burn in your heart.",
+    "DESCRIPTIONS": ["At the start of each combat #yRecruit 1 of 3 #ySpecial #yBattalions."
+    ]
+  },
+  "theDragonkin:GrovekeeperStarting": {
+    "NAME": "Shattered Charm",
+    "FLAVOR": "A Fractured Charm that once Symbolized a Defender of Nature. Broken when the owner is exiled.",
+    "DESCRIPTIONS": ["At the start of each combat #yChannel 1 #yHungry #yBloom."
+    ]
+  },
+
+  "theDragonkin:BottledPlaceholderRelic": {
+    "NAME": "Bottled Placeholder",
+    "FLAVOR": "What is this?",
+    "DESCRIPTIONS": [
+      "Choose a card. Whenever you take play any card, draw the chosen card.",
+      "Whenever you play a card, draw ",
+      ".",
+      "Select a card to bottle for "
+    ]
+  }
+}

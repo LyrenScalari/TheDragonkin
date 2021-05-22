@@ -12,14 +12,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makePowerPath;
+import static theDragonkin.DragonkinMod.makePowerPath;
 
 public class Moonstruck extends AbstractUpdatingTwoAmountPower {
     public AbstractCreature source;
-    public static final String POWER_ID = DefaultMod.makeID("Moonstruck");
+    public static final String POWER_ID = DragonkinMod.makeID("Moonstruck");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

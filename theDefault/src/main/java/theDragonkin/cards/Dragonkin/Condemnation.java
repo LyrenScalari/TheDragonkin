@@ -1,18 +1,20 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.CardMods.StormEffect;
+import theDragonkin.DragonkinMod;
+import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.HolyBombPower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class Condemnation extends AbstractHolyCard {
+public class Condemnation extends AbstractHolyCard implements StormCard {
 
-    public static final String ID = DefaultMod.makeID(Condemnation.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Condemnation.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -24,7 +26,7 @@ public class Condemnation extends AbstractHolyCard {
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
 
-    private static final int POTENCY = 45;
+    private static final int POTENCY = 40;
     private static final int UPGRADE_PLUS_POTENCY = 10;
     private static final int MAGIC = 0;
     private static final int UPGRADE_MAGIC = 0;
@@ -35,12 +37,17 @@ public class Condemnation extends AbstractHolyCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-
+        StormRate = 10;
+        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new HolyBombPower(p,p,3,damage)));
+        if (!Storm) {
+            addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 3, damage)));
+        } else {
+            addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 1, damage)));
+        }
     }
 
     @Override
@@ -48,9 +55,12 @@ public class Condemnation extends AbstractHolyCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_POTENCY);
-            upgradeBaseCost(UPGRADED_COST);
-            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
+    }
+
+    @Override
+    public void onStorm() {
+
     }
 }

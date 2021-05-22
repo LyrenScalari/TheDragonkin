@@ -9,15 +9,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makePowerPath;
+import static theDragonkin.DragonkinMod.makePowerPath;
 
 public class AlignmentPower extends TwoAmountPower {
         public AbstractCreature source;
-        public static final String POWER_ID = DefaultMod.makeID("AlignmentPower");
+        public static final String POWER_ID = DragonkinMod.makeID("AlignmentPower");
         private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         public static final String NAME = powerStrings.NAME;
         public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

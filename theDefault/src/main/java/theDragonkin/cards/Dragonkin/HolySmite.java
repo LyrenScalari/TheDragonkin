@@ -5,15 +5,18 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class HolySmite extends AbstractHolyCard {
 
@@ -37,7 +40,7 @@ public class HolySmite extends AbstractHolyCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(HolySmite.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = DragonkinMod.makeID(HolySmite.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("HolySmite.png");// "public static final String IMG = makeCardPath("HolySmite.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -51,12 +54,12 @@ public class HolySmite extends AbstractHolyCard {
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
 
-    private static final int DAMAGE = 4;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int DAMAGE = 5;
+    private static final int UPGRADE_PLUS_DMG = 3;
 
     // /STAT DECLARATION/
 
@@ -64,25 +67,45 @@ public class HolySmite extends AbstractHolyCard {
     public HolySmite() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
-    this.baseMagicNumber = 2;
+    this.baseMagicNumber = 1;
     this.magicNumber = this.baseMagicNumber;
+    defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+    tags.add(CustomTags.Radiant);
+    RadiantExchange = 5;
 }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < this.magicNumber; ++i) {
+        for (int i = 0; i < this.defaultSecondMagicNumber; ++i) {
             AbstractDungeon.actionManager.addToBottom(
                     new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            AbstractDungeon.actionManager.addToBottom(
+                    new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false)));
+
+            AbstractDungeon.actionManager.addToBottom(
+                    new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false)));
         }
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false)));
-
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false)));
     }
-
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        if (AbstractDungeon.player.hasPower(DivineConvictionpower.POWER_ID)){
+            if (AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID).amount%5 == 0){
+             rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            }
+        } else rawDescription = cardStrings.DESCRIPTION;
+        super.calculateCardDamage(mo);
+    }
+    @Override
+    public void applyPowers() {
+        if (AbstractDungeon.player.hasPower(DivineConvictionpower.POWER_ID)){
+            if (AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID).amount%RadiantExchange == 0){
+                rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            }
+        } else rawDescription = cardStrings.DESCRIPTION;
+        super.applyPowers();
+    }
 
     // Upgraded stats.
     @Override

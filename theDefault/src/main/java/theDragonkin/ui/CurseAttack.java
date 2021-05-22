@@ -6,9 +6,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import com.megacrit.cardcrawl.vfx.DebuffParticleEffect;
 import com.megacrit.cardcrawl.vfx.combat.BuffParticleEffect;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 
 import java.util.ArrayList;
 
@@ -29,8 +28,8 @@ public class CurseAttack extends CustomIntent {
      */
     public CurseAttack() {
         super(CurseAttackEnum.CURSE_ATTACK_INTENT, TEXT[0],
-                DefaultMod.CURSEATTACK_INTENT, //These are just the paths to my images.
-                DefaultMod.CURSEATTACK_TOOLTIP,  //Will differ for yours, of course.
+                DragonkinMod.CURSEATTACK_INTENT, //These are just the paths to my images.
+                DragonkinMod.CURSEATTACK_TOOLTIP,  //Will differ for yours, of course.
                 "OPTIONAL STRING HERE");
     }
 

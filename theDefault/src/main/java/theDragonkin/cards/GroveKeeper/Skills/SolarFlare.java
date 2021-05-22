@@ -1,32 +1,27 @@
 package theDragonkin.cards.GroveKeeper.Skills;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.powers.GroveKeeper.AlignmentPower;
-import theDragonkin.powers.GroveKeeper.Sunburn;
-import theDragonkin.variables.DefaultSecondMagicNumber;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class SolarFlare extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(SolarFlare.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("Strike.png");
+    public static final String ID = DragonkinMod.makeID(SolarFlare.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 
@@ -55,7 +50,7 @@ public class SolarFlare extends AbstractGroveKeeperCard {
         magicNumber = baseMagicNumber = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         this.tags.add(CustomTags.Solar);
-        this.setOrbTexture(DefaultMod.Solar_SMALL_ORB,DefaultMod.Solar_LARGE_ORB);
+        this.setOrbTexture(DragonkinMod.Solar_SMALL_ORB, DragonkinMod.Solar_LARGE_ORB);
     }
 
 

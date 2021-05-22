@@ -1,27 +1,27 @@
 package theDragonkin.cards.Dragonkin;
 
-import basemod.devcommands.draw.Draw;
+import basemod.BaseMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.DefaultMod;
+import com.megacrit.cardcrawl.powers.NoDrawPower;
+import theDragonkin.CardMods.StormEffect;
+import theDragonkin.DragonkinMod;
+import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.DragonBreaths.AbstractDragonBreathPower;
-import theDragonkin.powers.Dragonkin.FuryPower;
+import theDragonkin.powers.Dragonkin.HeatPower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class Flashpoint extends AbstractPrimalCard {
+public class Flashpoint extends AbstractPrimalCard implements StormCard {
 
-    public static final String ID = DefaultMod.makeID(Flashpoint.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Flashpoint.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
@@ -36,22 +36,37 @@ public class Flashpoint extends AbstractPrimalCard {
 
     public Flashpoint() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 8;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
+        magicNumber = baseMagicNumber = 3;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        StormRate = 6;
+        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
-    public void applyPowers() {
-        if (defaultSecondMagicNumber > 1) {
-            super.applyPowers();
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            this.initializeDescription();
-        }
-        super.applyPowers();
-    }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(defaultSecondMagicNumber));
-        addToBot(new ApplyPowerAction(p,p,new FuryPower(p,p,magicNumber),magicNumber));
+        addToBot(new ApplyPowerAction(p,p,new HeatPower(p,p,magicNumber)));
+        if (!(AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) || !AbstractDungeon.player.hasPower(NoDrawPower.POWER_ID)){
+            int burncount = 0;
+            for (AbstractCard c : AbstractDungeon.player.drawPile.group){
+                if (c.type == CardType.STATUS){
+                    burncount++;
+                    if (burncount >= magicNumber){
+                        break;
+                    }
+                    addToBot(new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            AbstractDungeon.player.drawPile.group.remove(c);
+                            AbstractDungeon.player.drawPile.addToTop(c);
+                            isDone = true; }
+                    });
+                    addToBot(new DrawCardAction(1));
+                }
+            }
+        }
+        if (!Storm){
+            super.use(p,m);
+        }
     }
 
     @Override
@@ -61,5 +76,10 @@ public class Flashpoint extends AbstractPrimalCard {
             upgradeMagicNumber(2);
             initializeDescription();
         }
+    }
+
+    @Override
+    public void onStorm() {
+
     }
 }

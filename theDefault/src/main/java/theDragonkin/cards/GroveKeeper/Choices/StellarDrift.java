@@ -4,7 +4,6 @@ import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,16 +13,15 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
-import theDragonkin.orbs.InvigoratingBloom;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 @AutoAdd.Ignore
 public class StellarDrift extends AbstractGroveKeeperCard {
-    public static final String ID = DefaultMod.makeID(StellarDrift.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(StellarDrift.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -43,12 +41,12 @@ public class StellarDrift extends AbstractGroveKeeperCard {
         damage = baseDamage = DAMAGE;
         isMultiDamage = true;
         AOEDmg = multiDamage;
-        this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
+        this.setOrbTexture(DragonkinMod.Lunar_SMALL_ORB, DragonkinMod.Lunar_LARGE_ORB);
     }
     public StellarDrift(int[] dmg) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(CustomTags.Lunar);
-        this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
+        this.setOrbTexture(DragonkinMod.Lunar_SMALL_ORB, DragonkinMod.Lunar_LARGE_ORB);
         AOEDmg = dmg;
         damage = baseDamage = AOEDmg[0];
     }

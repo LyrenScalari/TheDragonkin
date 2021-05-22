@@ -1,0 +1,106 @@
+{
+  "theDefault:DefaultOrb": {
+    "NAME": "Default Orb",
+    "DESCRIPTION": [
+      "#yPassive: At the start of your turn, draw #b",
+      " card.",
+      " cards.",
+      " NL #yEvoke: Deal #b",
+      " damage to all enemies."
+    ]
+  },
+  "theDragonkin:Ember": {
+    "NAME": "Ember",
+    "DESCRIPTION": [
+      "#yEvokes at the end of your turn if you have any excess energy.",
+      " NL #yEvoke: Deal #b",
+      " damage to "
+    ]
+  },
+  "theDragonkin:Stone": {
+    "NAME": "Stone",
+    "DESCRIPTION": [
+      "#yEvokes after you evoke another orb.",
+      " NL #yEvoke: Gain #b",
+      " Block"
+    ]
+  },
+  "theDragonkin:ImperialKnights": {
+    "NAME": "Imperial Knights",
+    "DESCRIPTION": [
+      "#yPassive: At the end of your turn gain #b",
+      " Block",
+      " NL #yGambit(5): Gain #b",
+      " Block",
+      " NL Current #yStamina - "
+    ]
+  },
+  "theDragonkin:ImperialArchers": {
+    "NAME": "Imperial Archers",
+    "DESCRIPTION": [
+      "#yPassive: At the start of your turn, add an #yAim to your hand",
+      "At the end of your turn deal #b",
+      " damage to ",
+      " NL #yGambit(5): deal #b",
+      " damage to ALL enemies.",
+      " NL Current #yStamina - "
+    ]
+  },
+  "theDragonkin:ImperialMages": {
+    "NAME": "Imperial Mages",
+    "DESCRIPTION": [
+      "#yPassive: At the end of your turn deal #b",
+      " damage to ",
+      " NL #yGambit(2): deal #b",
+      " damage to ALL enemies.",
+      " NL Current #yStamina - "
+    ]
+  },
+  "theDragonkin:InvigoratingBloom": {
+    "NAME": "Invigorating Bloom",
+    "DESCRIPTION": [
+      "#yHarvest: Draw a Card.",
+      " NL #yEvoke: Gain ",
+      " NL Passive Power #b"
+    ]
+  },
+  "theDragonkin:ThornBloom": {
+    "NAME": "Hungry Bloom",
+    "DESCRIPTION": [
+      "#yHarvest: Deal #b",
+      " damage to a random enemy.",
+      " NL #yEvoke: Gain #b",
+      " #yVigor.",
+      " NL Passive Power #b"
+    ]
+  },
+  "theDragonkin:ToxicBloom": {
+    "NAME": "Toxic Bloom",
+    "DESCRIPTION": [
+      "#yHarvest: Apply #b",
+      " #yPoison to a random enemy.",
+      " NL #yEvoke: Gain #b",
+      " #yBlock.",
+      " NL Passive Power #b"
+    ]
+  },
+  "theDragonkin:PrimalBloom": {
+    "NAME": "Primal Bloom",
+    "DESCRIPTION": [
+      "#yHarvest: Gain #b",
+      " #yNatrual #ySpikes.",
+      " NL #yEvoke: Lose #b",
+      " #yNatrual #ySpikes.",
+      " NL Passive Power #b"
+    ]
+  },
+  "theDragonkin:LifeBloom": {
+    "NAME": "Life Bloom",
+    "DESCRIPTION": [
+      "#yHarvest: Gain #b",
+      " Temporary HP.",
+      " NL #yEvoke: Heal #b",
+      " NL Passive Power #b"
+    ]
+  }
+}

@@ -4,16 +4,15 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.AshenArmorpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class AshenArmor extends AbstractPrimalCard {
 
-    public static final String ID = DefaultMod.makeID(AshenArmor.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(AshenArmor.class.getSimpleName());
     public static final String IMG = makeCardPath("AshenArmor.png");
 
 
@@ -43,6 +42,7 @@ public class AshenArmor extends AbstractPrimalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
         new ApplyPowerAction(p,p, new AshenArmorpower(p,p, baseBlock)));
+        super.use(p,m);
     }
 
     @Override

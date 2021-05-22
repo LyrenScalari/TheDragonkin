@@ -1,6 +1,5 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -9,14 +8,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
+import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class HallowedGround extends AbstractHolyCard {
 
-    public static final String ID = DefaultMod.makeID(HallowedGround.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(HallowedGround.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -28,10 +28,10 @@ public class HallowedGround extends AbstractHolyCard {
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
 
-    private static final int POTENCY = 5;
+    private static final int POTENCY = 8;
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 5;
-    private static final int UPGRADE_MAGIC = 0;
+    private static final int MAGIC = 8;
+    private static final int UPGRADE_MAGIC = 1;
 
     public HallowedGround() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -40,6 +40,8 @@ public class HallowedGround extends AbstractHolyCard {
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         ExhaustiveVariable.setBaseValue(this, 2);
+        tags.add(CustomTags.Radiant);
+        RadiantExchange = 2;
     }
 
     @Override
@@ -48,7 +50,7 @@ public class HallowedGround extends AbstractHolyCard {
                 new DamageAllEnemiesAction(p,damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!mo.isDeadOrEscaped()) {
-                addToBot(new AddTemporaryHPAction(p, p, magicNumber));
+                addToBot(new GainDivineArmorAction(p,p,magicNumber));
             }
         }
     }

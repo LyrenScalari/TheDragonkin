@@ -2,17 +2,14 @@ package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.watcher.TriggerMarksAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-import static theDragonkin.DefaultMod.makeRelicPath;
+import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+import static theDragonkin.DragonkinMod.makeRelicPath;
 
 public class MukySludge extends CustomRelic { // You must implement things you want to use from StSlib
     /*
@@ -23,7 +20,7 @@ public class MukySludge extends CustomRelic { // You must implement things you w
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("MukySludge");
+    public static final String ID = DragonkinMod.makeID("MukySludge");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("MukySludge.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("MukySludge.png"));

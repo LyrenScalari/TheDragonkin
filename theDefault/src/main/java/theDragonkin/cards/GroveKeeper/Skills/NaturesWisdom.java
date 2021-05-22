@@ -7,20 +7,18 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
-import theDragonkin.cards.GroveKeeper.Choices.EverbloomInvig;
-import theDragonkin.cards.GroveKeeper.Choices.EverbloomThorn;
 import theDragonkin.cards.GroveKeeper.Choices.TimetoReap;
 import theDragonkin.cards.GroveKeeper.Choices.TimetoSow;
 import theDragonkin.characters.TheGroveKeeper;
 
 import java.util.ArrayList;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class NaturesWisdom extends AbstractChooseOneCard {
-    public static final String ID = DefaultMod.makeID(NaturesWisdom.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(NaturesWisdom.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
     private static final AbstractCard.CardRarity RARITY = CardRarity.RARE;
     private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;

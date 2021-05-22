@@ -3,26 +3,31 @@ package theDragonkin.powers.Dragonkin;
 
 
 import basemod.interfaces.CloneablePowerInterface;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.DefaultMod;
+import theDragonkin.CustomTags;
+import theDragonkin.DragonkinMod;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makePowerPath;
+import static theDragonkin.DragonkinMod.makePowerPath;
 
 //Gain 1 dex for the turn for each card played.
 
-public class Scorchpower extends AbstractPower implements CloneablePowerInterface {
+public class Scorchpower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("Scorch");
+    public static final String POWER_ID = DragonkinMod.makeID("Scorch");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -51,16 +56,13 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
     }
 
     @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType dt) {
-        return damage + this.amount;
-    }
-
-    @Override
     public int onAttacked(DamageInfo di, int d){
-        if (di.type != DamageInfo.DamageType.HP_LOSS) {
+        if (di.type == DamageInfo.DamageType.NORMAL) {
             this.flash();
+            int temp = amount;
             AbstractDungeon.actionManager.addToTop(
-                    new ReducePowerAction(this.owner, this.owner, this, (int)Math.ceil((float)amount/2)));
+                    new ReducePowerAction(this.owner, this.owner, this, 1));
+            return d + temp;
         }
             return d;
     }
@@ -81,5 +83,22 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
     @Override
     public AbstractPower makeCopy() {
         return new Scorchpower(owner, source, amount);
+    }
+
+    @Override
+    public int getHealthBarAmount() {
+        if (AbstractDungeon.player.hoveredCard != null) {
+            if (AbstractDungeon.player.hoveredCard.type == AbstractCard.CardType.ATTACK && !AbstractDungeon.player.hoveredCard.hasTag(CustomTags.Dragon_Breath)) {
+                if (AbstractDungeon.player.hoveredCard.target == AbstractCard.CardTarget.ENEMY && !(owner.hb.hovered)) {
+                    return 0;
+                } else return amount;
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public Color getColor() {
+        return CardHelper.getColor(209,107,4);
     }
 }

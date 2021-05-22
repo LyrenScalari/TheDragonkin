@@ -2,7 +2,6 @@ package theDragonkin.cards.GroveKeeper.Choices;
 
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,15 +12,15 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 @AutoAdd.Ignore
 public class FindtheSecret extends AbstractGroveKeeperCard {
-    public static final String ID = DefaultMod.makeID(FindtheSecret.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(FindtheSecret.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
 

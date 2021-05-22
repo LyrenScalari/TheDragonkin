@@ -7,15 +7,16 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.CustomTags;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.AcidMarkPower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class CorrosiveBelch extends AbstractPrimalCard {
 
-    public static final String ID = DefaultMod.makeID(CorrosiveBelch.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(CorrosiveBelch.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -40,7 +41,7 @@ public class CorrosiveBelch extends AbstractPrimalCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-
+        tags.add(CustomTags.Acid_Activator);
     }
 
     @Override
@@ -53,6 +54,7 @@ public class CorrosiveBelch extends AbstractPrimalCard {
                     addToBot(new LoseHPAction(m,p,m.getPower(AcidMarkPower.POWER_ID).amount));
                 }
         }
+        super.use(p,m);
     }
 
     @Override

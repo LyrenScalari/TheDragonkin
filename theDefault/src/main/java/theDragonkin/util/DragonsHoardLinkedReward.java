@@ -5,12 +5,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rewards.chests.AbstractChest;
@@ -26,6 +28,7 @@ public class DragonsHoardLinkedReward extends RewardItem
     public int COMMON_CHANCE = 15;
     public int UNCOMMON_CHANCE = 10;
     public int RARE_CHANCE;
+    private UIStrings uiStrings =  CardCrawlGame.languagePack.getUIString("theDragonkin:DragonsHoardRewardStrings");
     public RewardItem RelicReward;
     public DragonsHoardLinkedReward() {
         int roll = AbstractDungeon.treasureRng.random(0, 99);
@@ -44,6 +47,10 @@ public class DragonsHoardLinkedReward extends RewardItem
         DragonsHoardLinkedReward reward2 = new DragonsHoardLinkedReward(new RareCardsReward());
         AbstractDungeon.getCurrRoom().rewards.add(reward2);
         addRelicLink(reward2);
+
+        //DragonsHoardLinkedReward reward3 = new DragonsHoardLinkedReward(new RewardItem(Math.round(AbstractDungeon.treasureRng.random((float)75 * 0.9F, (float)75 * 1.1F))));
+        //AbstractDungeon.getCurrRoom().rewards.add(reward3);
+       // addRelicLink(reward3);
     }
 
     public DragonsHoardLinkedReward(RewardItem original){
@@ -167,7 +174,13 @@ public class DragonsHoardLinkedReward extends RewardItem
             if (hb.hovered) {
                 ArrayList<PowerTip> tips = new ArrayList<>();
                 for (RewardItem link : relicLinks) {
-                    tips.add(new PowerTip(TEXT[7], TEXT[8] + FontHelper.colorString(link.relic.name + TEXT[9], "y")));
+                    if (link.type == RewardType.RELIC) {
+                        tips.add(new PowerTip(TEXT[7], TEXT[8] + FontHelper.colorString(link.relic.name + TEXT[9], "y")));
+                    } else if (link.type == RewardType.CARD){
+                        tips.add(new PowerTip(TEXT[7], TEXT[8] + FontHelper.colorString(uiStrings.TEXT[1], "y")));
+                    } else {
+                        tips.add(new PowerTip(TEXT[7], TEXT[8] + FontHelper.colorString(uiStrings.TEXT[0], "y")));
+                    }
                 }
                 TipHelper.queuePowerTips(360.0f * Settings.scale, InputHelper.mY + 50.0f * Settings.scale, tips);
             }

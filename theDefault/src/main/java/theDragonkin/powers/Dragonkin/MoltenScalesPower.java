@@ -4,22 +4,22 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makePowerPath;
+import static theDragonkin.DragonkinMod.makePowerPath;
 
 public class MoltenScalesPower extends AbstractPower implements CloneablePowerInterface  {
 
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("MoltenScales");
+    public static final String POWER_ID = DragonkinMod.makeID("MoltenScales");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -48,15 +48,12 @@ public class MoltenScalesPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
-            this.flash();
-            AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(info.owner, this.owner, new Scorchpower(info.owner,this.owner,this.amount)));
+    public int onLoseHp(int damageAmount) {
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
+            addToBot(new ApplyPowerAction(m,AbstractDungeon.player,new Scorchpower(m,AbstractDungeon.player,amount)));
         }
         return damageAmount;
     }
-
 
     // Note: If you want to apply an effect when a power is being applied you have 3 options:
     //onInitialApplication is "When THIS power is first applied for the very first time only."

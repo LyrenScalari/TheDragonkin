@@ -4,10 +4,10 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Defend extends AbstractDragonkinCard {
 
@@ -20,7 +20,7 @@ public class Defend extends AbstractDragonkinCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(Defend.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Defend.class.getSimpleName());
     public static final String IMG = makeCardPath("Defend.png");
 
     // /TEXT DECLARATION/

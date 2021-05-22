@@ -13,12 +13,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 
 public class Exhaustion extends AbstractPower implements NonStackablePower {
     public AbstractCreature source;
     AbstractPower p = AbstractDungeon.player.getPower(Exhaustion.POWER_ID);
-    public static final String POWER_ID = DefaultMod.makeID("Exhaustion");
+    public static final String POWER_ID = DragonkinMod.makeID("Exhaustion");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     private UIStrings uiStrings =  CardCrawlGame.languagePack.getUIString("theDragonkin:CardmodStrings");
     public static final String NAME = powerStrings.NAME;

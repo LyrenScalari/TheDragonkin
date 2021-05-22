@@ -7,11 +7,11 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class EmberSwipe extends AbstractPrimalCard {
 
@@ -31,7 +31,7 @@ public class EmberSwipe extends AbstractPrimalCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(EmberSwipe.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(EmberSwipe.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
     // /TEXT DECLARATION/
@@ -53,7 +53,7 @@ public class EmberSwipe extends AbstractPrimalCard {
     public EmberSwipe() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = 7;
-        this.baseMagicNumber = 1;
+        this.baseMagicNumber = 2;
         this.magicNumber = baseMagicNumber;
         this.isMultiDamage = true;
 
@@ -69,6 +69,7 @@ public class EmberSwipe extends AbstractPrimalCard {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p,
                         new Scorchpower(mo,p, magicNumber), magicNumber));
         }
+        super.use(p,m);
     }
 
     // Upgraded stats.

@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
@@ -9,11 +10,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theDragonkin.CardMods.StormEffect;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class DivineStorm extends AbstractHolyCard {
 
@@ -25,7 +27,7 @@ public class DivineStorm extends AbstractHolyCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(DivineStorm.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(DivineStorm.class.getSimpleName());
     public static final String IMG = makeCardPath("DivineStorm.png");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     // /TEXT DECLARATION/
@@ -39,7 +41,7 @@ public class DivineStorm extends AbstractHolyCard {
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
     private static final int COST = -1;
-    private static final int DAMAGE = 15;
+    private static final int DAMAGE = 9;
     private static final int UPGRADE_PLUS_DMG = 0;
     public static int repeats = 0;
     // /STAT DECLARATION/
@@ -50,6 +52,9 @@ public class DivineStorm extends AbstractHolyCard {
         baseDamage = DAMAGE;
         this.baseMagicNumber = 0;
         this.magicNumber = baseMagicNumber;
+        CardModifierManager.addModifier(this,new StormEffect(15));
+        tags.add(CustomTags.Radiant);
+        RadiantExchange = 2;
         this.exhaust = true;
     }
 
@@ -74,9 +79,10 @@ public class DivineStorm extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            retain = true;
+            selfRetain = true;
             rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }
+
 }

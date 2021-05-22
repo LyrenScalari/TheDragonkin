@@ -2,26 +2,17 @@ package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.AbstractHolyCard;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-import static theDragonkin.DefaultMod.makeRelicPath;
+import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+import static theDragonkin.DragonkinMod.makeRelicPath;
 
 public class GarnetScale extends CustomRelic{ // You must implement things you want to use from StSlib
     /*
@@ -32,7 +23,7 @@ public class GarnetScale extends CustomRelic{ // You must implement things you w
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("GarnetScale");
+    public static final String ID = DragonkinMod.makeID("GarnetScale");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("GarnetScale.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("GarnetScale.png"));
@@ -58,9 +49,10 @@ public class GarnetScale extends CustomRelic{ // You must implement things you w
     }
     @Override
     public void onUseCard(final AbstractCard c , final UseCardAction ca){
-        if (c instanceof AbstractHolyCard){
+        if (c instanceof AbstractHolyCard && !used){
             this.flash();
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,4));
+            used = true;
         }
     }
     @Override
@@ -75,6 +67,7 @@ public void atTurnStart(){
     @Override
     public void onPlayerEndTurn() {
         Statuscount = 0;
+        used = false;
         burncount = 0;
     }
 
@@ -82,6 +75,7 @@ public void atTurnStart(){
     @Override
     public void onVictory() {
         Statuscount = 0;
+        used = false;
         stopPulse(); // Don't keep pulsing past the victory screen/outside of combat.
     }
 

@@ -1,22 +1,14 @@
 package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
-import basemod.interfaces.RelicGetSubscriber;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
-import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-import static theDragonkin.DefaultMod.makeRelicPath;
+import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+import static theDragonkin.DragonkinMod.makeRelicPath;
 
 public class TilerasShield extends CustomRelic { // You must implement things you want to use from StSlib
     /*
@@ -27,7 +19,7 @@ public class TilerasShield extends CustomRelic { // You must implement things yo
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("TilerasShield");
+    public static final String ID = DragonkinMod.makeID("TilerasShield");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
@@ -44,7 +36,7 @@ public class TilerasShield extends CustomRelic { // You must implement things yo
 
     @Override
     public void onEquip() {
-        AbstractDungeon.actionManager.addToBottom(new HealAction(AbstractDungeon.player,AbstractDungeon.player,AbstractDungeon.player.relics.size()));
+        AbstractDungeon.player.heal(AbstractDungeon.player.relics.size());
     }
     // Description
     @Override

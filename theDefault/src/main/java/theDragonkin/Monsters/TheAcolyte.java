@@ -28,6 +28,7 @@ import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
+import theDragonkin.cards.Dragonkin.Suffering;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.CustomBoss.*;
 import theDragonkin.powers.Dragonkin.Scorchpower;
@@ -72,15 +73,15 @@ public class TheAcolyte extends AbstractBossMonster {
         this.type = EnemyType.BOSS;
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;
-        addMove(CursedBlade, Intent.ATTACK_DEBUFF, 25); // 25 Damage + Add a random curse to the players Draw pile
-        addMove(Corruption, Intent.STRONG_DEBUFF, -1); // for 2 turns add a Suffering (Pain but can be blocked) to your hand at the start of your turn
-        addMove(Shadowburn, Intent.ATTACK_DEBUFF, 25); // 25 damage + 4 Scorch
+        addMove(CursedBlade, Intent.ATTACK_DEBUFF, 20); // 25 Damage + Add a random curse to the players Draw pile
+        addMove(Corruption, Intent.DEBUFF, -1); // for 2 turns add a Suffering (Pain but can be blocked) to your hand at the start of your turn
+        addMove(Shadowburn, Intent.ATTACK_DEBUFF, 20); // 25 damage + 4 Scorch
         addMove(RainofFire, Intent.ATTACK, 10,4,true);// 10 damage 4 times.
         addMove(CurseofExhaustion, Intent.STRONG_DEBUFF, -1);// for 2 turns  at the start of your turn exhaust a card in your hand, if it's a Curse lose energy.
         addMove(MindMaze, Intent.STRONG_DEBUFF, -1);// Discard your next 2 Draws and replace them with random curses
         addMove(CurseofMisfortune , Intent.STRONG_DEBUFF, -1);//  Shuffle all curses from your exhaust pile into your draw pile player draws 1 more card next turn.
-        addMove(DrainLife, Intent.ATTACK_BUFF, 35);// 35 Damage, Boss Heals equal to unblocked damage.
-        addMove(ChaosBolt, CurseAttackEnum.CURSE_ATTACK_INTENT, 50);// 50 Damage, +5 Str, +5 Ritual Threshold
+        addMove(DrainLife, Intent.ATTACK_BUFF, 25);// 35 Damage, Boss Heals equal to unblocked damage.
+        addMove(ChaosBolt, CurseAttackEnum.CURSE_ATTACK_INTENT, 35);// 50 Damage, +5 Str, +5 Ritual Threshold
     }
 
     public void usePreBattleAction() {
@@ -91,7 +92,7 @@ public class TheAcolyte extends AbstractBossMonster {
         if (AbstractDungeon.ascensionLevel >= 9) {
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this,this,new CursedPower(this,this,0)));
         }
-        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, DIALOG[2], 0.5F, 2.0F));
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, DIALOG[4], 0.5F, 2.0F));
     }
     @Override
     public void takeTurn() {
@@ -138,9 +139,10 @@ public class TheAcolyte extends AbstractBossMonster {
         switch(this.nextMove) {
             case CursedBlade:
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, info, AbstractGameAction.AttackEffect.SLASH_HEAVY));
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(), 1, true, false));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(),1));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(),1));
                 if (AbstractDungeon.ascensionLevel >= 9){
-                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(), 1, true, false));
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(),1));
                 }
                 firstTurn = false;
                 if (TurnCoutner >= 4){
@@ -192,6 +194,11 @@ public class TheAcolyte extends AbstractBossMonster {
                 break;
             case ChaosBolt:
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player, info, AbstractGameAction.AttackEffect.FIRE));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(),1));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(),1));
+                if (AbstractDungeon.ascensionLevel >= 9){
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(AbstractDungeon.returnRandomCurse().makeStatEquivalentCopy(),1));
+                }
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this,this,new StrengthPower(this,5),5));
                 ((DarkRitual)this.getPower(DarkRitual.POWER_ID)).increaseLimit(5);
                 TurnCoutner ++;
@@ -231,9 +238,6 @@ public class TheAcolyte extends AbstractBossMonster {
             if (this.getPower(DarkRitual.POWER_ID).amount >= ((TwoAmountPower)this.getPower(DarkRitual.POWER_ID)).amount2){
                 setMoveShortcut(ChaosBolt,MOVES[8]);
             }
-            else if (TurnCoutner >= 4){
-                setMoveShortcut(CursedBlade,MOVES[0]);
-            }
             else if (this.getPower(DarkRitual.POWER_ID).amount < RitualThreshold/2){
                 if (num < 30){
                     setMoveShortcut(Corruption,MOVES[1]);
@@ -254,7 +258,15 @@ public class TheAcolyte extends AbstractBossMonster {
                 } else if (num > 50 && num < 70){
                     setMoveShortcut(DrainLife,MOVES[7]);
                 } else if (num > 70 && num < 90){
-                    setMoveShortcut(CurseofMisfortune,MOVES[3]);
+                    int exhaustedcurses = 0;
+                    for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
+                        if (c.type == AbstractCard.CardType.CURSE){
+                            exhaustedcurses++;
+                        }
+                    }
+                    if (exhaustedcurses > 4) {
+                        setMoveShortcut(CurseofMisfortune, MOVES[3]);
+                    } else setMoveShortcut(RainofFire,MOVES[5]);
                 } else if (num > 90){
                     setMoveShortcut(CurseofExhaustion,MOVES[6]);
                 }

@@ -7,11 +7,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.MoltenScalesPower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class MagmaScales extends AbstractPrimalCard {
 
@@ -24,7 +24,7 @@ public class MagmaScales extends AbstractPrimalCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(MagmaScales.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(MagmaScales.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -41,7 +41,7 @@ public class MagmaScales extends AbstractPrimalCard {
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
     private static final int COST = 2;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 1;
 
     // Hey want a second magic/damage/block/unique number??? Great!
@@ -63,6 +63,7 @@ public class MagmaScales extends AbstractPrimalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
                 new MoltenScalesPower(p, p, magicNumber),magicNumber, false, AbstractGameAction.AttackEffect.FIRE));
+        super.use(p,m);
         /*
         Hey do you see this "amount" and "stackAmount" up here^ (press ctrl+p inside the parentheses to see parameters)
         THIS DOES NOT MEAN APPLY 1 POWER 1 TIMES. If you put 2 in both numbers it would apply 2. NOT "2 STACKS, 2 TIMES".

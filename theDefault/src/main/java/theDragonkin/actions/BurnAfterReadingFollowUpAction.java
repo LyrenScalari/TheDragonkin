@@ -21,15 +21,16 @@ public class BurnAfterReadingFollowUpAction extends AbstractGameAction {
         this.tickDuration();
         if (this.isDone) {
             Iterator var1 = DrawCardAction.drawnCards.iterator();
-            for (AbstractCard c : DrawCardAction.drawnCards){
-                addToBot(new AbstractGameAction() {
-                    public void update() {
-                        CardModifierManager.addModifier(c,new BurnAfterReadingCardMod(1));
-                        isDone = true;
-                    }
-                });
+            for (AbstractCard c : DrawCardAction.drawnCards) {
+                if (!c.exhaust) {
+                    addToBot(new AbstractGameAction() {
+                        public void update() {
+                            CardModifierManager.addModifier(c, new BurnAfterReadingCardMod(1));
+                            isDone = true;
+                        }
+                    });
+                }
             }
-
         }
     }
 }

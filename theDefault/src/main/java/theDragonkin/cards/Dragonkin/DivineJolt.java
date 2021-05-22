@@ -1,18 +1,23 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.PenancePower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class DivineJolt extends AbstractHolyCard {
 
@@ -36,7 +41,7 @@ public class DivineJolt extends AbstractHolyCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(DivineJolt.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = DragonkinMod.makeID(DivineJolt.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("DivineJolt.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -50,10 +55,10 @@ public class DivineJolt extends AbstractHolyCard {
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
 
-    private static final int DAMAGE = 9;
+    private static final int DAMAGE = 5;
     private static final int UPGRADE_PLUS_DMG = 2;  // UPGRADE_PLUS_DMG = 2
 
     // /STAT DECLARATION/
@@ -62,20 +67,23 @@ public class DivineJolt extends AbstractHolyCard {
     public DivineJolt(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
-    this.baseMagicNumber = 1;
+    this.baseMagicNumber = 2;
     this.magicNumber = baseMagicNumber;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber =  2;
+        tags.add(CustomTags.Radiant);
+        RadiantExchange = 5;
 }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < this.magicNumber; ++i) {
+        for (int i = 0; i < this.defaultSecondMagicNumber; ++i) {
            m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
+            addToBot(new VFXAction(new LightningEffect(m.hb_x,m.hb_y)));
                 AbstractDungeon.actionManager.addToBottom(
-                        new DamageAction(m,new DamageInfo(p, damage, damageTypeForTurn),AbstractGameAction.AttackEffect.LIGHTNING));
-                AbstractDungeon.actionManager.addToBottom(
-                        new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber, false,AbstractGameAction.AttackEffect.LIGHTNING) );
+                        new DamageAction(m,new DamageInfo(p, damage, damageTypeForTurn),AbstractGameAction.AttackEffect.NONE));
+               addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
 
         }
     }
@@ -86,7 +94,8 @@ public class DivineJolt extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            upgradeDefaultSecondMagicNumber(1);
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

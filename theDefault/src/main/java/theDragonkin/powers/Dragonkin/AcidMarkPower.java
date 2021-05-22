@@ -2,24 +2,29 @@ package theDragonkin.powers.Dragonkin;
 
 
 import basemod.interfaces.CloneablePowerInterface;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.DefaultMod;
+import theDragonkin.CustomTags;
+import theDragonkin.DragonkinMod;
+import theDragonkin.relics.Dragonkin.MukySludge;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makePowerPath;
+import static theDragonkin.DragonkinMod.makePowerPath;
 
-public class AcidMarkPower extends AbstractPower implements CloneablePowerInterface {
+public class AcidMarkPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("Dissolve");
+    public static final String POWER_ID = DragonkinMod.makeID("Dissolve");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -47,7 +52,9 @@ public class AcidMarkPower extends AbstractPower implements CloneablePowerInterf
 
     @Override
     public void triggerMarks(AbstractCard card) {
-        AbstractDungeon.actionManager.addToBottom(new LoseHPAction(this.owner, (AbstractCreature)null, this.amount));
+        if (card.hasTag(CustomTags.Acid_Activator)) {
+            AbstractDungeon.actionManager.addToTop(new LoseHPAction(this.owner, (AbstractCreature) null, this.amount));
+        }
     }
 
     @Override
@@ -57,5 +64,37 @@ public class AcidMarkPower extends AbstractPower implements CloneablePowerInterf
     @Override
     public AbstractPower makeCopy() {
         return new AcidMarkPower(owner, source, amount);
+    }
+
+    @Override
+    public int getHealthBarAmount() {
+        int eotGlow = 0;
+        boolean showEoTGlow = false;
+        if (AbstractDungeon.player.hasRelic(MukySludge.ID)){
+            showEoTGlow = true;
+        }
+        if (AbstractDungeon.player.hoveredCard != null) {
+            if (AbstractDungeon.player.hoveredCard.hasTag(CustomTags.Acid_Activator)) {
+                if (!AbstractDungeon.player.hoveredCard.hasTag(CustomTags.Acid_Applicator)) {
+                    if (AbstractDungeon.player.hoveredCard.target == AbstractCard.CardTarget.ENEMY && !(owner.hb.hovered)) {
+                        if (showEoTGlow) {
+                            return eotGlow + amount;
+                        } else return 0;
+                    } else return amount;
+                } else if (AbstractDungeon.player.hoveredCard.target == AbstractCard.CardTarget.ENEMY && !(owner.hb.hovered)) {
+                    if (showEoTGlow) {
+                        return eotGlow + amount;
+                    } else return 0;
+                } else return amount + AbstractDungeon.player.hoveredCard.magicNumber;
+            }
+        }
+        if (showEoTGlow) {
+            return eotGlow + amount;
+        } else return 0;
+    }
+
+    @Override
+    public Color getColor() {
+        return CardHelper.getColor(154,219,22);
     }
 }

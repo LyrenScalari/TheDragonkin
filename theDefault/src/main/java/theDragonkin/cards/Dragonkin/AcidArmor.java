@@ -4,15 +4,15 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.AcidArmorpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class AcidArmor extends AbstractPrimalCard {
 
-    public static final String ID = DefaultMod.makeID(AcidArmor.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(AcidArmor.class.getSimpleName());
     public static final String IMG = makeCardPath("AcidArmor.png");
 
 
@@ -41,7 +41,7 @@ public class AcidArmor extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new AcidArmorpower(p,p,magicNumber)));
-
+        super.use(p,m);
     }
 
     @Override

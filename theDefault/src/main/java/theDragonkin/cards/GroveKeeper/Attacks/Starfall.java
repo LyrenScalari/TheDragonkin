@@ -2,14 +2,12 @@ package theDragonkin.cards.GroveKeeper.Attacks;
 
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
-import theDragonkin.actions.CustomChooseOne;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
 import theDragonkin.cards.GroveKeeper.Choices.Starlord;
 import theDragonkin.cards.GroveKeeper.Choices.StellarDrift;
@@ -17,10 +15,10 @@ import theDragonkin.characters.TheGroveKeeper;
 
 import java.util.ArrayList;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Starfall extends AbstractChooseOneCard {
-    public static final String ID = DefaultMod.makeID(Starfall .class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Starfall .class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
     private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
@@ -37,7 +35,7 @@ public class Starfall extends AbstractChooseOneCard {
         this.tags.add(CustomTags.Lunar);
         damage = baseDamage = DAMAGE;
         GrovekeeperSecondDamage = BaseGrovekeeperSecondDamage = DAMAGE2;
-        this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
+        this.setOrbTexture(DragonkinMod.Lunar_SMALL_ORB, DragonkinMod.Lunar_LARGE_ORB);
         isMultiDamage = true;
 
     }

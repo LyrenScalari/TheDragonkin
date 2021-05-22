@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -7,15 +8,17 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.CardMods.StormEffect;
+import theDragonkin.DragonkinMod;
+import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.DelayStunpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class ShieldBash extends AbstractDragonkinCard {
+public class ShieldBash extends AbstractDragonkinCard implements StormCard {
 
-    public static final String ID = DefaultMod.makeID(ShieldBash.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(ShieldBash.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -38,8 +41,8 @@ public class ShieldBash extends AbstractDragonkinCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        purgeOnUse = true;
-
+        StormRate = 8;
+        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     @Override
@@ -47,6 +50,11 @@ public class ShieldBash extends AbstractDragonkinCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p,new DelayStunpower(m,p,1)));
+        if (!Storm){
+            this.exhaust = true;
+        } else {
+          this.shuffleBackIntoDrawPile = true;
+        }
     }
 
     @Override
@@ -56,5 +64,10 @@ public class ShieldBash extends AbstractDragonkinCard {
             upgradeDamage(UPGRADE_PLUS_POTENCY);
             initializeDescription();
         }
+    }
+
+    @Override
+    public void onStorm() {
+
     }
 }

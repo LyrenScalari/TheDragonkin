@@ -1,9 +1,7 @@
 package theDragonkin.cards.GroveKeeper.Attacks;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,24 +10,23 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.orbs.AbstractGrovekeeperOrb;
 import theDragonkin.orbs.LifeBloom;
 import theDragonkin.orbs.ThornBloom;
 import theDragonkin.powers.GroveKeeper.AlignmentPower;
-import theDragonkin.relics.Grovekeeper.GrovekeeperStarting;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class CresentCulling extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(CresentCulling.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
-    public static final String IMG = makeCardPath("Strike.png");// "public static final String IMG = makeCardPath("Strike.png");
+    public static final String ID = DragonkinMod.makeID(CresentCulling.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String IMG = makeCardPath("FlameweaverStrike.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 
@@ -59,7 +56,7 @@ public class CresentCulling extends AbstractGroveKeeperCard {
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 5;
         this.tags.add(CustomTags.Lunar);
         this.isMultiDamage = true;
-        this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
+        this.setOrbTexture(DragonkinMod.Lunar_SMALL_ORB, DragonkinMod.Lunar_LARGE_ORB);
     }
 
 
@@ -86,10 +83,10 @@ public class CresentCulling extends AbstractGroveKeeperCard {
     public void triggerOnGlowCheck() {
         if (AbstractDungeon.player.hasPower(AlignmentPower.POWER_ID) && ((TwoAmountPower)AbstractDungeon.player.getPower(AlignmentPower.POWER_ID)).amount2 >= 2) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-            this.setOrbTexture(DefaultMod.Lunar_SMALL_ORB,DefaultMod.Lunar_LARGE_ORB);
+            this.setOrbTexture(DragonkinMod.Lunar_SMALL_ORB, DragonkinMod.Lunar_LARGE_ORB);
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-            this.setOrbTexture(DefaultMod.Neutral_SMALL_ORB,DefaultMod.Neutral_LARGE_ORB);
+            this.setOrbTexture(DragonkinMod.Neutral_SMALL_ORB, DragonkinMod.Neutral_LARGE_ORB);
         }
     }
     // Upgraded stats.

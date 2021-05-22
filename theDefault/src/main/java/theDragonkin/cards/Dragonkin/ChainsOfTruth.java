@@ -9,15 +9,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class ChainsOfTruth extends AbstractHolyCard {
 
 
-    public static final String ID = DefaultMod.makeID(ChainsOfTruth.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(ChainsOfTruth.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -40,6 +40,8 @@ public class ChainsOfTruth extends AbstractHolyCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         this.isMultiDamage = true;
+        tags.add(CustomTags.Radiant);
+        RadiantExchange = 5;
     }
 
     @Override

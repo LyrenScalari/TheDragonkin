@@ -6,12 +6,12 @@ import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.orbs.ThornBloom;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-import static theDragonkin.DefaultMod.makeRelicPath;
+import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+import static theDragonkin.DragonkinMod.makeRelicPath;
 
 public class GrovekeeperStarting extends CustomRelic { // You must implement things you want to use from StSlib
     /*
@@ -22,7 +22,7 @@ public class GrovekeeperStarting extends CustomRelic { // You must implement thi
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("GrovekeeperStarting");
+    public static final String ID = DragonkinMod.makeID("GrovekeeperStarting");
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
     // You can also have a relic be only usable once per combat. Check out Hubris for more examples, including other StSlib things.

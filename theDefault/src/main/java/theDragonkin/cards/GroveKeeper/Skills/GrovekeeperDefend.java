@@ -8,20 +8,19 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
-import theDragonkin.characters.TheGremory;
 import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.powers.GroveKeeper.AlignmentPower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class GrovekeeperDefend extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(GrovekeeperDefend.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(GrovekeeperDefend.class.getSimpleName());
     public static final String IMG = makeCardPath("Defend.png");
 
     // /TEXT DECLARATION/
@@ -65,10 +64,10 @@ public class GrovekeeperDefend extends AbstractGroveKeeperCard {
     public void triggerOnGlowCheck() {
         if (AbstractDungeon.player.hasPower(AlignmentPower.POWER_ID) && AbstractDungeon.player.getPower(AlignmentPower.POWER_ID).amount >= 2) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-            this.setOrbTexture(DefaultMod.Solar_SMALL_ORB,DefaultMod.Solar_LARGE_ORB);
+            this.setOrbTexture(DragonkinMod.Solar_SMALL_ORB, DragonkinMod.Solar_LARGE_ORB);
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-            this.setOrbTexture(DefaultMod.Neutral_SMALL_ORB,DefaultMod.Neutral_LARGE_ORB);
+            this.setOrbTexture(DragonkinMod.Neutral_SMALL_ORB, DragonkinMod.Neutral_LARGE_ORB);
         }
     }
     //Upgraded stats.

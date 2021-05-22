@@ -20,26 +20,25 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.Attacks.GrovekeeperStrike;
 import theDragonkin.cards.GroveKeeper.Attacks.Moonfire;
 import theDragonkin.cards.GroveKeeper.Attacks.ReapingSlash;
 import theDragonkin.cards.GroveKeeper.Skills.GrovekeeperDefend;
 import theDragonkin.cards.GroveKeeper.Attacks.Sunfire;
-import theDragonkin.relics.Gremory.HeartofFlames;
 import theDragonkin.relics.Grovekeeper.GrovekeeperStarting;
 
 import java.util.ArrayList;
 
-import static theDragonkin.DefaultMod.*;
+import static theDragonkin.DragonkinMod.*;
 import static theDragonkin.characters.TheGroveKeeper.Enums.GroveKeeper_Forest_Color;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
-//All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
+//All text (starting description and loadout, anything labeled TEXT[]) can be found in DragonkinMod-character-Strings.json in the resources
 
 public class TheGroveKeeper extends CustomPlayer {
-    public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
+    public static final Logger logger = LogManager.getLogger(DragonkinMod.class.getName());
 
 
     // =============== CHARACTER ENUMERATORS =================
@@ -113,7 +112,7 @@ public class TheGroveKeeper extends CustomPlayer {
         // =============== TEXTURES, ENERGY, LOADOUT =================
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
-                // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
+                // I left these in DragonkinMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
                 THE_DEFAULT_SHOULDER_2, // campfire pose
                 THE_DEFAULT_SHOULDER_1, // another campfire pose
                 THE_DEFAULT_CORPSE, // dead corpse

@@ -7,16 +7,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class BurningRage extends AbstractPrimalCard {
 
-    public static final String ID = DefaultMod.makeID(BurningRage.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(BurningRage.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -25,12 +25,12 @@ public class BurningRage extends AbstractPrimalCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
 
-    private static final int DAMAGE = 8;
+    private static final int DAMAGE = 14;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 6;
     private static final int UPGRADE_MAGIC = 0;
 
     public BurningRage() {
@@ -47,10 +47,7 @@ public class BurningRage extends AbstractPrimalCard {
 
             AbstractDungeon.actionManager.addToBottom(
                     new ApplyPowerAction(m, p, new Scorchpower(m, p, this.magicNumber), this.magicNumber, false, AbstractGameAction.AttackEffect.FIRE));
-
-        if (m.hasPower(Scorchpower.POWER_ID)){
-                addToBot(new ApplyPowerAction(p,p,new FuryPower(p,p,defaultSecondMagicNumber)));
-        }
+        super.use(p,m);
     }
 
     @Override
@@ -58,7 +55,6 @@ public class BurningRage extends AbstractPrimalCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeBaseCost(UPGRADED_COST);
             initializeDescription();
         }
     }

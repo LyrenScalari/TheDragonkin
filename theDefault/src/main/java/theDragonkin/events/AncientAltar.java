@@ -2,29 +2,25 @@ package theDragonkin.events;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.colorless.Apotheosis;
 import com.megacrit.cardcrawl.cards.curses.Doubt;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.Insanity;
 import theDragonkin.cards.Dragonkin.MeteorStorm;
 import theDragonkin.relics.Dragonkin.SunblessedCharm;
 
-import static theDragonkin.DefaultMod.makeEventPath;
+import static theDragonkin.DragonkinMod.makeEventPath;
 
 public class AncientAltar extends AbstractImageEvent {
 
 
-    public static final String ID = DefaultMod.makeID("AncientAltar");
+    public static final String ID = DragonkinMod.makeID("AncientAltar");
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
 
     private static final String NAME = eventStrings.NAME;

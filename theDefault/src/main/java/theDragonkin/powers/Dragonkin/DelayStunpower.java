@@ -1,5 +1,6 @@
 package theDragonkin.powers.Dragonkin;
 
+import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
@@ -10,15 +11,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makePowerPath;
+import static theDragonkin.DragonkinMod.makePowerPath;
 
-public class DelayStunpower extends AbstractPower {
+public class DelayStunpower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
     AbstractPower p = AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID);
-    public static final String POWER_ID = DefaultMod.makeID("Staggered");
+    public static final String POWER_ID = DragonkinMod.makeID("Staggered");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -56,5 +57,10 @@ public class DelayStunpower extends AbstractPower {
     public void updateDescription() {
         description = DESCRIPTIONS[0] + DESCRIPTIONS[1];
 
+    }
+
+    @Override
+    public AbstractPower makeCopy() {
+        return new DelayStunpower(owner, source, amount);
     }
 }

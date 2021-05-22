@@ -2,10 +2,7 @@ package theDragonkin.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theDragonkin.cards.AbstractDefaultCard;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
-
-import static theDragonkin.DefaultMod.makeID;
 
 public class GrovekeeperSecondDamage extends DynamicVariable {
 

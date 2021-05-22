@@ -1,0 +1,553 @@
+{
+  "theDragonkin:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "theDragonkin:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "theDragonkin:HolySmite": {
+    "NAME": "Holy Smite",
+    "DESCRIPTION": "thedragonkin:Radiant 5. NL Deal !D! damage and apply !M! Weak and Vulnerable twice.",
+    "UPGRADE_DESCRIPTION": "thedragonkin:Radiant 5. NL Deal !D! damage and apply !M! Weak and Vulnerable !M2! times."
+  },
+  "theDragonkin:BlazingBreath": {
+    "NAME": "Blazing Breath",
+    "DESCRIPTION": "thedragonkin:Storm 3 - Draw a card. NL Deal !D! damage and Apply !M! thedragonkin:Scorch."
+  },
+  "theDragonkin:HammerOfWrath": {
+    "NAME": "Hammer Of Wrath",
+    "DESCRIPTION": "Deal !D! damage. NL gain !M! thedragonkin:Zeal."
+  },
+  "theDragonkin:Detox": {
+    "NAME": "Detox",
+    "DESCRIPTION": "Ethereal. NL Gain !M! Strength and Dexterity for each Debuff an enemy has. NL Halve each one. NL Exhaust",
+    "UPGRADE_DESCRIPTION": "Gain !M! Strength and Dexterity for each Debuff an enemy has. NL Exhaust"
+  },
+  "theDragonkin:GooGrip": {
+  "NAME": "Choking Goo",
+  "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonkin:Dissolve."
+},
+  "theDragonkin:CorrosiveBelch": {
+    "NAME": "Sulfuric Bile",
+    "DESCRIPTION": "Remove all Block from the enemy. NL Target loses HP equal to it's thedragonkin:Dissolve.",
+    "UPGRADE_DESCRIPTION": "Remove all Block from the enemy. NL Target loses HP equal to it's thedragonkin:Dissolve twice"
+  },
+  "theDragonkin:PlagueSwipe": {
+    "NAME": "Plague Swipe",
+    "DESCRIPTION": "Apply !M! thedragonkin:Dissolve to ALL Enemies. NL ALL enemies lose HP Equal to their thedragonkin:Dissolve."
+  },
+  "theDragonkin:Sizzle": {
+    "NAME": "Sizzle",
+    "DESCRIPTION": "Target loses HP equal to  it's thedragonkin:Dissolve",
+    "UPGRADE_DESCRIPTION": "ALL enemies lose HP equal to their thedragonkin:Dissolve"
+  },
+  "theDragonkin:FlameClaw": {
+    "NAME": "Flame Claw",
+    "DESCRIPTION": "Deal !D! damage. NL shuffle !M! Burn into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL shuffle !M! Burns into your draw pile."
+  },
+  "theDragonkin:IncendiaryFlow": {
+    "NAME": "Incendiary Flow",
+    "DESCRIPTION": "thedragonkin:Storm 6 - Whenever you thedragonkin:Cycle a card Gain !M! Block. NL thedragonkin:Flux 2: Gain !M2! Temporary Strength."
+  },
+  "theDragonkin:HeatShield": {
+    "NAME": "Heat Shield",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Flux 1: return this to your hand."
+  },
+  "theDragonkin:Cinderstrike": {
+    "NAME": "Soulfire",
+    "DESCRIPTION": "Deal !D! damage. NL draw !M! Burns. NL thedragonkin:Sealed: Deals !M2! extra damage this combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL draw !M! Burns. NL thedragonkin:Sealed: Deals !M2! extra damage this combat."
+  },
+  "theDragonkin:Flamestrike": {
+    "NAME": "Flamestrike",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Sealed: Deals !M2! extra damage this combat."
+  },
+  "theDragonkin:SolarFlare": {
+    "NAME": "Solar Flare",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! thedragonkin:Divine_Armor. NL thedragonkin:Sealed: Increase damage and *Divine *Armor gain by !M2! this combat."
+  },
+  "theDragonkin:Pyroblast": {
+    "NAME": "Pyroblast",
+    "DESCRIPTION": "thedragonkin:Snekproof NL Deal !D! damage. NL thedragonkin:Sealed: Costs !M! less [E] until played. ",
+    "UPGRADE_DESCRIPTION": "thedragonkin:Snekproof NL Retain. NL Deal !D! damage. NL thedragonkin:Sealed: Costs !M! less [E] until played."
+  },
+  "theDragonkin:Sunbeam": {
+    "NAME": "Sunbeam",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL Apply !M2! thedragonkin:Scorch. NL Shuffle 1 Burn into your draw pile"
+  },
+  "theDragonkin:MindSear": {
+    "NAME": "Suffering Synapses",
+    "DESCRIPTION": "Apply !M! thedragonkin:Lunacy. NL Deal !D! damage for each Debuff the target has to ALL enemies."
+  },
+  "theDragonkin:InnerFire": {
+    "NAME": "Inner Fire",
+    "DESCRIPTION": "Gain !M2! thedragonkin:Divine_Armor. NL thedragonkin:Flux 1: gain !M! *Zeal"
+  },
+  "theDragonkin:Sunburst": {
+    "NAME": "Sunburst",
+    "DESCRIPTION": "thedragonkin:Radiant 3. NL Deal !D! damage. NL thedragonkin:Flux !M2!: Gain !M! thedragonkin:Divine_Armor"
+  },
+  "theDragonkin:LiquidFlame": {
+    "NAME": "Burning Liquid",
+    "DESCRIPTION": "Apply !M! thedragonkin:Dissolve. NL Shuffle !M2! Burn into your draw pile. NL thedragonkin:Flux 2: Trigger target's *Dissolve.",
+    "UPGRADE_DESCRIPTION": "Apply !M! thedragonkin:Dissolve and thedragonkin:Scorch. NL Shuffle !M2! Burn into your draw pile. NL thedragonkin:Flux 2: Trigger target's *Dissolve."
+  },
+  "theDragonkin:AlchemicalFlame": {
+    "NAME": "Alchemical Flame",
+    "DESCRIPTION": "Apply thedragonkin:Dissolve equal to the Target's thedragonkin:Scorch. NL thedragonkin:Flux !M2!: Apply !M! *Scorch."
+  },
+  "theDragonkin:ChemicalStar": {
+    "NAME": "Chemical Star",
+    "DESCRIPTION": "Deal !D! damage, Heal equal to unblocked damage dealt. NL Add a burn to your discard pile."
+  },
+  "theDragonkin:ShadowVision": {
+    "NAME": "Shadow Vision",
+    "DESCRIPTION": "Choose 1 of 3 cards in your deck. NL Fetch it. NL Gain !M! thedragonkin:Lunacy.",
+    "EXTENDED_DESCRIPTION":["Choose a card to Fetch."]
+  },
+  "theDragonkin:MindSpike": {
+    "NAME": "Mind Spike",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonkin:Lunacy. NL Gain !M! thedragonkin:Lunacy.",
+    "EXTENDED_DESCRIPTION":["Choose a card to Fetch."]
+  },
+  "theDragonkin:BloodBloom": {
+    "NAME": "Blood Bloom",
+    "DESCRIPTION": "After you apply a debuff this turn, Take !M! damage, and apply !M2! more.",
+    "EXTENDED_DESCRIPTION":["Choose a card to Fetch."]
+  },
+  "theDragonkin:HeatBarrier": {
+    "NAME": "Magma Armor",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Sealed: Gains !M! extra Block this turn."
+  },
+  "theDragonkin:Condemnation": {
+    "NAME": "Condemnation",
+    "DESCRIPTION": "In 3 turns, Deal !D! damage to ALL enemies. NL thedragonkin:Storm 10 - Next Turn instead."
+  },
+  "theDragonkin:HallowedGround": {
+    "NAME": "Hallowed Ground",
+    "DESCRIPTION": "thedragonkin:Radiant 2. NL Deal !D! damage to all enemies, gain !M! thedragonkin:Divine_Armor for each enemy. NL Exhaustive: !stslib:ex!."
+  },
+  "theDragonkin:HolyWrath": {
+    "NAME": "Prismatic Blast",
+    "DESCRIPTION": "Deal damage equal to twice your thedragonkin:Divine_Armor to ALL enemies. NL Lose all your *Divine *Armor. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal damage equal to twice your thedragonkin:Divine_Armor to ALL enemies. NL Lose half your *Divine *Armor. NL Exhaust."
+  },
+  "theDragonkin:VenegefulStrike": {
+    "NAME": "Venegeful Strike",
+    "DESCRIPTION": "Whenever you receive damage during your turn, increase this cards damage that much. NL Deal !D! damage."
+  },
+  "theDragonkin:SearingLight": {
+    "NAME": "Searing Light",
+    "DESCRIPTION": "Take !D! damage. NL Gain thedragonkin:Divine_Armor equal to twice the damage received."
+  },
+  "theDragonkin:BurningRage": {
+    "NAME": "Burning Rage",
+    "DESCRIPTION": "Deal !D! damage. NL apply !M! thedragonkin:Scorch."
+  },
+  "theDragonkin:Flashpoint": {
+    "NAME": "Flashpoint",
+    "DESCRIPTION": "thedragonkin:Storm 6. NL Gain !M! thedragonkin:Heat. NL Draw !M2! *Status cards."
+  },
+  "theDragonkin:HeatCycle": {
+    "NAME": "Heat Cycle",
+    "DESCRIPTION": "thedragonkin:Cycle any number of cards in your hand. NL for each Burn *Cycled gain !B! Block."
+  },
+  "theDragonkin:EverBurn": {
+    "NAME": "Endless Flame",
+    "DESCRIPTION": "For !M2! turns, apply !M! thedragonkin:Scorch to the target and add a Burn to your discard pile."
+  },
+  "theDragonkin:Outbreak": {
+    "NAME": "Pandemic",
+    "DESCRIPTION": "Apply a copy of each of an enemies Debuffs to ALL enemies. NL Exhaust."
+  },
+  "theDragonkin:BurnAfterReading": {
+    "NAME": "Burn After Reading",
+    "DESCRIPTION": "Draw !M! cards, Exhaust them when played this turn.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards, Exhaust them when played this turn."
+  },
+  "theDragonkin:HolyWordBarrier": {
+    "NAME": "Holy Barrier",
+    "DESCRIPTION": "thedragonkin:Radiant 1. NL Gain !M! thedragonkin:Divine_Armor."
+  },
+  "theDragonkin:FlameWard": {
+    "NAME": "Flame Ward",
+    "DESCRIPTION": "thedragonkin:Storm 6. NL Gain !B! Block. NL Shuffle !M! Burns to your draw pile."
+  },
+  "theDragonkin:DivineStorm": {
+    "NAME": "Divine Storm",
+    "DESCRIPTION": "thedragonkin:Radiant 2. NL Deal !D! damage to a random enemy X + !M! times. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": " thedragonkin:Radiant 2. NL Retain. NL Deal !D! damage to a random enemy X + !M! times. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": ["~Vokul~ ~Kosag!~"]
+  },
+  "theDragonkin:DivineJolt": {
+    "NAME": "Penance Shock",
+    "DESCRIPTION": "thedragonkin:Radiant 5. NL Deal !D! damage and apply !M! thedragonkin:Penance to a random enemy twice.",
+    "UPGRADE_DESCRIPTION": "thedragonkin:Radiant 5. NL Deal !D! damage and apply !M! thedragonkin:Penance to a random enemy !M2! times."
+  },
+  "theDragonkin:WeightofContrition": {
+    "NAME": "Weight of Contrition",
+    "DESCRIPTION": "thedragonkin:Radiant 3. NL Apply !M2! thedragonkin:Sinner's_Burden. NL if the target is thedragonkin:Repentant Apply !M! thedragonkin:Penance."
+  },
+  "theDragonkin:Condem": {
+    "NAME": "Condemn",
+    "DESCRIPTION": "Apply !M! thedragonkin:Penance"
+  },
+  "theDragonkin:HastyJudgement": {
+    "NAME": "Hasty Judgement",
+    "DESCRIPTION": "thedragonkin:Radiant 4. NL Apply !M! thedragonkin:Penance. NL Draw !M2! Cards."
+  },
+  "theDragonkin:AshenArmor": {
+    "NAME": "Ashen Armor",
+    "DESCRIPTION": "When you draw a Status card, Gain !B! Block."
+  },
+  "theDragonkin:AcidArmor": {
+    "NAME": "Acid Armor",
+    "DESCRIPTION": "When you Apply a debuff, Gain !B! Block."
+  },
+  "theDragonkin:Ashfall": {
+    "NAME": "Ashfall",
+    "DESCRIPTION": "When you draw a Status card, Attack a random enemy for !M! damage."
+  },
+  "theDragonkin:CinderStorm": {
+  "NAME": "Cinderstorm",
+  "DESCRIPTION": "Exhaust all Status cards in your hand, deal !D! damage to a random enemy for each."
+},
+  "theDragonkin:HeatTest": {
+    "NAME": "Kindle",
+    "DESCRIPTION": "Gain !M! thedragonkin:Heat. NL Gain !B! Block. NL thedragonkin:Cycle !M2! card in your hand.",
+    "UPGRADE_DESCRIPTION": "Gain !M! thedragonkin:Heat. NL Gain !B! Block. NL thedragonkin:Cycle !M2! cards in your hand."
+  },
+  "theDragonkin:LightArmor": {
+    "NAME": "Holy Aegis",
+    "DESCRIPTION": "thedragonkin:Radiant !M2!. NL Gain !M! thedragonkin:Divine_Armor Twice."
+  },
+  "theDragonkin:DivineRadiance": {
+    "NAME": "Divine Radiance",
+    "DESCRIPTION": "thedragonkin:Radiant 2. NL For !M! turns gain !M2! thedragonkin:Divine_Armor after you play a [#94bdff]Holy[] Card."
+  },
+  "theDragonkin:DivineFire": {
+    "NAME": "Holy Fire",
+    "DESCRIPTION": "thedragonkin:Radiant 1. NL Deal !D! damage. NL apply !M! thedragonkin:Scorch."
+  },
+  "theDragonkin:GoldenFlames": {
+    "NAME": "Golden Flame",
+    "DESCRIPTION": "thedragonkin:Radiant 3. NL Deal !D! damage. NL gain !M! thedragonkin:Divine_Armor."
+  },
+  "theDragonkin:HolyBarrier": {
+    "NAME": "Divine Shield",
+    "DESCRIPTION": "Gain !M2! thedragonkin:Divine_Armor X + !M! Times. NL Exhaust."
+  },
+  "theDragonkin:DivineRetribution": {
+    "NAME": "Divine Retribution",
+    "DESCRIPTION": "At the start of your turn deal damage equal to all damage taken last turn to a random enemy."
+  },
+  "theDragonkin:SacredTrial": {
+    "NAME": "Sacred Trial",
+    "DESCRIPTION": "Take !D! damage. NL Deal damage to ALL enemies equal to the damage received."
+  },
+  "theDragonkin:Subdue": {
+    "NAME": "Subdue",
+    "DESCRIPTION": "Reduce an enemy's Attack to 1 this turn. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Reduce an enemy's Attack to 1 this turn. NL Exhaust."
+  },
+  "theDragonkin:ShieldBash": {
+    "NAME": "Shield Bash",
+    "DESCRIPTION": "Deal !D! damage, Stun the target next turn. NL Exhaust. NL thedragonkin:Storm 8 - Shuffle this into your drawpile instead."
+  },
+  "theDragonkin:AncestralSeance": {
+    "NAME": "Ancestral Seance",
+    "DESCRIPTION": "Choose 1 of !M! [#fe513a]Primal[] cards. NL Add it to your hand it costs 0 this turn. NL Exhaust."
+  },
+  "theDragonkin:DivinePrayer": {
+    "NAME": "Divine Prayer",
+    "DESCRIPTION": "Choose 1 of !M! [#94bdff]Holy[] Dragonkin cards to add to your hand it costs 0 until played. NL Exhaust"
+  },
+  "theDragonkin:InfernoWard": {
+    "NAME": "Inferno Ward",
+    "DESCRIPTION": "thedragonkin:Flux 10: Gain !B! Block and !M! thedragonkin:Heat. NL Exhaust."
+  },
+  "theDragonkin:ChainsOfTruth": {
+    "NAME": "Chains of Truth",
+    "DESCRIPTION": "thedragonkin:Radiant 5. NL Deal !D! damage to all enemies. NL Apply !M! Vulnerable to all enemies."
+  },
+  "theDragonkin:DivineVision": {
+    "NAME": "Divine Vision",
+    "DESCRIPTION": "Gain !M! *Zeal."
+  },
+  "theDragonkin:CrusaderForm": {
+  "NAME": "Seraph Form",
+  "DESCRIPTION": "Ethereal. NL The first card played each turn gives you !M! thedragonkin:Divine_Armor and increase this gain by !M2!",
+    "UPGRADE_DESCRIPTION":"The first card played each turn gives you !M! thedragonkin:Divine_Armor and increase this gain by !M2!"
+},
+  "theDragonkin:EmberSwipe":{
+    "NAME": "Ember Swipe",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Apply !M! thedragonkin:Scorch NL to ALL enemies "
+  },
+  "theDragonkin:MagmaScales": {
+    "NAME": "Magma Scales",
+    "DESCRIPTION": "After you lose HP apply !M! thedragonkin:Scorch to ALL enemies."
+  },
+
+
+  "theDragonkin:MeteorStorm": {
+    "NAME": "Meteor Storm",
+    "DESCRIPTION": "Deal !D! damage and Gain !B! Block !M! times. thedragonkin:Storm 15 - Play this at the start of your next turn."
+  },
+  "theDragonkin:Insanity": {
+    "NAME": "Waking Dream",
+    "DESCRIPTION": "Soulbound. Unplayable. NL Startup - Gain thedragonkin:Dreaming. NL When drawn gain !M! thedragonkin:Lunacy."
+  },
+  "theDragonkin:Suffering": {
+    "NAME": "Suffering",
+    "DESCRIPTION": "Ethereal. Unplayable. NL After you play a card, take 1 damage."
+  },
+
+
+  "theDragonkin:FlameweaverDefend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block. NL Channel !M! thedragonkin:Stone"
+  },
+  "theDragonkin:FlameweaverStrike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Channel !M! thedragonkin:Ember"
+  },
+
+
+  "theDragonkin:GrovekeeperDefend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Solar 2: Apply !M! Weak to ALL enemies."
+  },
+  "theDragonkin:GrovekeeperStrike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Lunar 2: Apply !M! Vulnerable."
+  },
+  "theDragonkin:ReapingSlash": {
+    "NAME": "Reaping Slash",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Harvest !M! to gain !M2! Temporary_HP"
+  },
+  "theDragonkin:Moonfire": {
+    "NAME": "Moonfire",
+    "DESCRIPTION": "Apply !M! thedragonkin:Moonstruck. NL thedragonkin:Lunar 4: Gain [E]."
+  },
+  "theDragonkin:Starfire": {
+    "NAME": "Starfire",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Lunar 4: Deal double damage.",
+    "EXTENDED_DESCRIPTION": [" I must have #r4 #ror #rmore #bLunar #bAlignment to play that."]
+  },
+  "theDragonkin:Starfall": {
+    "NAME": "Starfall",
+    "DESCRIPTION": "thedragonkin:Crossroads - Deal !AltD! damage or Deal !D! damage to ALL enemies.",
+    "EXTENDED_DESCRIPTION": [" I must have #r4 #ror #rmore #bLunar #bAlignment to play that."]
+  },
+  "theDragonkin:Starlord": {
+    "NAME": "Starlord",
+    "DESCRIPTION": "Deal !D! damage.",
+    "EXTENDED_DESCRIPTION": [" Purge. NL "]
+  },
+  "theDragonkin:StellarDrift": {
+    "NAME": "Stellar Drift",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
+    "EXTENDED_DESCRIPTION": [" Purge. NL "]
+  },
+  "theDragonkin:Starsurge": {
+    "NAME": "Starsurge",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Lunar 3: Deal !D! damage to ALL enemies."
+  },
+  "theDragonkin:Moonglow": {
+    "NAME": "Moonglow",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Lunar 3: Gain !B! Block. NL thedragonkin:Lunar 2: gain !M! temporary Dexterity."
+  },
+  "theDragonkin:Moonrise": {
+    "NAME": "Moonrise",
+    "DESCRIPTION": "Gain [E] and Draw a card. NL thedragonkin:Solar 2: Lose half your Solar thedragonkin:Alignment and Convert your Solar thedragonkin:Alignment to Lunar instead.",
+    "UPGRADE_DESCRIPTION": "Gain [E] and Draw a card. NL thedragonkin:Solar 2: Convert your Solar thedragonkin:Alignment to Lunar instead"
+  },
+  "theDragonkin:Wrath": {
+    "NAME": "Nature's Wrath",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Solar 2: Apply !M! Weak. NL thedragonkin:Lunar 2: Deal !D! damage and Apply !M! thedragonkin:Moonstruck.",
+    "EXTENDED_DESCRIPTION": ["Solar Wrath", "Lunar Wrath","Deal !D! damage. NL Apply !M! Weak", "Deal !D! damage twice. NL Apply !M! thedragonkin:Moonstruck."]
+  },
+  "theDragonkin:Sunfire": {
+    "NAME": "Sunfire",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Solar 2: Apply !M! thedragonkin:Sunburn."
+  },
+  "theDragonkin:HealingSun": {
+    "NAME": "Restoring Sun",
+    "DESCRIPTION": "Gain !M! Temporary_HP. NL thedragonkin:Hungry thedragonkin:Harvest !M2! to thedragonkin:Duplicate. NL Exhaust."
+  },
+  "theDragonkin:Sunrise": {
+    "NAME": "Sunrise",
+    "DESCRIPTION": "Gain [E] and Draw a card. NL thedragonkin:Lunar 2: Lose half your Lunar thedragonkin:Alignment and Convert your Lunar thedragonkin:Alignment to Solar instead",
+    "UPGRADE_DESCRIPTION": "Gain [E] and Draw a card. NL thedragonkin:Lunar 2: Convert your Lunar thedragonkin:Alignment to Solar instead"
+  },
+  "theDragonkin:InvigoratingSeeds": {
+    "NAME": "Invigorating Seeds",
+    "DESCRIPTION": "Channel !M! thedragonkin:Invigorating_Bloom",
+    "UPGRADE_DESCRIPTION": "Channel !M! thedragonkin:Invigorating_Blooms"
+  },
+  "theDragonkin:PoisonedSeeds": {
+    "NAME": "Poisoned Seeds",
+    "DESCRIPTION": "Channel !M! thedragonkin:Toxic_Bloom",
+    "UPGRADE_DESCRIPTION": "Channel !M! thedragonkin:Toxic_Blooms"
+  },
+  "theDragonkin:GaiaSeeds": {
+    "NAME": "Gaia Seeds",
+    "DESCRIPTION": "Channel !M! thedragonkin:Life_Bloom",
+    "UPGRADE_DESCRIPTION": "Channel !M! thedragonkin:Life_Blooms"
+  },
+  "theDragonkin:MagicSeeds": {
+    "NAME": "Magic Seeds",
+    "DESCRIPTION": "Channel !M! random Mystical Flower",
+    "UPGRADE_DESCRIPTION": "Channel !M! random Mystical Flowers"
+  },
+  "theDragonkin:MagicSpores": {
+    "NAME": "Vivid Spores",
+    "DESCRIPTION": "Apply !M! Poison, Weak or Vulnerable randomly to each enemy. NL Gain !M! thedragonkin:Natural_Spikes, thedragonkin:Energy_Shield or Vigor randomly.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Poison, Weak or Vulnerable randomly to each enemy twice. NL Gain !M! thedragonkin:Natural_Spikes, thedragonkin:Energy_Shield or Vigor randomly twice."
+  },
+  "theDragonkin:Thornwhip": {
+    "NAME": "Thorn Whip",
+    "DESCRIPTION": "Deal !D! damage. NL Channel !M! thedragonkin:Hungry_Bloom",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Channel !M! thedragonkin:Hungry_Bloom"
+  },
+  "theDragonkin:Cleansing": {
+    "NAME": "Earthen Inversion",
+    "DESCRIPTION": "thedragonkin:Life thedragonkin:Harvest !M! to Channel 1 thedragonkin:Toxic_Bloom. NL thedragonkin:Toxic thedragonkin:Harvest !M! to Channel 1 thedragonkin:Primal_Bloom",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Channel !M! thedragonkin:Hungry_Bloom"
+  },
+  "theDragonkin:ParalyticSpores": {
+    "NAME": "Paralytic Spores",
+    "DESCRIPTION": "thedragonkin:Toxic thedragonkin:Harvest !M! to Apply !M2! thedragonkin:Entangle to each Poisoned enemy. NL Exhaust."
+  },
+  "theDragonkin:NettleStrike": {
+    "NAME": "Nettle Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M2! thedragonkin:Natural_Spikes.  NL thedragonkin:Toxic thedragonkin:Harvest !M! to Gain !M2! thedragonkin:Natural_Spikes."
+  },
+  "theDragonkin:CresentCulling": {
+    "NAME": "Cresent Culling",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Hungry or thedragonkin:Life thedragonkin:Harvest !M!. NL thedragonkin:Lunar 2: thedragonkin:Hungry or thedragonkin:Life thedragonkin:Harvest !M!.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Hungry or thedragonkin:Life thedragonkin:Harvest !M!. NL thedragonkin:Lunar 2: thedragonkin:Hungry or thedragonkin:Life thedragonkin:Harvest !M!."
+  },
+  "theDragonkin:PrimalSwipe": {
+    "NAME": "Primal Swipe",
+    "DESCRIPTION": "Deal !AltD! damage. NL Deal !D! damage to all other enemies. NL thedragonkin:Primal thedragonkin:Harvest 1.",
+    "UPGRADE_DESCRIPTION": "Deal !AltD! damage. NL Deal !D! damage to all other enemies. NL thedragonkin:Primal thedragonkin:Harvest 1."
+  },
+  "theDragonkin:ThornShield": {
+    "NAME": "Thorn Shield",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! thedragonkin:Natural_Spikes."
+  },
+  "theDragonkin:NaturesWisdom": {
+    "NAME": "Natures Wisdom",
+    "DESCRIPTION": "thedragonkin:Crossroads: Choose a Mystic Flower and Channel it or thedragonkin:Harvest your Mystic Flowers completely Draw a Card and Gain [E] for each."
+  },
+  "theDragonkin:TimetoSow": {
+    "NAME": "Time to Sow",
+    "DESCRIPTION": "Choose a Mystic Flower and Channel it."
+  },
+  "theDragonkin:TimetoReap": {
+    "NAME": "Time to Reap",
+    "DESCRIPTION": "thedragonkin:Harvest your Mystic Flowers completely Draw a Card and Gain [E] for each."
+  },
+  "theDragonkin:EntanglingRoots": {
+    "NAME": "Entangling Roots",
+    "DESCRIPTION": "Apply !M! thedragonkin:Entangle. NL Exhaust."
+  },
+  "theDragonkin:StingingSwarm": {
+    "NAME": "Stinging Swarm",
+    "DESCRIPTION": "Whenever you are attacked, apply !M! Poison back."
+  },
+  "theDragonkin:SwarmStrike": {
+    "NAME": "Swarm Strike",
+    "DESCRIPTION": "thedragonkin:Duplicate. NL  thedragonkin:Crossroads - Deal !D! Damage or Apply !M! Poison. NL Deals 2 additional damage and applies 1 more Poison for each copy in play. NL Exhaust."
+  },
+  "theDragonkin:AncientSpores": {
+    "NAME": "Ancient Spores",
+    "DESCRIPTION": "Gain !M! thedragonkin:Natural_Spikes. NL Channel !M2! thedragonkin:Primal_Bloom."
+  },
+  "theDragonkin:BranchingPaths": {
+    "NAME": "Branching Paths",
+    "DESCRIPTION": "thedragonkin:Crossroads - Choose Twice: Deal !D! damage, Gain !B! Block, or Gain !M! Strength and Dexterity. NL Exhaust."
+  },
+  "theDragonkin:KickintheDoor": {
+    "NAME": "Kick in the Door",
+    "DESCRIPTION": "Deal !D! damage.",
+    "EXTENDED_DESCRIPTION": [" Purge. NL "]
+  },
+  "theDragonkin:LoottheRoom": {
+    "NAME": "Loot the Room",
+    "DESCRIPTION": "Gain !B! Block.",
+    "EXTENDED_DESCRIPTION": [" Purge. NL "]
+  },
+  "theDragonkin:FindtheSecret": {
+    "NAME": "Find the Secret",
+    "DESCRIPTION": "Gain !M! Strength and Dexterity.",
+    "EXTENDED_DESCRIPTION": [" Purge. NL "]
+  },
+  "theDragonkin:SwarmAssault": {
+    "NAME": "Swarm Assault",
+    "DESCRIPTION": "Deal !D! Damage.",
+    "EXTENDED_DESCRIPTION": [" Purge. NL "]
+  },
+  "theDragonkin:SwarmAmbush": {
+    "NAME": "Swarm Ambush",
+    "DESCRIPTION": " Apply !M! Poison.",
+    "EXTENDED_DESCRIPTION": [" Purge. NL "]
+  },
+  "theDragonkin:TheRoadLessTraveled": {
+    "NAME": "The Road Less Traveled",
+    "DESCRIPTION": "After you play a thedragonkin:Crossroads card, shuffle a copy of the unselected choices into your discard pile and give them Purge"
+  },
+  "theDragonkin:Everbloom": {
+    "NAME": "Everbloom",
+    "DESCRIPTION": "Gain !M! thedragonkin:Nature_Power. NL Choose a Mystic Flower, Channel it."
+  },
+  "theDragonkin:EverbloomInvig": {
+    "NAME": "Invigorating Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Invigorating_Bloom."
+  },
+  "theDragonkin:EverbloomToxic": {
+    "NAME": "Toxic Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Toxic_Bloom."
+  },
+  "theDragonkin:EverbloomThorn": {
+    "NAME": "Hungry Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Hungry_Bloom."
+  },
+  "theDragonkin:EverbloomLife": {
+    "NAME": "Life Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Life_Bloom."
+  },
+  "theDragonkin:EverbloomPrimal": {
+    "NAME": "Primal Bloom",
+    "DESCRIPTION": "Channel 1 thedragonkin:Primal_Bloom."
+  },
+  "theDragonkin:BasicRecruitKnights": {
+    "NAME": "Recruit Knights",
+    "DESCRIPTION": "thedragonkin:Recruit thedragonkin:imperial_knights"
+  },
+  "theDragonkin:HonorGaurd": {
+    "NAME": "HonorGaurd",
+    "DESCRIPTION": "thedragonkin:Recruit 1 of 3 *Special *Battalions."
+  },
+  "theDragonkin:Aymr": {
+    "NAME": "Aymr",
+    "DESCRIPTION": "thedragonkin:Weapon thedragonkin:Equipment. NL your first Attack each turn activates your lead Battalion's thedragonkin:Gambit. NL thedragonkin:Durability : !Arisen:Durability!.",
+    "UPGRADE_DESCRIPTION": "Innate. NL thedragonkin:Weapon thedragonkin:Equipment. NL your first Attack each turn activates your lead Battalion's thedragonkin:Gambit. NL theDragonkin:Durability : !Arisen:Durability!."
+  },
+  "theDragonkin:BasicRecruitArchers": {
+    "NAME": "Recruit Archers",
+    "DESCRIPTION": "thedragonkin:Recruit thedragonkin:imperial_archers. NL Add *Aim to your hand."
+  },
+  "theDragonkin:BasicRecruitMages": {
+    "NAME": "Recruit Mages",
+    "DESCRIPTION": "thedragonkin:Recruit thedragonkin:imperial_mages"
+  },
+  "theDragonkin:Aim": {
+    "NAME": "Aim",
+    "DESCRIPTION": "Target monster becomes *Aimed by this card's Source *Battalion."
+  }
+}

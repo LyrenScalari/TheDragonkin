@@ -7,35 +7,13 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags Dragon_Breath;
     @SpireEnum
-    public static AbstractCard.CardTags Physical;
+    public static AbstractCard.CardTags Radiant;
     @SpireEnum
-    public static AbstractCard.CardTags Arcane;
+    public static AbstractCard.CardTags SnekProof;
     @SpireEnum
-    public static AbstractCard.CardTags Enchanted;
+    public static AbstractCard.CardTags Acid_Activator;
     @SpireEnum
-    public static AbstractCard.CardTags Fire;
-    @SpireEnum
-    public static AbstractCard.CardTags Ice;
-    @SpireEnum
-    public static AbstractCard.CardTags Thunder;
-    @SpireEnum
-    public static AbstractCard.CardTags Wind;
-    @SpireEnum
-    public static AbstractCard.CardTags Dark;
-    @SpireEnum
-    public static AbstractCard.CardTags Light;
-    @SpireEnum
-    public static AbstractCard.CardTags School;
-    @SpireEnum
-    public static AbstractCard.CardTags Relic;
-    @SpireEnum
-    public static AbstractCard.CardTags Autumn;
-    @SpireEnum
-    public static AbstractCard.CardTags Winter;
-    @SpireEnum
-    public static AbstractCard.CardTags Spring;
-    @SpireEnum
-    public static AbstractCard.CardTags Summer;
+    public static AbstractCard.CardTags Acid_Applicator;
     @SpireEnum
     public static AbstractCard.CardTags Solar;
     @SpireEnum

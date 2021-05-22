@@ -7,15 +7,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
 import theDragonkin.orbs.PrimalBloom;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 @AutoAdd.Ignore
 public class EverbloomPrimal extends AbstractGroveKeeperCard {
-    public static final String ID = DefaultMod.makeID(EverbloomPrimal.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(EverbloomPrimal.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
 

@@ -3,19 +3,20 @@ package theDragonkin.cards.Dragonkin;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class HammerOfWrath extends AbstractDragonkinCard {
+public class HammerOfWrath extends AbstractHolyCard {
 
-    public static final String ID = DefaultMod.makeID(HammerOfWrath.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(HammerOfWrath.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 

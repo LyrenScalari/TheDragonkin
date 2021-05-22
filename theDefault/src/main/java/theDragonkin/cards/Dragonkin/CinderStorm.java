@@ -8,14 +8,14 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class CinderStorm extends AbstractPrimalCard {
 
-    public static final String ID = DefaultMod.makeID(CinderStorm.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(CinderStorm.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -48,6 +48,7 @@ public class CinderStorm extends AbstractPrimalCard {
                     AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
                 }
             }
+        super.use(p,m);
     }
 
     @Override

@@ -1,27 +1,22 @@
 package theDragonkin.cards.GroveKeeper.Choices;
 
 import basemod.AutoAdd;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.AbstractOrb;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
-import theDragonkin.orbs.AbstractGrovekeeperOrb;
 
 import java.util.ArrayList;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 @AutoAdd.Ignore
 public class TimetoSow  extends AbstractGroveKeeperCard {
-    public static final String ID = DefaultMod.makeID(TimetoSow.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(TimetoSow.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
 

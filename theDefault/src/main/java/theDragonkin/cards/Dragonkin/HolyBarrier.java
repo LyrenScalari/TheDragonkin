@@ -1,20 +1,18 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
+import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class HolyBarrier extends AbstractHolyCard {
 
-    public static final String ID = DefaultMod.makeID(HolyBarrier.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(HolyBarrier.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
@@ -26,7 +24,7 @@ public class HolyBarrier extends AbstractHolyCard {
     private static final int COST = -1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 3;
+    private static final int POTENCY = 5;
     private static final int UPGRADE_PLUS_POTENCY= 2;
     private static final int MAGIC = 2;
     private static final int UPGRADE_MAGIC = 1;
@@ -49,7 +47,7 @@ public class HolyBarrier extends AbstractHolyCard {
         }
         repeats += EnergyPanel.totalCount;
         for (int i = 0; i < this.magicNumber + repeats; ++i) {
-           addToBot(new AddTemporaryHPAction(p,p,defaultSecondMagicNumber));
+            addToBot(new GainDivineArmorAction(p,p,defaultSecondMagicNumber));
         }
         EnergyPanel.useEnergy(EnergyPanel.totalCount);
         repeats = 0;

@@ -1,23 +1,16 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ConfusionPower;
-import com.megacrit.cardcrawl.powers.DrawPower;
-import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
-import theDragonkin.DefaultMod;
-import theDragonkin.powers.Dragonkin.InsanityPower;
+import theDragonkin.DragonkinMod;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class Insanity extends AbstractDragonkinCard {
+public class Insanity extends AbstractDragonkinCard implements StartupCard {
 
-    public static final String ID = DefaultMod.makeID(Insanity.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Insanity.class.getSimpleName());
     public static final String IMG = makeCardPath("Insanity.png");
 
 
@@ -26,7 +19,7 @@ public class Insanity extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.CURSE;
     public static final CardColor COLOR = CardColor.CURSE;
 
-    private static final int COST = 0;
+    private static final int COST = -2;
     private static final int UPGRADED_COST = -2;
 
     private static final int POTENCY = 0;
@@ -40,18 +33,20 @@ public class Insanity extends AbstractDragonkinCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        AutoplayField.autoplay.set(this,true);
-        this.exhaust = true;
         SoulboundField.soulbound.set(this,true);
-        cardsToPreview = new HauntingVoice();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new InsanityPower(p,p,magicNumber),magicNumber));
     }
 
     @Override
     public void upgrade() {
+    }
+
+    @Override
+    public boolean atBattleStartPreDraw() {
+
+        return true;
     }
 }

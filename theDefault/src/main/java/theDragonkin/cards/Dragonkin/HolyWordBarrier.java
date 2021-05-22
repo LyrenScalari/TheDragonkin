@@ -1,14 +1,13 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
+import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class HolyWordBarrier extends AbstractHolyCard {
 
@@ -21,7 +20,7 @@ public class HolyWordBarrier extends AbstractHolyCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(HolyWordBarrier.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(HolyWordBarrier.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
@@ -37,7 +36,7 @@ public class HolyWordBarrier extends AbstractHolyCard {
     private static final int COST = 1;
     private static final int BLOCK = 4;
     private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int MAGIC = 5;
+    private static final int MAGIC = 8;
     private static final int UPGRADE_MAGIC = 3;
 
 
@@ -48,15 +47,16 @@ public class HolyWordBarrier extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
-        ExhaustiveVariable.setBaseValue(this, 2);
+        tags.add(CustomTags.Radiant);
+        RadiantExchange = 1;
     }
 
     // Actions the card should do.
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-                addToBot(new AddTemporaryHPAction(p,p,magicNumber));
-        }
+        addToBot(new GainDivineArmorAction(p,p,magicNumber));
+    }
 
     //Upgraded stats.
     @Override

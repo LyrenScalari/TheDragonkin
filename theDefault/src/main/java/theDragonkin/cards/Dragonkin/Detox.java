@@ -10,15 +10,15 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class Detox extends AbstractPrimalCard {
+public class Detox extends AbstractDragonkinCard{
 
-    public static final String ID = DefaultMod.makeID(Detox.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String ID = DragonkinMod.makeID(Detox.class.getSimpleName());
+    public static final String IMG = makeCardPath("Skill.png");
 
 
     private static final CardRarity RARITY = CardRarity.RARE;

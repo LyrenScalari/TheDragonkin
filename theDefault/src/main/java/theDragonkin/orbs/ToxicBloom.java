@@ -8,7 +8,6 @@ import com.evacipated.cardcrawl.mod.stslib.actions.defect.EvokeSpecificOrbAction
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,21 +18,15 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.vfx.GhostlyFireEffect;
 import com.megacrit.cardcrawl.vfx.GlowyFireEyesEffect;
-import com.megacrit.cardcrawl.vfx.PetalEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
-import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
-import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
-import theDragonkin.DefaultMod;
-import theDragonkin.powers.GroveKeeper.NaturePower;
+import theDragonkin.DragonkinMod;
 
-import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.BLUNT_HEAVY;
-import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.BLUNT_LIGHT;
-import static theDragonkin.DefaultMod.makeOrbPath;
+import static theDragonkin.DragonkinMod.makeOrbPath;
 
 public class ToxicBloom extends AbstractGrovekeeperOrb {
 
     // Standard ID/Description
-    public static final String ORB_ID = DefaultMod.makeID("ToxicBloom");
+    public static final String ORB_ID = DragonkinMod.makeID("ToxicBloom");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
 

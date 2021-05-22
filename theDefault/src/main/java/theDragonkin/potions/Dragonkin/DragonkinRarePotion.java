@@ -8,25 +8,25 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 
 public class DragonkinRarePotion extends AbstractPotion {
 
 
-    public static final String POTION_ID = theDragonkin.DefaultMod.makeID("DragonkinRarePotion");
+    public static final String POTION_ID = DragonkinMod.makeID("DragonkinRarePotion");
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
 
     public static final String NAME = potionStrings.NAME;
     public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
 
     public DragonkinRarePotion() {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
+        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DragonkinMod.java
         super(NAME, POTION_ID, PotionRarity.RARE, PotionSize.EYE, PotionColor.ANCIENT);
 
         // Potency is the damage/magic number equivalent of potions.
         potency = getPotency();
-        this.labOutlineColor = DefaultMod.DEFAULT_GRAY;
+        this.labOutlineColor = DragonkinMod.DEFAULT_GRAY;
         // Initialize the Description
         description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[1];
 

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDrawPileEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 
 @SpirePatch(clz = ShowCardAndAddToDiscardEffect.class, method = "update")
 @SpirePatch(clz = ShowCardAndAddToHandEffect.class, method = "update")
@@ -16,7 +16,7 @@ import theDragonkin.DefaultMod;
 public class InDraw {
     public static void Prefix(AbstractGameEffect __instance) {
         if (__instance.duration == (float) ReflectionHacks.getPrivateStatic(__instance.getClass(), "EFFECT_DUR")) {
-            DefaultMod.onGenerateCardMidcombat((AbstractCard) ReflectionHacks.getPrivate(__instance, __instance.getClass(), "card"));
+            DragonkinMod.onGenerateCardMidcombat((AbstractCard) ReflectionHacks.getPrivate(__instance, __instance.getClass(), "card"));
         }
     }
 }

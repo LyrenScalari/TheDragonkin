@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.actions.defect.EvokeSpecificOrbAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -18,16 +16,15 @@ import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import com.megacrit.cardcrawl.vfx.combat.*;
-import theDragonkin.DefaultMod;
-import theDragonkin.powers.GroveKeeper.NaturePower;
+import theDragonkin.DragonkinMod;
 
 import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.*;
-import static theDragonkin.DefaultMod.makeOrbPath;
+import static theDragonkin.DragonkinMod.makeOrbPath;
 
 public class ThornBloom extends AbstractGrovekeeperOrb {
 
     // Standard ID/Description
-    public static final String ORB_ID = DefaultMod.makeID("ThornBloom");
+    public static final String ORB_ID = DragonkinMod.makeID("ThornBloom");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
 

@@ -10,22 +10,20 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
-import theDragonkin.cards.GroveKeeper.Skills.InvigoratingSeeds;
 import theDragonkin.characters.TheGroveKeeper;
-import theDragonkin.orbs.InvigoratingBloom;
 import theDragonkin.orbs.ThornBloom;
 import theDragonkin.powers.GroveKeeper.NaturePower;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Thornwhip extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(Thornwhip.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Thornwhip.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
     // /TEXT DECLARATION/

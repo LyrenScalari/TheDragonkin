@@ -1,31 +1,24 @@
 package theDragonkin.cards.GroveKeeper.Skills;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.characters.TheGroveKeeper;
-import theDragonkin.orbs.AbstractGrovekeeperOrb;
-import theDragonkin.orbs.InvigoratingBloom;
 import theDragonkin.orbs.ThornBloom;
-import theDragonkin.powers.GroveKeeper.NatrualSpikesPower;
-import theDragonkin.relics.Grovekeeper.GrovekeeperStarting;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class HealingSun extends AbstractGroveKeeperCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(HealingSun.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(HealingSun.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
@@ -52,7 +45,7 @@ public class HealingSun extends AbstractGroveKeeperCard {
         magicNumber = baseMagicNumber = 10;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         this.tags.add(CustomTags.Solar);
-        this.setOrbTexture(DefaultMod.Solar_SMALL_ORB,DefaultMod.Solar_LARGE_ORB);
+        this.setOrbTexture(DragonkinMod.Solar_SMALL_ORB, DragonkinMod.Solar_LARGE_ORB);
         this.exhaust = true;
     }
 

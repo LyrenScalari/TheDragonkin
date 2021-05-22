@@ -6,12 +6,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 
 public class CursedPower extends AbstractPower {
     public AbstractCreature source;
     AbstractPower p = AbstractDungeon.player.getPower(CursedPower.POWER_ID);
-    public static final String POWER_ID = DefaultMod.makeID("CursedPower");
+    public static final String POWER_ID = DragonkinMod.makeID("CursedPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

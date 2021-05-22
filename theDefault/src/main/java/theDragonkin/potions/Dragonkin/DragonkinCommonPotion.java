@@ -12,22 +12,22 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 
 public class DragonkinCommonPotion extends AbstractPotion {
 
 
-    public static final String POTION_ID = theDragonkin.DefaultMod.makeID("DragonkinCommonPotion");
+    public static final String POTION_ID = DragonkinMod.makeID("DragonkinCommonPotion");
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
 
     public static final String NAME = potionStrings.NAME;
     public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
 
     public DragonkinCommonPotion() {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
+        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DragonkinMod.java
         super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.BOTTLE, PotionColor.SMOKE);
-        this.labOutlineColor = DefaultMod.DEFAULT_GRAY;
+        this.labOutlineColor = DragonkinMod.DEFAULT_GRAY;
         // Potency is the damage/magic number equivalent of potions.
         potency = getPotency();
 

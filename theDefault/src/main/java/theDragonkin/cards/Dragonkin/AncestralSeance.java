@@ -1,26 +1,22 @@
 package theDragonkin.cards.Dragonkin;
 
-import basemod.BaseMod;
-import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CustomDiscoveryAction;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
 
 public class AncestralSeance extends AbstractPrimalCard {
 
-    public static final String ID = DefaultMod.makeID(AncestralSeance.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(AncestralSeance.class.getSimpleName());
     public static final String IMG = makeCardPath("AncestralSeance.png");
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -56,6 +52,7 @@ public class AncestralSeance extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new CustomDiscoveryAction(NonHoly,magicNumber,false, card -> card.freeToPlayOnce = true));
+        super.use(p,m);
     }
 
     @Override

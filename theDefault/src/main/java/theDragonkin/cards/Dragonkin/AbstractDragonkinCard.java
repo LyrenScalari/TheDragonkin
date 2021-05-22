@@ -1,11 +1,14 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.AbstractDefaultCard;
-import theDragonkin.powers.CustomBoss.CurseofTonges;
+import theDragonkin.cards.Dragonkin.interfaces.StormCard;
+import theDragonkin.powers.Dragonkin.FuryPower;
+import theDragonkin.relics.Dragonkin.RotnestWings;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
@@ -33,18 +36,33 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
     }
     public int realBaseDamage;
     public int realBaseMagic;
+    public boolean Storm;
+    public int StormRate = 999999999;
     @Override
     public void atTurnStart() {
         super.atTurnStart();
-        DefaultMod.WasDrained = false;
+        DragonkinMod.WasDrained = false;
     }
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m){
-        if (this.hasTag(CustomTags.Dragon_Breath)){
-            if (p.hasPower(CurseofTonges.POWER_ID)){
-                return false;
+    public void applyPowers(){
+        if (this instanceof StormCard){
+            if (AbstractDungeon.player.hasPower(FuryPower.POWER_ID)){
+                if (AbstractDungeon.player.getPower(FuryPower.POWER_ID).amount >= this.StormRate){
+                    Storm = true;
+                    AbstractDungeon.effectsQueue.add(new FireBurstParticleEffect(this.current_x,this.current_y));
+                } else Storm = false;
+            } else Storm = false;
+        }
+    }
+    @Override
+    public boolean freeToPlay(){
+        if (AbstractDungeon.player != null && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            if (AbstractDungeon.player.hasRelic(RotnestWings.ID)) {
+                if (!((RotnestWings) AbstractDungeon.player.getRelic(RotnestWings.ID)).used && this.hasTag(CustomTags.Dragon_Breath)) {
+                    return true;
+                }
             }
-        } else super.canUse(p,m);
-        return true;
+        }
+        return super.freeToPlay();
     }
 }

@@ -2,13 +2,18 @@ package theDragonkin.relics.Dragonkin;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import theDragonkin.DefaultMod;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import theDragonkin.DragonkinMod;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-import static theDragonkin.DefaultMod.makeRelicPath;
+import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+import static theDragonkin.DragonkinMod.makeRelicPath;
 
 public class SunblessedCharm extends CustomRelic { // You must implement things you want to use from StSlib
     /*
@@ -19,7 +24,7 @@ public class SunblessedCharm extends CustomRelic { // You must implement things 
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("SunblessedCharm");
+    public static final String ID = DragonkinMod.makeID("SunblessedCharm");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("bellows.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("bellows.png"));
@@ -34,8 +39,11 @@ public class SunblessedCharm extends CustomRelic { // You must implement things 
         tips.add(new PowerTip(name, description));
     }
 
-    @Override
-    public void atPreBattle() {
+    public void atBattleStart() {
+        this.flash();
+        this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DivineConvictionpower(AbstractDungeon.player,
+                AbstractDungeon.player,1)));
+        this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 
     @Override

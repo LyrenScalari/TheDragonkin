@@ -6,13 +6,13 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Suffering extends AbstractDragonkinCard {
 
-    public static final String ID = DefaultMod.makeID(Suffering.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Suffering.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
 

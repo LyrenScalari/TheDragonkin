@@ -1,9 +1,7 @@
 package theDragonkin.cards.GroveKeeper.Choices;
 
 import basemod.AutoAdd;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,18 +11,16 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import theDragonkin.CustomTags;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.cards.GroveKeeper.AbstractChooseOneCard;
 import theDragonkin.cards.GroveKeeper.AbstractGroveKeeperCard;
 import theDragonkin.cards.GroveKeeper.Attacks.SwarmStrike;
 import theDragonkin.characters.TheGroveKeeper;
 
-import java.util.Iterator;
-
-import static theDragonkin.DefaultMod.makeCardPath;
+import static theDragonkin.DragonkinMod.makeCardPath;
 @AutoAdd.Ignore
 public class SwarmAmbush extends AbstractGroveKeeperCard {
-    public static final String ID = DefaultMod.makeID(SwarmAmbush.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(SwarmAmbush.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 

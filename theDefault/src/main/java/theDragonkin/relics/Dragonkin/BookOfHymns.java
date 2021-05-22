@@ -11,12 +11,12 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import theDragonkin.DefaultMod;
+import theDragonkin.DragonkinMod;
 import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.util.TextureLoader;
 
-import static theDragonkin.DefaultMod.makeRelicOutlinePath;
-import static theDragonkin.DefaultMod.makeRelicPath;
+import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
+import static theDragonkin.DragonkinMod.makeRelicPath;
 
 public class BookOfHymns extends CustomRelic implements OnLoseBlockRelic , OnLoseTempHpRelic { // You must implement things you want to use from StSlib
     /*
@@ -27,7 +27,7 @@ public class BookOfHymns extends CustomRelic implements OnLoseBlockRelic , OnLos
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("BookOfHymns");
+    public static final String ID = DragonkinMod.makeID("BookOfHymns");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
