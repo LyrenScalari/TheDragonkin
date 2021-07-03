@@ -1,6 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -11,8 +12,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
+import theDragonkin.actions.FluxAction;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -63,17 +66,7 @@ public class Sunburst extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        int CycleCount = 0;
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (CycleCount >= defaultSecondMagicNumber){
-                break;
-            }
-            if (c.cardID == Burn.ID) {
-                addToBot(new CycleAction(c,1));
-                addToBot(new GainDivineArmorAction(p,p,magicNumber));
-                CycleCount++;
-            }
-        }
+        addToBot(new FluxAction(defaultSecondMagicNumber,()->new  GainDivineArmorAction(p,p,magicNumber)));
     }
 
     //Upgraded stats.

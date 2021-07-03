@@ -17,7 +17,11 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags Solar;
     @SpireEnum
+    public static AbstractCard.CardTags SolarTrigger;
+    @SpireEnum
     public static AbstractCard.CardTags Lunar;
+    @SpireEnum
+    public static AbstractCard.CardTags LunarTrigger;
     @SpireEnum
     public static AbstractCard.CardTags Neutral;
 }

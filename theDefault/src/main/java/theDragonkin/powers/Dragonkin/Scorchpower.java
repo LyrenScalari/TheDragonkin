@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
+import theDragonkin.relics.Dragonkin.MukySludge;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
@@ -44,7 +45,7 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
         this.owner = owner;
         this.amount = amount;
         this.source = source;
-
+        priority = 70;
         type = PowerType.DEBUFF;
         isTurnBased = false;
 
@@ -59,14 +60,29 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
     public int onAttacked(DamageInfo di, int d){
         if (di.type == DamageInfo.DamageType.NORMAL) {
             this.flash();
-            int temp = amount;
             AbstractDungeon.actionManager.addToTop(
                     new ReducePowerAction(this.owner, this.owner, this, 1));
+            int temp = amount;
             return d + temp;
         }
-            return d;
+        return d;
     }
-
+    @Override
+    public float atDamageFinalGive(float d, DamageInfo.DamageType type){
+        if (type == DamageInfo.DamageType.NORMAL && AbstractDungeon.player.hasRelic(MukySludge.ID)) {
+            int temp = amount;
+            return d - temp;
+        }
+        return d;
+    }
+    @Override
+    public void onAttack(DamageInfo info, int d, AbstractCreature target){
+        if (info.type == DamageInfo.DamageType.NORMAL && AbstractDungeon.player.hasRelic(MukySludge.ID)) {
+            this.flash();
+            AbstractDungeon.actionManager.addToTop(
+                    new ReducePowerAction(this.owner, this.owner, this, 1));
+        }
+    }
     // Note: If you want to apply an effect when a power is being applied you have 3 options:
     //onInitialApplication is "When THIS power is first applied for the very first time only."
     //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."

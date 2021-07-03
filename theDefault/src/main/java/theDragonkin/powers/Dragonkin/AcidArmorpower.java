@@ -44,7 +44,7 @@ public class AcidArmorpower extends AbstractPower implements CloneablePowerInter
     }
     @Override
     public void onApplyPower(AbstractPower p, AbstractCreature t, AbstractCreature s){
-        if (p.type == PowerType.DEBUFF && !p.ID.equals("Shackled") && source == this.owner && t!= this.owner && !t.hasPower("Artifact")) {
+        if (p.type == PowerType.DEBUFF && !p.ID.equals("Shackled") && source == this.owner && !t.hasPower("Artifact")) {
             this.flash();
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner,amount));
         }

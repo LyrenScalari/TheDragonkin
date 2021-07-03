@@ -16,6 +16,17 @@
       " #gTrigger #gALL #genemies #rDissolve"
     ]
   },
+  "theDragonkin:MultiIntentStrings": {
+    "TEXT": [
+      "This enemy intends to NL #yAttack ",
+      " for #b",
+      " damage.",
+      " damage #b",
+      " times.",
+      "This enemy intends to inflict a #yNegative #yEffect on ",
+      "."
+    ]
+  },
   "theDragonkin:CardmodStrings": {
     "TEXT": [
       " NL Exhaust",
@@ -24,16 +35,9 @@
       "Retain NL "
     ]
   },
-  "theDragonkin:DragonsHoardRewardStrings": {
+  "theDragonkin:SpellCard": {
     "TEXT": [
-      " Gold ",
-      " Rare Card Reward "
-    ]
-  },
-  "theDragonkin:BattalionSlotErrorText": {
-    "TEXT": [
-      "My Battalion slots are #rFull!",
-      "I have no Battalion slots!"
+      "Spell"
     ]
   },
   "TheDragonkin:CurseAttack": {
@@ -41,19 +45,10 @@
       "Ritual Attack",
       "This enemy intends to NL deal #b",
       " damage and ",
-      "Empower itself and the Ritual."
+      "Empower itself."
     ]
   },
-  "theDragonkin:DragonbreathDisplay": {
-    "TEXT": [
-      "Stored Dragonbreaths - "
-    ]
-  },
-  "TransmutationAction": {
-    "TEXT": [
-      "Choose cards to change the Element of"
-    ]
-  },
+
   "WitherCard": {
     "TEXT": [
       "thedragonkin:Depleted. NL ",
@@ -61,20 +56,6 @@
       "Cast Count",
       " NL (Current value: #b",
       ")"
-    ]
-  },
-  "ReplenishMagic": {
-    "TEXT": [
-      " Choose a Spell to replenish.",
-      " Choose ", " Spells to replenish"
-    ]
-  },
-  "MeditateOption": {
-    "TEXT": [
-      " Meditate",
-      " Replenish ",
-      " Spell",
-      " Spells"
     ]
   }
 }

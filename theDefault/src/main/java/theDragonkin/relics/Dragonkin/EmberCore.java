@@ -33,7 +33,7 @@ public class EmberCore extends CustomRelic { // You must implement things you wa
     private  boolean used = false;
 
     public EmberCore() {
-        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.CLINK);
         tips.clear();
         tips.add(new PowerTip(name, description));
     }

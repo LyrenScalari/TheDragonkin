@@ -1,15 +1,14 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.Burn;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
-import theDragonkin.actions.CycleAction;
+import theDragonkin.actions.InfernoWardAction;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.HeatPower;
+import theDragonkin.powers.Dragonkin.AuraFlame;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -37,7 +36,7 @@ public class InfernoWard extends AbstractPrimalCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 3;
 
@@ -49,20 +48,15 @@ public class InfernoWard extends AbstractPrimalCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
         baseDamage = baseBlock;
-        baseMagicNumber = magicNumber = 1;
-        exhaust = true;
+        baseMagicNumber = magicNumber = 5;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c.cardID == Burn.ID) {
-                addToBot(new CycleAction(c,1));
-                addToBot(new GainBlockAction(p,block));
-                addToBot(new ApplyPowerAction(p,p,new HeatPower(p,p,magicNumber)));
-            }
-        }
+        addToBot(new GainBlockAction(p,block));
+        addToBot(new ApplyPowerAction(p,p,new AuraFlame(p,p,magicNumber)));
+        addToBot(new InfernoWardAction(10));
         super.use(p,m);
     }
 

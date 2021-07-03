@@ -39,17 +39,16 @@ public FlameWard() {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber =2;
-        StormRate = 10;
+        StormRate = 3;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
+        cardsToPreview = new Burn();
         }
 
 @Override
 public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-        new GainBlockAction(p,block));
-        AbstractDungeon.actionManager.addToBottom(
-                new MakeTempCardInDrawPileAction(new Burn(), magicNumber, true, false));
+        addToBot(new GainBlockAction(p,block));
+        addToBot(new MakeTempCardInDrawPileAction(new Burn(), 1, true, false));
+        addToBot(new MakeTempCardInDrawPileAction(new Burn(), 1, true, false));
         if (!Storm) {
                 super.use(p, m);
         }
@@ -60,10 +59,9 @@ public void upgrade() {
         if (!upgraded) {
         upgradeName();
         upgradeBlock(UPGRADE_PLUS_DMG);
-        upgradeMagicNumber(UPGRADE_MAGIC);
         initializeDescription();
         }
-        }
+}
 
         @Override
         public void onStorm() {

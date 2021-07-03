@@ -51,8 +51,8 @@ public abstract class AbstractHolyCard extends AbstractDragonkinCard {
            this.applyHolyBonusPower();
            this.magicNumber = this.baseMagicNumber;
            this.defaultSecondMagicNumber = this.defaultBaseSecondMagicNumber;
-           super.applyPowers();
            this.revertHolyBonusPower();
        }
+       super.applyPowers();
     }
 }

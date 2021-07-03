@@ -48,8 +48,6 @@ public class AcidArmor extends AbstractPrimalCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeBaseCost(UPGRADED_COST);
             upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }

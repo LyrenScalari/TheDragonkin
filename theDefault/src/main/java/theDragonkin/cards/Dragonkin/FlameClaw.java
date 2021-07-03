@@ -39,7 +39,7 @@ public class FlameClaw extends AbstractPrimalCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-
+        cardsToPreview = new Burn();
     }
 
     @Override

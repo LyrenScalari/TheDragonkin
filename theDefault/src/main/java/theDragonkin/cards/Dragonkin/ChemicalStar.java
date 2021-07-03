@@ -17,13 +17,13 @@ import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class ChemicalStar extends AbstractPrimalCard {
+public class ChemicalStar extends AbstractDragonkinCard {
 
     public static final String ID = DragonkinMod.makeID(ChemicalStar.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
@@ -31,8 +31,8 @@ public class ChemicalStar extends AbstractPrimalCard {
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 4;
+    private static final int UPGRADE_PLUS_DMG = 1;
     private static final int MAGIC = 6;
     private static final int UPGRADE_MAGIC = 0;
 
@@ -40,6 +40,7 @@ public class ChemicalStar extends AbstractPrimalCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = 1;
+        cardsToPreview = new Burn();
     }
 
     @Override
@@ -50,7 +51,6 @@ public class ChemicalStar extends AbstractPrimalCard {
                     addToTop(new HealAction(p,p,dmg));
                 }));
         addToBot(new MakeTempCardInDiscardAction(new Burn(),magicNumber));
-        super.use(p,m);
     }
 
     @Override

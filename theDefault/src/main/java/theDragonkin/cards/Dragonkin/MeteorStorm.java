@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
+@AutoAdd.Ignore
 public class MeteorStorm extends AbstractPrimalCard {
 
     /*

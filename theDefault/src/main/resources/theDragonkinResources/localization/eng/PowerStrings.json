@@ -7,7 +7,7 @@
         },
         "theDragonkin:HeatPower": {
                 "NAME": "Heat",
-                "DESCRIPTIONS": ["You may spend #yHeat to Exhaust #yBurns and draw a card, activates #yCycle activated effects."
+                "DESCRIPTIONS": ["You may spend #yHeat to Exhaust #yStatuses and draw a card, activates #yCycle activated effects and the Cycled card's end of turn effects."
                 ]
         },
         "theDragonkin:Scorch": {
@@ -97,7 +97,7 @@
                 ]
         },
         "theDragonkin:AcidArmor": {
-                "NAME": "Acid Armor",
+                "NAME": "Pain Syphon",
                 "DESCRIPTIONS": ["When you Apply a Debuff gain #b", " Block"
                 ]
         },
@@ -111,23 +111,21 @@
                 "DESCRIPTIONS": ["When you draw a #yStatus Attack a random enemy for #b", " damage"
                 ]
         },
-        "theDragonkin:SlowBurn": {
-                "NAME": "Slow Burn",
-                "DESCRIPTIONS": ["When you Apply a Debuff this loses #b", " HP"
-                ]
-        },
-        "theDragonkin:DeepBreath": {
-                "NAME": "Deep Breath",
-                "DESCRIPTIONS": ["Do not Release your #yDragon #yBreaths this turn."
-                ]
-        },
         "theDragonkin:DivineConvictionpower": {
                 "NAME": "Zeal",
                 "DESCRIPTIONS": ["Increases Holy card damage and Block gain #b"]
         },
+        "theDragonkin:Unbroken": {
+                "NAME": "Unbroken",
+                "DESCRIPTIONS": ["After you Apply or receive a Debuff gain #b"," #yDeflecting #yScales."]
+        },
+        "theDragonkin:Perseverance": {
+                "NAME": "Ignored Pain",
+                "DESCRIPTIONS": ["Reduce this by #b","1 at the end of your turn"]
+        },
         "theDragonkin:FuryPower": {
                 "NAME": "Fury",
-                "DESCRIPTIONS": ["Increases damage of Primal Cards by #b"]
+                "DESCRIPTIONS": ["Can be spent instead of energy for #yStorm cards"]
         },
         "theDragonkin:Subdued": {
                 "NAME": "Subdued",
@@ -137,9 +135,17 @@
                 "NAME": "Seraph Form",
                 "DESCRIPTIONS": ["The first card you play each turn gives #b"," #yDivine #yArmor and increase this gain by #b"]
         },
-        "theDragonkin:Regenerate": {
-                "NAME": "Regenerate",
-                "DESCRIPTIONS": ["At the start of your turn Heal #b"," #yHP"]
+        "theDragonkin:SteelWill": {
+                "NAME": "Steel Will",
+                "DESCRIPTIONS": ["If you have received #b"," or more damage this turn, replace debuffs applied with one with no effect."," NL (Total damage received : #b"," )"]
+        },
+        "theDragonkin:ReflectiveScales": {
+                "NAME": "Deflecting Scales",
+                "DESCRIPTIONS": ["After you receive damage deal #b"," damage to a random enemy and reduce this by #b1"]
+        },
+        "theDragonkin:AuraFlame": {
+                "NAME": "Auraflame",
+                "DESCRIPTIONS": ["After you play a card deal #b"," damage to a random enemy and reduce this by #b1"]
         },
         "theDragonkin:EndlessFlame": {
                 "NAME": "Endless Flame",
@@ -179,7 +185,7 @@
         },
         "theDragonkin:DarkRitual": {
                 "NAME": "Dark Ritual",
-                "DESCRIPTIONS": ["At the Start of The Acolyte's turn, increases by the number of #yCurses in your hand, discard and draw piles."
+                "DESCRIPTIONS": ["Increases by #b1 Each turn, The Acolyte plays #yChaos #yBolt if this is equal or greater then #b7"
                 ]
         },
         "theDragonkin:CursedPower": {
@@ -188,200 +194,16 @@
                 ]
         },
 
-        "theDragonkin:Chill": {
-                "NAME": "Chill",
-                "DESCRIPTIONS": ["Recives #b", " extra damage from #yIce cards, replace this with #yFreeze if this has 10 or more stacks of this."]
-        },
-        "theDragonkin:DeepFrost": {
-                "NAME": "Deep Frost",
-                "DESCRIPTIONS": ["Ice cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
-        },
-        "theDragonkin:DeepFrostDuration": {
-                "NAME": "Deep Frost",
-                "DESCRIPTIONS": ["Ice cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
-        },
-        "theDragonkin:DeepFrostCards": {
-                "NAME": "Deep Frost",
-                "DESCRIPTIONS": ["Your next #b"," Ice cards deals #b", " Ice card deals #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock"]
-        },
-        "theDragonkin:Freeze": {
-                "NAME": "Freeze",
-                "DESCRIPTIONS": ["Recives #b", "0 damage from #yIce Cards, and receives three times damage form non-magical cards and removes this."]
-        },
-        "theDragonkin:Jolted": {
-                "NAME": "Jolted",
-                "DESCRIPTIONS": ["Recives #b", "0% less damage from #yThunder cards"]
-        },
-        "theDragonkin:Charged-Up": {
-                "NAME": "Charged Up",
-                "DESCRIPTIONS": ["Thunder cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
-        },
-        "theDragonkin:Charged-UpDuration": {
-                "NAME": "Charged Up",
-                "DESCRIPTIONS": ["Thunder cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock", " for #b", " turns."]
-        },
-        "theDragonkin:Charged-UpCards": {
-                "NAME": "Charged Up",
-                "DESCRIPTIONS": ["Your next #b"," Thunder cards deals #b", " Thunder card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
-        },
-        "theDragonkin:Galeforce": {
-                "NAME": "Galeforce",
-                "DESCRIPTIONS": ["Wind cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
-        },
-        "theDragonkin:GaleforceDuration": {
-                "NAME": "Galeforce",
-                "DESCRIPTIONS": ["Wind cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
-        },
-        "theDragonkin:GaleforceCards": {
-                "NAME": "Galeforce",
-                "DESCRIPTIONS": ["Your next #b"," Wind cards deals #b", " Wind card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
-        },
-        "theDragonkin:Kindling": {
-                "NAME": "Kindling",
-                "DESCRIPTIONS": ["Fire cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
-        },
-        "theDragonkin:KindlingDuration": {
-                "NAME": "Kindling",
-                "DESCRIPTIONS": ["Fire cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
-        },
-        "theDragonkin:KindlingCards": {
-                "NAME": "Kindling",
-                "DESCRIPTIONS": ["Your next #b"," Fire cards deals #b", " Fire card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
-        },
-        "theDragonkin:Luminance": {
-                "NAME": "Luminance",
-                "DESCRIPTIONS": ["Light cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
-        },
-        "theDragonkin:LuminanceCards": {
-                "NAME": "Luminance",
-                "DESCRIPTIONS": ["Your next #b"," Light cards deals #b", " Light card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
-        },
-        "theDragonkin:LuminanceDuration": {
-                "NAME": "Luminance",
-                "DESCRIPTIONS": ["Light cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
-        },
-        "theDragonkin:LoptyrianShadow": {
-                "NAME": "Loptyrian Shadow",
-                "DESCRIPTIONS": ["Dark cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock."]
-        },
-        "theDragonkin:LoptyrianShadowDuration": {
-                "NAME": "Loptyrian Shadow",
-                "DESCRIPTIONS": ["Dark cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gain #b", " less #yBlock.", " for #b", " turns."]
-        },
-        "theDragonkin:LoptyrianShadowCards": {
-                "NAME": "Loptyrian Shadow",
-                "DESCRIPTIONS": ["Your next #b"," Dark cards deals #b", " Dark card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
-        },
-        "theDragonkin:arcana": {
-                "NAME": "Arcana",
-                "DESCRIPTIONS": ["Magic cards deal #b", " more damage and gain #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
-        },
-        "theDragonkin:ArcanaCards": {
-                "NAME": "Arcana",
-                "DESCRIPTIONS": ["Your next #b"," Magic cards deals #b", " Magic card deals #b", " more damage and gains #b", " more #yBlock.",  " less damage and gains #b", " less #yBlock."]
-        },
-        "theDragonkin:resistance": {
-                "NAME": "Dark Exposure",
-                "DESCRIPTIONS": ["Magic cards Deal #b", " more damage to this enemy."]
-        },
-        "theDragonkin:Ragnarök": {
-                "NAME": "Ragnarök",
-                "DESCRIPTIONS": ["Fire cards Deal #b", " more damage until you play a non #yFire card."]
-        },
-        "theDragonkin:DeathBlow": {
-                "NAME": "Death Blow",
-                "DESCRIPTIONS": ["Your next non #yMagic Attack deals #b", " extra damage."]
-        },
-        "theDragonkin:FiendishBlow": {
-                "NAME": "Fiendish Blow",
-                "DESCRIPTIONS": ["Your next #yMagic Attack or Skill deals #b", " extra damage"," and gains #b"," extra block."]
-        },
-        "theDragonkin:KillerBlow": {
-                "NAME": "Killer Blow",
-                "DESCRIPTIONS": ["Your next Attack gains #b", " #yHunters #yFocus."]
-        },
-        "theDragonkin:HuntersFocus": {
-                "NAME": "Hunters Focus",
-                "DESCRIPTIONS": ["When you obtain #b10 Hunters Focus your next Attack deals triple damage."]
-        },
-        "theDragonkin:FlowersAmbition": {
-                "NAME": "Season of Warfare - Spring",
-                "DESCRIPTIONS": ["Fire cards cost 1 less. Your Fire cards have Hot Streak, Gain 1 #yKindling until the end of your next turn"]
-        },
-        "theDragonkin:ImmaculateSnow": {
-                "NAME": "Season of Warfare - Winter",
-                "DESCRIPTIONS": ["Ice cards cost 1 less. #yChill effects all elements except #yFire."]
-        },
-        "theDragonkin:MoonsMarch": {
-                "NAME": "Season of Warfare - Autumn",
-                "DESCRIPTIONS": ["Physical cards cost 1 less. After you #yDeplete a spell, gain 3 #yStrength."]
-        },
-        "theDragonkin:WindsSong": {
-                "NAME": "Season of Warfare - Summer",
-                "DESCRIPTIONS": ["Wind cards cost 1 less. Keep #yTailwind between turns."]
-        },
-        "theDragonkin:Blutgang": {
-                "NAME": "Blutgang",
-                "DESCRIPTIONS": ["#yAntiquity. At the start of your turn, choose a card in your hand permanently #yEnchant it"]
-        },
-        "theDragonkin:HorizonEdge": {
-                "NAME": "The Horizon Edge",
-                "DESCRIPTIONS": ["#yAntiquity. The first physical card you play each turn is play 2 additional times"]
-        },
-        "theDragonkin:FierceasFire": {
-                "NAME": "Fierce as Fire",
-                "DESCRIPTIONS": ["After you #yDeplete a spell, gain 2 Energy and you next spell does 9 more damage and gains 9 more Block."]
-        },
-        "theDragonkin:SwiftasWind": {
-                "NAME": "Swift as Wind",
-                "DESCRIPTIONS": ["After dealing or receiving unblocked damage gain #b"," #yHunter's #yFocus"]
-        },
-        "theDragonkin:BurstingWardPower": {
-                "NAME": "Trap Ward",
-                "DESCRIPTIONS": ["The next enemy that tries to attack you takes #b"," damage before it's turn."]
-        },
-        "theDragonkin:WardPower": {
-                "NAME": "Ward",
-                "DESCRIPTIONS": ["At the start of your turn, gain #b"," Block, and reduce this by 1"]
-        },
-
-
-        "theDragonkin:Aymr": {
-                "NAME": "Aymr",
-                "DESCRIPTIONS": ["#yWeapon #yEquipment. NL Your first #yAttack played each turn activates your lead battalion's #yGambit. NL #yDurability - "
-                ]
-        },
-
-        "theDragonkin:NaturePower":{
-                "NAME": "Nature Power",
-                "DESCRIPTIONS": ["#yMystic #yFlowers last #b", " Turns longer.", " When you channel #yMystic #yFlowers channel #b", " extra."]
-        },
-        "theDragonkin:NatrualSpikesPower":{
-                "NAME": "Natural Spikes",
-                "DESCRIPTIONS": ["Deal #b", " damage back to attackers.", " Reduce this by #b", " after you take unblocked damage."]
-        },
-        "theDragonkin:EnergyShieldPower":{
-                "NAME": "Energy Shield",
-                "DESCRIPTIONS": ["Gain #b", " additional Block the next time you gain block from a card."]
-        },
-        "theDragonkin:RoadLessTraveledPower": {
-                "NAME": "Twin Roads",
-                "DESCRIPTIONS": ["After you play a Choose One card, shuffle a copy of ALL choices you didn't choose into your draw pile with #yPurge."," Purge. NL "]
-        },
-        "theDragonkin:AlignmentPower":{
-                "NAME": "Alignment",
-                "DESCRIPTIONS": ["Current Alignment :", " Neutral +", " #ySolar ", " #bLunar "," Neutral -"," Neutral"]
-        },
         "theDragonkin:Moonstruck": {
                 "NAME": "Moonstruck",
                 "DESCRIPTIONS": ["Loses #b", " HP the next #b", " time", " times", " you play a #bLunar card."]
         },
+        "theDragonkin:StarsWithoutNumber": {
+                "NAME": "StarsWithoutNumber",
+                "DESCRIPTIONS": ["At the start of your turn add #b", " random #yStar", " random #yStars", " to your hand."]
+        },
         "theDragonkin:Sunburn": {
                 "NAME": "Sunburn",
                 "DESCRIPTIONS": ["Gain #b", " Block the next #b", " time", " times", " you play a #ySolar card on this enemy."]
-        },
-        "theDragonkin:EntangledPower": {
-                "NAME": "Entangled",
-                "DESCRIPTIONS": ["At the start of this monsters turn reduce this by 1 then #yStun it if it intends to attack"]
         }
 }

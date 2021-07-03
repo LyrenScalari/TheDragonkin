@@ -8,9 +8,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
+import theDragonkin.actions.FluxAction;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.DivineConvictionpower;
+import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -60,13 +62,7 @@ public class InnerFire extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainDivineArmorAction(p,p,defaultSecondMagicNumber));
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c.cardID == Burn.ID) {
-                addToBot(new CycleAction(c,1));
-                addToBot(new ApplyPowerAction(p,p,new DivineConvictionpower(p,p,magicNumber),1));
-                break;
-            }
-        }
+        addToBot(new FluxAction(1,()->new ApplyPowerAction(p,p,new DivineConvictionpower(p,p,magicNumber))));
     }
 
     //Upgraded stats.
@@ -74,8 +70,8 @@ public class InnerFire extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(2);
             upgradeDefaultSecondMagicNumber(2);
+            upgradeMagicNumber(1);
             initializeDescription();
         }
     }

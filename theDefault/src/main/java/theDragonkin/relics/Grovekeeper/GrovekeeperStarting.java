@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theDragonkin.DragonkinMod;
-import theDragonkin.orbs.ThornBloom;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makeRelicOutlinePath;
@@ -42,7 +41,7 @@ public class GrovekeeperStarting extends CustomRelic { // You must implement thi
 
     @Override
     public void atBattleStart() {
-        addToBot(new ChannelAction(new ThornBloom()));
+
     }
 
     @Override

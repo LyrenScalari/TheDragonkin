@@ -58,7 +58,7 @@ public class HolySmite extends AbstractHolyCard {
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
 
-    private static final int DAMAGE = 5;
+    private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 3;
 
     // /STAT DECLARATION/
@@ -67,9 +67,8 @@ public class HolySmite extends AbstractHolyCard {
     public HolySmite() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
-    this.baseMagicNumber = 1;
+    this.baseMagicNumber = 2;
     this.magicNumber = this.baseMagicNumber;
-    defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
     tags.add(CustomTags.Radiant);
     RadiantExchange = 5;
 }
@@ -78,33 +77,15 @@ public class HolySmite extends AbstractHolyCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < this.defaultSecondMagicNumber; ++i) {
+        for (int i = 0; i < 2; ++i) {
             AbstractDungeon.actionManager.addToBottom(
                     new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-            AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false)));
-
-            AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false)));
         }
-    }
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        if (AbstractDungeon.player.hasPower(DivineConvictionpower.POWER_ID)){
-            if (AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID).amount%5 == 0){
-             rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            }
-        } else rawDescription = cardStrings.DESCRIPTION;
-        super.calculateCardDamage(mo);
-    }
-    @Override
-    public void applyPowers() {
-        if (AbstractDungeon.player.hasPower(DivineConvictionpower.POWER_ID)){
-            if (AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID).amount%RadiantExchange == 0){
-                rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            }
-        } else rawDescription = cardStrings.DESCRIPTION;
-        super.applyPowers();
+        AbstractDungeon.actionManager.addToBottom(
+                new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false)));
+
+        AbstractDungeon.actionManager.addToBottom(
+                new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false)));
     }
 
     // Upgraded stats.

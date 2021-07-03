@@ -27,13 +27,16 @@ public class RetainCardMod extends AbstractCardModifier {
     }
     @Override
     public void onRetained(AbstractCard card) {
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            @Override
-            public void update() {
-                CardModifierManager.removeSpecificModifier(card, RetainCardMod.this, true);
-                isDone = true;
-            }
-        });
+        if (duration == 1) {
+            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    CardModifierManager.removeSpecificModifier(card, RetainCardMod.this, true);
+                    isDone = true;
+                }
+            });
+        }
+        duration -= 1;
     }
     @Override
     public AbstractCardModifier makeCopy() {

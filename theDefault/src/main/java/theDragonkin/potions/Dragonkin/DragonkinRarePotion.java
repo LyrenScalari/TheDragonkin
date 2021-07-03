@@ -22,7 +22,7 @@ public class DragonkinRarePotion extends AbstractPotion {
 
     public DragonkinRarePotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DragonkinMod.java
-        super(NAME, POTION_ID, PotionRarity.RARE, PotionSize.EYE, PotionColor.ANCIENT);
+        super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.EYE, PotionColor.ANCIENT);
 
         // Potency is the damage/magic number equivalent of potions.
         potency = getPotency();
@@ -67,7 +67,7 @@ public class DragonkinRarePotion extends AbstractPotion {
     // This is your potency.
     @Override
     public int getPotency(final int potency) {
-        return 2;
+        return 3;
     }
 
     public void upgradePotion()

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.GainDivineArmorAction;
 
 public class DragonkinUncommonPotion extends AbstractPotion {
 
@@ -21,7 +22,7 @@ public class DragonkinUncommonPotion extends AbstractPotion {
 
     public DragonkinUncommonPotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DragonkinMod.java
-        super(NAME, POTION_ID, PotionRarity.UNCOMMON, PotionSize.HEART, PotionColor.BLUE);
+        super(NAME, POTION_ID, PotionRarity.RARE, PotionSize.HEART, PotionColor.BLUE);
 
         // Potency is the damage/magic number equivalent of potions.
         potency = getPotency();
@@ -55,7 +56,7 @@ public class DragonkinUncommonPotion extends AbstractPotion {
         target = AbstractDungeon.player;
         // If you are in combat, gain strength and the "lose strength at the end of your turn" power, equal to the potency of this potion.
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-            addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, potency));
+            addToBot(new GainDivineArmorAction(AbstractDungeon.player,AbstractDungeon.player,getPotency()));
         }
     }
 
@@ -67,7 +68,7 @@ public class DragonkinUncommonPotion extends AbstractPotion {
     // This is your potency.
     @Override
     public int getPotency(final int potency) {
-        return 14;
+        return 23;
     }
 
     public void upgradePotion()

@@ -26,7 +26,7 @@ public class HolyBarrier extends AbstractHolyCard {
 
     private static final int POTENCY = 5;
     private static final int UPGRADE_PLUS_POTENCY= 2;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 1;
     public static int repeats = 0;
     public HolyBarrier() {

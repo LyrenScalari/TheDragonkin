@@ -44,7 +44,7 @@ public class SacredTrial extends AbstractHolyCard {
     private static final int UPGRADED_COST = 1;
 
     private static final int DAMAGE = 7;
-    private static final int UPGRADE_PLUS_DMG = 0;
+    private static final int UPGRADE_PLUS_DMG = 1;
     // /STAT DECLARATION/
 
 

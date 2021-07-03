@@ -2,16 +2,20 @@ package theDragonkin.patches.DivineArmorPatches;
 
 import com.evacipated.cardcrawl.mod.stslib.vfx.combat.TempDamageNumberEffect;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.DamageImpactLineEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import javassist.CtBehavior;
 import theDragonkin.DragonkinMod;
+import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
+import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageinHandCard;
 
 import java.util.ArrayList;
 
@@ -30,6 +34,39 @@ public class PlayerDamage {
             localvars = {"damageAmount", "hadBlock"}
     )
     public static void Insert(AbstractCreature __instance, DamageInfo info, @ByRef int[] damageAmount, @ByRef boolean[] hadBlock) {
+        for (AbstractPower p : AbstractDungeon.player.powers){
+            if (p instanceof ReciveDamageEffect){
+                ((ReciveDamageEffect) p).onReciveDamage(damageAmount[0]);
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group){
+            if (c instanceof ReciveDamageEffect){
+                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.hand.group){
+            if (c instanceof ReciveDamageinHandCard){
+                ((ReciveDamageinHandCard) c).onReciveDamage(damageAmount[0]);
+            }
+            if (c instanceof ReciveDamageEffect){
+                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
+            if (c instanceof ReciveDamageEffect){
+                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group){
+            if (c instanceof ReciveDamageEffect){
+                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.limbo.group){
+            if (c instanceof ReciveDamageEffect){
+                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            }
+        }
         hadDivineArmor = false;
         if (damageAmount[0] > 0) {
             int DivineArmorInital = (Integer)DivineArmorField.DivineArmor.get(__instance);

@@ -51,6 +51,7 @@ public class SearingLight extends AbstractHolyCard {
     public SearingLight() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
+        magicNumber = baseMagicNumber = 5;
     }
 
     public void applyPowers() {
@@ -77,8 +78,11 @@ public class SearingLight extends AbstractHolyCard {
         AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));
         addToBot(new VFXAction(new LightningEffect(p.drawX,p.drawY)));
         addToBot(new DamageCallbackAction(p,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE, integer -> {
-            addToBot(new GainDivineArmorAction(p,p,damage*2));
+            if (upgraded){
+                addToBot(new GainDivineArmorAction(p,p,damage*3));
+            } else addToBot(new GainDivineArmorAction(p,p,damage*2));
         }));
+        addToBot(new GainDivineArmorAction(p,p,magicNumber));
     }
 
     // Upgraded stats.
@@ -86,7 +90,7 @@ public class SearingLight extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(2);
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

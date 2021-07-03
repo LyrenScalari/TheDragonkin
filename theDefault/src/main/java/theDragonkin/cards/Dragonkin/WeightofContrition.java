@@ -54,8 +54,8 @@ public class WeightofContrition extends AbstractHolyCard {
     public WeightofContrition() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = 4;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
+        magicNumber = baseMagicNumber = 1;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 4;
         tags.add(CustomTags.Radiant);
         RadiantExchange = 3;
     }
@@ -63,9 +63,9 @@ public class WeightofContrition extends AbstractHolyCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m,p,new SinnersBurdenPower(m,p,defaultSecondMagicNumber)));
+        addToBot(new ApplyPowerAction(m, p, new PenancePower(m, p,defaultSecondMagicNumber )));
         if (m.getPower(PenancePower.POWER_ID) != null) {
-            addToBot(new ApplyPowerAction(m, p, new PenancePower(m, p, magicNumber)));
+            addToBot(new ApplyPowerAction(m,p,new SinnersBurdenPower(m,p,magicNumber)));
         }
     }
 

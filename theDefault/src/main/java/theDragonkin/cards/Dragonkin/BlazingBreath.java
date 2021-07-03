@@ -72,7 +72,7 @@ public class BlazingBreath extends AbstractPrimalCard implements StormCard {
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
         damage = baseDamage = DAMAGE;
         this.magicNumber = this.baseMagicNumber = 3;
-        StormRate = 3;
+        StormRate = 2;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 

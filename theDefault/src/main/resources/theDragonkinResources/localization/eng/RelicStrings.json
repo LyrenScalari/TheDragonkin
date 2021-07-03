@@ -3,7 +3,7 @@
     "NAME": "Garnet Scales",
     "FLAVOR": "They Pulse with the Warmth of a Dragon's Fury.",
     "DESCRIPTIONS": [
-      "After you play your first [#94bdff]Holy[] card each turn, gain #b4 #yBlock."
+      "After you play your first [#94bdff]Holy[] card each turn, gain #b2 #yBlock."
     ]
   },
 
@@ -11,7 +11,7 @@
     "NAME": "Sunlight Fragment",
     "FLAVOR": "It's warm to the touch.",
     "DESCRIPTIONS": [
-      "The First time you draw a #yStatus each turn draw a card and gain #b6 #yDivine #yArmor."
+      "The First time you draw a #yStatus each turn draw a card and gain #b4 #yDivine #yArmor."
     ]
   },
   "theDragonkin:FernosBellows": {
@@ -22,10 +22,10 @@
   ]
 },
   "theDragonkin:MukySludge": {
-    "NAME": "Muky Sludge",
-    "FLAVOR": "A Toxic Sludge that can dissolve even metal.",
+    "NAME": "Paper Jragon",
+    "FLAVOR": "Even the most foolish of mortals knew to fear our ancient might and fury.",
     "DESCRIPTIONS": [
-      "At the end of your Turn, ALL enemies lose HP equal to their #yDissolve."
+      "#yScorch Also reduces damage dealt by monsters, and is reduced when they attack."
     ]
   },
   "theDragonkin:TilerasShield": {
@@ -57,23 +57,15 @@
     "NAME": "Sulfurian",
     "FLAVOR": "The Great Mace of the Molten Core, known to incinerate anything.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn. \n Shuffle #b1 Burns into your Discard pile after taking unblocked damage."
-    ]
-  },
-
-  "theDragonkin:RotnestWings": {
-    "NAME": "Crystallized Dragonbreath",
-    "FLAVOR": "An Airborne Deposition of gaseous Dragonbreath, simply bottling this substance as a gas has countless alchemical applications.",
-    "DESCRIPTIONS": [
-      "You first #yDragon #yBreath played each turn Costs #b0 and draws you a card. \n Your #yDragon #yBreaths take an extra turn to release."
+      "Gain [E] at the start of your turn. \n Shuffle #b1 Burn into your Discard pile after taking unblocked damage."
     ]
   },
 
   "theDragonkin:ObsidianScale": {
     "NAME": "Obsidian Scales",
-    "FLAVOR": "These cursed Scales whisper terrible things, You feel like your Thoughts are no longer your own.",
+    "FLAVOR": "Obsidian power, mastery of flame and acid powers that ruled the primordial world",
     "DESCRIPTIONS": ["Replaces ",
-      ". NL After you play your first [#fe513a]Primal[] card each turn, gain #b4 #yFury."
+      ". NL Gain #b1 #yBlock and #yFury after you play an Attack."
     ]
   },
 
@@ -100,22 +92,11 @@
       "YOU ARE MINE!"
     ]
   },
-  "theDragonkin:CrestofFlames": {
-    "NAME": "Burning Soulstone",
-    "FLAVOR": "This pulsing stone seethes in great ancient power.",
-    "DESCRIPTIONS": ["The first card you play of each #yElement each Combat deals 3 more damage and gains 3 more Block."
-    ]
-  },
-  "theDragonkin:BlackHeart": {
-    "NAME": "Blackened Heart",
-    "FLAVOR": "Resolve and divine flame forever burn in your heart.",
-    "DESCRIPTIONS": ["At the start of each combat #yRecruit 1 of 3 #ySpecial #yBattalions."
-    ]
-  },
+
   "theDragonkin:GrovekeeperStarting": {
     "NAME": "Shattered Charm",
-    "FLAVOR": "A Fractured Charm that once Symbolized a Defender of Nature. Broken when the owner is exiled.",
-    "DESCRIPTIONS": ["At the start of each combat #yChannel 1 #yHungry #yBloom."
+    "FLAVOR": "A broken pendant symbolizing the sun and moon.",
+    "DESCRIPTIONS": ["Your first #yEclipse each combat lasts #b1 additional turn. NL Gain #b1 #yStrength and #b4 Block whenever you Eclipse."
     ]
   },
 

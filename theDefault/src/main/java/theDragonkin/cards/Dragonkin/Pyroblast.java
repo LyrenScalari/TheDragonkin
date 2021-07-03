@@ -86,7 +86,7 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        if (ca.cardID.equals(Burn.ID)){
+        if (ca.type == CardType.STATUS){
             this.updateCost(-1);
             realCost = costForTurn;
         }

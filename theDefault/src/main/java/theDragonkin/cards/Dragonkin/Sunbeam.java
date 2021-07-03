@@ -54,6 +54,7 @@ public class Sunbeam extends AbstractHolyCard {
         damage = baseDamage = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        cardsToPreview = new Burn();
     }
 
     // Actions the card should do.

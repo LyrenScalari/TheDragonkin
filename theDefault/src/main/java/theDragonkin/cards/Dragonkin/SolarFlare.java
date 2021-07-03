@@ -60,7 +60,7 @@ public class SolarFlare extends AbstractPrimalCard implements TriggerOnCycleEffe
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        if (ca.cardID.equals(Burn.ID)) {
+        if (ca.type == CardType.STATUS) {
             baseMagicNumber += defaultSecondMagicNumber;
             baseDamage += defaultSecondMagicNumber;
         }

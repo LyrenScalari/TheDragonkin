@@ -36,7 +36,7 @@ public class DivineRetribution extends AbstractHolyCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
@@ -86,6 +86,7 @@ public class DivineRetribution extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeBaseCost(1);
             initializeDescription();
         }
     }

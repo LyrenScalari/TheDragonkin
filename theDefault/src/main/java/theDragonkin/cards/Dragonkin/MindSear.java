@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.devcommands.power.Power;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -14,6 +15,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.AnimatedSlashEffect;
 import com.megacrit.cardcrawl.vfx.combat.BuffParticleEffect;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
@@ -51,7 +54,7 @@ public class MindSear extends AbstractDragonkinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m,p,new LunacyPower(m,p,magicNumber)));
+        addToTop(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
         for (AbstractPower po : m.powers){
             if (po.type == AbstractPower.PowerType.DEBUFF){
                 addToBot(new VFXAction(new BuffParticleEffect(m.drawX,m.drawY)));

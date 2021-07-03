@@ -45,6 +45,7 @@ public class Flamestrike extends AbstractPrimalCard implements TriggerOnCycleEff
         baseMagicNumber = magicNumber = MAGIC;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         isMultiDamage = true;
+        this.tags.add(CardTags.STRIKE);
     }
 
     @Override
@@ -72,7 +73,7 @@ public class Flamestrike extends AbstractPrimalCard implements TriggerOnCycleEff
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
         Intensity += 1;
-        if (ca.cardID.equals(Burn.ID)) {
+        if (ca.type == CardType.STATUS) {
             baseDamage += magicNumber;
         }
     }

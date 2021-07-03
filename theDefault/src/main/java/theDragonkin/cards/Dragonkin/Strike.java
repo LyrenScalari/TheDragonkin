@@ -44,6 +44,7 @@ public class Strike extends AbstractDragonkinCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
     this.tags.add(CardTags.STARTER_STRIKE);
+    this.tags.add(CardTags.STRIKE);
 }
 
 

@@ -26,9 +26,6 @@ public class DivineRetributionPower extends AbstractPower implements CloneablePo
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
-    // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
-
     public DivineRetributionPower(final AbstractCreature owner, final AbstractCreature source) {
         name = NAME;
         ID = POWER_ID;
@@ -45,7 +42,7 @@ public class DivineRetributionPower extends AbstractPower implements CloneablePo
     }
 
     @Override
-    public void atStartOfTurnPostDraw() {
+    public void atStartOfTurn() {
         if (amount > 0){
             CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
             for (int i = 0; i < Math.ceil(this.amount / 2); ++i) {
@@ -63,16 +60,6 @@ public class DivineRetributionPower extends AbstractPower implements CloneablePo
         }
     }
 
-
-    // Note: If you want to apply an effect when a power is being applied you have 3 options:
-    //onInitialApplication is "When THIS power is first applied for the very first time only."
-    //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."
-    //onReceivePowerPower from StSlib is "When any (including this) power is applied to the owner."
-
-
-    // At the end of the turn, remove gained Dexterity
-
-    // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];

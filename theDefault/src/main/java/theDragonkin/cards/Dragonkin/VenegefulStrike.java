@@ -35,7 +35,7 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
     private static final int UPGRADED_COST = 1;
 
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 0;
 
 
@@ -43,6 +43,9 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
         damage = baseDamage = 8;
+        selfRetain = true;
+        this.tags.add(CardTags.STRIKE);
+
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -54,7 +57,6 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
             upgradeDamage(2);
             initializeDescription();
         }
@@ -62,8 +64,8 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
 
     @Override
     public void onReciveDamage(int damage) {
-        if (!AbstractDungeon.actionManager.turnHasEnded) {
-            this.baseDamage += damage;
+        if (AbstractDungeon.player.hand.contains(this)) {
+            this.baseDamage += magicNumber;
             this.damage = baseDamage;
         }
     }

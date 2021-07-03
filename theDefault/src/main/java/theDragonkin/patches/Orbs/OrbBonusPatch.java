@@ -6,7 +6,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Plasma;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theDragonkin.powers.Flameweaver.modifyOrbPower;
+import theDragonkin.powers.Deathspeaker.modifyOrbPower;
+
 
 @SpirePatch(
         cls = "com.megacrit.cardcrawl.orbs.AbstractOrb",

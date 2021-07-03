@@ -36,17 +36,17 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
         damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
-        baseMagicNumber = magicNumber = MAGIC;
-        StormRate = 10;
+        baseMagicNumber = magicNumber = 40;
+        StormRate = 5;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!Storm) {
-            addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 3, damage)));
+            addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 3, magicNumber)));
         } else {
-            addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 1, damage)));
+            addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 1, magicNumber)));
         }
     }
 

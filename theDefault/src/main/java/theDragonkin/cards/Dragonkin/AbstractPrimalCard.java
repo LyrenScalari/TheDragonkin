@@ -15,6 +15,8 @@ public abstract class AbstractPrimalCard extends AbstractDragonkinCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p, new FuryPower(p,p,this.costForTurn*2)));
+        if (this.costForTurn > 0) {
+            addToBot(new ApplyPowerAction(p, p, new FuryPower(p, p, this.costForTurn)));
+        }
     }
 }

@@ -31,9 +31,9 @@ public class Detox extends AbstractDragonkinCard{
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 2;
+    private static final int POTENCY = 1;
     private static final int UPGRADE_PLUS_POTENCY = 1;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 0;
 
     public Detox() {
@@ -49,16 +49,14 @@ public class Detox extends AbstractDragonkinCard{
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            for (AbstractPower power : mo.powers){
-                if (power.type == AbstractPower.PowerType.DEBUFF) {
-                        AbstractDungeon.actionManager.addToBottom(
-                                new ApplyPowerAction(p,p, new StrengthPower(p,magicNumber),magicNumber));
-                        AbstractDungeon.actionManager.addToBottom(
-                                new ApplyPowerAction(p,p, new DexterityPower(p,magicNumber),magicNumber));
-                        if (!this.upgraded) {
-                            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(m, p, power, power.amount / 2));
-                        }
+        for (AbstractPower power : m.powers){
+            if (power.type == AbstractPower.PowerType.DEBUFF) {
+                AbstractDungeon.actionManager.addToBottom(
+                        new ApplyPowerAction(p,p, new StrengthPower(p,magicNumber),magicNumber));
+                AbstractDungeon.actionManager.addToBottom(
+                        new ApplyPowerAction(p,p, new DexterityPower(p,magicNumber),magicNumber));
+                if (!this.upgraded) {
+                    AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(m, p, power, power.amount / 2));
                 }
             }
         }
@@ -68,7 +66,6 @@ public class Detox extends AbstractDragonkinCard{
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
             this.isEthereal = false;
             this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();

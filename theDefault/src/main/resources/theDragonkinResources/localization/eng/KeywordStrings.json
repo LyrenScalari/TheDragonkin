@@ -11,7 +11,7 @@
       "fading",
       "Fading"
     ],
-    "DESCRIPTION": "Becomes unplayable after being played the listed number of times."
+    "DESCRIPTION": "Becomes unplayable after being played X times."
   },
   {
     "NAMES": [
@@ -42,7 +42,7 @@
       "Repentant",
       "repentant"
     ],
-    "DESCRIPTION": "Repentant creatures with #b8 or more #yPenance lose #b20 HP and #b8 #yPenance at the end of their turn. When a creature loses HP from #yPenance, it gains #b8 Sinner’s Burden, increasing the HP lost from #yPenance"
+    "DESCRIPTION": "Creatures with #b8 or more #yPenance lose #b20 HP and #b8 #yPenance at the end of their turn. NL When a creature loses HP from #yPenance, it gains #b8 Sinner’s Burden, increasing the HP lost from #yPenance"
   },
   {
     "PROPER_NAME": "Sinner's Burden",
@@ -52,6 +52,29 @@
       "sinner's_burden"
     ],
     "DESCRIPTION": "Increases HP Lost from #yPenance."
+  },
+  {
+    "NAMES": [
+      "dissolve"
+    ],
+    "DESCRIPTION": "Melting creatures lose HP when their dissolve is triggered."
+  },
+  {
+    "PROPER_NAME": "Auraflame",
+    "NAMES": [
+      "Auraflame",
+      "auraflame"
+    ],
+    "DESCRIPTION": "#yAuraflame damages a random enemy and is reduced by #b1 after you play a card."
+  },
+  {
+    "PROPER_NAME": "Deflecting Scales",
+    "NAMES": [
+      "Deflecting Scales",
+      "Deflecting_Scales",
+      "deflecting_scales"
+    ],
+    "DESCRIPTION": "#yDeflecting #yScales damages a random enemy and is reduced by #b1 after you receive damage."
   },
   {
     "NAMES": [
@@ -72,7 +95,7 @@
       "fury",
       "Fury"
     ],
-    "DESCRIPTION": "Can be used instead of energy to play #yStorm cards. NL Increases damage of [#fe513a]Primal[] Cards."
+    "DESCRIPTION": "Gained by playing [#fe513a]Primal[] Cards. NL Can be used instead of energy to play #yStorm cards."
   },
   {
     "NAMES": [
@@ -100,14 +123,14 @@
       "heat",
       "Heat"
     ],
-    "DESCRIPTION": "#yHeat can be spent to play #yBurns to #yExhaust them and Activate #yCycle activated effects."
+    "DESCRIPTION": "#yHeat can be spent to play #yStatus cards to #yExhaust them and Activate #yCycle activated effects and Cycled card's end of turn effects"
   },
   {
     "NAMES": [
       "sealed",
       "Sealed"
     ],
-    "DESCRIPTION": "#ySealed cards are improved whenever you #yCycle a #yBurn."
+    "DESCRIPTION": "#ySealed cards are improved whenever you #yCycle a #yStatus."
   },
   {
     "NAMES": [
@@ -130,14 +153,13 @@
       "flux",
       "Flux"
     ],
-    "DESCRIPTION": "When played, Cycle to up X burns in your hand, activate the listed effect for each one."
-  },
-  {
-    "NAMES": [
-      "regenerate",
-      "Regenerate"
-    ],
-    "DESCRIPTION": "At the start of your turn restore HP."
+    "DESCRIPTION": "When played, #yCycle to up X #yStatus cards in your hand, activate the listed effect for each one."
+  },  {
+  "NAMES": [
+    "Reckoning",
+    "reckoning"
+  ],
+  "DESCRIPTION": "#yReckoning effects trigger whenever you receive damage while this is in your hand."
   },
   {
     "NAMES": [
@@ -146,167 +168,13 @@
       "cycled",
       "Cycled"
     ],
-    "DESCRIPTION": "Discard a card and draw anew card to replace it."
-  },
-
-  {
-    "NAMES": [
-      "ember",
-      "Ember"
-    ],
-    "DESCRIPTION": "#yOrb: Evokes at the end of your turn if you have no energy remaining. When #yEvoked, damages the targeted monster."
+    "DESCRIPTION": "Discard a card and draw a new card to replace it."
   },
   {
     "NAMES": [
-      "stone",
-      "Stone"
+      "mana",
+      "Mana"
     ],
-    "DESCRIPTION": "#yOrb: Evokes at the end of your turn if you have no energy remaining. When #yEvoked, gains block."
-  },
-
-  {
-    "NAMES": [
-      "dissolve"
-    ],
-    "DESCRIPTION": "Loses HP when you play certain Acid cards."
-  },
-  {
-    "NAMES": [
-      "alignment"
-    ],
-    "DESCRIPTION": "Play #bLunar or #ySolar cards to modify your alignment, leaving Neutral alignment at 2 or more points of either type."
-  },
-
-  {
-  "NAMES": [
-    "lunar"
-  ],
-  "DESCRIPTION": "Perform the listed action if your #bLunar #bAligntment is equal or greater then the listed value."
-  },
-  {
-    "NAMES": [
-      "solar"
-    ],
-    "DESCRIPTION": "Perform the listed action if your #ySolar #yAligntment is equal or greater then the listed value."
-  },
-  {
-    "NAMES": [
-      "moonstruck"
-    ],
-    "DESCRIPTION": "Moonstruck enemies Lose HP equal to your #bLunar #bAlignment when you play a #bLunar card a limited number of times."
-  },
-  {
-    "NAMES": [
-      "sunburn"
-    ],
-    "DESCRIPTION": "Sunburned enemies Give you Block equal to your #ySolar #yAlignment when you play #ySolar cards on them limited number of times."
-  },
-  {
-    "PROPER_NAME": "Natural Spikes",
-    "NAMES": [
-      "Natural Spikes",
-      "natural_spikes"
-    ],
-    "DESCRIPTION": "Natural Spikes damage attackers, but are dulled when you receive unblocked damage."
-  },
-  {
-    "PROPER_NAME": "Energy Shield",
-    "NAMES": [
-      "Energy Shield",
-      "energy_shield"
-    ],
-    "DESCRIPTION": "Increases block gained by your next block card."
-  },
-  {
-    "NAMES": [
-      "entangled",
-      "entangle"
-    ],
-    "DESCRIPTION": "Entangled enemies become #yStunned at the start of their turn if they intend to Attack."
-  },
-  {
-    "NAMES": [
-      "Duplicate",
-      "duplicate"
-    ],
-    "DESCRIPTION": "Create an exact copy of this card in the discard pile on use."
-  },
-  {
-    "NAMES": [
-      "Crossroads",
-      "crossroads"
-    ],
-    "DESCRIPTION": "Choose one of the listed effects to use."
-  },
-  {
-    "NAMES": [
-      "Recruit",
-      "Recruited",
-      "Recruiting",
-      "recruit",
-      "recruited",
-      "recruiting"
-    ],
-    "DESCRIPTION": "Recruiting a Battalion puts it into your first empty slot, Recruiting a Battalion you already have instead restores it's Stamina. you may not Recruit additional Battalion types if you have no open slots."
-  },
-  {
-    "NAMES": [
-      "Gambit",
-      "gambit"
-    ],
-    "DESCRIPTION": "Special abilities on battalions that expend the battalion's #yStamina."
-  },
-  {
-    "PROPER_NAME": "Imperial Knights",
-    "NAMES": [
-      "Imperial Knights",
-      "imperial_knights"
-    ],
-    "DESCRIPTION": "yBattalion - #yPassive: Gain Block. #yGambit(5): Gain Block. Base Stamina : 15."
-  },
-  {
-    "PROPER_NAME": "Imperial Archers",
-    "NAMES": [
-      "Imperial Archers",
-      "imperial_archers"
-    ],
-    "DESCRIPTION": "yBattalion - #yPassive: Damage #yAimed monster. #yGambit(5): Damage ALL Enemies. Base Stamina : 10."
-  },
-
-  {
-    "PROPER_NAME": "Imperial Mages",
-    "NAMES": [
-      "Imperial Mages",
-      "imperial_mages"
-    ],
-    "DESCRIPTION": "yBattalion - #yGambit(2): Damage ALL Enemies. Base Stamina : 10."
-  },
-  {
-    "NAMES": [
-      "Equipment",
-      "equipment"
-    ],
-    "DESCRIPTION": "Equipment cards are #yEquipped instead of Discarded on play."
-  },
-  {
-    "NAMES": [
-      "Weapon",
-      "weapon"
-    ],
-    "DESCRIPTION": "You may only have 1 weapon #yEquipped at a time, playing another Weapon card while this is #yEquiped will #yUnequip and Discard it."
-  },
-  {
-    "NAMES": [
-      "Off-hand",
-      "off-hand"
-    ],
-    "DESCRIPTION": "You may only have 1 Off-hand #yEquipped at a time, playing another Off-hand card while this is #yEquiped will #yUnequip and Discard it."
-  },
-  {
-    "NAMES": [
-      "Durability",
-      "durability"
-    ],
-    "DESCRIPTION": "When #yWeapon Equipment cards activate their effects reduce this by 1, When this reaches 0 #yUnequip this #yWeapon and exhaust it. this card cannot be played if this is 0."
+    "DESCRIPTION": "#yMana is spent instead of Energy to play #ySpells"
   }
 ]

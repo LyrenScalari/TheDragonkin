@@ -54,24 +54,22 @@ public class PenancePower extends TwoAmountPower implements CloneablePowerInterf
     }
     @Override
     public void atEndOfTurn(final boolean isplayer){
-        if (!isplayer && amount >= amount2) {
-            AbstractPower bonus = AbstractDungeon.player.getPower(SinnersBurdenPower.POWER_ID);
-            if ((bonus != null)){
-                addToBot(new LoseHPAction(owner,owner,20 + bonus.amount, AbstractGameAction.AttackEffect.SMASH));
+        if (amount >= amount2) {
+            if ((owner.hasPower(SinnersBurdenPower.POWER_ID))){
+                addToBot(new LoseHPAction(owner,owner,20 + owner.getPower(SinnersBurdenPower.POWER_ID).amount, AbstractGameAction.AttackEffect.SMASH));
             } else addToBot(new LoseHPAction(owner,owner,20, AbstractGameAction.AttackEffect.SMASH));
-            amount -= amount2;
-            addToBot(new ApplyPowerAction(owner,AbstractDungeon.player,new SinnersBurdenPower(owner,AbstractDungeon.player,amount2),6));
+            addToBot(new ReducePowerAction(owner,owner,this,amount2));
+            addToBot(new ApplyPowerAction(owner,AbstractDungeon.player,new SinnersBurdenPower(owner,AbstractDungeon.player,amount2)));
             if (amount < 0){
                 amount = 0;
             }
-            updateDescription();
         }
+        updateDescription();
     }
     @Override
     public void updateDescription() {
-        AbstractPower bonus = AbstractDungeon.player.getPower(SinnersBurdenPower.POWER_ID);
-        if ((bonus != null)){
-            description = DESCRIPTIONS[0] + amount2 + DESCRIPTIONS[1] + (20+bonus.amount) + DESCRIPTIONS[2] + DESCRIPTIONS[3];
+        if ((owner.hasPower(SinnersBurdenPower.POWER_ID))){
+            description = DESCRIPTIONS[0] + amount2 + DESCRIPTIONS[1] + (20+owner.getPower(SinnersBurdenPower.POWER_ID).amount) + DESCRIPTIONS[2] + DESCRIPTIONS[3];
         } else description = DESCRIPTIONS[0] + amount2 + DESCRIPTIONS[1] + 20 + DESCRIPTIONS[2] + DESCRIPTIONS[3];
     }
 
@@ -82,11 +80,12 @@ public class PenancePower extends TwoAmountPower implements CloneablePowerInterf
 
     @Override
     public int getHealthBarAmount() {
+        updateDescription();
         if (amount >= amount2){
-            AbstractPower bonus = AbstractDungeon.player.getPower(SinnersBurdenPower.POWER_ID);
+            AbstractPower bonus = owner.getPower(SinnersBurdenPower.POWER_ID);
             if ((bonus != null)){
-                return 33 + bonus.amount;
-            } else return 33;
+                return 20 + bonus.amount;
+            } else return 20;
         }
         return 0;
     }

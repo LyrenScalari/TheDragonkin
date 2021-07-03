@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.AutoAdd;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -7,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class Insanity extends AbstractDragonkinCard implements StartupCard {
 
     public static final String ID = DragonkinMod.makeID(Insanity.class.getSimpleName());

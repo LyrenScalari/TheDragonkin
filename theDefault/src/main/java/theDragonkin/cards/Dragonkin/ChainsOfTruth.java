@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.PenancePower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -29,7 +30,7 @@ public class ChainsOfTruth extends AbstractHolyCard {
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
 
-    private static final int DAMAGE = 12;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int MAGIC = 2;
     private static final int UPGRADE_MAGIC = 1;
@@ -49,11 +50,9 @@ public class ChainsOfTruth extends AbstractHolyCard {
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p,baseDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.LIGHTNING));
 
             for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo,p, new VulnerablePower(mo,baseMagicNumber,false),
-                        baseMagicNumber,false));
-
+                addToBot(new ApplyPowerAction(mo,p, new VulnerablePower(mo,baseMagicNumber,false)));
+                addToBot(new ApplyPowerAction(mo,p,new PenancePower(mo,p,magicNumber)));
             }
-
     }
 
 
@@ -62,7 +61,7 @@ public class ChainsOfTruth extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeDamage(2);
             initializeDescription();
         }
     }

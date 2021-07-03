@@ -26,7 +26,7 @@ public class DragonkinCommonPotion extends AbstractPotion {
 
     public DragonkinCommonPotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DragonkinMod.java
-        super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.BOTTLE, PotionColor.SMOKE);
+        super(NAME, POTION_ID, PotionRarity.UNCOMMON, PotionSize.BOTTLE, PotionColor.SMOKE);
         this.labOutlineColor = DragonkinMod.DEFAULT_GRAY;
         // Potency is the damage/magic number equivalent of potions.
         potency = getPotency();

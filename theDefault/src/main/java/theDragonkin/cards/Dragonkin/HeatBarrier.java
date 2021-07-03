@@ -70,7 +70,7 @@ public class HeatBarrier extends AbstractPrimalCard implements TriggerOnCycleEff
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        if (ca.cardID.equals(Burn.ID)) {
+        if (ca.type == CardType.STATUS) {
             baseBlock += magicNumber;
         }
     }

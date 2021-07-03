@@ -1,6 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Burn;
@@ -12,8 +13,10 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import theDragonkin.CardMods.StormEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
+import theDragonkin.actions.FluxAction;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.powers.Dragonkin.IncendiaryFlowPower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
@@ -55,7 +58,7 @@ public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
-        StormRate = 6;
+        StormRate = 3;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
     }
@@ -65,17 +68,12 @@ public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int CycleCount = 0;
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (CycleCount >= 2){
-                break;
-            }
-            if (c.cardID == Burn.ID) {
-                addToBot(new CycleAction(c,1));
-                addToBot(new ApplyPowerAction(p,p,new StrengthPower(p,defaultSecondMagicNumber)));
-                addToBot(new ApplyPowerAction(p,p,new LoseStrengthPower(p,defaultSecondMagicNumber)));
-                CycleCount++;
-            }
-        }
+        addToBot(new FluxAction(defaultSecondMagicNumber,()->new AbstractGameAction() {
+            @Override
+            public void update() { addToBot(new ApplyPowerAction(p,p,new StrengthPower(p,defaultSecondMagicNumber)));
+            addToBot(new ApplyPowerAction(p,p,new LoseStrengthPower(p,defaultSecondMagicNumber)));
+            isDone = true; }
+        }));
     }
 
     //Upgraded stats.

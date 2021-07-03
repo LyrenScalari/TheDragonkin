@@ -52,7 +52,7 @@ public class EmberSwipe extends AbstractPrimalCard {
 
     public EmberSwipe() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseDamage = damage = 7;
+        baseDamage = damage = 5;
         this.baseMagicNumber = 2;
         this.magicNumber = baseMagicNumber;
         this.isMultiDamage = true;
@@ -63,7 +63,7 @@ public class EmberSwipe extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                new DamageAllEnemiesAction(p,baseDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
+                new DamageAllEnemiesAction(p,multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
 
         for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p,
@@ -77,8 +77,8 @@ public class EmberSwipe extends AbstractPrimalCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            upgradeDamage(3);
-            upgradeMagicNumber(2);
+            upgradeDamage(2);
+            upgradeMagicNumber(1);
             this.initializeDescription();
         }
     }

@@ -16,9 +16,9 @@ public class CycleAction extends AbstractGameAction {
     }
     @Override
     public void update() {
-        AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(targetCard));
+        AbstractDungeon.actionManager.addToTop(new DrawCardAction(drawamt));
         DragonkinMod.TriggerOnCycle(targetCard);
-        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(drawamt));
+        AbstractDungeon.actionManager.addToTop(new DiscardSpecificCardAction(targetCard));
         isDone = true;
     }
 }

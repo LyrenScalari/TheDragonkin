@@ -1,10 +1,13 @@
 package theDragonkin.cards.Dragonkin;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsCenteredAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CustomDiscoveryAction;
@@ -24,6 +27,8 @@ public class AncestralSeance extends AbstractPrimalCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Dragonkin_Red_COLOR;
     public CardGroup NonHoly = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+    public CardGroup FilteredGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
 
@@ -51,7 +56,19 @@ public class AncestralSeance extends AbstractPrimalCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new CustomDiscoveryAction(NonHoly,magicNumber,false, card -> card.freeToPlayOnce = true));
+        if (NonHoly.size() >= 1) {
+            ArrayList<AbstractCard> cards = new ArrayList<>(NonHoly.group);
+            int amt = Math.min(cards.size(), 3);
+            while (FilteredGroup.size() < amt) {
+                FilteredGroup.addToTop(cards.remove(AbstractDungeon.miscRng.random(0, cards.size() - 1)));
+            }
+            addToBot(new SelectCardsCenteredAction(FilteredGroup.group, 1, cardStrings.EXTENDED_DESCRIPTION[0], List -> {
+                AbstractCard cardtoget = List.get(0);
+                AbstractDungeon.player.hand.addToHand(cardtoget);
+                cardtoget.freeToPlayOnce = true;
+                FilteredGroup.clear();
+            }));
+        }
         super.use(p,m);
     }
 

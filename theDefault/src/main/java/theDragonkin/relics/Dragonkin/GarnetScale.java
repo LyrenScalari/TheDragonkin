@@ -51,7 +51,7 @@ public class GarnetScale extends CustomRelic{ // You must implement things you w
     public void onUseCard(final AbstractCard c , final UseCardAction ca){
         if (c instanceof AbstractHolyCard && !used){
             this.flash();
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,4));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,2));
             used = true;
         }
     }

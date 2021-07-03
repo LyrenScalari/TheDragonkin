@@ -38,7 +38,7 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 3;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        StormRate = 6;
+        StormRate = 3;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 

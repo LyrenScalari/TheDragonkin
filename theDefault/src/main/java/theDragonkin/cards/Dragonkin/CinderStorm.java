@@ -1,6 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.InfernoWardAction;
 import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
@@ -20,7 +22,7 @@ public class CinderStorm extends AbstractPrimalCard {
 
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
 
@@ -41,13 +43,8 @@ public class CinderStorm extends AbstractPrimalCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-            for (AbstractCard c : AbstractDungeon.player.hand.group){
-                if (c.type == CardType.STATUS) {
-                    AbstractDungeon.actionManager.addToBottom(new
-                            DamageRandomEnemyAction(new DamageInfo(p, baseDamage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-                    AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
-                }
-            }
+            addToBot(new DamageAction(m,new DamageInfo(p,damage,damageTypeForTurn)));
+            addToBot(new InfernoWardAction(10,()->new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE)));
         super.use(p,m);
     }
 

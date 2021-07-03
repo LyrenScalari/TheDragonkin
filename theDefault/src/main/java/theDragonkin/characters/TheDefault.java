@@ -1,6 +1,7 @@
 package theDragonkin.characters;
 
 import basemod.abstracts.CustomPlayer;
+import basemod.animations.SpineAnimation;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -26,6 +27,7 @@ import theDragonkin.cards.Dragonkin.Defend;
 import theDragonkin.cards.Dragonkin.HolySmite;
 import theDragonkin.cards.Dragonkin.Strike;
 import theDragonkin.relics.Dragonkin.GarnetScale;
+import theDragonkin.ui.EnergyOrbDragonkin;
 
 import java.util.ArrayList;
 
@@ -76,34 +78,20 @@ public class TheDefault extends CustomPlayer {
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
-
+    public static float[] layerSpeeds = new float[]{-20.0F, 20.0F, -40.0F, 40.0F, 0.0F};
     // =============== /STRINGS/ =================
 
 
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
-    public static final String[] orbTextures = {
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer1.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer2.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer3.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer4.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer5.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer6.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer1d.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer2d.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer3d.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer4d.png",
-            "theDragonkinResources/images/char/defaultCharacter/orb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
     // =============== CHARACTER CLASS START =================
 
     public TheDefault(String name, PlayerClass setClass) {
-        super(name, setClass, orbTextures,
-                "theDragonkinResources/images/char/defaultCharacter/orb/vfx.png", null,
-                new SpriterAnimation(
-                        "theDragonkinResources/images/char/defaultCharacter/Spriter/Dragonkin.scml"));
+        super(name, setClass, new EnergyOrbDragonkin(),
+                new SpineAnimation("theDragonkinResources/images/char/defaultCharacter/TheDragonkin.atlas","theDragonkinResources/images/char/defaultCharacter/TheDragonkin.json",1.0f));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
@@ -113,7 +101,7 @@ public class TheDefault extends CustomPlayer {
                 THE_DRAGONKIN_SHOULDER_2, // campfire pose
                 THE_DRAGONKIN_SHOULDER_1, // another campfire pose
                 THE_DRAGONKIN_CORPSE, // dead corpse
-                getLoadout(), 20.0F, -10.0F, 417.0F, 470.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
+                getLoadout(), 20.0F, -10.0F, 217.0F, 270.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
 
@@ -125,6 +113,8 @@ public class TheDefault extends CustomPlayer {
                 THE_DEFAULT_SKELETON_JSON,
                 1.0f);
         AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
+        AnimationState.TrackEntry e1 = state.setAnimation(1, "WingFlap", true);
+        AnimationState.TrackEntry e2 = state.setAnimation(2, "TailFlick", true);
         e.setTime(e.getEndTime() * MathUtils.random());
 
         // =============== /ANIMATIONS/ =================

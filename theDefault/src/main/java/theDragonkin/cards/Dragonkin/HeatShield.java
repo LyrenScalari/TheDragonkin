@@ -1,5 +1,8 @@
 package theDragonkin.cards.Dragonkin;
 
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Burn;
@@ -10,7 +13,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
+import theDragonkin.actions.FluxAction;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -18,8 +23,6 @@ public class HeatShield extends AbstractPrimalCard {
 
     public static final String ID = DragonkinMod.makeID(HeatShield.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
-
-
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
@@ -45,14 +48,11 @@ public class HeatShield extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
+        AbstractCard card = this;
         addToBot(new GainBlockAction(p,block));
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c.cardID == Burn.ID) {
-                addToBot(new CycleAction(c,1));
-                this.returnToHand = true;
-                break;
-            }
-        }
+        addToBot(new SelectCardsInHandAction(1," Cycle",false,false,(cards)->true,(List)->{
+            addToBot(new CycleAction(List.get(0),1));
+            card.returnToHand = true;}));
         super.use(p,m);
     }
 

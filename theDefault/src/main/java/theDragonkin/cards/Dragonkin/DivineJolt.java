@@ -78,7 +78,7 @@ public class DivineJolt extends AbstractHolyCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < this.defaultSecondMagicNumber; ++i) {
+        for (int i = 0; i < 2; ++i) {
            m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
             addToBot(new VFXAction(new LightningEffect(m.hb_x,m.hb_y)));
                 AbstractDungeon.actionManager.addToBottom(
@@ -94,8 +94,7 @@ public class DivineJolt extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(1);
-            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(1);
             initializeDescription();
         }
     }

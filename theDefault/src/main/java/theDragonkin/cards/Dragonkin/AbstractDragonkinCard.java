@@ -1,14 +1,13 @@
 package theDragonkin.cards.Dragonkin;
 
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
-import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.AbstractDefaultCard;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.powers.Dragonkin.FuryPower;
-import theDragonkin.relics.Dragonkin.RotnestWings;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
@@ -38,6 +37,10 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
     public int realBaseMagic;
     public boolean Storm;
     public int StormRate = 999999999;
+    public int secondDamage;
+    public int baseSecondDamage;
+    public boolean upgradedSecondDamage;
+    public boolean isSecondDamageModified;
     @Override
     public void atTurnStart() {
         super.atTurnStart();
@@ -53,16 +56,61 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
                 } else Storm = false;
             } else Storm = false;
         }
+        if (baseSecondDamage > -1) {
+            secondDamage = baseSecondDamage;
+
+            int tmp = baseDamage;
+            baseDamage = baseSecondDamage;
+
+            super.applyPowers();
+
+            secondDamage = damage;
+            baseDamage = tmp;
+
+            super.applyPowers();
+
+            isSecondDamageModified = (secondDamage != baseSecondDamage);
+        } else super.applyPowers();
     }
     @Override
-    public boolean freeToPlay(){
-        if (AbstractDungeon.player != null && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-            if (AbstractDungeon.player.hasRelic(RotnestWings.ID)) {
-                if (!((RotnestWings) AbstractDungeon.player.getRelic(RotnestWings.ID)).used && this.hasTag(CustomTags.Dragon_Breath)) {
-                    return true;
-                }
-            }
+    public void calculateCardDamage(AbstractMonster mo) {
+        if (baseSecondDamage > -1) {
+            secondDamage = baseSecondDamage;
+
+            int tmp = baseDamage;
+            baseDamage = baseSecondDamage;
+
+            super.calculateCardDamage(mo);
+
+            secondDamage = damage;
+            baseDamage = tmp;
+
+            super.calculateCardDamage(mo);
+
+            isSecondDamageModified = (secondDamage != baseSecondDamage);
+        } else super.calculateCardDamage(mo);
+    }
+    public void resetAttributes() {
+        super.resetAttributes();
+        secondDamage = baseSecondDamage;
+        isSecondDamageModified = false;
+    }
+    protected void upgradeSecondDamage(int amount) {
+        baseSecondDamage += amount;
+        secondDamage = baseSecondDamage;
+        upgradedSecondDamage = true;
+    }
+    public void displayUpgrades() {
+        super.displayUpgrades();
+        if (upgradedSecondDamage) {
+            secondDamage = baseSecondDamage;
+            isSecondDamageModified = true;
         }
-        return super.freeToPlay();
+    }
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        if (this instanceof StormCard && this.costForTurn == 0){
+            ((StormCard) this).onStorm();
+        }
     }
 }

@@ -17,7 +17,7 @@ import static theDragonkin.DragonkinMod.makeCardPath;
 public class HolyWrath extends AbstractHolyCard {
 
     public static final String ID = DragonkinMod.makeID(HolyWrath.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("HolyWrath.png");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private CardGroup ShadowVisons = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
@@ -43,7 +43,7 @@ public class HolyWrath extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int da = DivineArmorField.DivineArmor.get(p);
-        addToBot(new DamageAllEnemiesAction(p,da, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new DamageAllEnemiesAction(p,da*2, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         if (!upgraded) {
             DivineArmorField.DivineArmor.set(p,0);
         } else  DivineArmorField.DivineArmor.set(p, DivineArmorField.DivineArmor.get(p)/2);

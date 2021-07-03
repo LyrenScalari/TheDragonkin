@@ -22,15 +22,15 @@ public class MukySludge extends CustomRelic { // You must implement things you w
     // ID, images, text.
     public static final String ID = DragonkinMod.makeID("MukySludge");
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("MukySludge.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("MukySludge.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("PaperJragon.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("PaperJragon.png"));
     // You can also have a relic be only usable once per combat. Check out Hubris for more examples, including other StSlib things.
 
     private boolean isPlayerTurn = false; // We should make sure the relic is only activateable during our turn, not the enemies'.
     private  boolean used = false;
 
     public MukySludge() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE, RelicTier.SHOP, LandingSound.MAGICAL);
         tips.clear();
         tips.add(new PowerTip(name, description));
     }
@@ -43,16 +43,7 @@ public class MukySludge extends CustomRelic { // You must implement things you w
     public void onCardDraw(AbstractCard card){
     }
 
-    @Override
-    public void atTurnStart(){
-        used = false;
-    }
 
-    @Override
-    public void onPlayerEndTurn() {
-        used = false;
-        addToBot(new TriggerMarksAction(null));
-    }
 
     // Description
     @Override

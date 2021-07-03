@@ -51,38 +51,8 @@ public class FuryPower extends AbstractPower implements CloneablePowerInterface 
     }
 
     @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
-        if (card instanceof AbstractPrimalCard){
-            damage = damage + ((float)(Math.ceil(this.amount/2)));
-
-        }
-        return super.atDamageGive(damage, type, card);
-    }
-    @Override
-    public void onUseCard(final AbstractCard card, final UseCardAction action) {
-        if ((card instanceof AbstractPrimalCard && card.type == AbstractCard.CardType.ATTACK && !card.hasTag(CustomTags.Dragon_Breath)) || (card instanceof StormCard)){
-            this.flash();
-        }
-    }
-    @Override
-    public void wasHPLost(DamageInfo info, int damageAmount) {
-        if (damageAmount > 0 && info.type != DamageInfo.DamageType.HP_LOSS) {
-            this.flash();
-            this.addToTop(new ApplyPowerAction(this.owner, this.owner, new FuryPower(owner,owner,damageAmount), damageAmount));
-        }
-    }
-    // note: If you want to apply an effect when a power is being applied you have 3 options:
-    //onInitialApplication is "When THIS power is first applied for the very first time only."
-    //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."
-    //onReceivePowerPower from StSlib is "When any (including this) power is applied to the owner."
-
-
-    // At the end of the turn, remove gained Dexterity
-
-    // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
-    @Override
     public void updateDescription() {
-        description = powerStrings.DESCRIPTIONS[0] + (int) Math.floor((float) amount / 2);
+        description = powerStrings.DESCRIPTIONS[0];
 
     }
 
