@@ -50,7 +50,7 @@ public class AshfallPower extends AbstractPower implements CloneablePowerInterfa
     public void onCardDraw(AbstractCard c){
         if (c.type == AbstractCard.CardType.STATUS){
             this.flash();
-            AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(AbstractDungeon.player, this.amount, DamageInfo.DamageType.NORMAL),
+            AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(AbstractDungeon.player, this.amount, DamageInfo.DamageType.THORNS),
                     AbstractGameAction.AttackEffect.FIRE));
         }
     }

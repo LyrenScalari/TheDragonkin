@@ -49,7 +49,7 @@ public class ReflectiveScales extends AbstractPower implements CloneablePowerInt
     }
     @Override
     public AbstractPower makeCopy() {
-        return new DivineRetributionPower(owner, source);
+        return new ReflectiveScales(owner, source,amount);
     }
 
     @Override

@@ -1,11 +1,8 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,8 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.combat.BlurWaveNormalEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
-import com.megacrit.cardcrawl.vfx.combat.ViolentAttackEffect;
-import com.megacrit.cardcrawl.vfx.stance.DivinityStanceChangeParticle;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
@@ -31,7 +26,7 @@ public class BlessedShield extends AbstractHolyCard implements ReciveDamageEffec
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;

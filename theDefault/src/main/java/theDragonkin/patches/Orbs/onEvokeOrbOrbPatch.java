@@ -1,11 +1,10 @@
 package theDragonkin.patches.Orbs;
 
         import com.evacipated.cardcrawl.modthespire.lib.*;
-        import com.megacrit.cardcrawl.characters.AbstractPlayer;
         import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
         import com.megacrit.cardcrawl.orbs.AbstractOrb;
         import javassist.CtBehavior;
-        import theDragonkin.orbs.Flameweaver.onEvokeOrbOrb;
+        import theDragonkin.orbs.onEvokeOrbOrb;
 
 @SpirePatches({@SpirePatch(
         cls = "com.megacrit.cardcrawl.characters.AbstractPlayer",

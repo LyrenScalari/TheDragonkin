@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,11 +15,12 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
+import theDragonkin.cards.Dragonkin.CrusaderForm;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
 
-public class CrusaderFormpower extends TwoAmountPower implements CloneablePowerInterface {
+public class CrusaderFormpower extends TwoAmountPower implements CloneablePowerInterface, OnReceivePowerPower {
     public AbstractCreature source;
     AbstractPower p = AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID);
     public static final String POWER_ID = DragonkinMod.makeID("CrusaderFormpower");
@@ -51,15 +53,11 @@ public class CrusaderFormpower extends TwoAmountPower implements CloneablePowerI
         updateDescription();
     }
 
-
-    @Override
-    public void onInitialApplication(){
-    }
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
         if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() < 2){
             addToBot(new GainDivineArmorAction(owner,owner,amount));
-            addToBot(new ApplyPowerAction(owner,owner,new CrusaderFormpower(owner,owner,amount2,amount2)));
+            addToBot(new ApplyPowerAction(owner,owner,new CrusaderFormpower(owner,owner,amount2,0)));
         }
     }
 
@@ -72,5 +70,12 @@ public class CrusaderFormpower extends TwoAmountPower implements CloneablePowerI
     @Override
     public AbstractPower makeCopy() {
         return new CrusaderFormpower(owner, source, amount,amount2);
+    }
+    @Override
+    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
+        if (abstractPower instanceof CrusaderFormpower){
+            amount2 += ((CrusaderFormpower) abstractPower).amount2;
+        }
+        return true;
     }
 }

@@ -4,7 +4,7 @@
       "scorch",
       "scorched"
     ],
-    "DESCRIPTION": "Scorched creatures take additional damage from #yAttacks, when attacked reduce this by half"
+    "DESCRIPTION": "Scorched creatures take damage equal to their scorch and lose #b1 scorch when #yAttacked"
   },
   {
     "NAMES": [
@@ -32,7 +32,7 @@
       "holy",
       "Holy"
     ],
-    "DESCRIPTION": "[#94bdff]Holy[] Cards are modified by #yZeal.",
+    "DESCRIPTION": "[#94bdff]Holy[] Cards are modified by #yZeal. NL #yZeal increases damage and Block gain for [#94bdff]Holy[] cards",
     "COLOR": "[#94bdff]"
   },
   {
@@ -55,9 +55,10 @@
   },
   {
     "NAMES": [
-      "dissolve"
+      "adjudicate",
+      "Adjudicate"
     ],
-    "DESCRIPTION": "Melting creatures lose HP when their dissolve is triggered."
+    "DESCRIPTION": "If the target has #yPenance, immediately trigger the End of Turn effect of their #yPenance."
   },
   {
     "PROPER_NAME": "Auraflame",
@@ -88,7 +89,7 @@
       "primal",
       "Primal"
     ],
-    "DESCRIPTION": "[#fe513a]Primal[] Cards generate #yFury equal to twice the energy spent when played."
+    "DESCRIPTION": "[#fe513a]Primal[] Cards generate #yFury equal to the energy spent when played. NL #yFury is spent to activate #yStorm Effects."
   },
   {
     "NAMES": [
@@ -96,20 +97,6 @@
       "Fury"
     ],
     "DESCRIPTION": "Gained by playing [#fe513a]Primal[] Cards. NL Can be used instead of energy to play #yStorm cards."
-  },
-  {
-    "NAMES": [
-      "dreaming",
-      "Dreaming"
-    ],
-    "DESCRIPTION": "Cards drawn will appear as any card in your master deck."
-  },
-  {
-    "NAMES": [
-      "lunacy",
-      "Lunacy"
-    ],
-    "DESCRIPTION": "Deal and Receive 25% more damage per #yLunacy."
   },
   {
     "NAMES": [
@@ -153,7 +140,7 @@
       "flux",
       "Flux"
     ],
-    "DESCRIPTION": "When played, #yCycle to up X #yStatus cards in your hand, activate the listed effect for each one."
+    "DESCRIPTION": "When played, #yCycle to up X #yStatus or [#990702]Rune[] cards in your hand and activate the listed effect for each one."
   },  {
   "NAMES": [
     "Reckoning",
@@ -172,9 +159,238 @@
   },
   {
     "NAMES": [
+      "Rune",
+      "rune"
+    ],
+    "DESCRIPTION": "[#990702]Rune[] cards are [#fe513a]Primal[] cards that are #yUnplayable without #yStorm and have effects when #yCycled"
+  },
+  {
+    "NAMES": [
+      "Blessing",
+      "blessing",
+      "blessings",
+      "Blessings"
+    ],
+    "DESCRIPTION": "[#548dff]Blessing[] cards are #yUnplayable [#94bdff]Holy[] cards with #yReckoning Effects"
+  },
+  {
+    "NAMES": [
       "mana",
       "Mana"
     ],
     "DESCRIPTION": "#yMana is spent instead of Energy to play #ySpells"
+  },
+  {
+    "PROPER_NAME": "Judgement",
+    "NAMES": [
+      "Judgement",
+      "judgement"
+    ],
+    "DESCRIPTION": "When you obtain 10 #yJudgement, Choose one : Gain 4 #yStrength #yDexterity and #ySpell #yPower, deal 2 damage to enemies you Debuff, or Deal 50 damage to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Blight",
+    "NAMES": [
+      "Blight",
+      "blight"
+    ],
+    "DESCRIPTION": "#yBlighted creatures take damage equal to their #yBlight and reduce their #yBlight by #b1 when they receive a debuff other then #yBlight. NL #yBlight is reduced by #b1 each turn."
+  },
+  {
+    "PROPER_NAME": "Fear",
+    "NAMES": [
+      "Fear",
+      "fear",
+      "Feared",
+      "feared"
+    ],
+    "DESCRIPTION": "#yFeared creatures deal 10% less and take 10% more damage per #yFear to a maximum of 70%. NL #yFear is reduced by #b1 each turn."
+  },
+  {
+    "PROPER_NAME": "Spell Power",
+    "NAMES": [
+      "Spell Power",
+      "Spell_Power",
+      "spell_power"
+    ],
+    "DESCRIPTION": "#ySpell #yPower increases the damage dealt and Block gained from #ySpells."
+  },
+  {
+    "PROPER_NAME": "Intensity",
+    "NAMES": [
+      "Intensity",
+      "intensity"
+    ],
+    "DESCRIPTION": "#yIntensity increases the damage dealt and Block gained from your next #ySpell."
+  },
+  {
+    "PROPER_NAME": "Miasma",
+    "NAMES": [
+      "Miasma",
+      "miasma"
+    ],
+    "DESCRIPTION": "A bonus effect that triggers if at least one enemy is Poisoned. NL Hostile Miasma Effects will target ALL Poisoned enemies."
+  },
+  {
+    "PROPER_NAME": "Siphon",
+    "NAMES": [
+      "Siphon",
+      "siphon"
+    ],
+    "DESCRIPTION": "Steal X HP from the target, storing it in your Phylactery"
+  },
+  {
+    "PROPER_NAME": "Spell",
+    "NAMES": [
+      "Spell",
+      "spell"
+    ],
+    "DESCRIPTION": "This card is a Spell, and is played using #yMana instead of [E] . #ySpells do not benefit from #yStrength or #yDexterity."
+  },
+  {
+    "PROPER_NAME": "Infernal Watch",
+    "NAMES": [
+      "Infernal Watch",
+      "Infernal_Watch",
+      "infernal_watch"
+    ],
+    "DESCRIPTION": "#yWatched enemies take damage at the end of your turn. NL #yInfernal #yWatch returns to you when it's target dies. NL When you target an enemy while you have #yInfernal #yWatch give your #yInfernal #yWatch to that enemy."
+  },
+  {
+    "PROPER_NAME": "Soul Charge",
+    "NAMES": [
+      "Soul Charge",
+      "Soul_Charge",
+      "soul_charge"
+    ],
+    "DESCRIPTION": "#ySoul #yCharge is lost and deals damage to random enemies after you play a non-#ySpell #ySkill. NL Gain #ySoul #yCharge after you play an #yAttack."
+  },
+  {
+    "PROPER_NAME": "Component",
+    "NAMES": [
+      "Component",
+      "component",
+      "Components",
+      "components"
+    ],
+    "DESCRIPTION": "When Exhausted attach the listed effect to the card that Exhausted this. NL Components modify the effect of cards their attached to"
+  },
+  {
+    "PROPER_NAME": "Incantation",
+    "NAMES": [
+      "Incantation",
+      "incantation"
+    ],
+    "DESCRIPTION": "Exhaust up to X cards in hand, and attach the listed effect to this card"
+  },
+  {
+    "PROPER_NAME": "Spirit [DrainIcon]",
+    "NAMES": [
+      "Spirit",
+      "spirit"
+    ],
+    "DESCRIPTION": "#ySpirit #yDamage Ignores #yBlock, and applies #ySpirit #yWound instead of doing damage. NL #ySpirit #yWound kills it's target if Spirit Wound equals or exceeds it's health at end of round or when applied.."
+  },
+  {
+    "PROPER_NAME": "Wind [WindIcon]",
+    "NAMES": [
+      "Wind",
+      "wind"
+    ],
+    "DESCRIPTION": "#yWind #yDamage Ignores #yBlock and does #b20% less damage to targets with #yBlock."
+  },
+  {
+    "PROPER_NAME": "Lightning [ElectricIcon]",
+    "NAMES": [
+      "Lightning",
+      "lightning"
+    ],
+    "DESCRIPTION": "#yLightning #yDamage applies #yStatic equal to half of unblocked damage dealt. NL #yStatic reduces damage dealt, reduced after attacking, and #yStuns if #yStatic is greater then #b20"
+  },
+  {
+    "PROPER_NAME": "Chi",
+    "NAMES": [
+      "Chi",
+      "chi"
+    ],
+    "DESCRIPTION": "#yChi is generated and spent by Windwalker cards, you may not have more than #b5 #yChi at once. NL Excess Chi becomes Temporary #yStrength and #yFocus"
+  },
+  {
+    "PROPER_NAME": "Whirlwind",
+    "NAMES": [
+      "Whirlwind",
+      "whirlwind"
+    ],
+    "DESCRIPTION": "#yStance : at the start of your turn and when you Enter this #yStance, draw an additional card"
+  },
+  {
+    "PROPER_NAME": "Tempest",
+    "NAMES": [
+      "Tempest",
+      "tempest"
+    ],
+    "DESCRIPTION": "#yStance : #yAttacks deal #b3 additional damage. NL Increases effectiveness of orbs by #b3 NL When you exit this #yStance : Channel 1 L$yightning."
+  },
+  {
+    "PROPER_NAME": "Conduit",
+    "NAMES": [
+      "Conduit",
+      "conduit"
+    ],
+    "DESCRIPTION": "#yStance : While in this stance increase the effectiveness of orbs by #b5 NL When you Enter this #yStance : Gain 1 #yFocus."
+  },
+  {
+    "PROPER_NAME": "Zephyr",
+    "NAMES": [
+      "Zephyr",
+      "zephyr"
+    ],
+    "DESCRIPTION": "#yStance : Gain #b5 additional Block from cards. NL When you exit this #yStance : Channel 1 #yFrost."
+  },
+  {
+    "PROPER_NAME": "Tempo",
+    "NAMES": [
+      "Tempo",
+      "tempo"
+    ],
+    "DESCRIPTION": "Unplayable and Automatically play this card on a random enemy after you change stances while this is in your hand."
+  },
+  {
+    "PROPER_NAME": "Razor Wind",
+    "NAMES": [
+      "Razor Wind",
+      "razor wind",
+      "Razor_Wind",
+      "razor_wind"
+    ],
+    "DESCRIPTION": "#yOrb: Deals [WindIcon] Damage to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Jade Spirit",
+    "NAMES": [
+      "Jade Spirit",
+      "jade spirit",
+      "Jade_Spirit",
+      "jade_spirit"
+    ],
+    "DESCRIPTION": "#yOrb: Deals [DrainIcon] Damage to random enemies."
+  },
+  {
+    "PROPER_NAME": "Nimbus",
+    "NAMES": [
+      "Nimbus",
+      "nimbus"
+    ],
+    "DESCRIPTION": "#yOrb: Damages random enemies grants block and increases the effectivenss of #yNimbus orbs."
+  },
+  {
+    "PROPER_NAME": "Spirit Burst",
+    "NAMES": [
+      "Spirit Burst",
+      "spirit burst",
+      "Spirit_Burst",
+      "spirit_burst"
+    ],
+    "DESCRIPTION": "Spend up to X #yChi and activate the following effect."
   }
 ]

@@ -1,18 +1,13 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.Scorchpower;
@@ -24,7 +19,7 @@ public class ThreePointStrike extends AbstractDragonkinCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Defend Gain 5 (8) block.
+     * WindWalkerDefend Gain 5 (8) block.
      */
 
 
@@ -41,7 +36,7 @@ public class ThreePointStrike extends AbstractDragonkinCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 3;
     private static final int BLOCK = 18;
@@ -69,6 +64,7 @@ public class ThreePointStrike extends AbstractDragonkinCard {
         addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
         addToBot(new ApplyPowerAction(m,p,new Scorchpower(m,p,magicNumber)));
         addToBot(new ApplyPowerAction(p,p,new VulnerablePower(p,1,false)));
+
     }
 
     //Upgraded stats.

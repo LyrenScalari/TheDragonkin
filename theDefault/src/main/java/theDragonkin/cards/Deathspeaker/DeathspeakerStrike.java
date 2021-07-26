@@ -15,7 +15,7 @@ import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class DeathspeakerStrike extends AbstractDeathspeakerCard {
     public static final String ID = DragonkinMod.makeID(DeathspeakerStrike.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
-    public static final String IMG = makeCardPath("Strike.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
+    public static final String IMG = makeCardPath("WindwalkerStrike.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 

@@ -1,5 +1,6 @@
 package theDragonkin.characters;
 
+import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
@@ -25,18 +26,13 @@ import theDragonkin.cards.Deathspeaker.DeathspeakerDefend;
 import theDragonkin.cards.Deathspeaker.DeathspeakerStrike;
 import theDragonkin.cards.Deathspeaker.Shadowblast;
 import theDragonkin.cards.Deathspeaker.Souldrain;
-import theDragonkin.cards.Dragonkin.BlazingBreath;
-import theDragonkin.cards.Dragonkin.Defend;
-import theDragonkin.cards.Dragonkin.HolySmite;
-import theDragonkin.cards.Dragonkin.Strike;
-import theDragonkin.relics.Dragonkin.GarnetScale;
+import theDragonkin.relics.Deathspeaker.GuiderLamp;
 import theDragonkin.ui.EnergyOrbDragonkin;
 
 import java.util.ArrayList;
 
 import static theDragonkin.DragonkinMod.*;
 import static theDragonkin.DragonkinMod.THE_DEFAULT_SKELETON_JSON;
-import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
 
 public class TheDeathspeaker extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(DragonkinMod.class.getName());
@@ -56,7 +52,18 @@ public class TheDeathspeaker extends CustomPlayer {
         @SpireEnum(name = "Deathspeaker_Purple") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
-
+    private static final String[] orbTextures = {
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer1.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer2.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer3.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer4.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer5.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer6.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer1d.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer2d.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer3d.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer4d.png",
+            modID + "Resources/images/char/TheDeathspeaker/Orb/layer5d.png",};
     // =============== CHARACTER ENUMERATORS  =================
 
 
@@ -64,10 +71,10 @@ public class TheDeathspeaker extends CustomPlayer {
 
     public static final int ENERGY_PER_TURN = 3;
     public static final int STARTING_HP = 70;
-    public static final int MAX_HP = 70;
+    public static final int MAX_HP = 50;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
-    public static final int ORB_SLOTS = 3;
+    public static final int ORB_SLOTS = 0;
 
     // =============== /BASE STATS/ =================
 
@@ -90,7 +97,7 @@ public class TheDeathspeaker extends CustomPlayer {
     // =============== CHARACTER CLASS START =================
 
     public TheDeathspeaker(String name, PlayerClass setClass) {
-        super(name, setClass, new EnergyOrbDragonkin(),
+        super(name, setClass, new CustomEnergyOrb(orbTextures, modID + "Resources/images/char/TheDeathspeaker/Orb/vfx.png", null),
                 new SpineAnimation("theDragonkinResources/images/char/defaultCharacter/TheDragonkin.atlas","theDragonkinResources/images/char/defaultCharacter/TheDragonkin.json",1.0f));
 
 
@@ -101,7 +108,7 @@ public class TheDeathspeaker extends CustomPlayer {
                 THE_DRAGONKIN_SHOULDER_2, // campfire pose
                 THE_DRAGONKIN_SHOULDER_1, // another campfire pose
                 THE_DRAGONKIN_CORPSE, // dead corpse
-                getLoadout(), 20.0F, -10.0F, 217.0F, 270.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
+                getLoadout(), 20.0F, -10.0F, 317.0F, 520.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
 
@@ -162,6 +169,7 @@ public class TheDeathspeaker extends CustomPlayer {
     // Starting Relics
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
+        retVal.add(GuiderLamp.ID);
         return retVal;
     }
 
@@ -189,20 +197,20 @@ public class TheDeathspeaker extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return Dragonkin_Red_COLOR;
+        return Enums.Deathspeaker_Purple;
     }
 
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return DragonkinMod.DEFAULT_GRAY;
+        return Cursed_Purple;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
     // energy is displayed from within the energy orb.
     @Override
     public BitmapFont getEnergyNumFont() {
-        return FontHelper.energyNumFontRed;
+        return FontHelper.energyNumFontPurple;
     }
 
     // Should return class name as it appears in run history screen.
@@ -214,7 +222,7 @@ public class TheDeathspeaker extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new HolySmite();
+        return new Souldrain();
     }
 
     // The class name as it appears next to your player name in-game
@@ -226,20 +234,20 @@ public class TheDeathspeaker extends CustomPlayer {
     // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new TheDefault(name, chosenClass);
+        return new TheDeathspeaker(name, chosenClass);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return DragonkinMod.DEFAULT_GRAY;
+        return Cursed_Purple;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return DragonkinMod.DEFAULT_GRAY;
+        return Cursed_Purple;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects
@@ -250,9 +258,9 @@ public class TheDeathspeaker extends CustomPlayer {
         return new AbstractGameAction.AttackEffect[]{
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
                 AbstractGameAction.AttackEffect.FIRE,
-                AbstractGameAction.AttackEffect.LIGHTNING,
-                AbstractGameAction.AttackEffect.FIRE,
-                AbstractGameAction.AttackEffect.LIGHTNING};
+                AbstractGameAction.AttackEffect.POISON,
+                AbstractGameAction.AttackEffect.POISON,
+                AbstractGameAction.AttackEffect.FIRE};
     }
 
     // Should return a string containing what text is shown when your character is

@@ -54,7 +54,7 @@ public class HolyBombPower extends TwoAmountPower implements NonStackablePower {
     @Override
     public void atEndOfTurn(final boolean isPlayer){
         if (this.amount == 1){
-            addToBot(new DamageAllEnemiesAction((AbstractPlayer) owner,amount2, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
+            addToBot(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(amount2,true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
         }
        addToBot(new ReducePowerAction(AbstractDungeon.player,AbstractDungeon.player,this,1));
     }

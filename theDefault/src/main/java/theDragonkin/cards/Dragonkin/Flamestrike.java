@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -27,7 +26,7 @@ public class Flamestrike extends AbstractPrimalCard implements TriggerOnCycleEff
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -37,6 +36,7 @@ public class Flamestrike extends AbstractPrimalCard implements TriggerOnCycleEff
     private static final int MAGIC = 2;
     private static final int UPGRADE_MAGIC = 2;
     public int Intensity = 0;
+
     public Flamestrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;
@@ -44,17 +44,16 @@ public class Flamestrike extends AbstractPrimalCard implements TriggerOnCycleEff
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        isMultiDamage = true;
         this.tags.add(CardTags.STRIKE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (!mo.isDeadOrEscaped()) {
             addToBot(new VFXAction(new InflameEffect(mo)));
             addToBot(new VFXAction(new SearingBlowEffect(mo.hb.cX, mo.hb.cY, Intensity)));
-            if (!mo.isDeadOrEscaped()) {
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new DamageAction(mo, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
             }
         }
         super.use(p,m);

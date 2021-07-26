@@ -1,21 +1,13 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.vfx.SmokePuffEffect;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
@@ -34,7 +26,7 @@ public class Absolution extends AbstractHolyCard implements ReciveDamageEffect {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
@@ -46,19 +38,21 @@ public class Absolution extends AbstractHolyCard implements ReciveDamageEffect {
     public Absolution() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 2;
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 4;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
-        addToBot(new ApplyPowerAction(m,p, new SinnersBurdenPower(m,p,1)));
+        addToBot(new ApplyPowerAction(m,p, new SinnersBurdenPower(m,p,defaultSecondMagicNumber)));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeMagicNumber(4);
+            upgradeDefaultSecondMagicNumber(2);
             initializeDescription();
         }
     }
@@ -70,7 +64,14 @@ public class Absolution extends AbstractHolyCard implements ReciveDamageEffect {
             AbstractDungeon.effectList.add(new DivinityParticleEffect());
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
                 if (m.hasPower(PenancePower.POWER_ID)){
-                    addToBot(new ApplyPowerAction(m,AbstractDungeon.player,new PenancePower(m,AbstractDungeon.player,defaultSecondMagicNumber)));
+                    addToBot(new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            AbstractPower power = m.getPower(PenancePower.POWER_ID);
+                            power.atEndOfTurn(false);
+                            isDone = true;
+                        }
+                    });
                 }
             }
         }

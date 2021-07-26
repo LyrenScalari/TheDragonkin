@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
@@ -54,7 +53,7 @@ public class DivineJolt extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.COMMON; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
 
@@ -80,11 +79,12 @@ public class DivineJolt extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < 2; ++i) {
            m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-            addToBot(new VFXAction(new LightningEffect(m.hb_x,m.hb_y)));
-                AbstractDungeon.actionManager.addToBottom(
-                        new DamageAction(m,new DamageInfo(p, damage, damageTypeForTurn),AbstractGameAction.AttackEffect.NONE));
-               addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
-
+           if (m != null) {
+               addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY)));
+               AbstractDungeon.actionManager.addToBottom(
+                       new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+               addToBot(new ApplyPowerAction(m, p, new PenancePower(m, p, magicNumber)));
+           }
         }
     }
 

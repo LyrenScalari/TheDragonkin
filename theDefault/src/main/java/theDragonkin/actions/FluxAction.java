@@ -1,13 +1,9 @@
 package theDragonkin.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theDragonkin.powers.Dragonkin.Scorchpower;
-
-import java.util.function.Consumer;
+import theDragonkin.CustomTags;
 import java.util.function.Supplier;
 
 public class FluxAction extends AbstractGameAction {
@@ -23,7 +19,7 @@ public class FluxAction extends AbstractGameAction {
     public void update() {
         AbstractCard ca = null;
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c.type == AbstractCard.CardType.STATUS) {
+            if (c.type == AbstractCard.CardType.STATUS || c.hasTag(CustomTags.Rune)) {
                 ca = c;
                 break;
             }

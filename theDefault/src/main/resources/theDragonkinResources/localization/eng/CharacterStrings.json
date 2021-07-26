@@ -1,8 +1,8 @@
 {
   "theDragonkin:DefaultCharacter": {
     "NAMES": [
-      "The Dragonkin",
-      "the dragonkin"
+      "The Justicar",
+      "the Justicar"
     ],
     "TEXT": [
       "A Warrior of Fire and Faith, From lands long lost. Determined to vanquish the Spire's Evil.",
@@ -22,6 +22,20 @@
       "A vile and profane sorcerer from an unknown land, blight and rot follow them closely.",
       "NL You ready your magic.",
       "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~Obsidian~ ~Scion,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+    ,
+      "~#yVICTORY!~ NL NL The #b~Kingdom's~ Capital now but a burning ruin. Our true foe revealed #pherself this day 5 years ago. Now's the chance. NL NL 5 years of #rWar led to this moment. Over #pher grave lies our destiny. Directing your former ~students~ , now skilled ~warriors~ . facing down the worlds real enemy, she turns to you and says \" ~When~ ~people~ ~band~ ~together,~ ~there~ ~is~ ~no~ ~need~ ~for~ #r~gods~ \" NL NL \" ~Lets~ ~leave~ ~the~ ~world~ ~in~ ~the~ ~hands~ ~of~ ~humanity~ \" she tells you as she lays down her crown and we leave the palace together.",
+      "I am #rTongue #rTied"
+    ]
+  },
+  "theDragonkin:TheWindWalker": {
+    "NAMES": [
+      "The Wind Walker",
+      "the Wind Walker"
+    ],
+    "TEXT": [
+      "A Master of mind and body, unencumbered by weapon or armor the windwalker fights with the precision and ferocity of the sky itself.",
+      "NL You Raise your weapon, and ready your voice.",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~Brother,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
     ,
       "~#yVICTORY!~ NL NL The #b~Kingdom's~ Capital now but a burning ruin. Our true foe revealed #pherself this day 5 years ago. Now's the chance. NL NL 5 years of #rWar led to this moment. Over #pher grave lies our destiny. Directing your former ~students~ , now skilled ~warriors~ . facing down the worlds real enemy, she turns to you and says \" ~When~ ~people~ ~band~ ~together,~ ~there~ ~is~ ~no~ ~need~ ~for~ #r~gods~ \" NL NL \" ~Lets~ ~leave~ ~the~ ~world~ ~in~ ~the~ ~hands~ ~of~ ~humanity~ \" she tells you as she lays down her crown and we leave the palace together.",
       "I am #rTongue #rTied"

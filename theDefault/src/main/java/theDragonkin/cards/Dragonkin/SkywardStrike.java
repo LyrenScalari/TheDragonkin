@@ -1,29 +1,23 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class SkywardStrike extends AbstractHolyCard {
+public class SkywardStrike extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Defend Gain 5 (8) block.
+     * WindWalkerDefend Gain 5 (8) block.
      */
 
 
@@ -40,11 +34,9 @@ public class SkywardStrike extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 6;
-    private static final int UPGRADE_PLUS_BLOCK = 4;
     private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 1;
 
@@ -54,8 +46,9 @@ public class SkywardStrike extends AbstractHolyCard {
 
     public SkywardStrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = BLOCK;
+        damage = baseDamage = 8;
         magicNumber = baseMagicNumber = MAGIC;
+        tags.add(CardTags.STRIKE);
     }
 
     public void triggerOnGlowCheck() {
@@ -80,7 +73,7 @@ public class SkywardStrike extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(2);
+            upgradeDamage(3);
             initializeDescription();
         }
     }

@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import theDragonkin.CustomTags;
 
 import java.util.function.Supplier;
 
@@ -24,7 +25,7 @@ public class InfernoWardAction extends AbstractGameAction {
         AbstractCard ca = null;
         System.out.println(amt);
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c.type == AbstractCard.CardType.STATUS) {
+            if (c.type == AbstractCard.CardType.STATUS || c.hasTag(CustomTags.Rune)) {
                 ca = c;
                 break;
             }
@@ -34,7 +35,11 @@ public class InfernoWardAction extends AbstractGameAction {
             if (amt > 0) {
                 addToTop(new InfernoWardAction(amt, FluxEffect));
             }
-            addToTop(new ExhaustSpecificCardAction(ca,AbstractDungeon.player.discardPile));
+            if (AbstractDungeon.player.drawPile.size() < 1){
+                addToTop(new ExhaustSpecificCardAction(ca,AbstractDungeon.player.drawPile));
+            } else {
+                addToTop(new ExhaustSpecificCardAction(ca,AbstractDungeon.player.discardPile));
+            }
             addToTop(new CycleAction(ca, 1));
             if (FluxEffect != null) {
                 addToTop(FluxEffect.get());

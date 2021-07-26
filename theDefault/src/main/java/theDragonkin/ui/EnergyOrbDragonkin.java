@@ -83,7 +83,7 @@ public class EnergyOrbDragonkin extends CustomEnergyOrb
 
         sb.setBlendFunction(0, GL20.GL_SRC_ALPHA);
         sb.setColor(new Color(1, 1, 1, 1));
-        sb.draw(mask, current_x - 64, current_y - 64, 64, 64, 180, 180, ORB_IMG_SCALE, ORB_IMG_SCALE, 0, 0, 0, 128, 128, false, false);
+        sb.draw(mask, current_x - 90, current_y - 90, 90, 90, 190, 190, ORB_IMG_SCALE, ORB_IMG_SCALE, 0, 0, 0, 180, 180, false, false);
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
         sb.end();

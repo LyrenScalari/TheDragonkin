@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -16,7 +14,6 @@ import com.megacrit.cardcrawl.vfx.combat.ViolentAttackEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.patches.DivineArmorPatches.DivineArmorField;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -29,7 +26,7 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -58,6 +55,7 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
         if (!upgraded) {
             upgradeName();
             upgradeDamage(2);
+            upgradeMagicNumber(1);
             initializeDescription();
         }
     }

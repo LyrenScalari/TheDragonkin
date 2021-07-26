@@ -3,6 +3,7 @@ package theDragonkin.cards.Dragonkin;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
@@ -13,6 +14,7 @@ import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 
+import static theDragonkin.DragonkinMod.getRandomBlessing;
 import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Sunbeam extends AbstractHolyCard {
@@ -20,7 +22,7 @@ public class Sunbeam extends AbstractHolyCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Defend Gain 5 (8) block.
+     * WindWalkerDefend Gain 5 (8) block.
      */
 
 
@@ -34,10 +36,10 @@ public class Sunbeam extends AbstractHolyCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int BLOCK = 7;
@@ -54,7 +56,11 @@ public class Sunbeam extends AbstractHolyCard {
         damage = baseDamage = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        cardsToPreview = new Burn();
+        cardToPreview.add(new BlessingofMight());
+        cardToPreview.add(new BlessingofFortitude());
+        cardToPreview.add(new BlessingofWrath());
+        cardToPreview.add(new ShadowVision());
+        cardToPreview.add(new LightSpeedBlessing());
     }
 
     // Actions the card should do.
@@ -63,8 +69,7 @@ public class Sunbeam extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
-        addToBot(new ApplyPowerAction(m,p,new Scorchpower(m,p, defaultSecondMagicNumber)));
-        addToBot(new MakeTempCardInDrawPileAction(new Burn(),1,true,false));
+        addToBot(new MakeTempCardInDiscardAction(getRandomBlessing(),1));
     }
 
     //Upgraded stats.

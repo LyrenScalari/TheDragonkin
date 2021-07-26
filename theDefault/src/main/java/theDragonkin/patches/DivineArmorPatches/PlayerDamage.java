@@ -16,6 +16,7 @@ import javassist.CtBehavior;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageinHandCard;
+import theDragonkin.cards.Dragonkin.interfaces.ReciveModifyDamageEffect;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,9 @@ public class PlayerDamage {
         for (AbstractPower p : AbstractDungeon.player.powers){
             if (p instanceof ReciveDamageEffect){
                 ((ReciveDamageEffect) p).onReciveDamage(damageAmount[0]);
+            }
+            if (p instanceof ReciveModifyDamageEffect){
+                ((ReciveModifyDamageEffect) p).onReciveDamage(damageAmount[0]);
             }
         }
         for (AbstractCard c : AbstractDungeon.player.drawPile.group){

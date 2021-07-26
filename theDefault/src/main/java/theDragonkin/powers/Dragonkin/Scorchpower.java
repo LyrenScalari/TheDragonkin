@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -60,10 +61,12 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
     public int onAttacked(DamageInfo di, int d){
         if (di.type == DamageInfo.DamageType.NORMAL) {
             this.flash();
+            int temp = amount;
             AbstractDungeon.actionManager.addToTop(
                     new ReducePowerAction(this.owner, this.owner, this, 1));
-            int temp = amount;
-            return d + temp;
+            AbstractDungeon.actionManager.addToTop(
+                    new DamageAction(owner,new DamageInfo(owner,temp, DamageInfo.DamageType.THORNS)));
+            return d;
         }
         return d;
     }

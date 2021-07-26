@@ -13,7 +13,7 @@ import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class DeathspeakerDefend extends AbstractDeathspeakerCard {
     public static final String ID = DragonkinMod.makeID(DeathspeakerDefend.class.getSimpleName());
-    public static final String IMG = makeCardPath("Defend.png");
+    public static final String IMG = makeCardPath("WindWalkerDefend.png");
 
     // /TEXT DECLARATION/
 

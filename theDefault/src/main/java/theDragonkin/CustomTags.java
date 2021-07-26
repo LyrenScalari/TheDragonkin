@@ -9,6 +9,10 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags Radiant;
     @SpireEnum
+    public static AbstractCard.CardTags Rune;
+    @SpireEnum
+    public static AbstractCard.CardTags Blessing;
+    @SpireEnum
     public static AbstractCard.CardTags SnekProof;
     @SpireEnum
     public static AbstractCard.CardTags Acid_Activator;

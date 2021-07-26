@@ -1,19 +1,22 @@
 package theDragonkin.cards.Deathspeaker;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDeathspeaker;
+import theDragonkin.powers.Deathspeaker.ManaPower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class Souldrain extends AbstractDeathspeakerCard {
     public static final String ID = DragonkinMod.makeID(Souldrain.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
-    public static final String IMG = makeCardPath("Strike.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
+    public static final String IMG = makeCardPath("WindwalkerStrike.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 
@@ -49,6 +52,8 @@ public class Souldrain extends AbstractDeathspeakerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        addToBot(new GainBlockAction(p,block));
+        addToBot(new ApplyPowerAction(p,p,new ManaPower(p,p,magicNumber)));
     }
 
 

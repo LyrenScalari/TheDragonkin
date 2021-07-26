@@ -1,21 +1,16 @@
 package theDragonkin.cards.Dragonkin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
-import theDragonkin.actions.CycleAction;
 import theDragonkin.actions.FluxAction;
 import theDragonkin.actions.GainDivineArmorAction;
+import theDragonkin.actions.HolyFluxAction;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -24,7 +19,7 @@ public class Sunburst extends AbstractHolyCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Defend Gain 5 (8) block.
+     * WindWalkerDefend Gain 5 (8) block.
      */
 
 
@@ -41,12 +36,12 @@ public class Sunburst extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 2;
-    private static final int MAGIC = 4;
+    private static final int MAGIC = 5;
 
 
     // /STAT DECLARATION/
@@ -66,7 +61,7 @@ public class Sunburst extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        addToBot(new FluxAction(defaultSecondMagicNumber,()->new  GainDivineArmorAction(p,p,magicNumber)));
+        addToBot(new HolyFluxAction(defaultSecondMagicNumber,()->new  GainDivineArmorAction(p,p,magicNumber)));
     }
 
     //Upgraded stats.

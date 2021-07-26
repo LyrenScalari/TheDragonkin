@@ -1,0 +1,26 @@
+{
+  "theDragonkin:Whirlwind": {
+    "NAME": "Whirlwind",
+    "DESCRIPTION": [
+      "At the start of your turn and when you enter this stance, draw a Card."
+    ]
+  },
+  "theDragonkin:Tempest": {
+    "NAME": "Tempest",
+    "DESCRIPTION": [
+      "#yAttacks deal #b3 Additional damage. NL increases the effectiveness of #yOrbs by #b3 NL Channel #yLightning when you exit this stance."
+    ]
+  },
+  "theDragonkin:Conduit": {
+    "NAME": "Conduit",
+    "DESCRIPTION": [
+      "Increases the effectiveness of #yOrbs by #b5 NL Gaiin #b1 Focus when you enter this #yStance."
+    ]
+  },
+  "theDragonkin:Zephyr": {
+    "NAME": "Zephyr",
+    "DESCRIPTION": [
+      "Gain #b5 additional block from cards NL Channel #yFrost when you exit this stance."
+    ]
+  }
+}

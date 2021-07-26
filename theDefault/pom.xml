@@ -16,6 +16,7 @@
         <SlayTheSpire.version>2.3</SlayTheSpire.version>
         <ModTheSpire.version>3.8.0</ModTheSpire.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <Steam.path>D:\Steam\steamapps</Steam.path>
     </properties>
 
     <dependencies>
@@ -53,6 +54,13 @@
             <version>1.0.0</version>
             <scope>system</scope>
             <systemPath>${workshopFolder}1934902042/actlikeit.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>iconaddons</groupId>
+            <artifactId>IconAddons</artifactId>
+            <version>0.0.2</version>
+            <scope>system</scope>
+            <systemPath>${stsPath}/mods/IconsAddon.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.github.tommyettinger</groupId>

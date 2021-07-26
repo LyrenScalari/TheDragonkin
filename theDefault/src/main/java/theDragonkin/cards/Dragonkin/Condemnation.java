@@ -21,7 +21,7 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
@@ -54,7 +54,7 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_POTENCY);
+            upgradeMagicNumber(UPGRADE_PLUS_POTENCY);
             initializeDescription();
         }
     }

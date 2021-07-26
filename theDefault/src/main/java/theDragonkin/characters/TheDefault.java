@@ -2,7 +2,6 @@ package theDragonkin.characters;
 
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpineAnimation;
-import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -32,7 +31,7 @@ import theDragonkin.ui.EnergyOrbDragonkin;
 import java.util.ArrayList;
 
 import static theDragonkin.DragonkinMod.*;
-import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
+import static theDragonkin.characters.TheDefault.Enums.Justicar_Red_COLOR;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
@@ -50,10 +49,10 @@ public class TheDefault extends CustomPlayer {
 
     public static class Enums {
         @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_DRAGONKIN;
-        @SpireEnum(name = "Dragonkin_Red_COLOR") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor Dragonkin_Red_COLOR;
-        @SpireEnum(name = "Dragonkin_Red_COLOR") @SuppressWarnings("unused")
+        public static AbstractPlayer.PlayerClass THE_JUSTICAR;
+        @SpireEnum(name = "Justicar_Red_COLOR") // These two HAVE to have the same absolutely identical name.
+        public static AbstractCard.CardColor Justicar_Red_COLOR;
+        @SpireEnum(name = "Justicar_Red_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
 
@@ -191,7 +190,7 @@ public class TheDefault extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return Dragonkin_Red_COLOR;
+        return Justicar_Red_COLOR;
     }
 
     // Should return a color object to be used to color the trail of moving cards

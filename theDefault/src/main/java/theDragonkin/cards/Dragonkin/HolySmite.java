@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -53,7 +52,7 @@ public class HolySmite extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.BASIC; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;

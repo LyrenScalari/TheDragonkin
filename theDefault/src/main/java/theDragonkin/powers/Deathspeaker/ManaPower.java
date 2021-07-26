@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Deathspeaker.AbstractDeathspeakerCard;
+import theDragonkin.cards.Deathspeaker.AbstractSpellCard;
 import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.util.TextureLoader;
 
@@ -46,7 +47,7 @@ public class ManaPower extends AbstractPower implements CloneablePowerInterface 
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.type == AbstractDeathspeakerCard.Enums.SPELL){
+        if (card instanceof AbstractSpellCard){
             this.flash();
             addToBot(new ReducePowerAction(owner,owner,this,card.costForTurn));
         }

@@ -1,0 +1,153 @@
+
+TheWindWalker.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+WingB
+  rotate: false
+  xy: 577, 363
+  size: 146, 234
+  orig: 146, 234
+  offset: 0, 0
+  index: -1
+Staf
+  rotate: false
+  xy: 916, 1
+  size: 50, 681
+  orig: 50, 681
+  offset: 0, 0
+  index: -1
+WingF
+  rotate: false
+  xy: 527, 1
+  size: 387, 360
+  orig: 387, 360
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: false
+  xy: 1, 749
+  size: 182, 219
+  orig: 182, 219
+  offset: 0, 0
+  index: -1
+LegLB
+  rotate: false
+  xy: 1, 1
+  size: 524, 277
+  orig: 524, 277
+  offset: 0, 0
+  index: -1
+LegUB
+  rotate: false
+  xy: 185, 680
+  size: 134, 143
+  orig: 134, 143
+  offset: 0, 0
+  index: -1
+LegLF
+  rotate: false
+  xy: 881, 684
+  size: 94, 208
+  orig: 94, 208
+  offset: 0, 0
+  index: -1
+LegUF
+  rotate: false
+  xy: 321, 585
+  size: 104, 185
+  orig: 104, 185
+  offset: 0, 0
+  index: -1
+TorsoL
+  rotate: false
+  xy: 184, 518
+  size: 135, 160
+  orig: 135, 160
+  offset: 0, 0
+  index: -1
+GiL
+  rotate: false
+  xy: 1, 280
+  size: 328, 236
+  orig: 328, 236
+  offset: 0, 0
+  index: -1
+ArmUB
+  rotate: false
+  xy: 427, 585
+  size: 127, 139
+  orig: 127, 139
+  offset: 0, 0
+  index: -1
+ArmLB
+  rotate: false
+  xy: 836, 501
+  size: 67, 51
+  orig: 67, 51
+  offset: 0, 0
+  index: -1
+HandB
+  rotate: false
+  xy: 627, 599
+  size: 54, 86
+  orig: 54, 86
+  offset: 0, 0
+  index: -1
+TorsoU
+  rotate: false
+  xy: 725, 363
+  size: 160, 136
+  orig: 160, 136
+  offset: 0, 0
+  index: -1
+GiU
+  rotate: false
+  xy: 725, 585
+  size: 154, 219
+  orig: 154, 219
+  offset: 0, 0
+  index: -1
+ArmUF
+  rotate: false
+  xy: 556, 599
+  size: 69, 189
+  orig: 69, 189
+  offset: 0, 0
+  index: -1
+ArmLF
+  rotate: false
+  xy: 427, 726
+  size: 99, 92
+  orig: 99, 92
+  offset: 0, 0
+  index: -1
+HandF
+  rotate: false
+  xy: 528, 790
+  size: 109, 83
+  orig: 109, 83
+  offset: 0, 0
+  index: -1
+Neck
+  rotate: false
+  xy: 725, 501
+  size: 109, 56
+  orig: 109, 56
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 1, 518
+  size: 181, 229
+  orig: 181, 229
+  offset: 0, 0
+  index: -1
+GiCord
+  rotate: false
+  xy: 331, 363
+  size: 244, 220
+  orig: 244, 220
+  offset: 0, 0
+  index: -1
