@@ -4,7 +4,9 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Lightning;
 import theDragonkin.DragonkinMod;
@@ -39,7 +41,7 @@ public class SpiritCharge extends AbstractWindWalkerCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWindWalker.Enums.WindWalker_Jade_COLOR;
-
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int BLOCK = 7;
     private static final int UPGRADE_PLUS_BLOCK = 3;
@@ -52,7 +54,8 @@ public class SpiritCharge extends AbstractWindWalkerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
         magicNumber = baseMagicNumber = 1;
-       defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+       defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
+       exhaust = true;
     }
 
     // Actions the card should do.
@@ -70,7 +73,8 @@ public class SpiritCharge extends AbstractWindWalkerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            exhaust = false;
             initializeDescription();
         }
     }

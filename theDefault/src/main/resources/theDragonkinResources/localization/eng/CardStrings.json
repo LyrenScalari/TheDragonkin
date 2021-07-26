@@ -567,7 +567,8 @@
   },
   "theDragonkin:SpiritCharge": {
     "NAME": "Spirit Charge",
-    "DESCRIPTION": "Channel !M! thedragonkin:Jade_Spirit. NL Gain [Chi] [Chi] . NL Enter thedragonkin:Conduit"
+    "DESCRIPTION": "Channel !M! thedragonkin:Jade_Spirit. NL Gain [Chi] [Chi] . NL Enter thedragonkin:Conduit NL Exhaust.",
+    "UPGRADE_DESCRIPTION":  "Channel !M! thedragonkin:Jade_Spirit. NL Gain [Chi] [Chi] . NL Enter thedragonkin:Conduit"
   },
   "theDragonkin:AirSlash": {
     "NAME": "Air Slash",
