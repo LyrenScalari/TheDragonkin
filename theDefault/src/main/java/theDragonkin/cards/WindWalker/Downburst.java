@@ -43,7 +43,7 @@ public class Downburst extends AbstractWindWalkerCard {
     public static final CardColor COLOR = TheWindWalker.Enums.WindWalker_Jade_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 7;
+    private static final int BLOCK = 9;
     private static final int UPGRADE_PLUS_BLOCK = 3;
 
 
