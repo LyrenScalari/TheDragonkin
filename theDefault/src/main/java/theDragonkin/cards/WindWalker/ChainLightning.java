@@ -80,8 +80,7 @@ public class ChainLightning extends AbstractWindWalkerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeBlock(2);
+            upgradeMagicNumber(1);
             initializeDescription();
         }
     }

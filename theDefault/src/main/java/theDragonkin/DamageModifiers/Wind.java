@@ -18,8 +18,8 @@ public class Wind extends AbstractDamageModifier {
     }
 
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        if (target.currentBlock > 0){
-            return (float) (damage - (damage*0.15));
+        if (target.currentBlock > 0) {
+            return damage*0.8f;
         }
         return damage; //Only used for AbstractCard.calculateDamage() as of Version 0.0.3
     }

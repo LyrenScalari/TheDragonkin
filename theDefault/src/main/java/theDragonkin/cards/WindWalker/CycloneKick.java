@@ -10,10 +10,12 @@ import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Frost;
 import theDragonkin.DamageModifiers.Wind;
 import theDragonkin.DragonkinMod;
+import theDragonkin.Stances.Cyclone;
 import theDragonkin.Stances.Tempest;
 import theDragonkin.actions.ChiBurstAction;
 import theDragonkin.characters.TheWindWalker;
@@ -62,14 +64,12 @@ public class CycloneKick extends AbstractWindWalkerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this,p,damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
-                isDone = true;
-            }
-        });
-        addToBot(new ChangeStanceAction(new Tempest()));
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+            addToBot(new DamageAction(mo,
+                    DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn),
+                    AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        }
+        addToBot(new ChangeStanceAction(new Cyclone()));
         addToBot(new ChiBurstAction(magicNumber,()->new TriggerPassiveAction(0,1)));
     }
 

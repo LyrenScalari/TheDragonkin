@@ -46,9 +46,7 @@ public class Whirlwind extends AbstractStance {
     @Override
     public void atStartOfTurn() {
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new StanceAuraEffect("Calm")));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new StanceAuraEffect("Calm")));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new StanceAuraEffect("Wrath")));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new StanceAuraEffect("Calm")));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new StanceAuraEffect("Calm")));
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
     }

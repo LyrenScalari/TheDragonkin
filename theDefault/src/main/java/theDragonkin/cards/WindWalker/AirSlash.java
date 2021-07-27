@@ -28,7 +28,7 @@ public class AirSlash extends AbstractWindWalkerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DragonkinMod.makeID(JadeSwipe.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = DragonkinMod.makeID(AirSlash.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("SunriseStrike.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -55,7 +55,6 @@ public class AirSlash extends AbstractWindWalkerCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         damage = baseDamage =DAMAGE;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
-        isMultiDamage = true;
         DamageModifierManager.addModifier(this, new Wind());
     }
 
@@ -63,14 +62,12 @@ public class AirSlash extends AbstractWindWalkerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this,p,damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
-                isDone = true;
-            }
-        });
-        for (int i = 0; i < magicNumber ; i++) {
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+            addToBot(new DamageAction(mo,
+                    DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn),
+                    AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        }
+        for (int i = 0; i < defaultSecondMagicNumber ; i++) {
             addToBot(new ChannelAction(new RazorWind()));
         }
     }

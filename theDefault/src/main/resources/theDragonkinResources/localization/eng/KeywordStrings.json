@@ -329,7 +329,7 @@
       "Tempest",
       "tempest"
     ],
-    "DESCRIPTION": "#yStance : #yAttacks deal #b3 additional damage. NL Increases effectiveness of orbs by #b3 NL When you exit this #yStance : Channel 1 L$yightning."
+    "DESCRIPTION": "#yStance : #yAttacks deal #b3 additional damage. NL Increases effectiveness of orbs by #b3 NL When you exit this #yStance : Channel 1 #yLightning."
   },
   {
     "PROPER_NAME": "Conduit",
@@ -346,6 +346,30 @@
       "zephyr"
     ],
     "DESCRIPTION": "#yStance : Gain #b5 additional Block from cards. NL When you exit this #yStance : Channel 1 #yFrost."
+  },
+  {
+    "PROPER_NAME": "Downdraft",
+    "NAMES": [
+      "Downdraft",
+      "downdraft"
+    ],
+    "DESCRIPTION": "#yStance : Gain #b3 additional Block from cards. NL Increases effectiveness of orbs by #b3 NL When you exit this #yStance : Channel 1 #yJade #ySpirit."
+  },
+  {
+    "PROPER_NAME": "Cyclone",
+    "NAMES": [
+      "Cyclone",
+      "cyclone"
+    ],
+    "DESCRIPTION": "#yStance : Gain #b3 additional Block from cards. NL  #yAttacks deal #b3 additional damage. NL When you exit this #yStance : Channel 1 #yRazor #yWind."
+  },
+  {
+    "PROPER_NAME": "Typhoon",
+    "NAMES": [
+      "Typhoon",
+      "typhoon"
+    ],
+    "DESCRIPTION": "#yStance : #yAttacks deal #b5 additional damage. NL When you Enter this #yStance : Gain 1 #yStrength."
   },
   {
     "PROPER_NAME": "Tempo",

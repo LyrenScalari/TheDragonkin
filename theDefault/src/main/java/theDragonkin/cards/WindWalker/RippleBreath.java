@@ -1,5 +1,7 @@
 package theDragonkin.cards.WindWalker;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +13,9 @@ import com.megacrit.cardcrawl.orbs.Frost;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainChiAction;
 import theDragonkin.characters.TheWindWalker;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -44,7 +49,11 @@ public class RippleBreath extends AbstractWindWalkerCard {
 
 
 // /STAT DECLARATION/
-
+public List<TooltipInfo> getCustomTooltips() {
+    List<TooltipInfo> retVal = new ArrayList<>();
+    retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Chi"),BaseMod.getKeywordDescription("thedragonkin:Chi")));
+    return retVal;
+}
 
     public RippleBreath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

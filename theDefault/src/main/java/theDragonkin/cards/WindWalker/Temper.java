@@ -2,28 +2,27 @@ package theDragonkin.cards.WindWalker;
 
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.Lightning;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theDragonkin.DragonkinMod;
-import theDragonkin.Stances.Conduit;
-import theDragonkin.Stances.Zephyr;
+import theDragonkin.Stances.Downdraft;
+import theDragonkin.Stances.Typhoon;
 import theDragonkin.actions.GainChiAction;
 import theDragonkin.characters.TheWindWalker;
-import theDragonkin.orbs.JadeSpirit;
+import theDragonkin.orbs.RazorWind;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class SpiritCharge extends AbstractWindWalkerCard {
+public class Temper extends AbstractWindWalkerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -34,7 +33,7 @@ public class SpiritCharge extends AbstractWindWalkerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DragonkinMod.makeID(SpiritCharge.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(Temper.class.getSimpleName());
     public static final String IMG = makeCardPath("WindWalkerDefend.png");
 
     // /TEXT DECLARATION/
@@ -53,28 +52,26 @@ public class SpiritCharge extends AbstractWindWalkerCard {
 
 
     // /STAT DECLARATION/
-
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Chi"),BaseMod.getKeywordDescription("thedragonkin:Chi")));
         return retVal;
     }
-    public SpiritCharge() {
+
+    public Temper() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = 1;
-       defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-       exhaust = true;
+        magicNumber = baseMagicNumber = 5;
+        defaultBaseSecondMagicNumber = 2;
+        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainChiAction(p,defaultSecondMagicNumber));
-        for (int i = 0; i < magicNumber ; i++){
-            addToBot(new ChannelAction(new JadeSpirit()));
-        }
-        addToBot(new ChangeStanceAction(new Conduit()));
+        addToBot(new ApplyPowerAction(p,p,new VigorPower(p,magicNumber)));
+        addToBot(new ChangeStanceAction(new Typhoon()));
     }
 
     //Upgraded stats.
@@ -82,8 +79,9 @@ public class SpiritCharge extends AbstractWindWalkerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(3);
             exhaust = false;
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

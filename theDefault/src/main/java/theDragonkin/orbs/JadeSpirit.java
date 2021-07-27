@@ -110,5 +110,7 @@ public class JadeSpirit extends CustomOrb {
         sb.setBlendFunction(770, 1);
         sb.draw(img, cX - 48.0f, cY - 48.0f + bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, scale, scale + MathUtils.sin(angle / PI_4) * ORB_WAVY_DIST * Settings.scale, -angle, 0, 0, 96, 96, false, false);
         sb.setBlendFunction(770, 771);
+        renderText(sb);
+        hb.render(sb);
     }
 }

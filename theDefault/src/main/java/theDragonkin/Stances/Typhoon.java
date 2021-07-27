@@ -1,11 +1,8 @@
 package theDragonkin.Stances;
 
-import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -16,18 +13,18 @@ import com.megacrit.cardcrawl.localization.StanceStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.powers.FocusPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
+import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
-import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
-import theDragonkin.DragonkinMod;
 import theDragonkin.orbs.ModifyOrbStance;
 import theDragonkin.powers.WindWalker.InvisibleFocus;
 
-public class Tempest extends AbstractStance implements ModifyOrbStance {
-    static final String STANCE_ID ="theDragonkin:Tempest";
+public class Typhoon extends AbstractStance {
+    static final String STANCE_ID ="theDragonkin:Typhoon";
     static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
-    public Tempest(){
+    public Typhoon(){
         this.ID = STANCE_ID;
         this.name = stanceString.NAME;
         this.updateDescription();
@@ -41,7 +38,7 @@ public class Tempest extends AbstractStance implements ModifyOrbStance {
             this.particleTimer -= Gdx.graphics.getDeltaTime();
             if (this.particleTimer < 0.0F) {
                 this.particleTimer = 0.05F;
-                AbstractDungeon.effectsQueue.add(new CalmParticleEffect());
+                AbstractDungeon.effectsQueue.add(new DivinityParticleEffect());
             }
         }
 
@@ -53,22 +50,11 @@ public class Tempest extends AbstractStance implements ModifyOrbStance {
 
     }
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        return type == DamageInfo.DamageType.NORMAL ? damage + 3 : damage;
+        return type == DamageInfo.DamageType.NORMAL ? damage + 5 : damage;
     }
-    public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InvisibleFocus(AbstractDungeon.player)));
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new Lightning()));
-        for (AbstractOrb o : AbstractDungeon.player.orbs){
-            o.updateDescription();
-        }
-    }
+
     @Override
     public void onEnterStance() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InvisibleFocus(AbstractDungeon.player)));
-    }
-    @Override
-    public void ModifyOrb(AbstractOrb abstractOrb) {
-        abstractOrb.passiveAmount += 3;
-        abstractOrb.evokeAmount += 3;
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,1)));
     }
 }

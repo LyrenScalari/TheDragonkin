@@ -2,24 +2,24 @@ package theDragonkin.cards.WindWalker;
 
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.Frost;
-import theDragonkin.DamageModifiers.Lightning;
 import theDragonkin.DamageModifiers.Wind;
 import theDragonkin.DragonkinMod;
+import theDragonkin.Stances.Cyclone;
+import theDragonkin.Stances.Downdraft;
 import theDragonkin.actions.ChiBurstAction;
 import theDragonkin.characters.TheWindWalker;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class ConcussiveShout extends AbstractWindWalkerCard {
+public class StagnantZone extends AbstractWindWalkerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -30,7 +30,7 @@ public class ConcussiveShout extends AbstractWindWalkerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DragonkinMod.makeID(ConcussiveShout.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(StagnantZone.class.getSimpleName());
     public static final String IMG = makeCardPath("WindWalkerDefend.png");
 
     // /TEXT DECLARATION/
@@ -39,8 +39,8 @@ public class ConcussiveShout extends AbstractWindWalkerCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWindWalker.Enums.WindWalker_Jade_COLOR;
 
     private static final int COST = 2;
@@ -51,23 +51,17 @@ public class ConcussiveShout extends AbstractWindWalkerCard {
     // /STAT DECLARATION/
 
 
-    public ConcussiveShout() {
+    public StagnantZone() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = 15;
-        magicNumber = baseMagicNumber = 2;
-        DamageModifierManager.addModifier(this, new Wind());
-        DamageModifierManager.addModifier(this, new Lightning());
+        block = baseBlock = 16;
+        magicNumber = baseMagicNumber = 3;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new DamageAction(mo,
-                    DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn),
-                    AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        }
-        addToBot(new ChiBurstAction(magicNumber,()->new ChannelAction(new Frost())));
+        addToBot(new ChangeStanceAction(new Downdraft()));
+        addToBot(new GainBlockAction(p,block));
     }
 
     //Upgraded stats.
@@ -75,8 +69,7 @@ public class ConcussiveShout extends AbstractWindWalkerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
-            upgradeDamage(2);
+            upgradeBlock(4);
             initializeDescription();
         }
     }

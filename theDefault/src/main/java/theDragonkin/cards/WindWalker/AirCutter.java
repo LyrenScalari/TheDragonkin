@@ -57,6 +57,7 @@ public class AirCutter extends AbstractWindWalkerCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
         DamageModifierManager.addModifier(this, new Wind());
+        isMultiDamage = true;
     }
 
 

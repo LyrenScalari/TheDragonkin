@@ -493,6 +493,10 @@
     "NAME": "Warding Zap",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage NL Gain !B! Block."
   },
+  "theDragonkin:CyclonicWinds": {
+    "NAME": "Cyclonic Winds",
+    "DESCRIPTION": "Deal !D! [WindIcon] damage NL Gain !B! Block. NL Enter thedragonkin:Cyclone"
+  },
   "theDragonkin:StormThrow": {
     "NAME": "Storm Throw",
     "DESCRIPTION": "thedragonkin:Tempo. NL Deal !D! [ElectricIcon] damage NL Gain [Chi] NL Channel 1 thedragonkin:Razor_Wind"
@@ -500,6 +504,10 @@
   "theDragonkin:ForcePalm": {
     "NAME": "Force Palm",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage twice."
+  },
+  "theDragonkin:Stormstrike": {
+    "NAME": "Stormstrike",
+    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Enter thedragonkin:Tempest"
   },
   "theDragonkin:SkyTalon": {
     "NAME": "Sky Talon",
@@ -545,13 +553,17 @@
     "NAME": "Crystal Wind",
     "DESCRIPTION": "Deal !D! [WindIcon] damage. NL thedragonkin:Spirit_Burst !M!: Channel Frost."
   },
+  "theDragonkin:HighPressure": {
+    "NAME": "Wind Boarder",
+    "DESCRIPTION": "Enter thedragonkin:Downdraft. NL Gain !B! Block. NL Channel thedragonkin:Razor_Wind"
+  },
   "theDragonkin:SlipStream": {
     "NAME": "Stratus Shield",
     "DESCRIPTION": "Gain !B! Block. NL Channel thedragonkin:Nimbus NL Enter thedragonkin:Zephyr"
   },
   "theDragonkin:Galeforce": {
     "NAME": "Galeforce",
-    "DESCRIPTION": "Channel !M! thedragonkin:Razor_Wind NL Enter thedragonkin:Whirlwind"
+    "DESCRIPTION": "Channel !M! thedragonkin:Razor_Wind NL Enter thedragonkin:Downdraft"
   },
   "theDragonkin:RendingFang": {
     "NAME": "Rending Fang",
@@ -570,13 +582,35 @@
     "DESCRIPTION": "Channel !M! thedragonkin:Jade_Spirit. NL Gain [Chi] [Chi] . NL Enter thedragonkin:Conduit NL Exhaust.",
     "UPGRADE_DESCRIPTION":  "Channel !M! thedragonkin:Jade_Spirit. NL Gain [Chi] [Chi] . NL Enter thedragonkin:Conduit"
   },
+  "theDragonkin:Temper": {
+    "NAME": "Temper",
+    "DESCRIPTION": "Gain [Chi] [Chi] . NL Gain !M! Vigor NL Enter thedragonkin:Typhoon NL Exhaust.",
+    "UPGRADE_DESCRIPTION":  "Gain [Chi] [Chi] . NL Gain !M! Vigor NL Enter thedragonkin:Typhoon"
+  },
+  "theDragonkin:Twister": {
+    "NAME": "Twister",
+    "DESCRIPTION": "Deal !D! [WindIcon] damage. NL Enter thedragonkin:Cyclone."
+  },
   "theDragonkin:AirSlash": {
     "NAME": "Air Slash",
-    "DESCRIPTION": "Deal !D! [WindIcon] damage to ALL enemies. NL Channel !M! thedragonkin:Razor_Wind"
+    "DESCRIPTION": "Deal !D! [WindIcon] damage to ALL enemies. NL Channel !M2! thedragonkin:Razor_Wind"
   },
   "theDragonkin:ChiBlast": {
     "NAME": "Chi Blast",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Spirit_Burst !M!: Deal !D! damage to ALL enemies"
+  },
+  "theDragonkin:StagnantZone": {
+    "NAME": "Stagnant Zone",
+    "DESCRIPTION": "Gain !B! Block. NL Enter thedragonkin:Downdraft"
+  },
+  "theDragonkin:OccludedSky": {
+    "NAME": "Occluded Sky",
+    "DESCRIPTION": "Gain !B! Block. NL Enter thedragonkin:Zephyr NL Evoke your Right most orb, Lose an orb Slot. NL Gain !M! Focus."
+  },
+  "theDragonkin:ClearSky": {
+    "NAME": "Clear Sky",
+    "DESCRIPTION": "Evoke all your orbs. NL Gain [E] for each. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Evoke all your orbs. NL Gain [E] [Chi] for each. NL Exhaust."
   },
   "theDragonkin:Deathtouch": {
     "NAME": "Deathtouch",
@@ -592,7 +626,11 @@
   },
   "theDragonkin:CycloneKick": {
     "NAME": "Cyclone Kick",
-    "DESCRIPTION": "Deal !D! [WindIcon] Damage to ALL enemies. NL Enter thedragonkin:Tempest NL thedragonkin:Spirit_Burst !M!: Activate the passive effect of your right most orb."
+    "DESCRIPTION": "Deal !D! [WindIcon] Damage to ALL enemies. NL Enter thedragonkin:Cyclone NL thedragonkin:Spirit_Burst !M!: Activate the passive effect of your right most orb."
+  },
+  "theDragonkin:Hurricane": {
+    "NAME": "Hurricane Kata",
+    "DESCRIPTION": "Deal !D! [WindIcon] Damage to ALL enemies. NL Enter thedragonkin:Tempest NL thedragonkin:Spirit_Burst !M!: Channel thedragonkin:Razor_Wind"
   },
   "theDragonkin:PivotShock": {
     "NAME": "Pivot Shock",
@@ -600,12 +638,16 @@
   },
   "theDragonkin:ConcussiveShout": {
     "NAME": "Concussive Shout",
-    "DESCRIPTION": "Deal !D! [WindIcon] [ElectricIcon] Damage."
+    "DESCRIPTION": "Deal !D! [WindIcon] [ElectricIcon] damage to ALL enemies."
   },
   "theDragonkin:Stormcrystal": {
     "NAME": "Storm Infusion",
     "DESCRIPTION": "Enter thedragonkin:Conduit. NL Activate the passive effect of your orbs Twice.",
     "UPGRADE_DESCRIPTION": "Enter thedragonkin:Conduit. NL Activate the passive effect of your orbs !M! times."
+  },
+  "theDragonkin:FinalCutter": {
+    "NAME": "Final Cutter",
+    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Enter thedragonkin:Typhoon"
   },
   "theDragonkin:Whirlwind": {
     "NAME": "Whirlwind",

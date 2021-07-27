@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 import theDragonkin.orbs.ModifyOrbStance;
+import theDragonkin.powers.WindWalker.InvisibleFocus;
 
 public class Conduit extends AbstractStance implements ModifyOrbStance {
     static final String STANCE_ID ="theDragonkin:Conduit";
@@ -51,13 +52,14 @@ public class Conduit extends AbstractStance implements ModifyOrbStance {
     }
     @Override
     public void onEnterStance() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new FocusPower(AbstractDungeon.player,0)));
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,FocusPower.POWER_ID));
+        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InvisibleFocus(AbstractDungeon.player)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new FocusPower(AbstractDungeon.player,1)));
     }
     public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new FocusPower(AbstractDungeon.player,0)));
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,FocusPower.POWER_ID));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InvisibleFocus(AbstractDungeon.player)));
+        for (AbstractOrb o : AbstractDungeon.player.orbs){
+            o.updateDescription();
+        }
     }
     @Override
     public void ModifyOrb(AbstractOrb abstractOrb) {

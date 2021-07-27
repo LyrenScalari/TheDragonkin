@@ -65,7 +65,7 @@ public class StratusShield extends AbstractWindWalkerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            upgradeBlock(3);
             initializeDescription();
         }
     }

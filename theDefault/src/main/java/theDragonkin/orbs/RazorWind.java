@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
@@ -68,13 +69,11 @@ public class RazorWind extends CustomOrb {
             if (Settings.FAST_MODE) {
                 speedTime = 0.0F;
             }
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this,AbstractDungeon.player,evokeAmount, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
-                    isDone = true;
-                }
-            });
+            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(mo,
+                        DamageModifierHelper.makeBoundDamageInfo(this, AbstractDungeon.player,evokeAmount, DamageInfo.DamageType.THORNS),
+                        AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            }
         }
     }
     @Override
@@ -92,13 +91,11 @@ public class RazorWind extends CustomOrb {
             if (Settings.FAST_MODE) {
                 speedTime = 0.0F;
             }
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this,AbstractDungeon.player,passiveAmount, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
-                    isDone = true;
-                }
-            });
+            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(mo,
+                        DamageModifierHelper.makeBoundDamageInfo(this, AbstractDungeon.player,passiveAmount, DamageInfo.DamageType.THORNS),
+                        AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            }
         }
 
     }
@@ -130,5 +127,7 @@ public class RazorWind extends CustomOrb {
         sb.setBlendFunction(770, 1);
         sb.draw(img, cX - 48.0f, cY - 48.0f + bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, scale, scale + MathUtils.sin(angle / PI_4) * ORB_WAVY_DIST * Settings.scale, -angle, 0, 0, 96, 96, false, false);
         sb.setBlendFunction(770, 771);
+        renderText(sb);
+        hb.render(sb);
     }
 }
