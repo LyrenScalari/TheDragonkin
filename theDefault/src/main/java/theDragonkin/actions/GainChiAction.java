@@ -10,14 +10,13 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.FlyingOrbEffect;
 import org.lwjgl.Sys;
 import theDragonkin.patches.ChiField;
-import theDragonkin.patches.Phlyactery.PhlyacteryField;
 import theDragonkin.powers.WindWalker.GainChiPower;
 import theDragonkin.util.Wiz;
 
 public class GainChiAction extends AbstractGameAction {
     public GainChiAction(AbstractCreature source, int amount) {
         this.setValues(target, source, amount);
-        this.actionType = ActionType.SPECIAL;
+        this.actionType = ActionType.ENERGY;
         this.amount = amount;
     }
 
@@ -28,14 +27,14 @@ public class GainChiAction extends AbstractGameAction {
                     ((GainChiPower) p).onGainChi(amount);
                 }
             }
-            if (ChiField.Chi.get(source) <= 5){
-                if (ChiField.Chi.get(source)+amount > 5){
-                    Wiz.applyToSelfTemp(new FocusPower(source,(ChiField.Chi.get(source)+amount)-5));
-                    Wiz.applyToSelfTemp(new StrengthPower(source,(ChiField.Chi.get(source)+amount)-5));
-                    ChiField.Chi.set(source,5);
-                }else ChiField.Chi.set(source,ChiField.Chi.get(source)+amount);
-                AbstractDungeon.effectsQueue.add(new FlyingOrbEffect(AbstractDungeon.player.hb.cX - AbstractDungeon.player.animX, AbstractDungeon.player.hb.cY));
+            if (ChiField.Chi.get(source)+amount > 5){
+                Wiz.applyToSelfTemp(new FocusPower(source,(ChiField.Chi.get(source)+amount)-5));
+                Wiz.applyToSelfTemp(new StrengthPower(source,(ChiField.Chi.get(source)+amount)-5));
+                ChiField.Chi.set(source,5);
+            }else{
+                ChiField.Chi.set(source,ChiField.Chi.get(source)+amount);
             }
+
         }
         this.tickDuration();
     }

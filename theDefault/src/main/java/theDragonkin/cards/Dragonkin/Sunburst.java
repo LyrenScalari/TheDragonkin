@@ -1,16 +1,28 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.FireIcon;
+import IconsAddon.icons.HolyIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
+import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
+import theDragonkin.DamageModifiers.FireDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.FluxAction;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.actions.HolyFluxAction;
 import theDragonkin.characters.TheDefault;
+
+import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -51,9 +63,12 @@ public class Sunburst extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
+        block = baseBlock = magicNumber;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        tags.add(CustomTags.Radiant);
-        RadiantExchange = 3;
+        DamageModifierManager.addModifier(this, new FireDamage(true,true));
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
     }
 
     // Actions the card should do.
@@ -61,7 +76,8 @@ public class Sunburst extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        addToBot(new HolyFluxAction(defaultSecondMagicNumber,()->new  GainDivineArmorAction(p,p,magicNumber)));
+        addToBot(new HolyFluxAction(defaultSecondMagicNumber,()->new GainCustomBlockAction(this,p,block)));
+        super.use(p,m);
     }
 
     //Upgraded stats.

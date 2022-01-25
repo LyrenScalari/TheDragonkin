@@ -1,19 +1,17 @@
 package theDragonkin.cards.WindWalker;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.DrainIcon;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
-import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DamageModifiers.Spirit;
+import theDragonkin.DamageModifiers.SpiritDamage;
 import theDragonkin.DragonkinMod;
-import theDragonkin.Stances.Whirlwind;
 import theDragonkin.actions.ChiBurstAction;
 import theDragonkin.characters.TheWindWalker;
 
@@ -52,7 +50,8 @@ public class SpiritPulse extends AbstractWindWalkerCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
         magicNumber = baseMagicNumber = 3;
-        DamageModifierManager.addModifier(this, new Spirit());
+        DamageModifierManager.addModifier(this, new SpiritDamage(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, DrainIcon.get()));
     }
 
 

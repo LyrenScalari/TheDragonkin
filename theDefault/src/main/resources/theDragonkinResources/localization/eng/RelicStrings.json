@@ -97,7 +97,7 @@
     "NAME": "Guider Lamp",
     "FLAVOR": "Filled with souls of the fallen, they whisper knowledge ceaselessly.",
     "DESCRIPTIONS": [
-      "At the start of your turn, Gain 1 #yMana."
+      "After you #yExhaust a non-#yUndead card, add #b2 #ySkeletons to your Draw pile."
     ]
   },
 
@@ -105,7 +105,7 @@
     "NAME": "Serpent Idol",
     "FLAVOR": "A finely crafted idol of a Sky Dragon.",
     "DESCRIPTIONS": [
-      "Start combat in #yWhirlwind Stance"
+      "Start each combat with #b2 #yMastery."
     ]
   },
   "theDragonkin:MastersIdol": {

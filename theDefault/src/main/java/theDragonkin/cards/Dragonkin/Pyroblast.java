@@ -1,5 +1,9 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.FireIcon;
+import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -15,6 +19,7 @@ import com.megacrit.cardcrawl.vfx.GhostlyFireEffect;
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.FireDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.util.TriggerOnCycleEffect;
@@ -47,6 +52,8 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
         damage = baseDamage = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         tags.add(CustomTags.SnekProof);
+        DamageModifierManager.addModifier(this, new FireDamage(true,true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
         tags.add(CardTags.HEALING);
     }
 
@@ -85,9 +92,7 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        if (ca.type == CardType.STATUS){
             this.updateCost(-1);
             realCost = costForTurn;
-        }
     }
 }

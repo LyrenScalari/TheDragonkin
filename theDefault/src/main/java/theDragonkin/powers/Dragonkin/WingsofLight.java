@@ -1,5 +1,10 @@
 package theDragonkin.powers.Dragonkin;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.HolyIcon;
+import IconsAddon.util.BlockModifierManager;
+import basemod.helpers.CardModifierManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -21,6 +26,7 @@ import com.megacrit.cardcrawl.vfx.combat.HealEffect;
 import com.megacrit.cardcrawl.vfx.combat.HealVerticalLineEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.powers.LosePowerPower;
@@ -40,20 +46,21 @@ public class WingsofLight extends TwoAmountPower implements CloneablePowerInterf
     private static final float X_JITTER;
     private static final float Y_JITTER;
     private static final float OFFSET_Y;
+    private static AbstractCard srcCard;
     static {
         X_JITTER = 120.0F * Settings.scale;
         Y_JITTER = 120.0F * Settings.scale;
         OFFSET_Y = -50.0F * Settings.scale;
     }
-    public WingsofLight(final AbstractCreature owner, final AbstractCreature source,int dmgamount,int armoramt) {
+    public WingsofLight(final AbstractCreature owner, final AbstractCreature source,int dmgamount,int armoramt, AbstractCard srccard) {
         name = NAME;
         ID = POWER_ID;
-
         this.owner = owner;
         this.amount = dmgamount;
         this.source = source;
         this.amount2 += armoramt;
         type = PowerType.BUFF;
+        srcCard = srccard;
         isTurnBased = false;
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
@@ -67,7 +74,7 @@ public class WingsofLight extends TwoAmountPower implements CloneablePowerInterf
         addToBot(new VFXAction(new HealVerticalLineEffect(owner.drawX+ MathUtils.random(-X_JITTER * 1.5F, X_JITTER * 1.5F),owner.drawY+ OFFSET_Y + MathUtils.random(-Y_JITTER, Y_JITTER))));
         addToBot(new VFXAction(new HealVerticalLineEffect(owner.drawX+ MathUtils.random(-X_JITTER * 1.5F, X_JITTER * 1.5F),owner.drawY+ OFFSET_Y + MathUtils.random(-Y_JITTER, Y_JITTER))));
         addToBot(new DamageAction(owner,new DamageInfo(owner,amount, DamageInfo.DamageType.THORNS)));
-        addToBot(new GainDivineArmorAction(owner,owner,amount2));
+        addToBot(new GainCustomBlockAction(srcCard,owner,amount2));
     }
 
     @Override

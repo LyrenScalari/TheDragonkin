@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -41,9 +42,9 @@ public class TailSlam extends AbstractPrimalCard {
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 2;
-    private static final int BLOCK = 15;
+    private static final int BLOCK = 20;
     private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int MAGIC = 1;
+    private static final int MAGIC = 5;
 
 
     // /STAT DECLARATION/
@@ -62,10 +63,10 @@ public class TailSlam extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new WhirlwindEffect(Color.RED.cpy(),false)));
+        addToBot(new DamageAction(p,new DamageInfo(p,magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         addToBot(new GainBlockAction(p,block));
         addToBot(new VFXAction(new WhirlwindEffect(Color.RED.cpy(),true)));
         addToBot(new DamageAllEnemiesAction(p,damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new ApplyPowerAction(p,p,new VulnerablePower(p,magicNumber,false)));
         super.use(p,m);
     }
 

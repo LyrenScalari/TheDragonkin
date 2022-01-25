@@ -21,7 +21,6 @@ import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
-import theDragonkin.cards.Deathspeaker.AbstractSpellCard;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
 

@@ -36,30 +36,26 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theDragonkin.cards.Deathspeaker.AbstractDeathspeakerCard;
+import theDragonkin.cards.AbstractDefaultCard;
 import theDragonkin.cards.Dragonkin.*;
+import theDragonkin.cards.Drifter.ForetellCard;
 import theDragonkin.cards.WindWalker.AbstractWindWalkerCard;
-import theDragonkin.characters.TheDeathspeaker;
-
 import theDragonkin.characters.TheDefault;
 import theDragonkin.characters.TheWindWalker;
 import theDragonkin.patches.ChiField;
 import theDragonkin.patches.ChiPannel;
-import theDragonkin.patches.Phlyactery.PhlyacteryField;
-import theDragonkin.patches.Phlyactery.PhlyacteryPanel;
+import theDragonkin.patches.ManaField;
 import theDragonkin.potions.Dragonkin.DragonkinCommonPotion;
 import theDragonkin.potions.Dragonkin.DragonkinRarePotion;
 import theDragonkin.potions.Dragonkin.DragonkinUncommonPotion;
 import theDragonkin.powers.Dragonkin.HeatPower;
 import theDragonkin.powers.Dragonkin.Scorchpower;
-import theDragonkin.relics.Deathspeaker.GuiderLamp;
 import theDragonkin.relics.Dragonkin.*;
 import theDragonkin.relics.WindWalker.MastersIdol;
 import theDragonkin.relics.WindWalker.SerpentIdol;
 import theDragonkin.ui.CurseAttack;
 import theDragonkin.util.*;
 import theDragonkin.variables.*;
-
 import javax.smartcardio.Card;
 import java.awt.*;
 import java.io.InputStream;
@@ -67,8 +63,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Properties;
-
-import static theDragonkin.characters.TheDeathspeaker.Enums.Deathspeaker_Purple;
 import static theDragonkin.characters.TheDefault.Enums.Justicar_Red_COLOR;
 import static theDragonkin.characters.TheWindWalker.Enums.WindWalker_Jade_COLOR;
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -137,6 +131,7 @@ public class DragonkinMod implements
     public static Texture DIVINE_ARMOR_ICON;
     public static int Alignment;
     public static ArrayList<AbstractCard> Stars = new ArrayList<>();
+    public static ArrayList<AbstractSeal> Seals = new ArrayList<>();
     // =============== INPUT TEXTURE LOCATION =================
     // Colors (RGB)
     // Character Color
@@ -175,7 +170,7 @@ public class DragonkinMod implements
     private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/dragonkin/bg_skill_scales.png";
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/dragonkin/bg_power_scales.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/card_default_gray_orb.png";
-
+    public static final String LIGHTNINGBOLT = "theDragonkinResources/images/VFX/lightningspear.png";
     public static final String DOVAH_FONT = "theDragonkinResources/Font/DovahkiinItalic-2BDv.ttf";
     public static BitmapFont DovahFont;
     // Character assets
@@ -215,7 +210,7 @@ public class DragonkinMod implements
     public static final String Spell_Frame_Rare_1024= "theDragonkinResources/images/1024/Acolyte/Spell_Rare.png";
     public static final String Spell_Orb_512 = "theDragonkinResources/images/512/Acolyte/Mana_Orb.png";
     public static final String Spell_Orb_1024 = "theDragonkinResources/images/1024/Acolyte/Mana_Orb.png";
-    // Wind Walker card stuff
+    // WindDamage Walker card stuff
     public static final String ATTACK_WindWalker_PORTRAIT = "theDragonkinResources/images/1024/Windwalker/bg_attack_jadescale.png";
     public static final String SKILL_WindWalker_PORTRAIT = "theDragonkinResources/images/1024/Windwalker/bg_skill_jadescale.png";
     public static final String Power_WindWalker_PORTRAIT = "theDragonkinResources/images/1024/Windwalker/bg_power_jadescale.png";
@@ -223,6 +218,7 @@ public class DragonkinMod implements
     public static final String SKILL_WindWalker = "theDragonkinResources/images/512/Windwalker/bg_skill_jadescale.png";
     public static final String Power_WindWalker = "theDragonkinResources/images/512/Windwalker/bg_power_jadescale.png";
     public static final String Chi_Desc = "theDragonkinResources/images/512/Chi_desc_Orb.png";
+    public static final String Mana_Orb = "theDragonkinResources/images/char/TheDeathspeaker/ManaIcon.png";
     public static TextureAtlas TypeEnergyAtlas = new TextureAtlas();
     // Atlas and JSON files for the Animations
     public static final String THE_DEFAULT_SKELETON_ATLAS = "theDragonkinResources/images/char/defaultCharacter/TheDragonkin.atlas";
@@ -298,23 +294,17 @@ public class DragonkinMod implements
         
         logger.info("Creating the color " + Justicar_Red_COLOR.toString());
         
-        BaseMod.addColor(Justicar_Red_COLOR, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(Justicar_Red_COLOR, DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(),
+                DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(),
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
 
-       BaseMod.addColor(Deathspeaker_Purple, Cursed_Purple, Cursed_Purple, Cursed_Purple,
-                Cursed_Purple, Cursed_Purple, Cursed_Purple, Cursed_Purple,
-                ATTACK_Acolyte, SKILL_Acolyte, Power_Acolyte, ENERGY_ORB_Acolyte,
-                ATTACK_Acolyte_PORTRAIT, SKILL_Acolyte_PORTRAIT, Power_Acolyte_PORTRAIT,
-               ENERGY_ORB_Acolyte_PORTRAIT, CARD_ENERGY_ORB);
-
-        BaseMod.addColor(WindWalker_Jade_COLOR, WindWalker_Jade, WindWalker_Jade, WindWalker_Jade,
-                WindWalker_Jade, WindWalker_Jade, WindWalker_Jade, WindWalker_Jade,
+        /*BaseMod.addColor(WindWalker_Jade_COLOR, WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(),
+                WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(),
                 ATTACK_WindWalker, SKILL_WindWalker, Power_WindWalker, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_WindWalker_PORTRAIT, SKILL_WindWalker_PORTRAIT, Power_WindWalker_PORTRAIT,
-                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
+                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);*/
 
         logger.info("Done creating the color");
         
@@ -404,15 +394,11 @@ public class DragonkinMod implements
         
         BaseMod.addCharacter(new TheDefault("the Justicar", TheDefault.Enums.THE_JUSTICAR),
                 THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_JUSTICAR);
-
-     /* BaseMod.addCharacter(new TheDeathspeaker("the Deathspeaker", TheDeathspeaker.Enums.THE_DEATHSPEAKER),
-                THE_DEFAULT_BUTTON, TODO_BG, TheDeathspeaker.Enums.THE_DEATHSPEAKER); */
-        BaseMod.addCharacter(new TheWindWalker("the Windwalker",TheWindWalker.Enums.TheWindWalker),THE_DEFAULT_BUTTON,TODO_BG,TheWindWalker.Enums.TheWindWalker);
+        //BaseMod.addCharacter(new TheWindWalker("the Windwalker",TheWindWalker.Enums.TheWindWalker),THE_DEFAULT_BUTTON,TODO_BG,TheWindWalker.Enums.TheWindWalker);
 
         receiveEditPotions();
 
         //logger.info("Added " + TheDefault.Enums.THE_JUSTICAR.toString());
-        //logger.info("Added " + TheGroveKeeper.Enums.THE_GROVEKEEPER.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -450,6 +436,7 @@ public class DragonkinMod implements
             }
         });
         TypeEnergyAtlas.addRegion("[Chi]",ImageMaster.loadImage(Chi_Desc),0,0,22,22);
+        TypeEnergyAtlas.addRegion("[Mana]",ImageMaster.loadImage(Mana_Orb),0,0,128,128);
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         CustomIntent.add(new CurseAttack());
@@ -535,11 +522,10 @@ public class DragonkinMod implements
         BaseMod.addRelicToCustomPool(new TilerasShield(), Justicar_Red_COLOR);
         //BaseMod.addRelicToCustomPool(new SunblessedCharm(), Justicar_Red_COLOR);
 
-        BaseMod.addRelicToCustomPool(new GuiderLamp(), Deathspeaker_Purple);
         // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelicToCustomPool(new SerpentIdol(), WindWalker_Jade_COLOR);
-        BaseMod.addRelicToCustomPool(new MastersIdol(), WindWalker_Jade_COLOR);
-        UnlockTracker.markRelicAsSeen(MastersIdol.ID);
+        //BaseMod.addRelicToCustomPool(new SerpentIdol(), WindWalker_Jade_COLOR);
+        //BaseMod.addRelicToCustomPool(new MastersIdol(), WindWalker_Jade_COLOR);
+        //UnlockTracker.markRelicAsSeen(MastersIdol.ID);
         logger.info("Done adding relics!");
     }
     
@@ -560,13 +546,12 @@ public class DragonkinMod implements
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
         BaseMod.addDynamicVariable(new SecondDamage());
-        BaseMod.addDynamicVariable(new MagicDamage());
-        BaseMod.addDynamicVariable(new MagicBlock());
+        BaseMod.addDynamicVariable(new ThirdDamage());
         BaseMod.addDynamicVariable(new FadingVar());
         logger.info("Adding cards");
         new AutoAdd("DragonkinMod").packageFilter(AbstractDragonkinCard.class).setDefaultSeen(true).cards();
-        new AutoAdd("DragonkinMod").packageFilter(AbstractDeathspeakerCard.class).setDefaultSeen(true).cards();
-        new AutoAdd("DragonkinMod").packageFilter(AbstractWindWalkerCard.class).setDefaultSeen(true).cards();
+        //new AutoAdd("DragonkinMod").packageFilter(AbstractWindWalkerCard.class).setDefaultSeen(true).cards();
+        //new AutoAdd("DragonkinMod").packageFilter(AbstractDefaultCard.class).setDefaultSeen(true).cards();
         logger.info("Done adding cards!");
         logger.info("Added: " + BaseMod.getCardCount(Justicar_Red_COLOR) + " Cards");
     }
@@ -657,8 +642,10 @@ public class DragonkinMod implements
 
     @Override
     public void receiveRelicGet(AbstractRelic abstractRelic) {
-        if (AbstractDungeon.player.hasRelic(TilerasShield.ID)) {
+        AbstractRelic tilerasShield = AbstractDungeon.player.getRelic(TilerasShield.ID);
+        if ( tilerasShield != null) {
             AbstractDungeon.player.increaseMaxHp(3, true);
+            tilerasShield.counter += 3;
         }
     }
 
@@ -690,7 +677,7 @@ public class DragonkinMod implements
     public static void TriggerOnCycle(AbstractCard ca){
         CardsCycledThisTurn++;
         CardsCycledThisCombat++;
-        if (ca.type == AbstractCard.CardType.STATUS) {
+        if (ca.type == AbstractCard.CardType.STATUS || (ca.hasTag(CustomTags.Rune) || ca.hasTag(CustomTags.Blessing))) {
             StatusesCycledThisTurn++;
             StatusesCycledThisCombat++;
             if (ca.cardID.equals(Burn.ID)){
@@ -700,17 +687,23 @@ public class DragonkinMod implements
         }
         for (AbstractCard c : AbstractDungeon.player.discardPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                ((TriggerOnCycleEffect) c).TriggerOnCycle(ca);
+                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                    ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
+                }
             }
         }
         for (AbstractCard c : AbstractDungeon.player.drawPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                ((TriggerOnCycleEffect) c).TriggerOnCycle(ca);
+                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                    ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
+                }
             }
         }
         for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                ((TriggerOnCycleEffect) c).TriggerOnCycle(ca);
+                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                    ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
+                }
             }
         }
         for (AbstractCard c : AbstractDungeon.player.hand.group){
@@ -742,18 +735,21 @@ public class DragonkinMod implements
         StatusesCycledThisTurn = 0;
         CardsCycledThisTurn = 0;
         BurnsCycledThisTurn = 0;
+        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
+            if (c instanceof ForetellCard){
+                c.triggerOnEndOfTurnForPlayingCard();
+            }
+        }
         return true;
     }
 
     @Override
     public void receiveStartGame() {
-        EasyInfoDisplayPanel.specialDisplays.add(new PhlyacteryPanel());
-        EasyInfoDisplayPanel.specialDisplays.add(new ChiPannel());
     }
 
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
         ChiField.Chi.set(AbstractDungeon.player,0);
-        PhlyacteryField.BloodPoints.set(AbstractDungeon.player,0);
+        ManaField.Mana.set(AbstractDungeon.player,0);
     }
 }

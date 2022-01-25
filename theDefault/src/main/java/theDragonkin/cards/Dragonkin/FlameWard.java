@@ -1,5 +1,9 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.FireIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -7,6 +11,8 @@ import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CardMods.StormEffect;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
+import theDragonkin.DamageModifiers.BlockModifiers.FireBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
@@ -40,6 +46,8 @@ public FlameWard() {
         baseMagicNumber = magicNumber = MAGIC;
         StormRate = 3;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
+        BlockModifierManager.addModifier(this,new FireBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, FireIcon.get()));
         cardsToPreview = new Burn();
         }
 

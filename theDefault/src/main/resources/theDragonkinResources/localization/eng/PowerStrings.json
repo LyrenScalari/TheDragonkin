@@ -18,7 +18,7 @@
         },
         "theDragonkin:DivineRetribution": {
                 "NAME": "Divine Retribution",
-                "DESCRIPTIONS": ["At the start of your turn take #b"," damage and gain Temporary #yZeal for each [#548dff]Blessing[] in your hand."
+                "DESCRIPTIONS": ["At the end of your turn deal #b"," damage to a random enemy"
                 ]
         },
         "theDragonkin:WingsofLight": {
@@ -28,9 +28,9 @@
         },
         "theDragonkin:Penance": {
                 "NAME": "Penance",
-                "DESCRIPTIONS": ["At the end of its turn, if #yPenance exceeds or equals #b",
-                        ", it loses #b",
-                        " HP and gain #b8 #ySinner's #yBurden",
+                "DESCRIPTIONS": ["When this creature obtains #b",
+                        " #yPenance, it loses #b",
+                        " HP and increases #yPenance damage by #b10 this combat",
                         "."
                 ]
         },
@@ -39,11 +39,6 @@
                 "DESCRIPTIONS": ["Loses #b",
                         " extra HP from #yPenance",
                         "."
-                ]
-        },
-        "theDragonkin:VioletHaze": {
-                "NAME": "Violet Haze",
-                "DESCRIPTIONS": ["After you apply a Debuff this turn, Take #b", " damage, and apply #b", " More."
                 ]
         },
         "theDragonkin:IncendiaryFlow": {
@@ -56,11 +51,6 @@
                 "DESCRIPTIONS": ["In #b", " Turns, Deal #b", " damage to ALL enemies."
                 ]
         },
-        "theDragonkin:HolyBarrier": {
-                "NAME": "Holy Barrier",
-                "DESCRIPTIONS": ["When you play a Holy Card, Gain #b", " #yDivine #yArmor"
-                ]
-        },
         "theDragonkin:AshenArmor": {
                 "NAME": "Ashen Armor",
                 "DESCRIPTIONS": ["When you draw a #yStatus gain #b", " Block"
@@ -71,19 +61,18 @@
                 "DESCRIPTIONS": ["When you Apply a Debuff gain #b", " Block"
                 ]
         },
-        "theDragonkin:Dissolve": {
-                "NAME": "Dissolve",
-                "DESCRIPTIONS": ["When you Trigger Dissolve loses #b", " HP"
-                ]
-        },
         "theDragonkin:BurningRain": {
                 "NAME": "Burning Rain",
                 "DESCRIPTIONS": ["When you draw a #yStatus Attack a random enemy for #b", " damage"
                 ]
         },
         "theDragonkin:DivineConvictionpower": {
-                "NAME": "Zeal",
-                "DESCRIPTIONS": ["Increases Holy card damage and Block gain #b"]
+                "NAME": "Holy Power",
+                "DESCRIPTIONS": ["Increases Holy card damage and #yBlock gain by #b"]
+        },
+        "theDragonkin:SacrificePower": {
+                "NAME": "Sacrifice",
+                "DESCRIPTIONS": ["When obtain #b"," spend it and Gain #b1 #yHoly #yPower"]
         },
         "theDragonkin:Unbroken": {
                 "NAME": "Unbroken",
@@ -122,37 +111,6 @@
                 "DESCRIPTIONS": ["At the start of the next #b", " turns"," turns"," Gains #b"," #yScorch and adds a #yBurn to your discard pile."]
         },
 
-        "theDragonkin:Mana": {
-                "NAME": "Mana",
-                "DESCRIPTIONS": ["Used instead of Energy to play #ySpells"
-                ]
-        },
-        "theDragonkin:Blight": {
-                "NAME": "Blight",
-                "DESCRIPTIONS": ["When this receives a debuff other than #yBlight, this takes #b", " damage and reduces this by #b1. NL reduce this by #b1 at the end of turn."
-                ]
-        },
-        "theDragonkin:Fear": {
-                "NAME": "Fear",
-                "DESCRIPTIONS": ["Deals #b","% less damage, and takes #b","% more damage."
-                ]
-        },
-        "theDragonkin:SoulShield": {
-                "NAME": "Soul Shield",
-                "DESCRIPTIONS": ["Blocks #b"," damage until end of combat. heal #b"," hp at the end of combat."
-                ]
-        },
-        "theDragonkin:Watch": {
-                "NAME": "Infernal Watch",
-                "DESCRIPTIONS": ["Takes #b"," damage at the start of it's turn.","This moves to the next enemy you target with a card."
-                ]
-        },
-        "theDragonkin:SoulCharge": {
-                "NAME": "Soul Charge",
-                "DESCRIPTIONS": ["Gain #b1 #ySoul #yCharge after you play an #yAttack.","NL Deal #b3 damage to a random enemy #b"," times and remove this after you play a non-#ySpell #ySkill"
-                ]
-        },
-
         "theDragonkin:BrewingStorm": {
                 "NAME": "Brewing Storm",
                 "DESCRIPTIONS": ["Next Turn, Enter #yTempest and Gain [E]"
@@ -166,6 +124,36 @@
         "theDragonkin:Static": {
                 "NAME": "Static",
                 "DESCRIPTIONS": ["Become #yStunned when you have #b20 #yStatic. NL Deals #b"," Less damage, reduces this by #b1 after attacking"
+                ]
+        },
+        "theDragonkin:TenSteps": {
+                "NAME": "Heian Godan",
+                "DESCRIPTIONS": ["Strikes deal #b"," additional damage. NL Defends gain #b"," additional #yBlock."
+                ]
+        },
+        "theDragonkin:Mastery": {
+                "NAME": "Mastery",
+                "DESCRIPTIONS": ["After you play a card, cards with the same name deal #b2 more damage and gain #b2 more block, then lose #b1 #yMastery."
+                ]
+        },
+        "theDragonkin:SpiritChakra": {
+                "NAME": "[DrainIcon] Chakra",
+                "DESCRIPTIONS": ["Normal damage #yStrikes deal [DrainIcon] damage instead. NL Normal #yBlock #yDefends give [DrainIcon] Block instead"
+                ]
+        },
+        "theDragonkin:WindChakra": {
+                "NAME": "[WindIcon] Chakra",
+                "DESCRIPTIONS": ["Normal damage #yStrikes deal [WindIcon] damage instead. NL Normal #yBlock #yDefends give [WindIcon] Block instead"
+                ]
+        },
+        "theDragonkin:WaterChakra": {
+                "NAME": "[WaterIcon] Chakra",
+                "DESCRIPTIONS": ["Normal damage #yStrikes deal [WaterIcon] damage instead. NL Normal #yBlock #yDefends give [WaterIcon] Block instead"
+                ]
+        },
+        "theDragonkin:LightningChakra": {
+                "NAME": "[ElectricIcon] Chakra",
+                "DESCRIPTIONS": ["Normal damage #yStrikes deal [ElectricIcon] damage instead. NL Normal #yBlock #yDefends give [ElectricIcon] Block instead"
                 ]
         },
         "theDragonkin:SpiritWound": {

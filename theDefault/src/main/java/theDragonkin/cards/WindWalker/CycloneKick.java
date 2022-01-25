@@ -1,22 +1,19 @@
 package theDragonkin.cards.WindWalker;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.WindIcon;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.Frost;
-import theDragonkin.DamageModifiers.Wind;
 import theDragonkin.DragonkinMod;
-import theDragonkin.Stances.Cyclone;
-import theDragonkin.Stances.Tempest;
+import theDragonkin.Stances.Typhoon;
 import theDragonkin.actions.ChiBurstAction;
 import theDragonkin.characters.TheWindWalker;
 
@@ -58,7 +55,6 @@ public class CycloneKick extends AbstractWindWalkerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = 9;
         magicNumber = baseMagicNumber = 3;
-        DamageModifierManager.addModifier(this, new Wind());
     }
 
     // Actions the card should do.
@@ -69,7 +65,6 @@ public class CycloneKick extends AbstractWindWalkerCard {
                     DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn),
                     AbstractGameAction.AttackEffect.SLASH_HEAVY));
         }
-        addToBot(new ChangeStanceAction(new Cyclone()));
         addToBot(new ChiBurstAction(magicNumber,()->new TriggerPassiveAction(0,1)));
     }
 

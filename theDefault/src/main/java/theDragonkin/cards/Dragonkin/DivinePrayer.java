@@ -71,6 +71,7 @@ public class DivinePrayer extends AbstractHolyCard {
                 FilteredGroup.clear();
             }));
         }
+        super.use(p,m);
     }
 
     @Override

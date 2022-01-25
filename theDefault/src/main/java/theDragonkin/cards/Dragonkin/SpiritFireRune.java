@@ -117,13 +117,12 @@ public class SpiritFireRune extends AbstractPrimalCard implements StormCard, Tri
     public void onStorm() {
 
     }
-
+    public void triggerOnManualDiscard() {
+        AbstractPlayer p = AbstractDungeon.player;
+        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
+        addToBot(new DamageRandomEnemyAction(new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+    }
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if (ca == this){
-            addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
-            addToBot(new DamageRandomEnemyAction(new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        }
     }
 }

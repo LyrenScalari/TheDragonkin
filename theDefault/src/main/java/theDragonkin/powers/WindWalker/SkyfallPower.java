@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.Stances.Tempest;
-import theDragonkin.powers.Deathspeaker.ManaPower;
 
 public class SkyfallPower extends AbstractPower implements CloneablePowerInterface, GainChiPower {
     public AbstractCreature source;
@@ -56,6 +55,7 @@ public class SkyfallPower extends AbstractPower implements CloneablePowerInterfa
 
     @Override
     public int onGainChi(int Chigain) {
+        System.out.println("Chi Gain power " + this.name);
         for (int i =1 ; i < amount ; i++){
             addToBot(new TriggerPassiveAction(0,1));
         }

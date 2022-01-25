@@ -36,6 +36,7 @@ public class EmberCore extends CustomRelic { // You must implement things you wa
         super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.CLINK);
         tips.clear();
         tips.add(new PowerTip(name, description));
+        counter = 6;
     }
 
     @Override

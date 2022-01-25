@@ -1,5 +1,9 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -9,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.DivineDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
@@ -42,6 +47,8 @@ public class ChainsOfTruth extends AbstractHolyCard {
         baseMagicNumber = magicNumber = MAGIC;
         this.isMultiDamage = true;
         tags.add(CustomTags.Radiant);
+        DamageModifierManager.addModifier(this, new DivineDamage(true,false));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
         RadiantExchange = 5;
     }
 
@@ -51,8 +58,8 @@ public class ChainsOfTruth extends AbstractHolyCard {
 
             for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
                 addToBot(new ApplyPowerAction(mo,p, new VulnerablePower(mo,baseMagicNumber,false)));
-                addToBot(new ApplyPowerAction(mo,p,new PenancePower(mo,p,magicNumber)));
             }
+        super.use(p,m);
     }
 
 

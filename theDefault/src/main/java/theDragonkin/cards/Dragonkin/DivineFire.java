@@ -1,5 +1,10 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.FireIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -8,9 +13,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.DivineDamage;
+import theDragonkin.DamageModifiers.FireDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.Scorchpower;
+
+import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -39,6 +48,8 @@ public class DivineFire extends AbstractHolyCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
+        DamageModifierManager.addModifier(this, new FireDamage(true,false));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
         tags.add(CustomTags.Radiant);
         RadiantExchange = 1;
     }
@@ -48,7 +59,8 @@ public class DivineFire extends AbstractHolyCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m,p,  new Scorchpower(m,p,this.magicNumber)));
+                new ApplyPowerAction(m,p,new Scorchpower(m,p,this.magicNumber)));
+        super.use(p,m);
     }
 
     @Override

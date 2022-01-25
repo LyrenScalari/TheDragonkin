@@ -38,6 +38,7 @@ public class Sulfurian extends CustomRelic { // You must implement things you wa
         super(ID, IMG, OUTLINE, RelicTier.BOSS, AbstractRelic.LandingSound.HEAVY);
         tips.clear();
         tips.add(new PowerTip(name, description));
+        counter = 1;
     }
 
     @Override
@@ -59,7 +60,7 @@ public class Sulfurian extends CustomRelic { // You must implement things you wa
 
     @Override
     public void wasHPLost(int damageAmount) {
-        addToBot(new MakeTempCardInDiscardAction(new Burn(),1));
+        addToBot(new MakeTempCardInDiscardAction(new Burn(),counter));
     }
 
     public void onEquip() {

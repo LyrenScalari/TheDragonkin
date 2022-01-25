@@ -1,14 +1,23 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
+import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
+import theDragonkin.DamageModifiers.DivineDamage;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.patches.DivineArmorPatches.DivineArmorField;
 
@@ -38,15 +47,20 @@ public class HolyWrath extends AbstractHolyCard {
         baseMagicNumber = magicNumber = MAGIC;
         damage = baseDamage = 4;
         exhaust = true;
+        DamageModifierManager.addModifier(this, new DivineDamage(true,true));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int da = DivineArmorField.DivineArmor.get(p);
-        addToBot(new DamageAllEnemiesAction(p,da*2, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        if (!upgraded) {
-            DivineArmorField.DivineArmor.set(p,0);
-        } else  DivineArmorField.DivineArmor.set(p, DivineArmorField.DivineArmor.get(p)/2);
+        if (BlockModifierManager.hasCustomBlockType(p) && BlockModifierManager.getTopBlockContainer(p).getBlockTypes().get(0) instanceof DivineBlock){
+            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+                addToBot(new SmiteAction(mo, new DamageInfo(p, BlockModifierManager.getTopBlockContainer(p).getBlockAmount()*2, damageTypeForTurn)));
+            }
+            if (!upgraded) {
+                BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockContainer(p),BlockModifierManager.getTopBlockContainer(p).getBlockAmount());
+            } else   BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockContainer(p),BlockModifierManager.getTopBlockContainer(p).getBlockAmount()/2);
+        }
+        super.use(p,m);
     }
 
     @Override

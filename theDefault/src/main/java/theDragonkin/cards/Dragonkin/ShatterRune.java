@@ -117,14 +117,13 @@ public class ShatterRune extends AbstractPrimalCard implements StormCard, Trigge
     public void onStorm() {
 
     }
-
+    public void triggerOnManualDiscard() {
+        AbstractPlayer p = AbstractDungeon.player;
+        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
+        AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
+        addToBot(new ApplyPowerAction(m,p,new VulnerablePower(m,defaultSecondMagicNumber,false)));
+    }
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if (ca == this){
-            addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
-            AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
-            addToBot(new ApplyPowerAction(m,p,new VulnerablePower(m,defaultSecondMagicNumber,false)));
-        }
     }
 }

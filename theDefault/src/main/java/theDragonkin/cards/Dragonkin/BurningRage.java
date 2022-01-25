@@ -1,5 +1,10 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.HolyIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -7,10 +12,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
+import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.WingsofLight;
+
+import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -35,14 +44,17 @@ public class BurningRage extends AbstractHolyCard{
 
     public BurningRage() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseMagicNumber = magicNumber = 2;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 7;
+        baseMagicNumber = magicNumber = 7;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.MAGIC, LightIcon.get()));
+        tags.add(CustomTags.Radiant);
 
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new WingsofLight(p,p,magicNumber,defaultSecondMagicNumber)));
+        addToBot(new ApplyPowerAction(p,p,new WingsofLight(p,p,defaultSecondMagicNumber,magicNumber,this)));
         super.use(p,m);
     }
 

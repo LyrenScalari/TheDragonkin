@@ -1,8 +1,14 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.HolyIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
 import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -17,6 +23,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.RetainCardPower;
 import theDragonkin.CardMods.RetainCardMod;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
@@ -65,6 +72,9 @@ public class BlessingofFortitude extends AbstractHolyCard implements ReciveDamag
     public BlessingofFortitude() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
+        block = baseBlock = MAGIC;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
         tags.add(CustomTags.Blessing);
     }
     @Override
@@ -87,7 +97,7 @@ public class BlessingofFortitude extends AbstractHolyCard implements ReciveDamag
                 CardModifierManager.addModifier(AbstractCard.get(0), new RetainCardMod(1));
             }));
             if (this.upgraded){
-                addToBot(new GainDivineArmorAction(AbstractDungeon.player,AbstractDungeon.player,magicNumber));
+                addToBot(new GainCustomBlockAction(this,AbstractDungeon.player,block));
             }
         }
     }

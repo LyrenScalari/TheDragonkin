@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.random.Random;
 import theDragonkin.cards.AbstractDefaultCard;
-import theDragonkin.cards.Deathspeaker.AbstractDeathspeakerCard;
 
 import java.util.ArrayList;
 import java.util.HashMap;

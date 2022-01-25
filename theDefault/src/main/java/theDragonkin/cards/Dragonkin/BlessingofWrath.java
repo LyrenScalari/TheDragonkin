@@ -2,6 +2,7 @@ package theDragonkin.cards.Dragonkin;
 
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -15,15 +16,17 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.WrathSeal;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class BlessingofWrath extends AbstractHolyCard implements ReciveDamageEffect {
+public class BlessingofWrath extends AbstractHolyCard {
 
     public static final String ID = DragonkinMod.makeID(BlessingofWrath.class.getSimpleName());
     public static final String IMG = makeCardPath("BlessingofWrath.png");
@@ -35,7 +38,7 @@ public class BlessingofWrath extends AbstractHolyCard implements ReciveDamageEff
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
-    private static final int COST = -2;
+    private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
     private static final int UPGRADE_PLUS_POTENCY = 0;
@@ -47,18 +50,7 @@ public class BlessingofWrath extends AbstractHolyCard implements ReciveDamageEff
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
         return retVal;
     }
-    @Override
-    public List<String> getCardDescriptors() {
 
-        List<String> tags = new ArrayList<>();
-        tags.add(BaseMod.getKeywordTitle("thedragonkin:Blessing"));
-        tags.addAll(super.getCardDescriptors());
-        return tags;
-    }
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
-        return false;
-    }
     public BlessingofWrath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
@@ -68,6 +60,18 @@ public class BlessingofWrath extends AbstractHolyCard implements ReciveDamageEff
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
+        if (target != null){
+            AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));
+            addToBot(new SmiteAction(target, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    DragonkinMod.Seals.add(new WrathSeal(damage,magicNumber));
+                    isDone = true;
+                }
+            });
+        }
     }
 
     @Override
@@ -75,20 +79,7 @@ public class BlessingofWrath extends AbstractHolyCard implements ReciveDamageEff
         if (!upgraded) {
             upgradeName();
             upgradeDamage(2);
-            upgradeSecondDamage(-2);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void onReciveDamage(int damage) {
-        if (AbstractDungeon.player.hand.contains(this)) {
-            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
-            if (target != null){
-            AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));
-            addToBot(new VFXAction(new LightningEffect(target.drawX,target.drawY)));
-            addToBot(new DamageAction(target, new DamageInfo(AbstractDungeon.player,this.damage, DamageInfo.DamageType.THORNS)));
-            }
         }
     }
 }

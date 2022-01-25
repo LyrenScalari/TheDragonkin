@@ -46,8 +46,7 @@ public class CrusaderForm extends AbstractHolyCard {
 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.
-        magicNumber = baseMagicNumber = 4;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        magicNumber = baseMagicNumber = 3;
         isEthereal = true;
 
     }
@@ -55,7 +54,8 @@ public class CrusaderForm extends AbstractHolyCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new CrusaderFormpower(p, p, magicNumber,defaultBaseSecondMagicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new CrusaderFormpower(p, p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
     //Upgraded stats.

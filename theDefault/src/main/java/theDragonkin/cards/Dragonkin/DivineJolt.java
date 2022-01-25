@@ -1,5 +1,9 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,10 +15,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.DivineDamage;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
+import theDragonkin.util.SmiteEffect;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -66,11 +74,12 @@ public class DivineJolt extends AbstractHolyCard {
     public DivineJolt(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
-    this.baseMagicNumber = 2;
     this.magicNumber = baseMagicNumber;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber =  2;
-        tags.add(CustomTags.Radiant);
-        RadiantExchange = 5;
+    defaultSecondMagicNumber = defaultBaseSecondMagicNumber =  2;
+    tags.add(CustomTags.Radiant);
+    RadiantExchange = 5;
+    DamageModifierManager.addModifier(this, new DivineDamage(true,true));
+    CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
 }
 
 
@@ -80,12 +89,10 @@ public class DivineJolt extends AbstractHolyCard {
         for (int i = 0; i < 2; ++i) {
            m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
            if (m != null) {
-               addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY)));
-               AbstractDungeon.actionManager.addToBottom(
-                       new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
-               addToBot(new ApplyPowerAction(m, p, new PenancePower(m, p, magicNumber)));
+               addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
            }
         }
+        super.use(p,m);
     }
 
 

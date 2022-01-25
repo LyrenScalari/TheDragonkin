@@ -1,5 +1,11 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.DrainIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.DamageModifierHelper;
+import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -13,8 +19,13 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.DivineDamage;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;
+
+import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -49,8 +60,10 @@ public class SacredTrial extends AbstractHolyCard {
     public SacredTrial() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
+        DamageModifierManager.addModifier(this, new DivineDamage(true,false));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
         magicNumber = baseMagicNumber = 7;
-
+        tags.add(CustomTags.Radiant);
     }
 
     // Actions the card should do.
@@ -59,14 +72,14 @@ public class SacredTrial extends AbstractHolyCard {
         CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
         AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));
         addToBot(new VFXAction(new LightningEffect(p.drawX,p.drawY)));
-        addToBot(new DamageCallbackAction(p, new DamageInfo(p,magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, integer -> {
+        addToBot(new DamageCallbackAction(p, new DamageInfo(p,7, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, integer -> {
             System.out.println(integer);
               for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
                   AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));
-                  addToBot(new VFXAction(new LightningEffect(mo.drawX,mo.drawY)));
-                  addToBot(new DamageAction(mo,new DamageInfo(p,damage*2, DamageInfo.DamageType.NORMAL)));
+                  addToBot(new SmiteAction(mo, new DamageInfo(p, damage, damageTypeForTurn)));
               }
         }));
+        super.use(p,m);
     }
 
     // Upgraded stats.

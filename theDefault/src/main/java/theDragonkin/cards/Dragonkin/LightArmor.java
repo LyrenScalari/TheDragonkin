@@ -1,8 +1,15 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.HolyIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
@@ -29,11 +36,9 @@ public class LightArmor extends AbstractHolyCard {
 
     public LightArmor() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
-        block = baseBlock = POTENCY;
-        heal = baseHeal = POTENCY;
-        baseMagicNumber = magicNumber = MAGIC;
-        tags.add(CustomTags.Radiant);
+        block = baseBlock = 5;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         RadiantExchange = defaultSecondMagicNumber;
 
@@ -42,8 +47,9 @@ public class LightArmor extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < 2; ++i) {
-            addToBot(new GainDivineArmorAction(p,p,magicNumber));
+            addToBot(new GainCustomBlockAction(this,p,block));
         }
+        super.use(p,m);
     }
 
     @Override

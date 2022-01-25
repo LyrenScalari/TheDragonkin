@@ -1,5 +1,12 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
+import basemod.BaseMod;
+import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,11 +16,15 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
 import theDragonkin.powers.Dragonkin.SinnersBurdenPower;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -38,13 +49,21 @@ public class Absolution extends AbstractHolyCard implements ReciveDamageEffect {
     public Absolution() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
+        block = baseBlock = 8;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 4;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
     }
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
+        return retVal;
+    }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
-        addToBot(new ApplyPowerAction(m,p, new SinnersBurdenPower(m,p,defaultSecondMagicNumber)));
+        addToBot(new GainCustomBlockAction(this,p,block));
     }
 
     @Override
@@ -62,18 +81,13 @@ public class Absolution extends AbstractHolyCard implements ReciveDamageEffect {
             CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
             AbstractDungeon.effectList.add(new DivinityParticleEffect());
             AbstractDungeon.effectList.add(new DivinityParticleEffect());
-            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-                if (m.hasPower(PenancePower.POWER_ID)){
-                    addToBot(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            AbstractPower power = m.getPower(PenancePower.POWER_ID);
-                            power.atEndOfTurn(false);
-                            isDone = true;
-                        }
-                    });
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    PenancePower.Power += defaultSecondMagicNumber;
+                    isDone = true;
                 }
-            }
+            });
         }
     }
 }

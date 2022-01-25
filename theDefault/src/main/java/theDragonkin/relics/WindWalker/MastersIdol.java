@@ -43,7 +43,6 @@ public class MastersIdol extends CustomRelic {
     public void atPreBattle(){
         this.flash();
         stances.add(new Tempest());
-        stances.add(new Whirlwind());
         stances.add(new Conduit());
         stances.add(new Zephyr());
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
@@ -57,10 +56,10 @@ public class MastersIdol extends CustomRelic {
         String name = new SerpentIdol().name;
         StringBuilder sb = new StringBuilder();
         for (String word : name.split(" ")) {
-            sb.append("[#").append(DragonkinMod.WindWalker_Jade.toString()).append("]").append(word).append("[] ");
+            sb.append("[#").append(DragonkinMod.WindWalker_Jade.cpy().toString()).append("]").append(word).append("[] ");
         }
         sb.setLength(sb.length()-1);
-        sb.append("[#").append(DragonkinMod.WindWalker_Jade.toString()).append("]");
+        sb.append("[#").append(DragonkinMod.WindWalker_Jade.cpy().toString()).append("]");
 
         return DESCRIPTIONS[0] + sb.toString() + DESCRIPTIONS[1];
     }
@@ -68,7 +67,7 @@ public class MastersIdol extends CustomRelic {
     public void obtain() {
         if (AbstractDungeon.player.hasRelic(SerpentIdol.ID)) {
             for (int i=0; i<AbstractDungeon.player.relics.size(); ++i) {
-                if (AbstractDungeon.player.relics.get(i).relicId.equals(GarnetScale.ID)) {
+                if (AbstractDungeon.player.relics.get(i).relicId.equals(SerpentIdol.ID)) {
                     instantObtain(AbstractDungeon.player, i, true);
                     break;
                 }

@@ -22,6 +22,8 @@ import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.orbs.ModifyOrbStance;
+import theDragonkin.orbs.Rain;
+import theDragonkin.patches.RenderFloatyChi;
 import theDragonkin.powers.WindWalker.InvisibleFocus;
 
 public class Tempest extends AbstractStance implements ModifyOrbStance {
@@ -31,12 +33,17 @@ public class Tempest extends AbstractStance implements ModifyOrbStance {
         this.ID = STANCE_ID;
         this.name = stanceString.NAME;
         this.updateDescription();
+        RenderFloatyChi.angleSpeed = 1.20f;
+        RenderFloatyChi.amplitude = 70;
+        RenderFloatyChi.dx = 0;
+        RenderFloatyChi.dx2 = 0;
     }
     @Override
     public void updateDescription() {
         this.description = stanceString.DESCRIPTION[0];
     }
     public void updateAnimation() {
+        RenderFloatyChi.bobX = (float) (RenderFloatyChi.amplitude*Math.sin(RenderFloatyChi.bobTimer));
         if (!Settings.DISABLE_EFFECTS) {
             this.particleTimer -= Gdx.graphics.getDeltaTime();
             if (this.particleTimer < 0.0F) {
@@ -56,15 +63,12 @@ public class Tempest extends AbstractStance implements ModifyOrbStance {
         return type == DamageInfo.DamageType.NORMAL ? damage + 3 : damage;
     }
     public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InvisibleFocus(AbstractDungeon.player)));
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new Lightning()));
-        for (AbstractOrb o : AbstractDungeon.player.orbs){
-            o.updateDescription();
+        for (AbstractOrb abstractOrb : AbstractDungeon.player.orbs){
+            abstractOrb.passiveAmount -= 3;
+            abstractOrb.evokeAmount -= 3;
+            abstractOrb.updateDescription();
         }
-    }
-    @Override
-    public void onEnterStance() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InvisibleFocus(AbstractDungeon.player)));
+        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new Rain()));
     }
     @Override
     public void ModifyOrb(AbstractOrb abstractOrb) {

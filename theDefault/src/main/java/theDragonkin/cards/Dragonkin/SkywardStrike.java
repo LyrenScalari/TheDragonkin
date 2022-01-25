@@ -1,5 +1,10 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
+import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -7,6 +12,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
+import theDragonkin.DamageModifiers.DivineDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 
@@ -49,6 +56,8 @@ public class SkywardStrike extends AbstractPrimalCard {
         damage = baseDamage = 8;
         magicNumber = baseMagicNumber = MAGIC;
         tags.add(CardTags.STRIKE);
+        DamageModifierManager.addModifier(this, new DivineDamage(true,false));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
     }
 
     public void triggerOnGlowCheck() {

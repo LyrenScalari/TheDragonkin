@@ -115,17 +115,16 @@ public class BladeMirrorRune extends AbstractPrimalCard implements StormCard, Tr
     public void onStorm() {
 
     }
-
-    @Override
-    public void TriggerOnCycle(AbstractCard ca) {
+    public void triggerOnManualDiscard() {
         AbstractPlayer p = AbstractDungeon.player;
-        if (ca == this){
-            addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
-            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-                if (!m.isDeadOrEscaped()){
-                    addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
-                }
+        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
+            if (!m.isDeadOrEscaped()){
+                addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
             }
         }
+    }
+    @Override
+    public void TriggerOnCycle(AbstractCard ca) {
     }
 }

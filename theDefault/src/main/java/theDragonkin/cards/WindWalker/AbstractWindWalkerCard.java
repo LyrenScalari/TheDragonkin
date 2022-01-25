@@ -1,5 +1,7 @@
 package theDragonkin.cards.WindWalker;
 
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import theDragonkin.cards.AbstractDefaultCard;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;

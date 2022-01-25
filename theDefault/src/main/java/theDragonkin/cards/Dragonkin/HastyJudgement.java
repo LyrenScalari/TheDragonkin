@@ -56,6 +56,7 @@ public class HastyJudgement extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
         addToBot(new DrawCardAction(defaultSecondMagicNumber));
+        super.use(p,m);
     }
 
     // Upgraded stats.

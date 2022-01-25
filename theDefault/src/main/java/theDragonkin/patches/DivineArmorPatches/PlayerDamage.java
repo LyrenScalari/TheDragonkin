@@ -17,6 +17,7 @@ import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageinHandCard;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveModifyDamageEffect;
+import theDragonkin.util.AbstractSeal;
 
 import java.util.ArrayList;
 
@@ -68,6 +69,11 @@ public class PlayerDamage {
         }
         for (AbstractCard c : AbstractDungeon.player.limbo.group){
             if (c instanceof ReciveDamageEffect){
+                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            }
+        }
+        for (AbstractSeal c : DragonkinMod.Seals){
+            if (c != null){
                 ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
             }
         }

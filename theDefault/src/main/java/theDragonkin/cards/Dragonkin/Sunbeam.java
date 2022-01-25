@@ -70,6 +70,7 @@ public class Sunbeam extends AbstractHolyCard {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
         addToBot(new MakeTempCardInDiscardAction(getRandomBlessing(),1));
+        super.use(p,m);
     }
 
     //Upgraded stats.

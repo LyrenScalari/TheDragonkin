@@ -13,9 +13,11 @@ import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
+import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
 import theDragonkin.orbs.ModifyOrbStance;
+import theDragonkin.patches.RenderFloatyChi;
 
 public class Zephyr extends AbstractStance implements ModifyBlockStance{
     static final String STANCE_ID ="theDragonkin:Zephyr";
@@ -24,6 +26,10 @@ public class Zephyr extends AbstractStance implements ModifyBlockStance{
         this.ID = STANCE_ID;
         this.name = stanceString.NAME;
         this.updateDescription();
+        RenderFloatyChi.angleSpeed = 0.70f;
+        RenderFloatyChi.amplitude = 0;
+        RenderFloatyChi.dx = 0;
+        RenderFloatyChi.dx2 = 0;
     }
     @Override
     public void updateDescription() {
@@ -34,20 +40,9 @@ public class Zephyr extends AbstractStance implements ModifyBlockStance{
             this.particleTimer -= Gdx.graphics.getDeltaTime();
             if (this.particleTimer < 0.0F) {
                 this.particleTimer = 0.05F;
-                AbstractDungeon.effectsQueue.add(new WrathParticleEffect());
+                AbstractDungeon.effectsQueue.add(new DivinityParticleEffect());
             }
         }
-
-        this.particleTimer2 -= Gdx.graphics.getDeltaTime();
-        if (this.particleTimer2 < 0.0F) {
-            this.particleTimer2 = MathUtils.random(0.3F, 0.4F);
-            AbstractDungeon.effectsQueue.add(new StanceAuraEffect("Divinity"));
-        }
-
-    }
-
-    public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new Frost()));
     }
 
     @Override

@@ -23,7 +23,7 @@ public class WindWalkerDefend extends AbstractWindWalkerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DragonkinMod.makeID(theDragonkin.cards.Dragonkin.Defend.class.getSimpleName());
+    public static final String ID = DragonkinMod.makeID(WindWalkerDefend.class.getSimpleName());
     public static final String IMG = makeCardPath("WindWalkerDefend.png");
 
     // /TEXT DECLARATION/

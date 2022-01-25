@@ -15,9 +15,8 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import theDragonkin.DragonkinMod;
+import theDragonkin.Stances.Conduit;
 import theDragonkin.Stances.Tempest;
-import theDragonkin.cards.Deathspeaker.AbstractSpellCard;
-import theDragonkin.powers.Deathspeaker.ManaPower;
 
 public class BrewingStormPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
@@ -47,7 +46,7 @@ public class BrewingStormPower extends AbstractPower implements CloneablePowerIn
     }
     public void atStartOfTurn() {
         this.flash();
-        addToBot(new ChangeStanceAction(new Tempest()));
+        addToBot(new ChangeStanceAction(new Conduit()));
         addToBot(new GainEnergyAction(1));
         this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }

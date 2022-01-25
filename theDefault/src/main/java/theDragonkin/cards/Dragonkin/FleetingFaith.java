@@ -43,6 +43,7 @@ public class FleetingFaith extends AbstractHolyCard {
         addToBot(new GainBlockAction(p,block));
         addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,defaultSecondMagicNumber)));
         addToBot(new ApplyPowerAction(p,p,new PenancePower(p,p,defaultSecondMagicNumber)));
+        super.use(p,m);
     }
 
     @Override

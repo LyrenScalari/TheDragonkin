@@ -1,9 +1,14 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.FireIcon;
+import IconsAddon.util.BlockModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.DamageModifiers.BlockModifiers.FireBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.InfernoWardAction;
 import theDragonkin.characters.TheDefault;
@@ -48,6 +53,8 @@ public class InfernoWard extends AbstractPrimalCard {
         baseBlock = BLOCK;
         baseDamage = baseBlock;
         baseMagicNumber = magicNumber = 5;
+        BlockModifierManager.addModifier(this,new FireBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, FireIcon.get()));
     }
 
     // Actions the card should do.

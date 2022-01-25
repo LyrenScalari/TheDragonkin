@@ -60,10 +60,10 @@ public class SpiritCombo extends AbstractWindWalkerCard {
             }
             @Override
             public void onUseCard(final AbstractCard card, final UseCardAction action) {
-                if (amount2%3 == 0 && amount2 != 0){
+                if (amount2 >= 2){
                     addToBot(new GainChiAction(owner,amount));
-                }
-                amount2 += 1;
+                    amount2 =0;
+                } else amount2 += 1;
             }
         });
     }

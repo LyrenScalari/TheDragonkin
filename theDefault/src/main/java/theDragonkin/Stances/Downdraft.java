@@ -15,8 +15,8 @@ import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
-import theDragonkin.orbs.JadeSpirit;
 import theDragonkin.orbs.ModifyOrbStance;
+import theDragonkin.patches.RenderFloatyChi;
 import theDragonkin.powers.WindWalker.InvisibleFocus;
 
 public class Downdraft extends AbstractStance implements ModifyOrbStance, ModifyBlockStance {
@@ -26,6 +26,10 @@ public class Downdraft extends AbstractStance implements ModifyOrbStance, Modify
         this.ID = STANCE_ID;
         this.name = stanceString.NAME;
         this.updateDescription();
+        RenderFloatyChi.angleSpeed = 0.50f;
+        RenderFloatyChi.amplitude = 0;
+        RenderFloatyChi.dx = -20;
+        RenderFloatyChi.dx2 = -20;
     }
     @Override
     public void updateDescription() {
@@ -48,15 +52,11 @@ public class Downdraft extends AbstractStance implements ModifyOrbStance, Modify
 
     }
     public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InvisibleFocus(AbstractDungeon.player)));
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new JadeSpirit()));
-        for (AbstractOrb o : AbstractDungeon.player.orbs){
-            o.updateDescription();
+        for (AbstractOrb abstractOrb : AbstractDungeon.player.orbs){
+            abstractOrb.passiveAmount -= 3;
+            abstractOrb.evokeAmount -= 3;
+            abstractOrb.updateDescription();
         }
-    }
-    @Override
-    public void onEnterStance() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InvisibleFocus(AbstractDungeon.player)));
     }
     @Override
     public void ModifyOrb(AbstractOrb abstractOrb) {

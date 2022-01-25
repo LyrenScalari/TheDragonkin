@@ -4,11 +4,7 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import theDragonkin.actions.GainBloodPointsAction;
-import theDragonkin.cards.Deathspeaker.BloodGlobe;
-import theDragonkin.characters.TheDeathspeaker;
 import theDragonkin.characters.TheWindWalker;
-import theDragonkin.patches.Phlyactery.PhlyacteryField;
 import theDragonkin.util.EasyInfoDisplayPanel;
 
 public class ChiPannel extends EasyInfoDisplayPanel {

@@ -7,9 +7,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theDragonkin.DragonkinMod;
+import theDragonkin.cards.Dragonkin.interfaces.StormCard;
+import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.util.CardArtRoller;
 
 import java.util.ArrayList;
@@ -37,7 +42,17 @@ public abstract class AbstractDefaultCard extends CustomCard {
     private boolean needsArtRefresh = false;
     private float rotationTimer = 0;
     private int previewIndex;
+    public int secondDamage;
+    public int baseSecondDamage;
+    public boolean upgradedSecondDamage;
+    public boolean isSecondDamageModified;
+    public int ThirdDamage;
+    public int baseThirdDamage;
+    public boolean upgradedThirdDamage;
+    public boolean isThirdDamageModified;
     protected ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
+    public boolean Storm;
+    public int StormRate = 999999999;
     public AbstractDefaultCard(final String cardID,
                                final String name,
                                final String img,
@@ -61,6 +76,88 @@ public abstract class AbstractDefaultCard extends CustomCard {
             } else
                 needsArtRefresh = true;
         }
+    }
+    @Override
+    public void applyPowers(){
+        if (baseSecondDamage > -1) {
+            secondDamage = baseSecondDamage;
+
+            int tmp = baseDamage;
+            baseDamage = baseSecondDamage;
+
+            super.applyPowers();
+
+            secondDamage = damage;
+            baseDamage = tmp;
+
+            super.applyPowers();
+
+            isSecondDamageModified = (secondDamage != baseSecondDamage);
+        } else if (baseThirdDamage > -1) {
+            ThirdDamage = baseThirdDamage;
+
+            int tmp = baseDamage;
+            baseDamage = baseThirdDamage;
+
+            super.applyPowers();
+
+            ThirdDamage = damage;
+            baseDamage = tmp;
+
+            super.applyPowers();
+
+            isThirdDamageModified = (ThirdDamage != baseThirdDamage);
+        }
+        else super.applyPowers();
+    }
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        if (baseSecondDamage > -1) {
+            secondDamage = baseSecondDamage;
+
+            int tmp = baseDamage;
+            baseDamage = baseSecondDamage;
+
+            super.calculateCardDamage(mo);
+
+            secondDamage = damage;
+            baseDamage = tmp;
+
+            super.calculateCardDamage(mo);
+
+            isSecondDamageModified = (secondDamage != baseSecondDamage);
+        }  else if (baseThirdDamage > -1) {
+            ThirdDamage = baseThirdDamage;
+
+            int tmp = baseDamage;
+            baseDamage = baseThirdDamage;
+
+            super.calculateCardDamage(mo);
+
+            ThirdDamage = damage;
+            baseDamage = tmp;
+
+            super.calculateCardDamage(mo);
+
+            isThirdDamageModified = (ThirdDamage != baseThirdDamage);
+        } else super.calculateCardDamage(mo);
+    }
+    public void resetAttributes() {
+        super.resetAttributes();
+        secondDamage = baseSecondDamage;
+        isSecondDamageModified = false;
+        ThirdDamage = baseThirdDamage;
+        isThirdDamageModified = false;
+    }
+    protected void upgradeSecondDamage(int amount) {
+        baseSecondDamage += amount;
+        secondDamage = baseSecondDamage;
+        upgradedSecondDamage = true;
+    }
+    protected void upgradeThirdDamage(int amount) {
+        baseThirdDamage += amount;
+        ThirdDamage = baseThirdDamage;
+        upgradedThirdDamage = true;
     }
     @Override
     protected Texture getPortraitImage() {
@@ -124,7 +221,11 @@ public abstract class AbstractDefaultCard extends CustomCard {
             defaultSecondMagicNumber = defaultBaseSecondMagicNumber; // Show how the number changes, as out of combat, the base number of a card is shown.
             isDefaultSecondMagicNumberModified = true; // Modified = true, color it green to highlight that the number is being changed.
         }
-
+        super.displayUpgrades();
+        if (upgradedSecondDamage) {
+            secondDamage = baseSecondDamage;
+            isSecondDamageModified = true;
+        }
     }
 
     public void upgradeDefaultSecondMagicNumber(int amount) { // If we're upgrading (read: changing) the number. Note "upgrade" and NOT "upgraded" - 2 different things. One is a boolean, and then this one is what you will usually use - change the integer by how much you want to upgrade.

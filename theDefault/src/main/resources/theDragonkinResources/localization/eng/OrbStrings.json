@@ -9,70 +9,48 @@
       " damage to all enemies."
     ]
   },
-  "theDragonkin:WiloWisp": {
-    "NAME": "Wil-o-Wisp",
+  "theDragonkin:Wrath": {
+    "NAME": "Wrath",
     "DESCRIPTION": [
-      "#yPassive : At the start of your turn, gain #b",
-      " #yMana",
-      " NL #yEvoke: Draw #b1 Card"
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Deal #b",
+      " damage to a random enemy"
     ]
   },
-  "theDragonkin:RazorWind": {
-    "NAME": "Razor Wind",
+  "theDragonkin:Rain": {
+    "NAME": "Rain",
     "DESCRIPTION": [
-      "#yPassive : At the end of your turn Deal #b",
-      " [WindIcon] damage ALL enemies.",
-      " NL #yEvoke: Draw #b",
-      " [WindIcon] damage ALL enemies."
+      "#yPassive : At the end of your turn gain #b",
+      " Block, and increase this cards Evoke value by #b1",
+      " NL #yEvoke: Reduce the cost of #b",
+      " cards in hand by [E]"
     ]
   },
-  "theDragonkin:JadeSpirit": {
-    "NAME": "Jade Spirit",
+  "theDragonkin:Fo": {
+    "NAME": "Fo",
     "DESCRIPTION": [
-      "#yPassive : At the end of your turn Deal #b",
-      " [DrainIcon] damage to a random enemy.",
-      " NL #yEvoke: Draw #b",
-      " [DrainIcon] damage to a random enemy."
+      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
+      " [IceIcon] damage to a random enemy.",
+      " NL #yEvoke: Gain #b",
+      " [IceIcon] Block."
     ]
   },
-  "theDragonkin:Nimbus": {
-    "NAME": "Nimbus",
+  "theDragonkin:Krah": {
+    "NAME": "Krah",
     "DESCRIPTION": [
-      "#yPassive : At the start of your turn deal #b",
-      " damage to a random enemy and gain #b",
-      " #yBlock, increase this orbs power by #b1",
-      " NL #yEvoke: deal #b",
-      " damage to a random enemy and gain #b",
-      " #yBlock."
+      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
+      " [IceIcon] damage to a random enemy.",
+      " NL #yEvoke: Deal #b",
+      " [IceIcon] damage to ALL enemies."
     ]
   },
-  "theDragonkin:Shadow": {
-    "NAME": "Shadow",
+  "theDragonkin:Diin": {
+    "NAME": "Diin",
     "DESCRIPTION": [
-      "#yPassive : At the end of your turn, deal #b",
-      " damage to a random enemy",
-      " NL #yEvoke: deal #b",
-      " damage to a random enemy."
-    ]
-  },
-  "theDragonkin:Wraith": {
-    "NAME": "Wraith",
-    "DESCRIPTION": [
-      "#yPassive : Gain #b1 Charge after you play an #yAttack.",
-      " After you play a #ySkill Deal #b",
-      " damage to a random enemy for each charge this has and lose all charges.",
-      " NL #yEvoke: Give the next #yWraith orb you channel this orbs Charges."
-    ]
-  },
-  "theDragonkin:InfernalEye": {
-    "NAME": "Infernal Eye",
-    "DESCRIPTION": [
-      "#yPassive : At the end of your turn, deal #b",
-      " damage to the targeted enemy",
-      " NL #yEvoke : Gain #b",
-      " Vigor",
-      " NL Target : ",
-      " NL while this has no target after you play a targeted #yAttack this orb targets that monster."
+      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
+      " [IceIcon] damage to a random enemy.",
+      " NL #yEvoke: Apply #b",
+      " #yWeak to ALL enemies."
     ]
   }
 }

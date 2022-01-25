@@ -18,7 +18,9 @@ import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
+import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
 import theDragonkin.orbs.ModifyOrbStance;
+import theDragonkin.patches.RenderFloatyChi;
 import theDragonkin.powers.WindWalker.InvisibleFocus;
 
 public class Typhoon extends AbstractStance {
@@ -28,33 +30,27 @@ public class Typhoon extends AbstractStance {
         this.ID = STANCE_ID;
         this.name = stanceString.NAME;
         this.updateDescription();
+        RenderFloatyChi.angleSpeed = 1.70f;
+        RenderFloatyChi.amplitude = 90;
+        RenderFloatyChi.dx = 0;
+        RenderFloatyChi.dx2 = 0;
     }
     @Override
     public void updateDescription() {
         this.description = stanceString.DESCRIPTION[0];
     }
     public void updateAnimation() {
+        RenderFloatyChi.bobX = (float) (RenderFloatyChi.amplitude*Math.sin(RenderFloatyChi.bobTimer));
         if (!Settings.DISABLE_EFFECTS) {
             this.particleTimer -= Gdx.graphics.getDeltaTime();
             if (this.particleTimer < 0.0F) {
                 this.particleTimer = 0.05F;
-                AbstractDungeon.effectsQueue.add(new DivinityParticleEffect());
+                AbstractDungeon.effectsQueue.add(new WrathParticleEffect());
             }
         }
-
-        this.particleTimer2 -= Gdx.graphics.getDeltaTime();
-        if (this.particleTimer2 < 0.0F) {
-            this.particleTimer2 = MathUtils.random(0.3F, 0.4F);
-            AbstractDungeon.effectsQueue.add(new StanceAuraEffect("Wrath"));
-        }
-
     }
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         return type == DamageInfo.DamageType.NORMAL ? damage + 5 : damage;
     }
 
-    @Override
-    public void onEnterStance() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,1)));
-    }
 }

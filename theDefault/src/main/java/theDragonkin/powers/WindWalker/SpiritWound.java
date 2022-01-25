@@ -3,16 +3,19 @@ package theDragonkin.powers.WindWalker;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.InstantKillAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import theDragonkin.DragonkinMod;
 import theDragonkin.Stances.Tempest;
@@ -47,23 +50,68 @@ public class SpiritWound extends AbstractPower implements HealthBarRenderPower {
     @Override
     public void updateDescription() {
         description = powerStrings.DESCRIPTIONS[0];
-
-    }
-    public void onInitialApplication() {
-        if (this.amount >= owner.currentHealth){
-            addToBot(new InstantKillAction(owner));
-        }
     }
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        if (this.amount >= owner.currentHealth){
+    public int onAttacked(DamageInfo di, int d){
+        if (this.amount >= owner.currentHealth-d && owner instanceof AbstractMonster){
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new ExplosionSmallEffect(owner.drawX,owner.drawY)));
             addToBot(new InstantKillAction(owner));
+        } else if (this.amount >= owner.currentHealth-d ){
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new ExplosionSmallEffect(owner.drawX,owner.drawY)));
+            this.addToBot(new LoseHPAction(this.owner, this.owner, 99999));
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        }
+        return d;
+    }
+    public void onInitialApplication() {
+        if (this.amount >= owner.currentHealth && owner instanceof AbstractMonster){
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new ExplosionSmallEffect(owner.drawX,owner.drawY)));
+            addToBot(new InstantKillAction(owner));
+        } else if (this.amount >= owner.currentHealth){
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new ExplosionSmallEffect(owner.drawX,owner.drawY)));
+            this.addToBot(new LoseHPAction(this.owner, this.owner, 99999));
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
     }
+
+    @Override
+    public int onLoseHp(int damageAmount) {
+        if (this.amount >= owner.currentHealth && owner instanceof AbstractMonster){
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new ExplosionSmallEffect(owner.drawX,owner.drawY)));
+            addToBot(new InstantKillAction(owner));
+        } else if (this.amount >= owner.currentHealth){
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new ExplosionSmallEffect(owner.drawX,owner.drawY)));
+            this.addToBot(new LoseHPAction(this.owner, this.owner, 99999));
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        }
+        return damageAmount;
+    }
+
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        if (this.amount >= owner.currentHealth){
+        if (this.amount >= owner.currentHealth && owner instanceof AbstractMonster){
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new ExplosionSmallEffect(owner.drawX,owner.drawY)));
             addToBot(new InstantKillAction(owner));
+        } else if (this.amount >= owner.currentHealth){
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new LightningEffect(owner.drawX,owner.drawY)));
+            addToBot(new VFXAction(new ExplosionSmallEffect(owner.drawX,owner.drawY)));
+            this.addToBot(new LoseHPAction(this.owner, this.owner, 99999));
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
     }
     @Override

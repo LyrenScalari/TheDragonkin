@@ -32,6 +32,7 @@ public class TilerasShield extends CustomRelic { // You must implement things yo
         super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.HEAVY);
         tips.clear();
         tips.add(new PowerTip(name, description));
+        counter = 0;
     }
 
     @Override

@@ -53,7 +53,7 @@ public class DivineStrike extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageCallbackAction(m,new DamageInfo(p,damage,damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY,(dmg)->
                 addToBot(new GainBlockAction(p,dmg))));
-
+        super.use(p,m);
     }
 
 

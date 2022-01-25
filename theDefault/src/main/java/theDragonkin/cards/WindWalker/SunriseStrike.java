@@ -1,18 +1,18 @@
 package theDragonkin.cards.WindWalker;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.ElectricIcon;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import basemod.BaseMod;
+import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.Lightning;
-import theDragonkin.DamageModifiers.Wind;
+import theDragonkin.DamageModifiers.LightningDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainChiAction;
 import theDragonkin.characters.TheWindWalker;
@@ -42,10 +42,10 @@ public class SunriseStrike extends AbstractWindWalkerCard {
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheWindWalker.Enums.WindWalker_Jade_COLOR;
 
-    private static final int COST = 2;  // COST = 1
+    private static final int COST = 1;  // COST = 1
     private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
 
-    private static final int DAMAGE = 12;    // DAMAGE = 6
+    private static final int DAMAGE = 8;    // DAMAGE = 6
     private static final int UPGRADE_PLUS_DMG = 4;  // UPGRADE_PLUS_DMG = 4
 
     // /STAT DECLARATION/
@@ -58,10 +58,11 @@ public class SunriseStrike extends AbstractWindWalkerCard {
     public SunriseStrike(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
-        magicNumber = baseMagicNumber = 2;
+        magicNumber = baseMagicNumber = 1;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
         this.tags.add(CardTags.STRIKE);
-        DamageModifierManager.addModifier(this, new theDragonkin.DamageModifiers.Lightning());
+        DamageModifierManager.addModifier(this, new LightningDamage(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, ElectricIcon.get()));
     }
 
 
@@ -72,7 +73,6 @@ public class SunriseStrike extends AbstractWindWalkerCard {
                 DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn),
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         for (int i = 0; i < magicNumber ; i++){
-            addToBot(new ChannelAction(new Lightning()));
         }
         addToBot(new GainChiAction(p,defaultSecondMagicNumber));
     }

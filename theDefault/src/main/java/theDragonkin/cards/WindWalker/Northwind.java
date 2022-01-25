@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.orbs.Lightning;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheWindWalker;
+import theDragonkin.orbs.Rain;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -55,7 +56,7 @@ public Northwind() {
 public void use(AbstractPlayer p, AbstractMonster m) {
     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
     for (int i = 0; i < magicNumber; i++) {
-        addToBot(new ChannelAction(new Frost()));
+        addToBot(new ChannelAction(new Rain()));
     }
 }
 

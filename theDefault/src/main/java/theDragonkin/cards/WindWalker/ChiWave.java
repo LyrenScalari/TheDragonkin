@@ -1,20 +1,32 @@
 package theDragonkin.cards.WindWalker;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.ElectricIcon;
+import IconsAddon.icons.SpellIcon;
+import IconsAddon.util.BlockModifierManager;
+import IconsAddon.util.DamageModifierManager;
 import basemod.BaseMod;
+import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.DamageModifiers.ArcaneDamage;
+import theDragonkin.DamageModifiers.BlockModifiers.ArcaneBlock;
+import theDragonkin.DamageModifiers.LightningDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.ChiBurstAction;
 import theDragonkin.actions.GainChiAction;
 import theDragonkin.characters.TheWindWalker;
 import theDragonkin.patches.ChiField;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +48,8 @@ public class ChiWave extends AbstractWindWalkerCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.BASIC; //  Up to you, I like auto-complete on these
-    private static final CardTarget TARGET = CardTarget.SELF;  //   since they don't change much.
-    private static final CardType TYPE = CardType.SKILL;       //
+    private static final CardTarget TARGET = CardTarget.ALL;  //   since they don't change much.
+    private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheWindWalker.Enums.WindWalker_Jade_COLOR;
 
     private static final int COST = 0;  // COST = 1
@@ -55,16 +67,22 @@ public class ChiWave extends AbstractWindWalkerCard {
 
     public ChiWave(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
-        magicNumber = baseMagicNumber = 2;
+        damage = baseDamage = 3;
+        block = baseBlock = 3;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
+        DamageModifierManager.addModifier(this, new ArcaneDamage(true,true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, SpellIcon.get()));
+        BlockModifierManager.addModifier(this, new ArcaneBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, SpellIcon.get()));
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new TriggerPassiveAction(0,1));
-        addToBot(new ChiBurstAction(magicNumber,()->new TriggerPassiveAction(0,1)));
+        addToBot(new GainBlockAction(p,block));
+        addToBot(new DamageAction(AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true),new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new GainChiAction(p,defaultSecondMagicNumber));
     }
 
 

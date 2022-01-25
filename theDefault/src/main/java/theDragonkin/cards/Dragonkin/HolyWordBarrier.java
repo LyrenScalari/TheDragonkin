@@ -1,8 +1,16 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.HolyIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
@@ -45,8 +53,9 @@ public class HolyWordBarrier extends AbstractHolyCard {
 
     public HolyWordBarrier() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = MAGIC;
+        block = baseBlock = MAGIC;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
         tags.add(CustomTags.Radiant);
         RadiantExchange = 1;
     }
@@ -55,7 +64,8 @@ public class HolyWordBarrier extends AbstractHolyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainDivineArmorAction(p,p,magicNumber));
+        addToBot(new GainCustomBlockAction(this, AbstractDungeon.player,block));
+        super.use(p,m);
     }
 
     //Upgraded stats.

@@ -107,7 +107,7 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
     @Override
     public int getHealthBarAmount() {
         if (AbstractDungeon.player.hoveredCard != null) {
-            if (AbstractDungeon.player.hoveredCard.type == AbstractCard.CardType.ATTACK && !AbstractDungeon.player.hoveredCard.hasTag(CustomTags.Dragon_Breath)) {
+            if (AbstractDungeon.player.hoveredCard.type == AbstractCard.CardType.ATTACK) {
                 if (AbstractDungeon.player.hoveredCard.target == AbstractCard.CardTarget.ENEMY && !(owner.hb.hovered)) {
                     return 0;
                 } else return amount;

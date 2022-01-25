@@ -118,12 +118,12 @@ public class WarHungerRune extends AbstractPrimalCard implements StormCard, Trig
     public void onStorm() {
 
     }
-
+    public void triggerOnManualDiscard() {
+        AbstractPlayer p = AbstractDungeon.player;
+        defaultSecondMagicNumber += 1;
+    }
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if (ca == this){
-            defaultSecondMagicNumber += 1;
-        }
+
     }
 }

@@ -1,5 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -14,6 +16,9 @@ import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -35,7 +40,12 @@ public class BlessedShield extends AbstractHolyCard implements ReciveDamageEffec
     private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 0;
 
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
+        return retVal;
+    }
     public BlessedShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
@@ -52,6 +62,7 @@ public class BlessedShield extends AbstractHolyCard implements ReciveDamageEffec
         AbstractDungeon.effectsQueue.add(new LightningEffect(p.drawX - 145,p.drawY));
         AbstractDungeon.effectsQueue.add(new LightningEffect(p.drawX + 145,p.drawY));
         addToBot(new GainBlockAction(p,block));
+        super.use(p,m);
     }
 
     @Override

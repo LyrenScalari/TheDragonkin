@@ -1,9 +1,16 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.HolyIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
@@ -31,9 +38,9 @@ public class HolyBarrier extends AbstractHolyCard {
     public static int repeats = 0;
     public HolyBarrier() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = POTENCY;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
         exhaust = true;
         baseMagicNumber = magicNumber = MAGIC;
 
@@ -47,10 +54,11 @@ public class HolyBarrier extends AbstractHolyCard {
         }
         repeats += EnergyPanel.totalCount;
         for (int i = 0; i < this.magicNumber + repeats; ++i) {
-            addToBot(new GainDivineArmorAction(p,p,defaultSecondMagicNumber));
+            addToBot(new GainCustomBlockAction(this,p,block));
         }
         EnergyPanel.useEnergy(EnergyPanel.totalCount);
         repeats = 0;
+        super.use(p,m);
     }
 
     @Override

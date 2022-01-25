@@ -1,6 +1,12 @@
 package theDragonkin.cards.Dragonkin;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.HolyIcon;
+import IconsAddon.icons.LightIcon;
+import IconsAddon.util.BlockModifierManager;
 import basemod.BaseMod;
+import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,6 +14,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
 import theDragonkin.actions.GainDivineArmorAction;
@@ -39,11 +46,10 @@ public class LatentBlessing extends AbstractHolyCard {
 
     public LatentBlessing() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
-        block = baseBlock = POTENCY;
-        heal = baseHeal = POTENCY;
-        baseMagicNumber = magicNumber = MAGIC;
+        block = baseBlock = 8;
         defaultSecondMagicNumber =defaultBaseSecondMagicNumber = 2;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
     }
     @Override
     public List<TooltipInfo> getCustomTooltips() {
@@ -59,18 +65,18 @@ public class LatentBlessing extends AbstractHolyCard {
             if (List.size() > 1){
                 boolean blessed = false;
                 addToBot(new CycleAction(List.get(0), 1));
-                if (List.get(0).hasTag(CustomTags.Blessing)) {
-                    addToBot(new GainDivineArmorAction(p, p, magicNumber));
+                if (List.get(0) instanceof AbstractHolyCard) {
+                    addToBot(new GainCustomBlockAction(this,p,block));
                     blessed = true;
                 }
                 addToBot(new CycleAction(List.get(1), 1));
-                if (List.get(1).hasTag(CustomTags.Blessing) && !blessed) {
-                    addToBot(new GainDivineArmorAction(p, p, magicNumber));
+                if (List.get(1)instanceof AbstractHolyCard && !blessed) {
+                    addToBot(new GainCustomBlockAction(this,p,block));
                 }
             } else {
                 addToBot(new CycleAction(List.get(0), 1));
-                if (List.get(0).hasTag(CustomTags.Blessing)) {
-                    addToBot(new GainDivineArmorAction(p, p, magicNumber));
+                if (List.get(0)instanceof AbstractHolyCard) {
+                    addToBot(new GainCustomBlockAction(this,p,block));
                 }
             }
         }));

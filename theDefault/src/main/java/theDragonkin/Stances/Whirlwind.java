@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
 import theDragonkin.DragonkinMod;
+import theDragonkin.patches.RenderFloatyChi;
 
 public class Whirlwind extends AbstractStance {
     static final String STANCE_ID = "theDragonkin:Whirlwind";

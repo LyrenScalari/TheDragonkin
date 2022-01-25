@@ -47,6 +47,12 @@
       ""
     ]
   },
+  "theDragonkin:PurgeAction": {
+    "TEXT": [
+      "Select a Card to Purge",
+      ""
+    ]
+  },
   "theDragonkin:ChiPannel": {
     "TEXT": [
       "Chi",

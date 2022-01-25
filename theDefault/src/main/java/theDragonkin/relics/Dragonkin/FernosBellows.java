@@ -32,6 +32,7 @@ public class FernosBellows extends CustomRelic { // You must implement things yo
         super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.HEAVY);
         tips.clear();
         tips.add(new PowerTip(name, description));
+        counter = 2;
     }
 
     @Override

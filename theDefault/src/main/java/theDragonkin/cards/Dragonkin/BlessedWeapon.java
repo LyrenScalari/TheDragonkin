@@ -97,6 +97,7 @@ public class BlessedWeapon extends AbstractPrimalCard implements StormCard, Trig
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
         addToBot(new ApplyPowerAction(p,p,new ReflectiveScales(p,p,defaultSecondMagicNumber)));
+        super.use(p,m);
     }
 
     //Upgraded stats.
@@ -114,13 +115,12 @@ public class BlessedWeapon extends AbstractPrimalCard implements StormCard, Trig
     public void onStorm() {
 
     }
-
+    public void triggerOnManualDiscard() {
+        AbstractPlayer p = AbstractDungeon.player;
+        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
+        addToBot(new GainBlockAction(AbstractDungeon.player,block));
+    }
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if (ca == this){
-            addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
-            addToBot(new GainBlockAction(AbstractDungeon.player,block));
-        }
     }
 }

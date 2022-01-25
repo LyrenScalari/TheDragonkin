@@ -1,19 +1,23 @@
 package theDragonkin.cards.WindWalker;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.DrainIcon;
+import IconsAddon.icons.WindIcon;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DamageModifiers.Spirit;
+import theDragonkin.DamageModifiers.SpiritDamage;
 import theDragonkin.DragonkinMod;
-import theDragonkin.actions.ChiBurstAction;
+import theDragonkin.actions.GainChiAction;
 import theDragonkin.characters.TheWindWalker;
 import theDragonkin.patches.ChiField;
+
+import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -51,15 +55,17 @@ public class Deathtouch extends AbstractWindWalkerCard {
         baseDamage =DAMAGE;
         magicNumber = baseMagicNumber = 5;
         exhaust = true;
-        DamageModifierManager.addModifier(this, new Spirit());
+        DamageModifierManager.addModifier(this, new SpiritDamage(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, DrainIcon.get()));
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return (ChiField.Chi.get(p) >= magicNumber) && (super.canUse(p,m));
+        return ((ChiField.Chi.get(p) >= magicNumber || purgeOnUse)) && (super.canUse(p,m));
     }
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToTop(new GainChiAction(AbstractDungeon.player, -1));
         addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
     }
 

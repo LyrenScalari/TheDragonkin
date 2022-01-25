@@ -1,23 +1,22 @@
 package theDragonkin.cards.WindWalker;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.ElectricIcon;
+import IconsAddon.icons.WaterIcon;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.DamageModifiers.Lightning;
-import theDragonkin.DamageModifiers.Wind;
+import theDragonkin.DamageModifiers.LightningDamage;
 import theDragonkin.DragonkinMod;
-import theDragonkin.Stances.Cyclone;
-import theDragonkin.Stances.Tempest;
-import theDragonkin.Stances.Typhoon;
 import theDragonkin.characters.TheWindWalker;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class Stormstrike  extends AbstractWindWalkerCard {
+public class Stormstrike extends AbstractWindWalkerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -36,7 +35,7 @@ public class Stormstrike  extends AbstractWindWalkerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWindWalker.Enums.WindWalker_Jade_COLOR;
@@ -51,18 +50,19 @@ public class Stormstrike  extends AbstractWindWalkerCard {
 
     public Stormstrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = 7;
-        DamageModifierManager.addModifier(this, new Lightning());
+        damage = baseDamage = 8;
+        DamageModifierManager.addModifier(this, new LightningDamage(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, ElectricIcon.get()));
         tags.add(CardTags.STRIKE);
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m,
-                DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn),
-                AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        addToBot(new ChangeStanceAction(new Tempest()));
+            addToBot(new DamageAction(m,
+                    DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn),
+                    AbstractGameAction.AttackEffect.SLASH_HEAVY));
+
     }
 
     //Upgraded stats.

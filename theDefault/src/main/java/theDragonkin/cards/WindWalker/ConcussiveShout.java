@@ -1,21 +1,24 @@
 package theDragonkin.cards.WindWalker;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.ElectricIcon;
+import IconsAddon.icons.WindIcon;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Frost;
-import theDragonkin.DamageModifiers.Lightning;
-import theDragonkin.DamageModifiers.Wind;
+import theDragonkin.DamageModifiers.LightningDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.ChiBurstAction;
 import theDragonkin.characters.TheWindWalker;
+
+import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -55,8 +58,8 @@ public class ConcussiveShout extends AbstractWindWalkerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = 15;
         magicNumber = baseMagicNumber = 2;
-        DamageModifierManager.addModifier(this, new Wind());
-        DamageModifierManager.addModifier(this, new Lightning());
+        DamageModifierManager.addModifier(this, new LightningDamage(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, ElectricIcon.get()));
     }
 
     // Actions the card should do.

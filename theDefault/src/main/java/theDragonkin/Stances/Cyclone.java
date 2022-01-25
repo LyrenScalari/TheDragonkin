@@ -14,10 +14,8 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
-import theDragonkin.orbs.JadeSpirit;
-import theDragonkin.orbs.ModifyOrbStance;
-import theDragonkin.orbs.RazorWind;
-import theDragonkin.powers.WindWalker.InvisibleFocus;
+
+import theDragonkin.patches.RenderFloatyChi;
 
 public class Cyclone extends AbstractStance implements ModifyBlockStance {
     static final String STANCE_ID ="theDragonkin:Cyclone";
@@ -26,6 +24,10 @@ public class Cyclone extends AbstractStance implements ModifyBlockStance {
         this.ID = STANCE_ID;
         this.name = stanceString.NAME;
         this.updateDescription();
+        RenderFloatyChi.angleSpeed = 1.40f;
+        RenderFloatyChi.amplitude = 0;
+        RenderFloatyChi.dx = 0;
+        RenderFloatyChi.dx2 = 0;
     }
     @Override
     public void updateDescription() {
@@ -51,7 +53,6 @@ public class Cyclone extends AbstractStance implements ModifyBlockStance {
         return type == DamageInfo.DamageType.NORMAL ? damage + 3 : damage;
     }
     public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new RazorWind()));
         for (AbstractOrb o : AbstractDungeon.player.orbs){
             o.updateDescription();
         }

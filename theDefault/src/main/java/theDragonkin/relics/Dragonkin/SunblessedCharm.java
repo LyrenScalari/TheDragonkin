@@ -37,12 +37,13 @@ public class SunblessedCharm extends CustomRelic { // You must implement things 
         super(ID, IMG, OUTLINE, RelicTier.SPECIAL, LandingSound.HEAVY);
         tips.clear();
         tips.add(new PowerTip(name, description));
+        counter = 1;
     }
 
     public void atBattleStart() {
         this.flash();
         this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DivineConvictionpower(AbstractDungeon.player,
-                AbstractDungeon.player,1)));
+                AbstractDungeon.player,counter)));
         this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 

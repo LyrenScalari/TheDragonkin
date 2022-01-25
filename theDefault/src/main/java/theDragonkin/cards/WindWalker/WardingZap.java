@@ -1,13 +1,18 @@
 package theDragonkin.cards.WindWalker;
 
+import IconsAddon.cardmods.AddIconToDescriptionMod;
+import IconsAddon.icons.ElectricIcon;
+import IconsAddon.icons.WaterIcon;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.DamageModifiers.LightningDamage;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheWindWalker;
 
@@ -46,7 +51,8 @@ public class WardingZap extends AbstractWindWalkerCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
         block = baseBlock = 4;
-        DamageModifierManager.addModifier(this, new theDragonkin.DamageModifiers.Lightning());
+        DamageModifierManager.addModifier(this, new LightningDamage(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, ElectricIcon.get()));
     }
 
     // Actions the card should do.

@@ -8,19 +8,19 @@
   "theDragonkin:Tempest": {
     "NAME": "Tempest",
     "DESCRIPTION": [
-      "#yAttacks deal #b3 Additional damage. NL increases the effectiveness of #yOrbs by #b3. NL Channel #yLightning when you exit this stance."
+      "#yAttacks deal #b3 Additional damage. NL increases the effectiveness of #yOrbs by #b3. NL Channel #yRain when you exit this stance."
     ]
   },
   "theDragonkin:Conduit": {
     "NAME": "Conduit",
     "DESCRIPTION": [
-      "Increases the effectiveness of #yOrbs by #b5. NL Gain #b1 Focus when you enter this #yStance."
+      "Increases the effectiveness of #yOrbs by #b5."
     ]
   },
   "theDragonkin:Zephyr": {
     "NAME": "Zephyr",
     "DESCRIPTION": [
-      "Gain #b5 additional block from cards. NL Channel #yFrost when you exit this stance."
+      "Gain #b5 additional block from cards."
     ]
   },
   "theDragonkin:Downdraft": {
@@ -38,7 +38,7 @@
   "theDragonkin:Typhoon": {
     "NAME": "Typhoon",
     "DESCRIPTION": [
-      "#yAttacks deal #b5 Additional damage. NL Gain #b1 Strength when you enter this #yStance."
+      "#yAttacks deal #b5 Additional damage."
     ]
   }
 }
