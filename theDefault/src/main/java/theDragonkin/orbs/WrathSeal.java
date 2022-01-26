@@ -18,6 +18,7 @@ public class WrathSeal extends AbstractSeal {
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
     public WrathSeal(int Pow, int Pain){
         super();
+        Sealstrings = orbString;
         PainAmount = Pain;
         BreakAmount = Pow;
     }

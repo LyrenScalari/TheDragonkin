@@ -17,6 +17,14 @@
       " damage to a random enemy"
     ]
   },
+  "theDragonkin:Wisdom": {
+    "NAME": "Wisdom",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak :", " Draw #b",
+      " card","s"," Next turn",",","."
+    ]
+  },
   "theDragonkin:Rain": {
     "NAME": "Rain",
     "DESCRIPTION": [

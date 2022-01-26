@@ -20,6 +20,7 @@ public class WisdomSeal extends AbstractSeal {
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
     public WisdomSeal(int Pow, int Pain){
         super();
+        Sealstrings = orbString;
         PainAmount = Pain;
         BreakAmount = Pow;
     }
@@ -29,6 +30,8 @@ public class WisdomSeal extends AbstractSeal {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DrawCardNextTurnPower(AbstractDungeon.player,BreakAmount)));
     }
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + PainAmount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + BreakAmount + DESCRIPTIONS[3];
+        if (BreakAmount < 2){
+            description = DESCRIPTIONS[0] + PainAmount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + DESCRIPTIONS[3] + BreakAmount + DESCRIPTIONS[4] + DESCRIPTIONS[7] + DESCRIPTIONS[6] + DESCRIPTIONS[3]+ BreakAmount+ DESCRIPTIONS[4]+ DESCRIPTIONS[8];
+        } else description = DESCRIPTIONS[0] + PainAmount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + DESCRIPTIONS[3] + BreakAmount + DESCRIPTIONS[4]+ DESCRIPTIONS[5] + DESCRIPTIONS[7] + DESCRIPTIONS[6] + DESCRIPTIONS[3]+ BreakAmount+ DESCRIPTIONS[4]+ DESCRIPTIONS[5]+ DESCRIPTIONS[8];
     }
 }

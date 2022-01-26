@@ -54,6 +54,7 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
         this.shineColor = new Color(1.0F, 1.0F, 1.0F, 0.0F);
         this.hb = new Hitbox(96.0F * Settings.scale, 96.0F * Settings.scale);
         this.img = ImageMaster.EYE_ANIM_0;
+        this.name = Sealstrings.NAME;
         this.bobEffect = new BobEffect(3.0F * Settings.scale, 3.0F);
         this.fontScale = 0.7F;
         this.showEvokeValue = true;
