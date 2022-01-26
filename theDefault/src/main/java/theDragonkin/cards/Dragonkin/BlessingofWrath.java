@@ -56,7 +56,6 @@ public class BlessingofWrath extends AbstractHolyCard {
         baseMagicNumber = magicNumber = MAGIC;
         damage = baseDamage = 10;
         magicNumber = baseMagicNumber = 4;
-        tags.add(CustomTags.Blessing);
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

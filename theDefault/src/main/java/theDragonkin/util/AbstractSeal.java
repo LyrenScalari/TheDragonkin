@@ -34,7 +34,7 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
     protected Color c;
     protected Color shineColor;
     protected static final int W = 96;
-    private static  float dy2 = 100;
+    private static  float dy2 = 200;
     public static float angleSpeed = 0.00f;
     private static float angle;
     public Hitbox hb;
@@ -51,8 +51,6 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
     protected Boolean AnimTimer = false;
     public AbstractSeal() {
         this.c = Settings.CREAM_COLOR.cpy();
-        cX = AbstractDungeon.player.hb.cX + (float)(dy2*Math.cos((Math.toRadians(DragonkinMod.Seals.indexOf(this)+angle))));
-        cY = (AbstractDungeon.player.hb.cY-50f) + (float)(dy2*Math.sin(Math.toRadians(DragonkinMod.Seals.indexOf(this)+angle)));
         this.shineColor = new Color(1.0F, 1.0F, 1.0F, 0.0F);
         this.hb = new Hitbox(96.0F * Settings.scale, 96.0F * Settings.scale);
         this.img = ImageMaster.EYE_ANIM_0;
@@ -111,15 +109,12 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
     public void update() {
         this.hb.update();
         this.updateDescription();
-        if (angleSpeed > 1) {
-            angleSpeed -= (Gdx.graphics.getDeltaTime());
-        }
-        angle -= 100*angleSpeed*Gdx.graphics.getDeltaTime();
-        angle %= 360;
-        cX = AbstractDungeon.player.hb.cX + (float)(dy2*Math.cos((Math.toRadians(DragonkinMod.Seals.indexOf(this)+angle))));
-        cY = (AbstractDungeon.player.hb.cY-50f) + (float)(dy2*Math.sin(Math.toRadians(DragonkinMod.Seals.indexOf(this)+angle)));
+        angle = (360f/DragonkinMod.Seals.size()) * DragonkinMod.Seals.indexOf(this);
+        cX = (AbstractDungeon.player.hb.cX-100f) + (float)(dy2*Math.cos((Math.toRadians(angle))));
+        cY = (AbstractDungeon.player.hb.cY+50f) + (float)(dy2*Math.sin(Math.toRadians(angle)));
+        hb.move(cX, cY); //I think this is correct, but might not be. Might need some offset calculations
         if (this.hb.hovered) {
-            TipHelper.renderGenericTip(this.tX + 96.0F * Settings.scale, this.tY + 64.0F * Settings.scale, this.name, this.description);
+            TipHelper.renderGenericTip(this.cX + 96.0F * Settings.scale, this.cY + 64.0F * Settings.scale, this.name, this.description);
         }
         this.fontScale = MathHelper.scaleLerpSnap(this.fontScale, 0.7F);
     }

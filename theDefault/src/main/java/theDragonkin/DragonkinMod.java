@@ -101,7 +101,6 @@ public class DragonkinMod implements
         EditCharactersSubscriber,
         PostInitializeSubscriber ,
         RelicGetSubscriber,
-        PostBattleSubscriber,
         PreMonsterTurnSubscriber,
         StartGameSubscriber,
         OnStartBattleSubscriber{
@@ -724,13 +723,6 @@ public class DragonkinMod implements
     }
 
     @Override
-    public void receivePostBattle(AbstractRoom abstractRoom) {
-        StatusesCycledThisCombat = 0;
-        CardsCycledThisCombat = 0;
-        BurnsCycledThisCombat = 0;
-    }
-
-    @Override
     public boolean receivePreMonsterTurn(AbstractMonster abstractMonster) {
         StatusesCycledThisTurn = 0;
         CardsCycledThisTurn = 0;
@@ -749,6 +741,10 @@ public class DragonkinMod implements
 
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
+        StatusesCycledThisCombat = 0;
+        CardsCycledThisCombat = 0;
+        BurnsCycledThisCombat = 0;
+        Seals.clear();
         ChiField.Chi.set(AbstractDungeon.player,0);
         ManaField.Mana.set(AbstractDungeon.player,0);
     }

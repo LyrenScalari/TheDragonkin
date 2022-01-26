@@ -102,8 +102,8 @@
   },
   "theDragonkin:ShadowVision": {
     "NAME": "Wisdom",
-    "DESCRIPTION": "[#548dff]Blessing[]: draw a card.",
-    "UPGRADE_DESCRIPTION": "#548dff]Blessing[]: draw a card. NL next turn draw a card",
+    "DESCRIPTION": "Gain !B! Block NL [#548dff]Blessing[] !M! : draw a card. NL next turn draw a card",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block NL [#548dff]Blessing[] !M! : draw !M2! cards. NL next turn draw !M2! cards",
     "EXTENDED_DESCRIPTION":["Choose a card to put in your hand.","[#548dff]Blessings[] #rCannot be Played"]
   },
   "theDragonkin:BlessingofMight": {
