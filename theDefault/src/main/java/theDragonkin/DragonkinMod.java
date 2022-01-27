@@ -102,6 +102,7 @@ public class DragonkinMod implements
         PostInitializeSubscriber ,
         RelicGetSubscriber,
         PreMonsterTurnSubscriber,
+        OnPlayerTurnStartSubscriber,
         StartGameSubscriber,
         OnStartBattleSubscriber{
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
@@ -123,6 +124,7 @@ public class DragonkinMod implements
     public static int CardsCycledThisTurn = 0;
     public static int BurnsCycledThisCombat = 0;
     public static int BurnsCycledThisTurn = 0;
+    public static boolean damagetaken = false;
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Dragonkin";
     private static final String AUTHOR = "Lyren"; // And pretty soon - You!
@@ -732,6 +734,9 @@ public class DragonkinMod implements
                 c.triggerOnEndOfTurnForPlayingCard();
             }
         }
+        for (AbstractSeal seal : Seals){
+            seal.onEndOfTurn();
+        }
         return true;
     }
 
@@ -747,5 +752,13 @@ public class DragonkinMod implements
         Seals.clear();
         ChiField.Chi.set(AbstractDungeon.player,0);
         ManaField.Mana.set(AbstractDungeon.player,0);
+    }
+
+    @Override
+    public void receiveOnPlayerTurnStart() {
+        damagetaken = false;
+        for (AbstractSeal seal : Seals){
+            seal.onStartOfTurn();
+        }
     }
 }

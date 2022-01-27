@@ -90,7 +90,7 @@
       "sealed",
       "Sealed"
     ],
-    "DESCRIPTION": "#ySealed cards are improved whenever you #yCycle a #yStatus, [#990702]Rune[], or [#548dff]Blessing[] card."
+    "DESCRIPTION": "#ySealed cards are improved whenever you discard a #yStatus or [#990702]Rune[] card."
   },
   {
     "NAMES": [
@@ -113,7 +113,7 @@
       "flux",
       "Flux"
     ],
-    "DESCRIPTION": "#yCycle to up X #yStatus or [#990702]Rune[] cards in your hand and activate the listed effect for each one. NL [#94bdff]Holy[] cards #yFlux [#548dff]Blessings[] instead of [#990702]Runes[]"
+    "DESCRIPTION": "Discard to up X #yStatus or [#990702]Rune[] cards in your hand, drawing a card to replace and activating the listed effect for each one."
   },
   {
     "NAMES": [
@@ -138,7 +138,7 @@
       "blessings",
       "Blessings"
     ],
-    "DESCRIPTION": "[#548dff]Blessings[] create a #ySeal that breaks after taking X damage. NL The following effect occurs when the Seal Breaks"
+    "DESCRIPTION": "[#548dff]Blessings[] create a #ySeal that breaks after taking X damage. NL The following effect occurs when the Seal Breaks. NL If you took no damage during your turn you will lose #b2 HP."
   },
   {
     "NAMES": [

@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
@@ -45,7 +47,6 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
     protected float scale;
     protected float fontScale;
     protected boolean showEvokeValue;
-    protected boolean hit = false;
     protected static final float CHANNEL_IN_TIME = 0.5F;
     protected float channelAnimTimer;
     protected Boolean AnimTimer = false;
@@ -54,7 +55,6 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
         this.shineColor = new Color(1.0F, 1.0F, 1.0F, 0.0F);
         this.hb = new Hitbox(96.0F * Settings.scale, 96.0F * Settings.scale);
         this.img = ImageMaster.EYE_ANIM_0;
-        this.name = Sealstrings.NAME;
         this.bobEffect = new BobEffect(3.0F * Settings.scale, 3.0F);
         this.fontScale = 0.7F;
         this.showEvokeValue = true;
@@ -66,15 +66,20 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
 
     }
     public void onStartOfTurn() {
-        hit = false;
-    }
-    public void onEndOfTurn() {
 
+    }
+
+    public void onEndOfTurn() {
+        if (!DragonkinMod.damagetaken){
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,new DamageInfo(AbstractDungeon.player,2, DamageInfo.DamageType.HP_LOSS)));
+        }
     }
     @Override
     public void onReciveDamage(int damage) {
-        hit = true;
-        PainAmount -= damage;
+        if (!AbstractDungeon.actionManager.turnHasEnded || !DragonkinMod.damagetaken){
+            PainAmount -= damage;
+        }
+
         if (PainAmount <= 0){
             Break();
         }

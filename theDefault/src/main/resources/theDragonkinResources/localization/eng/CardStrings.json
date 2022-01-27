@@ -108,13 +108,12 @@
   },
   "theDragonkin:BlessingofMight": {
     "NAME": "Might",
-    "DESCRIPTION": "[#548dff]Blessing[] !M2! : Gain !M! Strength.",
+    "DESCRIPTION": "Take !M! damage. NL [#548dff]Blessing[] !M2! : Gain !M! Strength.",
     "EXTENDED_DESCRIPTION":["Choose a card to Fetch.","[#548dff]Blessings[] #rCannot be Played"]
   },
   "theDragonkin:BlessingofFortitude": {
     "NAME": "Fortitude",
-    "DESCRIPTION": "[#548dff]Blessing[]: Give another card in your hand Retain this turn.",
-    "UPGRADE_DESCRIPTION": "[#548dff]Blessing[]: Give another card in your hand Retain this turn. NL gain !M! Block.",
+    "DESCRIPTION": "Gain !M2! Dexterity this turn. NL [#548dff]Blessing[] !M!: gain !B! Block.",
     "EXTENDED_DESCRIPTION":["Choose a card to Retain.","[#548dff]Blessings[] #rCannot be Played"]
   },
   "theDragonkin:BlessingofWrath": {
@@ -124,13 +123,13 @@
   },
   "theDragonkin:LightSpeedBlessing": {
     "NAME": "Lightspeed",
-    "DESCRIPTION": "[#548dff]Blessing[]: thedragonkin:Flux !M!: Gain [E] and !B! block. NL Discard this",
+    "DESCRIPTION": "[#548dff]Blessing[] !M2! : thedragonkin:Flux !M!: Gain [E] and !B! block.",
     "EXTENDED_DESCRIPTION":["Choose a card to Fetch.","[#548dff]Blessings[] #rCannot be Played"]
   },
   "theDragonkin:BurningRage": {
     "NAME": "Wings of Light",
-    "DESCRIPTION": "At the end of your turn, Take !M2! damage and Gain !M! block.",
-    "UPGRADE_DESCRIPTION": "Innate NL At the end of your turn, Take !M2! damage and gain !M! Block."
+    "DESCRIPTION": "After you play a card that gives block [#548dff]Blessing[] !M2! : Gain !M! block.",
+    "UPGRADE_DESCRIPTION": "Innate NL After you play a card that gives block [#548dff]Blessing[] !M2! : Gain !M! block."
   },
   "theDragonkin:DivineRetribution": {
     "NAME": "Divine Retribution",
@@ -138,7 +137,7 @@
   },
   "theDragonkin:Absolution": {
     "NAME": "Absolution",
-    "DESCRIPTION": "Apply !M! thedragonkin:Penance. NL Gain !B! Block. NL [#548dff]Blessing[]: *Penance deals !M2! additional damage this combat. "
+    "DESCRIPTION": "Apply !M! thedragonkin:Penance. NL Gain !B! Block. NL [#548dff]Blessing[] !M! : *Penance deals !M2! additional damage this combat. "
   },
   "theDragonkin:HeatBarrier": {
     "NAME": "Magma Armor",
@@ -155,11 +154,11 @@
   },
   "theDragonkin:VenegefulStrike": {
     "NAME": "Blessed Strike",
-    "DESCRIPTION": "Retain. NL Deal !D! damage. NL [#548dff]Blessing[]: increase this cards damage by !M!."
+    "DESCRIPTION": "Deal !D! damage. NL [#548dff]Blessing[] !M2!: increase this cards damage by !M!."
   },
   "theDragonkin:BlessedShield": {
     "NAME": "Blessed Shield",
-    "DESCRIPTION": "Retain. NL Gain !B! Block. NL [#548dff]Blessing[]: increase this cards Block by !M!."
+    "DESCRIPTION": "Gain !B! Block. NL [#548dff]Blessing[] !M2!: increase this cards Block by !M!."
   },
   "theDragonkin:SearingLight": {
     "NAME": "Searing Light",
@@ -298,7 +297,7 @@
   },
   "theDragonkin:Liebreaker": {
     "NAME": "Inquisitor's Brand",
-    "DESCRIPTION": "thedragonkin:Cycle !M! cards. NL Take !M2! damage. NL Deal !D! damage to a random enemy for each [#94bdff]Holy[] card *Cycled."
+    "DESCRIPTION": "thedragonkin:Cycle !M! cards. NL Take !M2! damage. NL for each [#94bdff]Holy[] card *Cycled, [#548dff]Blessing[] !M2!: Deal !D! damage to a random enemy."
   },
   "theDragonkin:DivineGambit": {
     "NAME": "Blazing Gambit",

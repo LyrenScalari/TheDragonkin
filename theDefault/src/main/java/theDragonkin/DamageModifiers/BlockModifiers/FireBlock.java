@@ -46,7 +46,7 @@ public class FireBlock extends AbstractBlockModifier {
         addToBot(new ApplyPowerAction(info.owner,this.owner,new Scorchpower(info.owner,this.owner,damageAmount)));
     }
     public AbstractBlockModifier.Priority priority() {
-        return Priority.TOP;
+        return Priority.NORMAL;
     }
 
     public Color blockImageColor() {

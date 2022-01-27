@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -16,6 +17,8 @@ import com.megacrit.cardcrawl.vfx.combat.ViolentAttackEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.InfusionSeal;
+import theDragonkin.orbs.SanctuarySeal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +53,7 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
         damage = baseDamage = 8;
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 4;
         selfRetain = true;
         this.tags.add(CardTags.STRIKE);
 
@@ -58,6 +62,14 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new ViolentAttackEffect(m.drawX,m.drawY, Color.GOLD)));
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SMASH));
+        AbstractCard that = this;
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new InfusionSeal(magicNumber,defaultSecondMagicNumber,that));
+                isDone = true;
+            }
+        });
     }
 
     @Override

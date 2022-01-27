@@ -23,7 +23,7 @@ public class LightspeedFluxAction extends AbstractGameAction {
     public void update() {
         AbstractCard ca = null;
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c.type == AbstractCard.CardType.STATUS || c.hasTag(CustomTags.Blessing)) {
+            if (c.type == AbstractCard.CardType.STATUS) {
                 if (c == card){
                     ca = c;
                 } else {

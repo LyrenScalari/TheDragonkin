@@ -36,6 +36,7 @@ public class PlayerDamage {
             localvars = {"damageAmount", "hadBlock"}
     )
     public static void Insert(AbstractCreature __instance, DamageInfo info, @ByRef int[] damageAmount, @ByRef boolean[] hadBlock) {
+        DragonkinMod.damagetaken = true;
         for (AbstractPower p : AbstractDungeon.player.powers){
             if (p instanceof ReciveDamageEffect){
                 ((ReciveDamageEffect) p).onReciveDamage(damageAmount[0]);

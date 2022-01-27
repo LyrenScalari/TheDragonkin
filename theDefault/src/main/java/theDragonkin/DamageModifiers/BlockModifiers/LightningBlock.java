@@ -23,7 +23,7 @@ public class LightningBlock extends AbstractBlockModifier {
     public void onApplication() {
         lastblock = getCurrentAmount();
     }
-    public AbstractBlockModifier.Priority priority() {return Priority.TOP; }
+    public AbstractBlockModifier.Priority priority() {return Priority.NORMAL; }
     public void onStack(int amount) {
         lastblock = getCurrentAmount();
     }

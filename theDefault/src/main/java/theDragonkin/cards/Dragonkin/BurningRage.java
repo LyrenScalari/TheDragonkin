@@ -44,8 +44,8 @@ public class BurningRage extends AbstractHolyCard{
 
     public BurningRage() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseMagicNumber = magicNumber = 7;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        baseMagicNumber = magicNumber = 12;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.MAGIC, LightIcon.get()));
         tags.add(CustomTags.Radiant);

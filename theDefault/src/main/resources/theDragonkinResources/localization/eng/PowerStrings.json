@@ -23,7 +23,7 @@
         },
         "theDragonkin:WingsofLight": {
                 "NAME": "Wings of Light",
-                "DESCRIPTIONS": ["At the end of your turn take #b"," damage and gain #b"," #yDivine #yArmor"
+                "DESCRIPTIONS": ["After you play a card that gains #yBlock [#548dff]Blessing[] #b"," : gain #b"," [LightIcon] #yBlock"
                 ]
         },
         "theDragonkin:Penance": {

@@ -66,10 +66,9 @@ public class DivineRetributionPower extends AbstractPower implements CloneablePo
     public AbstractPower makeCopy() {
         return new DivineRetributionPower(owner, source,amount);
     }
-
     @Override
     public void onReciveDamage(int damage) {
-        if (!AbstractDungeon.actionManager.turnHasEnded){
+        if (!AbstractDungeon.actionManager.turnHasEnded || (!DragonkinMod.Seals.isEmpty() && !DragonkinMod.damagetaken)){
          amount += damage*2;
         }
     }

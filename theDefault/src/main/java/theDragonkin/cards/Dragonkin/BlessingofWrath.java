@@ -34,7 +34,7 @@ public class BlessingofWrath extends AbstractHolyCard {
     private CardGroup ShadowVisons = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
     private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
@@ -54,8 +54,8 @@ public class BlessingofWrath extends AbstractHolyCard {
     public BlessingofWrath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        damage = baseDamage = 10;
-        magicNumber = baseMagicNumber = 4;
+        damage = baseDamage = 6;
+        magicNumber = baseMagicNumber = 6;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

@@ -22,6 +22,7 @@ public class WisdomSeal extends AbstractSeal {
         super();
         Sealstrings = orbString;
         PainAmount = Pain;
+        name = orbString.NAME;
         BreakAmount = Pow;
     }
     public void Break(){

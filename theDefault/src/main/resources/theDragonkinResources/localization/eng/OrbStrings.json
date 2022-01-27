@@ -25,6 +25,49 @@
       " card","s"," Next turn",",","."
     ]
   },
+  "theDragonkin:Might": {
+    "NAME": "Might",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Gain #b",
+      " #yStrength."
+    ]
+  },
+  "theDragonkin:Fortitude": {
+    "NAME": "Fortitude",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Gain #b", " [LightIcon] #yBlock"
+    ]
+  },
+  "theDragonkin:Lightspeed": {
+    "NAME": "Lightspeed",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Flux #b4: Gain [E] and #b"," Block"
+    ]
+  },
+  "theDragonkin:Sanctuary": {
+    "NAME": "Sanctuary",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Increase the #yBlock gain of the card that created this by #b"," this combat"
+    ]
+  },
+  "theDragonkin:Infusion": {
+    "NAME": "Infusion",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Increase the damage of the card that created this by #b"," this combat"
+    ]
+  },
+  "theDragonkin:Consecration": {
+    "NAME": "Consecration",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Increase #yPenance damage by #b", " this combat"
+    ]
+  },
   "theDragonkin:Rain": {
     "NAME": "Rain",
     "DESCRIPTION": [

@@ -43,7 +43,7 @@ public class ShadowVision extends AbstractHolyCard {
     private static final int UPGRADED_COST = 1;
 
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 4;
     private static final int UPGRADE_MAGIC = 0;
 
     public ShadowVision() {

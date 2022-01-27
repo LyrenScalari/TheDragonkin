@@ -11,9 +11,11 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -29,6 +31,7 @@ import theDragonkin.CustomTags;
 import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
+import theDragonkin.orbs.FortitudeSeal;
 import theDragonkin.powers.LosePowerPower;
 import theDragonkin.util.TextureLoader;
 
@@ -67,19 +70,24 @@ public class WingsofLight extends TwoAmountPower implements CloneablePowerInterf
         updateDescription();
     }
 
-    @Override
-    public void  atEndOfTurnPreEndTurnCards(boolean isplayer) {
-        this.flash();
-        CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
-        addToBot(new VFXAction(new HealVerticalLineEffect(owner.drawX+ MathUtils.random(-X_JITTER * 1.5F, X_JITTER * 1.5F),owner.drawY+ OFFSET_Y + MathUtils.random(-Y_JITTER, Y_JITTER))));
-        addToBot(new VFXAction(new HealVerticalLineEffect(owner.drawX+ MathUtils.random(-X_JITTER * 1.5F, X_JITTER * 1.5F),owner.drawY+ OFFSET_Y + MathUtils.random(-Y_JITTER, Y_JITTER))));
-        addToBot(new DamageAction(owner,new DamageInfo(owner,amount, DamageInfo.DamageType.THORNS)));
-        addToBot(new GainCustomBlockAction(srcCard,owner,amount2));
+    public void onUseCard(final AbstractCard card, final UseCardAction action) {
+        if (card.baseBlock > 0) {
+            this.flash();
+            CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
+            addToBot(new VFXAction(new HealVerticalLineEffect(owner.drawX + MathUtils.random(-X_JITTER * 1.5F, X_JITTER * 1.5F), owner.drawY + OFFSET_Y + MathUtils.random(-Y_JITTER, Y_JITTER))));
+            addToBot(new VFXAction(new HealVerticalLineEffect(owner.drawX + MathUtils.random(-X_JITTER * 1.5F, X_JITTER * 1.5F), owner.drawY + OFFSET_Y + MathUtils.random(-Y_JITTER, Y_JITTER))));
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    DragonkinMod.Seals.add(new FortitudeSeal(amount2,amount,srcCard));
+                    isDone = true;
+                }
+            });
+        }
     }
-
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + amount2 + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + this.amount2+ DESCRIPTIONS[1] + amount2 + DESCRIPTIONS[2];
     }
     @Override
     public AbstractPower makeCopy() {
