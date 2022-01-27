@@ -36,77 +36,79 @@ public class PlayerDamage {
             localvars = {"damageAmount", "hadBlock"}
     )
     public static void Insert(AbstractCreature __instance, DamageInfo info, @ByRef int[] damageAmount, @ByRef boolean[] hadBlock) {
-        DragonkinMod.damagetaken = true;
-        for (AbstractPower p : AbstractDungeon.player.powers){
-            if (p instanceof ReciveDamageEffect){
-                ((ReciveDamageEffect) p).onReciveDamage(damageAmount[0]);
+        if (!AbstractDungeon.getCurrRoom().isBattleOver) {
+            DragonkinMod.damagetaken = true;
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof ReciveDamageEffect) {
+                    ((ReciveDamageEffect) p).onReciveDamage(damageAmount[0]);
+                }
+                if (p instanceof ReciveModifyDamageEffect) {
+                    ((ReciveModifyDamageEffect) p).onReciveDamage(damageAmount[0]);
+                }
             }
-            if (p instanceof ReciveModifyDamageEffect){
-                ((ReciveModifyDamageEffect) p).onReciveDamage(damageAmount[0]);
+            for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+                if (c instanceof ReciveDamageEffect) {
+                    ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+                }
             }
-        }
-        for (AbstractCard c : AbstractDungeon.player.drawPile.group){
-            if (c instanceof ReciveDamageEffect){
-                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                if (c instanceof ReciveDamageinHandCard) {
+                    ((ReciveDamageinHandCard) c).onReciveDamage(damageAmount[0]);
+                }
+                if (c instanceof ReciveDamageEffect) {
+                    ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+                }
             }
-        }
-        for (AbstractCard c : AbstractDungeon.player.hand.group){
-            if (c instanceof ReciveDamageinHandCard){
-                ((ReciveDamageinHandCard) c).onReciveDamage(damageAmount[0]);
+            for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
+                if (c instanceof ReciveDamageEffect) {
+                    ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+                }
             }
-            if (c instanceof ReciveDamageEffect){
-                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
+                if (c instanceof ReciveDamageEffect) {
+                    ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+                }
             }
-        }
-        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
-            if (c instanceof ReciveDamageEffect){
-                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            for (AbstractCard c : AbstractDungeon.player.limbo.group) {
+                if (c instanceof ReciveDamageEffect) {
+                    ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+                }
             }
-        }
-        for (AbstractCard c : AbstractDungeon.player.discardPile.group){
-            if (c instanceof ReciveDamageEffect){
-                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+            for (AbstractSeal c : DragonkinMod.Seals) {
+                if (c != null) {
+                    ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
+                }
             }
-        }
-        for (AbstractCard c : AbstractDungeon.player.limbo.group){
-            if (c instanceof ReciveDamageEffect){
-                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
-            }
-        }
-        for (AbstractSeal c : DragonkinMod.Seals){
-            if (c != null){
-                ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
-            }
-        }
-        hadDivineArmor = false;
-        if (damageAmount[0] > 0) {
-            int DivineArmorInital = (Integer)DivineArmorField.DivineArmor.get(__instance);
-            int DivineArmor = (Integer)DivineArmorField.DivineArmor.get(__instance);
-            if (DivineArmor > 0) {
+            hadDivineArmor = false;
+            if (damageAmount[0] > 0) {
+                int DivineArmorInital = (Integer) DivineArmorField.DivineArmor.get(__instance);
+                int DivineArmor = (Integer) DivineArmorField.DivineArmor.get(__instance);
+                if (DivineArmor > 0) {
 
-                hadDivineArmor = true;
-                for(int i = 0; i < 18; ++i) {
-                    AbstractDungeon.effectsQueue.add(new DamageImpactLineEffect(__instance.hb.cX, __instance.hb.cY));
+                    hadDivineArmor = true;
+                    for (int i = 0; i < 18; ++i) {
+                        AbstractDungeon.effectsQueue.add(new DamageImpactLineEffect(__instance.hb.cX, __instance.hb.cY));
+                    }
+
+                    CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
+                    if (DivineArmor >= damageAmount[0]) {
+                        DivineArmor -= damageAmount[0];
+                        AbstractDungeon.effectsQueue.add(new TempDamageNumberEffect(__instance, __instance.hb.cX, __instance.hb.cY, damageAmount[0]));
+                        damageAmount[0] = 0;
+                    } else {
+                        damageAmount[0] -= DivineArmor;
+                        AbstractDungeon.effectsQueue.add(new TempDamageNumberEffect(__instance, __instance.hb.cX, __instance.hb.cY, DivineArmor));
+                        DivineArmor = 0;
+                    }
+                    if (__instance instanceof AbstractPlayer && (DivineArmor < DivineArmorInital)) {
+                        System.out.println(DragonkinMod.WasDivineLost);
+                        DragonkinMod.WasDivineLost = true;
+                    }
+
+                    DivineArmorField.DivineArmor.set(__instance, DivineArmor);
                 }
 
-                CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
-                if (DivineArmor >= damageAmount[0]) {
-                    DivineArmor -= damageAmount[0];
-                    AbstractDungeon.effectsQueue.add(new TempDamageNumberEffect(__instance, __instance.hb.cX, __instance.hb.cY, damageAmount[0]));
-                    damageAmount[0] = 0;
-                } else {
-                    damageAmount[0] -= DivineArmor;
-                    AbstractDungeon.effectsQueue.add(new TempDamageNumberEffect(__instance, __instance.hb.cX, __instance.hb.cY, DivineArmor));
-                    DivineArmor = 0;
-                }
-                if (__instance instanceof AbstractPlayer && (DivineArmor < DivineArmorInital)){
-                    System.out.println(DragonkinMod.WasDivineLost);
-                    DragonkinMod.WasDivineLost = true;
-                }
-
-                DivineArmorField.DivineArmor.set(__instance, DivineArmor);
             }
-
         }
     }
 
