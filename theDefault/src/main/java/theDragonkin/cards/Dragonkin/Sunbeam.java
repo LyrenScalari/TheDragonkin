@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.WisdomSeal;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.getRandomBlessing;
@@ -55,12 +56,7 @@ public class Sunbeam extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        cardToPreview.add(new BlessingofMight());
-        cardToPreview.add(new BlessingofFortitude());
-        cardToPreview.add(new BlessingofWrath());
-        cardToPreview.add(new ShadowVision());
-        cardToPreview.add(new LightSpeedBlessing());
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
     }
 
     // Actions the card should do.
@@ -69,7 +65,13 @@ public class Sunbeam extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
-        addToBot(new MakeTempCardInDiscardAction(getRandomBlessing(),1));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new WisdomSeal(1,defaultSecondMagicNumber));
+                isDone = true;
+            }
+        });
         super.use(p,m);
     }
 
@@ -81,7 +83,6 @@ public class Sunbeam extends AbstractHolyCard {
             upgradeDamage(2);
             upgradeMagicNumber(UPGRADE_MAGIC);
             upgradeDefaultSecondMagicNumber(1);
-            initializeDescription();
         }
     }
 }

@@ -77,7 +77,7 @@
   },
   "theDragonkin:Sunbeam": {
     "NAME": "Sunbeam",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL Add a random [#548dff]Blessing[] to your discard pile."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL [#548dff]Blessing[] !M2! : draw a card. NL next turn draw a card."
   },
   "theDragonkin:MindSear": {
     "NAME": "Suffering Synapses",
