@@ -6,7 +6,7 @@
     <groupId>dragonkinmod</groupId>
     <artifactId>DragonkinMod</artifactId>
     <name>The Dragonkin</name>
-    <version>1.2.5</version>
+    <version>2.0.0</version>
     <description>A Warrior of Fire and Faith. Determined the slay the Evils of the Spire.</description>
 
     <properties>
