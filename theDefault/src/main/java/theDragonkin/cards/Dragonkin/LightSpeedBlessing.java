@@ -60,7 +60,7 @@ public class LightSpeedBlessing extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
         block = baseBlock = 5;
-        magicNumber = baseMagicNumber = 5;
+        magicNumber = baseMagicNumber = 3;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 4;
     }
     @Override

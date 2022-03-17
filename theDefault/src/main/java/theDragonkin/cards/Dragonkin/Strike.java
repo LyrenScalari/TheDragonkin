@@ -1,10 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.icons.FireIcon;
-import IconsAddon.icons.LightIcon;
-import IconsAddon.icons.WindIcon;
-import IconsAddon.util.DamageModifierManager;
+
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

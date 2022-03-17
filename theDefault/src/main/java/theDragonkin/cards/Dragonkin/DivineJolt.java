@@ -1,9 +1,8 @@
 package theDragonkin.cards.Dragonkin;
 
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.icons.LightIcon;
-import IconsAddon.util.DamageModifierManager;
+
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -16,8 +15,10 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
 import theDragonkin.DamageModifiers.DivineDamage;
+import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;

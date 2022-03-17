@@ -1,8 +1,9 @@
 package theDragonkin.cards.Dragonkin;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.util.DamageModifierHelper;
-import IconsAddon.util.DamageModifierManager;
+
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -109,9 +110,9 @@ public class ThreePointStrike extends AbstractDragonkinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(Fire,p,ThirdDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        addToBot(new SmiteAction(m, DamageModifierHelper.makeBoundDamageInfo(Divine,p,secondDamage, DamageInfo.DamageType.NORMAL)));
-        addToBot(new DamageAction(m,DamageModifierHelper.makeBoundDamageInfo(normalDamage,p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        addToBot(new DamageAction(m, BindingHelper.makeInfo(Fire,p,ThirdDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new SmiteAction(m, BindingHelper.makeInfo(Divine,p,secondDamage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new DamageAction(m,BindingHelper.makeInfo(normalDamage,p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
         addToBot(new ApplyPowerAction(m,p,new Scorchpower(m,p,magicNumber)));
         addToBot(new ApplyPowerAction(p,p,new VulnerablePower(p,1,false)));
 

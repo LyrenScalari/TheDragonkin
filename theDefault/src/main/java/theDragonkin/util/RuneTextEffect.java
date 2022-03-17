@@ -17,15 +17,17 @@ public class RuneTextEffect extends AbstractGameEffect {
     private int index;
     private float x;
     private float y;
+    private AbstractRune src;
 
-    public RuneTextEffect(float x, float y, String Text) {
+    public RuneTextEffect(float x, float y, String Text, AbstractRune source) {
         this.targetString = Text;
         this.index = 0;
         this.sBuilder.setLength(0);
         this.x = x;
-        this.y = y + 100.0F * Settings.scale;
+        this.y = y;
         this.color = Color.WHITE.cpy();
         this.duration = 1.0F;
+        src = source;
     }
 
     public void update() {
@@ -41,15 +43,14 @@ public class RuneTextEffect extends AbstractGameEffect {
 
         if (this.duration < 0.0F) {
             this.isDone = true;
+            src.AnimTimer = false;
         }
 
     }
 
     public void render(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, DragonkinMod.DovahFont, targetString, this.x, this.y, this.color, 2.5F - this.duration / 4.0F + MathUtils.random(0.05F));
+        FontHelper.renderFontCentered(sb, DragonkinMod.DovahFont, targetString, this.x, this.y, this.color, 1.0F - this.duration / 4.0F + MathUtils.random(0.05F));
         sb.setBlendFunction(770, 1);
-        FontHelper.renderFontCentered(sb, DragonkinMod.DovahFont, targetString, this.x, this.y, this.color, 0.05F + (2.5F - this.duration / 4.0F) + MathUtils.random(0.05F));
-        sb.setBlendFunction(770, 771);
     }
 
     public void dispose() {

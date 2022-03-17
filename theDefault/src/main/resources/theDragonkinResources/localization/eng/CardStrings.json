@@ -13,7 +13,7 @@
   },
   "theDragonkin:BlazingBreath": {
     "NAME": "Blazing Breath",
-    "DESCRIPTION": "Deal !D! damage and Apply !M! thedragonkin:Scorch. NL thedragonkin:Storm 2: Draw a card."
+    "DESCRIPTION": "[#990702]Rune[] !M! NL Deal !D! damage and Apply !M! thedragonkin:Scorch."
   },
   "theDragonkin:HammerOfWrath": {
     "NAME": "Hammer Of Wrath",
@@ -26,7 +26,7 @@
   },
   "theDragonkin:IncendiaryFlow": {
     "NAME": "Incendiary Flow",
-    "DESCRIPTION": "thedragonkin:Flux 2: Gain !M2! Strength. NL thedragonkin:Storm 3: Whenever you thedragonkin:Cycle a card Gain !M! Block."
+    "DESCRIPTION": "[#990702]Rune[] !M2! NL Whenever you discard a card this turn Gain !M! Block. NL thedragonkin:Cycle 2 cards"
   },
   "theDragonkin:HeatShield": {
     "NAME": "Heat Shield",
@@ -60,7 +60,7 @@
   },
   "theDragonkin:ThreePointStrike": {
     "NAME": "Three Point Strike",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !theDragonkin:D2! [LightIcon] damage. NL Deal !theDragonkin:D3! damage. NL Apply !M! thedragonkin:Scorch. NL Gain !M2! Vulnerable."
+    "DESCRIPTION": "Deal !D! [theDragonkin:FireIcon] damage. NL Deal !theDragonkin:D2! [theDragonkin:LightIcon] damage. NL Deal !theDragonkin:D3! damage. NL Apply !M! thedragonkin:Scorch. NL Gain !M2! Vulnerable."
   },
   "theDragonkin:PartingShot": {
     "NAME": "Parting Shot",
@@ -85,11 +85,11 @@
   },
   "theDragonkin:InnerFire": {
     "NAME": "Inner Fire",
-    "DESCRIPTION": "Take 2 Damage NL Gain !B! Block. NL thedragonkin:Flux 2: gain !M! thedragonkin:Sacrifice."
+    "DESCRIPTION": "Take 2 Damage. NL thedragonkin:Cycle !M! cards gain !M2! thedragonkin:Sacrifice for each Holy card"
   },
   "theDragonkin:Sunburst": {
     "NAME": "Sunburst",
-    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Flux !M2!: Gain !B! Block."
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Cycle !M2! cards, if any are [#94bdff]Holy[] Gain !B! Block"
   },
   "theDragonkin:ChemicalStar": {
     "NAME": "Searing Smite",
@@ -123,7 +123,7 @@
   },
   "theDragonkin:LightSpeedBlessing": {
     "NAME": "Lightspeed",
-    "DESCRIPTION": "[#548dff]Blessing[] !M2! : thedragonkin:Flux !M!: Gain [E] and !B! block.",
+    "DESCRIPTION": "[#548dff]Blessing[] !M2! : thedragonkin:Cycle !M! cards Gain [E] and !B! block for each.",
     "EXTENDED_DESCRIPTION":["Choose a card to Fetch.","[#548dff]Blessings[] #rCannot be Played"]
   },
   "theDragonkin:BurningRage": {
@@ -145,12 +145,12 @@
   },
   "theDragonkin:Condemnation": {
     "NAME": "Condemnation",
-    "DESCRIPTION": "In 3 turns, Deal !M! damage to ALL enemies. NL thedragonkin:Storm 5: Next Turn instead."
+    "DESCRIPTION": "[#990702]Rune[] !M2! NL In 3 turns, Deal !M! damage to ALL enemies."
   },
   "theDragonkin:HolyWrath": {
     "NAME": "Prismatic Blast",
-    "DESCRIPTION": "Deal [LightIcon] damage equal to twice your [LightIcon] Block to ALL enemies. NL Lose all your [LightIcon] Block. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Deal [LightIcon] damage equal to twice your [LightIcon] Block to ALL enemies. NL Lose half your [LightIcon] Block. NL Exhaust."
+    "DESCRIPTION": "Deal [theDragonkin:LightIcon] damage equal to twice your [theDragonkin:LightIcon] Block to ALL enemies. NL Lose all your [theDragonkin:LightIcon] Block. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal [theDragonkin:LightIcon] damage equal to twice your [theDragonkin:LightIcon] Block to ALL enemies. NL Lose half your [theDragonkin:LightIcon] Block. NL Exhaust."
   },
   "theDragonkin:VenegefulStrike": {
     "NAME": "Blessed Strike",
@@ -178,11 +178,11 @@
   },
   "theDragonkin:Flashpoint": {
   "NAME": "Flashpoint",
-  "DESCRIPTION": "thedragonkin:Storm 3. NL Draw !M! *Status or [#990702]Rune[] cards. NL Flux !M2!: Exhaust cards thedragonkin:Cycled"
+  "DESCRIPTION": "[#990702]Rune[] !M2!. NL Draw !M! *Status or [#990702]Rune[] cards."
 },
   "theDragonkin:BlankRunestone": {
     "NAME": "Blank Runestone",
-    "DESCRIPTION": "Gain !B! Block. NL Flux !M!: Exhaust cards thedragonkin:Cycled and add a random [#990702]Rune[] to your Discard pile."
+    "DESCRIPTION": "thedragonkin:Cycle !M! cards Transform them into random [#990702]Rune[] cards."
   },
   "theDragonkin:Pandemic": {
     "NAME": "Pandemic",
@@ -199,7 +199,7 @@
   },
   "theDragonkin:FlameWard": {
     "NAME": "Flame Ward",
-    "DESCRIPTION": "thedragonkin:Storm 3. NL Gain !B! Block. NL Shuffle !M! Burns to your draw pile."
+    "DESCRIPTION": "[#990702]Rune[] !M2! NL Gain !B! Block. NL Shuffle a Burn to your draw pile."
   },
   "theDragonkin:DivineStorm": {
     "NAME": "Divine Storm",
@@ -241,7 +241,7 @@
   },
   "theDragonkin:CinderStorm": {
   "NAME": "Cinderstorm",
-  "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Flux 10: Deal !D! damage to a random enemy NL Exhaust cards thedragonkin:Cycled by this card."
+  "DESCRIPTION": "thedragonkin:Cycle any number of cards, deal !D! damage to a random enemy for each. NL Exhaust"
 },
   "theDragonkin:HeatTest": {
     "NAME": "Kindle",
@@ -285,7 +285,7 @@
   },
   "theDragonkin:InfernoWard": {
     "NAME": "Inferno Ward",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! thedragonkin:Auraflame NL thedragonkin:Flux 10: Exhaust cards thedragonkin:Cycled."
+    "DESCRIPTION": "Gain !M! thedragonkin:Auraflame NL thedragonkin:Cycle any number of cards Gain !B! Block for each and Exhaust them."
   },
   "theDragonkin:ChainsOfTruth": {
     "NAME": "Chains of Truth",
@@ -297,41 +297,40 @@
   },
   "theDragonkin:Liebreaker": {
     "NAME": "Inquisitor's Brand",
-    "DESCRIPTION": "thedragonkin:Cycle !M! cards. NL Take !M2! damage. NL for each [#94bdff]Holy[] card *Cycled, [#548dff]Blessing[] !M2!: Deal !D! damage to a random enemy."
+    "DESCRIPTION": "Take !M2! damage. NL thedragonkin:Cycle !M! cards for each [#94bdff]Holy[] card, [#548dff]Blessing[] !M2!: Deal !D! damage to a random enemy."
   },
   "theDragonkin:DivineGambit": {
     "NAME": "Blazing Gambit",
-    "DESCRIPTION": "Gain !M! Strength. NL Take !M2! damage. NL thedragonkin:Flux 3: Deal !D! damage to a random enemy.",
-    "UPGRADE_DESCRIPTION": "Gain !M! Strength. NL Take !M2! damage. NL thedragonkin:Flux 4: Deal !D! damage to a random enemy."
+    "DESCRIPTION": "Take !M2! damage. NL thedragonkin:Cycle !M! cards Deal !D! damage to a random enemy for each."
   },
   "theDragonkin:DivineVision": {
     "NAME": "Divine Vision",
-    "DESCRIPTION": "Gain !M! thedragonkin:Holy_Power."
+    "DESCRIPTION": "increase the damage and Block of your Holy cards by !M!"
   },
   "theDragonkin:BlessedWeapon": {
   "NAME": "Vengeance",
-  "DESCRIPTION": "[#990702]Rune[]: gain !B! Block. NL thedragonkin:Storm !M! : Gain !M2! thedragonkin:Deflecting_Scales.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Nahkriin"]
+  "DESCRIPTION": "[#990702]Rune[] !M! NL Gain !B! Block. NL Gain !M2! thedragonkin:Deflecting_Scales.",
+    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Nah"]
   },
   "theDragonkin:SpiritFireRune": {
     "NAME": "Dragonfire",
-    "DESCRIPTION": "[#990702]Rune[]: Deal !D! damage to a random enemy. NL thedragonkin:Storm !M! : Gain !M2! thedragonkin:Auraflame.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","ZiiYol"]
+    "DESCRIPTION": "[#990702]Rune[] !M! NL Deal !D! damage to a random enemy. NL Gain !M2! thedragonkin:Auraflame",
+    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Toor"]
   },
   "theDragonkin:ShatterRune": {
     "NAME": "Shatter",
-    "DESCRIPTION": "[#990702]Rune[]: Apply !M2! Vulnerable to a random enemy. NL thedragonkin:Storm !M! : Deal !D! Damage.",
+    "DESCRIPTION": "[#990702]Rune[] !M! NL Deal !D! Damage. NL Apply !M2! Vulnerable.",
     "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Kren"]
   },
   "theDragonkin:BladeMirrorRune": {
     "NAME": "Deflection",
-    "DESCRIPTION": "[#990702]Rune[]: Apply !M2! Weak to ALL enemies. NL thedragonkin:Storm 10 : Reduce target Strength by !M!.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","NosFiik"]
+    "DESCRIPTION": "[#990702]Rune[] !M! NL Gain !B! Block NL Apply !M2! Weak to ALL enemies.",
+    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Vo"]
   },
   "theDragonkin:WarHungerRune": {
     "NAME": "Bloodthirst",
-    "DESCRIPTION": "[#990702]Rune[]: increase the number of times this attacks by 1. NL thedragonkin:Storm !M! : Deal !D! damage to a random enemy !M2! times.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","SosNahkip"]
+    "DESCRIPTION": "[#990702]Rune[] !M! NL Deal !D! damage to a random enemy !M2! times.",
+    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Bahlok"]
   },
   "theDragonkin:CrusaderForm": {
   "NAME": "Seraph Form",
@@ -359,9 +358,9 @@
     "NAME": "Meteor Storm",
     "DESCRIPTION": "Deal !D! damage and Gain !B! Block !M! times. thedragonkin:Storm 8 - Play this at the start of your next turn."
   },
-  "theDragonkin:Insanity": {
-    "NAME": "Waking Dream",
-    "DESCRIPTION": "Soulbound. Unplayable. NL Startup - Gain thedragonkin:Dreaming. NL When drawn gain !M! thedragonkin:Lunacy."
+  "theDragonkin:StormBreath": {
+    "NAME": "Storm Breath",
+    "DESCRIPTION": "Gain !B! block. NL Gain a thedragonkin:Storm_Mark with !M2! *Charges."
   },
 
   "theDragonkin:WindwalkerStrike": {
@@ -371,206 +370,6 @@
   "theDragonkin:WindWalkerDefend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block"
-  },
-  "theDragonkin:SunriseStrike": {
-    "NAME": "Sunrise Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Channel !M! thedragonkin:Nimbus. NL Gain [Chi]"
-  },
-  "theDragonkin:ChiWave": {
-    "NAME": "Chi Wave",
-    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage to a random enemy. NL Gain [Chi]"
-  },
-  "theDragonkin:JadeSwipe": {
-    "NAME": "Spirit Claw",
-    "DESCRIPTION": "Deal !D! damage. NL Gain [Chi]"
-  },
-  "theDragonkin:Northwind": {
-    "NAME": "Cold Front",
-    "DESCRIPTION": "Gain !B! Block. NL Channel !M! thedragonkin:Rain."
-  },
-  "theDragonkin:BattleFocus": {
-    "NAME": "Spirit Focus",
-    "DESCRIPTION": "Draw !M! cards. NL Gain [Chi]",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Gain [Chi] [Chi]"
-  },
-  "theDragonkin:AirCutter": {
-    "NAME": "Air Cutter",
-    "DESCRIPTION": "Deal !D! damage. NL Gain [WindIcon] thedragonkin:Chakra"
-  },
-  "theDragonkin:GentleRainfall": {
-    "NAME": "Gentle Rainfall",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Channel thedragonkin:Rain"
-  },
-  "theDragonkin:RippleBreath": {
-    "NAME": "Ripple Breath",
-    "DESCRIPTION": "Gain [Chi] [Chi]",
-    "UPGRADE_DESCRIPTION": "Gain [Chi] [Chi] [Chi]"
-  },
-  "theDragonkin:WardingZap": {
-    "NAME": "Warding Zap",
-    "DESCRIPTION": "Deal !D! damage NL Gain !B! Block."
-  },
-  "theDragonkin:RiverTide": {
-    "NAME": "River Tide",
-    "DESCRIPTION": "Deal !D! damage NL Gain [WaterIcon] thedragonkin:Chakra"
-  },
-  "theDragonkin:RippleBarrier": {
-    "NAME": "Ripple Barrier",
-    "DESCRIPTION": "Gain !B! Block. NL Gain [DrainIcon] thedragonkin:Chakra"
-  },
-  "theDragonkin:ForcePalm": {
-    "NAME": "Force Palm",
-    "DESCRIPTION": "Deal !D! damage twice."
-  },
-  "theDragonkin:Stormstrike": {
-    "NAME": "Stormstrike",
-    "DESCRIPTION": "Deal !D! damage."
-  },
-
-  "theDragonkin:WindShielding": {
-    "NAME": "WindShielding",
-    "DESCRIPTION": "Gain !B! Block. NL Give a Strike in your hand 'Gain !M! Block'",
-    "EXTENDED_DESCRIPTION" : ["Choose a Strike to give 'Gain 5 Block'"]
-  },
-  "theDragonkin:SpiritCombo": {
-    "NAME": "Spirit Combo",
-    "DESCRIPTION": "Gain [Chi] for every third card you play."
-  },
-  "theDragonkin:ChiFlow": {
-    "NAME": "Chi Flow",
-    "DESCRIPTION": "Gain [Chi] [Chi] [Chi] [Chi] [Chi] NL Exhaust."
-  },
-  "theDragonkin:SpiritPulse": {
-    "NAME": "Spirit Pulse",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL thedragonkin:Spirit_Burst !M!: Deal !D! [DrainIcon] damage to a random enemy"
-  },
-  "theDragonkin:ZenFocus": {
-    "NAME": "Zen Focus",
-    "DESCRIPTION": "Spend [Chi] [Chi] [Chi] to play this. NL Gain !M2! orb slot."
-  },
-  "theDragonkin:Skyfall": {
-    "NAME": "Skyfall",
-    "DESCRIPTION": "Whenever you gain [Chi] , activate the passive effect of your right-most Orb"
-  },
-  "theDragonkin:WhirlwindShield": {
-    "NAME": "Whirlwind Shield",
-    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Spirit_Burst !M!: Draw !M2! cards."
-  },
-  "theDragonkin:CrystalWind": {
-    "NAME": "Crystal Wind",
-    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Spirit_Burst !M!: Channel thedragonkin:Rain."
-  },
-  "theDragonkin:HighPressure": {
-    "NAME": "Wind Boarder",
-    "DESCRIPTION": "Enter thedragonkin:Zephyr. NL Gain !B! Block. NL Channel thedragonkin:Razor_Wind"
-  },
-  "theDragonkin:SlipStream": {
-    "NAME": "Stratus Shield",
-    "DESCRIPTION": "Gain !B! Block. NL Channel thedragonkin:Nimbus NL Enter thedragonkin:Zephyr"
-  },
-  "theDragonkin:Galeforce": {
-    "NAME": "Galeforce",
-    "DESCRIPTION": "Channel !M! thedragonkin:Razor_Wind NL Enter thedragonkin:Zephyr"
-  },
-  "theDragonkin:RendingFang": {
-    "NAME": "Rending Fang",
-    "DESCRIPTION": "Deal !D! damage. NL Deal !theDragonkin:D2! damage. NL Channel !M2! thedragonkin:Jade_Spirit"
-  },
-  "theDragonkin:StaticAura": {
-    "NAME": "Static Aura",
-    "DESCRIPTION": "Deal !D! damage."
-  },
-  "theDragonkin:RainofStrikes": {
-    "NAME": "Rain of Strikes",
-    "DESCRIPTION": "Deal !D! damage. NL Add !M! damage strikes to your hand."
-  },
-  "theDragonkin:TripleShield": {
-    "NAME": "Triple Shield",
-    "DESCRIPTION": "Add !M! [DrainIcon] Defend, !M! [WaterIcon] Defend, and !M! [WindIcon] Defend to your hand."
-  },
-  "theDragonkin:StaticBite": {
-    "NAME": "Static Bite",
-    "DESCRIPTION": "Deal !D! damage."
-  },
-  "theDragonkin:StaticBarrier": {
-    "NAME": "Static Barrier",
-    "DESCRIPTION": "Gain !B! Block. NL Add a [ElectricIcon] Defend to your hand"
-  },
-  "theDragonkin:Downburst": {
-    "NAME": "Downburst",
-    "DESCRIPTION": "Deal !D! damage. NL Gain [ElectricIcon] thedragonkin:Chakra"
-  },
-  "theDragonkin:AirSlash": {
-    "NAME": "Air Slash",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Channel !M2! thedragonkin:Razor_Wind"
-  },
-  "theDragonkin:ChiBlast": {
-    "NAME": "Chi Blast",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Spirit_Burst !M!: Deal !D! damage to ALL enemies"
-  },
-  "theDragonkin:OccludedSky": {
-    "NAME": "Occluded Sky",
-    "DESCRIPTION": "Gain !B! Block. NL Enter thedragonkin:Zephyr NL Evoke your Right most orb, Lose an orb Slot. NL Gain !M! Focus."
-  },
-  "theDragonkin:ClearSky": {
-    "NAME": "Clear Sky",
-    "DESCRIPTION": "Evoke all your orbs. NL Gain [E] for each. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Evoke all your orbs. NL Gain [E] [Chi] for each. NL Exhaust."
-  },
-  "theDragonkin:Deathtouch": {
-    "NAME": "Deathtouch",
-    "DESCRIPTION": "Spend [Chi] [Chi] [Chi] [Chi] [Chi] NL to play this. NL Deal !D! damage. NL Exhaust."
-  },
-  "theDragonkin:FrostStep": {
-    "NAME": "Frost Step",
-    "DESCRIPTION": "thedragonkin:Chant thedragonkin:Frost_Breath"
-  },
-  "theDragonkin:WindsFuidity": {
-    "NAME": "Wind's Fuidity",
-    "DESCRIPTION": "Gain !M! Block after you play a card."
-  },
-  "theDragonkin:CycloneKick": {
-    "NAME": "Cyclone Kick",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Spirit_Burst !M!: Activate the passive effect of your right most orb."
-  },
-  "theDragonkin:ConcussiveShout": {
-    "NAME": "Concussive Shout",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies."
-  },
-  "theDragonkin:TenSteps": {
-    "NAME": "Heian Godan",
-    "DESCRIPTION": "Strikes deal !M! additional damage. NL Defends gain !M! extra Block."
-  },
-  "theDragonkin:Spar": {
-    "NAME": "Spar",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! thedragonkin:Mastery."
-  },
-  "theDragonkin:Substitution": {
-    "NAME": "Substitution",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M2! Weak to ALL enemies. NL Gain !M! thedragonkin:Mastery."
-  },
-
-  "theDragonkin:Tempest": {
-    "NAME": "Typhoon",
-    "DESCRIPTION": "Enter thedragonkin:Typhoon"
-  },
-  "theDragonkin:Conduit": {
-    "NAME": "Conduit",
-    "DESCRIPTION": "Enter thedragonkin:Conduit"
-  },
-  "theDragonkin:Zephyr": {
-    "NAME": "Zephyr",
-    "DESCRIPTION": "Enter thedragonkin:Zephyr"
-  },
-  "theDragonkin:BonusBlock": {
-    "NAME": "BonusBlock",
-    "DESCRIPTION": "Gain !B! Block",
-    "EXTENDED_DESCRIPTION" : ["Gain "," Block"]
-  },
-  "theDragonkin:ForetellTest": {
-    "NAME": "Fated Strike",
-    "DESCRIPTION": "thedragonkin:Foretell !M! NL Deal !D! Damage. NL If thedragonkin:Foretold also Scry !M2!",
-    "EXTENDED_DESCRIPTION" : ["thedragonkin:Foretold !M! NL Deal !D! Damage. NL Scry !M2!"]
   },
   "theDragonkin:AbstractExtraEffectModifier": {
     "NAME": "AbstractExtraEffectModifier",

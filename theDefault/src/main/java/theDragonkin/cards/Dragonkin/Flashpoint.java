@@ -17,6 +17,8 @@ import theDragonkin.DragonkinMod;
 import theDragonkin.actions.InfernoWardAction;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.SparkGlyph;
 import theDragonkin.powers.Dragonkin.HeatPower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
@@ -38,9 +40,10 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
 
     public Flashpoint() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 3;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        magicNumber = baseMagicNumber = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         StormRate = 3;
+        tags.add(CustomTags.Rune);
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
@@ -65,24 +68,28 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
                 }
             }
         }
-        addToBot(new InfernoWardAction(defaultSecondMagicNumber));
-        if (!Storm){
-            super.use(p,m);
-        }
+        super.use(p,m);
     }
-
+    public void triggerOnManualDiscard() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new SparkGlyph(magicNumber, defaultSecondMagicNumber));
+                isDone = true;
+            }
+        });
+    }
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(1);
-            upgradeMagicNumber(2);
             initializeDescription();
         }
     }
 
     @Override
     public void onStorm() {
-
+        triggerOnManualDiscard();
     }
 }

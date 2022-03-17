@@ -3,8 +3,10 @@ package theDragonkin.cards.Dragonkin;
 import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,6 +21,8 @@ import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.DeflectionGlyph;
 import theDragonkin.powers.Dragonkin.AuraFlame;
 import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.util.RuneTextEffect;
@@ -29,7 +33,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class BladeMirrorRune extends AbstractPrimalCard implements StormCard, TriggerOnCycleEffect {
+public class BladeMirrorRune extends AbstractPrimalCard implements StormCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -49,11 +53,11 @@ public class BladeMirrorRune extends AbstractPrimalCard implements StormCard, Tr
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final int BLOCK = 9;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
@@ -62,32 +66,16 @@ public class BladeMirrorRune extends AbstractPrimalCard implements StormCard, Tr
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Primal"),BaseMod.getKeywordDescription("thedragonkin:Primal")));
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
         return retVal;
     }
-    @Override
-    public List<String> getCardDescriptors() {
 
-        List<String> tags = new ArrayList<>();
-        tags.add(BaseMod.getKeywordTitle("thedragonkin:Rune"));
-        tags.addAll(super.getCardDescriptors());
-        return tags;
-    }
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-        if (AbstractDungeon.player.hasPower(FuryPower.POWER_ID)) {
-            if (AbstractDungeon.player.getPower(FuryPower.POWER_ID).amount >= StormRate) {
-                return true;
-            } else {
-                return false;
-            }
-        } else return false;
-    }
     public BladeMirrorRune() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 9;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
-        damage = baseDamage = 8;
+        magicNumber = baseMagicNumber = 5;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
+        block = baseBlock = 7;
         tags.add(CustomTags.Rune);
         StormRate = magicNumber;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
@@ -96,8 +84,13 @@ public class BladeMirrorRune extends AbstractPrimalCard implements StormCard, Tr
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
-        addToBot(new ApplyPowerAction(m,p,new StrengthPower(m,-defaultSecondMagicNumber)));
+        addToBot(new GainBlockAction(p,block));
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+            if (!mo.isDeadOrEscaped()){
+                addToBot(new ApplyPowerAction(mo,p,new WeakPower(mo,defaultSecondMagicNumber,false)));
+            }
+        }
+        super.use(p,m);
     }
 
     //Upgraded stats.
@@ -111,20 +104,18 @@ public class BladeMirrorRune extends AbstractPrimalCard implements StormCard, Tr
         }
     }
 
+    public void triggerOnManualDiscard() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new DeflectionGlyph(damage, magicNumber));
+                isDone = true;
+            }
+        });
+    }
+
     @Override
     public void onStorm() {
-
-    }
-    public void triggerOnManualDiscard() {
-        AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
-        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            if (!m.isDeadOrEscaped()){
-                addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
-            }
-        }
-    }
-    @Override
-    public void TriggerOnCycle(AbstractCard ca) {
+        triggerOnManualDiscard();
     }
 }

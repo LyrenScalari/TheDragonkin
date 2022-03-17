@@ -1,8 +1,11 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -10,9 +13,12 @@ import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theDragonkin.CardMods.StormEffect;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.CycleAction;
 import theDragonkin.actions.FluxAction;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.FlameGlyph;
 import theDragonkin.powers.Dragonkin.IncendiaryFlowPower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
@@ -44,7 +50,7 @@ public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
     private static final int COST = 1;
     private static final int BLOCK = 10;
     private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int MAGIC = 4;
+    private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 1;
 
     // /STAT DECLARATION/
@@ -63,14 +69,24 @@ public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new FluxAction(defaultSecondMagicNumber,()->new AbstractGameAction() {
-            @Override
-            public void update() { addToBot(new ApplyPowerAction(p,p,new StrengthPower(p,defaultSecondMagicNumber)));
-            isDone = true; }
+        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
+                new IncendiaryFlowPower(AbstractDungeon.player,AbstractDungeon.player,magicNumber),magicNumber));
+        addToBot(new SelectCardsInHandAction(defaultBaseSecondMagicNumber," Cycle",false,false,(card)->true,(List)-> {
+            for (AbstractCard c : List) {
+                addToBot(new CycleAction(c,1));
+            }
         }));
         super.use(p,m);
     }
-
+    public void triggerOnManualDiscard() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new FlameGlyph(magicNumber, defaultBaseSecondMagicNumber));
+                isDone = true;
+            }
+        });
+    }
     //Upgraded stats.
     @Override
     public void upgrade() {
@@ -83,7 +99,6 @@ public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
 
     @Override
     public void onStorm() {
-        addToTop(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                new IncendiaryFlowPower(AbstractDungeon.player,AbstractDungeon.player,magicNumber),magicNumber));
+        triggerOnManualDiscard();
     }
 }

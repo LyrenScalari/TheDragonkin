@@ -3,6 +3,7 @@ package theDragonkin.powers.Dragonkin;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -46,7 +47,10 @@ public class IncendiaryFlowPower extends AbstractPower implements TriggerOnCycle
     public void updateDescription() {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
-
+    @Override
+    public void atEndOfTurn(final boolean isPlayer){
+        addToBot(new RemoveSpecificPowerAction(owner,owner,this));
+    }
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
         addToBot(new GainBlockAction(owner,amount));

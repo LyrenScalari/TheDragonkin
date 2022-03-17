@@ -1,10 +1,9 @@
 package theDragonkin.cards.Dragonkin;
 
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.icons.FireIcon;
-import IconsAddon.util.DamageModifierManager;
+
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,7 +11,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.DamageModifiers.FireDamage;
+import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
 import theDragonkin.characters.TheDefault;

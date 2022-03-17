@@ -1,6 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -8,6 +9,8 @@ import theDragonkin.CardMods.StormEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.DestructionGlyph;
 import theDragonkin.powers.Dragonkin.HolyBombPower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
@@ -33,21 +36,15 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
 
     public Condemnation() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
-        block = baseBlock = POTENCY;
-        heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = 40;
-        StormRate = 5;
+        StormRate = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!Storm) {
-            addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 3, magicNumber)));
-        } else {
-            addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 1, magicNumber)));
-        }
+        addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 3, magicNumber)));
     }
 
     @Override
@@ -58,9 +55,17 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
             initializeDescription();
         }
     }
-
+    public void triggerOnManualDiscard() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new DestructionGlyph(magicNumber, defaultSecondMagicNumber));
+                isDone = true;
+            }
+        });
+    }
     @Override
     public void onStorm() {
-
+        triggerOnManualDiscard();
     }
 }

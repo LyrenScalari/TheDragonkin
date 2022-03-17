@@ -43,7 +43,7 @@
         },
         "theDragonkin:IncendiaryFlow": {
                 "NAME": "Incendiary Flow",
-                "DESCRIPTIONS": ["After you #yCycle a card gain #b"," Block."
+                "DESCRIPTIONS": ["After you discard a card this turn gain #b"," Block."
                 ]
         },
         "theDragonkin:HolyInfusion": {

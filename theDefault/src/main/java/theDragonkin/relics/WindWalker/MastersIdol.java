@@ -9,10 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Lightning;
 import theDragonkin.DragonkinMod;
-import theDragonkin.cards.WindWalker.StanceSelection.Conduit;
-import theDragonkin.cards.WindWalker.StanceSelection.Tempest;
-import theDragonkin.cards.WindWalker.StanceSelection.Whirlwind;
-import theDragonkin.cards.WindWalker.StanceSelection.Zephyr;
+import theDragonkin.Stances.Conduit;
 import theDragonkin.relics.Dragonkin.GarnetScale;
 import theDragonkin.util.TextureLoader;
 
@@ -42,9 +39,6 @@ public class MastersIdol extends CustomRelic {
     // Flash at the start of Battle
     public void atPreBattle(){
         this.flash();
-        stances.add(new Tempest());
-        stances.add(new Conduit());
-        stances.add(new Zephyr());
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         addToBot(new ChooseOneAction(stances));
     }

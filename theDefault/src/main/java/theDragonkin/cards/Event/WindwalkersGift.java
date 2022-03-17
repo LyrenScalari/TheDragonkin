@@ -86,7 +86,6 @@ public class WindwalkersGift extends AbstractDefaultCard implements StormCard, T
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new RuneTextEffect(p.drawX, p.drawY, cardStrings.EXTENDED_DESCRIPTION[1])));
         addToBot(new DrawCardAction(defaultSecondMagicNumber));
     }
 
@@ -99,7 +98,6 @@ public class WindwalkersGift extends AbstractDefaultCard implements StormCard, T
     public void TriggerOnCycle(AbstractCard ca) {
         AbstractPlayer p = AbstractDungeon.player;
         if (ca == this) {
-            addToBot(new VFXAction(new RuneTextEffect(p.drawX, p.drawY, cardStrings.EXTENDED_DESCRIPTION[1])));
             addToBot(new ApplyPowerAction(p,p,new MasteryPower(p,p,magicNumber)));
         }
     }

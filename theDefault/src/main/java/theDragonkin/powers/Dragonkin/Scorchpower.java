@@ -86,15 +86,6 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
                     new ReducePowerAction(this.owner, this.owner, this, 1));
         }
     }
-    // Note: If you want to apply an effect when a power is being applied you have 3 options:
-    //onInitialApplication is "When THIS power is first applied for the very first time only."
-    //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."
-    //onReceivePowerPower from StSlib is "When any (including this) power is applied to the owner."
-
-
-    // At the end of the turn, remove gained Dexterity
-
-    // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[2];

@@ -1,9 +1,10 @@
 package theDragonkin.DamageModifiers.BlockModifiers;
 
-import IconsAddon.blockModifiers.AbstractBlockModifier;
+
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.AbstractBlockModifier;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.helpers.CardHelper;

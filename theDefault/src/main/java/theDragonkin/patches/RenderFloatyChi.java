@@ -1,7 +1,6 @@
 package theDragonkin.patches;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.util.DamageModifierManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

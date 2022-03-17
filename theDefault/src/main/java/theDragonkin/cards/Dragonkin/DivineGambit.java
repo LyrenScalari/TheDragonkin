@@ -1,16 +1,16 @@
 package theDragonkin.cards.Dragonkin;
 
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.icons.FireIcon;
-import IconsAddon.util.DamageModifierHelper;
-import IconsAddon.util.DamageModifierManager;
+
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -18,9 +18,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
 import theDragonkin.DamageModifiers.FireDamage;
+import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.CycleAction;
 import theDragonkin.actions.FluxAction;
 import theDragonkin.actions.HolyFluxAction;
 import theDragonkin.characters.TheDefault;
@@ -60,7 +63,7 @@ public class DivineGambit extends AbstractPrimalCard {
     public DivineGambit(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
-        magicNumber = baseMagicNumber = 1;
+        magicNumber = baseMagicNumber = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
         DamageModifierManager.addModifier(this, new FireDamage(true,false));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
@@ -72,9 +75,13 @@ public class DivineGambit extends AbstractPrimalCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new StrengthPower(p,magicNumber)));
         addToBot(new DamageAction(p,new DamageInfo(p,defaultSecondMagicNumber, DamageInfo.DamageType.THORNS)));
-        addToBot(new FluxAction(fluxcount,()-> new DamageRandomEnemyAction(new DamageInfo(p,damage), AbstractGameAction.AttackEffect.LIGHTNING)));
+        addToBot(new SelectCardsInHandAction(magicNumber," Cycle",false,false,(card)->true,(List)-> {
+            for (AbstractCard c : List){
+                addToBot(new CycleAction(c,1));
+                addToBot(new DamageRandomEnemyAction(new DamageInfo(p,damage), AbstractGameAction.AttackEffect.LIGHTNING));
+            }
+        }));
         super.use(p,m);
     }
 
@@ -85,8 +92,7 @@ public class DivineGambit extends AbstractPrimalCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            fluxcount += 1;
-            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(1);
             initializeDescription();
         }
     }

@@ -1,10 +1,9 @@
 package theDragonkin.DamageModifiers;
 
-import IconsAddon.actions.GainCustomBlockAction;
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.util.BlockModifierManager;
+
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;

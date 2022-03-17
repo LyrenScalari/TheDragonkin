@@ -1,6 +1,7 @@
 package theDragonkin.orbs;
 
-import IconsAddon.actions.GainCustomBlockAction;
+
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

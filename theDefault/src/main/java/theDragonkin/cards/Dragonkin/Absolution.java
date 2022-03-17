@@ -1,12 +1,11 @@
 package theDragonkin.cards.Dragonkin;
 
-import IconsAddon.actions.GainCustomBlockAction;
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.icons.LightIcon;
-import IconsAddon.util.BlockModifierManager;
+
 import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,7 +15,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
+import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;

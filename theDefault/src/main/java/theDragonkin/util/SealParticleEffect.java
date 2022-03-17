@@ -17,9 +17,9 @@ public class SealParticleEffect extends AbstractGameEffect {
     private float vY;
     private float dur_div2;
     private TextureAtlas.AtlasRegion img;
-    private AbstractSeal Parent;
+    private AbstractNotOrb Parent;
 
-    public SealParticleEffect(float x, float y, AbstractSeal ParentSeal) {
+    public SealParticleEffect(float x, float y, AbstractNotOrb ParentSeal) {
         this.scale = Settings.scale;
         this.img = ImageMaster.EYE_ANIM_0;
         this.scale = MathUtils.random(1.0F, 1.5F);

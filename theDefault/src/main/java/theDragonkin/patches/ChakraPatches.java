@@ -1,11 +1,12 @@
 package theDragonkin.patches;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.icons.*;
-import IconsAddon.util.DamageModifierManager;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
@@ -70,7 +71,7 @@ public class ChakraPatches {
         ArrayList<AbstractDamageModifier> mods = new ArrayList<>();
         for (AbstractPower p : AbstractDungeon.player.powers) {
             if (p instanceof AbstractChakraPower) {
-                mods.add(((AbstractChakraPower) p).GetChakraType());
+                //mods.add(((AbstractChakraPower) p).GetChakraType());
             }
         }
 
@@ -78,12 +79,12 @@ public class ChakraPatches {
         float dy = 210f;
         TextureAtlas.AtlasRegion img = null;
         for (AbstractDamageModifier mod : mods) {
-            if (mod instanceof SpiritDamage){
+/*            if (mod instanceof SpiritDamage){
                 img = getAtlasRegion(DrainIcon.get());
             }
             if (mod instanceof LightningDamage){
                 img = getAtlasRegion(ElectricIcon.get());
-            }
+            }*/
             if (img != null) {
                 sb.draw(img, drawX + dx + img.offsetX - (float) img.originalWidth / 2.0F, drawY + dy + img.offsetY - (float) img.originalHeight / 2.0F,
                         (float) img.originalWidth / 2.0F - img.offsetX - dx, (float) img.originalHeight / 2.0F - img.offsetY - dy,
@@ -93,8 +94,8 @@ public class ChakraPatches {
             }
         }
     }
-    private static TextureAtlas.AtlasRegion getAtlasRegion(AbstractCustomIcon icon){
+    /*private static TextureAtlas.AtlasRegion getAtlasRegion(AbstractCustomIcon icon){
         return icon.getAtlasTexture();
-    }
+    }*/
 
 }

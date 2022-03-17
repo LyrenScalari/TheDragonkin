@@ -1,6 +1,7 @@
 package theDragonkin.powers.WindWalker;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
+
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;

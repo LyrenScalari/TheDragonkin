@@ -1,10 +1,9 @@
 package theDragonkin.cards.Dragonkin;
 
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.icons.LightIcon;
-import IconsAddon.util.BlockModifierManager;
-import IconsAddon.util.DamageModifierManager;
+
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -52,13 +51,13 @@ public class HolyWrath extends AbstractHolyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (BlockModifierManager.hasCustomBlockType(p) && BlockModifierManager.getTopBlockContainer(p).getBlockTypes().get(0) instanceof DivineBlock){
+        if (BlockModifierManager.hasCustomBlockType(p) && BlockModifierManager.getTopBlockInstance(p).getBlockTypes().get(0) instanceof DivineBlock){
             for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
-                addToBot(new SmiteAction(mo, new DamageInfo(p, BlockModifierManager.getTopBlockContainer(p).getBlockAmount()*2, damageTypeForTurn)));
+                addToBot(new SmiteAction(mo, new DamageInfo(p, BlockModifierManager.getTopBlockInstance(p).getBlockAmount()*2, damageTypeForTurn)));
             }
             if (!upgraded) {
-                BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockContainer(p),BlockModifierManager.getTopBlockContainer(p).getBlockAmount());
-            } else   BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockContainer(p),BlockModifierManager.getTopBlockContainer(p).getBlockAmount()/2);
+                BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockInstance(p),BlockModifierManager.getTopBlockInstance(p).getBlockAmount());
+            } else   BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockInstance(p),BlockModifierManager.getTopBlockInstance(p).getBlockAmount()/2);
         }
         super.use(p,m);
     }

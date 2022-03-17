@@ -5,9 +5,7 @@ import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,6 +18,8 @@ import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.DragonfireRune;
 import theDragonkin.powers.Dragonkin.AuraFlame;
 import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.powers.Dragonkin.ReflectiveScales;
@@ -31,7 +31,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class SpiritFireRune extends AbstractPrimalCard implements StormCard, TriggerOnCycleEffect {
+public class SpiritFireRune extends AbstractPrimalCard implements StormCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -55,7 +55,7 @@ public class SpiritFireRune extends AbstractPrimalCard implements StormCard, Tri
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 0;
+    private static final int COST = 2;
     private static final int BLOCK = 9;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
@@ -64,32 +64,16 @@ public class SpiritFireRune extends AbstractPrimalCard implements StormCard, Tri
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Primal"),BaseMod.getKeywordDescription("thedragonkin:Primal")));
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
         return retVal;
     }
-    @Override
-    public List<String> getCardDescriptors() {
 
-        List<String> tags = new ArrayList<>();
-        tags.add(BaseMod.getKeywordTitle("thedragonkin:Rune"));
-        tags.addAll(super.getCardDescriptors());
-        return tags;
-    }
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-        if (AbstractDungeon.player.hasPower(FuryPower.POWER_ID)) {
-            if (AbstractDungeon.player.getPower(FuryPower.POWER_ID).amount >= StormRate) {
-                return true;
-            } else {
-                return false;
-            }
-        } else return false;
-    }
     public SpiritFireRune() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 6;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 10;
-        damage = baseDamage = 8;
+        magicNumber = baseMagicNumber = 3;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
+        damage = baseDamage = 6;
         tags.add(CustomTags.Rune);
         StormRate = magicNumber;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
@@ -98,7 +82,8 @@ public class SpiritFireRune extends AbstractPrimalCard implements StormCard, Tri
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
+        AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(AbstractDungeon.player,damage, DamageInfo.DamageType.NORMAL)));
         addToBot(new ApplyPowerAction(p,p,new AuraFlame(p,p,defaultSecondMagicNumber)));
     }
 
@@ -107,7 +92,6 @@ public class SpiritFireRune extends AbstractPrimalCard implements StormCard, Tri
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(2);
             upgradeDamage(2);
             initializeDescription();
         }
@@ -115,14 +99,15 @@ public class SpiritFireRune extends AbstractPrimalCard implements StormCard, Tri
 
     @Override
     public void onStorm() {
-
+        triggerOnManualDiscard();
     }
     public void triggerOnManualDiscard() {
-        AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
-        addToBot(new DamageRandomEnemyAction(new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-    }
-    @Override
-    public void TriggerOnCycle(AbstractCard ca) {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new DragonfireRune(damage, magicNumber));
+                isDone = true;
+            }
+        });
     }
 }

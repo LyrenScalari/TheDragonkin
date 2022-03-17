@@ -1,8 +1,9 @@
 package theDragonkin.DamageModifiers;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
+
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;

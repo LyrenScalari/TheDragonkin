@@ -1,26 +1,29 @@
 package theDragonkin.cards.Dragonkin;
 
-import IconsAddon.actions.GainCustomBlockAction;
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.icons.FireIcon;
-import IconsAddon.icons.HolyIcon;
-import IconsAddon.icons.LightIcon;
-import IconsAddon.util.BlockModifierManager;
+
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
 import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DamageModifiers.BlockModifiers.FireBlock;
+import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.CycleAction;
 import theDragonkin.actions.FluxAction;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.actions.HolyFluxAction;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.WrathSeal;
 import theDragonkin.powers.Dragonkin.AuraFlame;
 import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.powers.Dragonkin.SacrificePower;
@@ -54,7 +57,7 @@ public class InnerFire extends AbstractHolyCard {
     private static final int COST = 1;
     private static final int BLOCK = 12;
     private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 1;
 
 
@@ -64,19 +67,23 @@ public class InnerFire extends AbstractHolyCard {
     public InnerFire() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         block = baseBlock = BLOCK;
-        BlockModifierManager.addModifier(this,new FireBlock(true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, FireIcon.get()));
-        tags.add(CustomTags.Radiant);
     }
 
     // Actions the card should do.
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(p,new DamageInfo(p,magicNumber, DamageInfo.DamageType.THORNS)));
-        addToBot(new GainCustomBlockAction(this,p,block));
-        addToBot(new HolyFluxAction(2,()-> new ApplyPowerAction(p,p,new SacrificePower(p,p,magicNumber))));
+        addToBot(new SelectCardsInHandAction(magicNumber," Cycle",false,false,(card)->true,(List)-> {
+            addToBot(new DamageAction(p,new DamageInfo(p,2, DamageInfo.DamageType.THORNS)));
+            for (AbstractCard c : List){
+                addToBot(new CycleAction(c,1));
+                if (c instanceof AbstractHolyCard){
+                    addToBot(new ApplyPowerAction(p,p,new SacrificePower(p,p,defaultSecondMagicNumber)));
+                }
+            }
+        }));
         super.use(p,m);
     }
 
@@ -85,7 +92,7 @@ public class InnerFire extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(3);
+            upgradeDefaultSecondMagicNumber(1);
             upgradeMagicNumber(1);
             initializeDescription();
         }

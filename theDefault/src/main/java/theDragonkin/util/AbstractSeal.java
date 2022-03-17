@@ -19,37 +19,7 @@ import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 
 import java.util.ArrayList;
 
-public abstract class AbstractSeal implements ReciveDamageEffect {
-    public String name;
-    public String description;
-    public String ID;
-    public OrbStrings Sealstrings;
-    protected ArrayList<PowerTip> tips = new ArrayList();
-    public int BreakAmount = 0;
-    public int PainAmount = 0;
-    protected int baseBreakAmount = 0;
-    protected int basePainAmount = 0;
-    public float cX = 0.0F;
-    public float cY = 0.0F;
-    public float tX;
-    public float tY;
-    protected Color c;
-    protected Color shineColor;
-    protected static final int W = 96;
-    private static  float dy2 = 200;
-    public static float angleSpeed = 0.00f;
-    private static float angle;
-    public Hitbox hb;
-    protected TextureAtlas.AtlasRegion img;
-    protected BobEffect bobEffect;
-    protected static final float NUM_X_OFFSET;
-    protected static final float NUM_Y_OFFSET;
-    protected float scale;
-    protected float fontScale;
-    protected boolean showEvokeValue;
-    protected static final float CHANNEL_IN_TIME = 0.5F;
-    protected float channelAnimTimer;
-    protected Boolean AnimTimer = false;
+public abstract class AbstractSeal extends AbstractNotOrb implements ReciveDamageEffect {
     public AbstractSeal() {
         this.c = Settings.CREAM_COLOR.cpy();
         this.shineColor = new Color(1.0F, 1.0F, 1.0F, 0.0F);
@@ -65,21 +35,11 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.PainAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale,new Color(0.5F, 0.0F, 3.0F, this.c.a), this.fontScale);
 
     }
-    public void onStartOfTurn() {
-
-    }
-
-    public void onEndOfTurn() {
-        if (!DragonkinMod.damagetaken){
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,new DamageInfo(AbstractDungeon.player,2, DamageInfo.DamageType.HP_LOSS)));
-        }
-    }
     @Override
     public void onReciveDamage(int damage) {
         if (!AbstractDungeon.actionManager.turnHasEnded || !DragonkinMod.damagetaken){
             PainAmount -= damage;
         }
-
         if (PainAmount <= 0){
             Break();
         }
@@ -109,24 +69,29 @@ public abstract class AbstractSeal implements ReciveDamageEffect {
             AnimTimer = true;
         }
     }
+    public void onEndOfTurn() {
+        if (!DragonkinMod.damagetaken){
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,new DamageInfo(AbstractDungeon.player,2, DamageInfo.DamageType.HP_LOSS)));
+            for (AbstractNotOrb notOrb : DragonkinMod.Seals){
+                if (notOrb instanceof AbstractSeal){
+                    PainAmount -= 2;
+                }
+            }
+        }
+    }
     public void updateDescription() {
 
     }
     public void update() {
         this.hb.update();
-        this.updateDescription();
         angle = (360f/DragonkinMod.Seals.size()) * DragonkinMod.Seals.indexOf(this);
-        cX = (AbstractDungeon.player.hb.cX-100f) + (float)(dy2*Math.cos((Math.toRadians(angle))));
+        cX = (AbstractDungeon.player.hb.cX-50f) + (float)(dy2*Math.cos((Math.toRadians(angle))));
         cY = (AbstractDungeon.player.hb.cY+50f) + (float)(dy2*Math.sin(Math.toRadians(angle)));
         hb.move(cX, cY); //I think this is correct, but might not be. Might need some offset calculations
         if (this.hb.hovered) {
             TipHelper.renderGenericTip(this.cX + 96.0F * Settings.scale, this.cY + 64.0F * Settings.scale, this.name, this.description);
         }
         this.fontScale = MathHelper.scaleLerpSnap(this.fontScale, 0.7F);
-    }
-    static {
-        NUM_X_OFFSET = 20.0F * Settings.scale;
-        NUM_Y_OFFSET = -12.0F * Settings.scale;
     }
 
 }

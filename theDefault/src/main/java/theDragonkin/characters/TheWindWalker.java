@@ -21,15 +21,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDragonkin.DragonkinMod;
-import theDragonkin.cards.Dragonkin.BlazingBreath;
-import theDragonkin.cards.Dragonkin.Defend;
 import theDragonkin.cards.Dragonkin.HolySmite;
-import theDragonkin.cards.Dragonkin.Strike;
-import theDragonkin.cards.WindWalker.ChiWave;
-import theDragonkin.cards.WindWalker.SunriseStrike;
-import theDragonkin.cards.WindWalker.WindWalkerDefend;
-import theDragonkin.cards.WindWalker.WindwalkerStrike;
-import theDragonkin.relics.Dragonkin.GarnetScale;
 import theDragonkin.relics.WindWalker.SerpentIdol;
 import theDragonkin.ui.EnergyOrbDragonkin;
 
@@ -142,17 +134,6 @@ public class TheWindWalker extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         logger.info("Begin loading starter Deck Strings");
-
-        retVal.add(WindwalkerStrike.ID);
-        retVal.add(WindwalkerStrike.ID);
-        retVal.add(WindwalkerStrike.ID);
-        retVal.add(WindwalkerStrike.ID);
-        retVal.add(WindWalkerDefend.ID);
-        retVal.add(WindWalkerDefend.ID);
-        retVal.add(WindWalkerDefend.ID);
-        retVal.add(WindWalkerDefend.ID);
-        retVal.add(SunriseStrike.ID);
-        retVal.add(ChiWave.ID);
         return retVal;
     }
 

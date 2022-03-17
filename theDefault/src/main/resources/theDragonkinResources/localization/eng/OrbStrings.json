@@ -37,7 +37,7 @@
     "NAME": "Fortitude",
     "DESCRIPTION": [
       "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Gain #b", " [LightIcon] #yBlock"
+      " damage during your turn", " NL #yBreak : Gain #b", " [theDragonkin:LightIcon] #yBlock"
     ]
   },
   "theDragonkin:Lightspeed": {
@@ -66,6 +66,76 @@
     "DESCRIPTION": [
       "#yBreaks after taking #b",
       " damage during your turn", " NL #yBreak : Increase #yPenance damage by #b", " this combat"
+    ]
+  },
+  "theDragonkin:Vengeance": {
+    "NAME": "Vengeance",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn gain #b", " #yBlock and #b3 #yDeflecting #yScales","Nah"
+    ]
+  },
+  "theDragonkin:Blaze": {
+    "NAME": "Blaze",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and apply #b2 #yScorch to a random enemy","Yol"
+    ]
+  },
+  "theDragonkin:Dragonfire": {
+    "NAME": "Dragonfire",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and gain #b6 #yAuraflame","Toor"
+    ]
+  },
+  "theDragonkin:Shatter": {
+    "NAME": "Shatter",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and apply #b2 #yVulnerable to a random enemy","Kren"
+    ]
+  },
+  "theDragonkin:Flame": {
+    "NAME": "Flame",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL After you discard a card gain #b", " #yBlock. NL at the start of your turn #yCycle #b2 cards.","Yolos"
+    ]
+  },
+  "theDragonkin:Deflection": {
+    "NAME": "Deflection",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn gain #b", " #yBlock and apply #b1 #yWeak to all enemies.","Vo"
+    ]
+  },
+  "theDragonkin:Bloodthirst": {
+    "NAME": "Bloodthirst",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn deal #b", " damage to a random enemy 3 times.","Bahlok"
+    ]
+  },
+  "theDragonkin:Ward": {
+    "NAME": "Ward",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn gain #b", " [theDragonkin:FireIcon] #yBlock and shuffle a #yBurn into your draw pile.","Spaan"
+    ]
+  },
+  "theDragonkin:Spark": {
+    "NAME": "Spark",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn draw #b", " #yStatus or [#990702]Rune[] cards.","Kun"
+    ]
+  },
+  "theDragonkin:Destruction": {
+    "NAME": "Destruction",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL In #b", " turns deal #b", " damage to all enemies","Kun"
     ]
   },
   "theDragonkin:Rain": {
@@ -102,6 +172,13 @@
       " [IceIcon] damage to a random enemy.",
       " NL #yEvoke: Apply #b",
       " #yWeak to ALL enemies."
+    ]
+  },
+  "theDragonkin:StormMark": {
+    "NAME": "Mark of Storm",
+    "DESCRIPTION": [
+      "#yCharges #b",
+      " NL at the end of your turn deal #b", " damage", " to a random enemy to a random enemy twice"," To this enemy and lose #b1 #yCharge"
     ]
   }
 }

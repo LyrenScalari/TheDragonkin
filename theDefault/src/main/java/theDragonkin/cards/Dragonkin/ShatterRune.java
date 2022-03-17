@@ -21,6 +21,8 @@ import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.ShatterGlyph;
 import theDragonkin.powers.Dragonkin.AuraFlame;
 import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.util.RuneTextEffect;
@@ -31,7 +33,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class ShatterRune extends AbstractPrimalCard implements StormCard, TriggerOnCycleEffect {
+public class ShatterRune extends AbstractPrimalCard implements StormCard{
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -55,7 +57,7 @@ public class ShatterRune extends AbstractPrimalCard implements StormCard, Trigge
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 0;
+    private static final int COST = 2;
     private static final int BLOCK = 9;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
@@ -75,20 +77,10 @@ public class ShatterRune extends AbstractPrimalCard implements StormCard, Trigge
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-        if (AbstractDungeon.player.hasPower(FuryPower.POWER_ID)) {
-            if (AbstractDungeon.player.getPower(FuryPower.POWER_ID).amount >= StormRate) {
-                return true;
-            } else {
-                return false;
-            }
-        } else return false;
-    }
     public ShatterRune() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 12;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
+        magicNumber = baseMagicNumber = 1;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         damage = baseDamage = 18;
         tags.add(CustomTags.Rune);
         StormRate = magicNumber;
@@ -98,8 +90,9 @@ public class ShatterRune extends AbstractPrimalCard implements StormCard, Trigge
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
         addToBot(new DamageAction(m,new DamageInfo(p,damage)));
+        addToBot(new ApplyPowerAction(m,p,new VulnerablePower(m,defaultSecondMagicNumber,false)));
+        super.use(p,m);
     }
 
     //Upgraded stats.
@@ -107,23 +100,24 @@ public class ShatterRune extends AbstractPrimalCard implements StormCard, Trigge
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(2);
+            upgradeDefaultSecondMagicNumber(1);
             upgradeDamage(2);
             initializeDescription();
         }
     }
 
+    public void triggerOnManualDiscard() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new ShatterGlyph(damage, magicNumber));
+                isDone = true;
+            }
+        });
+    }
+
     @Override
     public void onStorm() {
-
-    }
-    public void triggerOnManualDiscard() {
-        AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
-        AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
-        addToBot(new ApplyPowerAction(m,p,new VulnerablePower(m,defaultSecondMagicNumber,false)));
-    }
-    @Override
-    public void TriggerOnCycle(AbstractCard ca) {
+        triggerOnManualDiscard();
     }
 }

@@ -7,28 +7,19 @@
     "DESCRIPTION": "Scorched creatures take damage equal to their scorch and lose #b1 scorch when #yAttacked"
   },
   {
-    "PROPER_NAME": "Holy Power",
-    "NAMES": [
-      "Holy Power",
-      "Holy_Power",
-      "holy_power"
-    ],
-    "DESCRIPTION": "Increases damage and block gain of [#94bdff]Holy[] cards."
-  },
-  {
     "PROPER_NAME": "Sacrifice",
     "NAMES": [
       "Sacrifice",
       "sacrifice"
     ],
-    "DESCRIPTION": "When you obtain #b10 Sacrifice, spent it and gain #b1 #yHoly #yPower."
+    "DESCRIPTION": "When you obtain #b10 Sacrifice, increase the damage and Block of your [#94bdff]Holy[] cards by 1"
   },
   {
     "NAMES": [
       "holy",
       "Holy"
     ],
-    "DESCRIPTION": "When played, gain #ySacrifice equal to energy spent. Obtaining #b10 #ySacrifice gains #b1 #yHoly #yPower, which increases damage and block gain of [#94bdff]Holy[] cards.",
+    "DESCRIPTION": "When played, gain #ySacrifice equal to energy spent. Obtaining #b10 #ySacrifice increases damage and block gain of [#94bdff]Holy[] cards for the rest of combat.",
     "COLOR": "[#94bdff]"
   },
   {
@@ -66,13 +57,6 @@
   },
   {
     "NAMES": [
-      "fury",
-      "Fury"
-    ],
-    "DESCRIPTION": "Gained by playing [#fe513a]Primal[] Cards. NL Can be used instead of energy to play #yStorm cards."
-  },
-  {
-    "NAMES": [
       "storm",
       "Storm"
     ],
@@ -100,22 +84,6 @@
     "DESCRIPTION": "#ySnekproof cards cannot have their costs modified by anything other then itself."
   },
   {
-    "PROPER_NAME": "Divine Armor",
-    "NAMES": [
-      "Divine Armor",
-      "Divine_Armor",
-      "divine_armor"
-    ],
-    "DESCRIPTION": "Until lost, prevents damage before block."
-  },
-  {
-    "NAMES": [
-      "flux",
-      "Flux"
-    ],
-    "DESCRIPTION": "Discard to up X #yStatus or [#990702]Rune[] cards in your hand, drawing a card to replace and activating the listed effect for each one."
-  },
-  {
     "NAMES": [
       "cycle",
       "Cycle",
@@ -129,7 +97,7 @@
       "Rune",
       "rune"
     ],
-    "DESCRIPTION": "[#990702]Rune[] cards are [#fe513a]Primal[] cards that are #yUnplayable without #yStorm and have effects when Discarded"
+    "DESCRIPTION": "This card may be played using #yFury X instead of [E] . NL When Discarded or played with #yFury create a Glyph with this cards effect that lasts X turns."
   },
   {
     "NAMES": [
@@ -138,7 +106,7 @@
       "blessings",
       "Blessings"
     ],
-    "DESCRIPTION": "[#548dff]Blessings[] create a #ySeal that breaks after taking X damage. NL The following effect occurs when the Seal Breaks. NL If you took no damage during your turn you will lose #b2 HP."
+    "DESCRIPTION": "[#548dff]Blessings[] create a #ySeal that breaks after taking X damage during your turn, activating its Blessing effect. NL If you took no damage during your turn you will lose #b2 HP."
   },
   {
     "NAMES": [
@@ -148,11 +116,20 @@
     "DESCRIPTION": "Can be exhausted when played from hand instead of the listed effect and *Refund any [E] spent this way. NL If this effect Exhausted this card it may be played from the Exhaust pile to gain #yTemporal #yFlux instead."
   },
   {
+    "PROPER_NAME": "Storm Mark",
     "NAMES": [
-      "foretold",
-      "Foretold"
+      "Storm Mark",
+      "Storm_Mark",
+      "storm_mark"
     ],
-    "DESCRIPTION": "This card is in your exhaust pile, and may be played to gain X #yTemporal #yFlux instead of spending [E]"
+    "DESCRIPTION": "#yDragon #yMark : damages random enemies while on the player, damages it's owner and loses #yCharges otherwise."
+  },
+  {
+    "NAMES": [
+      "Rune",
+      "rune"
+    ],
+    "DESCRIPTION": "This card may be played using #yFury X instead of [E] . NL When Discarded or played with #yFury create a Glyph with this cards effect that lasts X turns."
   },
   {
     "PROPER_NAME": "Temporal Flux",
@@ -334,7 +311,7 @@
     "DESCRIPTION": "#yBlock : Applies #yStatic to the attacker when broken"
   },
   {
-    "PROPER_NAME": "Fire [FireIcon]",
+    "PROPER_NAME": "Fire [theDragonkin:FireIcon]",
     "NAMES": [
       "Fire",
       "fire"
@@ -350,7 +327,7 @@
     "DESCRIPTION": "#yBlock : When damaged applies #yScorch to the Attacker."
   },
   {
-    "PROPER_NAME": "Divine [LightIcon]",
+    "PROPER_NAME": "Divine [theDragonkin:LightIcon]",
     "NAMES": [
       "Divine",
       "divine"

@@ -21,6 +21,8 @@ import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.BloodthirstGlyph;
 import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.util.RuneTextEffect;
 import theDragonkin.util.TriggerOnCycleEffect;
@@ -30,7 +32,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class WarHungerRune extends AbstractPrimalCard implements StormCard, TriggerOnCycleEffect {
+public class WarHungerRune extends AbstractPrimalCard implements StormCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -54,7 +56,7 @@ public class WarHungerRune extends AbstractPrimalCard implements StormCard, Trig
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 0;
+    private static final int COST = 2;
     private static final int BLOCK = 9;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
@@ -74,33 +76,23 @@ public class WarHungerRune extends AbstractPrimalCard implements StormCard, Trig
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-        if (AbstractDungeon.player.hasPower(FuryPower.POWER_ID)) {
-            if (AbstractDungeon.player.getPower(FuryPower.POWER_ID).amount >= StormRate) {
-                return true;
-            } else {
-                return false;
-            }
-        } else return false;
-    }
+
     public WarHungerRune() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 10;
+        magicNumber = baseMagicNumber = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
-        damage = baseDamage = 8;
+        damage = baseDamage = 6;
         tags.add(CustomTags.Rune);
-        StormRate = magicNumber;
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new RuneTextEffect(p.drawX,p.drawY,cardStrings.EXTENDED_DESCRIPTION[1])));
         for (int i = 0; i < defaultSecondMagicNumber; ++i) {
             addToBot(new DamageRandomEnemyAction(new DamageInfo(p,damage), AbstractGameAction.AttackEffect.SMASH));
         }
+        super.use(p,m);
     }
 
     //Upgraded stats.
@@ -108,22 +100,22 @@ public class WarHungerRune extends AbstractPrimalCard implements StormCard, Trig
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(2);
             upgradeDamage(2);
             initializeDescription();
         }
     }
+    public void triggerOnManualDiscard() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new BloodthirstGlyph(damage, magicNumber));
+                isDone = true;
+            }
+        });
+    }
 
     @Override
     public void onStorm() {
-
-    }
-    public void triggerOnManualDiscard() {
-        AbstractPlayer p = AbstractDungeon.player;
-        defaultSecondMagicNumber += 1;
-    }
-    @Override
-    public void TriggerOnCycle(AbstractCard ca) {
-
+        triggerOnManualDiscard();
     }
 }

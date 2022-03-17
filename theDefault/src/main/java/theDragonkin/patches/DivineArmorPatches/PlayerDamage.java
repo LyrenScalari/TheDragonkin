@@ -17,6 +17,8 @@ import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageinHandCard;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveModifyDamageEffect;
+import theDragonkin.util.AbstractDragonMark;
+import theDragonkin.util.AbstractNotOrb;
 import theDragonkin.util.AbstractSeal;
 
 import java.util.ArrayList;
@@ -74,40 +76,10 @@ public class PlayerDamage {
                     ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
                 }
             }
-            for (AbstractSeal c : DragonkinMod.Seals) {
-                if (c != null) {
+            for (AbstractNotOrb c : DragonkinMod.Seals) {
+                if (c instanceof AbstractSeal) {
                     ((ReciveDamageEffect) c).onReciveDamage(damageAmount[0]);
                 }
-            }
-            hadDivineArmor = false;
-            if (damageAmount[0] > 0) {
-                int DivineArmorInital = (Integer) DivineArmorField.DivineArmor.get(__instance);
-                int DivineArmor = (Integer) DivineArmorField.DivineArmor.get(__instance);
-                if (DivineArmor > 0) {
-
-                    hadDivineArmor = true;
-                    for (int i = 0; i < 18; ++i) {
-                        AbstractDungeon.effectsQueue.add(new DamageImpactLineEffect(__instance.hb.cX, __instance.hb.cY));
-                    }
-
-                    CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
-                    if (DivineArmor >= damageAmount[0]) {
-                        DivineArmor -= damageAmount[0];
-                        AbstractDungeon.effectsQueue.add(new TempDamageNumberEffect(__instance, __instance.hb.cX, __instance.hb.cY, damageAmount[0]));
-                        damageAmount[0] = 0;
-                    } else {
-                        damageAmount[0] -= DivineArmor;
-                        AbstractDungeon.effectsQueue.add(new TempDamageNumberEffect(__instance, __instance.hb.cX, __instance.hb.cY, DivineArmor));
-                        DivineArmor = 0;
-                    }
-                    if (__instance instanceof AbstractPlayer && (DivineArmor < DivineArmorInital)) {
-                        System.out.println(DragonkinMod.WasDivineLost);
-                        DragonkinMod.WasDivineLost = true;
-                    }
-
-                    DivineArmorField.DivineArmor.set(__instance, DivineArmor);
-                }
-
             }
         }
     }
