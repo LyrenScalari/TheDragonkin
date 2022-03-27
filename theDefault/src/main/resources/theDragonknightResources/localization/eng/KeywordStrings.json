@@ -1,0 +1,88 @@
+[
+  {
+    "NAMES": [
+      "burn",
+      "burned",
+      "Burn",
+      "Burned"
+    ],
+    "DESCRIPTION": "Burned creatures increase the damage of the players next attack when damaged and #yBurn is removed."
+  },
+  {
+    "NAMES": [
+      "draconic",
+      "Draconic"
+    ],
+    "DESCRIPTION": "#yDraconic cards have their damage and #yBlock values increased by #yDragonscales. NL #yDraconic Sigils have their values increased by #yDragonscales"
+  },
+  {
+    "PROPER_NAME": "Scarlet Rot",
+    "NAMES": [
+      "rot",
+      "Rot"
+    ],
+    "DESCRIPTION": "#yScarlet #yRot increases damage from taken from #yPoison #b%50. NL Additional #yPoison damage dealt is spread to all other enemies."
+  },
+  {
+    "PROPER_NAME": "Frostbite",
+    "NAMES": [
+      "frostbite",
+      "Frostbite"
+    ],
+    "DESCRIPTION": "When a creature obtains #b15 #yFrostbite they take #b35 damage and gain #b2 #yWeak and #yVulnerable"
+  },
+  {
+    "NAMES": [
+      "surge",
+      "Surge"
+    ],
+    "DESCRIPTION": "Places a #yDragonic Sigil on this cards target, if a type is specified it will be created otherwise your least recent Sigil will be moved."
+  },
+  {
+    "NAMES": [
+      "scale",
+      "Scale"
+    ],
+    "DESCRIPTION": "Places a #yDraconic Sigil on the player, if a type is specified that type will be created otherwise the Sigil will be moved from this cards target."
+  },
+  {
+    "PROPER_NAME": "Mark of Flame",
+    "NAMES": [
+      "flame",
+      "Flame"
+    ],
+    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Grants #yVigor. NL #ySurge #yPassive : Damages it's owner."
+  },
+  {
+    "PROPER_NAME": "Mark of Mana",
+    "NAMES": [
+      "magic",
+      "Magic"
+    ],
+    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Damages the enemy you last targeted directly. NL #ySurge #yPassive : Mark of Mana #yScales damage this marks owner."
+  },
+  {
+    "PROPER_NAME": "Mark of Frost",
+    "NAMES": [
+      "frost",
+      "Frost"
+    ],
+    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Grants #yBlock. NL #ySurge #yPassive : Applies Frostbite to it's owner."
+  },
+  {
+    "PROPER_NAME": "Mark of Plague",
+    "NAMES": [
+      "plague",
+      "Plague"
+    ],
+    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Applies #yPoison to random enemies. NL #ySurge #yPassive : Applies #yRot to it's owner."
+  },
+  {
+    "PROPER_NAME": "Mark of Magma",
+    "NAMES": [
+      "magma",
+      "Magma"
+    ],
+    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Damages random enemies and increases #ySurge power. NL #ySurge #yPassive : Damages all enemies and grants #yBlock"
+  }
+]

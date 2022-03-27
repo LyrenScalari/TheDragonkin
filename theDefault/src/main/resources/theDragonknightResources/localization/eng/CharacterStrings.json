@@ -1,0 +1,29 @@
+{
+  "theDragonknight:DefaultCharacter": {
+    "NAMES": [
+      "The Justicar",
+      "the Justicar"
+    ],
+    "TEXT": [
+      "A Warrior of Fire and Faith, From lands long lost. Determined to vanquish the Spire's Evil.",
+      "NL You Raise your weapon, and ready your voice.",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~Obsidian~ ~Scion,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+    ,
+      "#r~BETRAYAL,~ NL NL You gaze over the crowd of kobolds that called this mountain city home, the Grand Inquisitor is addressing the crowd. you can do nothing but wait in ~silence.~ The Onyx dragon's voice @pierces@ the still air over the ~captured~ ~city~ ~\"Burn~ ~the~ ~Heretic~ ~city~ ~to~ ~the~ ~ground,~ ~Let~ ~None~ ~Survive!\"~ instantly all the divine warriors you fought alongside begin to set the city ablaze. NL You jump into action, against the Grant Inquisitor's command, ~\"The~ ~People~ ~here~ ~have~ ~done~ ~nothing~ ~deserving~ ~of~ ~Death!\"~ your own voice booms, as you take up arms against your former allies. NL You saved many innocent lives that day, after the battle and the surrender of your former allies, a #y@Divine@ #y@Spark@ appeared in the distant mountains to the south a new path.",
+      "I am #rTongue #rTied"
+    ]
+  },
+  "theDragonknight:TheDragonknight": {
+    "NAMES": [
+      "The Dragonknight",
+      "the Dragonknight"
+    ],
+    "TEXT": [
+      "A Cleric of Bloody Flame, great powers bore of the profane energies of Dragonblood at the cost of their Humanity.",
+      "NL You Raise your weapon, and steady your heart.",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ #p~Dragonhearted,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+    ,
+      "#r~,~"
+    ]
+  }
+}

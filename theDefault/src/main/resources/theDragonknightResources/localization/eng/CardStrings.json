@@ -1,0 +1,16 @@
+{
+  "theDragonknight:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "theDragonknight:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+
+  "theDragonknight:AbstractExtraEffectModifier": {
+    "NAME": "AbstractExtraEffectModifier",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION" : ["",""]
+  }
+}

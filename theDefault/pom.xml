@@ -3,11 +3,11 @@
 
     <!--Hello! You'll basically should only need to change these names and the steam path (just below)-->
     <!--The author name(s) as they appear in MTS and any other comments are in your ModTheSpire.json-->
-    <groupId>dragonkinmod</groupId>
-    <artifactId>DragonkinMod</artifactId>
-    <name>The Dragonkin</name>
-    <version>2.0.1</version>
-    <description>A Warrior of Fire and Faith. Determined the slay the Evils of the Spire.</description>
+    <groupId>dragonknightmod</groupId>
+    <artifactId>DragonknightMod</artifactId>
+    <name>The Dragonknight</name>
+    <version>0.0.0</version>
+    <description>A Cleric of Bloody Flame, great powers bore of the profane energies of Dragonblood at the cost of their Humanity.</description>
 
     <properties>
         <steamFolder>C:/Program Files (x86)/Steam/</steamFolder>
@@ -47,13 +47,6 @@
             <version>1.17.2</version>
             <scope>system</scope>
             <systemPath>${workshopFolder}1609158507/StSLib.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>actlikeit</groupId>
-            <artifactId>actlikeit</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${workshopFolder}1934902042/actlikeit.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.github.tommyettinger</groupId>
