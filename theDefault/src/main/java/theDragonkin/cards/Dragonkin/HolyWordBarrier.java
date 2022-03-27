@@ -1,8 +1,16 @@
 package theDragonkin.cards.Dragonkin;
 
+
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
+import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
@@ -14,7 +22,7 @@ public class HolyWordBarrier extends AbstractHolyCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Defend Gain 5 (8) block.
+     * WindWalkerDefend Gain 5 (8) block.
      */
 
 
@@ -31,7 +39,7 @@ public class HolyWordBarrier extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int BLOCK = 4;
@@ -45,8 +53,9 @@ public class HolyWordBarrier extends AbstractHolyCard {
 
     public HolyWordBarrier() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = MAGIC;
+        block = baseBlock = MAGIC;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
         tags.add(CustomTags.Radiant);
         RadiantExchange = 1;
     }
@@ -55,7 +64,8 @@ public class HolyWordBarrier extends AbstractHolyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainDivineArmorAction(p,p,magicNumber));
+        addToBot(new GainCustomBlockAction(this, AbstractDungeon.player,block));
+        super.use(p,m);
     }
 
     //Upgraded stats.

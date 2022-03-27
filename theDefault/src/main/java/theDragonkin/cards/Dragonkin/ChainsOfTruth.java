@@ -1,5 +1,8 @@
 package theDragonkin.cards.Dragonkin;
 
+
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -8,7 +11,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.DivineDamage;
+import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
@@ -25,7 +31,7 @@ public class ChainsOfTruth extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
@@ -42,6 +48,8 @@ public class ChainsOfTruth extends AbstractHolyCard {
         baseMagicNumber = magicNumber = MAGIC;
         this.isMultiDamage = true;
         tags.add(CustomTags.Radiant);
+        DamageModifierManager.addModifier(this, new DivineDamage(true,false));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
         RadiantExchange = 5;
     }
 
@@ -51,8 +59,8 @@ public class ChainsOfTruth extends AbstractHolyCard {
 
             for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
                 addToBot(new ApplyPowerAction(mo,p, new VulnerablePower(mo,baseMagicNumber,false)));
-                addToBot(new ApplyPowerAction(mo,p,new PenancePower(mo,p,magicNumber)));
             }
+        super.use(p,m);
     }
 
 

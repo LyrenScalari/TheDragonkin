@@ -10,12 +10,12 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
-import theDragonkin.actions.CustomDiscoveryAction;
+
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
-import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
+import static theDragonkin.characters.TheDefault.Enums.Justicar_Red_COLOR;
 
 public class AncestralSeance extends AbstractPrimalCard {
 
@@ -25,7 +25,7 @@ public class AncestralSeance extends AbstractPrimalCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = Justicar_Red_COLOR;
     public CardGroup NonHoly = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
     public CardGroup FilteredGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -47,7 +47,7 @@ public class AncestralSeance extends AbstractPrimalCard {
         tags.add(CardTags.HEALING);
         NonHoly.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
                 .stream()
-                .filter(c -> c.color == Dragonkin_Red_COLOR)
+                .filter(c -> c.color == Justicar_Red_COLOR)
                 .filter(c -> c instanceof AbstractPrimalCard)
                 .filter(c -> !c.hasTag(CardTags.HEALING))
                 .filter(c -> !c.rarity.equals(CardRarity.BASIC))

@@ -1,19 +1,33 @@
 package theDragonkin.cards.Dragonkin;
 
+
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CardMods.StormEffect;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.DivineDamage;
+import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.powers.Dragonkin.SacrificePower;
+import theDragonkin.util.SmiteEffect;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -38,7 +52,7 @@ public class DivineStorm extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = -1;
     private static final int DAMAGE = 9;
@@ -53,6 +67,8 @@ public class DivineStorm extends AbstractHolyCard {
         this.baseMagicNumber = 0;
         this.magicNumber = baseMagicNumber;
         CardModifierManager.addModifier(this,new StormEffect(15));
+        DamageModifierManager.addModifier(this, new DivineDamage(true,true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
         tags.add(CustomTags.Radiant);
         RadiantExchange = 2;
         this.exhaust = true;
@@ -67,11 +83,16 @@ public class DivineStorm extends AbstractHolyCard {
         }
         repeats += EnergyPanel.totalCount;
         addToBot(new TalkAction(true,cardStrings.EXTENDED_DESCRIPTION[0],1.25f,1.50f));
-        for (int i = 0; i < this.magicNumber + repeats; ++i) {
-            AbstractDungeon.actionManager.addToBottom(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.LIGHTNING));
+        for (int i = 0; i < magicNumber+repeats; ++i) {
+            m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
+            if (m != null) {
+                addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
             }
+        }
+        addToBot(new ApplyPowerAction(p,p,new SacrificePower(p,p,repeats)));
         EnergyPanel.useEnergy(EnergyPanel.totalCount);
         repeats = 0;
+        super.use(p,m);
     }
 
     //Upgraded stats.

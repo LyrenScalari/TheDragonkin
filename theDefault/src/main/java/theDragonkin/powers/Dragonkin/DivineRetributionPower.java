@@ -1,24 +1,29 @@
 package theDragonkin.powers.Dragonkin;
 
 import basemod.interfaces.CloneablePowerInterface;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
+import theDragonkin.powers.LosePowerPower;
+import theDragonkin.util.Wiz;
 
-public class DivineRetributionPower extends AbstractPower implements CloneablePowerInterface, NonStackablePower, ReciveDamageEffect {
+public class DivineRetributionPower extends AbstractPower implements CloneablePowerInterface, ReciveDamageEffect {
     public AbstractCreature source;
 
     public static final String POWER_ID = DragonkinMod.makeID("DivineRetribution");
@@ -26,12 +31,12 @@ public class DivineRetributionPower extends AbstractPower implements CloneablePo
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public DivineRetributionPower(final AbstractCreature owner, final AbstractCreature source) {
+    public DivineRetributionPower(final AbstractCreature owner, final AbstractCreature source,int dmgamount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = 0;
+        this.amount = dmgamount;
         this.source = source;
 
         type = PowerType.BUFF;
@@ -42,36 +47,29 @@ public class DivineRetributionPower extends AbstractPower implements CloneablePo
     }
 
     @Override
-    public void atStartOfTurn() {
-        if (amount > 0){
+    public void atEndOfTurn(boolean isPlayer) {
+        if (amount > 0) {
             CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
-            for (int i = 0; i < Math.ceil(this.amount / 2); ++i) {
-                addToBot(new VFXAction(new DivinityParticleEffect()));
-                addToBot(new VFXAction(new DivinityParticleEffect()));
-                addToBot(new VFXAction(new DivinityParticleEffect()));
-            }
-            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
-            AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new LightningEffect(target.drawX,target.drawY)));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target,new DamageInfo(AbstractDungeon.player,amount,
-                    DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
+            AbstractMonster m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
+            addToBot(new SmiteAction(m, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS)));
             amount = 0;
-            updateDescription();
         }
     }
-
+    public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
+        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount), x, y, this.fontScale, c);
+    }
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
     @Override
     public AbstractPower makeCopy() {
-        return new DivineRetributionPower(owner, source);
+        return new DivineRetributionPower(owner, source,amount);
     }
-
     @Override
     public void onReciveDamage(int damage) {
-        amount += damage;
-        updateDescription();
+        if (!AbstractDungeon.actionManager.turnHasEnded || (!DragonkinMod.Seals.isEmpty() && !DragonkinMod.damagetaken)){
+         amount += damage*2;
+        }
     }
 }

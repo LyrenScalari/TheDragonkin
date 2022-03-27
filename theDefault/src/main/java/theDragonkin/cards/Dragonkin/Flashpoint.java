@@ -12,9 +12,13 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.NoDrawPower;
 import theDragonkin.CardMods.StormEffect;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.InfernoWardAction;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.SparkGlyph;
 import theDragonkin.powers.Dragonkin.HeatPower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
@@ -28,7 +32,7 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
@@ -36,19 +40,19 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
 
     public Flashpoint() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 3;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        magicNumber = baseMagicNumber = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         StormRate = 3;
+        tags.add(CustomTags.Rune);
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new HeatPower(p,p,magicNumber)));
         if (!(AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) || !AbstractDungeon.player.hasPower(NoDrawPower.POWER_ID)){
             int burncount = 0;
             for (AbstractCard c : AbstractDungeon.player.drawPile.group){
-                if (c.type == CardType.STATUS){
+                if (c.type == CardType.STATUS || c.hasTag(CustomTags.Rune)){
                     burncount++;
                     if (burncount >= magicNumber){
                         break;
@@ -64,22 +68,28 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
                 }
             }
         }
-        if (!Storm){
-            super.use(p,m);
-        }
+        super.use(p,m);
     }
-
+    public void triggerOnManualDiscard() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new SparkGlyph(magicNumber, defaultSecondMagicNumber));
+                isDone = true;
+            }
+        });
+    }
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
+            upgradeMagicNumber(1);
             initializeDescription();
         }
     }
 
     @Override
     public void onStorm() {
-
+        triggerOnManualDiscard();
     }
 }

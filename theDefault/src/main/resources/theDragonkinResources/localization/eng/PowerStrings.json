@@ -13,24 +13,24 @@
         "theDragonkin:Scorch": {
                 "NAME": "Scorch",
                 "DESCRIPTIONS": ["When attacked, takes #b",
-                " additional damage,", " and reduce this by #b1"
+                " damage,", " and reduce this by #b1"
                 ]
         },
         "theDragonkin:DivineRetribution": {
                 "NAME": "Divine Retribution",
-                "DESCRIPTIONS": ["At the start of your turn deal #b"," damage to a random enemy."
+                "DESCRIPTIONS": ["At the end of your turn deal #b"," damage to a random enemy"
                 ]
         },
-        "theDragonkin:Madness": {
-                "NAME": "Dreaming",
-                "DESCRIPTIONS": ["Drawn cards will appear as random card in your master deck"
+        "theDragonkin:WingsofLight": {
+                "NAME": "Wings of Light",
+                "DESCRIPTIONS": ["After you play a card that gains #yBlock [#548dff]Blessing[] #b"," : gain #b"," [LightIcon] #yBlock"
                 ]
         },
         "theDragonkin:Penance": {
                 "NAME": "Penance",
-                "DESCRIPTIONS": ["At the end of its turn, if #yPenance exceeds or equals #b",
-                        ", it loses #b",
-                        " HP and gain #b8 #ySinner's #yBurden",
+                "DESCRIPTIONS": ["When this creature obtains #b",
+                        " #yPenance, it loses #b",
+                        " HP and increases #yPenance damage by #b10 this combat",
                         "."
                 ]
         },
@@ -41,54 +41,14 @@
                         "."
                 ]
         },
-        "theDragonkin:Agony": {
-                "NAME": "Lunacy",
-                "DESCRIPTIONS": ["Deal and receive #b", " % more damage"
-                ]
-        },
-        "theDragonkin:TempEnergyDown": {
-                "NAME": "Exerted",
-                "DESCRIPTIONS": ["At the start of your turn lose "
-                ]
-        },
-        "theDragonkin:VioletHaze": {
-                "NAME": "Violet Haze",
-                "DESCRIPTIONS": ["After you apply a Debuff this turn, Take #b", " damage, and apply #b", " More."
-                ]
-        },
-        "theDragonkin:FireStarterPower": {
-                "NAME": "Fired Up!",
-                "DESCRIPTIONS": ["For #b"," turns at the start of your turn gain "
-                ]
-        },
         "theDragonkin:IncendiaryFlow": {
                 "NAME": "Incendiary Flow",
-                "DESCRIPTIONS": ["After you #yCycle a card gain #b"," Block."
-                ]
-        },
-        "theDragonkin:ShieldGlare": {
-                "NAME": "Shield Glare",
-                "DESCRIPTIONS": ["When attacked, ", " Stun the attacker next turn"
-                ]
-        },
-        "theDragonkin:Simulacrum": {
-                "NAME": "Simulacrum",
-                "DESCRIPTIONS": ["For the next #b", " Turns all cards played are Doubled."
+                "DESCRIPTIONS": ["After you discard a card this turn gain #b"," Block."
                 ]
         },
         "theDragonkin:HolyInfusion": {
                 "NAME": "Condemnation",
                 "DESCRIPTIONS": ["In #b", " Turns, Deal #b", " damage to ALL enemies."
-                ]
-        },
-        "theDragonkin:Staggered": {
-                "NAME": "Staggered",
-                "DESCRIPTIONS": ["Staggered Monsters are Stunned", " at the start of their next turn"
-                ]
-        },
-        "theDragonkin:HolyBarrier": {
-                "NAME": "Holy Barrier",
-                "DESCRIPTIONS": ["When you play a Holy Card, Gain #b", " #yDivine #yArmor"
                 ]
         },
         "theDragonkin:AshenArmor": {
@@ -101,19 +61,18 @@
                 "DESCRIPTIONS": ["When you Apply a Debuff gain #b", " Block"
                 ]
         },
-        "theDragonkin:Dissolve": {
-                "NAME": "Dissolve",
-                "DESCRIPTIONS": ["When you Trigger Dissolve loses #b", " HP"
-                ]
-        },
         "theDragonkin:BurningRain": {
                 "NAME": "Burning Rain",
                 "DESCRIPTIONS": ["When you draw a #yStatus Attack a random enemy for #b", " damage"
                 ]
         },
         "theDragonkin:DivineConvictionpower": {
-                "NAME": "Zeal",
-                "DESCRIPTIONS": ["Increases Holy card damage and Block gain #b"]
+                "NAME": "Holy Power",
+                "DESCRIPTIONS": ["Increases Holy card damage and #yBlock gain by #b"]
+        },
+        "theDragonkin:SacrificePower": {
+                "NAME": "Sacrifice",
+                "DESCRIPTIONS": ["When obtain #b"," spend it and Gain #b1 #yHoly #yPower"]
         },
         "theDragonkin:Unbroken": {
                 "NAME": "Unbroken",
@@ -121,7 +80,7 @@
         },
         "theDragonkin:Perseverance": {
                 "NAME": "Ignored Pain",
-                "DESCRIPTIONS": ["Reduce this by #b","1 at the end of your turn"]
+                "DESCRIPTIONS": ["Reduce this by #b1 at the end of your turn"]
         },
         "theDragonkin:FuryPower": {
                 "NAME": "Fury",
@@ -151,59 +110,55 @@
                 "NAME": "Endless Flame",
                 "DESCRIPTIONS": ["At the start of the next #b", " turns"," turns"," Gains #b"," #yScorch and adds a #yBurn to your discard pile."]
         },
-        "theDragonkin:NextTurnFetch": {
-                "NAME": "Next Turn Fetch",
-                "DESCRIPTIONS": ["#yFetch #b",
-                        " random",
-                        " #yAttack", " #yAttacks",
-                        " #ySkill"," #ySkills",
-                        " #yAttack or #ySkill"," #yAttacks or #ySkills",
-                        " Next Turn.",
-                        " y#Power"," #yPowers"
-                ]
-        },
 
-        "theDragonkin:ShadowCurse": {
-                "NAME": "Pain",
-                "DESCRIPTIONS": ["For #b", " turns,"," turn"," At the start of your turn add #b", " a #ySuffering to your hand."
+        "theDragonkin:BrewingStorm": {
+                "NAME": "Brewing Storm",
+                "DESCRIPTIONS": ["Next Turn, Enter #yTempest and Gain [E]"
                 ]
         },
-        "theDragonkin:CurseofTonges": {
-                "NAME": "Tongue Tied",
-                "DESCRIPTIONS": ["For #b", " turns,"," turn"," you may not play or release #yDragon #yBreaths"
+        "theDragonkin:SkyfallPower": {
+                "NAME": "Skyfall",
+                "DESCRIPTIONS": ["Whenver you gain #yChi activate the passive effect of your right-most orb #b"," Time", " Times"
                 ]
         },
-        "theDragonkin:MindMaze": {
-                "NAME": "Mind Maze",
-                "DESCRIPTIONS": ["Your next #b"," draws"," draw"," is #yDiscarded and adds a random #yCurse to your hand"
+        "theDragonkin:Static": {
+                "NAME": "Static",
+                "DESCRIPTIONS": ["Become #yStunned when you have #b20 #yStatic. NL Deals #b"," Less damage, reduces this by #b1 after attacking"
                 ]
         },
-        "theDragonkin:Exhaustion": {
-                "NAME": "Exhausted",
-                "DESCRIPTIONS": ["For #b", " turns,"," turn"," at the start of your turn #yExhaust a card in your hand, if it's a #yCurse Lose [E] ."
+        "theDragonkin:TenSteps": {
+                "NAME": "Heian Godan",
+                "DESCRIPTIONS": ["Strikes deal #b"," additional damage. NL Defends gain #b"," additional #yBlock."
                 ]
         },
-        "theDragonkin:DarkRitual": {
-                "NAME": "Dark Ritual",
-                "DESCRIPTIONS": ["Increases by #b1 Each turn, The Acolyte plays #yChaos #yBolt if this is equal or greater then #b7"
+        "theDragonkin:Mastery": {
+                "NAME": "Mastery",
+                "DESCRIPTIONS": ["After you play a card, cards with the same name deal #b2 more damage and gain #b2 more block, then lose #b1 #yMastery."
                 ]
         },
-        "theDragonkin:CursedPower": {
-                "NAME": "Black Magic",
-                "DESCRIPTIONS": ["The Acolyte gains twice as much #yDark #yRitual."
+        "theDragonkin:SpiritChakra": {
+                "NAME": "[DrainIcon] Chakra",
+                "DESCRIPTIONS": ["Normal damage #yStrikes deal [DrainIcon] damage instead. NL Normal #yBlock #yDefends give [DrainIcon] Block instead"
                 ]
         },
-
-        "theDragonkin:Moonstruck": {
-                "NAME": "Moonstruck",
-                "DESCRIPTIONS": ["Loses #b", " HP the next #b", " time", " times", " you play a #bLunar card."]
+        "theDragonkin:WindChakra": {
+                "NAME": "[WindIcon] Chakra",
+                "DESCRIPTIONS": ["Normal damage #yStrikes deal [WindIcon] damage instead. NL Normal #yBlock #yDefends give [WindIcon] Block instead"
+                ]
         },
-        "theDragonkin:StarsWithoutNumber": {
-                "NAME": "StarsWithoutNumber",
-                "DESCRIPTIONS": ["At the start of your turn add #b", " random #yStar", " random #yStars", " to your hand."]
+        "theDragonkin:WaterChakra": {
+                "NAME": "[WaterIcon] Chakra",
+                "DESCRIPTIONS": ["Normal damage #yStrikes deal [WaterIcon] damage instead. NL Normal #yBlock #yDefends give [WaterIcon] Block instead"
+                ]
         },
-        "theDragonkin:Sunburn": {
-                "NAME": "Sunburn",
-                "DESCRIPTIONS": ["Gain #b", " Block the next #b", " time", " times", " you play a #ySolar card on this enemy."]
+        "theDragonkin:LightningChakra": {
+                "NAME": "[ElectricIcon] Chakra",
+                "DESCRIPTIONS": ["Normal damage #yStrikes deal [ElectricIcon] damage instead. NL Normal #yBlock #yDefends give [ElectricIcon] Block instead"
+                ]
+        },
+        "theDragonkin:SpiritWound": {
+                "NAME": "Spirit Wound",
+                "DESCRIPTIONS": ["At the end of round, if this power is greater or equal then this creatures HP, destroy it."
+                ]
         }
 }

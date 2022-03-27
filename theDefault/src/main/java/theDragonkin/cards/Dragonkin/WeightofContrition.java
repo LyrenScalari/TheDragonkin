@@ -1,21 +1,14 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
-import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
 import theDragonkin.powers.Dragonkin.SinnersBurdenPower;
@@ -40,7 +33,7 @@ public class WeightofContrition extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.SKILL;       //
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -54,8 +47,8 @@ public class WeightofContrition extends AbstractHolyCard {
     public WeightofContrition() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = 1;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 4;
+        magicNumber = baseMagicNumber = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         tags.add(CustomTags.Radiant);
         RadiantExchange = 3;
     }
@@ -63,10 +56,16 @@ public class WeightofContrition extends AbstractHolyCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new PenancePower(m, p,defaultSecondMagicNumber )));
-        if (m.getPower(PenancePower.POWER_ID) != null) {
-            addToBot(new ApplyPowerAction(m,p,new SinnersBurdenPower(m,p,magicNumber)));
-        }
+        addToBot(new ApplyPowerAction(m, p, new PenancePower(m, p,  defaultSecondMagicNumber)));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                PenancePower.Power += defaultSecondMagicNumber;
+                isDone = true;
+            }
+        });
+
+        super.use(p,m);
     }
 
     // Upgraded stats.
@@ -74,8 +73,7 @@ public class WeightofContrition extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
-            upgradeDefaultSecondMagicNumber(1);
+            upgradeMagicNumber(2);
             initializeDescription();
         }
     }

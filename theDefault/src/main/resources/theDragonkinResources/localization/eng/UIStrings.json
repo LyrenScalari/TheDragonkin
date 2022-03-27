@@ -35,9 +35,28 @@
       "Retain NL "
     ]
   },
-  "theDragonkin:SpellCard": {
+  "SpellCard": {
     "TEXT": [
-      "Spell"
+      "Spell",
+      "Not Enough #rMana"
+    ]
+  },
+  "theDragonkin:PhlyacteryPanel": {
+    "TEXT": [
+      "Lich's Phlyactery",
+      ""
+    ]
+  },
+  "theDragonkin:PurgeAction": {
+    "TEXT": [
+      "Select a Card to Purge",
+      ""
+    ]
+  },
+  "theDragonkin:ChiPannel": {
+    "TEXT": [
+      "Chi",
+      ""
     ]
   },
   "TheDragonkin:CurseAttack": {

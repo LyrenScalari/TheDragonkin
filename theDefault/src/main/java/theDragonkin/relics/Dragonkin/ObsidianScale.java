@@ -31,6 +31,7 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
     private  boolean used = false;
     public ObsidianScale() {
         super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.CLINK);
+        counter = 1;
     }
     @Override
     public boolean canSpawn() {return AbstractDungeon.player.hasRelic(GarnetScale.ID);}
@@ -40,10 +41,10 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
         String name = new GarnetScale().name;
         StringBuilder sb = new StringBuilder();
         for (String word : name.split(" ")) {
-            sb.append("[#").append(DragonkinMod.DEFAULT_GRAY.toString()).append("]").append(word).append("[] ");
+            sb.append("[#").append(DragonkinMod.DEFAULT_GRAY.cpy().toString()).append("]").append(word).append("[] ");
         }
         sb.setLength(sb.length()-1);
-        sb.append("[#").append(DragonkinMod.DEFAULT_GRAY.toString()).append("]");
+        sb.append("[#").append(DragonkinMod.DEFAULT_GRAY.cpy().toString()).append("]");
 
         return DESCRIPTIONS[0] + sb.toString() + DESCRIPTIONS[1];
     }
@@ -66,8 +67,8 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
         if (c.type == AbstractCard.CardType.ATTACK){
             this.flash();
             used = true;
-            addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player, new FuryPower(AbstractDungeon.player,AbstractDungeon.player,1)));
-            addToBot(new GainBlockAction(AbstractDungeon.player,1));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player, new FuryPower(AbstractDungeon.player,AbstractDungeon.player,counter)));
+            addToBot(new GainBlockAction(AbstractDungeon.player,counter));
         }
     }
 

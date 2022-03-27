@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 public class RetainCardMod extends AbstractCardModifier {
     private int duration;
     private boolean wasExhaust = false;
+    public String id;
     private UIStrings uiStrings =  CardCrawlGame.languagePack.getUIString("theDragonkin:CardmodStrings");
     public RetainCardMod (int length) {
         duration = length;
@@ -37,6 +38,11 @@ public class RetainCardMod extends AbstractCardModifier {
             });
         }
         duration -= 1;
+    }
+    @Override
+    public String identifier(AbstractCard card) {
+        id = "RetainMod";
+        return "RetainMod";
     }
     @Override
     public AbstractCardModifier makeCopy() {

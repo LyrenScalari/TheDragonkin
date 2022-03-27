@@ -1,21 +1,18 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import basemod.AutoAdd;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
-import theDragonkin.actions.FluxAction;
-import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.Scorchpower;
+import theDragonkin.powers.Dragonkin.SacrificePower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -24,14 +21,14 @@ public class Sunburst extends AbstractHolyCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Defend Gain 5 (8) block.
+     * WindWalkerDefend Gain 5 (8) block.
      */
 
 
     // TEXT DECLARATION
 
     public static final String ID = DragonkinMod.makeID(Sunburst.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
 
@@ -40,13 +37,14 @@ public class Sunburst extends AbstractHolyCard {
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    private static final CardType TYPE = CardType.SKILL;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 2;
-    private static final int MAGIC = 4;
+    private static final int BLOCK = 4;
+    private static final int UPGRADE_PLUS_BLOCK = 4;
+    private static final int MAGIC = 3;
+    private static final int UPGRADE_MAGIC = 1;
 
 
     // /STAT DECLARATION/
@@ -54,19 +52,29 @@ public class Sunburst extends AbstractHolyCard {
 
     public Sunburst() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = BLOCK;
-        magicNumber = baseMagicNumber = MAGIC;
+        damage = baseDamage = 6;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        tags.add(CustomTags.Radiant);
-        RadiantExchange = 3;
+        block = baseBlock = BLOCK;
     }
 
     // Actions the card should do.
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        addToBot(new FluxAction(defaultSecondMagicNumber,()->new  GainDivineArmorAction(p,p,magicNumber)));
+        addToBot(new DamageAction(p,new DamageInfo(m,damage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new SelectCardsInHandAction(magicNumber," Cycle",false,false,(card)->true,(List)-> {
+            boolean blessed = false;
+            for (AbstractCard c : List){
+                addToBot(new CycleAction(c,1));
+                if (c instanceof AbstractHolyCard){
+                    if (!blessed) {
+                        addToBot(new GainBlockAction(p, block));
+                        blessed = true;
+                    }
+                }
+            }
+        }));
+        super.use(p,m);
     }
 
     //Upgraded stats.
@@ -74,8 +82,8 @@ public class Sunburst extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(2);
             upgradeDefaultSecondMagicNumber(1);
+            upgradeMagicNumber(1);
             initializeDescription();
         }
     }

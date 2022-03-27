@@ -1,10 +1,13 @@
 package theDragonkin.cards.Dragonkin;
 
-import basemod.helpers.CardBorderGlowManager;
+
+import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
-import com.badlogic.gdx.graphics.Color;
+import basemod.helpers.TooltipInfo;
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -16,22 +19,27 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.RetainCardPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.vfx.SmokePuffEffect;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
-import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CardMods.RetainCardMod;
+import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
+import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.FortitudeSeal;
+import theDragonkin.orbs.WisdomSeal;
+import theDragonkin.util.Wiz;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class BlessingofFortitude extends AbstractHolyCard implements ReciveDamageEffect {
+public class BlessingofFortitude extends AbstractHolyCard {
 
     public static final String ID = DragonkinMod.makeID(BlessingofFortitude.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
@@ -40,89 +48,49 @@ public class BlessingofFortitude extends AbstractHolyCard implements ReciveDamag
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int UPGRADED_COST = 1;
 
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 1;
+    private static final int MAGIC = 5;
     private static final int UPGRADE_MAGIC = 0;
-    public void applyPowers() {
-        int realBaseDamage = this.baseDamage;
-        float runningbaseDamage = realBaseDamage;
-        for (AbstractPower p : AbstractDungeon.player.powers){
-            runningbaseDamage =  p.atDamageGive(runningbaseDamage, DamageInfo.DamageType.NORMAL);
-            runningbaseDamage =  p.atDamageReceive(runningbaseDamage, DamageInfo.DamageType.NORMAL);
-            runningbaseDamage =  p.atDamageFinalGive(runningbaseDamage, DamageInfo.DamageType.NORMAL);
-            runningbaseDamage =  p.atDamageFinalReceive(runningbaseDamage, DamageInfo.DamageType.NORMAL);
-        }
-        this.baseDamage = (int)runningbaseDamage;
-        damage = baseDamage;
-        super.applyPowers();
-        this.baseDamage = realBaseDamage;
-        this.isDamageModified = this.damage != this.baseDamage;
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
+        return retVal;
     }
+
     public BlessingofFortitude() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        baseDamage = damage = 3;
-        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {
-            @Override
-            public boolean test(AbstractCard abstractCard) {
-                return false;
-            }
-
-            @Override
-            public Color getColor(AbstractCard abstractCard) {
-                return Color.GOLDENROD;
-            }
-
-            @Override
-            public String glowID() {
-                return "Reckoning";
-            }
-        });
-        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {
-            @Override
-            public boolean test(AbstractCard abstractCard) {
-                return false;
-            }
-
-            @Override
-            public Color getColor(AbstractCard abstractCard) {
-                return Color.RED;
-            }
-
-            @Override
-            public String glowID() {
-                return "Exhaust";
-            }
-        });
+        block = baseBlock = 10;
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 4;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardsInHandAction(2,cardStrings.EXTENDED_DESCRIPTION[0],AbstractCard ->{
-            CardModifierManager.addModifier(AbstractCard.get(0),new RetainCardMod(1));
-            CardModifierManager.addModifier(AbstractCard.get(1),new RetainCardMod(1));
-        }));
+        Wiz.applyToSelfTemp(new DexterityPower(p,defaultSecondMagicNumber));
+        AbstractCard that = this;
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new FortitudeSeal(block,magicNumber,that));
+                isDone = true;
+            }
+        });
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(0);
+            upgradeBlock(2);
+            upgraded = true;
             initializeDescription();
-        }
-    }
-    @Override
-    public void onReciveDamage(int damage) {
-        if (AbstractDungeon.player.hand.contains(this)) {
-            addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                    new RetainCardPower(AbstractDungeon.player,1)));
-            addToBot(new ExhaustSpecificCardAction(this,AbstractDungeon.player.hand));
         }
     }
 }

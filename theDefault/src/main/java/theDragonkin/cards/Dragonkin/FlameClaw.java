@@ -1,5 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,6 +11,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
+import theDragonkin.DamageModifiers.FireDamage;
+import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 
@@ -23,13 +28,13 @@ public class FlameClaw extends AbstractPrimalCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
     private static final int POTENCY= 12;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int UPGRADE_PLUS_DMG = 5;
     private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 1;
 
@@ -40,6 +45,8 @@ public class FlameClaw extends AbstractPrimalCard {
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         cardsToPreview = new Burn();
+        DamageModifierManager.addModifier(this, new FireDamage(true,true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
     }
 
     @Override
@@ -55,8 +62,6 @@ public class FlameClaw extends AbstractPrimalCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_MAGIC);
-            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

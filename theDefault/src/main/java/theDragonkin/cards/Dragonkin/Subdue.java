@@ -20,7 +20,7 @@ public class Subdue extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
@@ -48,7 +48,7 @@ public class Subdue extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.retain = true;
+            this.selfRetain = true;
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             updateCost(UPGRADED_COST);
             initializeDescription();

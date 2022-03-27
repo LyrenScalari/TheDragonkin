@@ -1,11 +1,13 @@
 package theDragonkin.cards.Dragonkin;
 
+
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,7 +17,10 @@ import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import com.megacrit.cardcrawl.vfx.GhostlyFireEffect;
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.FireDamage;
+import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.util.TriggerOnCycleEffect;
@@ -31,7 +36,7 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 10;
     private static final int UPGRADED_COST = 1;
@@ -48,6 +53,8 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
         damage = baseDamage = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         tags.add(CustomTags.SnekProof);
+        DamageModifierManager.addModifier(this, new FireDamage(true,true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
         tags.add(CardTags.HEALING);
     }
 
@@ -86,9 +93,7 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        if (ca.type == CardType.STATUS){
             this.updateCost(-1);
             realCost = costForTurn;
-        }
     }
 }

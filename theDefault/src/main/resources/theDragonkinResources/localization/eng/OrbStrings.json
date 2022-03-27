@@ -9,98 +9,176 @@
       " damage to all enemies."
     ]
   },
-  "theDragonkin:Ember": {
-    "NAME": "Ember",
+  "theDragonkin:Wrath": {
+    "NAME": "Wrath",
     "DESCRIPTION": [
-      "#yEvokes at the end of your turn if you have any excess energy.",
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Deal #b",
+      " damage to a random enemy"
+    ]
+  },
+  "theDragonkin:Wisdom": {
+    "NAME": "Wisdom",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak :", " Draw #b",
+      " card","s"," Next turn",",","."
+    ]
+  },
+  "theDragonkin:Might": {
+    "NAME": "Might",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Gain #b",
+      " #yStrength."
+    ]
+  },
+  "theDragonkin:Fortitude": {
+    "NAME": "Fortitude",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Gain #b", " [theDragonkin:LightIcon] #yBlock"
+    ]
+  },
+  "theDragonkin:Lightspeed": {
+    "NAME": "Lightspeed",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Flux #b4: Gain [E] and #b"," Block"
+    ]
+  },
+  "theDragonkin:Sanctuary": {
+    "NAME": "Sanctuary",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Increase the #yBlock gain of the card that created this by #b"," this combat"
+    ]
+  },
+  "theDragonkin:Infusion": {
+    "NAME": "Infusion",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Increase the damage of the card that created this by #b"," this combat"
+    ]
+  },
+  "theDragonkin:Consecration": {
+    "NAME": "Consecration",
+    "DESCRIPTION": [
+      "#yBreaks after taking #b",
+      " damage during your turn", " NL #yBreak : Increase #yPenance damage by #b", " this combat"
+    ]
+  },
+  "theDragonkin:Vengeance": {
+    "NAME": "Vengeance",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn gain #b", " #yBlock and #b3 #yDeflecting #yScales","Nah"
+    ]
+  },
+  "theDragonkin:Blaze": {
+    "NAME": "Blaze",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and apply #b2 #yScorch to a random enemy","Yol"
+    ]
+  },
+  "theDragonkin:Dragonfire": {
+    "NAME": "Dragonfire",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and gain #b6 #yAuraflame","Toor"
+    ]
+  },
+  "theDragonkin:Shatter": {
+    "NAME": "Shatter",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and apply #b2 #yVulnerable to a random enemy","Kren"
+    ]
+  },
+  "theDragonkin:Flame": {
+    "NAME": "Flame",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL After you discard a card gain #b", " #yBlock. NL at the start of your turn #yCycle #b2 cards.","Yolos"
+    ]
+  },
+  "theDragonkin:Deflection": {
+    "NAME": "Deflection",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn gain #b", " #yBlock and apply #b1 #yWeak to all enemies.","Vo"
+    ]
+  },
+  "theDragonkin:Bloodthirst": {
+    "NAME": "Bloodthirst",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn deal #b", " damage to a random enemy 3 times.","Bahlok"
+    ]
+  },
+  "theDragonkin:Ward": {
+    "NAME": "Ward",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn gain #b", " [theDragonkin:FireIcon] #yBlock and shuffle a #yBurn into your draw pile.","Spaan"
+    ]
+  },
+  "theDragonkin:Spark": {
+    "NAME": "Spark",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL at the start of your turn draw #b", " #yStatus or [#990702]Rune[] cards.","Kun"
+    ]
+  },
+  "theDragonkin:Destruction": {
+    "NAME": "Destruction",
+    "DESCRIPTION": [
+      "Lasts #b",
+      " turns", " NL In #b", " turns deal #b", " damage to all enemies","Kun"
+    ]
+  },
+  "theDragonkin:Rain": {
+    "NAME": "Rain",
+    "DESCRIPTION": [
+      "#yPassive : At the end of your turn gain #b",
+      " Block, and increase this cards Evoke value by #b1",
+      " NL #yEvoke: Reduce the cost of #b",
+      " cards in hand by [E]"
+    ]
+  },
+  "theDragonkin:Fo": {
+    "NAME": "Fo",
+    "DESCRIPTION": [
+      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
+      " [IceIcon] damage to a random enemy.",
+      " NL #yEvoke: Gain #b",
+      " [IceIcon] Block."
+    ]
+  },
+  "theDragonkin:Krah": {
+    "NAME": "Krah",
+    "DESCRIPTION": [
+      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
+      " [IceIcon] damage to a random enemy.",
       " NL #yEvoke: Deal #b",
-      " damage to "
+      " [IceIcon] damage to ALL enemies."
     ]
   },
-  "theDragonkin:Stone": {
-    "NAME": "Stone",
+  "theDragonkin:Diin": {
+    "NAME": "Diin",
     "DESCRIPTION": [
-      "#yEvokes after you evoke another orb.",
-      " NL #yEvoke: Gain #b",
-      " Block"
+      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
+      " [IceIcon] damage to a random enemy.",
+      " NL #yEvoke: Apply #b",
+      " #yWeak to ALL enemies."
     ]
   },
-  "theDragonkin:ImperialKnights": {
-    "NAME": "Imperial Knights",
+  "theDragonkin:StormMark": {
+    "NAME": "Mark of Storm",
     "DESCRIPTION": [
-      "#yPassive: At the end of your turn gain #b",
-      " Block",
-      " NL #yGambit(5): Gain #b",
-      " Block",
-      " NL Current #yStamina - "
-    ]
-  },
-  "theDragonkin:ImperialArchers": {
-    "NAME": "Imperial Archers",
-    "DESCRIPTION": [
-      "#yPassive: At the start of your turn, add an #yAim to your hand",
-      "At the end of your turn deal #b",
-      " damage to ",
-      " NL #yGambit(5): deal #b",
-      " damage to ALL enemies.",
-      " NL Current #yStamina - "
-    ]
-  },
-  "theDragonkin:ImperialMages": {
-    "NAME": "Imperial Mages",
-    "DESCRIPTION": [
-      "#yPassive: At the end of your turn deal #b",
-      " damage to ",
-      " NL #yGambit(2): deal #b",
-      " damage to ALL enemies.",
-      " NL Current #yStamina - "
-    ]
-  },
-  "theDragonkin:InvigoratingBloom": {
-    "NAME": "Invigorating Bloom",
-    "DESCRIPTION": [
-      "#yHarvest: Draw a Card.",
-      " NL #yEvoke: Gain ",
-      " NL Passive Power #b"
-    ]
-  },
-  "theDragonkin:ThornBloom": {
-    "NAME": "Hungry Bloom",
-    "DESCRIPTION": [
-      "#yHarvest: Deal #b",
-      " damage to a random enemy.",
-      " NL #yEvoke: Gain #b",
-      " #yVigor.",
-      " NL Passive Power #b"
-    ]
-  },
-  "theDragonkin:ToxicBloom": {
-    "NAME": "Toxic Bloom",
-    "DESCRIPTION": [
-      "#yHarvest: Apply #b",
-      " #yPoison to a random enemy.",
-      " NL #yEvoke: Gain #b",
-      " #yBlock.",
-      " NL Passive Power #b"
-    ]
-  },
-  "theDragonkin:PrimalBloom": {
-    "NAME": "Primal Bloom",
-    "DESCRIPTION": [
-      "#yHarvest: Gain #b",
-      " #yNatrual #ySpikes.",
-      " NL #yEvoke: Lose #b",
-      " #yNatrual #ySpikes.",
-      " NL Passive Power #b"
-    ]
-  },
-  "theDragonkin:LifeBloom": {
-    "NAME": "Life Bloom",
-    "DESCRIPTION": [
-      "#yHarvest: Gain #b",
-      " Temporary HP.",
-      " NL #yEvoke: Heal #b",
-      " NL Passive Power #b"
+      "#yCharges #b",
+      " NL at the end of your turn deal #b", " damage", " to a random enemy to a random enemy twice"," To this enemy and lose #b1 #yCharge"
     ]
   }
 }

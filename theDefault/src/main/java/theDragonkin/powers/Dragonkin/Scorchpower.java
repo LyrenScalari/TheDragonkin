@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -60,10 +61,12 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
     public int onAttacked(DamageInfo di, int d){
         if (di.type == DamageInfo.DamageType.NORMAL) {
             this.flash();
+            int temp = amount;
             AbstractDungeon.actionManager.addToTop(
                     new ReducePowerAction(this.owner, this.owner, this, 1));
-            int temp = amount;
-            return d + temp;
+            AbstractDungeon.actionManager.addToTop(
+                    new DamageAction(owner,new DamageInfo(owner,temp, DamageInfo.DamageType.THORNS)));
+            return d;
         }
         return d;
     }
@@ -83,15 +86,6 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
                     new ReducePowerAction(this.owner, this.owner, this, 1));
         }
     }
-    // Note: If you want to apply an effect when a power is being applied you have 3 options:
-    //onInitialApplication is "When THIS power is first applied for the very first time only."
-    //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."
-    //onReceivePowerPower from StSlib is "When any (including this) power is applied to the owner."
-
-
-    // At the end of the turn, remove gained Dexterity
-
-    // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[2];
@@ -104,7 +98,7 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
     @Override
     public int getHealthBarAmount() {
         if (AbstractDungeon.player.hoveredCard != null) {
-            if (AbstractDungeon.player.hoveredCard.type == AbstractCard.CardType.ATTACK && !AbstractDungeon.player.hoveredCard.hasTag(CustomTags.Dragon_Breath)) {
+            if (AbstractDungeon.player.hoveredCard.type == AbstractCard.CardType.ATTACK) {
                 if (AbstractDungeon.player.hoveredCard.target == AbstractCard.CardTarget.ENEMY && !(owner.hb.hovered)) {
                     return 0;
                 } else return amount;

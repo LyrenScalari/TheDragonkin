@@ -2,6 +2,7 @@ package theDragonkin.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import theDragonkin.cards.AbstractDefaultCard;
 import theDragonkin.cards.Dragonkin.AbstractDragonkinCard;
 
 import static theDragonkin.DragonkinMod.makeID;
@@ -17,22 +18,22 @@ public class SecondDamage extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractDragonkinCard) card).isSecondDamageModified;
+        return ((AbstractDefaultCard) card).isSecondDamageModified;
 
     }
 
     @Override
     public int value(AbstractCard card) {
-        return ((AbstractDragonkinCard) card).secondDamage;
+        return ((AbstractDefaultCard) card).secondDamage;
     }
 
     @Override
     public int baseValue(AbstractCard card) {
-        return ((AbstractDragonkinCard) card).baseSecondDamage;
+        return ((AbstractDefaultCard) card).baseSecondDamage;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((AbstractDragonkinCard) card).upgradedSecondDamage;
+        return ((AbstractDefaultCard) card).upgradedSecondDamage;
     }
 }

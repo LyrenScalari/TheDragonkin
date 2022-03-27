@@ -1,6 +1,7 @@
 package theDragonkin.util;
 
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public abstract class EasyInfoDisplayPanel {
 
     public float x;
     public float y;
-
+    public Hitbox hb;
     public float width;
 
     public static ArrayList<EasyInfoDisplayPanel> specialDisplays = new ArrayList<>();

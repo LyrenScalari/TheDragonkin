@@ -31,7 +31,7 @@ public class HastyJudgement extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.SKILL;       //
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -56,6 +56,7 @@ public class HastyJudgement extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
         addToBot(new DrawCardAction(defaultSecondMagicNumber));
+        super.use(p,m);
     }
 
     // Upgraded stats.

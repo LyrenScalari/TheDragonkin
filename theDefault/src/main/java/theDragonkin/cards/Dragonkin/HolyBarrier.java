@@ -1,9 +1,16 @@
 package theDragonkin.cards.Dragonkin;
 
+
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
+import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
+import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
@@ -19,7 +26,7 @@ public class HolyBarrier extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = -1;
     private static final int UPGRADED_COST = 1;
@@ -31,9 +38,9 @@ public class HolyBarrier extends AbstractHolyCard {
     public static int repeats = 0;
     public HolyBarrier() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = POTENCY;
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
         exhaust = true;
         baseMagicNumber = magicNumber = MAGIC;
 
@@ -47,10 +54,11 @@ public class HolyBarrier extends AbstractHolyCard {
         }
         repeats += EnergyPanel.totalCount;
         for (int i = 0; i < this.magicNumber + repeats; ++i) {
-            addToBot(new GainDivineArmorAction(p,p,defaultSecondMagicNumber));
+            addToBot(new GainCustomBlockAction(this,p,block));
         }
         EnergyPanel.useEnergy(EnergyPanel.totalCount);
         repeats = 0;
+        super.use(p,m);
     }
 
     @Override

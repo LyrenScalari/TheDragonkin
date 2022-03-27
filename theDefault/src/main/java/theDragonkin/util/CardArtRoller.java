@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.random.Random;
 import theDragonkin.cards.AbstractDefaultCard;
-import theDragonkin.cards.Deathspeaker.AbstractDeathspeakerCard;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +24,6 @@ public class CardArtRoller {
     private static ShaderProgram shade = new ShaderProgram(Shaders.vertexShaderHSLC, Shaders.fragmentShaderHSLC);
 
     public static void computeCard(AbstractDefaultCard c) {
-        if (c.type != AbstractDeathspeakerCard.Enums.SPELL) {
             c.portrait = doneCards.computeIfAbsent(c.cardID, key -> {
                 ReskinInfo r = infos.computeIfAbsent(key, key2 -> {
                     Random rng = new Random((long) c.cardID.hashCode());
@@ -51,33 +49,6 @@ public class CardArtRoller {
                 TextureRegion a = ImageHelper.getBufferTexture(fb);
                 return new TextureAtlas.AtlasRegion(a.getTexture(), 0, 0, 250, 190);
             });
-        } else {
-            c.portrait = doneCards.computeIfAbsent(c.cardID, key -> {
-                ReskinInfo r = infos.computeIfAbsent(key, key2 -> {
-                    Random rng = new Random((long) c.cardID.hashCode());
-                    ArrayList<AbstractCard> cardsList = Wiz.getCardsMatchingPredicate(s -> s.type == AbstractCard.CardType.POWER && WhatMod.findModName(s.getClass()) == null, true);
-                    String q = Wiz.getRandomItem(cardsList, rng).cardID;
-                    return new ReskinInfo(q, rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.randomBoolean());
-                });
-                Color HSLC = new Color(r.H, r.S, r.L, r.C);
-                TextureAtlas.AtlasRegion t = CardLibrary.getCard(r.origCardID).portrait;
-                t.flip(false, true);
-                FrameBuffer fb = ImageHelper.createBuffer(250, 190);
-                OrthographicCamera og = new OrthographicCamera(250, 190);
-                SpriteBatch sb = new SpriteBatch();
-                sb.setProjectionMatrix(og.combined);
-                ImageHelper.beginBuffer(fb);
-                sb.setShader(shade);
-                sb.setColor(HSLC);
-                sb.begin();
-                sb.draw(t, -125, -95);
-                sb.end();
-                fb.end();
-                t.flip(false, true);
-                TextureRegion a = ImageHelper.getBufferTexture(fb);
-                return new TextureAtlas.AtlasRegion(a.getTexture(), 0, 0, 250, 190);
-            });
-        }
     }
 
     public static Texture getPortraitTexture(AbstractCard c) {

@@ -4,35 +4,22 @@
       "scorch",
       "scorched"
     ],
-    "DESCRIPTION": "Scorched creatures take additional damage from #yAttacks, when attacked reduce this by half"
+    "DESCRIPTION": "Scorched creatures take damage equal to their scorch and lose #b1 scorch when #yAttacked"
   },
   {
+    "PROPER_NAME": "Sacrifice",
     "NAMES": [
-      "fading",
-      "Fading"
+      "Sacrifice",
+      "sacrifice"
     ],
-    "DESCRIPTION": "Becomes unplayable after being played X times."
-  },
-  {
-    "NAMES": [
-      "faded",
-      "Faded"
-    ],
-    "DESCRIPTION": "Cannot be Played or Upgraded."
-  },
-  {
-    "NAMES": [
-      "zeal",
-      "Zeal"
-    ],
-    "DESCRIPTION": "Increases [#94bdff]Holy[] card damage and #yBlock gain."
+    "DESCRIPTION": "When you obtain #b10 Sacrifice, increase the damage and Block of your [#94bdff]Holy[] cards by 1"
   },
   {
     "NAMES": [
       "holy",
       "Holy"
     ],
-    "DESCRIPTION": "[#94bdff]Holy[] Cards are modified by #yZeal.",
+    "DESCRIPTION": "When played, gain #ySacrifice equal to energy spent. Obtaining #b10 #ySacrifice increases damage and block gain of [#94bdff]Holy[] cards for the rest of combat.",
     "COLOR": "[#94bdff]"
   },
   {
@@ -42,22 +29,7 @@
       "Repentant",
       "repentant"
     ],
-    "DESCRIPTION": "Creatures with #b8 or more #yPenance lose #b20 HP and #b8 #yPenance at the end of their turn. NL When a creature loses HP from #yPenance, it gains #b8 Sinner’s Burden, increasing the HP lost from #yPenance"
-  },
-  {
-    "PROPER_NAME": "Sinner's Burden",
-    "NAMES": [
-      "Sinner's Burden",
-      "Sinner's_Burden",
-      "sinner's_burden"
-    ],
-    "DESCRIPTION": "Increases HP Lost from #yPenance."
-  },
-  {
-    "NAMES": [
-      "dissolve"
-    ],
-    "DESCRIPTION": "Melting creatures lose HP when their dissolve is triggered."
+    "DESCRIPTION": "When creature obtains #b8 Penance, it loses #b20 HP, and increases #yPenance damage by #b10 this combat."
   },
   {
     "PROPER_NAME": "Auraflame",
@@ -74,42 +46,14 @@
       "Deflecting_Scales",
       "deflecting_scales"
     ],
-    "DESCRIPTION": "#yDeflecting #yScales damages a random enemy and is reduced by #b1 after you receive damage."
-  },
-  {
-    "NAMES": [
-      "radiant",
-      "Radiant"
-    ],
-    "DESCRIPTION": "#yRadiant cards have their secondary values increased by 1 for every X #yZeal you have."
+    "DESCRIPTION": "#yDeflecting #yScales damages a random enemy and is reduced by #b1 after you take damage."
   },
   {
     "NAMES": [
       "primal",
       "Primal"
     ],
-    "DESCRIPTION": "[#fe513a]Primal[] Cards generate #yFury equal to twice the energy spent when played."
-  },
-  {
-    "NAMES": [
-      "fury",
-      "Fury"
-    ],
-    "DESCRIPTION": "Gained by playing [#fe513a]Primal[] Cards. NL Can be used instead of energy to play #yStorm cards."
-  },
-  {
-    "NAMES": [
-      "dreaming",
-      "Dreaming"
-    ],
-    "DESCRIPTION": "Cards drawn will appear as any card in your master deck."
-  },
-  {
-    "NAMES": [
-      "lunacy",
-      "Lunacy"
-    ],
-    "DESCRIPTION": "Deal and Receive 25% more damage per #yLunacy."
+    "DESCRIPTION": "[#fe513a]Primal[] Cards generate #yFury equal to the energy spent when played. NL #yFury is spent to activate #yStorm Effects."
   },
   {
     "NAMES": [
@@ -130,7 +74,7 @@
       "sealed",
       "Sealed"
     ],
-    "DESCRIPTION": "#ySealed cards are improved whenever you #yCycle a #yStatus."
+    "DESCRIPTION": "#ySealed cards are improved whenever you discard a #yStatus or [#990702]Rune[] card."
   },
   {
     "NAMES": [
@@ -138,28 +82,6 @@
       "Snekproof"
     ],
     "DESCRIPTION": "#ySnekproof cards cannot have their costs modified by anything other then itself."
-  },
-  {
-    "PROPER_NAME": "Divine Armor",
-    "NAMES": [
-      "Divine Armor",
-      "Divine_Armor",
-      "divine_armor"
-    ],
-    "DESCRIPTION": "Until lost, prevents damage before block."
-  },
-  {
-    "NAMES": [
-      "flux",
-      "Flux"
-    ],
-    "DESCRIPTION": "When played, #yCycle to up X #yStatus cards in your hand, activate the listed effect for each one."
-  },  {
-  "NAMES": [
-    "Reckoning",
-    "reckoning"
-  ],
-  "DESCRIPTION": "#yReckoning effects trigger whenever you receive damage while this is in your hand."
   },
   {
     "NAMES": [
@@ -172,9 +94,284 @@
   },
   {
     "NAMES": [
-      "mana",
-      "Mana"
+      "Rune",
+      "rune"
     ],
-    "DESCRIPTION": "#yMana is spent instead of Energy to play #ySpells"
+    "DESCRIPTION": "This card may be played using #yFury X instead of [E] . NL When Discarded or played with #yFury create a Glyph with this cards effect that lasts X turns."
+  },
+  {
+    "NAMES": [
+      "Blessing",
+      "blessing",
+      "blessings",
+      "Blessings"
+    ],
+    "DESCRIPTION": "[#548dff]Blessings[] create a #ySeal that breaks after taking X damage during your turn, activating its Blessing effect. NL If you took no damage during your turn you will lose #b2 HP."
+  },
+  {
+    "NAMES": [
+      "foretell",
+      "Foretell"
+    ],
+    "DESCRIPTION": "Can be exhausted when played from hand instead of the listed effect and *Refund any [E] spent this way. NL If this effect Exhausted this card it may be played from the Exhaust pile to gain #yTemporal #yFlux instead."
+  },
+  {
+    "PROPER_NAME": "Storm Mark",
+    "NAMES": [
+      "Storm Mark",
+      "Storm_Mark",
+      "storm_mark"
+    ],
+    "DESCRIPTION": "#yDragon #yMark : damages random enemies while on the player, damages it's owner and loses #yCharges otherwise."
+  },
+  {
+    "NAMES": [
+      "Rune",
+      "rune"
+    ],
+    "DESCRIPTION": "This card may be played using #yFury X instead of [E] . NL When Discarded or played with #yFury create a Glyph with this cards effect that lasts X turns."
+  },
+  {
+    "PROPER_NAME": "Temporal Flux",
+    "NAMES": [
+      "Temporal Flux",
+      "Temporal_Flux",
+      "temporal_flux"
+    ],
+    "DESCRIPTION": "#yTemporal #yFlux is reduced by #b1 each turn, and can cause random effects at the start of your turn at High values."
+  },
+  {
+    "PROPER_NAME": "Spirit Wound",
+    "NAMES": [
+      "Spirit Wound",
+      "spirit wound",
+      "Spirit_Wound",
+      "spirit_wound"
+    ],
+    "DESCRIPTION": "#ySpirit #yWound kills it's target if Spirit Wound equals or exceeds it's health."
+  },
+  {
+    "PROPER_NAME": "Static",
+    "NAMES": [
+      "Static",
+      "static"
+    ],
+    "DESCRIPTION": "#yStatic reduces damage dealt, reduced after attacking. NL #yStuns and is reduced to 0 if #yStatic is greater then #b20"
+  },
+  {
+    "PROPER_NAME": "Chi",
+    "NAMES": [
+      "Chi",
+      "chi"
+    ],
+    "DESCRIPTION": "#yChi is generated and spent by Windwalker cards, you may not have more than #b5 #yChi at once. NL Excess Chi becomes Temporary #yStrength and #yFocus"
+  },
+  {
+    "PROPER_NAME": "Mastery",
+    "NAMES": [
+      "Mastery",
+      "mastery"
+    ],
+    "DESCRIPTION": "Increase the damage and Block of ALL copies of the next x cards you play by #b2 for the combat"
+  },
+  {
+    "PROPER_NAME": "Martial",
+    "NAMES": [
+      "Martial",
+      "martial"
+    ],
+    "DESCRIPTION": "#yMartial cards count as Strikes and Defends."
+  },
+  {
+    "PROPER_NAME": "Razor Wind",
+    "NAMES": [
+      "Razor Wind",
+      "razor wind",
+      "Razor_Wind",
+      "razor_wind"
+    ],
+    "DESCRIPTION": "#yOrb: Deals [WindIcon] Damage to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Jade Spirit",
+    "NAMES": [
+      "Jade Spirit",
+      "jade spirit",
+      "Jade_Spirit",
+      "jade_spirit"
+    ],
+    "DESCRIPTION": "#yOrb: Deals [DrainIcon] Damage to random enemies."
+  },
+  {
+    "PROPER_NAME": "Nimbus",
+    "NAMES": [
+      "Nimbus",
+      "nimbus"
+    ],
+    "DESCRIPTION": "#yOrb: Deals [ElectricIcon] Damage to random enemies and increases effectiveness."
+  },
+  {
+    "PROPER_NAME": "Rain",
+    "NAMES": [
+      "Rain",
+      "rain"
+    ],
+    "DESCRIPTION": "#yOrb: Grants #yBlock and increases the number of cards effected when evoked, when Evoked reduces the cost of random cards in hand by 1."
+  },
+  {
+    "PROPER_NAME": "Chant",
+    "NAMES": [
+      "Chant",
+      "chant"
+    ],
+    "DESCRIPTION": "#yChannel 1 of the 3 #yWords of this Shout. When all 3 Words are channeled, an additional effect is gained and all 3 Words are #yEvoked."
+  },
+  {
+    "PROPER_NAME": "Frost Breath",
+    "NAMES": [
+      "Frost Breath",
+      "frost breath",
+      "Frost_Breath",
+      "frost_breath"
+    ],
+    "DESCRIPTION": "#yShout : Grants [IceIcon] Block and deals [IceIcon] damage NL #yPassive : If you have #b2 or more Orbs from this set deal [IceIcon] damage damage to a random enemy NL #yOrbs : #yFo #yKrah #yDiin"
+  },
+  {
+    "PROPER_NAME": "Fo",
+    "NAMES": [
+      "Fo",
+      "fo"
+    ],
+    "DESCRIPTION": "#yOrb: #yEvoke - Gain [IceIcon] Block"
+  },
+  {
+    "PROPER_NAME": "Krah",
+    "NAMES": [
+      "Krah",
+      "krah"
+    ],
+    "DESCRIPTION": "#yOrb: #yEvoke - Deal [IceIcon] damage to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Diin",
+    "NAMES": [
+      "Diin",
+      "diin"
+    ],
+    "DESCRIPTION": "#yOrb: #yEvoke - Apply #yWeak to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Chakra",
+    "NAMES": [
+      "Chakra",
+      "chakra"
+    ],
+    "DESCRIPTION": "#yChakra's are buffs with no duration which impart the associated Damage Type on to your Normal damage #yStrikes and #yDefends NL You may not have more then #b1 #yChakra at a time"
+  },
+  {
+    "PROPER_NAME": "Spirit Burst",
+    "NAMES": [
+      "Spirit Burst",
+      "spirit burst",
+      "Spirit_Burst",
+      "spirit_burst"
+    ],
+    "DESCRIPTION": "Spend up to X #yChi and activate the following effect."
+  },
+  {
+    "PROPER_NAME": "Spirit [DrainIcon]",
+    "NAMES": [
+      "Spirit",
+      "spirit"
+    ],
+    "DESCRIPTION": "#ySpirit #yDamage Ignores #yBlock, and Creatures dealt #ySpirit #yDamage gain #ySpirit #yWound instead of losing HP."
+  },
+  {
+    "PROPER_NAME": "Spirit",
+    "NAMES": [
+      "Spirit_Damage",
+      "spirit_damage"
+    ],
+    "DESCRIPTION": "#yBlock : Does not Decay at start of turn NL When broken : applies #ySpirit #yWound to you and the attacker"
+  },
+  {
+    "PROPER_NAME": "Lightning [ElectricIcon]",
+    "NAMES": [
+      "Lightning",
+      "lightning"
+    ],
+    "DESCRIPTION": "#yLightning #yDamage applies #yStatic equal to half of unblocked damage dealt."
+  },
+  {
+    "PROPER_NAME": "Lightning",
+    "NAMES": [
+      "Lightning_Damage",
+      "lightning_damage"
+    ],
+    "DESCRIPTION": "#yBlock : Applies #yStatic to the attacker when broken"
+  },
+  {
+    "PROPER_NAME": "Fire [theDragonkin:FireIcon]",
+    "NAMES": [
+      "Fire",
+      "fire"
+    ],
+    "DESCRIPTION": "#yFire damage deals half as much damage to targets without #yBlock, but apply #yScorch equal to the damage dealt instead."
+  },
+  {
+    "PROPER_NAME": "Fire",
+    "NAMES": [
+      "Fire_Damage",
+      "fire_damage"
+    ],
+    "DESCRIPTION": "#yBlock : When damaged applies #yScorch to the Attacker."
+  },
+  {
+    "PROPER_NAME": "Divine [theDragonkin:LightIcon]",
+    "NAMES": [
+      "Divine",
+      "divine"
+    ],
+    "DESCRIPTION": "#yDivine damage applies #yPenance equal to half the Unblocked damage it deals."
+  },
+  {
+    "PROPER_NAME": "Divine",
+    "NAMES": [
+      "Divine_Damage",
+      "divine_damage"
+    ],
+    "DESCRIPTION": "#yBlock : Used before other block types. not lost at the start of your turn."
+  },
+  {
+    "PROPER_NAME": "Frost [IceIcon]",
+    "NAMES": [
+      "Frost",
+      "frost"
+    ],
+    "DESCRIPTION": "#yFrost damage grants [IceIcon] Block equal to the damage it deals."
+  },
+  {
+    "PROPER_NAME": "Frost",
+    "NAMES": [
+      "Frost_Damage",
+      "frost_damage"
+    ],
+    "DESCRIPTION": "#yBlock : Does not Decay at the start of your turn but applies weak to you at the start of your turn if you have any."
+  },
+  {
+    "PROPER_NAME": "Arcane [SpellIcon]",
+    "NAMES": [
+      "Arcane",
+      "arcane"
+    ],
+    "DESCRIPTION": "#yArcane damage is increased by #yFocus and #yLock-On."
+  },
+  {
+    "PROPER_NAME": "Arcane",
+    "NAMES": [
+      "Arcane_Damage",
+      "arcane_damage"
+    ],
+    "DESCRIPTION": "#yBlock : Increased by #yFocus and when lost becomes #yTemporary #yFocus."
   }
 ]

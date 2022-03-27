@@ -1,5 +1,8 @@
 package theDragonkin.cards.Dragonkin;
 
+
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -7,10 +10,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.DivineDamage;
+import theDragonkin.DamageModifiers.FireDamage;
+import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.Scorchpower;
+
+import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -23,7 +32,7 @@ public class DivineFire extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -39,6 +48,8 @@ public class DivineFire extends AbstractHolyCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
+        DamageModifierManager.addModifier(this, new FireDamage(true,false));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
         tags.add(CustomTags.Radiant);
         RadiantExchange = 1;
     }
@@ -48,7 +59,8 @@ public class DivineFire extends AbstractHolyCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m,p,  new Scorchpower(m,p,this.magicNumber)));
+                new ApplyPowerAction(m,p,new Scorchpower(m,p,this.magicNumber)));
+        super.use(p,m);
     }
 
     @Override

@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -21,7 +20,7 @@ public class PartingShot extends AbstractPrimalCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Defend Gain 5 (8) block.
+     * WindWalkerDefend Gain 5 (8) block.
      */
 
 
@@ -38,7 +37,7 @@ public class PartingShot extends AbstractPrimalCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int BLOCK = 18;
@@ -69,6 +68,7 @@ public class PartingShot extends AbstractPrimalCard {
                 break;
             }
         }
+        super.use(p,m);
     }
 
     //Upgraded stats.

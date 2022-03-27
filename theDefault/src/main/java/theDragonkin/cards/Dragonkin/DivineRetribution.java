@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
@@ -39,7 +40,7 @@ public class DivineRetribution extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 2;
 
@@ -53,6 +54,7 @@ public class DivineRetribution extends AbstractHolyCard {
 
     public DivineRetribution() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 3;
     }
 
 
@@ -62,23 +64,11 @@ public class DivineRetribution extends AbstractHolyCard {
         CardCrawlGame.sound.play("ORB_LIGHTNING_EVOKE");
         addToBot(new VFXAction(new LightningEffect(p.drawX,p.drawY)));
         CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new VFXAction(new DivinityParticleEffect()));
-        addToBot(new ApplyPowerAction(p,p,new DivineRetributionPower(p,p)));
+        for (int i = 0; i < AbstractDungeon.miscRng.random(15, 30); ++i) {
+            AbstractDungeon.effectsQueue.add(new DivinityParticleEffect());
+        }
+        addToBot(new ApplyPowerAction(p,p,new DivineRetributionPower(p,p,0)));
+        super.use(p,m);
     }
 
     //Upgraded stats.

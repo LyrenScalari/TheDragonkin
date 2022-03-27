@@ -5,16 +5,18 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
-import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
-import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -23,43 +25,39 @@ import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theDragonkin.cards.Deathspeaker.AbstractDeathspeakerCard;
-import theDragonkin.cards.Dragonkin.AbstractDragonkinCard;
-import theDragonkin.characters.TheDeathspeaker;
+import theDragonkin.DamageModifiers.Icons.*;
+import theDragonkin.cards.Dragonkin.*;
+import theDragonkin.cards.Drifter.ForetellCard;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.events.AncientAltar;
+import theDragonkin.patches.ChiField;
+import theDragonkin.patches.ManaField;
 import theDragonkin.potions.Dragonkin.DragonkinCommonPotion;
 import theDragonkin.potions.Dragonkin.DragonkinRarePotion;
 import theDragonkin.potions.Dragonkin.DragonkinUncommonPotion;
 import theDragonkin.powers.Dragonkin.HeatPower;
+import theDragonkin.powers.Dragonkin.PenancePower;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 import theDragonkin.relics.Dragonkin.*;
-import theDragonkin.relics.Grovekeeper.GrovekeeperStarting;
 import theDragonkin.ui.CurseAttack;
 import theDragonkin.util.*;
 import theDragonkin.variables.*;
 
+import javax.swing.*;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Properties;
-
-import static com.megacrit.cardcrawl.helpers.FontHelper.prepFont;
-import static theDragonkin.characters.TheDeathspeaker.Enums.Deathspeaker_Purple;
-import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
-
+import static theDragonkin.characters.TheDefault.Enums.Justicar_Red_COLOR;
 //TODO: DON'T MASS RENAME/REFACTOR
 //TODO: DON'T MASS RENAME/REFACTOR
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -87,7 +85,6 @@ import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
  *
  * And pls. Read the comments.
  */
-
 @SpireInitializer
 public class DragonkinMod implements
         EditCardsSubscriber,
@@ -97,8 +94,10 @@ public class DragonkinMod implements
         EditCharactersSubscriber,
         PostInitializeSubscriber ,
         RelicGetSubscriber,
-        PostBattleSubscriber,
-        PreMonsterTurnSubscriber{
+        PreMonsterTurnSubscriber,
+        OnPlayerTurnStartSubscriber,
+        StartGameSubscriber,
+        OnStartBattleSubscriber{
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DragonkinMod.class.getName());
@@ -118,6 +117,7 @@ public class DragonkinMod implements
     public static int CardsCycledThisTurn = 0;
     public static int BurnsCycledThisCombat = 0;
     public static int BurnsCycledThisTurn = 0;
+    public static boolean damagetaken = false;
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Dragonkin";
     private static final String AUTHOR = "Lyren"; // And pretty soon - You!
@@ -125,12 +125,13 @@ public class DragonkinMod implements
     public static Texture DIVINE_ARMOR_ICON;
     public static int Alignment;
     public static ArrayList<AbstractCard> Stars = new ArrayList<>();
+    public static ArrayList<AbstractNotOrb> Seals = new ArrayList<>();
     // =============== INPUT TEXTURE LOCATION =================
-    
     // Colors (RGB)
     // Character Color
     public static final Color DEFAULT_GRAY = CardHelper.getColor(209.0f, 53.0f, 18.0f);
     public static final Color Cursed_Purple = CardHelper.getColor(115.0f, 28.0f, 153.0f);
+    public static final Color WindWalker_Jade = CardHelper.getColor(0.0f, 168.0f, 107.0f);
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
@@ -146,25 +147,25 @@ public class DragonkinMod implements
     // Card backgrounds - The actual rectangular card
 
 
-    // Dragonkin
+    // Dragonkin stuff
 
     public static final String HOLY_LARGE_ORB = "theDragonkinResources/images/1024/card_Dragonkin_Holy_orb.png";
     public static final String HOLY_SMALL_ORB = "theDragonkinResources/images/512/card_Dragonkin_Holy_orb.png";
     public static final String PRIMAL_LARGE_ORB = "theDragonkinResources/images/1024/Dragonkin_PrimalOrb.png";
     public static final String PRIMAL_SMALL_ORB = "theDragonkinResources/images/512/Dragonkin_PrimalOrb.png";
-    private static final String ATTACK_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "theDragonkinResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = "theDragonkinResources/images/512/dragonkin/bg_attack_scales.png";
+    private static final String SKILL_DEFAULT_GRAY = "theDragonkinResources/images/512/dragonkin/bg_skill_scales.png";
+    private static final String POWER_DEFAULT_GRAY = "theDragonkinResources/images/512/dragonkin/bg_power_scales.png";
 
     private static final String ENERGY_ORB_DEFAULT_GRAY = "theDragonkinResources/images/512/card_default_gray_orb.png";
     private static final String CARD_ENERGY_ORB = "theDragonkinResources/images/512/card_small_orb.png";
     
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/dragonkin/bg_attack_scales.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/dragonkin/bg_skill_scales.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/dragonkin/bg_power_scales.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDragonkinResources/images/1024/card_default_gray_orb.png";
-
-    public static final String DOVAH_FONT = "theDragonkinResources/Font/DovahkiiItalic-2BDv.ttf";
+    public static final String LIGHTNINGBOLT = "theDragonkinResources/images/VFX/lightningspear.png";
+    public static final String DOVAH_FONT = "theDragonkinResources/Font/DovahkiinItalic-2BDv.ttf";
     public static BitmapFont DovahFont;
     // Character assets
     public static final String THE_DRAGONKIN_SHOULDER_1 = "theDragonkinResources/images/char/defaultCharacter/Dragonkinshoulder.png";
@@ -184,18 +185,40 @@ public class DragonkinMod implements
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "theDragonkinResources/images/Badge.png";
 
-    // Rival Boss Card stuff
+    // Deahtspeaker card stuff
     public static final String ENERGY_ORB_Acolyte = "theDragonkinResources/images/512/Acolyte/Boss_Acolyte_Cursed_Orb.png";
     public static final String ATTACK_Acolyte = "theDragonkinResources/images/512/Acolyte/Boss_Acolyte_Cursed_Attack.png";
     public static final String SKILL_Acolyte = "theDragonkinResources/images/512/Acolyte/Boss_Acolyte_Cursed_Skill.png";
     public static final String Power_Acolyte = "theDragonkinResources/images/512/Acolyte/Boss_Acolyte_Cursed_Power.png";
+    public static final String Spell_Acolyte = "theDragonkinResources/images/512/Acolyte/Boss_Acolyte_Cursed_Power.png";
     public static final String ATTACK_Acolyte_PORTRAIT = "theDragonkinResources/images/1024/Acolyte/Boss_Acolyte_Cursed_Attack.png";
     public static final String SKILL_Acolyte_PORTRAIT = "theDragonkinResources/images/1024/Acolyte/Boss_Acolyte_Cursed_Skill.png";
     public static final String Power_Acolyte_PORTRAIT = "theDragonkinResources/images/1024/Acolyte/Boss_Acolyte_Cursed_Power.png";
+    public static final String Spell_Acolyte_PORTRAIT = "theDragonkinResources/images/1024/Acolyte/Boss_Acolyte_Cursed_Spell.png";
     public static final String ENERGY_ORB_Acolyte_PORTRAIT = "theDragonkinResources/images/1024/Acolyte/Boss_Acolyte_Cursed_Orb.png";
+    public static final String Spell_Frame_Common_512 = "theDragonkinResources/images/512/Acolyte/Spell_Common.png";
+    public static final String Spell_Frame_Uncommon_512 = "theDragonkinResources/images/512/Acolyte/Spell_Uncommon.png";
+    public static final String Spell_Frame_Rare_512= "theDragonkinResources/images/512/Acolyte/Spell_Rare.png";
+    public static final String Spell_Frame_Common_1024 = "theDragonkinResources/images/1024/Acolyte/Spell_Common.png";
+    public static final String Spell_Frame_Uncommon_1024 = "theDragonkinResources/images/1024/Acolyte/Spell_Uncommon.png";
+    public static final String Spell_Frame_Rare_1024= "theDragonkinResources/images/1024/Acolyte/Spell_Rare.png";
+    public static final String Spell_Orb_512 = "theDragonkinResources/images/512/Acolyte/Mana_Orb.png";
+    public static final String Spell_Orb_1024 = "theDragonkinResources/images/1024/Acolyte/Mana_Orb.png";
+    // WindDamage Walker card stuff
+    public static final String ATTACK_WindWalker_PORTRAIT = "theDragonkinResources/images/1024/Windwalker/bg_attack_jadescale.png";
+    public static final String SKILL_WindWalker_PORTRAIT = "theDragonkinResources/images/1024/Windwalker/bg_skill_jadescale.png";
+    public static final String Power_WindWalker_PORTRAIT = "theDragonkinResources/images/1024/Windwalker/bg_power_jadescale.png";
+    public static final String ATTACK_WindWalker = "theDragonkinResources/images/512/Windwalker/bg_attack_jadescale.png";
+    public static final String SKILL_WindWalker = "theDragonkinResources/images/512/Windwalker/bg_skill_jadescale.png";
+    public static final String Power_WindWalker = "theDragonkinResources/images/512/Windwalker/bg_power_jadescale.png";
+    public static final String Chi_Desc = "theDragonkinResources/images/512/Chi_desc_Orb.png";
+    public static final String Mana_Orb = "theDragonkinResources/images/char/TheDeathspeaker/ManaIcon.png";
+    public static TextureAtlas TypeEnergyAtlas = new TextureAtlas();
     // Atlas and JSON files for the Animations
     public static final String THE_DEFAULT_SKELETON_ATLAS = "theDragonkinResources/images/char/defaultCharacter/TheDragonkin.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "theDragonkinResources/images/char/defaultCharacter/TheDragonkin.json";
+    public static final String Windwalker_SKELETON_ATLAS = "theDragonkinResources/images/char/TheWindWalker/TheWindWalker.atlas";
+    public static final String Windwalker_SKELETON_JSON = "theDragonkinResources/images/char/TheWindWalker/TheWindWalker.json";
 
     // =============== MAKE IMAGE PATHS =================
     
@@ -224,34 +247,18 @@ public class DragonkinMod implements
     public static String makeEventPath(String resourcePath) {
         return getModID() + "Resources/images/events/" + resourcePath;
     }
-    public static class Enums {
-        @SpireEnum(name = "Cursed") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor Cursed;
-        @SpireEnum(name = "Cursed")
-        @SuppressWarnings("unused")
-        public static CardLibrary.LibraryType LIBRARY_COLOR;
-    }
+
     // =============== /MAKE IMAGE PATHS/ =================
     
     // =============== /INPUT TEXTURE LOCATION/ =================
     
     
-    // =============== SUBSCRIBE, CREATE THE Dragonkin_Red_COLOR, INITIALIZE =================
+    // =============== SUBSCRIBE, CREATE THE Justicar_Red_COLOR, INITIALIZE =================
     
     public DragonkinMod() {
         logger.info("Subscribe to BaseMod hooks");
         
         BaseMod.subscribe(this);
-        
-      /*
-           (   ( /(  (     ( /( (            (  `   ( /( )\ )    )\ ))\ )
-           )\  )\()) )\    )\()))\ )   (     )\))(  )\()|()/(   (()/(()/(
-         (((_)((_)((((_)( ((_)\(()/(   )\   ((_)()\((_)\ /(_))   /(_))(_))
-         )\___ _((_)\ _ )\ _((_)/(_))_((_)  (_()((_) ((_|_))_  _(_))(_))_
-        ((/ __| || (_)_\(_) \| |/ __| __| |  \/  |/ _ \|   \  |_ _||   (_)
-         | (__| __ |/ _ \ | .` | (_ | _|  | |\/| | (_) | |) |  | | | |) |
-          \___|_||_/_/ \_\|_|\_|\___|___| |_|  |_|\___/|___/  |___||___(_)
-      */
       
         setModID("theDragonkin");
         // cool
@@ -269,20 +276,20 @@ public class DragonkinMod implements
         
         logger.info("Done subscribing");
         
-        logger.info("Creating the color " + Dragonkin_Red_COLOR.toString());
+        logger.info("Creating the color " + Justicar_Red_COLOR.toString());
         
-        BaseMod.addColor(Dragonkin_Red_COLOR, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(Justicar_Red_COLOR, DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(),
+                DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(), DEFAULT_GRAY.cpy(),
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
-       BaseMod.addColor(Deathspeaker_Purple, Cursed_Purple, Cursed_Purple, Cursed_Purple,
-                Cursed_Purple, Cursed_Purple, Cursed_Purple, Cursed_Purple,
-                ATTACK_Acolyte, SKILL_Acolyte, Power_Acolyte, ENERGY_ORB_Acolyte,
-                ATTACK_Acolyte_PORTRAIT, SKILL_Acolyte_PORTRAIT, Power_Acolyte_PORTRAIT,
-               ENERGY_ORB_Acolyte_PORTRAIT, CARD_ENERGY_ORB);
-        BaseMod.addColor(Enums.Cursed,Cursed_Purple,ATTACK_Acolyte,SKILL_Acolyte,"",ENERGY_ORB_Acolyte,ATTACK_Acolyte_PORTRAIT,SKILL_Acolyte_PORTRAIT,
-                "",ENERGY_ORB_Acolyte_PORTRAIT, CARD_ENERGY_ORB);
+
+        /*BaseMod.addColor(WindWalker_Jade_COLOR, WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(),
+                WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(),
+                ATTACK_WindWalker, SKILL_WindWalker, Power_WindWalker, ENERGY_ORB_DEFAULT_GRAY,
+                ATTACK_WindWalker_PORTRAIT, SKILL_WindWalker_PORTRAIT, Power_WindWalker_PORTRAIT,
+                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);*/
+
         logger.info("Done creating the color");
         
         
@@ -349,7 +356,7 @@ public class DragonkinMod implements
     @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Default Mod. Hi. =========================");
-        DragonkinMod defaultmod = new DragonkinMod();
+        DragonkinMod dragonkinMod = new DragonkinMod();
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
     public static void onGenerateCardMidcombat(AbstractCard card) {
@@ -361,7 +368,7 @@ public class DragonkinMod implements
         }
     }
 
-    // ============== /SUBSCRIBE, CREATE THE Dragonkin_Red_COLOR, INITIALIZE/ =================
+    // ============== /SUBSCRIBE, CREATE THE Justicar_Red_COLOR, INITIALIZE/ =================
     
     
     // =============== LOAD THE CHARACTER =================
@@ -369,16 +376,13 @@ public class DragonkinMod implements
     @Override
     public void receiveEditCharacters() {
         
-        BaseMod.addCharacter(new TheDefault("the Dragonkin", TheDefault.Enums.THE_DRAGONKIN),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DRAGONKIN);
-
-       // BaseMod.addCharacter(new TheDefault("the Deathspeaker", TheDeathspeaker.Enums.THE_DEATHSPEAKER),
-                //THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDeathspeaker.Enums.THE_DEATHSPEAKER);
+        BaseMod.addCharacter(new TheDefault("the Justicar", TheDefault.Enums.THE_JUSTICAR),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_JUSTICAR);
+        //BaseMod.addCharacter(new TheWindWalker("the Windwalker",TheWindWalker.Enums.TheWindWalker),THE_DEFAULT_BUTTON,TODO_BG,TheWindWalker.Enums.TheWindWalker);
 
         receiveEditPotions();
 
-        //logger.info("Added " + TheDefault.Enums.THE_DRAGONKIN.toString());
-        //logger.info("Added " + TheGroveKeeper.Enums.THE_GROVEKEEPER.toString());
+        //logger.info("Added " + TheDefault.Enums.THE_JUSTICAR.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -390,8 +394,7 @@ public class DragonkinMod implements
     public void receivePostInitialize() {
         logger.info("Loading badge image and mod options");
         DIVINE_ARMOR_ICON = ImageMaster.loadImage("theDragonkinResources/images/ui/DivineArmor.png");
-        FileHandle fontFile = Gdx.files.external(DOVAH_FONT);
-        prepFont(20.0f,false);
+        DovahFont = prepFont(new FreeTypeFontGenerator(Gdx.files.internal(DOVAH_FONT)), 46f, false);
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
         
@@ -416,7 +419,8 @@ public class DragonkinMod implements
                 e.printStackTrace();
             }
         });
-
+        TypeEnergyAtlas.addRegion("[Chi]",ImageMaster.loadImage(Chi_Desc),0,0,22,22);
+        TypeEnergyAtlas.addRegion("[Mana]",ImageMaster.loadImage(Mana_Orb),0,0,128,128);
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         CustomIntent.add(new CurseAttack());
@@ -432,7 +436,38 @@ public class DragonkinMod implements
         // Add the event
         logger.info("Done loading badge Image and mod options");
     }
-    
+    private static BitmapFont prepFont(FreeTypeFontGenerator g, float size, boolean isLinearFiltering) {
+        FreeTypeFontGenerator.FreeTypeFontParameter p = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        p.characters = "";
+        p.incremental = true;
+        p.size =(int) size/2;
+        p.gamma = 0.9F;
+        p.spaceX = (int)(-0.9F * Settings.scale);
+        p.spaceY = p.size;
+        p.borderColor = new Color(0.4F, 0.1F, 0.1F, 1.0F);
+        p.borderStraight = false;
+        p.borderWidth =  1.25F * Settings.scale;
+        p.borderGamma = 0.9F;
+        p.shadowColor = Settings.QUARTER_TRANSPARENT_BLACK_COLOR;
+        p.shadowOffsetX = (int)(1.0F * Settings.scale);
+        p.shadowOffsetY = Math.round(1.0F * Settings.scale);
+        if (isLinearFiltering) {
+            p.minFilter = TextureFilter.Linear;
+            p.magFilter = TextureFilter.Linear;
+        } else {
+            p.minFilter = TextureFilter.Nearest;
+            p.magFilter = TextureFilter.MipMapLinearNearest;
+        }
+
+        g.scaleForPixelHeight(p.size);
+        BitmapFont font = g.generateFont(p);
+        font.setUseIntegerPositions(!isLinearFiltering);
+        font.getData().markupEnabled = true;
+        if (LocalizedStrings.break_chars != null) {
+            font.getData().breakChars = LocalizedStrings.break_chars.toCharArray();
+        }
+        return font;
+    }
     // =============== / POST-INITIALIZE/ =================
     
     
@@ -444,13 +479,10 @@ public class DragonkinMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(DragonkinCommonPotion.class, Color.FIREBRICK.cpy() , null, Color.LIGHT_GRAY.cpy(),DragonkinCommonPotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
-        BaseMod.addPotion(DragonkinUncommonPotion.class, Color.YELLOW.cpy() ,Color.SKY.cpy() , null, DragonkinUncommonPotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
-        BaseMod.addPotion(DragonkinRarePotion.class, Color.GOLDENROD.cpy() ,Color.RED.cpy() , null, DragonkinRarePotion.POTION_ID, TheDefault.Enums.THE_DRAGONKIN);
+        BaseMod.addPotion(DragonkinCommonPotion.class, Color.FIREBRICK.cpy() , null, Color.LIGHT_GRAY.cpy(),DragonkinCommonPotion.POTION_ID, TheDefault.Enums.THE_JUSTICAR);
+        BaseMod.addPotion(DragonkinUncommonPotion.class, Color.YELLOW.cpy() ,Color.SKY.cpy() , null, DragonkinUncommonPotion.POTION_ID, TheDefault.Enums.THE_JUSTICAR);
+        BaseMod.addPotion(DragonkinRarePotion.class, Color.GOLDENROD.cpy() ,Color.RED.cpy() , null, DragonkinRarePotion.POTION_ID, TheDefault.Enums.THE_JUSTICAR);
 
-       // BaseMod.addPotion(MagicHerbTea.class, Color.CHARTREUSE.cpy() , Color.GREEN.cpy(), null,MagicHerbTea.POTION_ID, TheGremory.Enums.THE_GREMORY);
-       // BaseMod.addPotion(SpringWater.class, Color.SKY.cpy() ,Color.BLUE.cpy() , Color.TEAL, SpringWater.POTION_ID, TheGremory.Enums.THE_GREMORY);
-       // BaseMod.addPotion(ShadowofZahras.class, Color.BLACK.cpy() ,Color.DARK_GRAY.cpy() , null, ShadowofZahras.POTION_ID, TheGremory.Enums.THE_GREMORY);
         logger.info("Done editing potions");
     }
     
@@ -464,21 +496,20 @@ public class DragonkinMod implements
         logger.info("Adding relics");
         
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new GarnetScale(), Dragonkin_Red_COLOR);
-        BaseMod.addRelicToCustomPool(new ObsidianScale(), Dragonkin_Red_COLOR);
-        BaseMod.addRelicToCustomPool(new EmberCore(), Dragonkin_Red_COLOR);
-        BaseMod.addRelicToCustomPool(new MukySludge(), Dragonkin_Red_COLOR);
-        BaseMod.addRelicToCustomPool(new FernosBellows(), Dragonkin_Red_COLOR);
-        //BaseMod.addRelicToCustomPool(new BookOfHymns(), Dragonkin_Red_COLOR);
-        BaseMod.addRelicToCustomPool(new Sulfurian(), Dragonkin_Red_COLOR);
-        BaseMod.addRelicToCustomPool(new TilerasShield(), Dragonkin_Red_COLOR);
-        //BaseMod.addRelicToCustomPool(new SunblessedCharm(), Dragonkin_Red_COLOR);
-
-        //BaseMod.addRelicToCustomPool(new GrovekeeperStarting(), GroveKeeper_Forest_Color);
-
+        BaseMod.addRelicToCustomPool(new GarnetScale(), Justicar_Red_COLOR);
+        BaseMod.addRelicToCustomPool(new ObsidianScale(), Justicar_Red_COLOR);
+        BaseMod.addRelicToCustomPool(new EmberCore(), Justicar_Red_COLOR);
+        BaseMod.addRelicToCustomPool(new MukySludge(), Justicar_Red_COLOR);
+        BaseMod.addRelicToCustomPool(new FernosBellows(), Justicar_Red_COLOR);
+        //BaseMod.addRelicToCustomPool(new BookOfHymns(), Justicar_Red_COLOR);
+        BaseMod.addRelicToCustomPool(new Sulfurian(), Justicar_Red_COLOR);
+        BaseMod.addRelicToCustomPool(new TilerasShield(), Justicar_Red_COLOR);
+        //BaseMod.addRelicToCustomPool(new SunblessedCharm(), Justicar_Red_COLOR);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
-
+        //BaseMod.addRelicToCustomPool(new SerpentIdol(), WindWalker_Jade_COLOR);
+        //BaseMod.addRelicToCustomPool(new MastersIdol(), WindWalker_Jade_COLOR);
+        //UnlockTracker.markRelicAsSeen(MastersIdol.ID);
         logger.info("Done adding relics!");
     }
     
@@ -494,18 +525,24 @@ public class DragonkinMod implements
         pathCheck();
         // Add the Custom Dynamic Variables
        // BaseMod.addDynamicVariable(new HealDynVar());
+        CustomIconHelper.addCustomIcon(FireIcon.get());
+        CustomIconHelper.addCustomIcon(LightIcon.get());
+        CustomIconHelper.addCustomIcon(IceIcon.get());
+        CustomIconHelper.addCustomIcon(SpiritIcon.get());
+        CustomIconHelper.addCustomIcon(ArcaneIcon.get());
         logger.info("Add variables");
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
         BaseMod.addDynamicVariable(new SecondDamage());
+        BaseMod.addDynamicVariable(new ThirdDamage());
         BaseMod.addDynamicVariable(new FadingVar());
         logger.info("Adding cards");
         new AutoAdd("DragonkinMod").packageFilter(AbstractDragonkinCard.class).setDefaultSeen(true).cards();
-        new AutoAdd("DragonkinMod").packageFilter(AbstractDeathspeakerCard.class).setDefaultSeen(true).cards();
-
+        //new AutoAdd("DragonkinMod").packageFilter(AbstractWindWalkerCard.class).setDefaultSeen(true).cards();
+        //new AutoAdd("DragonkinMod").packageFilter(AbstractDefaultCard.class).setDefaultSeen(true).cards();
         logger.info("Done adding cards!");
-        logger.info("Added: " + BaseMod.getCardCount(Dragonkin_Red_COLOR) + " Cards");
+        logger.info("Added: " + BaseMod.getCardCount(Justicar_Red_COLOR) + " Cards");
     }
     
     // There are better ways to do this than listing every single individual card, but I do not want to complicate things
@@ -553,7 +590,8 @@ public class DragonkinMod implements
         BaseMod.loadCustomStringsFile(UIStrings.class, getModID() + "Resources/localization/eng/UIStrings.json");
 
         BaseMod.loadCustomStringsFile(MonsterStrings.class, getModID() + "Resources/localization/eng/MonsterStrings.json");
-        
+
+        BaseMod.loadCustomStringsFile(StanceStrings.class, getModID() + "Resources/localization/eng/Stancestrings.json");
         logger.info("Done edittting strings");
     }
     
@@ -593,8 +631,10 @@ public class DragonkinMod implements
 
     @Override
     public void receiveRelicGet(AbstractRelic abstractRelic) {
-        if (AbstractDungeon.player.hasRelic(TilerasShield.ID)) {
+        AbstractRelic tilerasShield = AbstractDungeon.player.getRelic(TilerasShield.ID);
+        if ( tilerasShield != null) {
             AbstractDungeon.player.increaseMaxHp(3, true);
+            tilerasShield.counter += 3;
         }
     }
 
@@ -605,11 +645,33 @@ public class DragonkinMod implements
             return true;
         } else return false;
     }
-
+    public static AbstractCard getRandomBlessing(){
+        ArrayList<AbstractCard> blessings = new ArrayList<>();
+        blessings.add(new BlessingofWrath());
+        blessings.add(new BlessingofFortitude());
+        blessings.add(new BlessingofMight());
+        blessings.add(new ShadowVision());
+        blessings.add(new LightSpeedBlessing());
+        return blessings.get(AbstractDungeon.miscRng.random(0,blessings.size()-1));
+    }
+    public static AbstractCard getRandomRune(){
+        ArrayList<AbstractCard> blessings = new ArrayList<>();
+        blessings.add(new BlessedWeapon());
+        blessings.add(new SpiritFireRune());
+        blessings.add(new ShatterRune());
+        blessings.add(new BladeMirrorRune());
+        blessings.add(new WarHungerRune());
+        blessings.add(new BlazingBreath());
+        blessings.add(new FlameWard());
+        blessings.add(new Condemnation());
+        blessings.add(new Flashpoint());
+        blessings.add(new IncendiaryFlow());
+        return blessings.get(AbstractDungeon.miscRng.random(0,blessings.size()-1));
+    }
     public static void TriggerOnCycle(AbstractCard ca){
         CardsCycledThisTurn++;
         CardsCycledThisCombat++;
-        if (ca.type == AbstractCard.CardType.STATUS) {
+        if (ca.type == AbstractCard.CardType.STATUS || (ca.hasTag(CustomTags.Rune) || ca.hasTag(CustomTags.Blessing))) {
             StatusesCycledThisTurn++;
             StatusesCycledThisCombat++;
             if (ca.cardID.equals(Burn.ID)){
@@ -619,27 +681,28 @@ public class DragonkinMod implements
         }
         for (AbstractCard c : AbstractDungeon.player.discardPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                ((TriggerOnCycleEffect) c).TriggerOnCycle(ca);
+                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                    ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
+                }
             }
         }
         for (AbstractCard c : AbstractDungeon.player.drawPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                ((TriggerOnCycleEffect) c).TriggerOnCycle(ca);
+                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                    ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
+                }
             }
         }
         for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                ((TriggerOnCycleEffect) c).TriggerOnCycle(ca);
+                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                    ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
+                }
             }
         }
         for (AbstractCard c : AbstractDungeon.player.hand.group){
             if (c instanceof TriggerOnCycleEffect){
                 ((TriggerOnCycleEffect) c).TriggerOnCycle(ca);
-            }
-        }
-        for (AbstractPower p : AbstractDungeon.player.powers){
-            if (p instanceof TriggerOnCycleEffect){
-                ((TriggerOnCycleEffect) p).TriggerOnCycle(ca);
             }
         }
         for (AbstractRelic r : AbstractDungeon.player.relics){
@@ -650,18 +713,41 @@ public class DragonkinMod implements
     }
 
     @Override
-    public void receivePostBattle(AbstractRoom abstractRoom) {
-        StatusesCycledThisCombat = 0;
-        CardsCycledThisCombat = 0;
-        BurnsCycledThisCombat = 0;
-    }
-
-    @Override
     public boolean receivePreMonsterTurn(AbstractMonster abstractMonster) {
         StatusesCycledThisTurn = 0;
         CardsCycledThisTurn = 0;
         BurnsCycledThisTurn = 0;
+        for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
+            if (c instanceof ForetellCard){
+                c.triggerOnEndOfTurnForPlayingCard();
+            }
+        }
+        for (AbstractNotOrb seal : Seals){
+            seal.onEndOfTurn();
+        }
         return true;
     }
 
+    @Override
+    public void receiveStartGame() {
+    }
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom abstractRoom) {
+        StatusesCycledThisCombat = 0;
+        CardsCycledThisCombat = 0;
+        BurnsCycledThisCombat = 0;
+        PenancePower.Power = 20;
+        Seals.clear();
+        ChiField.Chi.set(AbstractDungeon.player,0);
+        ManaField.Mana.set(AbstractDungeon.player,0);
+    }
+
+    @Override
+    public void receiveOnPlayerTurnStart() {
+        damagetaken = false;
+        for (AbstractNotOrb seal : Seals){
+            seal.onStartOfTurn();
+        }
+    }
 }

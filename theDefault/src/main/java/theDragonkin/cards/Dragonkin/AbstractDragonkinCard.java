@@ -35,12 +35,6 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
     }
     public int realBaseDamage;
     public int realBaseMagic;
-    public boolean Storm;
-    public int StormRate = 999999999;
-    public int secondDamage;
-    public int baseSecondDamage;
-    public boolean upgradedSecondDamage;
-    public boolean isSecondDamageModified;
     @Override
     public void atTurnStart() {
         super.atTurnStart();

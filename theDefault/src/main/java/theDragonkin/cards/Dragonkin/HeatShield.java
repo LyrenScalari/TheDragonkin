@@ -1,21 +1,21 @@
 package theDragonkin.cards.Dragonkin;
 
-import com.badlogic.gdx.graphics.Color;
+
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
+import theDragonkin.DamageModifiers.BlockModifiers.FireBlock;
+import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
-import theDragonkin.actions.FluxAction;
 import theDragonkin.characters.TheDefault;
-import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -26,7 +26,7 @@ public class HeatShield extends AbstractPrimalCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -42,7 +42,8 @@ public class HeatShield extends AbstractPrimalCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-
+        BlockModifierManager.addModifier(this,new FireBlock(true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, FireIcon.get()));
     }
 
     @Override
@@ -52,7 +53,9 @@ public class HeatShield extends AbstractPrimalCard {
         addToBot(new GainBlockAction(p,block));
         addToBot(new SelectCardsInHandAction(1," Cycle",false,false,(cards)->true,(List)->{
             addToBot(new CycleAction(List.get(0),1));
-            card.returnToHand = true;}));
+            if (List.get(0).type == CardType.STATUS){
+                card.returnToHand = true;
+            }}));
         super.use(p,m);
     }
 

@@ -70,7 +70,8 @@ public class SteelWillPower extends TwoAmountPower implements CloneablePowerInte
 
     @Override
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if ((amount < amount2) && !(abstractPower instanceof PerseverancePower)){
+        System.out.println(abstractPower.name);
+        if ((amount >= amount2) && !(abstractPower instanceof PerseverancePower) && abstractPower.type == PowerType.DEBUFF){
             addToBot(new ApplyPowerAction(owner,owner,new PerseverancePower(owner,owner,abstractPower.amount)));
             return false;
         } else {

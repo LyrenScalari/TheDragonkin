@@ -1,0 +1,44 @@
+{
+  "theDragonkin:Whirlwind": {
+    "NAME": "Whirlwind",
+    "DESCRIPTION": [
+      "At the start of your turn and when you enter this stance, draw a Card."
+    ]
+  },
+  "theDragonkin:Tempest": {
+    "NAME": "Tempest",
+    "DESCRIPTION": [
+      "#yAttacks deal #b3 Additional damage. NL increases the effectiveness of #yOrbs by #b3. NL Channel #yRain when you exit this stance."
+    ]
+  },
+  "theDragonkin:Conduit": {
+    "NAME": "Conduit",
+    "DESCRIPTION": [
+      "Increases the effectiveness of #yOrbs by #b5."
+    ]
+  },
+  "theDragonkin:Zephyr": {
+    "NAME": "Zephyr",
+    "DESCRIPTION": [
+      "Gain #b5 additional block from cards."
+    ]
+  },
+  "theDragonkin:Downdraft": {
+    "NAME": "Downdraft",
+    "DESCRIPTION": [
+      "Gain #b3 additional block from cards. NL increases the effectiveness of #yOrbs by #b3. NL Channel #yJade #ySpirit when you exit this stance."
+    ]
+  },
+  "theDragonkin:Cyclone": {
+    "NAME": "Cyclone",
+    "DESCRIPTION": [
+      "Gain #b3 additional block from cards. NL #yAttacks deal #b3 Additional damage. NL Channel #yRazor #yWind when you exit this stance."
+    ]
+  },
+  "theDragonkin:Typhoon": {
+    "NAME": "Typhoon",
+    "DESCRIPTION": [
+      "#yAttacks deal #b5 Additional damage."
+    ]
+  }
+}

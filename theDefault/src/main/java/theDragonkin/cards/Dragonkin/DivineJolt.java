@@ -1,5 +1,8 @@
 package theDragonkin.cards.Dragonkin;
 
+
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,12 +13,17 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
+import theDragonkin.DamageModifiers.DivineDamage;
+import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
+import theDragonkin.util.SmiteEffect;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -54,7 +62,7 @@ public class DivineJolt extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.COMMON; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final int COST = 1;
 
@@ -67,11 +75,12 @@ public class DivineJolt extends AbstractHolyCard {
     public DivineJolt(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
-    this.baseMagicNumber = 2;
     this.magicNumber = baseMagicNumber;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber =  2;
-        tags.add(CustomTags.Radiant);
-        RadiantExchange = 5;
+    defaultSecondMagicNumber = defaultBaseSecondMagicNumber =  2;
+    tags.add(CustomTags.Radiant);
+    RadiantExchange = 5;
+    DamageModifierManager.addModifier(this, new DivineDamage(true,true));
+    CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
 }
 
 
@@ -80,12 +89,11 @@ public class DivineJolt extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < 2; ++i) {
            m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-            addToBot(new VFXAction(new LightningEffect(m.hb_x,m.hb_y)));
-                AbstractDungeon.actionManager.addToBottom(
-                        new DamageAction(m,new DamageInfo(p, damage, damageTypeForTurn),AbstractGameAction.AttackEffect.NONE));
-               addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
-
+           if (m != null) {
+               addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+           }
         }
+        super.use(p,m);
     }
 
 

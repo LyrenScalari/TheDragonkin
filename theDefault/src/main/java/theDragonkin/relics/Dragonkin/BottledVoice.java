@@ -96,11 +96,6 @@ public class BottledVoice extends CustomRelic implements CustomBottleRelic, Cust
                 // 4. Set the room to INCOMPLETE - don't allow us to use the map, etc.
                 CardGroup group = CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck); // 5. Get a card group of all currently unbottled cards
                 CardGroup FilteredGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                for (AbstractCard c : group.group) {
-                        if (c.hasTag(CustomTags.Dragon_Breath)) {
-                                FilteredGroup.addToBottom(c);
-                        }
-                }
                 AbstractDungeon.gridSelectScreen.open(FilteredGroup, 1, DESCRIPTIONS[1] + name, false, false, false, false);
                 // 6. Open the grid selection screen with the cards from the CardGroup we specified above. The description reads "Select a card to bottle for" + (relic name) + "."
         }

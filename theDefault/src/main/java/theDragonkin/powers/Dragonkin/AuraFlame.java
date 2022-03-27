@@ -49,10 +49,12 @@ public class AuraFlame extends AbstractPower implements CloneablePowerInterface 
     public void onAfterCardPlayed(AbstractCard card) {
         this.flash();
         AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
-        CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new FireballEffect(owner.drawX,owner.dialogY,target.drawX,target.drawY),0.5f));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(target,new DamageInfo(AbstractDungeon.player,amount,DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
-        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(owner,owner,this,1));
+        if (target != null) {
+            CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new FireballEffect(owner.drawX, owner.dialogY, target.drawX, target.drawY), 0.5f));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(AbstractDungeon.player, amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(owner, owner, this, 1));
+        }
     }
     @Override
     public void updateDescription() {
@@ -60,7 +62,7 @@ public class AuraFlame extends AbstractPower implements CloneablePowerInterface 
     }
     @Override
     public AbstractPower makeCopy() {
-        return new DivineRetributionPower(owner, source);
+        return new AuraFlame(owner, source,amount);
     }
 
 }

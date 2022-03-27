@@ -1,10 +1,13 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -12,10 +15,17 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CardMods.StormEffect;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.BlazeRune;
+import theDragonkin.orbs.VenganceRune;
+import theDragonkin.powers.Dragonkin.FuryPower;
 import theDragonkin.powers.Dragonkin.Scorchpower;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -51,7 +61,7 @@ public class BlazingBreath extends AbstractPrimalCard implements StormCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int DAMAGE = 5;
@@ -64,15 +74,23 @@ public class BlazingBreath extends AbstractPrimalCard implements StormCard {
     // Feel free to explore other mods to see what variables they personally have and create your own ones.
 
     // /STAT DECLARATION/
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Primal"),BaseMod.getKeywordDescription("thedragonkin:Primal")));
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
+        return retVal;
+    }
     public BlazingBreath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
         damage = baseDamage = DAMAGE;
-        this.magicNumber = this.baseMagicNumber = 3;
+        this.magicNumber = this.baseMagicNumber = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber =
         StormRate = 2;
+        tags.add(CustomTags.Rune);
         CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
@@ -81,13 +99,16 @@ public class BlazingBreath extends AbstractPrimalCard implements StormCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(m,p,new Scorchpower(m,p,magicNumber)));
-        if (!Storm) {
-            super.use(p, m);
-        }
+        super.use(p,m);
     }
-    @Override
-    public void onStorm() {
-        addToBot(new DrawCardAction(AbstractDungeon.player,1));
+    public void triggerOnManualDiscard() {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new BlazeRune(damage, magicNumber));
+                isDone = true;
+            }
+        });
     }
     // Upgraded stats.
     @Override
@@ -98,5 +119,9 @@ public class BlazingBreath extends AbstractPrimalCard implements StormCard {
             upgradeMagicNumber(1);
             initializeDescription();
         }
+    }
+    @Override
+    public void onStorm() {
+        triggerOnManualDiscard();
     }
 }

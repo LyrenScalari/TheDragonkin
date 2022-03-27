@@ -50,7 +50,7 @@ public class MoltenScalesPower extends AbstractPower implements CloneablePowerIn
     @Override
     public int onLoseHp(int damageAmount) {
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new ApplyPowerAction(m,m,new Scorchpower(m,m,amount)));
+            addToBot(new ApplyPowerAction(m,owner,new Scorchpower(m,owner,amount)));
         }
         return damageAmount;
     }

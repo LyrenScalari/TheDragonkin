@@ -10,14 +10,13 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
-import theDragonkin.actions.CustomDiscoveryAction;
 import theDragonkin.characters.TheDefault;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
-import static theDragonkin.characters.TheDefault.Enums.Dragonkin_Red_COLOR;
+import static theDragonkin.characters.TheDefault.Enums.Justicar_Red_COLOR;
 
 public class DivinePrayer extends AbstractHolyCard {
 
@@ -28,7 +27,7 @@ public class DivinePrayer extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     public CardGroup Holy = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
     public CardGroup FilteredGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
     private static final int COST = 1;
@@ -49,7 +48,7 @@ public class DivinePrayer extends AbstractHolyCard {
         this.exhaust = true;
         Holy.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
                 .stream()
-                .filter(c -> c.color == Dragonkin_Red_COLOR)
+                .filter(c -> c.color == Justicar_Red_COLOR)
                 .filter(c -> c instanceof AbstractHolyCard)
                 .filter(c -> !c.hasTag(CardTags.HEALING))
                 .filter(c -> !c.rarity.equals(CardRarity.BASIC))
@@ -72,6 +71,7 @@ public class DivinePrayer extends AbstractHolyCard {
                 FilteredGroup.clear();
             }));
         }
+        super.use(p,m);
     }
 
     @Override

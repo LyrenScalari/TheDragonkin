@@ -93,13 +93,28 @@
     ]
   },
 
-  "theDragonkin:GrovekeeperStarting": {
-    "NAME": "Shattered Charm",
-    "FLAVOR": "A broken pendant symbolizing the sun and moon.",
-    "DESCRIPTIONS": ["Your first #yEclipse each combat lasts #b1 additional turn. NL Gain #b1 #yStrength and #b4 Block whenever you Eclipse."
+  "theDragonkin:GuiderLamp": {
+    "NAME": "Guider Lamp",
+    "FLAVOR": "Filled with souls of the fallen, they whisper knowledge ceaselessly.",
+    "DESCRIPTIONS": [
+      "After you #yExhaust a non-#yUndead card, add #b2 #ySkeletons to your Draw pile."
     ]
   },
 
+  "theDragonkin:SerpentIdol": {
+    "NAME": "Serpent Idol",
+    "FLAVOR": "A finely crafted idol of a Sky Dragon.",
+    "DESCRIPTIONS": [
+      "Start each combat with #b2 #yMastery."
+    ]
+  },
+  "theDragonkin:MastersIdol": {
+    "NAME": "Serpent Talisman",
+    "FLAVOR": "A Sky Dragon idol crafted of the purest Jade.",
+    "DESCRIPTIONS": [
+      "Replaces ",". NL At the start of each combat, Choose a Windwalker Stance to Enter."
+    ]
+  },
   "theDragonkin:BottledPlaceholderRelic": {
     "NAME": "Bottled Placeholder",
     "FLAVOR": "What is this?",

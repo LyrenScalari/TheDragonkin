@@ -1,18 +1,10 @@
 package theDragonkin.cards.Dragonkin;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import theDragonkin.CardMods.StormEffect;
 import theDragonkin.DragonkinMod;
-import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
 
@@ -27,7 +19,7 @@ public class FleetingFaith extends AbstractHolyCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF_AND_ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Dragonkin_Red_COLOR;
+    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -51,6 +43,7 @@ public class FleetingFaith extends AbstractHolyCard {
         addToBot(new GainBlockAction(p,block));
         addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,defaultSecondMagicNumber)));
         addToBot(new ApplyPowerAction(p,p,new PenancePower(p,p,defaultSecondMagicNumber)));
+        super.use(p,m);
     }
 
     @Override
