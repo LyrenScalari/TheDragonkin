@@ -4,11 +4,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 import theDragonknight.util.TexLoader;
 
 
-import static theDragonknight.DragonkinMod.makeID;
+import static theDragonknight.DragonknightMod.makeID;
 
 public class AbstractEasyPower extends TwoAmountPower {
     public AbstractEasyPower(String NAME, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
@@ -21,8 +21,8 @@ public class AbstractEasyPower extends TwoAmountPower {
         this.amount = amount;
         this.type = powerType;
 
-        Texture normalTexture = TexLoader.getTexture(DragonkinMod.getModID() + "Resources/images/powers/" + NAME.replaceAll("([ ])", "") + "32.png");
-        Texture hiDefImage = TexLoader.getTexture(DragonkinMod.getModID() + "Resources/images/powers/" + NAME.replaceAll("([ ])", "") + "84.png");
+        Texture normalTexture = TexLoader.getTexture(DragonknightMod.getModID() + "Resources/images/powers/" + NAME.replaceAll("([ ])", "") + "32.png");
+        Texture hiDefImage = TexLoader.getTexture(DragonknightMod.getModID() + "Resources/images/powers/" + NAME.replaceAll("([ ])", "") + "84.png");
         if (hiDefImage != null) {
             region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
             if (normalTexture != null)

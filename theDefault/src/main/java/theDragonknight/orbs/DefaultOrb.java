@@ -18,15 +18,15 @@ import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 
 import basemod.abstracts.CustomOrb;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 import theDragonknight.actions.InvigoratingBloomPassiveAction;
 
-import static theDragonknight.DragonkinMod.makeOrbPath;
+import static theDragonknight.DragonknightMod.makeOrbPath;
 
 public class DefaultOrb extends CustomOrb {
 
     // Standard ID/Description
-    public static final String ORB_ID = DragonkinMod.makeID("DefaultOrb");
+    public static final String ORB_ID = DragonknightMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
 

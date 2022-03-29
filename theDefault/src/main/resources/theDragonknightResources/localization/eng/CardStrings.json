@@ -7,7 +7,14 @@
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-
+  "theDragonknight:HeartofFire": {
+    "NAME": "Heart of Fire",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonknight:Scale thedragonknight:Flame."
+  },
+  "theDragonknight:MysticWind": {
+    "NAME": "Rake",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonknight:Engrave"
+  },
   "theDragonknight:AbstractExtraEffectModifier": {
     "NAME": "AbstractExtraEffectModifier",
     "DESCRIPTION": "",

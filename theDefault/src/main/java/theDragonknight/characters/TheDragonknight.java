@@ -20,22 +20,20 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theDragonknight.DragonkinMod;
-import theDragonknight.cards.Dragonkin.BlazingBreath;
-import theDragonknight.cards.Dragonkin.Defend;
-import theDragonknight.cards.Dragonkin.HolySmite;
-import theDragonknight.cards.Dragonkin.Strike;
-import theDragonknight.relics.Dragonkin.GarnetScale;
+import theDragonknight.DragonknightMod;
+import theDragonknight.cards.Dragonknight.Defend;
+import theDragonknight.cards.Dragonknight.HeartofFire;
+import theDragonknight.cards.Dragonknight.Strike;
 import theDragonknight.ui.EnergyOrbDragonkin;
 
 import java.util.ArrayList;
 
-import static theDragonknight.DragonkinMod.*;
-import static theDragonknight.DragonkinMod.THE_DEFAULT_SKELETON_JSON;
+import static theDragonknight.DragonknightMod.*;
+import static theDragonknight.DragonknightMod.THE_DEFAULT_SKELETON_JSON;
 import static theDragonknight.characters.TheDragonknight.Enums.Dragonknight_Crimson_Color;
 
 public class TheDragonknight extends CustomPlayer {
-    public static final Logger logger = LogManager.getLogger(DragonkinMod.class.getName());
+    public static final Logger logger = LogManager.getLogger(DragonknightMod.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
     // These are enums for your Characters color (both general color and for the card library) as well as
@@ -87,13 +85,13 @@ public class TheDragonknight extends CustomPlayer {
 
     public TheDragonknight(String name, PlayerClass setClass) {
         super(name, setClass, new EnergyOrbDragonkin(),
-                new SpineAnimation("theDragonkinResources/images/char/defaultCharacter/TheDragonkin.atlas","theDragonkinResources/images/char/defaultCharacter/TheDragonkin.json",1.0f));
+                new SpineAnimation("theDragonknightResources/images/char/defaultCharacter/TheDragonkin.atlas","theDragonknightResources/images/char/defaultCharacter/TheDragonkin.json",1.0f));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
-                // I left these in DragonkinMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
+                // I left these in DragonknightMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
                 THE_DRAGONKIN_SHOULDER_2, // campfire pose
                 THE_DRAGONKIN_SHOULDER_1, // another campfire pose
                 THE_DRAGONKIN_CORPSE, // dead corpse
@@ -150,6 +148,7 @@ public class TheDragonknight extends CustomPlayer {
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
+        retVal.add(HeartofFire.ID);
         return retVal;
     }
 
@@ -208,7 +207,7 @@ public class TheDragonknight extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new HolySmite();
+        return new Strike();
     }
 
     // The class name as it appears next to your player name in-game
@@ -220,7 +219,7 @@ public class TheDragonknight extends CustomPlayer {
     // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new TheDefault(name, chosenClass);
+        return new TheDragonknight(name, chosenClass);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.

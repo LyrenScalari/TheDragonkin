@@ -4,7 +4,7 @@ import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theDragonknight.cards.AbstractDefaultCard;
 
-import static theDragonknight.DragonkinMod.makeID;
+import static theDragonknight.DragonknightMod.makeID;
 
 public class ThirdDamage extends DynamicVariable {
 

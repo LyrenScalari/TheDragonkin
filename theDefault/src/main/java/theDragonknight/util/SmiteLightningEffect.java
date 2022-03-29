@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.ImpactSparkEffect;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 
 public class SmiteLightningEffect extends AbstractGameEffect {
     private float sX;
@@ -25,7 +25,7 @@ public class SmiteLightningEffect extends AbstractGameEffect {
 
     public SmiteLightningEffect(float sX, float sY, float dX, float dY) {
         if (img == null) {
-            img = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(DragonkinMod.LIGHTNINGBOLT),0,0,ImageMaster.loadImage(DragonkinMod.LIGHTNINGBOLT).getWidth(),ImageMaster.loadImage(DragonkinMod.LIGHTNINGBOLT).getHeight());
+            img = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(DragonknightMod.LIGHTNINGBOLT),0,0,ImageMaster.loadImage(DragonknightMod.LIGHTNINGBOLT).getWidth(),ImageMaster.loadImage(DragonknightMod.LIGHTNINGBOLT).getHeight());
         }
 
         this.sX = sX;

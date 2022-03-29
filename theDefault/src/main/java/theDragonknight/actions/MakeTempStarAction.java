@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 
 public class MakeTempStarAction extends AbstractGameAction {
     int amt;
@@ -15,7 +15,7 @@ public class MakeTempStarAction extends AbstractGameAction {
     @Override
     public void update() {
         for (int i = 0; i < amt; i++) {
-            AbstractCard StarToGenerate = DragonkinMod.Stars.get(AbstractDungeon.cardRandomRng.random(0, DragonkinMod.Stars.size()-1));
+            AbstractCard StarToGenerate = DragonknightMod.Stars.get(AbstractDungeon.cardRandomRng.random(0, DragonknightMod.Stars.size()-1));
             addToBot(new MakeTempCardInHandAction(StarToGenerate, 1));
         }
         isDone = true;

@@ -9,176 +9,28 @@
       " damage to all enemies."
     ]
   },
-  "theDragonkin:Wrath": {
-    "NAME": "Wrath",
-    "DESCRIPTION": [
-      "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Deal #b",
-      " damage to a random enemy"
-    ]
-  },
-  "theDragonkin:Wisdom": {
-    "NAME": "Wisdom",
-    "DESCRIPTION": [
-      "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak :", " Draw #b",
-      " card","s"," Next turn",",","."
-    ]
-  },
-  "theDragonkin:Might": {
-    "NAME": "Might",
-    "DESCRIPTION": [
-      "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Gain #b",
-      " #yStrength."
-    ]
-  },
-  "theDragonkin:Fortitude": {
-    "NAME": "Fortitude",
-    "DESCRIPTION": [
-      "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Gain #b", " [theDragonkin:LightIcon] #yBlock"
-    ]
-  },
-  "theDragonkin:Lightspeed": {
-    "NAME": "Lightspeed",
-    "DESCRIPTION": [
-      "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Flux #b4: Gain [E] and #b"," Block"
-    ]
-  },
-  "theDragonkin:Sanctuary": {
-    "NAME": "Sanctuary",
-    "DESCRIPTION": [
-      "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Increase the #yBlock gain of the card that created this by #b"," this combat"
-    ]
-  },
-  "theDragonkin:Infusion": {
-    "NAME": "Infusion",
-    "DESCRIPTION": [
-      "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Increase the damage of the card that created this by #b"," this combat"
-    ]
-  },
-  "theDragonkin:Consecration": {
-    "NAME": "Consecration",
-    "DESCRIPTION": [
-      "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Increase #yPenance damage by #b", " this combat"
-    ]
-  },
-  "theDragonkin:Vengeance": {
-    "NAME": "Vengeance",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn gain #b", " #yBlock and #b3 #yDeflecting #yScales","Nah"
-    ]
-  },
-  "theDragonkin:Blaze": {
-    "NAME": "Blaze",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and apply #b2 #yScorch to a random enemy","Yol"
-    ]
-  },
-  "theDragonkin:Dragonfire": {
-    "NAME": "Dragonfire",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and gain #b6 #yAuraflame","Toor"
-    ]
-  },
-  "theDragonkin:Shatter": {
-    "NAME": "Shatter",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and apply #b2 #yVulnerable to a random enemy","Kren"
-    ]
-  },
-  "theDragonkin:Flame": {
-    "NAME": "Flame",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL After you discard a card gain #b", " #yBlock. NL at the start of your turn #yCycle #b2 cards.","Yolos"
-    ]
-  },
-  "theDragonkin:Deflection": {
-    "NAME": "Deflection",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn gain #b", " #yBlock and apply #b1 #yWeak to all enemies.","Vo"
-    ]
-  },
-  "theDragonkin:Bloodthirst": {
-    "NAME": "Bloodthirst",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn deal #b", " damage to a random enemy 3 times.","Bahlok"
-    ]
-  },
-  "theDragonkin:Ward": {
-    "NAME": "Ward",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn gain #b", " [theDragonkin:FireIcon] #yBlock and shuffle a #yBurn into your draw pile.","Spaan"
-    ]
-  },
-  "theDragonkin:Spark": {
-    "NAME": "Spark",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn draw #b", " #yStatus or [#990702]Rune[] cards.","Kun"
-    ]
-  },
-  "theDragonkin:Destruction": {
-    "NAME": "Destruction",
-    "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL In #b", " turns deal #b", " damage to all enemies","Kun"
-    ]
-  },
-  "theDragonkin:Rain": {
-    "NAME": "Rain",
-    "DESCRIPTION": [
-      "#yPassive : At the end of your turn gain #b",
-      " Block, and increase this cards Evoke value by #b1",
-      " NL #yEvoke: Reduce the cost of #b",
-      " cards in hand by [E]"
-    ]
-  },
-  "theDragonkin:Fo": {
-    "NAME": "Fo",
-    "DESCRIPTION": [
-      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
-      " [IceIcon] damage to a random enemy.",
-      " NL #yEvoke: Gain #b",
-      " [IceIcon] Block."
-    ]
-  },
-  "theDragonkin:Krah": {
-    "NAME": "Krah",
-    "DESCRIPTION": [
-      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
-      " [IceIcon] damage to a random enemy.",
-      " NL #yEvoke: Deal #b",
-      " [IceIcon] damage to ALL enemies."
-    ]
-  },
-  "theDragonkin:Diin": {
-    "NAME": "Diin",
-    "DESCRIPTION": [
-      "#yPassive : If you have 2 different #yFrost #Breath Orbs deal #b",
-      " [IceIcon] damage to a random enemy.",
-      " NL #yEvoke: Apply #b",
-      " #yWeak to ALL enemies."
-    ]
-  },
-  "theDragonkin:StormMark": {
+  "theDragonknight:StormMark": {
     "NAME": "Mark of Storm",
     "DESCRIPTION": [
-      "#yCharges #b",
-      " NL at the end of your turn deal #b", " damage", " to a random enemy to a random enemy twice"," To this enemy and lose #b1 #yCharge"
+      "",
+      " NL #yScale #yPassive:","NL #ySurge #yPassive:",
+      " at the end of your turn deal #b", " damage", " to a random enemy twice"," to "
+    ]
+  },
+  "theDragonknight:MarkofFlame": {
+    "NAME": "Mark of Flame",
+    "DESCRIPTION": [
+      "Yvl",
+      " NL #yScale #yPassive:", " at the start of your turn"," gain #b"," #yVigor",
+      " NL #ySurge #yPassive:", " at the end of your turn deal #b", " damage to "
+    ]
+  },
+  "theDragonknight:MarkofMana": {
+    "NAME": "Mark of Mana",
+    "DESCRIPTION": [
+      "Ank",
+      " NL #yScale #yPassive:", " at the end of your turn"," deal #b"," damage to the last monster attacked",
+      " NL #ySurge #yPassive:", " #yMana #yScales damage "," in addition to the last monster attacked"
     ]
   }
 }

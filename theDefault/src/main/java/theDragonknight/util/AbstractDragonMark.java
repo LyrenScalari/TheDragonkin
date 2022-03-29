@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.vfx.BobEffect;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 
 public class AbstractDragonMark extends AbstractNotOrb {
     public AbstractCreature owner;
@@ -29,21 +29,8 @@ public class AbstractDragonMark extends AbstractNotOrb {
     }
     public void renderText(SpriteBatch sb) {
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.BreakAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.PainAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale,new Color(0.5F, 0.0F, 3.0F, this.c.a), this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.PlayerAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale,new Color(0.5F, 0.0F, 3.0F, this.c.a), this.fontScale);
     }
-
-    public void Break(){
-        AbstractDragonMark that = this;
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.remove(that);
-                isDone = true;
-            }
-        });
-    }
-
-
 
     public void updateAnimation() {
         this.bobEffect.update();
@@ -56,27 +43,8 @@ public class AbstractDragonMark extends AbstractNotOrb {
         this.c.a = Interpolation.pow2In.apply(1.0F, 0.01F, this.channelAnimTimer / 0.5F);
         this.scale = Interpolation.swingIn.apply(Settings.scale, 0.01F, this.channelAnimTimer / 0.5F);
         if (!AnimTimer){
-            AbstractDungeon.effectsQueue.add(new SealParticleEffect(cX,cY,this));
+            AbstractDungeon.effectsQueue.add(new RuneTextEffect(cX,cY,Sealstrings.DESCRIPTION[0],this));
             AnimTimer = true;
-        }
-    }
-    public void onEndOfTurn() {
-        if (owner != AbstractDungeon.player){
-            PainAmount -= 1;
-            AbstractDragonMark that = this;
-            if (PainAmount <= 0){
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        DragonkinMod.Seals.remove(that);
-                        isDone = true;
-                    }
-                });
-            }
-        } else {
-            if (PainAmount > basePainAmount){
-                PainAmount += 1;
-            }
         }
     }
     public void updateDescription() {
@@ -85,7 +53,7 @@ public class AbstractDragonMark extends AbstractNotOrb {
     public void update() {
         this.hb.update();
         int mod = 0;
-        for (AbstractNotOrb mark : DragonkinMod.Seals){
+        for (AbstractNotOrb mark : DragonknightMod.Seals){
             if (mark instanceof AbstractDragonMark && mark != this){
                 if (((AbstractDragonMark) mark).owner == this.owner){
                     mod += 1;
@@ -96,7 +64,7 @@ public class AbstractDragonMark extends AbstractNotOrb {
                 }
             }
         }
-        angle = (360f/mod) * DragonkinMod.Seals.indexOf(this);
+        angle = (360f/mod) * DragonknightMod.Seals.indexOf(this);
         cX = (owner.hb.cX-50f) + (float)(dy2*Math.cos((Math.toRadians(angle))));
         cY = (owner.hb.cY+50f) + (float)(dy2*Math.sin(Math.toRadians(angle)));
         hb.move(cX, cY); //I think this is correct, but might not be. Might need some offset calculations

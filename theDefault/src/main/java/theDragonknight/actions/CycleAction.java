@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 
 public class CycleAction extends AbstractGameAction {
     private AbstractCard targetCard;
@@ -24,7 +24,6 @@ public class CycleAction extends AbstractGameAction {
     @Override
     public void update() {
         AbstractDungeon.actionManager.addToTop(new DrawCardAction(drawamt));
-        DragonkinMod.TriggerOnCycle(targetCard);
         AbstractDungeon.actionManager.addToTop(new DiscardSpecificCardAction(targetCard));
         if (TransformCard != null){
             AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {

@@ -36,14 +36,28 @@
       "surge",
       "Surge"
     ],
-    "DESCRIPTION": "Places a #yDragonic Sigil on this cards target, if a type is specified it will be created otherwise your least recent Sigil will be moved."
+    "DESCRIPTION": "Places a #yDraconic #ySigil on this cards target of the specified type"
   },
   {
     "NAMES": [
       "scale",
       "Scale"
     ],
-    "DESCRIPTION": "Places a #yDraconic Sigil on the player, if a type is specified that type will be created otherwise the Sigil will be moved from this cards target."
+    "DESCRIPTION": "Places a #yDraconic Sigil on the player of the specified type."
+  },
+  {
+    "NAMES": [
+      "engrave",
+      "Engrave"
+    ],
+    "DESCRIPTION": "Takes your leading #yDraconic #ySigil and places it on this cards target"
+  },
+  {
+    "NAMES": [
+      "graft",
+      "Graft"
+    ],
+    "DESCRIPTION": "Takes the leading #yDraconic Sigil form this cards target and places it on the player"
   },
   {
     "PROPER_NAME": "Mark of Flame",
@@ -51,7 +65,7 @@
       "flame",
       "Flame"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Grants #yVigor. NL #ySurge #yPassive : Damages it's owner."
+    "DESCRIPTION": "#yDraconic #ySigil ; NL #yScale #yPassive : Grants #yVigor. NL #ySurge #yPassive : Damages it's owner."
   },
   {
     "PROPER_NAME": "Mark of Mana",
@@ -59,7 +73,7 @@
       "magic",
       "Magic"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Damages the enemy you last targeted directly. NL #ySurge #yPassive : Mark of Mana #yScales damage this marks owner."
+    "DESCRIPTION": "#yDraconic #ySigil ; NL #yScale #yPassive : Damages the enemy you last targeted directly. NL #ySurge #yPassive : Mark of Mana #yScales damage this marks owner."
   },
   {
     "PROPER_NAME": "Mark of Frost",

@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 
 public class RuneTextEffect extends AbstractGameEffect {
     private StringBuilder sBuilder = new StringBuilder("");
@@ -15,9 +15,9 @@ public class RuneTextEffect extends AbstractGameEffect {
     private int index;
     private float x;
     private float y;
-    private AbstractRune src;
+    private AbstractDragonMark src;
 
-    public RuneTextEffect(float x, float y, String Text, AbstractRune source) {
+    public RuneTextEffect(float x, float y, String Text, AbstractDragonMark source) {
         this.targetString = Text;
         this.index = 0;
         this.sBuilder.setLength(0);
@@ -47,7 +47,7 @@ public class RuneTextEffect extends AbstractGameEffect {
     }
 
     public void render(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, DragonkinMod.DovahFont, targetString, this.x, this.y, this.color, 1.0F - this.duration / 4.0F + MathUtils.random(0.05F));
+        FontHelper.renderFontCentered(sb, DragonknightMod.DovahFont, targetString, this.x, this.y, this.color, 1.0F - this.duration / 4.0F + MathUtils.random(0.05F));
         sb.setBlendFunction(770, 1);
     }
 

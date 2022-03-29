@@ -7,12 +7,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 import theDragonknight.util.CardArtRoller;
 
 import java.util.ArrayList;
 
-import static theDragonknight.DragonkinMod.makeImagePath;
+import static theDragonknight.DragonknightMod.makeImagePath;
 
 public abstract class AbstractDefaultCard extends CustomCard {
 
@@ -21,7 +21,7 @@ public abstract class AbstractDefaultCard extends CustomCard {
     // by default, that you need in your own cards.
 
     // In this example, we use a custom Abstract Card in order to define a new magic number. From here on out, we can
-    // simply use that in our cards, so long as we put "extends AbstractDragonkinCard" instead of "extends CustomCard" at the start.
+    // simply use that in our cards, so long as we put "extends AbstractDragonknightCard" instead of "extends CustomCard" at the start.
     // In simple terms, it's for things that we don't want to define again and again in every single card we make.
 
     public int defaultSecondMagicNumber;        // Just like magic number, or any number for that matter, we want our regular, modifiable stat
@@ -55,7 +55,7 @@ public abstract class AbstractDefaultCard extends CustomCard {
                                final CardRarity rarity,
                                final CardTarget target) {
 
-        super(cardID, name, getCardTextureString(cardID.replace(DragonkinMod.modID + ":", ""),type), cost, rawDescription, type, color, rarity, target);
+        super(cardID, name, getCardTextureString(cardID.replace(DragonknightMod.modID + ":", ""),type), cost, rawDescription, type, color, rarity, target);
         isCostModified = false;
         isCostModifiedForTurn = false;
         isDamageModified = false;

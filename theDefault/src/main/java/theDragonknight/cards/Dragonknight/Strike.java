@@ -7,18 +7,17 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theDragonknight.DragonkinMod;
-import theDragonknight.cards.Dragonkin.AbstractDragonkinCard;
+import theDragonknight.DragonknightMod;
 import theDragonknight.characters.TheDragonknight;
 
-import static theDragonknight.DragonkinMod.makeCardPath;
+import static theDragonknight.DragonknightMod.makeCardPath;
 
-public class Strike extends AbstractDragonkinCard {
+public class Strike extends AbstractDragonknightCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = DragonkinMod.makeID(Strike.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = DragonknightMod.makeID(Strike.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("WindwalkerStrike.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 

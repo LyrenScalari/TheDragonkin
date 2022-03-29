@@ -6,11 +6,11 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import theDragonknight.DragonkinMod;
+import theDragonknight.DragonknightMod;
 import theDragonknight.util.TextureLoader;
 
-import static theDragonknight.DragonkinMod.makeRelicOutlinePath;
-import static theDragonknight.DragonkinMod.makeRelicPath;
+import static theDragonknight.DragonknightMod.makeRelicOutlinePath;
+import static theDragonknight.DragonknightMod.makeRelicPath;
 
 public class PlaceholderRelic2 extends CustomRelic {
     /*
@@ -20,7 +20,7 @@ public class PlaceholderRelic2 extends CustomRelic {
      */
 
     // ID, images, text.
-    public static final String ID = DragonkinMod.makeID("PlaceholderRelic2");
+    public static final String ID = DragonknightMod.makeID("PlaceholderRelic2");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
