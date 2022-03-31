@@ -23,11 +23,13 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDragonknight.cards.Dragonknight.AbstractDragonknightCard;
 import theDragonknight.characters.TheDragonknight;
+import theDragonknight.relics.TaintedSoul;
 import theDragonknight.util.*;
 import theDragonknight.variables.*;
 
@@ -74,7 +76,8 @@ public class DragonknightMod implements
         EditCharactersSubscriber,
         PostInitializeSubscriber,
         OnPlayerTurnStartSubscriber,
-        OnStartBattleSubscriber{
+        OnStartBattleSubscriber,
+        PreMonsterTurnSubscriber{
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DragonknightMod.class.getName());
@@ -103,7 +106,7 @@ public class DragonknightMod implements
     // Colors (RGB)
     // Character Color
     public static final Color DEFAULT_GRAY = CardHelper.getColor(209.0f, 53.0f, 18.0f);
-    public static final Color DRAGONKNIGHT_CRIMSON = CardHelper.getColor(229.0f, 83.0f, 108.0f);
+    public static final Color DRAGONKNIGHT_CRIMSON = CardHelper.getColor(109.0f, 03.0f, 58.0f);
     public static final Color Cursed_Purple = CardHelper.getColor(115.0f, 28.0f, 153.0f);
     public static final Color WindWalker_Jade = CardHelper.getColor(0.0f, 168.0f, 107.0f);
     // Potion Colors in RGB
@@ -214,7 +217,7 @@ public class DragonknightMod implements
         logger.info("Creating the color " + Dragonknight_Crimson_Color.toString());
 
         BaseMod.addColor(Dragonknight_Crimson_Color, DRAGONKNIGHT_CRIMSON.cpy(), DRAGONKNIGHT_CRIMSON.cpy(), DRAGONKNIGHT_CRIMSON.cpy(),
-                WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), DRAGONKNIGHT_CRIMSON.cpy(),
+                DRAGONKNIGHT_CRIMSON.cpy(), DRAGONKNIGHT_CRIMSON.cpy(), DRAGONKNIGHT_CRIMSON.cpy(), DRAGONKNIGHT_CRIMSON.cpy(),
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
@@ -415,7 +418,7 @@ public class DragonknightMod implements
     @Override
     public void receiveEditRelics() {
         logger.info("Adding relics");
-        
+        BaseMod.addRelicToCustomPool(new TaintedSoul(),Dragonknight_Crimson_Color);
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         //BaseMod.addRelicToCustomPool(new GarnetScale(), Justicar_Red_COLOR);
 
@@ -532,7 +535,13 @@ public class DragonknightMod implements
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
     }
-
+    @Override
+    public boolean receivePreMonsterTurn(AbstractMonster abstractMonster) {
+        for (AbstractNotOrb seal : Seals){
+            seal.onEndOfTurn();
+        }
+        return true;
+    }
 
 
     @Override

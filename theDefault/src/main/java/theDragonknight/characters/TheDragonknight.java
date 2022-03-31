@@ -22,8 +22,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDragonknight.DragonknightMod;
 import theDragonknight.cards.Dragonknight.Defend;
+import theDragonknight.cards.Dragonknight.Dragonclaws.Dragonclaw;
 import theDragonknight.cards.Dragonknight.HeartofFire;
+import theDragonknight.cards.Dragonknight.MysticWind;
 import theDragonknight.cards.Dragonknight.Strike;
+import theDragonknight.relics.TaintedSoul;
 import theDragonknight.ui.EnergyOrbDragonkin;
 
 import java.util.ArrayList;
@@ -143,18 +146,20 @@ public class TheDragonknight extends CustomPlayer {
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
-        retVal.add(Strike.ID);
+        retVal.add(Dragonclaw.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(HeartofFire.ID);
+        retVal.add(MysticWind.ID);
         return retVal;
     }
 
     // Starting Relics
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
+        retVal.add(TaintedSoul.ID);
         return retVal;
     }
 

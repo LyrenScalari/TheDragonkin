@@ -15,6 +15,30 @@
     "NAME": "Rake",
     "DESCRIPTION": "Deal !D! damage. NL thedragonknight:Engrave"
   },
+  "theDragonknight:MoltenBlade": {
+    "NAME": "Molten Blade",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card. NL thedragonknight:Surge thedragonknight:Magma"
+  },
+  "theDragonknight:StaticStrike": {
+    "NAME": "Static Strike",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonknight:Scale thedragonknight:Storm"
+  },
+  "theDragonknight:CrystalShield": {
+    "NAME": "Crystal Shield",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonknight:Scale thedragonknight:Frost"
+  },
+  "theDragonknight:ToxicBreath": {
+    "NAME": "Miasmic Fog",
+    "DESCRIPTION": "Apply !M! Poison to ALL enemies. NL thedragonknight:Scale thedragonknight:Plague"
+  },
+  "theDragonknight:WorldinFlames": {
+    "NAME": "World in Flames",
+    "DESCRIPTION": "Activate the passive effects of all thedragonknight:Flame and thedragonknight:Magma NL Exhaust."
+  },
+  "theDragonknight:Dragonclaw": {
+    "NAME": "Dragonclaw",
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to all enemies"
+  },
   "theDragonknight:AbstractExtraEffectModifier": {
     "NAME": "AbstractExtraEffectModifier",
     "DESCRIPTION": "",

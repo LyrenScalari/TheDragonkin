@@ -27,14 +27,14 @@ public class EnergyOrbDragonkin extends CustomEnergyOrb
     {
         super(null, null, null);
         fbo = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, false);
-        orbVfx = AssetLoader.loadImage("theDragonkinResources/images/char/defaultCharacter/orb/vfx.png");
-        border =  AssetLoader.loadImage("theDragonkinResources/images/char/defaultCharacter/orb/border.png");
-        mask = AssetLoader.loadImage("theDragonkinResources/images/char/defaultCharacter/orb/mask.png");
+        orbVfx = AssetLoader.loadImage("theDragonknightResources/images/char/defaultCharacter/orb/vfx.png");
+        border =  AssetLoader.loadImage("theDragonknightResources/images/char/defaultCharacter/orb/border.png");
+        mask = AssetLoader.loadImage("theDragonknightResources/images/char/defaultCharacter/orb/mask.png");
         for (int i=0; i<LAYER_COUNT; ++i) {
-            layers[i] = AssetLoader.loadImage("theDragonkinResources/images/char/defaultCharacter/orb/" + (i) + ".png");
+            layers[i] = AssetLoader.loadImage("theDragonknightResources/images/char/defaultCharacter/orb/" + (i) + ".png");
         }
         for (int i=0; i<LAYER_COUNT; ++i) {
-            layers_d[i] = AssetLoader.loadImage("theDragonkinResources/images/char/defaultCharacter/orb/" + (i) + "d.png");
+            layers_d[i] = AssetLoader.loadImage("theDragonknightResources/images/char/defaultCharacter/orb/" + (i) + "d.png");
         }
     }
 

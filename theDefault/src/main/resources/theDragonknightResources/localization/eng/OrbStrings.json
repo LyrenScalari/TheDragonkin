@@ -9,28 +9,40 @@
       " damage to all enemies."
     ]
   },
-  "theDragonknight:StormMark": {
-    "NAME": "Mark of Storm",
-    "DESCRIPTION": [
-      "",
-      " NL #yScale #yPassive:","NL #ySurge #yPassive:",
-      " at the end of your turn deal #b", " damage", " to a random enemy twice"," to "
-    ]
-  },
   "theDragonknight:MarkofFlame": {
-    "NAME": "Mark of Flame",
+    "NAME": "Flame",
     "DESCRIPTION": [
       "Yvl",
-      " NL #yScale #yPassive:", " at the start of your turn"," gain #b"," #yVigor",
-      " NL #ySurge #yPassive:", " at the end of your turn deal #b", " damage to "
+      "#yScale #yPassive:", " at the start of your turn"," gain #b"," #yVigor",
+      "#ySurge #yPassive:", " at the end of your turn deal #b", " damage to ",
+      "Mark of "
     ]
   },
-  "theDragonknight:MarkofMana": {
-    "NAME": "Mark of Mana",
+  "theDragonknight:MarkofStorm": {
+    "NAME": "Storm",
     "DESCRIPTION": [
       "Ank",
-      " NL #yScale #yPassive:", " at the end of your turn"," deal #b"," damage to the last monster attacked",
-      " NL #ySurge #yPassive:", " #yMana #yScales damage "," in addition to the last monster attacked"
+      "#yScale #yPassive:", " at the end of your turn"," deal #b"," damage to the last monster attacked (",
+      "#ySurge #yPassive:", " #yStorm #yScales damage "," in addition to the last monster attacked",
+      "Mark of "
+    ]
+  },
+  "theDragonknight:MarkofFrost": {
+    "NAME": "Frost",
+    "DESCRIPTION": [
+      "Fwn",
+      "#yScale #yPassive:", " at the end of your turn"," gain #b"," #yBlock",
+      "#ySurge #yPassive:", " at the end of your turn apply #b "," #yFrostbite to it's owner (",
+      "Mark of "
+    ]
+  },
+  "theDragonknight:MarkofMagma": {
+    "NAME": "Magma",
+    "DESCRIPTION": [
+      "Ayg",
+      "#yScale #yPassive:", " at the end of your turn"," deal #b"," damage to a random enemy and increaase #ySurge power by #b2",
+      "#ySurge #yPassive:", " at the end of your turn gain #b"," #yBlock deal that much damage to ALL enemies.",
+      "Mark of "
     ]
   }
 }

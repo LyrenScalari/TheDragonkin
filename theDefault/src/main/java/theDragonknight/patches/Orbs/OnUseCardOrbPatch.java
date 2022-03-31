@@ -6,7 +6,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import javassist.CtBehavior;
+import theDragonknight.DragonknightMod;
 import theDragonknight.orbs.OnUseCardOrb;
+import theDragonknight.util.AbstractDragonMark;
+import theDragonknight.util.AbstractNotOrb;
 
 import java.util.ArrayList;
 
@@ -21,8 +24,8 @@ public class OnUseCardOrbPatch {
     )
     public static void Insert(UseCardAction __instance, AbstractCard targetCard) {
 
-        for (AbstractOrb abstractOrb : AbstractDungeon.player.orbs) {
-            AbstractOrb Orb = abstractOrb;
+        for (AbstractNotOrb abstractOrb : DragonknightMod.Seals) {
+            AbstractDragonMark Orb = (AbstractDragonMark) abstractOrb;
             if (Orb instanceof OnUseCardOrb) {
                 ((OnUseCardOrb) Orb).onUseCardOrb(targetCard, __instance);
             }

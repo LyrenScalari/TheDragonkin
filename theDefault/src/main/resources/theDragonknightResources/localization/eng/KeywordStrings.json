@@ -65,15 +65,15 @@
       "flame",
       "Flame"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil ; NL #yScale #yPassive : Grants #yVigor. NL #ySurge #yPassive : Damages it's owner."
+    "DESCRIPTION": "#yDraconic #ySigil : Grants #yVigor while on the player. Damages it's owner when on an enemy."
   },
   {
-    "PROPER_NAME": "Mark of Mana",
+    "PROPER_NAME": "Mark of Storm",
     "NAMES": [
-      "magic",
-      "Magic"
+      "storm",
+      "Storm"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil ; NL #yScale #yPassive : Damages the enemy you last targeted directly. NL #ySurge #yPassive : Mark of Mana #yScales damage this marks owner."
+    "DESCRIPTION": "#yDraconic #ySigil : Damages the enemy you last targeted directly while on the player. other #yStorm #ySigils damage this Sigil's owner when on an enemy."
   },
   {
     "PROPER_NAME": "Mark of Frost",
@@ -81,7 +81,7 @@
       "frost",
       "Frost"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Grants #yBlock. NL #ySurge #yPassive : Applies Frostbite to it's owner."
+    "DESCRIPTION": "#yDraconic #ySigil : Grants #yBlock while on the player. Applies Frostbite to it's owner when on an enemy."
   },
   {
     "PROPER_NAME": "Mark of Plague",
@@ -89,7 +89,7 @@
       "plague",
       "Plague"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Applies #yPoison to random enemies. NL #ySurge #yPassive : Applies #yRot to it's owner."
+    "DESCRIPTION": "#yDraconic #ySigil : Applies #yPoison to random enemies while on the player. Applies #yRot to it's owner when on an enemy."
   },
   {
     "PROPER_NAME": "Mark of Magma",
@@ -97,6 +97,6 @@
       "magma",
       "Magma"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil ; NL #Scale #yPassive : Damages random enemies and increases #ySurge power. NL #ySurge #yPassive : Damages all enemies and grants #yBlock"
+    "DESCRIPTION": "#yDraconic #ySigil : Damages random enemies and increase damage and block gained from this once #yEngraved while on the player. Damages all enemies and grants #yBlock to the player on an enemy"
   }
 ]

@@ -1,121 +1,13 @@
 {
-  "theDragonkin:GarnetScale": {
-    "NAME": "Garnet Scales",
-    "FLAVOR": "They Pulse with the Warmth of a Dragon's Fury.",
+  "theDragonknight:TaintedSoul": {
+    "NAME": "Tainted Soul",
+    "FLAVOR": "Forever damned for your heretical act of consuming the hearts of dragons.",
     "DESCRIPTIONS": [
-      "After you play your first [#94bdff]Holy[] card each turn, gain #b2 #yBlock."
+      "At the start of combat #yScale ", "You may change the type of Sigil after you Rest."
     ]
   },
 
-  "theDragonkin:EmberCore": {
-    "NAME": "Sunlight Fragment",
-    "FLAVOR": "It's warm to the touch.",
-    "DESCRIPTIONS": [
-      "The First time you draw a #yStatus each turn draw a card and gain #b4 #yDivine #yArmor."
-    ]
-  },
-  "theDragonkin:FernosBellows": {
-  "NAME": "Ferno's Bellows",
-  "FLAVOR": "Forge Dragon Bellows turn the slightest Spark into a Roaring Blaze.",
-  "DESCRIPTIONS": [
-    "After you Generate a #yBurn Apply #b2 #yScorch to all Enemies."
-  ]
-},
-  "theDragonkin:MukySludge": {
-    "NAME": "Paper Jragon",
-    "FLAVOR": "Even the most foolish of mortals knew to fear our ancient might and fury.",
-    "DESCRIPTIONS": [
-      "#yScorch Also reduces damage dealt by monsters, and is reduced when they attack."
-    ]
-  },
-  "theDragonkin:TilerasShield": {
-    "NAME": "Tilera's Shield",
-    "FLAVOR": "The Aegis of Great Commander Tilera, It stopped many weapons and armored her in Golden Light.",
-    "DESCRIPTIONS": [
-      "Upon pickup, heal #b1 for each relic you have. \n Whenever you obtain a relic, gain #b3 max HP."
-    ]
-  },
-  "theDragonkin:BottledVoice": {
-    "NAME": "Bottled Voice",
-    "FLAVOR": "\"Zulko,\nGol Ahrk,\nPahfen Honhiin Rein!\" \n - Paarthuunir",
-    "DESCRIPTIONS": [
-      "Upon pickup, choose a #yDragon #yBreath. Play it at the start of each combat.",
-      "Choose a card for ",
-      "Play ",
-      " at the start of combat."
-    ]
-  },
-  "theDragonkin:BookOfHymns": {
-    "NAME": "Book of Hymns",
-    "FLAVOR": "A Book of Crusader Hymns, telling tales of Heroism in the name of Naruuin.",
-    "DESCRIPTIONS": [
-      "The first time you lose #yBlock each combat gain #b2 #yZeal."
-    ]
-  },
-
-  "theDragonkin:Sulfurian": {
-    "NAME": "Sulfurian",
-    "FLAVOR": "The Great Mace of the Molten Core, known to incinerate anything.",
-    "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn. \n Shuffle #b1 Burn into your Discard pile after taking unblocked damage."
-    ]
-  },
-
-  "theDragonkin:ObsidianScale": {
-    "NAME": "Obsidian Scales",
-    "FLAVOR": "Obsidian power, mastery of flame and acid powers that ruled the primordial world",
-    "DESCRIPTIONS": ["Replaces ",
-      ". NL Gain #b1 #yBlock and #yFury after you play an Attack."
-    ]
-  },
-
-  "theDragonkin:SunblessedCharm": {
-    "NAME": "Sunblessed Charm",
-    "FLAVOR": "",
-    "DESCRIPTIONS": [
-      "Gain #b1 #yZeal at the start of each combat."
-    ]
-  },
-
-  "theDragonkin:PlaceholderRelic2": {
-    "NAME": "Placeholder Relic 2",
-    "FLAVOR": "You feel stronger.",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain #b1 #yStrength."
-    ]
-  },
-  "theDragonkin:DefaultClickableRelic": {
-    "NAME": "Right-Clicky Relic",
-    "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
-    "DESCRIPTIONS": [
-      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
-      "YOU ARE MINE!"
-    ]
-  },
-
-  "theDragonkin:GuiderLamp": {
-    "NAME": "Guider Lamp",
-    "FLAVOR": "Filled with souls of the fallen, they whisper knowledge ceaselessly.",
-    "DESCRIPTIONS": [
-      "After you #yExhaust a non-#yUndead card, add #b2 #ySkeletons to your Draw pile."
-    ]
-  },
-
-  "theDragonkin:SerpentIdol": {
-    "NAME": "Serpent Idol",
-    "FLAVOR": "A finely crafted idol of a Sky Dragon.",
-    "DESCRIPTIONS": [
-      "Start each combat with #b2 #yMastery."
-    ]
-  },
-  "theDragonkin:MastersIdol": {
-    "NAME": "Serpent Talisman",
-    "FLAVOR": "A Sky Dragon idol crafted of the purest Jade.",
-    "DESCRIPTIONS": [
-      "Replaces ",". NL At the start of each combat, Choose a Windwalker Stance to Enter."
-    ]
-  },
-  "theDragonkin:BottledPlaceholderRelic": {
+  "theDragonnight:BottledPlaceholderRelic": {
     "NAME": "Bottled Placeholder",
     "FLAVOR": "What is this?",
     "DESCRIPTIONS": [
