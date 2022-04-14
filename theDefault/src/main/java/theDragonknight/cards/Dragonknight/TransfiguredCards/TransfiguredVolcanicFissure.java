@@ -30,7 +30,7 @@ public class TransfiguredVolcanicFissure extends AbstractDragonknightCard {
 
     public TransfiguredVolcanicFissure(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
-        damage = baseDamage = 12;
+        damage = baseDamage = 14;
     }
 
 

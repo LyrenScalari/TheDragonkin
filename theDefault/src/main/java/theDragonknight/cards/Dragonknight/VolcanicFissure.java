@@ -34,14 +34,14 @@ public class VolcanicFissure extends AbstractDragonknightCard {
     private static final int COST = 2;  // COST = 1
     private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
 
-    private static final int DAMAGE = 12;    // DAMAGE = 6
+    private static final int DAMAGE = 14;    // DAMAGE = 6
     private static final int UPGRADE_PLUS_DMG = 4;  // UPGRADE_PLUS_DMG = 4
     // /STAT DECLARATION/
 
     public VolcanicFissure(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
-        magicNumber = baseMagicNumber = 3;
+        magicNumber = baseMagicNumber = 5;
         cardsToPreview = new TransfiguredVolcanicFissure();
     }
 
@@ -50,7 +50,6 @@ public class VolcanicFissure extends AbstractDragonknightCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (magicNumber > 0){
-            addToBot(new DiscardAction(p,p,1,false));
             HashMap<AbstractCard, AbstractCard> tranfigurecards = new HashMap<>();
             tranfigurecards.put(new VolcanicFissure(),this);
             addToBot(new TransfigureAction(magicNumber,this,tranfigurecards));

@@ -64,7 +64,7 @@
   },
   "theDragonknight:VolcanicFissure": {
     "NAME": "Volcanic Fissure",
-    "DESCRIPTION": "thedragonknight:Transfigure !M!. NL Deal !D! Damage. NL Discard a card.",
+    "DESCRIPTION": "thedragonknight:Transfigure !M!. NL Deal !D! Damage.",
     "EXTENDED_DESCRIPTION": ["thedragonknight:Transfigured. NL Deal !D! damage. NL Draw a card. NL thedragonknight:Scale thedragonknight:Magma "]
   },
   "theDragonknight:TransfiguredVolcanicFissure": {
