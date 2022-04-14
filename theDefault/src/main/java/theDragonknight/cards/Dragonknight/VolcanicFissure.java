@@ -3,6 +3,7 @@ package theDragonknight.cards.Dragonknight;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -15,6 +16,8 @@ import theDragonknight.cards.Dragonknight.TransfiguredCards.TransfiguredVolcanic
 import theDragonknight.characters.TheDragonknight;
 import theDragonknight.orbs.DragonShouts.MagmaMark;
 import theDragonknight.util.Wiz;
+
+import java.util.HashMap;
 
 import static theDragonknight.DragonknightMod.makeCardPath;
 
@@ -38,7 +41,7 @@ public class VolcanicFissure extends AbstractDragonknightCard {
     public VolcanicFissure(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
-        magicNumber = baseMagicNumber = 6;
+        magicNumber = baseMagicNumber = 3;
         cardsToPreview = new TransfiguredVolcanicFissure();
     }
 
@@ -48,7 +51,9 @@ public class VolcanicFissure extends AbstractDragonknightCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (magicNumber > 0){
             addToBot(new DiscardAction(p,p,1,false));
-            addToBot(new TransfigureAction(magicNumber,this));
+            HashMap<AbstractCard, AbstractCard> tranfigurecards = new HashMap<>();
+            tranfigurecards.put(new VolcanicFissure(),this);
+            addToBot(new TransfigureAction(magicNumber,this,tranfigurecards));
         }
         Wiz.dmg(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL));
         if (magicNumber <= 0) {

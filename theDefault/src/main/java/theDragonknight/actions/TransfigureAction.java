@@ -23,17 +23,17 @@ public class TransfigureAction extends AbstractGameAction {
     public AbstractCard src;
     private boolean firstRun;
     public static int numExhausted;
+    private boolean wasTransfigured = false;
     private HashMap<AbstractCard,AbstractCard> TransmutedPairs = new HashMap<>();
 
-    public TransfigureAction(int amount, AbstractCard source) {
+    public TransfigureAction(int amount, AbstractCard source,HashMap<AbstractCard, AbstractCard> transmutedPairs) {
         this.p = AbstractDungeon.player;
         this.amount = amount;
         this.src = source;
         this.firstRun = true;
         this.duration = this.startDuration = Settings.ACTION_DUR_FAST;
         this.actionType = ActionType.EXHAUST;
-        AbstractCard newSrc = src.makeCopy();
-        TransmutedPairs.put(newSrc,src);
+        TransmutedPairs = transmutedPairs;
     }
 
 
@@ -59,18 +59,19 @@ public class TransfigureAction extends AbstractGameAction {
                         src.magicNumber -= 1;
                         src.baseMagicNumber = src.magicNumber;
                         if (src.magicNumber == 0){
+                            wasTransfigured = true;
                             src.applyPowers();
-                            AbstractDungeon.effectsQueue.add(new TransfigureVFX(TransmutedPairs,this,1.75f));
+                            AbstractDungeon.topLevelEffects.add(new TransfigureVFX(TransmutedPairs,this,1.00f));
                         }
                     }
                 }
-
                 CardCrawlGame.dungeon.checkForPactAchievement();
                 AbstractDungeon.handCardSelectScreen.selectedCards.clear();
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+                if (!wasTransfigured){
+                    isDone = true;
+                }
             }
-
-            this.tickDuration();
         }
     }
 

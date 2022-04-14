@@ -22,6 +22,7 @@ import theDragonknight.powers.RotPower;
 import theDragonknight.util.Wiz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static theDragonknight.DragonknightMod.ATTACK_DEFAULT_GRAY_PORTRAIT;
@@ -68,7 +69,9 @@ public class FlameBlitz extends AbstractDragonknightCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (magicNumber > 0){
-            addToBot(new TransfigureAction(magicNumber,this));
+            HashMap<AbstractCard, AbstractCard> tranfigurecards = new HashMap<>();
+            tranfigurecards.put(new FlameBlitz(),this);
+            addToBot(new TransfigureAction(magicNumber,this,tranfigurecards));
         } else {
            Wiz.dmgAll(new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
            Wiz.dmgAll(new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL);

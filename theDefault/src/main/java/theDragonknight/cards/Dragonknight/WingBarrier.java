@@ -3,6 +3,7 @@ package theDragonknight.cards.Dragonknight;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -17,6 +18,7 @@ import theDragonknight.characters.TheDragonknight;
 import theDragonknight.util.Wiz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static theDragonknight.DragonknightMod.makeCardPath;
@@ -60,7 +62,9 @@ public class WingBarrier extends AbstractDragonknightCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (magicNumber > 0){
-            addToBot(new TransfigureAction(magicNumber,this));
+            HashMap<AbstractCard, AbstractCard> tranfigurecards = new HashMap<>();
+            tranfigurecards.put(new WingBarrier(),this);
+            addToBot(new TransfigureAction(magicNumber,this,tranfigurecards));
         } else {
 
         }

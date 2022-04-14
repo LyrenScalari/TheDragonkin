@@ -181,8 +181,6 @@ public class TransfigureVFX extends AbstractGameEffect {
             while (particleTimer >= DURATION_PER_PARTICLE) {
                 particleTimer -= DURATION_PER_PARTICLE;
                 for (AbstractCard card : transmutedPairs.keySet()) {
-                    AbstractCard pairCard = transmutedPairs.get(card);
-                    AbstractCard.CardTags type;
                     float center_x = card.current_x;
                     float center_y = card.current_y - (512f * offsetPercent) + 256f; //start at bottom of card at 100%, end at top of card at 0%
                     float rotation = AbstractDungeon.miscRng.random(0.0f, 360.0f);
@@ -221,7 +219,6 @@ public class TransfigureVFX extends AbstractGameEffect {
                             AbstractCard newCard = transmutedPairs.get(card);
                             copyCardPosition(card, newCard);
                             AbstractDungeon.player.limbo.removeCard(card);
-                            AbstractDungeon.player.discardPile.moveToDiscardPile(newCard);
                         }
                         break;
                     case EXHAUST_PILE:
@@ -246,6 +243,7 @@ public class TransfigureVFX extends AbstractGameEffect {
             AbstractDungeon.player.hand.applyPowers();
             AbstractDungeon.player.hand.glowCheck();
             isDone = true;
+            action.isDone = true;
         }
     }
 
