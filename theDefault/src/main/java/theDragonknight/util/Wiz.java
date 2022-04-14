@@ -25,6 +25,7 @@ import theDragonknight.powers.NextTurnPowerPower;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class Wiz {
     //The wonderful Wizard of Oz allows access to most easy compilations of data, or functions.
@@ -60,7 +61,11 @@ public class Wiz {
     public static void dmg(AbstractCreature target, DamageInfo info, AbstractGameAction.AttackEffect effect) {
         atb(new DamageAction(target, info, effect));
     }
-
+    public static void dmgAll(DamageInfo info, AbstractGameAction.AttackEffect effect) {
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
+            dmg(m, info, effect);
+        }
+    }
     public static void dmg(AbstractCreature target, DamageInfo info) {
         dmg(target, info, AbstractGameAction.AttackEffect.NONE);
     }
@@ -172,7 +177,6 @@ public class Wiz {
     public static void applyToEnemy(AbstractMonster m, AbstractPower po) {
         atb(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount));
     }
-
     public static void applyToEnemyTop(AbstractMonster m, AbstractPower po) {
         att(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount));
     }

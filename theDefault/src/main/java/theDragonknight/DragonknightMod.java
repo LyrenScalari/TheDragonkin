@@ -126,16 +126,16 @@ public class DragonknightMod implements
 
     // Dragonknight stuff
 
-    private static final String ATTACK_DEFAULT_GRAY = "theDragonknightResources/images/512/dragonkin/bg_attack_scales.png";
-    private static final String SKILL_DEFAULT_GRAY = "theDragonknightResources/images/512/dragonkin/bg_skill_scales.png";
-    private static final String POWER_DEFAULT_GRAY = "theDragonknightResources/images/512/dragonkin/bg_power_scales.png";
+    public static final String ATTACK_DEFAULT_GRAY = "theDragonknightResources/images/512/dragonkin/bg_attack_scales.png";
+    public static final String SKILL_DEFAULT_GRAY = "theDragonknightResources/images/512/dragonkin/bg_skill_scales.png";
+    public static final String POWER_DEFAULT_GRAY = "theDragonknightResources/images/512/dragonkin/bg_power_scales.png";
 
     private static final String ENERGY_ORB_DEFAULT_GRAY = "theDragonknightResources/images/512/card_default_gray_orb.png";
     private static final String CARD_ENERGY_ORB = "theDragonknightResources/images/512/card_small_orb.png";
-    
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_attack_scales.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_skill_scales.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_power_scales.png";
+
+    public static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_attack_scales.png";
+    public static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_skill_scales.png";
+    public static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_power_scales.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/card_default_gray_orb.png";
     public static final String LIGHTNINGBOLT = "theDragonknightResources/images/VFX/lightningspear.png";
     public static final String DOVAH_FONT = "theDragonknightResources/Font/DovahkiinItalic-2BDv.ttf";

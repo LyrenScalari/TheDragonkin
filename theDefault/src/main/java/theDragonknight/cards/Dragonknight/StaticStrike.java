@@ -1,13 +1,21 @@
 package theDragonknight.cards.Dragonknight;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonknight.CustomTags;
 import theDragonknight.DragonknightMod;
 import theDragonknight.characters.TheDragonknight;
+import theDragonknight.orbs.DragonShouts.StormMark;
+import theDragonknight.powers.FrostbitePower;
+import theDragonknight.util.Wiz;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonknight.DragonknightMod.makeCardPath;
 
@@ -28,13 +36,19 @@ public class StaticStrike extends AbstractDragonknightCard {
     private static final int UPGRADE_PLUS_DMG = 4;  // UPGRADE_PLUS_DMG = 4
 
     // /STAT DECLARATION/
-
-
+    @Override
+    public List<String> getCardDescriptors() {
+        List<String> tags = new ArrayList<>();
+        tags.add(BaseMod.getKeywordTitle("thedragonknight:Draconic"));
+        tags.addAll(super.getCardDescriptors());
+        return tags;
+    }
     public StaticStrike(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
-        this.tags.add(CardTags.STARTER_STRIKE);
+        magicNumber = baseMagicNumber = 2;
         this.tags.add(CardTags.STRIKE);
+        tags.add(CustomTags.Draconic);
     }
 
 
@@ -43,6 +57,14 @@ public class StaticStrike extends AbstractDragonknightCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        Wiz.applyToEnemy(m,new FrostbitePower(m,p,magicNumber));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonknightMod.Seals.add(new StormMark(AbstractDungeon.player));
+                isDone = true;
+            }
+        });
     }
 
 

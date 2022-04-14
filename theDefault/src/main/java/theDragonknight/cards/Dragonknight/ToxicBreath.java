@@ -1,11 +1,17 @@
 package theDragonknight.cards.Dragonknight;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonknight.DragonknightMod;
+import theDragonknight.cards.Dragonknight.Dragonclaws.ToxicDragonclaw;
 import theDragonknight.characters.TheDragonknight;
+import theDragonknight.orbs.DragonShouts.FlameMark;
+import theDragonknight.orbs.DragonShouts.PlagueMark;
 
 import static theDragonknight.DragonknightMod.makeCardPath;
 
@@ -37,11 +43,29 @@ public class ToxicBreath extends AbstractDragonknightCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
         magicNumber = baseMagicNumber = 3;
+        cardsToPreview = new ToxicDragonclaw();
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonknightMod.Seals.add(new PlagueMark(AbstractDungeon.player));
+                isDone = true;
+            }
+        });
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (!AbstractDungeon.player.hand.group.isEmpty()) {
+                    addToBot(new ExhaustAction(1, false, false, false));
+                    addToBot(new MakeTempCardInHandAction(new ToxicDragonclaw()));
+                }
+                isDone = true;
+            }
+        });
     }
 
     //Upgraded stats.
@@ -49,7 +73,7 @@ public class ToxicBreath extends AbstractDragonknightCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeBaseCost(0);
             initializeDescription();
         }
     }

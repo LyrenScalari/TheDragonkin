@@ -15,29 +15,94 @@
     "NAME": "Rake",
     "DESCRIPTION": "Deal !D! damage. NL thedragonknight:Engrave"
   },
-  "theDragonknight:MoltenBlade": {
-    "NAME": "Molten Blade",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card. NL thedragonknight:Surge thedragonknight:Magma"
+
+  "theDragonknight:FlameWhip": {
+    "NAME": "Flame Whip",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonknight:Burn"
   },
-  "theDragonknight:StaticStrike": {
-    "NAME": "Static Strike",
-    "DESCRIPTION": "Deal !D! damage. NL thedragonknight:Scale thedragonknight:Storm"
+  "theDragonknight:FlameBlitz": {
+    "NAME": "Flame Blitz",
+    "DESCRIPTION": "thedragonknight:Transfigure !M!.",
+    "EXTENDED_DESCRIPTION": ["thedragonknight:Transfigured. NL Deal !D! damage to all enemies twice."]
   },
-  "theDragonknight:CrystalShield": {
-    "NAME": "Crystal Shield",
-    "DESCRIPTION": "Gain !B! Block. NL thedragonknight:Scale thedragonknight:Frost"
-  },
-  "theDragonknight:ToxicBreath": {
-    "NAME": "Miasmic Fog",
-    "DESCRIPTION": "Apply !M! Poison to ALL enemies. NL thedragonknight:Scale thedragonknight:Plague"
+  "theDragonknight:TransfiguredFlameBlitz": {
+    "NAME": "Flame Blitz",
+    "DESCRIPTION": "thedragonknight:Transfigured. NL Deal !D! damage to all enemies twice."
   },
   "theDragonknight:WorldinFlames": {
     "NAME": "World in Flames",
     "DESCRIPTION": "Activate the passive effects of all thedragonknight:Flame and thedragonknight:Magma NL Exhaust."
   },
+
+  "theDragonknight:MoltenBlade": {
+    "NAME": "Molten Blade",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card. NL thedragonknight:Surge thedragonknight:Magma"
+  },
+
+  "theDragonknight:StaticStrike": {
+    "NAME": "Static Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonknight:Conduit NL thedragonknight:Scale thedragonknight:Storm"
+  },
+
+  "theDragonknight:ToxicBreath": {
+    "NAME": "Miasmic Fog",
+    "DESCRIPTION": "thedragonknight:Scale thedragonknight:Plague NL Exhaust a card in your hand to add a *Toxic *Dragonclaw to your hand."
+  },
+  "theDragonknight:RottenFang": {
+    "NAME": "Rotten Fang",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonknight:Rot to all enemies."
+  },
+
+  "theDragonknight:WingBarrier": {
+    "NAME": "Wing Barrier",
+    "DESCRIPTION": "thedragonknight:Transfigure !M!. NL Gain !B! Block.",
+    "EXTENDED_DESCRIPTION": ["thedragonknight:Transfigured. NL Gain !B! Block. NL Gain !M2! Thorns."]
+  },
+  "theDragonknight:TransfiguredWingGaurd": {
+    "NAME": "Wing Barrier",
+    "DESCRIPTION": "thedragonknight:Transfigured. NL Gain !B! Block. NL Gain !M! Thorns."
+  },
+  "theDragonknight:VolcanicFissure": {
+    "NAME": "Volcanic Fissure",
+    "DESCRIPTION": "thedragonknight:Transfigure !M!. NL Deal !D! Damage. NL Discard a card.",
+    "EXTENDED_DESCRIPTION": ["thedragonknight:Transfigured. NL Deal !D! damage. NL Draw a card. NL thedragonknight:Scale thedragonknight:Magma "]
+  },
+  "theDragonknight:TransfiguredVolcanicFissure": {
+    "NAME": "Volcanic Fissure",
+    "DESCRIPTION": "thedragonknight:Transfigured. NL Deal !D! damage. NL Draw a card. NL thedragonknight:Scale thedragonknight:Magma"
+  },
+  "theDragonknight:AgeofFire": {
+    "NAME": "Age of Fire",
+    "DESCRIPTION": "Exhaust a random card at the start of your turn. NL When a card is Exhausted Gain !M! thedragonknight:Dragonscales."
+  },
+  "theDragonknight:EmberAsh": {
+    "NAME": "Ember Ash",
+    "DESCRIPTION": "Gain !B! Block. NL thedragonknight:Transfuse: deal !D! damage to a random enemy twice."
+  },
+  "theDragonknight:DecayingScales": {
+    "NAME": "Decaying Scales",
+    "DESCRIPTION": "Apply !M! Poison. NL thedragonknight:Transfuse: Gain [E] [E] "
+  },
+
   "theDragonknight:Dragonclaw": {
     "NAME": "Dragonclaw",
-    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to all enemies"
+    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage."
+  },
+  "theDragonknight:ToxicDragonclaw": {
+    "NAME": "Toxic Dragonclaw",
+    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage. NL Apply !M! Poison."
+  },
+  "theDragonknight:StormDragonclaw": {
+    "NAME": "Storm Dragonclaw",
+    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage. NL thedragonknight:Engrave NL thedragonknight:Scale thedragonknight:Storm"
+  },
+  "theDragonknight:FlamingDragonclaw": {
+    "NAME": "Flaming Dragonclaw",
+    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage. NL Apply !M! thedragonknight:Burn."
+  },
+  "theDragonknight:MagmaDragonclaw": {
+    "NAME": "Molten Dragonclaw",
+    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage. NL Gain !B! Block for each enemy."
   },
   "theDragonknight:AbstractExtraEffectModifier": {
     "NAME": "AbstractExtraEffectModifier",

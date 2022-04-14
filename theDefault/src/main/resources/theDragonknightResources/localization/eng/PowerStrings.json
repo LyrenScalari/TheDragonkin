@@ -1,164 +1,17 @@
 {
-        "theDragonkin:MoltenScales": {
-                "NAME": "Magma Scales",
-                "DESCRIPTIONS": ["When you lose HP apply #b ",
-                " #yScorch to ALL enemies."
+        "theDragonknight:FrostbitePower": {
+                "NAME": "Arc Conduit",
+                "DESCRIPTIONS": ["#yStorm Sigils will damage this in addition to other targets."
                 ]
         },
-        "theDragonkin:HeatPower": {
-                "NAME": "Heat",
-                "DESCRIPTIONS": ["You may spend #yHeat to Exhaust #yStatuses and draw a card, activates #yCycle activated effects and the Cycled card's end of turn effects."
+        "theDragonknight:RotPower": {
+                "NAME": "Scarlet Rot",
+                "DESCRIPTIONS": ["At the end of this creatures turn it loses HP equal to #b50% of it's Poison."," NL (#b", " HP Lost)"
                 ]
         },
-        "theDragonkin:Scorch": {
-                "NAME": "Scorch",
-                "DESCRIPTIONS": ["When attacked, takes #b",
-                " damage,", " and reduce this by #b1"
-                ]
-        },
-        "theDragonkin:DivineRetribution": {
-                "NAME": "Divine Retribution",
-                "DESCRIPTIONS": ["At the end of your turn deal #b"," damage to a random enemy"
-                ]
-        },
-        "theDragonkin:WingsofLight": {
-                "NAME": "Wings of Light",
-                "DESCRIPTIONS": ["After you play a card that gains #yBlock [#548dff]Blessing[] #b"," : gain #b"," [LightIcon] #yBlock"
-                ]
-        },
-        "theDragonkin:Penance": {
-                "NAME": "Penance",
-                "DESCRIPTIONS": ["When this creature obtains #b",
-                        " #yPenance, it loses #b",
-                        " HP and increases #yPenance damage by #b10 this combat",
-                        "."
-                ]
-        },
-        "theDragonkin:SinnersBurden": {
-                "NAME": "Sinner's Burden",
-                "DESCRIPTIONS": ["Loses #b",
-                        " extra HP from #yPenance",
-                        "."
-                ]
-        },
-        "theDragonkin:IncendiaryFlow": {
-                "NAME": "Incendiary Flow",
-                "DESCRIPTIONS": ["After you discard a card this turn gain #b"," Block."
-                ]
-        },
-        "theDragonkin:HolyInfusion": {
-                "NAME": "Condemnation",
-                "DESCRIPTIONS": ["In #b", " Turns, Deal #b", " damage to ALL enemies."
-                ]
-        },
-        "theDragonkin:AshenArmor": {
-                "NAME": "Ashen Armor",
-                "DESCRIPTIONS": ["When you draw a #yStatus gain #b", " Block"
-                ]
-        },
-        "theDragonkin:AcidArmor": {
-                "NAME": "Pain Syphon",
-                "DESCRIPTIONS": ["When you Apply a Debuff gain #b", " Block"
-                ]
-        },
-        "theDragonkin:BurningRain": {
-                "NAME": "Burning Rain",
-                "DESCRIPTIONS": ["When you draw a #yStatus Attack a random enemy for #b", " damage"
-                ]
-        },
-        "theDragonkin:DivineConvictionpower": {
-                "NAME": "Holy Power",
-                "DESCRIPTIONS": ["Increases Holy card damage and #yBlock gain by #b"]
-        },
-        "theDragonkin:SacrificePower": {
-                "NAME": "Sacrifice",
-                "DESCRIPTIONS": ["When obtain #b"," spend it and Gain #b1 #yHoly #yPower"]
-        },
-        "theDragonkin:Unbroken": {
-                "NAME": "Unbroken",
-                "DESCRIPTIONS": ["After you Apply or receive a Debuff gain #b"," #yDeflecting #yScales."]
-        },
-        "theDragonkin:Perseverance": {
-                "NAME": "Ignored Pain",
-                "DESCRIPTIONS": ["Reduce this by #b1 at the end of your turn"]
-        },
-        "theDragonkin:FuryPower": {
-                "NAME": "Fury",
-                "DESCRIPTIONS": ["Can be spent instead of energy for #yStorm cards"]
-        },
-        "theDragonkin:Subdued": {
-                "NAME": "Subdued",
-                "DESCRIPTIONS": ["This monster can deal no more than #b1 damage."]
-        },
-        "theDragonkin:CrusaderFormpower": {
-                "NAME": "Seraph Form",
-                "DESCRIPTIONS": ["The first card you play each turn gives #b"," #yDivine #yArmor and increase this gain by #b"]
-        },
-        "theDragonkin:SteelWill": {
-                "NAME": "Steel Will",
-                "DESCRIPTIONS": ["If you have received #b"," or more damage this turn, replace debuffs applied with one with no effect."," NL (Total damage received : #b"," )"]
-        },
-        "theDragonkin:ReflectiveScales": {
-                "NAME": "Deflecting Scales",
-                "DESCRIPTIONS": ["After you receive damage deal #b"," damage to a random enemy and reduce this by #b1"]
-        },
-        "theDragonkin:AuraFlame": {
-                "NAME": "Auraflame",
-                "DESCRIPTIONS": ["After you play a card deal #b"," damage to a random enemy and reduce this by #b1"]
-        },
-        "theDragonkin:EndlessFlame": {
-                "NAME": "Endless Flame",
-                "DESCRIPTIONS": ["At the start of the next #b", " turns"," turns"," Gains #b"," #yScorch and adds a #yBurn to your discard pile."]
-        },
-
-        "theDragonkin:BrewingStorm": {
-                "NAME": "Brewing Storm",
-                "DESCRIPTIONS": ["Next Turn, Enter #yTempest and Gain [E]"
-                ]
-        },
-        "theDragonkin:SkyfallPower": {
-                "NAME": "Skyfall",
-                "DESCRIPTIONS": ["Whenver you gain #yChi activate the passive effect of your right-most orb #b"," Time", " Times"
-                ]
-        },
-        "theDragonkin:Static": {
-                "NAME": "Static",
-                "DESCRIPTIONS": ["Become #yStunned when you have #b20 #yStatic. NL Deals #b"," Less damage, reduces this by #b1 after attacking"
-                ]
-        },
-        "theDragonkin:TenSteps": {
-                "NAME": "Heian Godan",
-                "DESCRIPTIONS": ["Strikes deal #b"," additional damage. NL Defends gain #b"," additional #yBlock."
-                ]
-        },
-        "theDragonkin:Mastery": {
-                "NAME": "Mastery",
-                "DESCRIPTIONS": ["After you play a card, cards with the same name deal #b2 more damage and gain #b2 more block, then lose #b1 #yMastery."
-                ]
-        },
-        "theDragonkin:SpiritChakra": {
-                "NAME": "[DrainIcon] Chakra",
-                "DESCRIPTIONS": ["Normal damage #yStrikes deal [DrainIcon] damage instead. NL Normal #yBlock #yDefends give [DrainIcon] Block instead"
-                ]
-        },
-        "theDragonkin:WindChakra": {
-                "NAME": "[WindIcon] Chakra",
-                "DESCRIPTIONS": ["Normal damage #yStrikes deal [WindIcon] damage instead. NL Normal #yBlock #yDefends give [WindIcon] Block instead"
-                ]
-        },
-        "theDragonkin:WaterChakra": {
-                "NAME": "[WaterIcon] Chakra",
-                "DESCRIPTIONS": ["Normal damage #yStrikes deal [WaterIcon] damage instead. NL Normal #yBlock #yDefends give [WaterIcon] Block instead"
-                ]
-        },
-        "theDragonkin:LightningChakra": {
-                "NAME": "[ElectricIcon] Chakra",
-                "DESCRIPTIONS": ["Normal damage #yStrikes deal [ElectricIcon] damage instead. NL Normal #yBlock #yDefends give [ElectricIcon] Block instead"
-                ]
-        },
-        "theDragonkin:SpiritWound": {
-                "NAME": "Spirit Wound",
-                "DESCRIPTIONS": ["At the end of round, if this power is greater or equal then this creatures HP, destroy it."
+        "theDragonknight:BurnPower": {
+                "NAME": "Burn",
+                "DESCRIPTIONS": ["When attacked give the player #b"," #yVigor"
                 ]
         }
 }

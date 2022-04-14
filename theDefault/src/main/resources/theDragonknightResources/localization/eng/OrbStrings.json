@@ -13,8 +13,8 @@
     "NAME": "Flame",
     "DESCRIPTION": [
       "Yvl",
-      "#yScale #yPassive:", " at the start of your turn"," gain #b"," #yVigor",
-      "#ySurge #yPassive:", " at the end of your turn deal #b", " damage to ",
+      "", "at the start of your turn"," gain #b"," #yVigor",
+      "", "at the end of your turn deal #b", " damage to ",
       "Mark of "
     ]
   },
@@ -22,8 +22,8 @@
     "NAME": "Storm",
     "DESCRIPTION": [
       "Ank",
-      "#yScale #yPassive:", " at the end of your turn"," deal #b"," damage to the last monster attacked (",
-      "#ySurge #yPassive:", " #yStorm #yScales damage "," in addition to the last monster attacked",
+      "", "at the end of your turn"," deal #b"," damage to the last monster attacked (",
+      "", " Apply #b"," #yArc #yConduit and #yEngraft.",
       "Mark of "
     ]
   },
@@ -31,8 +31,17 @@
     "NAME": "Frost",
     "DESCRIPTION": [
       "Fwn",
-      "#yScale #yPassive:", " at the end of your turn"," gain #b"," #yBlock",
-      "#ySurge #yPassive:", " at the end of your turn apply #b "," #yFrostbite to it's owner (",
+      "", "at the end of your turn"," gain #b"," #yBlock",
+      "", "at the end of your turn apply #b "," #yFrostbite to it's owner (",
+      "Mark of "
+    ]
+  },
+  "theDragonknight:MarkofPlague": {
+    "NAME": "Plague",
+    "DESCRIPTION": [
+      "Myn",
+      "", "at the end of your turn"," apply #b"," #yPoison to a random enemy",
+      "", "at the end of your turn apply #b "," #yScarlet #yRot to it's owner (",
       "Mark of "
     ]
   },
@@ -40,8 +49,8 @@
     "NAME": "Magma",
     "DESCRIPTION": [
       "Ayg",
-      "#yScale #yPassive:", " at the end of your turn"," deal #b"," damage to a random enemy and increaase #ySurge power by #b2",
-      "#ySurge #yPassive:", " at the end of your turn gain #b"," #yBlock deal that much damage to ALL enemies.",
+      "", "at the end of your turn"," deal #b"," damage to a random enemy and increaase #ySurge power by #b2",
+      "", "at the end of your turn gain #b"," #yBlock deal that much damage to ALL enemies.",
       "Mark of "
     ]
   }

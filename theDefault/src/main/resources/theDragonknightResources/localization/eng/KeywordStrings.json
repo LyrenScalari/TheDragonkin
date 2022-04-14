@@ -10,10 +10,45 @@
   },
   {
     "NAMES": [
+      "cleave",
+      "Cleave"
+    ],
+    "DESCRIPTION": "Applies half of the cards offensive effects to all enemies in addition to it's target"
+  },
+  {
+    "PROPER_NAME": "Transfigure X",
+    "NAMES": [
+      "transfigure",
+      "Transfigure",
+      "transfigured",
+      "Transfigured",
+      "transfigure.",
+      "Transfigure.",
+      "transfigured.",
+      "Transfigured."
+    ],
+    "DESCRIPTION": "#yExhaust up to X cards, then reduce this amount by the number of cards Exhausted. Once this reaches 0, this card becomes Transfigured"
+  },
+  {
+    "NAMES": [
       "draconic",
       "Draconic"
     ],
     "DESCRIPTION": "#yDraconic cards have their damage and #yBlock values increased by #yDragonscales. NL #yDraconic Sigils have their values increased by #yDragonscales"
+  },
+  {
+    "NAMES": [
+      "dragonscales",
+      "Dragonscales"
+    ],
+    "DESCRIPTION": "Improves #yDragonic #ySigils and damage and #yBlock values of #yDraconic cards."
+  },
+  {
+    "NAMES": [
+      "transfuse",
+      "Transfuse"
+    ],
+    "DESCRIPTION": "#yTransfuse effects occur when this card goes to the Exhaust pile"
   },
   {
     "PROPER_NAME": "Scarlet Rot",
@@ -21,15 +56,15 @@
       "rot",
       "Rot"
     ],
-    "DESCRIPTION": "#yScarlet #yRot increases damage from taken from #yPoison #b%50. NL Additional #yPoison damage dealt is spread to all other enemies."
+    "DESCRIPTION": "#yScarlet #yRot deals damage equal to #b50% of it's owner's #yPoison."
   },
   {
-    "PROPER_NAME": "Frostbite",
+    "PROPER_NAME": "Arc Conduit",
     "NAMES": [
-      "frostbite",
-      "Frostbite"
+      "conduit",
+      "Conduit"
     ],
-    "DESCRIPTION": "When a creature obtains #b15 #yFrostbite they take #b35 damage and gain #b2 #yWeak and #yVulnerable"
+    "DESCRIPTION": "#yStorm Sigils will damage monsters with Arc Conduit in addition to other targets."
   },
   {
     "NAMES": [
@@ -50,7 +85,7 @@
       "engrave",
       "Engrave"
     ],
-    "DESCRIPTION": "Takes your leading #yDraconic #ySigil and places it on this cards target"
+    "DESCRIPTION": "Takes your leading #yDraconic #ySigil and places it on enemies this card effects."
   },
   {
     "NAMES": [
@@ -73,7 +108,7 @@
       "storm",
       "Storm"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil : Damages the enemy you last targeted directly while on the player. other #yStorm #ySigils damage this Sigil's owner when on an enemy."
+    "DESCRIPTION": "#yDraconic #ySigil : Damages the enemy you last targeted directly while on the player. Applies #yArc #yConduit then #yEngrafts when on an enemy"
   },
   {
     "PROPER_NAME": "Mark of Frost",

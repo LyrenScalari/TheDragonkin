@@ -11,17 +11,22 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonknight.CustomTags;
 import theDragonknight.DragonknightMod;
 import theDragonknight.cards.Dragonknight.AbstractDragonknightCard;
-import theDragonknight.cards.Dragonknight.Strike;
 import theDragonknight.characters.TheDragonknight;
+import theDragonknight.orbs.DragonShouts.FlameMark;
+import theDragonknight.orbs.DragonShouts.StormMark;
+import theDragonknight.powers.FrostbitePower;
+import theDragonknight.util.AbstractDragonMark;
+import theDragonknight.util.AbstractNotOrb;
+import theDragonknight.util.Wiz;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static theDragonknight.DragonknightMod.makeCardPath;
 
-public class Dragonclaw extends AbstractDragonknightCard {
+public class StormDragonclaw extends AbstractDragonknightCard {
 
-    public static final String ID = DragonknightMod.makeID(Dragonclaw.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = DragonknightMod.makeID(StormDragonclaw.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("WindwalkerStrike.png");// "public static final String IMG = makeCardPath("FlameweaverStrike.png");
 
     private static final CardRarity RARITY = CardRarity.SPECIAL; //  Up to you, I like auto-complete on these
@@ -32,7 +37,7 @@ public class Dragonclaw extends AbstractDragonknightCard {
     private static final int COST = 1;  // COST = 1
     private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
 
-    private static final int DAMAGE = 6;    // DAMAGE = 6
+    private static final int DAMAGE = 4;    // DAMAGE = 6
     private static final int UPGRADE_PLUS_DMG = 4;  // UPGRADE_PLUS_DMG = 4
 
     // /STAT DECLARATION/
@@ -44,9 +49,12 @@ public class Dragonclaw extends AbstractDragonknightCard {
         return tags;
     }
 
-    public Dragonclaw(){
+    public StormDragonclaw(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
+        magicNumber = baseMagicNumber = 6;
+        secondDamage = baseSecondDamage = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         tags.add(CustomTags.Draconic);
     }
 
@@ -56,7 +64,33 @@ public class Dragonclaw extends AbstractDragonknightCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p,damage/2, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p,damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    if (!m.isDeadOrEscaped()) {
+                        boolean sent = false;
+                        for (AbstractNotOrb orb : DragonknightMod.Seals) {
+                            if (orb instanceof AbstractDragonMark && !sent) {
+                                if (((AbstractDragonMark) orb).owner != m) {
+                                    sent = true;
+                                    ((AbstractDragonMark) orb).owner = m;
+                                }
+                            }
+                        }
+                    }
+                }
+                isDone = true;
+            }
+        });
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonknightMod.Seals.add(new StormMark(AbstractDungeon.player));
+                isDone = true;
+            }
+        });
     }
 
 
