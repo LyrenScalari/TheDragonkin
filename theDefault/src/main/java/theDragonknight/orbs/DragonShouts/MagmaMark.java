@@ -1,18 +1,18 @@
 package theDragonknight.orbs.DragonShouts;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theDragonknight.DragonknightMod;
+import theDragonknight.powers.BurnPower;
 import theDragonknight.util.AbstractDragonMark;
+import theDragonknight.util.Wiz;
 
 public class MagmaMark extends AbstractDragonMark {
     public static final String ORB_ID = DragonknightMod.makeID("MarkofMagma");
@@ -23,28 +23,30 @@ public class MagmaMark extends AbstractDragonMark {
         Sealstrings = orbString;
         owner = Owner;
         name = orbString.DESCRIPTION[8] + orbString.NAME;
-        BreakAmount = 3;
+        BreakAmount = baseBreakAmount = 4;
         PlayerAmount = BasePlayerAmount = 3;
         updateAnimation();
     }
     public void onEndOfTurn() {
-        if (owner != AbstractDungeon.player) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(AbstractDungeon.player,BreakAmount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(AbstractDungeon.player,PlayerAmount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
-            BreakAmount += 1;
-            baseBreakAmount += 1;
+        for (int i = 0; i < PainAmount ; i++) {
+            TriggerPassive();
         }
+    }
+    public void TriggerPassive(){
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner,PlayerAmount));
+    }
+    public void WhenRemoved() {
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
+            Wiz.applyToEnemy(m,new BurnPower(m,owner,BreakAmount));
+        }
+        super.WhenRemoved();
     }
     public AbstractDragonMark MakeCopy(){
         return new MagmaMark(owner);
     }
 
     public void updateDescription() {
-        if (owner != AbstractDungeon.player) {
-            description = DESCRIPTIONS[5] + DESCRIPTIONS[6] + BreakAmount + DESCRIPTIONS[7];
-        } else {
-            description =  DESCRIPTIONS[1]+ DESCRIPTIONS[2] + DESCRIPTIONS[3] + PlayerAmount + DESCRIPTIONS[4];
-        }
+        ApplyModifers();
+        description =  DESCRIPTIONS[1]+ DESCRIPTIONS[2] + DESCRIPTIONS[3] + PlayerAmount + DESCRIPTIONS[4] + DESCRIPTIONS[5] + DESCRIPTIONS[6] + BreakAmount + DESCRIPTIONS[7];
     }
 }

@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theDragonknight.DragonknightMod;
 import theDragonknight.actions.SmiteAction;
 import theDragonknight.util.AbstractDragonMark;
+import theDragonknight.util.AbstractNotOrb;
 
 public class FlameMark extends AbstractDragonMark {
     public static final String ORB_ID = DragonknightMod.makeID("MarkofFlame");
@@ -22,28 +23,29 @@ public class FlameMark extends AbstractDragonMark {
         Sealstrings = orbString;
         owner = Owner;
         name = orbString.DESCRIPTION[8] + orbString.NAME;
-        BreakAmount = 7;
+        BreakAmount = baseBreakAmount = 7;
         PlayerAmount = BasePlayerAmount = 3;
         updateAnimation();
     }
-    public void onEndOfTurn() {
-        if (owner != AbstractDungeon.player) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(owner,new DamageInfo(AbstractDungeon.player,BreakAmount, DamageInfo.DamageType.THORNS)));
-        }
-    }
     public void onStartOfTurn() {
-        if (owner == AbstractDungeon.player) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner,owner,new VigorPower(owner,PlayerAmount)));
+        for (int i = 0; i < PainAmount ; i++) {
+           TriggerPassive();
         }
     }
+    public void WhenRemoved() {
+        AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(target,new DamageInfo(AbstractDungeon.player,BreakAmount, DamageInfo.DamageType.THORNS)));
+        super.WhenRemoved();
+    }
+    public void TriggerPassive(){
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new VigorPower(owner, PlayerAmount)));
+    }
+
     public AbstractDragonMark MakeCopy(){
         return new FlameMark(owner);
     }
     public void updateDescription() {
-        if (owner != AbstractDungeon.player) {
-            description = DESCRIPTIONS[5] + DESCRIPTIONS[6] + BreakAmount + DESCRIPTIONS[7] + owner.name;
-        } else {
-            description =  DESCRIPTIONS[1]+ DESCRIPTIONS[2] + DESCRIPTIONS[3] + PlayerAmount + DESCRIPTIONS[4];
-        }
+        ApplyModifers();
+        description =  DESCRIPTIONS[1]+ DESCRIPTIONS[2] + DESCRIPTIONS[3] + PlayerAmount + DESCRIPTIONS[4] + DESCRIPTIONS[5] + DESCRIPTIONS[6] + BreakAmount + DESCRIPTIONS[7];
     }
 }

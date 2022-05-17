@@ -17,7 +17,7 @@ import theDragonknight.util.AbstractNotOrb;
 import java.util.ArrayList;
 import java.util.List;
 
-import static theDragonknight.DragonknightMod.makeCardPath;
+import static theDragonknight.DragonknightMod.*;
 
 public class MysticWind extends AbstractDragonknightCard {
 
@@ -45,6 +45,7 @@ public class MysticWind extends AbstractDragonknightCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = 5;
         tags.add(CustomTags.Draconic);
+        setOrbTexture(DRACONIC_512,DRACONIC_1024);
     }
 
     // Actions the card should do.
@@ -55,14 +56,9 @@ public class MysticWind extends AbstractDragonknightCard {
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                boolean sent = false;
-                for (AbstractNotOrb orb : DragonknightMod.Seals){
-                    if (orb instanceof AbstractDragonMark && !sent){
-                        if (m != null && ((AbstractDragonMark) orb).owner != m) {
-                            sent = true;
-                            ((AbstractDragonMark) orb).owner = m;
-                        }
-                    }
+                if (!Seals.isEmpty()) {
+                    AbstractDragonMark Scales = (AbstractDragonMark) Seals.get(AbstractDungeon.miscRng.random(0, Seals.size()-1));
+                    Scales.WhenRemoved();
                 }
                 isDone = true;
             }

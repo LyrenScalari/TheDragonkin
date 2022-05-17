@@ -10,48 +10,39 @@
     ]
   },
   "theDragonknight:MarkofFlame": {
-    "NAME": "Flame",
+    "NAME": "Flaming Scales",
     "DESCRIPTION": [
       "Yvl",
-      "", "at the start of your turn"," gain #b"," #yVigor",
-      "", "at the end of your turn deal #b", " damage to ",
-      "Mark of "
+      "", "at the start of your turn"," gain #b"," [theDragonknight:VigorIcon] ",
+      " NL ", "When Removed deal #b", " damage to a random enemy",
+      ""
     ]
   },
   "theDragonknight:MarkofStorm": {
-    "NAME": "Storm",
+    "NAME": "Static Scales",
     "DESCRIPTION": [
       "Ank",
       "", "at the end of your turn"," deal #b"," damage to the last monster attacked (",
-      "", " Apply #b"," #yArc #yConduit and #yEngraft.",
-      "Mark of "
-    ]
-  },
-  "theDragonknight:MarkofFrost": {
-    "NAME": "Frost",
-    "DESCRIPTION": [
-      "Fwn",
-      "", "at the end of your turn"," gain #b"," #yBlock",
-      "", "at the end of your turn apply #b "," #yFrostbite to it's owner (",
-      "Mark of "
+      " NL ", "When Removed apply #b"," [theDragonknight:ConduitIcon] to a random enemy",
+      ""
     ]
   },
   "theDragonknight:MarkofPlague": {
-    "NAME": "Plague",
+    "NAME": "Toxic Scales",
     "DESCRIPTION": [
       "Myn",
-      "", "at the end of your turn"," apply #b"," #yPoison to a random enemy",
-      "", "at the end of your turn apply #b "," #yScarlet #yRot to it's owner (",
-      "Mark of "
+      "", "at the end of your turn"," apply #b"," [theDragonknight:PoisonIcon] to a random enemy",
+      " NL ", "When Removed apply #b "," [theDragonknight:RotIcon] to a random enemy",
+      ""
     ]
   },
   "theDragonknight:MarkofMagma": {
-    "NAME": "Magma",
+    "NAME": "Molten Scales",
     "DESCRIPTION": [
-      "Ayg",
-      "", "at the end of your turn"," deal #b"," damage to a random enemy and increaase #ySurge power by #b2",
-      "", "at the end of your turn gain #b"," #yBlock deal that much damage to ALL enemies.",
-      "Mark of "
+      "Wul",
+      "", "at the end of your turn"," gain #b"," [theDragonknight:BlockIcon]",
+      " NL ", "When Removed apply #b"," [theDragonknight:BurnIcon] to all enemies.",
+      ""
     ]
   }
 }

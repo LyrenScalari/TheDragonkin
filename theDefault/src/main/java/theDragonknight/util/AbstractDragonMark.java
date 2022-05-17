@@ -11,8 +11,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import theDragonknight.DragonknightMod;
+import theDragonknight.orbs.ModifySigilPower;
 
 public class AbstractDragonMark extends AbstractNotOrb {
     public AbstractCreature owner;
@@ -22,6 +24,7 @@ public class AbstractDragonMark extends AbstractNotOrb {
         this.c = Settings.CREAM_COLOR.cpy();
         this.shineColor = new Color(1.0F, 1.0F, 1.0F, 0.0F);
         this.hb = new Hitbox(96.0F * Settings.scale, 96.0F * Settings.scale);
+        basePainAmount = PainAmount = 1;
         this.img = ImageMaster.EYE_ANIM_0;
         this.bobEffect = new BobEffect(3.0F * Settings.scale, 3.0F);
         this.fontScale = 0.7F;
@@ -31,8 +34,18 @@ public class AbstractDragonMark extends AbstractNotOrb {
     public void renderText(SpriteBatch sb) {
             FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.BreakAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
             FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.PlayerAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, new Color(0.5F, 0.0F, 3.0F, this.c.a), this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.PainAmount), this.cX - NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 10.0F * Settings.scale, new Color(1.0F, 0.2F, 1.0F, this.c.a), this.fontScale);
     }
-
+    public void TriggerPassive(){}
+    public void ApplyModifers() {
+        BreakAmount = baseBreakAmount;
+        PlayerAmount = BasePlayerAmount;
+        for (AbstractPower p : AbstractDungeon.player.powers){
+            if (p instanceof ModifySigilPower){
+                ((ModifySigilPower) p).ModifyOrb(this);
+            }
+        }
+    }
     public void updateAnimation() {
         this.bobEffect.update();
         if (this.channelAnimTimer != 0.0F) {
@@ -52,42 +65,26 @@ public class AbstractDragonMark extends AbstractNotOrb {
         AbstractDragonMark copy = this;
         return this;
     }
-
+    public void WhenRemoved() {
+        PainAmount -= 1;
+        if (PainAmount < 1){
+            DragonknightMod.Seals.remove(this);
+        }
+    }
     public void updateDescription() {
 
     }
     public void update() {
         this.hb.update();
-        int mod = 1;
-        int mod2 = 1;
-        for (AbstractNotOrb mark : DragonknightMod.Seals){
-            if (mark instanceof AbstractDragonMark && mark != this){
-                if (((AbstractDragonMark) mark).owner == AbstractDungeon.player){
-                    if (((AbstractDragonMark) mark).owner == this.owner){
-                        mod += 1;
-                    }
-                } else mod2 += 1;
-            }
-        }
-        if (this.owner == AbstractDungeon.player){
-            angle = (360f/mod) * DragonknightMod.Seals.indexOf(this);
-        } else {
-            angle = (360f/mod2) * DragonknightMod.Seals.indexOf(this);
-        }
+        int mod = DragonknightMod.Seals.size();
+        angle = (360f/mod) * DragonknightMod.Seals.indexOf(this);
         cX = (owner.hb.cX) + (float)(dy2*Math.cos((Math.toRadians(angle))));
         cY = (owner.hb.cY) + (float)(dy2*Math.sin(Math.toRadians(angle)));
         hb.move(cX, cY); //I think this is correct, but might not be. Might need some offset calculations
         if (this.hb.hovered) {
-            if (this.hb.cX < 500) {
-                TipHelper.renderGenericTip(this.cX + 96.0F * Settings.scale, this.cY + 64.0F * Settings.scale, this.name, this.description);
-            } else {
-                TipHelper.renderGenericTip(this.cX - 192.0F * Settings.scale, this.cY + 64.0F * Settings.scale, this.name, this.description);
-            }
+            TipHelper.renderGenericTip(this.cX + 96.0F * Settings.scale, this.cY + 64.0F * Settings.scale, this.name, this.description);
         }
         this.fontScale = MathHelper.scaleLerpSnap(this.fontScale, 0.7F);
-        if (owner.isDead || owner.isDying){
-            this.owner = AbstractDungeon.player;
-        }
     }
 
 }

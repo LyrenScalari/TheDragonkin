@@ -1,6 +1,7 @@
 package theDragonknight.cards.Dragonknight.Dragonclaws;
 
 import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -22,7 +23,7 @@ import theDragonknight.util.Wiz;
 import java.util.ArrayList;
 import java.util.List;
 
-import static theDragonknight.DragonknightMod.makeCardPath;
+import static theDragonknight.DragonknightMod.*;
 
 public class StormDragonclaw extends AbstractDragonknightCard {
 
@@ -48,7 +49,12 @@ public class StormDragonclaw extends AbstractDragonknightCard {
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonknight:Cleave"), BaseMod.getKeywordDescription("thedragonknight:Cleave")));
+        return retVal;
+    }
     public StormDragonclaw(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
@@ -56,6 +62,7 @@ public class StormDragonclaw extends AbstractDragonknightCard {
         secondDamage = baseSecondDamage = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         tags.add(CustomTags.Draconic);
+        setOrbTexture(DRACONIC_512,DRACONIC_1024);
     }
 
 
@@ -65,25 +72,6 @@ public class StormDragonclaw extends AbstractDragonknightCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p,damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    if (!m.isDeadOrEscaped()) {
-                        boolean sent = false;
-                        for (AbstractNotOrb orb : DragonknightMod.Seals) {
-                            if (orb instanceof AbstractDragonMark && !sent) {
-                                if (((AbstractDragonMark) orb).owner != m) {
-                                    sent = true;
-                                    ((AbstractDragonMark) orb).owner = m;
-                                }
-                            }
-                        }
-                    }
-                }
-                isDone = true;
-            }
-        });
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {

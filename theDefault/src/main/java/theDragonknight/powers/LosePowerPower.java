@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class LosePowerPower extends AbstractEasyPower {
-    private AbstractPower powerToLose;
+    public AbstractPower powerToLose;
     //private static Texture chain = TexLoader.getTexture("todomodResources/images/ui/chain.png");
 
     public LosePowerPower(AbstractCreature owner, AbstractPower powerToLose, int amount) {
@@ -25,8 +25,7 @@ public class LosePowerPower extends AbstractEasyPower {
         super.renderIcons(sb, x, y, Color.RED.cpy());
     }
 
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
+    public void atStartOfTurn() {
         flash();
         addToBot(new ReducePowerAction(owner, owner, powerToLose.ID, amount));
         addToBot(new RemoveSpecificPowerAction(owner, owner, this.ID));
@@ -37,7 +36,7 @@ public class LosePowerPower extends AbstractEasyPower {
         if (powerToLose == null) {
             description = "???";
         } else {
-            description = "At the end of your turn, lose #b" + amount + " " + powerToLose.name + ".";
+            description = "At the start of your turn, lose #b" + amount + " " + powerToLose.name + ".";
         }
     }
 }

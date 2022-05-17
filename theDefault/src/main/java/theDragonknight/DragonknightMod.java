@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -30,9 +31,11 @@ import org.apache.logging.log4j.Logger;
 import theDragonknight.cards.Dragonknight.AbstractDragonknightCard;
 import theDragonknight.characters.TheDragonknight;
 import theDragonknight.relics.TaintedSoul;
+import theDragonknight.ui.*;
 import theDragonknight.util.*;
 import theDragonknight.variables.*;
 
+import javax.swing.*;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -131,12 +134,14 @@ public class DragonknightMod implements
     public static final String POWER_DEFAULT_GRAY = "theDragonknightResources/images/512/dragonkin/bg_power_scales.png";
 
     private static final String ENERGY_ORB_DEFAULT_GRAY = "theDragonknightResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "theDragonknightResources/images/512/card_small_orb.png";
+    public static final String DRACONIC_512 = "theDragonknightResources/images/512/Draconic_Orb.png";
+    public static final String CARD_ENERGY_ORB = "theDragonknightResources/images/512/card_small_orb.png";
 
     public static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_attack_scales.png";
     public static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_skill_scales.png";
     public static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/dragonkin/bg_power_scales.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDragonknightResources/images/1024/card_default_gray_orb.png";
+    public static final String DRACONIC_1024 = "theDragonknightResources/images/1024/Draconic_Orb.png";
     public static final String LIGHTNINGBOLT = "theDragonknightResources/images/VFX/lightningspear.png";
     public static final String DOVAH_FONT = "theDragonknightResources/Font/DovahkiinItalic-2BDv.ttf";
     public static BitmapFont DovahFont;
@@ -155,8 +160,8 @@ public class DragonknightMod implements
 
     public static TextureAtlas TypeEnergyAtlas = new TextureAtlas();
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "theDragonknightResources/images/char/defaultCharacter/TheDragonkin.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "theDragonknightResources/images/char/defaultCharacter/TheDragonkin.json";
+    public static final String THE_DEFAULT_SKELETON_ATLAS = "theDragonknightResources/images/char/defaultCharacter/TheDrakeweaver.atlas";
+    public static final String THE_DEFAULT_SKELETON_JSON = "theDragonknightResources/images/char/defaultCharacter/TheDrakeweaver.json";
 
     // =============== MAKE IMAGE PATHS =================
     
@@ -439,6 +444,20 @@ public class DragonknightMod implements
        // BaseMod.addDynamicVariable(new HealDynVar());
         logger.info("Add variables");
         // Add the Custom Dynamic variables
+        CustomIconHelper.addCustomIcon(BlockIcon.get());
+        CustomIconHelper.addCustomIcon(DamageIcon.get());
+        CustomIconHelper.addCustomIcon(CleaveIcon.get());
+        CustomIconHelper.addCustomIcon(ThornsIcon.get());
+        CustomIconHelper.addCustomIcon(WeakIcon.get());
+        CustomIconHelper.addCustomIcon(VulnerableIcon.get());
+        CustomIconHelper.addCustomIcon(VigorIcon.get());
+        CustomIconHelper.addCustomIcon(ConduitIcon.get());
+        CustomIconHelper.addCustomIcon(BurnIcon.get());
+        CustomIconHelper.addCustomIcon(PoisonIcon.get());
+        CustomIconHelper.addCustomIcon(RotIcon.get());
+        CustomIconHelper.addCustomIcon(VulnerableIcon.get());
+        CustomIconHelper.addCustomIcon(DragonscalesIcon.get());
+        CustomIconHelper.addCustomIcon(DragonbloodIcon.get());
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
         BaseMod.addDynamicVariable(new SecondDamage());

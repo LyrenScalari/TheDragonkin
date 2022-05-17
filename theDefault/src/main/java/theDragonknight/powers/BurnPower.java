@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -46,8 +47,7 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface 
         isTurnBased = false;
 
         // We load those txtures here.
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.loadRegion("combust");
 
         updateDescription();
     }
@@ -55,6 +55,7 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface 
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
             this.flash();
             this.addToTop(new ApplyPowerAction(AbstractDungeon.player,owner,new VigorPower(AbstractDungeon.player,amount)));
+            addToTop(new RemoveSpecificPowerAction(owner,owner,this));
         }
 
         return damageAmount;

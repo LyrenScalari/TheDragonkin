@@ -1,5 +1,6 @@
 [
   {
+    "PROPER_NAME": "[theDragonknight:BurnIcon] Burn",
     "NAMES": [
       "burn",
       "burned",
@@ -37,11 +38,20 @@
     "DESCRIPTION": "#yDraconic cards have their damage and #yBlock values increased by #yDragonscales. NL #yDraconic Sigils have their values increased by #yDragonscales"
   },
   {
+    "PROPER_NAME": "[theDragonknight:DragonbloodIcon] Dragonblood",
+    "NAMES": [
+      "dragonblood",
+      "Dragonblood"
+    ],
+    "DESCRIPTION": "Improves #yDragon #yScales and damage and #yBlock values of #yDraconic cards."
+  },
+  {
+    "PROPER_NAME": "[theDragonknight:DragonscalesIcon] Chromatic Scales",
     "NAMES": [
       "dragonscales",
       "Dragonscales"
     ],
-    "DESCRIPTION": "Improves #yDragonic #ySigils and damage and #yBlock values of #yDraconic cards."
+    "DESCRIPTION": "Prevents damage until next turn, will spend #b1 [theDragonknight:DragonbloodIcon] instead of being lost at the start of your turn. NL Benefits from modifiers to #yBlock"
   },
   {
     "NAMES": [
@@ -51,87 +61,86 @@
     "DESCRIPTION": "#yTransfuse effects occur when this card goes to the Exhaust pile"
   },
   {
-    "PROPER_NAME": "Scarlet Rot",
+    "NAMES": [
+      "chant",
+      "Chant"
+    ],
+    "DESCRIPTION": "#yChant effects occur if this is in your hand at the end of your turn then shuffles this into your draw pile."
+  },
+  {
+    "NAMES": [
+      "break",
+      "Break"
+    ],
+    "DESCRIPTION": "Remove the following type of #yDragon #yScale. NL if that type isn't present or no type is specified one will be chosen Randomly."
+  },
+  {
+    "NAMES": [
+      "splinter",
+      "Splinter",
+      "splinters",
+      "Splinters"
+    ],
+    "DESCRIPTION": "Creates a #yDragon #yScale. NL #yDragon #yScales you already have will stack together."
+  },
+  {
+    "PROPER_NAME": "[theDragonknight:RotIcon] Scarlet Rot",
     "NAMES": [
       "rot",
       "Rot"
     ],
-    "DESCRIPTION": "#yScarlet #yRot deals damage equal to #b50% of it's owner's #yPoison."
+    "DESCRIPTION": "#yScarlet #yRot deals damage equal to #b50% of it's owner's [theDragonknight:PoisonIcon]"
   },
   {
-    "PROPER_NAME": "Arc Conduit",
+    "PROPER_NAME": "[theDragonknight:ConduitIcon] Arc Conduit",
     "NAMES": [
       "conduit",
       "Conduit"
     ],
-    "DESCRIPTION": "#yStorm Sigils will damage monsters with Arc Conduit in addition to other targets."
+    "DESCRIPTION": "#yStatic #yScales will damage monsters with Arc Conduit in addition to other targets."
   },
   {
+    "PROPER_NAME": "Death Blight",
     "NAMES": [
-      "surge",
-      "Surge"
+      "Death Blight",
+      "Death_Blight",
+      "death blight",
+      "death_blight"
     ],
-    "DESCRIPTION": "Places a #yDraconic #ySigil on this cards target of the specified type"
+    "DESCRIPTION": "When a creatures #yDeath #yBlight equals or exceeds their HP, they perish."
   },
   {
-    "NAMES": [
-      "scale",
-      "Scale"
-    ],
-    "DESCRIPTION": "Places a #yDraconic Sigil on the player of the specified type."
-  },
-  {
-    "NAMES": [
-      "engrave",
-      "Engrave"
-    ],
-    "DESCRIPTION": "Takes your leading #yDraconic #ySigil and places it on enemies this card effects."
-  },
-  {
-    "NAMES": [
-      "graft",
-      "Graft"
-    ],
-    "DESCRIPTION": "Takes the leading #yDraconic Sigil form this cards target and places it on the player"
-  },
-  {
-    "PROPER_NAME": "Mark of Flame",
+    "PROPER_NAME": "Flaming Scales",
     "NAMES": [
       "flame",
-      "Flame"
+      "Flame",
+      "flaming",
+      "Flaming"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil : Grants #yVigor while on the player. Damages it's owner when on an enemy."
+    "DESCRIPTION": "#yDragon #yScale : Grants [theDragonknight:VigorIcon] each turn. Deals damage to a random enemy when removed."
   },
   {
-    "PROPER_NAME": "Mark of Storm",
+    "PROPER_NAME": "Static Scales",
     "NAMES": [
-      "storm",
-      "Storm"
+      "static",
+      "Static"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil : Damages the enemy you last targeted directly while on the player. Applies #yArc #yConduit then #yEngrafts when on an enemy"
+    "DESCRIPTION": "#yDragon #yScale : Damages the enemy you last attacked each turn. Applies [theDragonknight:ConduitIcon] to a random enemy when removed"
   },
   {
-    "PROPER_NAME": "Mark of Frost",
+    "PROPER_NAME": "Molten Scales",
     "NAMES": [
-      "frost",
-      "Frost"
+      "molten",
+      "Molten"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil : Grants #yBlock while on the player. Applies Frostbite to it's owner when on an enemy."
+   "DESCRIPTION": "#yDragon #yScale : Grants [theDragonknight:BlockIcon] each turn. Applies [theDragonknight:BurnIcon] to all enemies when removed"
   },
   {
-    "PROPER_NAME": "Mark of Plague",
+    "PROPER_NAME": "Toxic Scales",
     "NAMES": [
-      "plague",
-      "Plague"
+      "toxic",
+      "Toxic"
     ],
-    "DESCRIPTION": "#yDraconic #ySigil : Applies #yPoison to random enemies while on the player. Applies #yRot to it's owner when on an enemy."
-  },
-  {
-    "PROPER_NAME": "Mark of Magma",
-    "NAMES": [
-      "magma",
-      "Magma"
-    ],
-    "DESCRIPTION": "#yDraconic #ySigil : Damages random enemies and increase damage and block gained from this once #yEngraved while on the player. Damages all enemies and grants #yBlock to the player on an enemy"
+    "DESCRIPTION": "#yDragon #yScale : Applies [theDragonknight:PoisonIcon] to a random enemy each turn. Applies [theDragonknight:RotIcon] to all enemies when removed"
   }
 ]

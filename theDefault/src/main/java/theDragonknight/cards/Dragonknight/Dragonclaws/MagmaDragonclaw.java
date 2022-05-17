@@ -1,12 +1,15 @@
 package theDragonknight.cards.Dragonknight.Dragonclaws;
 
 import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonknight.CustomTags;
 import theDragonknight.DragonknightMod;
@@ -17,7 +20,7 @@ import theDragonknight.util.Wiz;
 import java.util.ArrayList;
 import java.util.List;
 
-import static theDragonknight.DragonknightMod.makeCardPath;
+import static theDragonknight.DragonknightMod.*;
 
 public class MagmaDragonclaw extends AbstractDragonknightCard {
 
@@ -29,7 +32,7 @@ public class MagmaDragonclaw extends AbstractDragonknightCard {
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheDragonknight.Enums.Dragonknight_Crimson_Color;
 
-    private static final int COST = 3;  // COST = 1
+    private static final int COST = 2;  // COST = 1
     private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
 
     private static final int DAMAGE = 10;    // DAMAGE = 6
@@ -43,13 +46,20 @@ public class MagmaDragonclaw extends AbstractDragonknightCard {
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonknight:Cleave"), BaseMod.getKeywordDescription("thedragonknight:Cleave")));
+        retVal.add(new TooltipInfo(TipHelper.capitalize(GameDictionary.BLOCK.NAMES[0]), GameDictionary.keywords.get(GameDictionary.BLOCK.NAMES[0])));
+        return retVal;
+    }
     public MagmaDragonclaw(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
         block = baseBlock = 7;
         secondDamage = baseSecondDamage = 5;
         tags.add(CustomTags.Draconic);
+        setOrbTexture(DRACONIC_512,DRACONIC_1024);
     }
 
 

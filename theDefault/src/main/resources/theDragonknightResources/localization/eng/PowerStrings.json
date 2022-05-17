@@ -6,12 +6,22 @@
         },
         "theDragonknight:RotPower": {
                 "NAME": "Scarlet Rot",
-                "DESCRIPTIONS": ["At the end of this creatures turn it loses HP equal to #b50% of it's Poison."," NL (#b", " HP Lost)"
+                "DESCRIPTIONS": ["At the start of its turn loses HP equal to #b50% of it's [theDragonknight:PoisonIcon]"," NL ( #b", " HP Lost)"
+                ]
+        },
+        "theDragonknight:DragonscalesPower": {
+                "NAME": "Dragonblood",
+                "DESCRIPTIONS": ["Improves #yDraconic Sigils, damage and #yBlock gain of #yDraconic cards by #b"
                 ]
         },
         "theDragonknight:BurnPower": {
                 "NAME": "Burn",
-                "DESCRIPTIONS": ["When attacked give the player #b"," #yVigor"
+                "DESCRIPTIONS": ["When attacked give the player #b"," [theDragonknight:VigorIcon]"
+                ]
+        },
+        "theDragonknight:ProfaneDivitation": {
+                "NAME": "Profane Divination",
+                "DESCRIPTIONS": ["At the start of your turn, guess the type of the top", " card"," cards"," of your draw pile, if you guess correct deal #b"," damage to all enemies, otherwise #yExhaust it."
                 ]
         }
 }

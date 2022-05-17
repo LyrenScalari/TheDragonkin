@@ -19,7 +19,7 @@ import theDragonknight.util.AbstractNotOrb;
 import java.util.ArrayList;
 import java.util.List;
 
-import static theDragonknight.DragonknightMod.makeCardPath;
+import static theDragonknight.DragonknightMod.*;
 
 public class MoltenBlade extends AbstractDragonknightCard {
 
@@ -47,6 +47,7 @@ public class MoltenBlade extends AbstractDragonknightCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = 15;
         tags.add(CustomTags.Draconic);
+        setOrbTexture(DRACONIC_512,DRACONIC_1024);
     }
 
     // Actions the card should do.
@@ -58,14 +59,16 @@ public class MoltenBlade extends AbstractDragonknightCard {
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                addToBot(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        DragonknightMod.Seals.add(new MagmaMark(m));
+                for (AbstractNotOrb mark : DragonknightMod.Seals){
+                    if (mark instanceof MagmaMark){
+                        mark.PainAmount += 1;
                         isDone = true;
                     }
-                });
-                isDone = true;
+                }
+                if (!isDone) {
+                    DragonknightMod.Seals.add(new MagmaMark(AbstractDungeon.player));
+                    isDone = true;
+                }
             }
         });
     }

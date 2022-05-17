@@ -2,26 +2,32 @@ package theDragonknight.cards.Dragonknight;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
+import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ThornsPower;
 import theDragonknight.CustomTags;
 import theDragonknight.DragonknightMod;
 import theDragonknight.actions.TransfigureAction;
 import theDragonknight.cards.Dragonknight.TransfiguredCards.TransfiguredFlameBlitz;
 import theDragonknight.cards.Dragonknight.TransfiguredCards.TransfiguredWingGaurd;
 import theDragonknight.characters.TheDragonknight;
+import theDragonknight.util.DragonBlock;
 import theDragonknight.util.Wiz;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static theDragonknight.DragonknightMod.makeCardPath;
+import static theDragonknight.DragonknightMod.*;
 
 public class WingBarrier extends AbstractDragonknightCard {
 
@@ -47,6 +53,14 @@ public class WingBarrier extends AbstractDragonknightCard {
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo("[theDragonknight:BlockIcon] " + TipHelper.capitalize(GameDictionary.BLOCK.NAMES[0]), GameDictionary.keywords.get(GameDictionary.BLOCK.NAMES[0])));
+        retVal.add(new TooltipInfo("[theDragonknight:ThornsIcon] " + TipHelper.capitalize(GameDictionary.THORNS.NAMES[0]), GameDictionary.keywords.get(GameDictionary.THORNS.NAMES[0])));
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonknight:Dragonscales"), BaseMod.getKeywordDescription("thedragonknight:Dragonscales")));
+        return retVal;
+    }
     public WingBarrier(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
@@ -55,6 +69,7 @@ public class WingBarrier extends AbstractDragonknightCard {
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         cardsToPreview = new TransfiguredWingGaurd();
         tags.add(CustomTags.Draconic);
+        setOrbTexture(DRACONIC_512,DRACONIC_1024);
     }
 
 
@@ -65,15 +80,17 @@ public class WingBarrier extends AbstractDragonknightCard {
             HashMap<AbstractCard, AbstractCard> tranfigurecards = new HashMap<>();
             tranfigurecards.put(new WingBarrier(),this);
             addToBot(new TransfigureAction(magicNumber,this,tranfigurecards));
-        } else {
-
+        }
+        Wiz.block(p,block);
+        if (magicNumber <= 0){
+            Wiz.applyToSelf(new ThornsPower(p,defaultSecondMagicNumber));
         }
     }
     public void applyPowers() {
         if (magicNumber <= 0) {
             rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
-            modifyCostForCombat(1);
             block = baseBlock = 13;
+            BlockModifierManager.addModifier(this,new DragonBlock(true));
             cardsToPreview = null;
             this.initializeDescription();
         }

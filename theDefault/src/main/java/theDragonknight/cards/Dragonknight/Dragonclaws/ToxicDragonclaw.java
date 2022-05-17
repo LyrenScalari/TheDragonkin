@@ -1,12 +1,15 @@
 package theDragonknight.cards.Dragonknight.Dragonclaws;
 
 import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
@@ -20,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static theDragonknight.DragonknightMod.makeCardPath;
+import static theDragonknight.DragonknightMod.*;
 
 public class ToxicDragonclaw extends AbstractDragonknightCard {
 
@@ -46,7 +49,13 @@ public class ToxicDragonclaw extends AbstractDragonknightCard {
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonknight:Cleave"), BaseMod.getKeywordDescription("thedragonknight:Cleave")));
+        retVal.add(new TooltipInfo("[theDragonknight:PoisonIcon] " + TipHelper.capitalize(GameDictionary.POISON.NAMES[0]), GameDictionary.keywords.get(GameDictionary.POISON.NAMES[0])));
+        return retVal;
+    }
     public ToxicDragonclaw(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
@@ -54,6 +63,7 @@ public class ToxicDragonclaw extends AbstractDragonknightCard {
         secondDamage = baseSecondDamage = 4;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         tags.add(CustomTags.Draconic);
+        setOrbTexture(DRACONIC_512,DRACONIC_1024);
     }
 
 

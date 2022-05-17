@@ -19,7 +19,7 @@ public class AbstractNotOrb {
     protected ArrayList<PowerTip> tips = new ArrayList();
     public int BreakAmount = 0;
     public int PainAmount = 0;
-    protected int baseBreakAmount = 0;
+    public int baseBreakAmount = 0;
     protected int basePainAmount = 0;
     public float cX = 0.0F;
     public float cY = 0.0F;
@@ -48,7 +48,9 @@ public class AbstractNotOrb {
     public void onStartOfTurn() {
 
     }
+    public void ApplyModifers() {
 
+    }
     public void onEndOfTurn() {
     }
     public void updateAnimation() {

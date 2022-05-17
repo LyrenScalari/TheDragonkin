@@ -1,5 +1,6 @@
 package theDragonknight.cards.Dragonknight;
 
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonknight.DragonknightMod;
 import theDragonknight.characters.TheDragonknight;
 import theDragonknight.powers.RotPower;
+import theDragonknight.util.DragonBlock;
 import theDragonknight.util.Wiz;
 
 import static theDragonknight.DragonknightMod.makeCardPath;
@@ -37,6 +39,7 @@ public class EmberAsh extends AbstractDragonknightCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         block = baseBlock = 8;
         damage = baseDamage = 4;
+        BlockModifierManager.addModifier(this,new DragonBlock(true));
     }
 
 

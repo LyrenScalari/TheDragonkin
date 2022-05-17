@@ -1,11 +1,18 @@
 package theDragonknight.cards.Dragonknight;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonknight.DragonknightMod;
 import theDragonknight.characters.TheDragonknight;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonknight.DragonknightMod.makeCardPath;
 
@@ -39,7 +46,12 @@ public class Defend extends AbstractDragonknightCard {
 
 
     // /STAT DECLARATION/
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo("[theDragonknight:BlockIcon] " +TipHelper.capitalize(GameDictionary.BLOCK.NAMES[0]), GameDictionary.keywords.get(GameDictionary.BLOCK.NAMES[0])));
+        return retVal;
+    }
 
     public Defend() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

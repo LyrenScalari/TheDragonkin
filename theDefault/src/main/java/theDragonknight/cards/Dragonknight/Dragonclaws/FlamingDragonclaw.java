@@ -1,6 +1,7 @@
 package theDragonknight.cards.Dragonknight.Dragonclaws;
 
 import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -19,7 +20,7 @@ import theDragonknight.util.Wiz;
 import java.util.ArrayList;
 import java.util.List;
 
-import static theDragonknight.DragonknightMod.makeCardPath;
+import static theDragonknight.DragonknightMod.*;
 
 public class FlamingDragonclaw extends AbstractDragonknightCard {
 
@@ -45,7 +46,13 @@ public class FlamingDragonclaw extends AbstractDragonknightCard {
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonknight:Cleave"), BaseMod.getKeywordDescription("thedragonknight:Cleave")));
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonknight:Burn"), BaseMod.getKeywordDescription("thedragonknight:Burn")));
+        return retVal;
+    }
     public FlamingDragonclaw(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
@@ -53,6 +60,7 @@ public class FlamingDragonclaw extends AbstractDragonknightCard {
         secondDamage = baseSecondDamage = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         tags.add(CustomTags.Draconic);
+        setOrbTexture(DRACONIC_512,DRACONIC_1024);
     }
 
 

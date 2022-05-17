@@ -1,6 +1,7 @@
 package theDragonknight.cards.Dragonknight;
 
 import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -16,7 +17,7 @@ import theDragonknight.util.Wiz;
 import java.util.ArrayList;
 import java.util.List;
 
-import static theDragonknight.DragonknightMod.makeCardPath;
+import static theDragonknight.DragonknightMod.*;
 
 public class RottenFang extends AbstractDragonknightCard {
 
@@ -42,12 +43,18 @@ public class RottenFang extends AbstractDragonknightCard {
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonknight:Rot"), BaseMod.getKeywordDescription("thedragonknight:Rot")));
+        return retVal;
+    }
     public RottenFang(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
         magicNumber = baseMagicNumber = 2;
         tags.add(CustomTags.Draconic);
+        setOrbTexture(DRACONIC_512,DRACONIC_1024);
     }
 
 
@@ -57,7 +64,7 @@ public class RottenFang extends AbstractDragonknightCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            Wiz.applyToEnemy(mo, new RotPower(m, p, magicNumber));
+            Wiz.applyToEnemy(mo, new RotPower(mo, p, magicNumber));
         }
     }
 

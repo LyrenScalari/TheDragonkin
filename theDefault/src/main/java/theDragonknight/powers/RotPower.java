@@ -4,7 +4,9 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -23,7 +25,7 @@ import theDragonknight.util.TextureLoader;
 
 import static theDragonknight.DragonknightMod.makePowerPath;
 
-public class RotPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower {
+public class RotPower extends TwoAmountPower implements CloneablePowerInterface, HealthBarRenderPower {
     public AbstractCreature source;
 
     public static final String POWER_ID = DragonknightMod.makeID("RotPower");
@@ -33,8 +35,8 @@ public class RotPower extends AbstractPower implements CloneablePowerInterface, 
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("ScarletRot.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("ScarletRot32.png"));
 
     public RotPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -56,7 +58,7 @@ public class RotPower extends AbstractPower implements CloneablePowerInterface, 
     @Override
     public void atEndOfTurn(final boolean isPlayer) {
         if (owner.hasPower(PoisonPower.POWER_ID)){
-            addToBot(new DamageAction(owner,new DamageInfo(owner, (int) (owner.getPower(PoisonPower.POWER_ID).amount/.50), DamageInfo.DamageType.HP_LOSS)));
+            addToBot(new DamageAction(owner,new DamageInfo(owner, (int) (owner.getPower(PoisonPower.POWER_ID).amount*.50), DamageInfo.DamageType.HP_LOSS)));
         }
     }
 
@@ -64,7 +66,8 @@ public class RotPower extends AbstractPower implements CloneablePowerInterface, 
     @Override
     public void updateDescription() {
         if (owner.hasPower(PoisonPower.POWER_ID)) {
-            description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + (int) (owner.getPower(PoisonPower.POWER_ID).amount/.50) + DESCRIPTIONS[2];
+            amount2 = (int) (owner.getPower(PoisonPower.POWER_ID).amount*.50);
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + (int) (owner.getPower(PoisonPower.POWER_ID).amount*.50) + DESCRIPTIONS[2];
         } else {
             description = DESCRIPTIONS[0];
         }
@@ -77,8 +80,9 @@ public class RotPower extends AbstractPower implements CloneablePowerInterface, 
 
     @Override
     public int getHealthBarAmount() {
+        updateDescription();
         if (owner.hasPower(PoisonPower.POWER_ID)){
-            return (int) (owner.getPower(PoisonPower.POWER_ID).amount/.50);
+            return (int) (owner.getPower(PoisonPower.POWER_ID).amount*.50);
         } else {
             return 0;
         }
@@ -86,6 +90,7 @@ public class RotPower extends AbstractPower implements CloneablePowerInterface, 
 
     @Override
     public Color getColor() {
-        return Color.SCARLET;
+        return Color.MAROON;
     }
+
 }

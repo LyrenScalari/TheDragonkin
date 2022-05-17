@@ -1,7 +1,7 @@
 {
   "theDragonknight:Defend": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! [theDragonknight:BlockIcon]"
   },
   "theDragonknight:Strike": {
     "NAME": "Strike",
@@ -9,16 +9,117 @@
   },
   "theDragonknight:HeartofFire": {
     "NAME": "Heart of Fire",
-    "DESCRIPTION": "Gain !B! Block. NL thedragonknight:Scale thedragonknight:Flame."
+    "DESCRIPTION": "Gain !B! [theDragonknight:BlockIcon] NL thedragonknight:Splinter a thedragonknight:Flaming *Scale."
   },
   "theDragonknight:MysticWind": {
-    "NAME": "Rake",
-    "DESCRIPTION": "Deal !D! damage. NL thedragonknight:Engrave"
+    "NAME": "Scale Shot",
+    "DESCRIPTION": "Deal !D! damage. NL thedragonknight:Break"
   },
+
 
   "theDragonknight:FlameWhip": {
     "NAME": "Flame Whip",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonknight:Burn"
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! [theDragonknight:BurnIcon]"
+  },
+  "theDragonknight:WorldinFlames": {
+    "NAME": "World in Flames",
+    "DESCRIPTION": "Activate the passive effect of and Remove all thedragonknight:Flaming and thedragonknight:Molten *Scales."
+  },
+  "theDragonknight:MoltenBlade": {
+    "NAME": "Molten Blade",
+    "DESCRIPTION": "Deal !D! damage. NL Discard a card. NL thedragonknight:Splinter a thedragonknight:Molten *Scale."
+  },
+  "theDragonknight:EmberAsh": {
+    "NAME": "Obsidian Shards",
+    "DESCRIPTION": "Gain !B! [theDragonknight:DragonscalesIcon] NL thedragonknight:Transfuse: deal !D! damage to a random enemy twice."
+  },
+  "theDragonknight:PrimitiveFlame": {
+    "NAME": "Primitive Flame",
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust a card. NL thedragonknight:Break and Add a *Dragonclaw to your hand of it's type."
+  },
+  "theDragonknight:IzalithsBlaze": {
+    "NAME": "Izalith's Blaze",
+    "DESCRIPTION": "Gain !M2! [theDragonknight:ThornsIcon] NL At the start of your turn apply !M! [theDragonknight:BurnIcon] to EVERYONE.",
+    "EXTENDED_DESCRIPTION": ["At the start of your turn apply #b"," [theDragonknight:BurnIcon] to EVERYONE."]
+  },
+  "theDragonknight:EmberShot": {
+    "NAME": "Ember Shot",
+    "DESCRIPTION": "Deal !D! damage NL thedragonknight:Break a thedragonknight:Flaming *Scale."
+  },
+  "theDragonknight:MagmaShot": {
+    "NAME": "Magma Shot",
+    "DESCRIPTION": "Gain !B! Block NL thedragonknight:Break a thedragonknight:Molten *Scale."
+  },
+
+  "theDragonknight:StaticStrike": {
+    "NAME": "Static Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! [theDragonknight:ConduitIcon] NL thedragonknight:Splinter a thedragonknight:Static *Scale."
+  },
+  "theDragonknight:HonedBolt": {
+    "NAME": "Honed Bolt",
+    "DESCRIPTION": "Apply !M! [theDragonknight:ConduitIcon] NL Activate the passive effect of 1 *Static *Scale NL thedragonknight:Transfuse: Draw !M2! cards.",
+    "EXTENDED_DESCRIPTION": ["Apply !M! [theDragonknight:ConduitIcon] NL Activate the passive effect of 2 thedragonknight:Static *Scales NL thedragonknight:Transfuse: Draw !M2! cards."]
+  },
+  "theDragonknight:LightningSpear": {
+    "NAME": "Lightning Spear",
+    "DESCRIPTION": "Deal !D! damage NL thedragonknight:Splinter !M! *Static *Scale NL thedragonknight:Chant: deals !M2! additional damage until played"
+  },
+  "theDragonknight:LightningStrike": {
+    "NAME": "Lightning Strike",
+    "DESCRIPTION": "Deal !D! damage NL Activate the passive effect of and Remove !M! *Static *Scales. NL thedragonknight:Chant: Costs 1 less this combat."
+  },
+  "theDragonknight:Dragonbolt": {
+    "NAME": "Dragonbolt",
+    "DESCRIPTION": "Gain !B! [theDragonknight:DragonscalesIcon] NL Activate the passive effect of all *Static *Scales."
+  },
+  "theDragonknight:StormShot": {
+    "NAME": "Storm Shot",
+    "DESCRIPTION": "Deal !D! damage to a random enemy NL thedragonknight:Break a thedragonknight:Static *Scale."
+  },
+  "theDragonknight:FrozenArc": {
+    "NAME": "Frozen Arc",
+    "DESCRIPTION": "Deal !D! damage NL thedragonknight:Chant: Gain !B! Block this deals 1 more damage this combat."
+  },
+
+  "theDragonknight:ToxicBreath": {
+    "NAME": "Miasmic Fog",
+    "DESCRIPTION": "thedragonknight:Splinter a thedragonknight:Toxic *Scale. NL Exhaust a card in your hand to add a *Toxic *Dragonclaw to your hand."
+  },
+  "theDragonknight:VenomShot": {
+    "NAME": "Venom Shot",
+    "DESCRIPTION": "Apply !M! [theDragonknight:PoisonIcon] NL thedragonknight:Break a thedragonknight:Toxic *Scale."
+  },
+  "theDragonknight:DecayingScales": {
+    "NAME": "Decaying Scales",
+    "DESCRIPTION": "Apply !M! [theDragonknight:PoisonIcon] NL thedragonknight:Transfuse: Gain [E] [E] "
+  },
+  "theDragonknight:RottenFang": {
+    "NAME": "Rotten Fang",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! [theDragonknight:RotIcon] to all enemies."
+  },
+  "theDragonknight:AeonianFlame": {
+    "NAME": "Aeonian Embers",
+    "DESCRIPTION": "Apply !M! [theDragonknight:RotIcon] NL thedragonknight:Transfuse: Apply 3 [theDragonknight:RotIcon] and !M2! [theDragonknight:PoisonIcon] to a random enemy."
+  },
+
+
+  "theDragonknight:WingBarrier": {
+    "NAME": "Wing Barrier",
+    "DESCRIPTION": "thedragonknight:Transfigure !M!. NL Gain !B! [theDragonknight:BlockIcon]",
+    "EXTENDED_DESCRIPTION": ["thedragonknight:Transfigured. NL Gain !B! [theDragonknight:DragonscalesIcon] NL Gain !M2! [theDragonknight:ThornsIcon]"]
+  },
+  "theDragonknight:TransfiguredWingGaurd": {
+    "NAME": "Wing Barrier",
+    "DESCRIPTION": "thedragonknight:Transfigured. NL Gain !B! [theDragonknight:DragonscalesIcon] NL Gain !M! [theDragonknight:ThornsIcon]"
+  },
+  "theDragonknight:VolcanicFissure": {
+    "NAME": "Volcanic Fissure",
+    "DESCRIPTION": "thedragonknight:Transfigure !M!. NL Deal !D! Damage.",
+    "EXTENDED_DESCRIPTION": ["thedragonknight:Transfigured. NL Deal !D! damage. NL Draw a card. NL thedragonknight:Splinter a thedragonknight:Molten *Scale"]
+  },
+  "theDragonknight:TransfiguredVolcanicFissure": {
+    "NAME": "Volcanic Fissure",
+    "DESCRIPTION": "thedragonknight:Transfigured. NL Deal !D! damage. NL Draw a card. NL thedragonknight:Splinter a thedragonknight:Molten *Scale"
   },
   "theDragonknight:FlameBlitz": {
     "NAME": "Flame Blitz",
@@ -29,84 +130,112 @@
     "NAME": "Flame Blitz",
     "DESCRIPTION": "thedragonknight:Transfigured. NL Deal !D! damage to all enemies twice."
   },
-  "theDragonknight:WorldinFlames": {
-    "NAME": "World in Flames",
-    "DESCRIPTION": "Activate the passive effects of all thedragonknight:Flame and thedragonknight:Magma NL Exhaust."
+
+
+  "theDragonknight:Scalebracing": {
+    "NAME": "Chromatic Blood",
+    "DESCRIPTION": "Gain !M! [theDragonknight:DragonbloodIcon]"
+  },
+  "theDragonknight:ScaleShield": {
+    "NAME": "Scale Shield",
+    "DESCRIPTION": "Gain !M! Temporary [theDragonknight:DragonbloodIcon] NL Gain !B! [theDragonknight:DragonscalesIcon]"
   },
 
-  "theDragonknight:MoltenBlade": {
-    "NAME": "Molten Blade",
-    "DESCRIPTION": "Deal !D! damage. NL Discard a card. NL thedragonknight:Surge thedragonknight:Magma"
+  "theDragonknight:NoxEternis": {
+    "NAME": "Stroke of Midnight",
+    "DESCRIPTION": "When a monster loses HP from Poison, all enemies gain that much thedragonknight:Death_Blight"
   },
-
-  "theDragonknight:StaticStrike": {
-    "NAME": "Static Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonknight:Conduit NL thedragonknight:Scale thedragonknight:Storm"
+  "theDragonknight:NightShard": {
+    "NAME": "Midnight Star",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonknight:Death_Blight"
   },
-
-  "theDragonknight:ToxicBreath": {
-    "NAME": "Miasmic Fog",
-    "DESCRIPTION": "thedragonknight:Scale thedragonknight:Plague NL Exhaust a card in your hand to add a *Toxic *Dragonclaw to your hand."
+  "theDragonknight:AmbushShard": {
+    "NAME": "Nightmare",
+    "DESCRIPTION": "Gain !B! Block. NL if the monster intends to attack Apply !M! thedragonknight:Death_Blight."
   },
-  "theDragonknight:RottenFang": {
-    "NAME": "Rotten Fang",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonknight:Rot to all enemies."
+  "theDragonknight:NightComet": {
+    "NAME": "Fel Omen",
+    "DESCRIPTION": "Gain !M! Temporary [theDragonknight:DragonbloodIcon] NL This turn, thedragonknight:Death_Blight gain is increased by [theDragonknight:DragonbloodIcon]"
   },
-
-  "theDragonknight:WingBarrier": {
-    "NAME": "Wing Barrier",
-    "DESCRIPTION": "thedragonknight:Transfigure !M!. NL Gain !B! Block.",
-    "EXTENDED_DESCRIPTION": ["thedragonknight:Transfigured. NL Gain !B! Block. NL Gain !M2! Thorns."]
-  },
-  "theDragonknight:TransfiguredWingGaurd": {
-    "NAME": "Wing Barrier",
-    "DESCRIPTION": "thedragonknight:Transfigured. NL Gain !B! Block. NL Gain !M! Thorns."
-  },
-  "theDragonknight:VolcanicFissure": {
-    "NAME": "Volcanic Fissure",
-    "DESCRIPTION": "thedragonknight:Transfigure !M!. NL Deal !D! Damage.",
-    "EXTENDED_DESCRIPTION": ["thedragonknight:Transfigured. NL Deal !D! damage. NL Draw a card. NL thedragonknight:Scale thedragonknight:Magma "]
-  },
-  "theDragonknight:TransfiguredVolcanicFissure": {
-    "NAME": "Volcanic Fissure",
-    "DESCRIPTION": "thedragonknight:Transfigured. NL Deal !D! damage. NL Draw a card. NL thedragonknight:Scale thedragonknight:Magma"
-  },
-  "theDragonknight:AgeofFire": {
-    "NAME": "Age of Fire",
-    "DESCRIPTION": "Exhaust a random card at the start of your turn. NL When a card is Exhausted Gain !M! thedragonknight:Dragonscales."
-  },
-  "theDragonknight:EmberAsh": {
-    "NAME": "Ember Ash",
-    "DESCRIPTION": "Gain !B! Block. NL thedragonknight:Transfuse: deal !D! damage to a random enemy twice."
-  },
-  "theDragonknight:DecayingScales": {
-    "NAME": "Decaying Scales",
-    "DESCRIPTION": "Apply !M! Poison. NL thedragonknight:Transfuse: Gain [E] [E] "
+  "theDragonknight:DeathLightning": {
+    "NAME": "Death Lightning",
+    "DESCRIPTION": "Activate and Remove a thedragonknight:Static *Scale. NL Apply !M! thedragonknight:Death_Blight to enemies damaged by the *Scale"
   },
 
   "theDragonknight:Dragonclaw": {
     "NAME": "Dragonclaw",
-    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage."
+    "DESCRIPTION": "Deal !D! [theDragonknight:CleaveIcon] damage."
   },
   "theDragonknight:ToxicDragonclaw": {
     "NAME": "Toxic Dragonclaw",
-    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage. NL Apply !M! Poison."
+    "DESCRIPTION": "Deal !D! [theDragonknight:CleaveIcon] damage. NL Apply !M! [theDragonknight:PoisonIcon]"
   },
   "theDragonknight:StormDragonclaw": {
-    "NAME": "Storm Dragonclaw",
-    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage. NL thedragonknight:Engrave NL thedragonknight:Scale thedragonknight:Storm"
+    "NAME": "Static Dragonclaw",
+    "DESCRIPTION": "Deal !D! [theDragonknight:CleaveIcon] damage NL thedragonknight:Splinter a thedragonknight:Static *Scale"
   },
   "theDragonknight:FlamingDragonclaw": {
     "NAME": "Flaming Dragonclaw",
-    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage. NL Apply !M! thedragonknight:Burn."
+    "DESCRIPTION": "Deal !D! [theDragonknight:CleaveIcon] damage. NL Apply !M! [theDragonknight:BurnIcon]"
   },
   "theDragonknight:MagmaDragonclaw": {
     "NAME": "Molten Dragonclaw",
-    "DESCRIPTION": "thedragonknight:Cleave NL Deal !D! damage. NL Gain !B! Block for each enemy."
+    "DESCRIPTION": "Deal !D! [theDragonknight:CleaveIcon] damage. NL Gain !B! [theDragonknight:BlockIcon] for each enemy."
+  },
+
+  "theDragonknight:ProfaneDivinationPower": {
+    "NAME": "Profane Divination",
+    "DESCRIPTION": "At the start of your turn, guess a card type and draw a card. if it's the type you guessed Deal !M! damage to all enemies, otherwise Exhaust it."
+  },
+  "theDragonknight:DivinationPower": {
+    "NAME": "Divine a Power",
+    "DESCRIPTION": "The top card of your draw pile is a [#165ec9]Power?[]"
+  },
+  "theDragonknight:DivinationSkill": {
+    "NAME": "Divine a Skill",
+    "DESCRIPTION": "The top card of your draw pile is a [#1ac92c]Skill?[]"
+  },
+  "theDragonknight:DivinationAttack": {
+    "NAME": "Divine a Attack",
+    "DESCRIPTION": "The top card of your draw pile is a [#eb4034]Attack?[]"
+  },
+  "theDragonknight:DivinationStatus": {
+    "NAME": "Divine a Status",
+    "DESCRIPTION": "The top card of your draw pile is a *Status?"
+  },
+  "theDragonknight:DivinationCurse": {
+    "NAME": "Divine a Curse",
+    "DESCRIPTION": "The top card of your draw pile is a [#6411bd]Curse?[]"
   },
   "theDragonknight:AbstractExtraEffectModifier": {
     "NAME": "AbstractExtraEffectModifier",
     "DESCRIPTION": "",
     "EXTENDED_DESCRIPTION" : ["",""]
+  },
+  "theDragonknight:EndTurnBlockTestCard": {
+    "NAME": "Test card",
+    "DESCRIPTION": "Draw !M! cards. NL At the end of your turn if this is in your hand gain !B! Block.",
+    "EXTENDED_DESCRIPTION" : ["",""]
+  },
+
+  "theDragonknight:FlameSwap": {
+    "NAME": "Ruby Origin",
+    "DESCRIPTION": "Swap *Tainted *Soul to thedragonknight:Splinter thedragonknight:Flame at the start of combat"
+  },
+  "theDragonknight:StaticSwap": {
+    "NAME": "Topaz Origin",
+    "DESCRIPTION": "Swap *Tainted *Soul to thedragonknight:Splinter thedragonknight:Static at the start of combat"
+  },
+  "theDragonknight:ToxicSwap": {
+    "NAME": "Emerald Origin",
+    "DESCRIPTION": "Swap *Tainted *Soul to thedragonknight:Splinter thedragonknight:Toxic at the start of combat"
+  },
+  "theDragonknight:MoltenSwap": {
+    "NAME": "Obsidian Origin",
+    "DESCRIPTION": "Swap *Tainted *Soul to thedragonknight:Splinter thedragonknight:Molten at the start of combat"
+  },
+  "theDragonknight:NoSwap": {
+    "NAME": "Set in Stone",
+    "DESCRIPTION": "Do not Change the Scale *Tainted *Soul thedragonknight:Splinters"
   }
 }

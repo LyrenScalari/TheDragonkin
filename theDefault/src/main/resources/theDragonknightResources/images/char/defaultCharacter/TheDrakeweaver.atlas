@@ -1,0 +1,139 @@
+
+TheDrakeweaver.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FrontLegU
+  rotate: false
+  xy: 1, 643
+  size: 135, 183
+  orig: 135, 183
+  offset: 0, 0
+  index: -1
+FrontLegL
+  rotate: false
+  xy: 718, 743
+  size: 88, 120
+  orig: 88, 120
+  offset: 0, 0
+  index: -1
+HandBPalm
+  rotate: false
+  xy: 320, 950
+  size: 67, 59
+  orig: 67, 59
+  offset: 0, 0
+  index: -1
+StaffCrystals
+  rotate: false
+  xy: 521, 828
+  size: 109, 121
+  orig: 109, 121
+  offset: 0, 0
+  index: -1
+Staff
+  rotate: false
+  xy: 1, 1
+  size: 224, 468
+  orig: 224, 468
+  offset: 0, 0
+  index: -1
+HandBClaws
+  rotate: false
+  xy: 258, 950
+  size: 60, 68
+  orig: 60, 68
+  offset: 0, 0
+  index: -1
+FootF
+  rotate: false
+  xy: 632, 828
+  size: 84, 156
+  orig: 84, 156
+  offset: 0, 0
+  index: -1
+BackLegU
+  rotate: false
+  xy: 397, 1
+  size: 158, 163
+  orig: 158, 163
+  offset: 0, 0
+  index: -1
+BackLegL
+  rotate: false
+  xy: 521, 951
+  size: 77, 70
+  orig: 77, 70
+  offset: 0, 0
+  index: -1
+FootB
+  rotate: false
+  xy: 110, 828
+  size: 146, 138
+  orig: 146, 138
+  offset: 0, 0
+  index: -1
+TorsoL
+  rotate: false
+  xy: 258, 828
+  size: 148, 120
+  orig: 148, 120
+  offset: 0, 0
+  index: -1
+TorsoU
+  rotate: false
+  xy: 227, 256
+  size: 206, 202
+  orig: 206, 202
+  offset: 0, 0
+  index: -1
+BackArmU
+  rotate: false
+  xy: 408, 828
+  size: 111, 140
+  orig: 111, 140
+  offset: 0, 0
+  index: -1
+BackArmL
+  rotate: false
+  xy: 718, 865
+  size: 81, 87
+  orig: 81, 87
+  offset: 0, 0
+  index: -1
+FrontArmU
+  rotate: false
+  xy: 1, 828
+  size: 107, 193
+  orig: 107, 193
+  offset: 0, 0
+  index: -1
+Spellbook
+  rotate: false
+  xy: 1, 471
+  size: 272, 170
+  orig: 272, 170
+  offset: 0, 0
+  index: -1
+FrontArmL
+  rotate: false
+  xy: 718, 643
+  size: 109, 98
+  orig: 109, 98
+  offset: 0, 0
+  index: -1
+HandF
+  rotate: false
+  xy: 397, 166
+  size: 142, 75
+  orig: 142, 75
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 227, 1
+  size: 168, 253
+  orig: 168, 253
+  offset: 0, 0
+  index: -1

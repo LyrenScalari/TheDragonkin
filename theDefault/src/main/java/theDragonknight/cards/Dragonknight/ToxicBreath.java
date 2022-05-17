@@ -12,6 +12,7 @@ import theDragonknight.cards.Dragonknight.Dragonclaws.ToxicDragonclaw;
 import theDragonknight.characters.TheDragonknight;
 import theDragonknight.orbs.DragonShouts.FlameMark;
 import theDragonknight.orbs.DragonShouts.PlagueMark;
+import theDragonknight.util.AbstractNotOrb;
 
 import static theDragonknight.DragonknightMod.makeCardPath;
 
@@ -52,8 +53,16 @@ public class ToxicBreath extends AbstractDragonknightCard {
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
+                for (AbstractNotOrb mark : DragonknightMod.Seals){
+                    if (mark instanceof PlagueMark){
+                        mark.PainAmount += 1;
+                        isDone = true;
+                    }
+                }
+                if (!isDone) {
                 DragonknightMod.Seals.add(new PlagueMark(AbstractDungeon.player));
                 isDone = true;
+                }
             }
         });
         addToBot(new AbstractGameAction() {

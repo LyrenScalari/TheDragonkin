@@ -1,6 +1,6 @@
 {
   "modid": "${project.artifactId}",
-  "name": "${project.name}",
+  "name": "The Drakeweaver",
   "author_list": ["Lyren"],
   "credits": "Basemod, ModTheSpire",
   "description": "${project.description}",

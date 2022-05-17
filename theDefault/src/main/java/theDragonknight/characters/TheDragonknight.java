@@ -88,41 +88,24 @@ public class TheDragonknight extends CustomPlayer {
 
     public TheDragonknight(String name, PlayerClass setClass) {
         super(name, setClass, new EnergyOrbDragonkin(),
-                new SpineAnimation("theDragonknightResources/images/char/defaultCharacter/TheDragonkin.atlas","theDragonknightResources/images/char/defaultCharacter/TheDragonkin.json",1.0f));
-
-
-        // =============== TEXTURES, ENERGY, LOADOUT =================
+                new SpineAnimation("theDragonknightResources/images/char/defaultCharacter/TheDrakeweaver.atlas","theDragonknightResources/images/char/defaultCharacter/TheDrakeweaver.json",1.0f));
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
                 // I left these in DragonknightMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
                 THE_DRAGONKIN_SHOULDER_2, // campfire pose
                 THE_DRAGONKIN_SHOULDER_1, // another campfire pose
                 THE_DRAGONKIN_CORPSE, // dead corpse
-                getLoadout(), 20.0F, -10.0F, 217.0F, 270.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
-
-        // =============== /TEXTURES, ENERGY, LOADOUT/ =================
-
-
-        // =============== ANIMATIONS =================
+                getLoadout(), 20.0F, -10.0F, 217.0F, 380.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         loadAnimation(
                 THE_DEFAULT_SKELETON_ATLAS,
                 THE_DEFAULT_SKELETON_JSON,
                 1.0f);
-        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
-        AnimationState.TrackEntry e1 = state.setAnimation(1, "WingFlap", true);
-        AnimationState.TrackEntry e2 = state.setAnimation(2, "TailFlick", true);
+        AnimationState.TrackEntry e = state.setAnimation(0, "animtion0", true);
         e.setTime(e.getEndTime() * MathUtils.random());
-
-        // =============== /ANIMATIONS/ =================
-
-
-        // =============== TEXT BUBBLE LOCATION =================
 
         dialogX = (drawX + 80.0F * Settings.scale); // set location for text bubbles
         dialogY = (drawY + 300.0F * Settings.scale); // you can just copy these values
-
-        // =============== /TEXT BUBBLE LOCATION/ =================
 
     }
 

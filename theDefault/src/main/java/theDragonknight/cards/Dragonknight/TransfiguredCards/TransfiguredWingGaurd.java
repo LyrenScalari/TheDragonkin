@@ -24,7 +24,7 @@ public class TransfiguredWingGaurd extends AbstractDragonknightCard {
     private static final CardType TYPE = CardType.SKILL;       //
     public static final CardColor COLOR = TheDragonknight.Enums.Dragonknight_Crimson_Color;
 
-    private static final int COST = 2;  // COST = 1
+    private static final int COST = 1;  // COST = 1
     private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
 
     private static final int DAMAGE = 7;    // DAMAGE = 6
