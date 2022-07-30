@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.ViolentAttackEffect;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
@@ -25,7 +26,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEffect {
+public class VenegefulStrike extends AbstractHolyCard {
 
     public static final String ID = DragonkinMod.makeID(VenegefulStrike.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -42,7 +43,6 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
     private static final int UPGRADE_PLUS_POTENCY = 0;
     private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 0;
-
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
@@ -54,8 +54,7 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
         baseMagicNumber = magicNumber = MAGIC;
         damage = baseDamage = 8;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 4;
-        selfRetain = true;
-        this.tags.add(CardTags.STRIKE);
+        tags.add(CustomTags.Blessing);
 
     }
     @Override
@@ -79,14 +78,6 @@ public class VenegefulStrike extends AbstractHolyCard implements ReciveDamageEff
             upgradeDamage(2);
             upgradeMagicNumber(1);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void onReciveDamage(int damage) {
-        if (AbstractDungeon.player.hand.contains(this)) {
-            this.baseDamage += magicNumber;
-            this.damage = baseDamage;
         }
     }
 }

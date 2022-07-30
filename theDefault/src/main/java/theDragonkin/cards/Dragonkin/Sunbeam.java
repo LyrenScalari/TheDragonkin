@@ -1,5 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -10,10 +12,14 @@ import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.orbs.WisdomSeal;
 import theDragonkin.powers.Dragonkin.Scorchpower;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonkin.DragonkinMod.getRandomBlessing;
 import static theDragonkin.DragonkinMod.makeCardPath;
@@ -50,13 +56,19 @@ public class Sunbeam extends AbstractHolyCard {
 
 
     // /STAT DECLARATION/
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
+        return retVal;
+    }
 
     public Sunbeam() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
+        tags.add(CustomTags.Blessing);
     }
 
     // Actions the card should do.

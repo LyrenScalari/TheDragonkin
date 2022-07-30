@@ -62,6 +62,7 @@ public class LightSpeedBlessing extends AbstractHolyCard {
         block = baseBlock = 5;
         magicNumber = baseMagicNumber = 3;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 4;
+        tags.add(CustomTags.Blessing);
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

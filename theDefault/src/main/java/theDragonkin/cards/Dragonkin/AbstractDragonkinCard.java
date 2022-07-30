@@ -1,13 +1,20 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.BaseMod;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.AbstractDefaultCard;
 import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.powers.Dragonkin.FuryPower;
+
+import java.util.List;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
@@ -21,7 +28,7 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
     // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
     // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
     // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
-
+    public static CardStrings tooltip = CardCrawlGame.languagePack.getCardStrings("theDragonkin:AbstractDragonkinCard");
     public AbstractDragonkinCard(final String id,
                                  final String img,
                                  final int cost,
@@ -40,16 +47,9 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
         super.atTurnStart();
         DragonkinMod.WasDrained = false;
     }
+
     @Override
     public void applyPowers(){
-        if (this instanceof StormCard){
-            if (AbstractDungeon.player.hasPower(FuryPower.POWER_ID)){
-                if (AbstractDungeon.player.getPower(FuryPower.POWER_ID).amount >= this.StormRate){
-                    Storm = true;
-                    AbstractDungeon.effectsQueue.add(new FireBurstParticleEffect(this.current_x,this.current_y));
-                } else Storm = false;
-            } else Storm = false;
-        }
         if (baseSecondDamage > -1) {
             secondDamage = baseSecondDamage;
 

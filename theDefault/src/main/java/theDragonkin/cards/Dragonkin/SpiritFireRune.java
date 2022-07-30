@@ -31,7 +31,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class SpiritFireRune extends AbstractPrimalCard implements StormCard {
+public class SpiritFireRune extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -64,27 +64,26 @@ public class SpiritFireRune extends AbstractPrimalCard implements StormCard {
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Primal"),BaseMod.getKeywordDescription("thedragonkin:Primal")));
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
         return retVal;
     }
-
     public SpiritFireRune() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 3;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
-        damage = baseDamage = 6;
         tags.add(CustomTags.Rune);
-        StormRate = magicNumber;
-        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(AbstractDungeon.player,damage, DamageInfo.DamageType.NORMAL)));
-        addToBot(new ApplyPowerAction(p,p,new AuraFlame(p,p,defaultSecondMagicNumber)));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new DragonfireRune(defaultSecondMagicNumber, magicNumber));
+                isDone = true;
+            }
+        });
     }
 
     //Upgraded stats.
@@ -95,19 +94,5 @@ public class SpiritFireRune extends AbstractPrimalCard implements StormCard {
             upgradeDamage(2);
             initializeDescription();
         }
-    }
-
-    @Override
-    public void onStorm() {
-        triggerOnManualDiscard();
-    }
-    public void triggerOnManualDiscard() {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new DragonfireRune(damage, magicNumber));
-                isDone = true;
-            }
-        });
     }
 }

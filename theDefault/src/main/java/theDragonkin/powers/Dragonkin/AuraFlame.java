@@ -7,7 +7,9 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -46,15 +48,17 @@ public class AuraFlame extends AbstractPower implements CloneablePowerInterface 
         updateDescription();
     }
     @Override
-    public void onAfterCardPlayed(AbstractCard card) {
+    public void onUseCard(AbstractCard card, UseCardAction action)  {
         this.flash();
         AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
         if (target != null) {
             CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new FireballEffect(owner.drawX, owner.dialogY, target.drawX, target.drawY), 0.5f));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new FireballEffect(target.drawX, target.drawY,owner.drawX, owner.dialogY), 0.5f));
             AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(AbstractDungeon.player, amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
-            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(owner, owner, this, 1));
         }
+        if (amount == 1){
+            addToBot(new RemoveSpecificPowerAction(owner,owner,this));
+        } else addToBot(new ReducePowerAction(owner, owner, this, 1));
     }
     @Override
     public void updateDescription() {

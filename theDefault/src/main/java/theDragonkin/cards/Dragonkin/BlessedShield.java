@@ -46,7 +46,7 @@ public class BlessedShield extends AbstractHolyCard {
 
     @Override
     public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
+        List<TooltipInfo> retVal = super.getCustomTooltips();
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
         return retVal;
     }

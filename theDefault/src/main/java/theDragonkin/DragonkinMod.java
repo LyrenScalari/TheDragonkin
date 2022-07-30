@@ -19,9 +19,11 @@ import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Burn;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -34,6 +36,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.util.Strings;
 import theDragonkin.DamageModifiers.Icons.*;
 import theDragonkin.cards.Dragonkin.*;
 import theDragonkin.cards.Drifter.ForetellCard;
@@ -52,10 +55,13 @@ import theDragonkin.util.*;
 import theDragonkin.variables.*;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Properties;
 import static theDragonkin.characters.TheDefault.Enums.Justicar_Red_COLOR;
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -136,18 +142,6 @@ public class DragonkinMod implements
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
-    
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-  
-    // Card backgrounds - The actual rectangular card
-
-
-    // Dragonkin stuff
 
     public static final String HOLY_LARGE_ORB = "theDragonkinResources/images/1024/card_Dragonkin_Holy_orb.png";
     public static final String HOLY_SMALL_ORB = "theDragonkinResources/images/512/card_Dragonkin_Holy_orb.png";
@@ -219,7 +213,8 @@ public class DragonkinMod implements
     public static final String THE_DEFAULT_SKELETON_JSON = "theDragonkinResources/images/char/defaultCharacter/TheDragonkin.json";
     public static final String Windwalker_SKELETON_ATLAS = "theDragonkinResources/images/char/TheWindWalker/TheWindWalker.atlas";
     public static final String Windwalker_SKELETON_JSON = "theDragonkinResources/images/char/TheWindWalker/TheWindWalker.json";
-
+    public static SpireConfig justicarConfig;
+    public static UIStrings uiStrings;
     // =============== MAKE IMAGE PATHS =================
     
     public static String makeCardPath(String resourcePath) {
@@ -283,7 +278,18 @@ public class DragonkinMod implements
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
-
+        Properties justicarDefaults = new Properties();
+        justicarDefaults.getProperty("Duality Tutorial Seen","FALSE");
+        justicarDefaults.getProperty("Blessing Tutorial Seen","FALSE");
+        try {
+            justicarConfig = new SpireConfig("The Justicar", "DragonkinMod", justicarDefaults);
+        } catch (IOException e) {
+            logger.error("DragonkinMod SpireConfig initialization failed:");
+            e.printStackTrace();
+        }
+        logger.info("Justicar CONFIG OPTIONS LOADED:");
+        logger.info("Duality tutorial seen: " + justicarConfig.getString("Duality Tutorial Seen") + ".");
+        logger.info("Blessing tutorial seen: " + justicarConfig.getString("Blessing Tutorial Seen") + ".");
         /*BaseMod.addColor(WindWalker_Jade_COLOR, WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(),
                 WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(),
                 ATTACK_WindWalker, SKILL_WindWalker, Power_WindWalker, ENERGY_ORB_DEFAULT_GRAY,
@@ -359,14 +365,6 @@ public class DragonkinMod implements
         DragonkinMod dragonkinMod = new DragonkinMod();
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
-    public static void onGenerateCardMidcombat(AbstractCard card) {
-        if (AbstractDungeon.player.hasRelic(FernosBellows.ID) && card.cardID.equals(Burn.ID) && !AbstractDungeon.actionManager.turnHasEnded){
-            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, AbstractDungeon.player,
-                        new Scorchpower(mo,AbstractDungeon.player, 2), 2));
-            }
-        }
-    }
 
     // ============== /SUBSCRIBE, CREATE THE Justicar_Red_COLOR, INITIALIZE/ =================
     
@@ -402,26 +400,43 @@ public class DragonkinMod implements
         ModPanel settingsPanel = new ModPanel();
         
         // Create the on/off button:
-        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("This is the text which goes next to the checkbox.",
+        uiStrings = CardCrawlGame.languagePack.getUIString(modID + ":UIText");
+        ModLabeledToggleButton DualityButton = new ModLabeledToggleButton(uiStrings.TEXT[0],
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enablePlaceholder, // Boolean it uses
+                justicarConfig.getBool("Duality Tutorial Seen"), // Boolean it uses
                 settingsPanel, // The mod panel in which this button will be in
                 (label) -> {}, // thing??????? idk
                 (button) -> { // The actual button:
-            
-            enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
+                     justicarConfig.setBool("Duality Tutorial Seen",button.enabled); // The boolean true/false will be whether the button is enabled or not
+                     CardCrawlGame.sound.play("UI_CLICK_1");
             try {
                 // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
-                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
-                config.save();
+                justicarConfig.setString("Duality Tutorial Seen",""+button.enabled);
+                justicarConfig.save();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
+        ModLabeledToggleButton BlessingButton = new ModLabeledToggleButton(uiStrings.TEXT[1],
+                350.0f, 500.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
+                justicarConfig.getBool("Blessing Tutorial Seen"), // Boolean it uses
+                settingsPanel, // The mod panel in which this button will be in
+                (label) -> {}, // thing??????? idk
+                (button) -> { // The actual button:
+                    justicarConfig.setBool("Blessing Tutorial Seen",button.enabled); // The boolean true/false will be whether the button is enabled or not
+                    CardCrawlGame.sound.play("UI_CLICK_1");
+                    try {
+                        // And based on that boolean, set the settings and save them
+                        justicarConfig.setString("Duality Tutorial Seen",""+button.enabled);
+                        justicarConfig.save();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
         TypeEnergyAtlas.addRegion("[Chi]",ImageMaster.loadImage(Chi_Desc),0,0,22,22);
         TypeEnergyAtlas.addRegion("[Mana]",ImageMaster.loadImage(Mana_Orb),0,0,128,128);
-        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
+        settingsPanel.addUIElement(DualityButton); // Add the button to the settings panel. Button is a go.
+        settingsPanel.addUIElement(BlessingButton);
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         CustomIntent.add(new CurseAttack());
         
@@ -500,7 +515,6 @@ public class DragonkinMod implements
         BaseMod.addRelicToCustomPool(new ObsidianScale(), Justicar_Red_COLOR);
         BaseMod.addRelicToCustomPool(new EmberCore(), Justicar_Red_COLOR);
         BaseMod.addRelicToCustomPool(new MukySludge(), Justicar_Red_COLOR);
-        BaseMod.addRelicToCustomPool(new FernosBellows(), Justicar_Red_COLOR);
         //BaseMod.addRelicToCustomPool(new BookOfHymns(), Justicar_Red_COLOR);
         BaseMod.addRelicToCustomPool(new Sulfurian(), Justicar_Red_COLOR);
         BaseMod.addRelicToCustomPool(new TilerasShield(), Justicar_Red_COLOR);
@@ -539,8 +553,6 @@ public class DragonkinMod implements
         BaseMod.addDynamicVariable(new FadingVar());
         logger.info("Adding cards");
         new AutoAdd("DragonkinMod").packageFilter(AbstractDragonkinCard.class).setDefaultSeen(true).cards();
-        //new AutoAdd("DragonkinMod").packageFilter(AbstractWindWalkerCard.class).setDefaultSeen(true).cards();
-        //new AutoAdd("DragonkinMod").packageFilter(AbstractDefaultCard.class).setDefaultSeen(true).cards();
         logger.info("Done adding cards!");
         logger.info("Added: " + BaseMod.getCardCount(Justicar_Red_COLOR) + " Cards");
     }
@@ -553,36 +565,36 @@ public class DragonkinMod implements
     
     
     // ================ LOAD THE TEXT ===================
-    
+
     @Override
     public void receiveEditStrings() {
         logger.info("You seeing this?");
         logger.info("Beginning to edit strings for mod with ID: " + getModID());
-        
+
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
                 getModID() + "Resources/localization/eng/CardStrings.json");
-        
+
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class,
                 getModID() + "Resources/localization/eng/PowerStrings.json");
-        
+
         // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class,
                 getModID() + "Resources/localization/eng/RelicStrings.json");
-        
+
         // Event Strings
         BaseMod.loadCustomStringsFile(EventStrings.class,
                 getModID() + "Resources/localization/eng/EventStrings.json");
-        
+
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
                 getModID() + "Resources/localization/eng/PotionStrings.json");
-        
+
         // CharacterStrings
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
                 getModID() + "Resources/localization/eng/CharacterStrings.json");
-        
+
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/OrbStrings.json");
@@ -590,15 +602,14 @@ public class DragonkinMod implements
         BaseMod.loadCustomStringsFile(UIStrings.class, getModID() + "Resources/localization/eng/UIStrings.json");
 
         BaseMod.loadCustomStringsFile(MonsterStrings.class, getModID() + "Resources/localization/eng/MonsterStrings.json");
-
-        BaseMod.loadCustomStringsFile(StanceStrings.class, getModID() + "Resources/localization/eng/Stancestrings.json");
+        BaseMod.loadCustomStringsFile(TutorialStrings.class, getModID() + "Resources/localization/eng/TutorialStrings.json");
         logger.info("Done edittting strings");
     }
-    
+
     // ================ /LOAD THE TEXT/ ===================
-    
+
     // ================ LOAD THE KEYWORDS ===================
-    
+
     @Override
     public void receiveEditKeywords() {
         // Keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
@@ -608,11 +619,11 @@ public class DragonkinMod implements
         // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
         // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
         // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
-        
+
         Gson gson = new Gson();
         String json = Gdx.files.internal(getModID() + "Resources/localization/eng/KeywordStrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
-        
+
         if (keywords != null) {
             for (Keyword keyword : keywords) {
                 BaseMod.addKeyword(getModID().toLowerCase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
@@ -620,7 +631,6 @@ public class DragonkinMod implements
             }
         }
     }
-    
     // ================ /LOAD THE KEYWORDS/ ===================    
     
     // this adds "ModName:" before the ID of any card/relic/power etc.

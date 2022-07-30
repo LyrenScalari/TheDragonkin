@@ -1,7 +1,9 @@
 package theDragonkin.cards.Dragonkin;
 
 
+import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,6 +22,8 @@ import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.WingsofLight;
 
 import javax.swing.*;
+
+import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -41,20 +45,23 @@ public class BurningRage extends AbstractHolyCard{
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int MAGIC = 6;
     private static final int UPGRADE_MAGIC = 0;
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = super.getCustomTooltips();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
+        return retVal;
+    }
     public BurningRage() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseMagicNumber = magicNumber = 12;
+        baseMagicNumber = magicNumber = 1;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.MAGIC, LightIcon.get()));
-        tags.add(CustomTags.Radiant);
-
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.MAGIC2, LightIcon.get()));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new WingsofLight(p,p,defaultSecondMagicNumber,magicNumber,this)));
+        addToBot(new ApplyPowerAction(p,p,new WingsofLight(p,p,magicNumber,defaultSecondMagicNumber,this)));
         super.use(p,m);
     }
 
@@ -62,7 +69,6 @@ public class BurningRage extends AbstractHolyCard{
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(2);
             upgradeMagicNumber(1);
             isInnate = true;
             rawDescription = cardStrings.UPGRADE_DESCRIPTION;

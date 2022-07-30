@@ -32,7 +32,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class BlessedWeapon extends AbstractPrimalCard implements StormCard {
+public class BlessedWeapon extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -60,15 +60,13 @@ public class BlessedWeapon extends AbstractPrimalCard implements StormCard {
     private static final int BLOCK = 9;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
-
-    // /STAT DECLARATION/
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Primal"),BaseMod.getKeywordDescription("thedragonkin:Primal")));
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
         return retVal;
     }
+    // /STAT DECLARATION/
     public BlessedWeapon() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 4;
@@ -76,14 +74,18 @@ public class BlessedWeapon extends AbstractPrimalCard implements StormCard {
         block = baseBlock = 3;
         tags.add(CustomTags.Rune);
         StormRate = magicNumber;
-        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(AbstractDungeon.player,block));
-        addToBot(new ApplyPowerAction(p,p,new ReflectiveScales(p,p,defaultSecondMagicNumber)));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new VenganceRune(block, defaultSecondMagicNumber));
+                isDone = true;
+            }
+        });
         super.use(p,m);
     }
 
@@ -96,20 +98,5 @@ public class BlessedWeapon extends AbstractPrimalCard implements StormCard {
             upgradeBlock(2);
             initializeDescription();
         }
-    }
-
-    public void triggerOnManualDiscard() {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new VenganceRune(block, defaultSecondMagicNumber));
-                isDone = true;
-            }
-        });
-    }
-
-    @Override
-    public void onStorm() {
-        triggerOnManualDiscard();
     }
 }

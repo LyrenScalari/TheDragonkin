@@ -2,15 +2,16 @@ package theDragonkin.orbs;
 
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.NoDrawPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.util.AbstractRune;
@@ -28,7 +29,7 @@ public class SparkGlyph extends AbstractRune {
         BreakAmount = Pow;
         updateAnimation();
     }
-    public void onStartOfTurn() {
+    public void onManualDiscard() {
         if (!(AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) || !AbstractDungeon.player.hasPower(NoDrawPower.POWER_ID)){
             int burncount = 0;
             for (AbstractCard c : AbstractDungeon.player.drawPile.group){

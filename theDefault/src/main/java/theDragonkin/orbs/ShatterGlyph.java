@@ -26,7 +26,7 @@ public class ShatterGlyph extends AbstractRune {
         BreakAmount = Pow;
         updateAnimation();
     }
-    public void onStartOfTurn() {
+    public void onManualDiscard() {
         AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
         AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(AbstractDungeon.player,BreakAmount, DamageInfo.DamageType.THORNS)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,AbstractDungeon.player,new VulnerablePower(target,2,false)));

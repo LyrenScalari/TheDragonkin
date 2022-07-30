@@ -1,0 +1,30 @@
+{
+  "theDragonkin:DualityTutorial": {
+    "TEXT": [
+      "The Justicar utilizes two special types of cards [#94bdff]Holy[] and [#fe513a]Primal.[]",
+      "[#fe513a]Primal.[] cards will generate #yVigor equal to the amount of [E] spent to play them.",
+      "[#94bdff]Holy[] cards by contrast generate #ySacrifice equal to [E] spent playing them, which once #b10 is obtained will increase damage and block gain of Holy cards by #b1"
+    ],
+    "LABEL": [
+      "Next",
+      "Got It!",
+      "Duality of Power",
+      "(Page ",
+      " of 3)"
+    ]
+  },
+  "theDragonkin:BlessingTutorial": {
+    "TEXT": [
+      "The Justicar's deity is always watching, [#548dff]Blessing[] cards when played create a Divine eye that watches silently intil tribute is payed",
+      "Taking damage during your turn will reduce the tribute value, once this value reaches #b0 the Seal breaks and the [#548dff]Blessings[] effect occurs.",
+      "If no tribute is made while a Seal is active each turn, at the end of your turn you will lose #b2 HP."
+    ],
+    "LABEL": [
+      "Next",
+      "Got It!",
+      "Divine Favor",
+      "(Page ",
+      " of 3)"
+    ]
+  }
+}

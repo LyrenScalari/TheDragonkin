@@ -36,7 +36,7 @@ public class SmiteAction extends AbstractGameAction {
             }
             shot = true;
         }
-        if (doDamage) {
+        if (doDamage && !target.isDeadOrEscaped()) {
             target.damage(info);
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 AbstractDungeon.actionManager.clearPostCombatActions();

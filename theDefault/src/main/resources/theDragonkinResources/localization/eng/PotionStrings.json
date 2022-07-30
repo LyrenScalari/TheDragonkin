@@ -9,7 +9,7 @@
         },
         "theDragonkin:DragonkinUncommonPotion": {
                 "NAME": "Naruuin's Glow",
-                "DESCRIPTIONS": ["Gain #b"," #yDivine #yArmor"]
+                "DESCRIPTIONS": ["Gain #b"," [thedragonkin:LightIcon] Block"]
         },
         "theDragonkin:DragonkinRarePotion": {
                 "NAME": "Draught of Fervor",

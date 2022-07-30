@@ -27,7 +27,7 @@ public class DeflectionGlyph extends AbstractRune {
         BreakAmount = Pow;
         updateAnimation();
     }
-    public void onStartOfTurn() {
+    public void onManualDiscard() {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,BreakAmount));
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
             if (!mo.isDeadOrEscaped()){

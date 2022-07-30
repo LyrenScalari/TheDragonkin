@@ -33,7 +33,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class BladeMirrorRune extends AbstractPrimalCard implements StormCard {
+public class BladeMirrorRune extends AbstractPrimalCard{
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -66,11 +66,9 @@ public class BladeMirrorRune extends AbstractPrimalCard implements StormCard {
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Primal"),BaseMod.getKeywordDescription("thedragonkin:Primal")));
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
         return retVal;
     }
-
     public BladeMirrorRune() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 5;
@@ -78,18 +76,18 @@ public class BladeMirrorRune extends AbstractPrimalCard implements StormCard {
         block = baseBlock = 7;
         tags.add(CustomTags.Rune);
         StormRate = magicNumber;
-        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p,block));
-        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
-            if (!mo.isDeadOrEscaped()){
-                addToBot(new ApplyPowerAction(mo,p,new WeakPower(mo,defaultSecondMagicNumber,false)));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new DeflectionGlyph(damage, magicNumber));
+                isDone = true;
             }
-        }
+        });
         super.use(p,m);
     }
 
@@ -102,20 +100,5 @@ public class BladeMirrorRune extends AbstractPrimalCard implements StormCard {
             upgradeDamage(2);
             initializeDescription();
         }
-    }
-
-    public void triggerOnManualDiscard() {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new DeflectionGlyph(damage, magicNumber));
-                isDone = true;
-            }
-        });
-    }
-
-    @Override
-    public void onStorm() {
-        triggerOnManualDiscard();
     }
 }

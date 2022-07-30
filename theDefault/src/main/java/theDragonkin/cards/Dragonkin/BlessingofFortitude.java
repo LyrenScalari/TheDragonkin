@@ -62,7 +62,6 @@ public class BlessingofFortitude extends AbstractHolyCard {
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
         return retVal;
     }
-
     public BlessingofFortitude() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
@@ -70,6 +69,7 @@ public class BlessingofFortitude extends AbstractHolyCard {
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 4;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
+        tags.add(CustomTags.Blessing);
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

@@ -30,7 +30,9 @@ public class DivineDamage extends AbstractDamageModifier {
         return tips;
     }
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        addToBot(new ApplyPowerAction(target,info.owner,new PenancePower(target,info.owner,(int)Math.ceil(unblockedAmount/2))));
+        if (unblockedAmount > 0){
+            addToBot(new ApplyPowerAction(target,info.owner,new PenancePower(target,info.owner,(int)Math.ceil(unblockedAmount/2))));
+        }
     }
     @Override
     public AbstractDamageModifier makeCopy() {

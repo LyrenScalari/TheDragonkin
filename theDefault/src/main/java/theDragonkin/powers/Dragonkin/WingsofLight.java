@@ -6,6 +6,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -34,7 +35,7 @@ import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
 
-public class WingsofLight extends TwoAmountPower implements CloneablePowerInterface, OnReceivePowerPower {
+public class WingsofLight extends TwoAmountPower implements CloneablePowerInterface{
     public AbstractCreature source;
 
     public static final String POWER_ID = DragonkinMod.makeID("WingsofLight");
@@ -47,55 +48,45 @@ public class WingsofLight extends TwoAmountPower implements CloneablePowerInterf
     private static final float Y_JITTER;
     private static final float OFFSET_Y;
     private static AbstractCard srcCard;
+    private int ActivationCounter;
     static {
         X_JITTER = 120.0F * Settings.scale;
         Y_JITTER = 120.0F * Settings.scale;
         OFFSET_Y = -50.0F * Settings.scale;
     }
-    public WingsofLight(final AbstractCreature owner, final AbstractCreature source,int dmgamount,int armoramt, AbstractCard srccard) {
+    public WingsofLight(final AbstractCreature owner, final AbstractCreature source,int amt1,int amt2, AbstractCard srccard) {
         name = NAME;
         ID = POWER_ID;
         this.owner = owner;
-        this.amount = dmgamount;
+        this.amount = amt1;
         this.source = source;
-        this.amount2 += armoramt;
+        this.amount2 = amt2;
         type = PowerType.BUFF;
         srcCard = srccard;
         isTurnBased = false;
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        ActivationCounter = 0;
         updateDescription();
     }
-
-    public void onUseCard(final AbstractCard card, final UseCardAction action) {
-        if (card.baseBlock > 0) {
-            this.flash();
-            CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
-            addToBot(new VFXAction(new HealVerticalLineEffect(owner.drawX + MathUtils.random(-X_JITTER * 1.5F, X_JITTER * 1.5F), owner.drawY + OFFSET_Y + MathUtils.random(-Y_JITTER, Y_JITTER))));
-            addToBot(new VFXAction(new HealVerticalLineEffect(owner.drawX + MathUtils.random(-X_JITTER * 1.5F, X_JITTER * 1.5F), owner.drawY + OFFSET_Y + MathUtils.random(-Y_JITTER, Y_JITTER))));
-            addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    DragonkinMod.Seals.add(new FortitudeSeal(amount2,amount,srcCard));
-                    isDone = true;
-                }
-            });
-        }
+    public void atStartOfTurn() {
+        this.ActivationCounter = 0;
     }
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + this.amount2+ DESCRIPTIONS[1] + amount2 + DESCRIPTIONS[2];
+        if (amount < 2){
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + amount2 + DESCRIPTIONS[2];
+        } else description = DESCRIPTIONS[3] + amount2 + DESCRIPTIONS[4] + DESCRIPTIONS[1] + amount2 + DESCRIPTIONS[2];
     }
-    @Override
-    public AbstractPower makeCopy() {
-        return new DivineRetributionPower(owner, source,amount);
+
+    public void onSealBreak(){
+        if (ActivationCounter <= this.amount){
+            AbstractDungeon.actionManager.addToBottom(new GainCustomBlockAction(srcCard,AbstractDungeon.player,amount2));
+        }
     }
 
     @Override
-    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower instanceof WingsofLight){
-            amount2 += ((WingsofLight) abstractPower).amount2;
-        }
-        return true;
+    public AbstractPower makeCopy() {
+        return new WingsofLight(owner, source,amount,amount2,srcCard);
     }
 }

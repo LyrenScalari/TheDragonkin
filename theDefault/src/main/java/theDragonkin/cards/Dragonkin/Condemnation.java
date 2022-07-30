@@ -1,6 +1,8 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +14,9 @@ import theDragonkin.characters.TheDefault;
 import theDragonkin.orbs.BlazeRune;
 import theDragonkin.orbs.DestructionGlyph;
 import theDragonkin.powers.Dragonkin.HolyBombPower;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -33,18 +38,27 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
     private static final int UPGRADE_PLUS_POTENCY = 10;
     private static final int MAGIC = 0;
     private static final int UPGRADE_MAGIC = 0;
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
+        return retVal;
+    }
     public Condemnation() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = 40;
-        StormRate = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new HolyBombPower(p, p, 3, magicNumber)));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new DestructionGlyph(magicNumber, defaultSecondMagicNumber));
+                isDone = true;
+            }
+        });
     }
 
     @Override
@@ -54,15 +68,6 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
             upgradeMagicNumber(UPGRADE_PLUS_POTENCY);
             initializeDescription();
         }
-    }
-    public void triggerOnManualDiscard() {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new DestructionGlyph(magicNumber, defaultSecondMagicNumber));
-                isDone = true;
-            }
-        });
     }
     @Override
     public void onStorm() {

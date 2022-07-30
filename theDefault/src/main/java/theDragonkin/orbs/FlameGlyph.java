@@ -30,14 +30,7 @@ public class FlameGlyph extends AbstractRune {
         BreakAmount = Pow;
         updateAnimation();
     }
-    public void onStartOfTurn() {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                new IncendiaryFlowPower(AbstractDungeon.player,AbstractDungeon.player,BreakAmount),BreakAmount));
-        AbstractDungeon.actionManager.addToBottom(new SelectCardsInHandAction(2," Cycle",false,false,(card)->true,(List)-> {
-            for (AbstractCard c : List) {
-                AbstractDungeon.actionManager.addToBottom(new CycleAction(c,1));
-            }
-        }));
+    public void onManualDiscard() {
         PainAmount -= 1;
         AbstractRune that = this;
         if (PainAmount <= 0){
@@ -49,6 +42,13 @@ public class FlameGlyph extends AbstractRune {
                 }
             });
         }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
+                new IncendiaryFlowPower(AbstractDungeon.player,AbstractDungeon.player,BreakAmount),BreakAmount));
+        AbstractDungeon.actionManager.addToBottom(new SelectCardsInHandAction(2," Cycle",false,false,(card)->true,(List)-> {
+            for (AbstractCard c : List) {
+                AbstractDungeon.actionManager.addToBottom(new CycleAction(c,1));
+            }
+        }));
     }
     public void updateDescription() {
         description = DESCRIPTIONS[0] + PainAmount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + BreakAmount + DESCRIPTIONS[3];

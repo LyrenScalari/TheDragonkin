@@ -13,9 +13,12 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
+import theDragonkin.powers.Dragonkin.WingsofLight;
 
 import java.util.ArrayList;
 
@@ -37,7 +40,7 @@ public abstract class AbstractSeal extends AbstractNotOrb implements ReciveDamag
     }
     @Override
     public void onReciveDamage(int damage) {
-        if (!AbstractDungeon.actionManager.turnHasEnded || !DragonkinMod.damagetaken){
+        if ((!AbstractDungeon.actionManager.turnHasEnded || !DragonkinMod.damagetaken) && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT){
             PainAmount -= damage;
         }
         if (PainAmount <= 0){
@@ -53,6 +56,11 @@ public abstract class AbstractSeal extends AbstractNotOrb implements ReciveDamag
                 isDone = true;
             }
         });
+        for (AbstractPower p : AbstractDungeon.player.powers){
+            if (p instanceof WingsofLight){
+                ((WingsofLight) p).onSealBreak();
+            }
+        }
     }
     public void updateAnimation() {
         this.bobEffect.update();
@@ -71,6 +79,7 @@ public abstract class AbstractSeal extends AbstractNotOrb implements ReciveDamag
     }
     public void onEndOfTurn() {
         if (!DragonkinMod.damagetaken){
+            DragonkinMod.damagetaken = true;
             AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,new DamageInfo(AbstractDungeon.player,2, DamageInfo.DamageType.HP_LOSS)));
             for (AbstractNotOrb notOrb : DragonkinMod.Seals){
                 if (notOrb instanceof AbstractSeal){
