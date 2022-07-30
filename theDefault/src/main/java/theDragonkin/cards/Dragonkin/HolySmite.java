@@ -70,7 +70,7 @@ public class HolySmite extends AbstractHolyCard {
     public HolySmite() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
-    this.magicNumber = this.baseMagicNumber = 1;
+    this.magicNumber = this.baseMagicNumber = 2;
 }
 
 

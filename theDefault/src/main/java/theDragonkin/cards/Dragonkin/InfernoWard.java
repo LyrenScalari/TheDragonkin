@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.DamageModifiers.BlockModifiers.FireBlock;
 import theDragonkin.DamageModifiers.Icons.FireIcon;
@@ -70,7 +71,7 @@ public class InfernoWard extends AbstractPrimalCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p,new AuraFlame(p,p,magicNumber)));
+        addToBot(new ApplyPowerAction(p,p,new VigorPower(p,magicNumber)));
         addToBot(new SelectCardsInHandAction(BaseMod.MAX_HAND_SIZE," Cycle",false,false,(card)->true,(List)-> {
             for (AbstractCard c : List){
                 addToBot(new CycleAction(c,1));

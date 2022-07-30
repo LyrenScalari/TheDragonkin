@@ -26,18 +26,9 @@ public abstract class AbstractHolyCard extends AbstractDragonkinCard {
     }
     public void use(AbstractPlayer p, AbstractMonster m) {
         int bonus = 0;
-        if (this.hasTag(CustomTags.Radiant)){
-            bonus = this.magicNumber;
-        }
         if (this.costForTurn > 0) {
-            addToBot(new ApplyPowerAction(p, p, new SacrificePower(p, p, this.costForTurn + bonus)));
+            addToBot(new ApplyPowerAction(p, p, new SacrificePower(p, p, this.costForTurn)));
         }
-    }
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Holy"),BaseMod.getKeywordDescription("thedragonkin:Holy")));
-        return retVal;
     }
     @Override
     public List<String> getCardDescriptors() {

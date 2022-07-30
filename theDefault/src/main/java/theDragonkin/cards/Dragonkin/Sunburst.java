@@ -61,8 +61,8 @@ public class Sunburst extends AbstractHolyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(p,new DamageInfo(m,damage, DamageInfo.DamageType.NORMAL)));
-        addToBot(new SelectCardsInHandAction(magicNumber," Cycle",false,false,(card)->true,(List)-> {
+        addToBot(new DamageAction(m,new DamageInfo(m,damage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new SelectCardsInHandAction(defaultSecondMagicNumber," Cycle",false,false,(card)->true,(List)-> {
             boolean blessed = false;
             for (AbstractCard c : List){
                 addToBot(new CycleAction(c,1));
@@ -83,7 +83,6 @@ public class Sunburst extends AbstractHolyCard {
         if (!upgraded) {
             upgradeName();
             upgradeDefaultSecondMagicNumber(1);
-            upgradeMagicNumber(1);
             initializeDescription();
         }
     }

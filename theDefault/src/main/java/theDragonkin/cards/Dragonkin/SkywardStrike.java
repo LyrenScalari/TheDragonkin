@@ -3,6 +3,7 @@ package theDragonkin.cards.Dragonkin;
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -55,13 +56,13 @@ public class SkywardStrike extends AbstractPrimalCard {
         damage = baseDamage = 8;
         magicNumber = baseMagicNumber = MAGIC;
         tags.add(CardTags.STRIKE);
-        DamageModifierManager.addModifier(this, new DivineDamage(true,false));
+        DamageModifierManager.addModifier(this, new DivineDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
     }
 
     public void triggerOnGlowCheck() {
         this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-        if (DragonkinMod.CardsCycledThisTurn > 0) {
+        if (GameActionManager.totalDiscardedThisTurn > 0) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         }
 
@@ -71,7 +72,7 @@ public class SkywardStrike extends AbstractPrimalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        if (DragonkinMod.CardsCycledThisTurn > 0){
+        if (GameActionManager.totalDiscardedThisTurn > 0){
             addToBot(new GainEnergyAction(magicNumber));
         }
     }

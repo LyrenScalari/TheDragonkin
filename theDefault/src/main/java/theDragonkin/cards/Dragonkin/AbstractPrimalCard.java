@@ -1,10 +1,12 @@
 package theDragonkin.cards.Dragonkin;
 
 import basemod.BaseMod;
+import basemod.devcommands.power.Power;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.powers.Dragonkin.FuryPower;
 
@@ -20,14 +22,7 @@ public abstract class AbstractPrimalCard extends AbstractDragonkinCard {
         setOrbTexture(DragonkinMod.PRIMAL_SMALL_ORB, DragonkinMod.PRIMAL_LARGE_ORB);
     }
     @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Primal"),BaseMod.getKeywordDescription("thedragonkin:Primal")));
-        return retVal;
-    }
-    @Override
     public List<String> getCardDescriptors() {
-
         List<String> tags = new ArrayList<>();
         tags.add(BaseMod.getKeywordTitle("thedragonkin:Primal"));
         tags.addAll(super.getCardDescriptors());
@@ -35,7 +30,7 @@ public abstract class AbstractPrimalCard extends AbstractDragonkinCard {
     }
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.costForTurn > 0) {
-            addToBot(new ApplyPowerAction(p, p, new FuryPower(p, p, this.costForTurn)));
+            addToBot(new ApplyPowerAction(p, p, new VigorPower(p, this.costForTurn)));
         }
     }
 }

@@ -27,7 +27,6 @@ public class FortitudeSeal extends AbstractSeal {
     public void Break(){
         super.Break();
         AbstractDungeon.actionManager.addToBottom(new GainCustomBlockAction(Source,AbstractDungeon.player,BreakAmount));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new EquilibriumPower(AbstractDungeon.player,1)));
     }
     public void updateDescription() {
         description = DESCRIPTIONS[0] + PainAmount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + BreakAmount + DESCRIPTIONS[3];

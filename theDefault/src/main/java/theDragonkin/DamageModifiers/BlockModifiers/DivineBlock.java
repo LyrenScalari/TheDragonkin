@@ -7,9 +7,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.AbstractBlockModifier;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.DragonkinMod;
+import theDragonkin.cards.Dragonkin.HolyWrath;
 
 import java.util.ArrayList;
 
@@ -43,7 +46,6 @@ public class DivineBlock extends AbstractBlockModifier {
         tips.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Divine"), BaseMod.getKeywordDescription("thedragonkin:Divine_Damage")));
         return tips;
     }
-
     public AbstractBlockModifier.Priority priority() {
         return Priority.TOP;
     }
@@ -63,4 +65,6 @@ public class DivineBlock extends AbstractBlockModifier {
     public int amountLostAtStartOfTurn() {
         return 0;
     }
+
+
 }

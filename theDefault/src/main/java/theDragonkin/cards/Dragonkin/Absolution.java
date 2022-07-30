@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
+import theDragonkin.CustomTags;
 import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
@@ -48,7 +49,12 @@ public class Absolution extends AbstractHolyCard {
     private static final int UPGRADE_PLUS_POTENCY = 0;
     private static final int MAGIC = 6;
     private static final int UPGRADE_MAGIC = 0;
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
+        return retVal;
+    }
     public Absolution() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
@@ -56,12 +62,7 @@ public class Absolution extends AbstractHolyCard {
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 6;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
-    }
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
-        return retVal;
+        tags.add(CustomTags.Blessing);
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

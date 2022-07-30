@@ -33,7 +33,7 @@ import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class ShatterRune extends AbstractPrimalCard implements StormCard{
+public class ShatterRune extends AbstractPrimalCard{
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -61,37 +61,31 @@ public class ShatterRune extends AbstractPrimalCard implements StormCard{
     private static final int BLOCK = 9;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
-
-    // /STAT DECLARATION/
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
         return retVal;
     }
-    @Override
-    public List<String> getCardDescriptors() {
-
-        List<String> tags = new ArrayList<>();
-        tags.add(BaseMod.getKeywordTitle("thedragonkin:Rune"));
-        tags.addAll(super.getCardDescriptors());
-        return tags;
-    }
+    // /STAT DECLARATION/
     public ShatterRune() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 1;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         damage = baseDamage = 18;
         tags.add(CustomTags.Rune);
-        StormRate = magicNumber;
-        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m,new DamageInfo(p,damage)));
-        addToBot(new ApplyPowerAction(m,p,new VulnerablePower(m,defaultSecondMagicNumber,false)));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new ShatterGlyph(damage, magicNumber));
+                isDone = true;
+            }
+        });
         super.use(p,m);
     }
 
@@ -104,20 +98,5 @@ public class ShatterRune extends AbstractPrimalCard implements StormCard{
             upgradeDamage(2);
             initializeDescription();
         }
-    }
-
-    public void triggerOnManualDiscard() {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new ShatterGlyph(damage, magicNumber));
-                isDone = true;
-            }
-        });
-    }
-
-    @Override
-    public void onStorm() {
-        triggerOnManualDiscard();
     }
 }

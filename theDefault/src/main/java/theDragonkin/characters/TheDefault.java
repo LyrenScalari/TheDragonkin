@@ -25,7 +25,6 @@ import theDragonkin.cards.Dragonkin.BlazingBreath;
 import theDragonkin.cards.Dragonkin.Defend;
 import theDragonkin.cards.Dragonkin.HolySmite;
 import theDragonkin.cards.Dragonkin.Strike;
-import theDragonkin.cards.Dragonkin.StormBreath;
 import theDragonkin.relics.Dragonkin.GarnetScale;
 import theDragonkin.ui.EnergyOrbDragonkin;
 
@@ -156,7 +155,6 @@ public class TheDefault extends CustomPlayer {
         retVal.add(Defend.ID);
         retVal.add(HolySmite.ID);
         retVal.add(BlazingBreath.ID);
-        retVal.add(StormBreath.ID);
         return retVal;
     }
 

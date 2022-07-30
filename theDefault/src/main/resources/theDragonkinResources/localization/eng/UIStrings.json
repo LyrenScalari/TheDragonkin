@@ -1,19 +1,8 @@
 {
   "theDragonkin:UIText": {
     "TEXT": [
-      " damage",
-      " #rScorch",
-      " #gBlock",
-      " #gDivine #gArmor",
-      " #rWeak",
-      " #rVulnerable",
-      " #yZeal",
-      "- ",
-      ", ",
-      " #rDissolve",
-      " damage twice",
-      " #gBlock twice",
-      " #gTrigger #gALL #genemies #rDissolve"
+      "View subtype tutorial during the next combat you enter as the Justicar.",
+      "View blessing tutorial during the next combat you with Blessing card."
     ]
   },
   "theDragonkin:MultiIntentStrings": {

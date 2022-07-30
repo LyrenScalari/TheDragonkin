@@ -5,6 +5,7 @@ import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -55,9 +56,17 @@ public class HolyWrath extends AbstractHolyCard {
             for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
                 addToBot(new SmiteAction(mo, new DamageInfo(p, BlockModifierManager.getTopBlockInstance(p).getBlockAmount()*2, damageTypeForTurn)));
             }
-            if (!upgraded) {
-                BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockInstance(p),BlockModifierManager.getTopBlockInstance(p).getBlockAmount());
-            } else   BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockInstance(p),BlockModifierManager.getTopBlockInstance(p).getBlockAmount()/2);
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    if (BlockModifierManager.hasCustomBlockType(p) && BlockModifierManager.getTopBlockInstance(p).getBlockTypes().stream().anyMatch(mod -> mod instanceof DivineBlock)) {
+                        if (!upgraded){
+                            BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockInstance(p), BlockModifierManager.getTopBlockInstance(p).getBlockAmount());
+                        } else BlockModifierManager.reduceSpecificBlockType(BlockModifierManager.getTopBlockInstance(p), BlockModifierManager.getTopBlockInstance(p).getBlockAmount()/2);
+                    }
+                    this.isDone = true;
+                }
+            });
         }
         super.use(p,m);
     }

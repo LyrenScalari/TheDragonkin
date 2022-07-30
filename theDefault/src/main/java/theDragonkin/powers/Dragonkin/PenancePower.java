@@ -62,6 +62,13 @@ public class PenancePower extends TwoAmountPower implements CloneablePowerInterf
     public void onInitialApplication() {
         amount2 = Power;
         updateDescription();
+        if (this.amount >= 8){
+            amount -= 8;
+            CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
+            addToBot(new SmiteAction(owner,new DamageInfo(owner,Power, DamageInfo.DamageType.HP_LOSS)));
+            Power += 10;
+            updateDescription();
+        }
     }
     @Override
     public void updateDescription() {

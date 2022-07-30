@@ -9,6 +9,7 @@ import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandActio
 import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
@@ -52,34 +53,34 @@ public class LatentBlessing extends AbstractHolyCard {
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
     }
     @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Holy"),BaseMod.getKeywordDescription("thedragonkin:Holy")));
-        return retVal;
-    }
-    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
-        addToBot(new SelectCardsInHandAction(defaultSecondMagicNumber," Cycle",true,false,(cards)->true,(List)->{
-            if (List.size() > 1){
-                boolean blessed = false;
-                addToBot(new CycleAction(List.get(0), 1));
-                if (List.get(0) instanceof AbstractHolyCard) {
-                    addToBot(new GainCustomBlockAction(this,p,block));
-                    blessed = true;
-                }
-                addToBot(new CycleAction(List.get(1), 1));
-                if (List.get(1)instanceof AbstractHolyCard && !blessed) {
-                    addToBot(new GainCustomBlockAction(this,p,block));
-                }
-            } else {
-                addToBot(new CycleAction(List.get(0), 1));
-                if (List.get(0)instanceof AbstractHolyCard) {
-                    addToBot(new GainCustomBlockAction(this,p,block));
-                }
+        if (AbstractDungeon.player.hand.size() == 1){
+            if (AbstractDungeon.player.hand.getTopCard() instanceof AbstractHolyCard){
+                addToBot(new GainCustomBlockAction(this, p, block));
             }
-        }));
+            addToBot(new CycleAction(AbstractDungeon.player.hand.getTopCard(),1));
+        } else {
+            addToBot(new SelectCardsInHandAction(defaultSecondMagicNumber, " Cycle", true, false, (cards) -> true, (List) -> {
+                if (List.size() > 1) {
+                    boolean blessed = false;
+                    addToBot(new CycleAction(List.get(0), 1));
+                    if (List.get(0) instanceof AbstractHolyCard) {
+                        addToBot(new GainCustomBlockAction(this, p, block));
+                        blessed = true;
+                    }
+                    addToBot(new CycleAction(List.get(1), 1));
+                    if (List.get(1) instanceof AbstractHolyCard && !blessed) {
+                        addToBot(new GainCustomBlockAction(this, p, block));
+                    }
+                } else {
+                    addToBot(new CycleAction(List.get(0), 1));
+                    if (List.get(0) instanceof AbstractHolyCard) {
+                        addToBot(new GainCustomBlockAction(this, p, block));
+                    }
+                }
+            }));
+        }
         super.use(p,m);
     }
 

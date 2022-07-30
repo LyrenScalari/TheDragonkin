@@ -45,18 +45,18 @@ public class ShadowVision extends AbstractHolyCard {
     private static final int UPGRADE_PLUS_POTENCY = 0;
     private static final int MAGIC = 4;
     private static final int UPGRADE_MAGIC = 0;
-
-    public ShadowVision() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseMagicNumber = magicNumber = MAGIC;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
-        block = baseBlock = 6;
-    }
     @Override
     public List<TooltipInfo> getCustomTooltips() {
         List<TooltipInfo> retVal = new ArrayList<>();
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
         return retVal;
+    }
+    public ShadowVision() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        baseMagicNumber = magicNumber = MAGIC;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
+        block = baseBlock = 6;
+        tags.add(CustomTags.Blessing);
     }
 
     @Override

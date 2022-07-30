@@ -27,7 +27,7 @@ public class DestructionGlyph extends AbstractRune {
         BreakAmount = Pow;
         updateAnimation();
     }
-    public void onStartOfTurn() {
+    public void onManualDiscard() {
         PainAmount -= 1;
         AbstractRune that = this;
         if (PainAmount <= 0){

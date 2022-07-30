@@ -71,7 +71,7 @@ public class SacredTrial extends AbstractHolyCard {
         CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
         AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));
         addToBot(new VFXAction(new LightningEffect(p.drawX,p.drawY)));
-        addToBot(new DamageCallbackAction(p, new DamageInfo(p,7, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, integer -> {
+        addToBot(new DamageCallbackAction(p, new DamageInfo(p,magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, integer -> {
             System.out.println(integer);
               for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
                   AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));

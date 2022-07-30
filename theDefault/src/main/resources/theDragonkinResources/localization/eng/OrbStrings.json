@@ -71,71 +71,71 @@
   "theDragonkin:Vengeance": {
     "NAME": "Vengeance",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn gain #b", " #yBlock and #b3 #yDeflecting #yScales","Nah"
+      "Can be Activated #b",
+      " times", " NL after you discard a card gain #b", " #yBlock and #b3 #yDeflecting #yScales","Nah"
     ]
   },
   "theDragonkin:Blaze": {
     "NAME": "Blaze",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and apply #b2 #yScorch to a random enemy","Yol"
+      "Can be Activated #b",
+      " times", " NL after you discard a card deal #b", " damage to a random enemy and apply #b2 #yScorch to a random enemy","Yol"
     ]
   },
   "theDragonkin:Dragonfire": {
     "NAME": "Dragonfire",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and gain #b6 #yAuraflame","Toor"
+      "Can be Activated #b",
+      " times", " NL after you discard a card deal #b", " damage to a random enemy and gain #b3 #yAuraflame","Toor"
     ]
   },
   "theDragonkin:Shatter": {
     "NAME": "Shatter",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the end of your turn deal #b", " damage to a random enemy and apply #b2 #yVulnerable to a random enemy","Kren"
+      "Can be Activated #b",
+      " times", " NL after you discard a card deal #b", " damage to a random enemy and apply #b2 #yVulnerable to a random enemy","Kren"
     ]
   },
   "theDragonkin:Flame": {
     "NAME": "Flame",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL After you discard a card gain #b", " #yBlock. NL at the start of your turn #yCycle #b2 cards.","Yolos"
+      "Can be Activated #b",
+      " times", " NL after you discard a card gain #b", " #yBlock.","Yolos"
     ]
   },
   "theDragonkin:Deflection": {
     "NAME": "Deflection",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn gain #b", " #yBlock and apply #b1 #yWeak to all enemies.","Vo"
+      "Can be Activated #b",
+      " times", " NL after you discard a card gain #b", " #yBlock and apply #b1 #yWeak to all enemies.","Vo"
     ]
   },
   "theDragonkin:Bloodthirst": {
     "NAME": "Bloodthirst",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn deal #b", " damage to a random enemy 3 times.","Bahlok"
+      "Can be Activated #b",
+      " times", " NL after you discard a card deal #b", " damage to a random enemy 3 times.","Bahlok"
     ]
   },
   "theDragonkin:Ward": {
     "NAME": "Ward",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn gain #b", " [theDragonkin:FireIcon] #yBlock and shuffle a #yBurn into your draw pile.","Spaan"
+      "Can be Activated #b",
+      " times", " NL after you discard a card gain #b", " [theDragonkin:FireIcon] #yBlock and shuffle a #yBurn into your draw pile.","Spaan"
     ]
   },
   "theDragonkin:Spark": {
     "NAME": "Spark",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL at the start of your turn draw #b", " #yStatus or [#990702]Rune[] cards.","Kun"
+      "Can be Activated #b",
+      " times", " NL after you discard a card draw #b", " #yStatus or [#990702]Rune[] cards.","Kun"
     ]
   },
   "theDragonkin:Destruction": {
     "NAME": "Destruction",
     "DESCRIPTION": [
-      "Lasts #b",
-      " turns", " NL In #b", " turns deal #b", " damage to all enemies","Kun"
+      "",
+      "", "After you discard #b", " cards deal #b", " damage to all enemies","Kun"
     ]
   },
   "theDragonkin:Rain": {

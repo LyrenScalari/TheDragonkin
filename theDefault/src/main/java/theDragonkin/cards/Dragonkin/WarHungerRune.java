@@ -68,22 +68,12 @@ public class WarHungerRune extends AbstractPrimalCard implements StormCard {
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
         return retVal;
     }
-    @Override
-    public List<String> getCardDescriptors() {
-
-        List<String> tags = new ArrayList<>();
-        tags.add(BaseMod.getKeywordTitle("thedragonkin:Rune"));
-        tags.addAll(super.getCardDescriptors());
-        return tags;
-    }
-
     public WarHungerRune() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         damage = baseDamage = 6;
         tags.add(CustomTags.Rune);
-        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     // Actions the card should do.

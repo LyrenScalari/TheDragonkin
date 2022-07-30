@@ -2,6 +2,7 @@ package theDragonkin.cards.Dragonkin;
 
 import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theDragonkin.CardMods.StormEffect;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
 import theDragonkin.actions.FluxAction;
@@ -21,9 +23,12 @@ import theDragonkin.orbs.BlazeRune;
 import theDragonkin.orbs.FlameGlyph;
 import theDragonkin.powers.Dragonkin.IncendiaryFlowPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
+public class IncendiaryFlow extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -54,31 +59,24 @@ public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
     private static final int UPGRADE_MAGIC = 1;
 
     // /STAT DECLARATION/
-
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
+        return retVal;
+    }
     public IncendiaryFlow() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
-        StormRate = 3;
-        CardModifierManager.addModifier(this, new StormEffect(StormRate));
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        tags.add(CustomTags.Rune);
     }
 
     // Actions the card should do.
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
-                new IncendiaryFlowPower(AbstractDungeon.player,AbstractDungeon.player,magicNumber),magicNumber));
-        addToBot(new SelectCardsInHandAction(defaultBaseSecondMagicNumber," Cycle",false,false,(card)->true,(List)-> {
-            for (AbstractCard c : List) {
-                addToBot(new CycleAction(c,1));
-            }
-        }));
-        super.use(p,m);
-    }
-    public void triggerOnManualDiscard() {
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
@@ -86,6 +84,7 @@ public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
                 isDone = true;
             }
         });
+        super.use(p,m);
     }
     //Upgraded stats.
     @Override
@@ -95,10 +94,5 @@ public class IncendiaryFlow extends AbstractPrimalCard implements StormCard {
             upgradeDefaultSecondMagicNumber(2);
             initializeDescription();
         }
-    }
-
-    @Override
-    public void onStorm() {
-        triggerOnManualDiscard();
     }
 }

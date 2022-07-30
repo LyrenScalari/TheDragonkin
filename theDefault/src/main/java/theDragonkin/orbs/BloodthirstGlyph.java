@@ -25,7 +25,7 @@ public class BloodthirstGlyph extends AbstractRune {
         BreakAmount = Pow;
         updateAnimation();
     }
-    public void onStartOfTurn() {
+    public void onManualDiscard() {
         for (int i = 0; i < 3 ; i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
             AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(AbstractDungeon.player, BreakAmount, DamageInfo.DamageType.THORNS)));

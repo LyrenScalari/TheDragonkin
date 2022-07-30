@@ -23,7 +23,8 @@
         },
         "theDragonkin:WingsofLight": {
                 "NAME": "Wings of Light",
-                "DESCRIPTIONS": ["After you play a card that gains #yBlock [#548dff]Blessing[] #b"," : gain #b"," [LightIcon] #yBlock"
+                "DESCRIPTIONS": ["The first time"," a [#548dff]Blessings[] Seal breaks this turn gain #b"," [LightIcon] #yBlock",
+                        "The first #b"," times"
                 ]
         },
         "theDragonkin:Penance": {
@@ -72,7 +73,7 @@
         },
         "theDragonkin:SacrificePower": {
                 "NAME": "Sacrifice",
-                "DESCRIPTIONS": ["When obtain #b"," spend it and Gain #b1 #yHoly #yPower"]
+                "DESCRIPTIONS": ["When you obtain #b"," spend it and Gain #b1 #yHoly #yPower"]
         },
         "theDragonkin:Unbroken": {
                 "NAME": "Unbroken",

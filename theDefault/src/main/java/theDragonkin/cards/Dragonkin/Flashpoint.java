@@ -2,6 +2,7 @@ package theDragonkin.cards.Dragonkin;
 
 import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -21,9 +22,12 @@ import theDragonkin.orbs.BlazeRune;
 import theDragonkin.orbs.SparkGlyph;
 import theDragonkin.powers.Dragonkin.HeatPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class Flashpoint extends AbstractPrimalCard implements StormCard {
+public class Flashpoint extends AbstractPrimalCard {
 
     public static final String ID = DragonkinMod.makeID(Flashpoint.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
@@ -36,41 +40,21 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
-
-
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
+        return retVal;
+    }
     public Flashpoint() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
-        StormRate = 3;
         tags.add(CustomTags.Rune);
-        CardModifierManager.addModifier(this, new StormEffect(StormRate));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!(AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) || !AbstractDungeon.player.hasPower(NoDrawPower.POWER_ID)){
-            int burncount = 0;
-            for (AbstractCard c : AbstractDungeon.player.drawPile.group){
-                if (c.type == CardType.STATUS || c.hasTag(CustomTags.Rune)){
-                    burncount++;
-                    if (burncount >= magicNumber){
-                        break;
-                    }
-                    addToBot(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            AbstractDungeon.player.drawPile.group.remove(c);
-                            AbstractDungeon.player.drawPile.addToTop(c);
-                            isDone = true; }
-                    });
-                    addToBot(new DrawCardAction(1));
-                }
-            }
-        }
-        super.use(p,m);
-    }
-    public void triggerOnManualDiscard() {
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
@@ -78,6 +62,7 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
                 isDone = true;
             }
         });
+        super.use(p,m);
     }
     @Override
     public void upgrade() {
@@ -86,10 +71,5 @@ public class Flashpoint extends AbstractPrimalCard implements StormCard {
             upgradeMagicNumber(1);
             initializeDescription();
         }
-    }
-
-    @Override
-    public void onStorm() {
-        triggerOnManualDiscard();
     }
 }

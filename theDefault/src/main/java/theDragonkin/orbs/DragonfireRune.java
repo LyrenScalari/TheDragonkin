@@ -27,10 +27,9 @@ public class DragonfireRune extends AbstractRune {
         BreakAmount = Pow;
         updateAnimation();
     }
-    public void onStartOfTurn() {
+    public void onManualDiscard() {
         AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
         AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(AbstractDungeon.player,BreakAmount, DamageInfo.DamageType.THORNS)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new AuraFlame(target,AbstractDungeon.player,2)));
         PainAmount -= 1;
         AbstractRune that = this;
         if (PainAmount <= 0){

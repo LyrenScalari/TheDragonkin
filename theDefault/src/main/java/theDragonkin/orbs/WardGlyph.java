@@ -1,5 +1,6 @@
 package theDragonkin.orbs;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -31,8 +32,8 @@ public class WardGlyph extends AbstractRune {
         scr = source;
         updateAnimation();
     }
-    public void onStartOfTurn() {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player,BreakAmount));
+    public void onManualDiscard() {
+        AbstractDungeon.actionManager.addToBottom(new GainCustomBlockAction(scr,AbstractDungeon.player,BreakAmount));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Burn(), 1, true, false));
         PainAmount -= 1;
         AbstractRune that = this;
