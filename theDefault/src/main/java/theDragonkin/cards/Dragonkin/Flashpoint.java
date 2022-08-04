@@ -40,28 +40,33 @@ public class Flashpoint extends AbstractPrimalCard {
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
-        return retVal;
-    }
     public Flashpoint() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 2;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
-        tags.add(CustomTags.Rune);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new SparkGlyph(magicNumber, defaultSecondMagicNumber));
-                isDone = true;
+            int burncount = 0;
+            for (AbstractCard c : AbstractDungeon.player.drawPile.group){
+                if (c instanceof AbstractPrimalCard || c.hasTag(CustomTags.Rune)) {
+                    burncount++;
+                    if (burncount >= magicNumber) {
+                        break;
+                    }
+                    if (!(AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) || !AbstractDungeon.player.hasPower(NoDrawPower.POWER_ID)) {
+                        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                            @Override
+                            public void update() {
+                                AbstractDungeon.player.drawPile.group.remove(c);
+                                AbstractDungeon.player.drawPile.addToTop(c);
+                                isDone = true;
+                            }
+                        });
+                        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
+                    }
+                }
             }
-        });
         super.use(p,m);
     }
     @Override

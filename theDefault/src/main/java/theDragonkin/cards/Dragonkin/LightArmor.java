@@ -56,8 +56,7 @@ public class LightArmor extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(-1);
-            RadiantExchange = defaultSecondMagicNumber;
+            upgradeBlock(1);
             initializeDescription();
         }
     }

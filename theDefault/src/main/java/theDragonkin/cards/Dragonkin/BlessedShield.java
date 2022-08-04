@@ -44,12 +44,6 @@ public class BlessedShield extends AbstractHolyCard {
     private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 0;
 
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = super.getCustomTooltips();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
-        return retVal;
-    }
     public BlessedShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;

@@ -59,8 +59,6 @@ public class SacredTrial extends AbstractHolyCard {
     public SacredTrial() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
-        DamageModifierManager.addModifier(this, new DivineDamage(true,false));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
         magicNumber = baseMagicNumber = 7;
         tags.add(CustomTags.Radiant);
     }

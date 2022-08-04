@@ -42,8 +42,6 @@ public class HeatShield extends AbstractPrimalCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        BlockModifierManager.addModifier(this,new FireBlock(true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, FireIcon.get()));
     }
 
     @Override

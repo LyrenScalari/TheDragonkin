@@ -31,20 +31,8 @@
                 "NAME": "Penance",
                 "DESCRIPTIONS": ["When this creature obtains #b",
                         " #yPenance, it loses #b",
-                        " HP and increases #yPenance damage by #b10 this combat",
+                        " HP and increases HP loss from #yPenance by #b10 this combat",
                         "."
-                ]
-        },
-        "theDragonkin:SinnersBurden": {
-                "NAME": "Sinner's Burden",
-                "DESCRIPTIONS": ["Loses #b",
-                        " extra HP from #yPenance",
-                        "."
-                ]
-        },
-        "theDragonkin:IncendiaryFlow": {
-                "NAME": "Incendiary Flow",
-                "DESCRIPTIONS": ["After you discard a card this turn gain #b"," Block."
                 ]
         },
         "theDragonkin:HolyInfusion": {
@@ -77,11 +65,16 @@
         },
         "theDragonkin:Unbroken": {
                 "NAME": "Unbroken",
-                "DESCRIPTIONS": ["After you Apply or receive a Debuff gain #b"," #yDeflecting #yScales."]
+                "DESCRIPTIONS": ["At the end of your turn reduce your #yWeak, #yVulnerable, #yFrail, #yScorch, and #yPenance by #b"," "]
         },
         "theDragonkin:Perseverance": {
                 "NAME": "Ignored Pain",
                 "DESCRIPTIONS": ["Reduce this by #b1 at the end of your turn"]
+        },
+        "theDragonkin:IncendiaryFlow": {
+                "NAME": "Incendiary Flow",
+                "DESCRIPTIONS": ["After you discard a card this turn gain #b"," Block."
+                ]
         },
         "theDragonkin:FuryPower": {
                 "NAME": "Fury",

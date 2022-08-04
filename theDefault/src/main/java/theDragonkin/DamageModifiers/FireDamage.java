@@ -37,13 +37,9 @@ public class FireDamage extends AbstractDamageModifier {
     }
 
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        addToBot(new ApplyPowerAction(target,info.owner,new Scorchpower(target,info.owner,(int)Math.ceil(unblockedAmount+blockedAmount))));
+        addToBot(new ApplyPowerAction(target,info.owner,new Scorchpower(target,info.owner,(int)Math.ceil(unblockedAmount/2))));
     }
-    public float atDamageFinalGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        if (target.currentHealth > 0){
-            return (float) Math.ceil(damage/2);
-        } return damage;
-    }
+
     public int priority() {
         return 1;
     }

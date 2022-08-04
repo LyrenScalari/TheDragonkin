@@ -9,7 +9,7 @@ public class LightIcon extends AbstractCustomIcon {
     private static LightIcon singleton;
 
     public LightIcon() {
-        super(ID, TextureLoader.getTexture("theDragonkinResources/images/ui/Light.png"));
+        super(ID, TextureLoader.getTexture("theDragonkinResources/images/ui/DivineArmor.png"));
     }
 
     public static LightIcon get()

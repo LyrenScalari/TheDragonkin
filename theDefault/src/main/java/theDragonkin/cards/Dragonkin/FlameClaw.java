@@ -45,8 +45,6 @@ public class FlameClaw extends AbstractPrimalCard {
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         cardsToPreview = new Burn();
-        DamageModifierManager.addModifier(this, new FireDamage(true,true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
     }
 
     @Override

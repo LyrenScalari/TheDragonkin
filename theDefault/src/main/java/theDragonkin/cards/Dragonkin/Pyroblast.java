@@ -38,20 +38,19 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 10;
+    private static final int COST = 9;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 100;
+    private static final int POTENCY = 10;
     private static final int UPGRADE_PLUS_DMG = 0;
     private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 1;
     public static int currentReduction = 0;
-    public int realCost = 10;
 
     public Pyroblast() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;
-        baseMagicNumber = magicNumber = MAGIC;
+        baseMagicNumber = magicNumber = 10;
         tags.add(CustomTags.SnekProof);
         DamageModifierManager.addModifier(this, new FireDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
@@ -66,20 +65,6 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
         addToBot(new VFXAction(new GhostlyFireEffect(m.hb.cX,m.hb.cY)));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.NONE));
         addToBot(new VFXAction(new FireBurstParticleEffect(m.hb.cX,m.hb.cY)));
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                cost = 10;
-                realCost = cost;
-                this.isDone = true;
-            }
-        });
-    }
-    public void applyPowers() {
-        if (costForTurn != realCost){
-            setCostForTurn(realCost);
-        }
-        super.applyPowers();
     }
     @Override
     public void upgrade() {
@@ -94,6 +79,6 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
             this.updateCost(-1);
-            realCost = costForTurn;
+            baseDamage += magicNumber;
     }
 }

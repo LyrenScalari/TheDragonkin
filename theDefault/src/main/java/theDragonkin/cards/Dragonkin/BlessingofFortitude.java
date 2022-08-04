@@ -56,12 +56,6 @@ public class BlessingofFortitude extends AbstractHolyCard {
     private static final int UPGRADE_PLUS_POTENCY = 0;
     private static final int MAGIC = 5;
     private static final int UPGRADE_MAGIC = 0;
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
-        return retVal;
-    }
     public BlessingofFortitude() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;

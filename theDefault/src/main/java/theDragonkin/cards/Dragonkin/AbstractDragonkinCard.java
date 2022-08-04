@@ -2,6 +2,7 @@ package theDragonkin.cards.Dragonkin;
 
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -38,7 +39,7 @@ public abstract class AbstractDragonkinCard extends AbstractDefaultCard {
                                  final CardTarget target) {
 
         super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
-
+        CommonKeywordIconsField.useIcons.set(this,true);
     }
     public int realBaseDamage;
     public int realBaseMagic;

@@ -34,7 +34,7 @@ public class FlameRush extends AbstractPrimalCard {
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY= 9;
+    private static final int POTENCY= 6;
     private static final int UPGRADE_PLUS_DMG = 1;
     private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 1;

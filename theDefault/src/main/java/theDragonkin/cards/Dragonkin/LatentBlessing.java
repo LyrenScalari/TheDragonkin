@@ -88,7 +88,7 @@ public class LatentBlessing extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
+            upgradeBlock(3);
             initializeDescription();
         }
     }

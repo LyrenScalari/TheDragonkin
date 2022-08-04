@@ -47,7 +47,7 @@ public class HolyWrath extends AbstractHolyCard {
         baseMagicNumber = magicNumber = MAGIC;
         damage = baseDamage = 4;
         exhaust = true;
-        DamageModifierManager.addModifier(this, new DivineDamage(true,true));
+        BlockModifierManager.addModifier(this,new DivineBlock(true));
     }
 
     @Override

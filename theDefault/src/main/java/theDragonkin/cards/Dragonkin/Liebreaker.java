@@ -44,12 +44,7 @@ public class Liebreaker extends AbstractHolyCard {
     private static final int UPGRADE_PLUS_DMG = 1;
     private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 1;
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
-        return retVal;
-    }
+
     public Liebreaker() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;

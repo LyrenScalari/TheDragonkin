@@ -25,7 +25,7 @@ public class HeatBarrier extends AbstractPrimalCard implements TriggerOnCycleEff
     public static final String IMG = makeCardPath("Attack.png");
 
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
@@ -44,8 +44,6 @@ public class HeatBarrier extends AbstractPrimalCard implements TriggerOnCycleEff
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        BlockModifierManager.addModifier(this,new FireBlock(true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, FireIcon.get()));
     }
 
     @Override

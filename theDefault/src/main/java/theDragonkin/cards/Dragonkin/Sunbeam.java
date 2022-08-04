@@ -56,12 +56,6 @@ public class Sunbeam extends AbstractHolyCard {
 
 
     // /STAT DECLARATION/
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
-        return retVal;
-    }
 
     public Sunbeam() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

@@ -664,20 +664,7 @@ public class DragonkinMod implements
         blessings.add(new LightSpeedBlessing());
         return blessings.get(AbstractDungeon.miscRng.random(0,blessings.size()-1));
     }
-    public static AbstractCard getRandomRune(){
-        ArrayList<AbstractCard> blessings = new ArrayList<>();
-        blessings.add(new BlessedWeapon());
-        blessings.add(new SpiritFireRune());
-        blessings.add(new ShatterRune());
-        blessings.add(new BladeMirrorRune());
-        blessings.add(new WarHungerRune());
-        blessings.add(new BlazingBreath());
-        blessings.add(new FlameWard());
-        blessings.add(new Condemnation());
-        blessings.add(new Flashpoint());
-        blessings.add(new IncendiaryFlow());
-        return blessings.get(AbstractDungeon.miscRng.random(0,blessings.size()-1));
-    }
+
     public static void TriggerOnCycle(AbstractCard ca){
         CardsCycledThisTurn++;
         CardsCycledThisCombat++;

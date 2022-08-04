@@ -31,7 +31,7 @@ public class Cinderstrike extends AbstractPrimalCard implements TriggerOnCycleEf
     public static final String IMG = makeCardPath("Attack.png");
 
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
@@ -59,25 +59,6 @@ public class Cinderstrike extends AbstractPrimalCard implements TriggerOnCycleEf
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
-        if (!(AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) || !AbstractDungeon.player.hasPower(NoDrawPower.POWER_ID)){
-            int burncount = 0;
-            for (AbstractCard c : AbstractDungeon.player.drawPile.group){
-                if (c instanceof Burn){
-                    burncount++;
-                    if (burncount >= magicNumber){
-                        break;
-                    }
-                    addToBot(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            AbstractDungeon.player.drawPile.group.remove(c);
-                            AbstractDungeon.player.drawPile.addToTop(c);
-                            isDone = true; }
-                    });
-                    addToBot(new DrawCardAction(1));
-                }
-            }
-        }
         super.use(p,m);
     }
     @Override
@@ -92,8 +73,6 @@ public class Cinderstrike extends AbstractPrimalCard implements TriggerOnCycleEf
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-        if (ca.type == CardType.STATUS) {
-            baseDamage += magicNumber;
-        }
+        baseDamage += magicNumber;
     }
 }

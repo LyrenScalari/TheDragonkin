@@ -28,7 +28,16 @@ public class DivinePrayer extends AbstractHolyCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
-    public CardGroup Holy = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+    public static CardGroup Holy = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+    static {
+        Holy.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
+                .stream()
+                .filter(c -> c.color == Justicar_Red_COLOR)
+                .filter(c -> c instanceof AbstractHolyCard)
+                .filter(c -> !c.hasTag(CardTags.HEALING))
+                .filter(c -> !c.rarity.equals(CardRarity.BASIC))
+                .collect(Collectors.toList());
+    }
     public CardGroup FilteredGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
@@ -46,14 +55,6 @@ public class DivinePrayer extends AbstractHolyCard {
         tags.add(CardTags.HEALING);
         baseMagicNumber = magicNumber = MAGIC;
         this.exhaust = true;
-        Holy.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
-                .stream()
-                .filter(c -> c.color == Justicar_Red_COLOR)
-                .filter(c -> c instanceof AbstractHolyCard)
-                .filter(c -> !c.hasTag(CardTags.HEALING))
-                .filter(c -> !c.rarity.equals(CardRarity.BASIC))
-                .collect(Collectors.toList());
-
     }
 
     @Override
@@ -65,7 +66,7 @@ public class DivinePrayer extends AbstractHolyCard {
                 FilteredGroup.addToTop(cards.remove(AbstractDungeon.miscRng.random(0, cards.size() - 1)));
             }
             addToBot(new SelectCardsCenteredAction(FilteredGroup.group, 1, cardStrings.EXTENDED_DESCRIPTION[0], List -> {
-                AbstractCard cardtoget = List.get(0);
+                AbstractCard cardtoget = List.get(0).makeCopy();
                 AbstractDungeon.player.hand.addToHand(cardtoget);
                 cardtoget.freeToPlayOnce = true;
                 FilteredGroup.clear();

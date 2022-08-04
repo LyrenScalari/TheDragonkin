@@ -7,6 +7,7 @@ import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -21,12 +22,13 @@ import theDragonkin.DamageModifiers.Icons.LightIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.GainDivineArmorAction;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.util.TriggerOnCycleEffect;
 
 import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class GoldenFlames extends AbstractHolyCard {
+public class GoldenFlames extends AbstractHolyCard implements TriggerOnCycleEffect {
 
     public static final String ID = DragonkinMod.makeID(GoldenFlames.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -49,11 +51,11 @@ public class GoldenFlames extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;
         block = baseBlock = 6;
+        magicNumber = baseMagicNumber =2;
         DamageModifierManager.addModifier(this, new FireDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
-        RadiantExchange = 3;
     }
 
     @Override
@@ -72,5 +74,10 @@ public class GoldenFlames extends AbstractHolyCard {
             upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
+    }
+    @Override
+    public void TriggerOnCycle(AbstractCard ca) {
+        baseDamage += magicNumber;
+        baseBlock += magicNumber;
     }
 }
