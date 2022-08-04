@@ -44,7 +44,7 @@ public class HolyWordBarrier extends AbstractHolyCard {
     private static final int COST = 1;
     private static final int BLOCK = 4;
     private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int MAGIC = 8;
+    private static final int MAGIC = 7;
     private static final int UPGRADE_MAGIC = 3;
 
 
@@ -56,8 +56,6 @@ public class HolyWordBarrier extends AbstractHolyCard {
         block = baseBlock = MAGIC;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
-        tags.add(CustomTags.Radiant);
-        RadiantExchange = 1;
     }
 
     // Actions the card should do.
@@ -73,7 +71,7 @@ public class HolyWordBarrier extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MAGIC);
+            upgradeBlock(2);
             initializeDescription();
         }
     }

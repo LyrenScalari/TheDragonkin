@@ -56,8 +56,6 @@ public class SkywardStrike extends AbstractPrimalCard {
         damage = baseDamage = 8;
         magicNumber = baseMagicNumber = MAGIC;
         tags.add(CardTags.STRIKE);
-        DamageModifierManager.addModifier(this, new DivineDamage(true,true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
     }
 
     public void triggerOnGlowCheck() {

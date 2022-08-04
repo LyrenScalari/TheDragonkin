@@ -13,16 +13,22 @@ import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import theDragonkin.util.SmiteEffect;
 import theDragonkin.util.SmiteLightningEffect;
 
+import java.util.function.Supplier;
+
 public class SmiteAction extends AbstractGameAction {
     private DamageInfo info;
     public boolean doDamage = false;
     private boolean shot = false;
-
+    public Supplier<AbstractGameAction> BonusEffect;
+    public SmiteAction(AbstractCreature target, DamageInfo info, Supplier<AbstractGameAction> BonusEffect) {
+        setValues(target, this.info = info);
+        actionType = ActionType.DAMAGE;
+        this.BonusEffect = BonusEffect;
+    }
     public SmiteAction(AbstractCreature target, DamageInfo info) {
         setValues(target, this.info = info);
         actionType = ActionType.DAMAGE;
     }
-
     @Override
     public void update() {
         if (shouldCancelAction()) {
@@ -40,6 +46,9 @@ public class SmiteAction extends AbstractGameAction {
             target.damage(info);
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 AbstractDungeon.actionManager.clearPostCombatActions();
+            }
+            if (BonusEffect != null){
+                BonusEffect.get();
             }
         }
         if (doDamage || target.isDying) {

@@ -45,12 +45,6 @@ public class BlessingofWrath extends AbstractHolyCard {
     private static final int UPGRADE_PLUS_POTENCY = 0;
     private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 0;
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
-        return retVal;
-    }
     public BlessingofWrath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;

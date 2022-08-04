@@ -6,17 +6,21 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
 
-public class UnbrokenPower extends AbstractPower implements CloneablePowerInterface, OnReceivePowerPower {
+public class UnbrokenPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
     public static final String POWER_ID = DragonkinMod.makeID("Unbroken");
@@ -43,21 +47,13 @@ public class UnbrokenPower extends AbstractPower implements CloneablePowerInterf
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
-    }
-    @Override
-    public void onApplyPower(AbstractPower p, AbstractCreature t, AbstractCreature s){
-        if (p.type == PowerType.DEBUFF && !p.ID.equals("Shackled") && source == this.owner && !t.hasPower("Artifact")) {
-            this.flash();
-            addToBot(new ApplyPowerAction(owner,owner,new ReflectiveScales(owner,owner,amount)));
+    }@Override
+    public void atEndOfTurn(final boolean isPlayer){
+        for (AbstractPower power : owner.powers){
+            if (power instanceof WeakPower || power instanceof VulnerablePower || power instanceof FrailPower || power instanceof Scorchpower || power instanceof  PenancePower){
+                addToBot(new ReducePowerAction(owner,owner,power, amount));
+            }
         }
-    }
-    @Override
-    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower.type == PowerType.DEBUFF && !abstractPower.ID.equals("Shackled") && source == this.owner && !abstractCreature1.hasPower("Artifact")) {
-            this.flash();
-            addToBot(new ApplyPowerAction(owner, owner, new ReflectiveScales(owner, owner, amount)));
-        }
-        return true;
     }
     @Override
     public void updateDescription() {

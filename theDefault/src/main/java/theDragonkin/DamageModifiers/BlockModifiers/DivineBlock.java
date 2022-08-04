@@ -38,12 +38,12 @@ public class DivineBlock extends AbstractBlockModifier {
 
     @Override
     public String getDescription() {
-        return BaseMod.getKeywordDescription("thedragonkin:Divine_Damage");
+        return BaseMod.getKeywordDescription("thedragonkin:Divine");
     }
 
     public ArrayList<TooltipInfo> getCustomTooltips() {
         ArrayList<TooltipInfo> tips = new ArrayList<>();
-        tips.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Divine"), BaseMod.getKeywordDescription("thedragonkin:Divine_Damage")));
+        tips.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Divine"), BaseMod.getKeywordDescription("thedragonkin:Divine")));
         return tips;
     }
     public AbstractBlockModifier.Priority priority() {

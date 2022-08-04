@@ -77,13 +77,8 @@ public class IncendiaryFlow extends AbstractPrimalCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new FlameGlyph(magicNumber, defaultBaseSecondMagicNumber));
-                isDone = true;
-            }
-        });
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,
+                new IncendiaryFlowPower(AbstractDungeon.player,AbstractDungeon.player,magicNumber)));
         super.use(p,m);
     }
     //Upgraded stats.

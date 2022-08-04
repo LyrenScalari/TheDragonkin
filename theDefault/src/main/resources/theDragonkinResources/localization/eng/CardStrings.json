@@ -26,7 +26,7 @@
   },
   "theDragonkin:IncendiaryFlow": {
     "NAME": "Incendiary Flow",
-    "DESCRIPTION": "[#990702]Rune[] !M2!. NL Whenever you discard a card, gain !M! Block."
+    "DESCRIPTION": "Whenever you discard a card a card this turn, gain !M! Block."
   },
   "theDragonkin:HeatShield": {
     "NAME": "Heat Shield",
@@ -34,8 +34,8 @@
   },
   "theDragonkin:Cinderstrike": {
     "NAME": "Flarestrike",
-    "DESCRIPTION": "Deal !D! damage. NL Draw !M! Burns. NL thedragonkin:Sealed: Deals !M2! extra damage this combat.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw !M! Burns. NL thedragonkin:Sealed: Deals !M2! extra damage this combat."
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Deals !M2! extra damage this combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Deals !M2! extra damage this combat."
   },
   "theDragonkin:FlameRush": {
     "NAME": "Flareburst",
@@ -60,7 +60,7 @@
   },
   "theDragonkin:ThreePointStrike": {
     "NAME": "Three Point Strike",
-    "DESCRIPTION": "Deal !D! [theDragonkin:FireIcon] damage. NL Deal !theDragonkin:D2! [theDragonkin:LightIcon] damage. NL Deal !theDragonkin:D3! damage. NL Apply !M! thedragonkin:Scorch. NL Gain !M2! Vulnerable."
+    "DESCRIPTION": "Deal !D! [theDragonkin:FireIcon] damage. NL Deal !theDragonkin:D2! damage twice. NL Apply !M! thedragonkin:Scorch and Weak. NL Gain !M2! Vulnerable."
   },
   "theDragonkin:PartingShot": {
     "NAME": "Parting Shot",
@@ -68,16 +68,16 @@
   },
   "theDragonkin:Unbroken": {
     "NAME": "Unbroken",
-    "DESCRIPTION": "Whenever you receive or apply a Debuff, gain !M! thedragonkin:Deflecting_Scales."
+    "DESCRIPTION": "At the end of your turn, reduce your Weak, Vulnerable, Frail, thedragonkin:Scorch, and thedragonkin:Penance by !M!"
   },
   "theDragonkin:Pyroblast": {
     "NAME": "Pyroblast",
-    "DESCRIPTION": "thedragonkin:Snekproof. NL Deal !D! damage. NL thedragonkin:Sealed: Costs !M! less [E] until played.",
-    "UPGRADE_DESCRIPTION": "thedragonkin:Snekproof. NL Retain. NL Deal !D! damage. NL thedragonkin:Sealed: Costs !M! less [E] until played."
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Deals !M! additional damage. NL Costs 1 less [E].",
+    "UPGRADE_DESCRIPTION": "Retain. NL Deal !D! damage. NL thedragonkin:Sealed: Deals !M! additional damage. NL Costs 1 less [E]."
   },
   "theDragonkin:Sunbeam": {
     "NAME": "Sunbeam",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL [#548dff]Blessing[] !M2! : Draw a card. NL Next turn, draw a card."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL thedragonkin:Blessing !M2! : Draw a card. NL Next turn, draw a card."
   },
   "theDragonkin:MindSear": {
     "NAME": "Suffering Synapses",
@@ -102,42 +102,42 @@
   },
   "theDragonkin:ShadowVision": {
     "NAME": "Wisdom",
-    "DESCRIPTION": "Gain !B! Block. NL [#548dff]Blessing[] !M! : Draw a card. NL Next turn, draw a card",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL [#548dff]Blessing[] !M! : Draw !M2! cards. NL Next turn, draw !M2! cards",
-    "EXTENDED_DESCRIPTION":["Choose a card to put in your hand.","[#548dff]Blessings[] #rCannot be Played."]
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Blessing !M! : Draw a card. NL Next turn, draw a card",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL thedragonkin:Blessing !M! : Draw !M2! cards. NL Next turn, draw !M2! cards",
+    "EXTENDED_DESCRIPTION":[]
   },
   "theDragonkin:BlessingofMight": {
     "NAME": "Might",
-    "DESCRIPTION": "Take !M! damage. NL [#548dff]Blessing[] !M2! : Gain !M! Strength.",
-    "EXTENDED_DESCRIPTION":["Choose a card to Fetch.","[#548dff]Blessings[] #rCannot be Played."]
+    "DESCRIPTION": "Take !M! damage. NL thedragonkin:Blessing !M2! : Gain !M! Strength.",
+    "EXTENDED_DESCRIPTION":[]
   },
   "theDragonkin:BlessingofFortitude": {
     "NAME": "Fortitude",
-    "DESCRIPTION": "Gain !M2! Dexterity this turn. NL [#548dff]Blessing[] !M!: Gain !B! *Block.",
-    "EXTENDED_DESCRIPTION":["Choose a card to Retain.","[#548dff]Blessings[] #rCannot be Played."]
+    "DESCRIPTION": "Gain !M2! Dexterity this turn. NL thedragonkin:Blessing !M!: Gain !B! .",
+    "EXTENDED_DESCRIPTION":[]
   },
   "theDragonkin:BlessingofWrath": {
     "NAME": "Wrath",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL [#548dff]Blessing[] !M! : Deal !D! damage to a random enemy.",
-    "EXTENDED_DESCRIPTION":["Choose a card to Fetch.","[#548dff]Blessings[] #rCannot be Played."]
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL thedragonkin:Blessing !M! : Deal !D! damage to a random enemy.",
+    "EXTENDED_DESCRIPTION":[]
   },
   "theDragonkin:LightSpeedBlessing": {
     "NAME": "Lightspeed",
-    "DESCRIPTION": "[#548dff]Blessing[] !M2! : thedragonkin:Cycle !M! cards. NL Gain [E] and !B! Block for each card cycled.",
-    "EXTENDED_DESCRIPTION":["Choose a card to Fetch.","[#548dff]Blessings[] #rCannot be Played."]
+    "DESCRIPTION": "thedragonkin:Blessing !M2! : thedragonkin:Cycle !M! cards. NL Gain [E] and !B! Block for each card cycled.",
+    "EXTENDED_DESCRIPTION":[]
   },
   "theDragonkin:BurningRage": {
     "NAME": "Wings of Light",
-    "DESCRIPTION": "The first time a [#548dff]Blessings[] Seal breaks each turn gain !M2! *Block.",
-    "UPGRADE_DESCRIPTION": "Innate. NL The first time a [#548dff]Blessings[] Seal breaks each turn gain !M2! *Block."
+    "DESCRIPTION": "The first time a thedragonkin:Blessings Seal breaks each turn gain !M2! .",
+    "UPGRADE_DESCRIPTION": "Innate. NL The first time a thedragonkin:Blessings Seal breaks each turn gain !M2! ."
   },
   "theDragonkin:DivineRetribution": {
     "NAME": "Divine Retribution",
-    "DESCRIPTION": "Each turn, deal damage to a random enemy equal to twice the damage you've taken this turn."
+    "DESCRIPTION": "At the end of your turn deal damage to a random enemy equal to twice the damage you've taken and blocked this turn."
   },
   "theDragonkin:Absolution": {
     "NAME": "Absolution",
-    "DESCRIPTION": "Apply !M! thedragonkin:Penance. NL Gain !B! *Block. NL [#548dff]Blessing[] !M! : *Penance deals !M2! additional damage this combat."
+    "DESCRIPTION": "Apply !M! thedragonkin:Penance. NL Gain !B! . NL thedragonkin:Blessing !M! : *Penance deals !M2! additional damage this combat."
   },
   "theDragonkin:HeatBarrier": {
     "NAME": "Magma Armor",
@@ -145,24 +145,24 @@
   },
   "theDragonkin:Condemnation": {
     "NAME": "Condemnation",
-    "DESCRIPTION": "[#990702]Rune[] !M2! NL In 3 turns, Deal !M! damage to ALL enemies."
+    "DESCRIPTION": "In !M2! turns, Deal !M! damage to ALL enemies."
   },
   "theDragonkin:HolyWrath": {
     "NAME": "Prismatic Blast",
-    "DESCRIPTION": "Deal [theDragonkin:LightIcon] damage equal to twice your [theDragonkin:LightIcon] *Block to ALL enemies. NL Lose all your [theDragonkin:LightIcon] *Block. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Deal [theDragonkin:LightIcon] damage equal to twice your [theDragonkin:LightIcon] *Block to ALL enemies. NL Lose half your [theDragonkin:LightIcon] *Block. NL Exhaust."
+    "DESCRIPTION": "Deal damage equal to twice your [theDragonkin:LightIcon] to ALL enemies. NL Lose all your [theDragonkin:LightIcon] . NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal damage equal to twice your [theDragonkin:LightIcon] to ALL enemies. NL Lose half your [theDragonkin:LightIcon] . NL Exhaust."
   },
   "theDragonkin:VenegefulStrike": {
     "NAME": "Blessed Strike",
-    "DESCRIPTION": "Deal !D! damage. NL [#548dff]Blessing[] !M2!: Increase this card's damage by !M!."
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Blessing !M2!: Increase this card's damage by !M!."
   },
   "theDragonkin:BlessedShield": {
     "NAME": "Blessed Shield",
-    "DESCRIPTION": "Gain !B! Block. NL [#548dff]Blessing[] !M2!: Increase this cards Block by !M!."
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Blessing !M2!: Increase this cards Block by !M!."
   },
   "theDragonkin:SearingLight": {
     "NAME": "Searing Light",
-    "DESCRIPTION": "Take !M2! damage. NL Gain !B! *Block."
+    "DESCRIPTION": "Take !M2! damage. NL Gain !B! ."
   },
   "theDragonkin:PowerThrough": {
     "NAME": "Defiant Guard",
@@ -178,11 +178,7 @@
   },
   "theDragonkin:Flashpoint": {
     "NAME": "Flashpoint",
-    "DESCRIPTION": "[#990702]Rune[] !M2!. NL Draw !M! *Status or [#990702]Rune[] cards."
-  },
-  "theDragonkin:BlankRunestone": {
-    "NAME": "Blank Runestone",
-    "DESCRIPTION": "thedragonkin:Cycle !M! cards Transform them into random [#990702]Rune[] cards."
+    "DESCRIPTION": "Draw !M! *Status or [#fe513a]Primal[] cards."
   },
   "theDragonkin:Pandemic": {
     "NAME": "Pandemic",
@@ -195,11 +191,11 @@
   },
   "theDragonkin:HolyWordBarrier": {
     "NAME": "Holy Barrier",
-    "DESCRIPTION": "Gain !B! *Block."
+    "DESCRIPTION": "Gain !B! ."
   },
   "theDragonkin:FlameWard": {
     "NAME": "Flame Ward",
-    "DESCRIPTION": "[#990702]Rune[] !M2!. NL Gain !B! Block. NL Shuffle a Burn to your draw pile."
+    "DESCRIPTION": "Gain !B! Block. NL Shuffle a Burn to your draw pile."
   },
   "theDragonkin:DivineStorm": {
     "NAME": "Divine Storm",
@@ -209,7 +205,7 @@
   },
   "theDragonkin:DivineJolt": {
     "NAME": "Penance Shock",
-    "DESCRIPTION": "Deal !D! damage to a random enemy twice."
+    "DESCRIPTION": "Deal !D! damage and Apply !M! thedragonkin:Penance to a random enemy twice."
   },
   "theDragonkin:DivineStrike": {
     "NAME": "Divine Strike",
@@ -243,26 +239,21 @@
     "NAME": "Cinderstorm",
     "DESCRIPTION": "thedragonkin:Cycle any number of cards, deal !D! damage to a random enemy for each. NL Exhaust."
   },
-  "theDragonkin:HeatTest": {
-    "NAME": "Kindle",
-    "DESCRIPTION": "Gain !M! thedragonkin:Heat. NL Gain !B! Block. NL thedragonkin:Cycle !M2! card in your hand.",
-    "UPGRADE_DESCRIPTION": "Gain !M! thedragonkin:Heat. NL Gain !B! Block. NL thedragonkin:Cycle !M2! cards in your hand."
-  },
   "theDragonkin:LightArmor": {
     "NAME": "Holy Aegis",
-    "DESCRIPTION": "Gain !B! *Block twice."
+    "DESCRIPTION": "Gain !B! twice."
   },
   "theDragonkin:DivineFire": {
     "NAME": "Holy Fire",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thedragonkin:Scorch."
+    "DESCRIPTION": "Deal !D! damage"
   },
   "theDragonkin:GoldenFlames": {
     "NAME": "Golden Flame",
-    "DESCRIPTION": "Deal !D! damage. NL gain !B! *Block."
+    "DESCRIPTION": "Deal !D! damage. NL gain !B! . NL thedragonkin:Sealed : Deals !M! additional damage and Grants !M! additional [theDragonkin:LightIcon] this combat."
   },
   "theDragonkin:HolyBarrier": {
     "NAME": "Divine Shield",
-    "DESCRIPTION": "Gain !B! *Block X + !M! Times. NL Exhaust."
+    "DESCRIPTION": "Gain !B! X + !M! Times. NL Exhaust."
   },
   "theDragonkin:SacredTrial": {
     "NAME": "Sacred Trial",
@@ -289,15 +280,15 @@
   },
   "theDragonkin:ChainsOfTruth": {
     "NAME": "Chains of Truth",
-    "DESCRIPTION": "Deal !D! damage to all enemies. NL Apply !M! Vulnerable to all enemies."
+    "DESCRIPTION": "Deal !D! damage to all enemies. NL Apply !M! Vulnerable and !M! thedragonkin:Penance to all enemies."
   },
   "theDragonkin:LatentBlessing": {
     "NAME": "Latent Power",
-    "DESCRIPTION": "thedragonkin:Cycle !M2! cards. NL If any are [#94bdff]Holy[], gain !B! *Block"
+    "DESCRIPTION": "thedragonkin:Cycle !M2! cards. NL If any are [#94bdff]Holy[], gain !B! ."
   },
   "theDragonkin:Liebreaker": {
     "NAME": "Inquisitor's Brand",
-    "DESCRIPTION": "Take !M2! damage. NL thedragonkin:Cycle !M! cards. For each [#94bdff]Holy[] card, [#548dff]Blessing[] !M2!: Deal !D! damage to a random enemy."
+    "DESCRIPTION": "Take !M2! damage. NL thedragonkin:Cycle !M! cards. For each [#94bdff]Holy[] card, thedragonkin:Blessing !M2!: Deal !D! damage to a random enemy."
   },
   "theDragonkin:DivineGambit": {
     "NAME": "Blazing Gambit",
@@ -307,35 +298,10 @@
     "NAME": "Divine Vision",
     "DESCRIPTION": "Increase the damage and Block of your [#94bdff]Holy[] cards by !M!."
   },
-  "theDragonkin:BlessedWeapon": {
-    "NAME": "Vengeance",
-    "DESCRIPTION": "[#990702]Rune[] !M!. NL Gain !B! Block. NL Gain !M2! thedragonkin:Deflecting_Scales.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Nah"]
-  },
-  "theDragonkin:SpiritFireRune": {
-    "NAME": "Dragonfire",
-    "DESCRIPTION": "[#990702]Rune[] !M!. NL Deal !M2! damage to a random enemy.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Toor"]
-  },
-  "theDragonkin:ShatterRune": {
-    "NAME": "Shatter",
-    "DESCRIPTION": "[#990702]Rune[] !M!. NL Deal !D! Damage. NL Apply !M2! Vulnerable.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Kren"]
-  },
-  "theDragonkin:BladeMirrorRune": {
-    "NAME": "Deflection",
-    "DESCRIPTION": "[#990702]Rune[] !M!. NL Gain !B! Block NL Apply !M2! Weak to ALL enemies.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Vo"]
-  },
-  "theDragonkin:WarHungerRune": {
-    "NAME": "Bloodthirst",
-    "DESCRIPTION": "[#990702]Rune[] !M!. NL Deal !D! damage to a random enemy !M2! times.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Bahlok"]
-  },
   "theDragonkin:CrusaderForm": {
     "NAME": "Seraph Form",
-    "DESCRIPTION": "Ethereal. NL thedragonkin:Sacrifice grants !M! additional thedragonkin:Holy_Power.",
-    "UPGRADE_DESCRIPTION":"thedragonkin:Sacrifice grants !M! additional thedragonkin:Holy_Power."
+    "DESCRIPTION": "Ethereal. NL thedragonkin:Sacrifice increases [#94bdff]Holy[] damage and block gain !M! more.",
+    "UPGRADE_DESCRIPTION":"thedragonkin:Sacrifice increases [#94bdff]Holy[] damage and block gain !M! more."
   },
   "theDragonkin:EmberSwipe":{
     "NAME": "Ember Swipe",
@@ -347,20 +313,8 @@
   },
   "theDragonkin:SteelWill": {
     "NAME": "Steel Will",
-    "DESCRIPTION": "Innate. NL Each turn after you receive 15 or more damage, Debuffs applied to you are negated."
-  },
-  "theDragonkin:WindwalkersGift": {
-    "NAME": "Sky",
-    "DESCRIPTION": "When thedragonkin:Cycled gain !M! thedragonkin:Mastery. NL thedragonkin:Storm 6: draw !M2! cards.",
-    "EXTENDED_DESCRIPTION" : ["[#990702]Runes[] require #rStorm to be played.","Lok"]
-  },
-  "theDragonkin:MeteorStorm": {
-    "NAME": "Meteor Storm",
-    "DESCRIPTION": "Deal !D! damage and gain !B! Block !M! times. thedragonkin:Storm 8 - Play this at the start of your next turn."
-  },
-  "theDragonkin:Insanity": {
-    "NAME": "Waking Dream",
-    "DESCRIPTION": "Soulbound. NL Unplayable. NL Startup - Gain thedragonkin:Dreaming. NL When drawn, gain !M! thedragonkin:Lunacy."
+    "DESCRIPTION": "Each turn after you receive 15 or more damage, Debuffs applied to you are negated.",
+    "UPGRADE_DESCRIPTION":"Innate. NL Each turn after you receive 15 or more damage, Debuffs applied to you are negated."
   },
 
   "theDragonkin:WindwalkerStrike": {

@@ -23,6 +23,7 @@ import theDragonkin.powers.Dragonkin.WingsofLight;
 
 import javax.swing.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
@@ -47,7 +48,7 @@ public class BurningRage extends AbstractHolyCard{
     private static final int UPGRADE_MAGIC = 0;
     @Override
     public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = super.getCustomTooltips();
+        List<TooltipInfo> retVal = new ArrayList<>();
         retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
         return retVal;
     }

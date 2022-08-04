@@ -80,8 +80,6 @@ public class Flamestrike extends AbstractPrimalCard implements TriggerOnCycleEff
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
         Intensity += 1;
-        if (ca.type == CardType.STATUS) {
-            baseDamage += magicNumber;
-        }
+        baseDamage += magicNumber;
     }
 }

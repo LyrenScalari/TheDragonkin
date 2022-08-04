@@ -6,6 +6,7 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -18,6 +19,7 @@ import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.Scorchpower;
+import theDragonkin.util.TriggerOnCycleEffect;
 
 import javax.swing.*;
 
@@ -39,7 +41,7 @@ public class DivineFire extends AbstractHolyCard {
 
     private static final int POTENCY = 8;
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 3;
+    private static final int MAGIC = 2;
     private static final int UPGRADE_MAGIC = 1;
 
     public DivineFire() {
@@ -58,8 +60,6 @@ public class DivineFire extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m,p,new Scorchpower(m,p,this.magicNumber)));
         super.use(p,m);
     }
 

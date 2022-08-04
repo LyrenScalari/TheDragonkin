@@ -3,6 +3,7 @@ package theDragonkin.cards.Dragonkin;
 import basemod.BaseMod;
 import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import javassist.bytecode.stackmap.BasicBlock;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CardMods.StormEffect;
 import theDragonkin.CustomTags;
@@ -46,32 +48,18 @@ private static final int POTENCY= 10;
 private static final int UPGRADE_PLUS_DMG = 4;
 private static final int MAGIC = 2;
 private static final int UPGRADE_MAGIC = 1;
-        @Override
-        public List<TooltipInfo> getCustomTooltips() {
-                List<TooltipInfo> retVal = new ArrayList<>();
-                retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
-                return retVal;
-        }
         public FlameWard() {
                 super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
                 block = baseBlock = POTENCY;
                 baseMagicNumber = magicNumber = MAGIC;
                 defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-                BlockModifierManager.addModifier(this,new FireBlock(true));
-                CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, FireIcon.get()));
                 cardsToPreview = new Burn();
-                tags.add(CustomTags.Rune);
         }
 
         @Override
         public void use(AbstractPlayer p, AbstractMonster m) {
-                addToBot(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                                DragonkinMod.Seals.add(new WardGlyph(block, defaultSecondMagicNumber,FlameWard.this));
-                                isDone = true;
-                                }
-                });
+                AbstractDungeon.actionManager.addToBottom(new GainCustomBlockAction(this,AbstractDungeon.player, block));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Burn(), 1, true, false));
                 super.use(p, m);
         }
         @Override

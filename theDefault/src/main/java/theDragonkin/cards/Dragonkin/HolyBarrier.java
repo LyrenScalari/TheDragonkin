@@ -65,7 +65,7 @@ public class HolyBarrier extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(UPGRADE_PLUS_POTENCY);
+            upgradeBlock(2);
             initializeDescription();
         }
     }

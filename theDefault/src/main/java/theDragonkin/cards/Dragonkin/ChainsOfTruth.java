@@ -47,10 +47,6 @@ public class ChainsOfTruth extends AbstractHolyCard {
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
         this.isMultiDamage = true;
-        tags.add(CustomTags.Radiant);
-        DamageModifierManager.addModifier(this, new DivineDamage(true,false));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
-        RadiantExchange = 5;
     }
 
     @Override

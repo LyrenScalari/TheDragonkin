@@ -64,15 +64,13 @@ public class InfernoWard extends AbstractPrimalCard {
         baseBlock = BLOCK;
         baseDamage = baseBlock;
         baseMagicNumber = magicNumber = 5;
-        BlockModifierManager.addModifier(this,new FireBlock(true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, FireIcon.get()));
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p,p,new VigorPower(p,magicNumber)));
-        addToBot(new SelectCardsInHandAction(BaseMod.MAX_HAND_SIZE," Cycle",false,false,(card)->true,(List)-> {
+        addToBot(new SelectCardsInHandAction(BaseMod.MAX_HAND_SIZE," Cycle",true,true,(card)->true,(List)-> {
             for (AbstractCard c : List){
                 addToBot(new CycleAction(c,1));
                 addToBot(new GainBlockAction(p,block));

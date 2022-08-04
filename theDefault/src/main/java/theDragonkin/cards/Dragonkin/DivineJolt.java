@@ -75,12 +75,7 @@ public class DivineJolt extends AbstractHolyCard {
     public DivineJolt(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
-    this.magicNumber = baseMagicNumber;
-    defaultSecondMagicNumber = defaultBaseSecondMagicNumber =  2;
-    tags.add(CustomTags.Radiant);
-    RadiantExchange = 5;
-    DamageModifierManager.addModifier(this, new DivineDamage(true,true));
-    CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
+    this.magicNumber = baseMagicNumber = 3;
 }
 
 
@@ -90,7 +85,15 @@ public class DivineJolt extends AbstractHolyCard {
         for (int i = 0; i < 2; ++i) {
            m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
            if (m != null) {
-               addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+               AbstractMonster finalM = m;
+               addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn),()-> new AbstractGameAction(){
+
+                   @Override
+                   public void update() {
+                       addToBot(new ApplyPowerAction(finalM,p,new PenancePower(finalM,p,magicNumber)));
+                       isDone = true;
+                   }
+               }));
            }
         }
         super.use(p,m);
@@ -102,7 +105,7 @@ public class DivineJolt extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            upgradeDamage(2);
             initializeDescription();
         }
     }

@@ -66,11 +66,6 @@ public class DivineStorm extends AbstractHolyCard {
         baseDamage = DAMAGE;
         this.baseMagicNumber = 0;
         this.magicNumber = baseMagicNumber;
-        CardModifierManager.addModifier(this,new StormEffect(15));
-        DamageModifierManager.addModifier(this, new DivineDamage(true,true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, LightIcon.get()));
-        tags.add(CustomTags.Radiant);
-        RadiantExchange = 2;
         this.exhaust = true;
     }
 

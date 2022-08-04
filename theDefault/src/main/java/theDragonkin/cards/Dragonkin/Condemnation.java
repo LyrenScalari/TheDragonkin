@@ -47,25 +47,19 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
     public Condemnation() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = 40;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new DestructionGlyph(magicNumber, defaultSecondMagicNumber));
-                isDone = true;
-            }
-        });
+        addToBot(new ApplyPowerAction(p,p,new HolyBombPower(p,p,defaultSecondMagicNumber,magicNumber)));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_POTENCY);
+            upgradeDefaultSecondMagicNumber(-1);
             initializeDescription();
         }
     }

@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -61,6 +62,8 @@ public class SteelWill extends AbstractPrimalCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            isInnate = true;
             initializeDescription();
         }
     }

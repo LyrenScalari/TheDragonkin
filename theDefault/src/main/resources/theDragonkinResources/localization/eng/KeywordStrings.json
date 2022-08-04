@@ -33,25 +33,8 @@
       "Repentant",
       "repentant"
     ],
-    "DESCRIPTION": "When creature obtains #b8 Penance, it loses #b20 HP, and increases #yPenance damage by #b10 this combat."
-},
-  {
-    "PROPER_NAME": "Auraflame",
-    "NAMES": [
-      "Auraflame",
-      "auraflame"
-    ],
-    "DESCRIPTION": "#yAuraflame damages a random enemy and is reduced by #b1 after you play a card."
-},
- {
-    "PROPER_NAME": "Deflecting Scales",
-    "NAMES": [
-      "Deflecting Scales",
-      "Deflecting_Scales",
-      "deflecting_scales"
-    ],
-    "DESCRIPTION": "#yDeflecting #yScales damages a random enemy and is reduced by #b1 after you take damage."
-},
+    "DESCRIPTION": "When a creature obtains #b8 Penance, it loses #b20 HP and HP loss from this effect is increased by #b10 this combat"
+  },
   {
     "PROPER_NAME": "Primal",
     "NAMES": [
@@ -66,15 +49,7 @@
       "Sealed",
       "sealed"
     ],
-    "DESCRIPTION": "#ySealed cards are improved whenever you discard a #yStatus or [#990702]Rune[] card."
-},
-  {
-    "PROPER_NAME": "Snekproof",
-    "NAMES": [
-      "Snekproof",
-      "snekproof"
-    ],
-      "DESCRIPTION": "#ySnekproof cards cannot have their costs modified by anything other then itself."
+    "DESCRIPTION": "#ySealed cards are improved whenever you discard a #yStatus or [#fe513a]Primal[] card."
 },
   {
   "PROPER_NAME": "Cycle",
@@ -87,255 +62,29 @@
   "DESCRIPTION": "Discard a card and draw a new card to replace it."
 },
   {
-  "PROPER_NAME": "Rune",
-    "NAMES": [
-      "Rune",
-      "rune"
-    ],
-    "DESCRIPTION": "[#990702]Rune[] cards create a Glyph activates the following effects when discarding a card up to X times."
-  },
-  {
-    "PROPER_NAME": "Blessing",
+    "PROPER_NAME": "Blessing X",
     "NAMES": [
       "Blessing",
       "blessing",
       "blessings",
       "Blessings"
       ],
-    "DESCRIPTION": "[#548dff]Blessings[] create a #ySeal that breaks after taking X damage during your turn, activating its Blessing effect. NL If you took no damage during your turn you will lose #b2 HP at the end of your turn."
+    "DESCRIPTION": "#yBlessings create a #ySeal that Activates after you take or block X damage during your turns. NL At the end of your turn, if you did not you take or block any damage you will lose #b2 HP."
 },
   {
-"PROPER_NAME": "Spirit Wound",
-"NAMES": [
-"Spirit Wound",
-"spirit wound",
-"Spirit_Wound",
-"spirit_wound"
-],
-"DESCRIPTION": "#ySpirit #yWound kills it's target if Spirit Wound equals or exceeds it's health."
-},
+    "PROPER_NAME": "Fire [theDragonkin:FireIcon]",
+    "NAMES": [
+      "Fire",
+      "fire"
+    ],
+    "DESCRIPTION": "#yFire damage applies #yScorch equal to half of unblocked damage dealt."
+  },
   {
-"PROPER_NAME": "Static",
-"NAMES": [
-"Static",
-"static"
-],
-"DESCRIPTION": "#yStatic reduces damage dealt, reduced after attacking. NL #yStuns and is reduced to 0 if #yStatic is greater then #b20"
-},
-  {
-"PROPER_NAME": "Chi",
-"NAMES": [
-"Chi",
-"chi"
-],
-"DESCRIPTION": "#yChi is generated and spent by Windwalker cards, you may not have more than #b5 #yChi at once. NL Excess Chi becomes Temporary #yStrength and #yFocus"
-},
-  {
-"PROPER_NAME": "Mastery",
-"NAMES": [
-"Mastery",
-"mastery"
-],
-"DESCRIPTION": "Increase the damage and Block of ALL copies of the next x cards you play by #b2 for the combat"
-},
-  {
-"PROPER_NAME": "Martial",
-"NAMES": [
-"Martial",
-"martial"
-],
-"DESCRIPTION": "#yMartial cards count as Strikes and Defends."
-},
-  {
-"PROPER_NAME": "Razor Wind",
-"NAMES": [
-"Razor Wind",
-"razor wind",
-"Razor_Wind",
-"razor_wind"
-],
-"DESCRIPTION": "#yOrb: Deals [WindIcon] Damage to ALL enemies."
-},
-  {
-"PROPER_NAME": "Jade Spirit",
-"NAMES": [
-"Jade Spirit",
-"jade spirit",
-"Jade_Spirit",
-"jade_spirit"
-],
-"DESCRIPTION": "#yOrb: Deals [DrainIcon] Damage to random enemies."
-},
-  {
-"PROPER_NAME": "Nimbus",
-"NAMES": [
-"Nimbus",
-"nimbus"
-],
-"DESCRIPTION": "#yOrb: Deals [ElectricIcon] Damage to random enemies and increases effectiveness."
-},
-  {
-"PROPER_NAME": "Rain",
-"NAMES": [
-"Rain",
-"rain"
-],
-"DESCRIPTION": "#yOrb: Grants #yBlock and increases the number of cards effected when evoked, when Evoked reduces the cost of random cards in hand by 1."
-},
-  {
-"PROPER_NAME": "Chant",
-"NAMES": [
-"Chant",
-"chant"
-],
-"DESCRIPTION": "#yChannel 1 of the 3 #yWords of this Shout. When all 3 Words are channeled, an additional effect is gained and all 3 Words are #yEvoked."
-},
-  {
-"PROPER_NAME": "Frost Breath",
-"NAMES": [
-"Frost Breath",
-"frost breath",
-"Frost_Breath",
-"frost_breath"
-],
-"DESCRIPTION": "#yShout : Grants [IceIcon] Block and deals [IceIcon] damage NL #yPassive : If you have #b2 or more Orbs from this set deal [IceIcon] damage damage to a random enemy NL #yOrbs : #yFo #yKrah #yDiin"
-},
-  {
-"PROPER_NAME": "Fo",
-"NAMES": [
-"Fo",
-"fo"
-],
-"DESCRIPTION": "#yOrb: #yEvoke - Gain [IceIcon] Block"
-},
-  {
-"PROPER_NAME": "Krah",
-"NAMES": [
-"Krah",
-"krah"
-],
-"DESCRIPTION": "#yOrb: #yEvoke - Deal [IceIcon] damage to ALL enemies."
-},
-  {
-"PROPER_NAME": "Diin",
-"NAMES": [
-"Diin",
-"diin"
-],
-"DESCRIPTION": "#yOrb: #yEvoke - Apply #yWeak to ALL enemies."
-},
-  {
-"PROPER_NAME": "Chakra",
-"NAMES": [
-"Chakra",
-"chakra"
-],
-"DESCRIPTION": "#yChakra's are buffs with no duration which impart the associated Damage Type on to your Normal damage #yStrikes and #yDefends NL You may not have more then #b1 #yChakra at a time"
-},
-  {
-"PROPER_NAME": "Spirit Burst",
-"NAMES": [
-"Spirit Burst",
-"spirit burst",
-"Spirit_Burst",
-"spirit_burst"
-],
-"DESCRIPTION": "Spend up to X #yChi and activate the following effect."
-},
- {
-"PROPER_NAME": "Spirit [DrainIcon]",
-"NAMES": [
-"Spirit",
-"spirit"
-],
-"DESCRIPTION": "#ySpirit #yDamage Ignores #yBlock, and Creatures dealt #ySpirit #yDamage gain #ySpirit #yWound instead of losing HP."
-},
-  {
-"PROPER_NAME": "Spirit",
-"NAMES": [
-"Spirit_Damage",
-"spirit_damage"
-],
-"DESCRIPTION": "#yBlock : Does not Decay at start of turn NL When broken : applies #ySpirit #yWound to you and the attacker"
-},
-  {
-"PROPER_NAME": "Lightning [ElectricIcon]",
-"NAMES": [
-"Lightning",
-"lightning"
-],
-"DESCRIPTION": "#yLightning #yDamage applies #yStatic equal to half of unblocked damage dealt."
-},
-  {
-"PROPER_NAME": "Lightning",
-"NAMES": [
-"Lightning_Damage",
-"lightning_damage"
-],
-"DESCRIPTION": "#yBlock : Applies #yStatic to the attacker when broken"
-},
-  {
-"PROPER_NAME": "Fire [theDragonkin:FireIcon]",
-"NAMES": [
-"Fire",
-"fire"
-],
-"DESCRIPTION": "#yFire damage deals half as much damage to targets without #yBlock, but apply #yScorch equal to the damage dealt instead."
-},
-  {
-"PROPER_NAME": "Fire",
-"NAMES": [
-"Fire_Damage",
-"fire_damage"
-],
-"DESCRIPTION": "#yBlock : When damaged applies #yScorch to the Attacker."
-},
-  {
-"PROPER_NAME": "Divine [theDragonkin:LightIcon]",
-"NAMES": [
-"Divine",
-"divine"
-],
-"DESCRIPTION": "#yDivine damage applies #yPenance equal to half the Unblocked damage it deals."
-},
-  {
-"PROPER_NAME": "Divine",
-"NAMES": [
-"Divine_Damage",
-"divine_damage"
-],
-"DESCRIPTION": "#yBlock : Used before other block types. not lost at the start of your turn."
-},
-  {
-"PROPER_NAME": "Frost [IceIcon]",
-"NAMES": [
-"Frost",
-"frost"
-],
-"DESCRIPTION": "#yFrost damage grants [IceIcon] Block equal to the damage it deals."
-},
-  {
-"PROPER_NAME": "Frost",
-"NAMES": [
-"Frost_Damage",
-"frost_damage"
-],
-"DESCRIPTION": "#yBlock : Does not Decay at the start of your turn but applies weak to you at the start of your turn if you have any."
-},
-  {
-"PROPER_NAME": "Arcane [SpellIcon]",
-"NAMES": [
-"Arcane",
-"arcane"
-],
-"DESCRIPTION": "#yArcane damage is increased by #yFocus and #yLock-On."
-},
-  {
-"PROPER_NAME": "Arcane",
-"NAMES": [
-"Arcane_Damage",
-"arcane_damage"
-],
-"DESCRIPTION": "#yBlock : Increased by #yFocus and when lost becomes #yTemporary #yFocus."
-}
+    "PROPER_NAME": "Divine [theDragonkin:LightIcon]",
+    "NAMES": [
+      "Divine",
+      "divine"
+    ],
+    "DESCRIPTION": "[theDragonkin:LightIcon] #yBlock is Used before other block types and is not lost at the start of your turn."
+  }
 ]
