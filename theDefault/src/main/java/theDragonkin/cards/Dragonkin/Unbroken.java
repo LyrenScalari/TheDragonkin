@@ -26,7 +26,7 @@ public class Unbroken extends AbstractPrimalCard {
 
     private static final int POTENCY = 3;
     private static final int UPGRADE_PLUS_DMG = 1;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 1;
 
     public Unbroken() {

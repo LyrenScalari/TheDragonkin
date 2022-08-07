@@ -666,33 +666,23 @@ public class DragonkinMod implements
     }
 
     public static void TriggerOnCycle(AbstractCard ca){
-        CardsCycledThisTurn++;
-        CardsCycledThisCombat++;
-        if (ca.type == AbstractCard.CardType.STATUS || (ca.hasTag(CustomTags.Rune) || ca.hasTag(CustomTags.Blessing))) {
-            StatusesCycledThisTurn++;
-            StatusesCycledThisCombat++;
-            if (ca.cardID.equals(Burn.ID)){
-                BurnsCycledThisCombat++;
-                BurnsCycledThisTurn++;
-            }
-        }
         for (AbstractCard c : AbstractDungeon.player.discardPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                if (c.type == AbstractCard.CardType.STATUS || c instanceof AbstractPrimalCard){
                     ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
                 }
             }
         }
         for (AbstractCard c : AbstractDungeon.player.drawPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                if (c.type == AbstractCard.CardType.STATUS || c instanceof AbstractPrimalCard){
                     ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
                 }
             }
         }
         for (AbstractCard c : AbstractDungeon.player.exhaustPile.group){
             if (c instanceof TriggerOnCycleEffect){
-                if (c.type == AbstractCard.CardType.STATUS || (c.hasTag(CustomTags.Rune) || c.hasTag(CustomTags.Blessing))){
+                if (c.type == AbstractCard.CardType.STATUS || c instanceof AbstractPrimalCard){
                     ((TriggerOnCycleEffect) c).TriggerOnCycle(c);
                 }
             }

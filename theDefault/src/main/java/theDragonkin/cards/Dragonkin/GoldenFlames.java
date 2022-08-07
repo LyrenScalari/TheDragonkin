@@ -78,6 +78,8 @@ public class GoldenFlames extends AbstractHolyCard implements TriggerOnCycleEffe
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
         baseDamage += magicNumber;
+        damage += magicNumber;
         baseBlock += magicNumber;
+        block += magicNumber;
     }
 }

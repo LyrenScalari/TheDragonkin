@@ -4,30 +4,40 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CtBehavior;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.AbstractPrimalCard;
 import theDragonkin.patches.Orbs.onCardDrawOrbPatch;
+import theDragonkin.util.TriggerOnCycleEffect;
 
-@SpirePatch2(clz = DiscardAction.class, method = "update")
+import java.util.ArrayList;
+
+@SpirePatch2(clz = AbstractCard.class, method = "triggerOnManualDiscard")
 public class SealedPatch {
-    @SpireInsertPatch(
-            locator= DiscardLocator.class,
-            localvars = {"c"}
-    )
-    public static void SealedPatch(DiscardAction __instance, AbstractCard c){
-        if (c instanceof AbstractPrimalCard || c.type == AbstractCard.CardType.STATUS){
-            DragonkinMod.TriggerOnCycle(c);
-        }
-    }
-    private static class DiscardLocator extends SpireInsertLocator {
-        private DiscardLocator() {
-        }
-
-        public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-            Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractCard.class, "triggerOnManualDiscard");
-            int[] tmp = LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
-            return new int[]{tmp[0]};
+    @SpirePrefixPatch()
+    public static void SealedPatch(AbstractCard __instance){
+        if (AbstractDungeon.player.discardPile.getTopCard() instanceof AbstractPrimalCard ||AbstractDungeon.player.discardPile.getTopCard().type == AbstractCard.CardType.STATUS){
+            for (AbstractCard ca : AbstractDungeon.player.discardPile.group){
+                if (ca instanceof TriggerOnCycleEffect){
+                    ((TriggerOnCycleEffect) ca).TriggerOnCycle(AbstractDungeon.player.discardPile.getTopCard());
+                }
+            }
+            for (AbstractCard ca : AbstractDungeon.player.hand.group){
+                if (ca instanceof TriggerOnCycleEffect){
+                    ((TriggerOnCycleEffect) ca).TriggerOnCycle(AbstractDungeon.player.discardPile.getTopCard());
+                }
+            }
+            for (AbstractCard ca : AbstractDungeon.player.drawPile.group){
+                if (ca instanceof TriggerOnCycleEffect){
+                    ((TriggerOnCycleEffect) ca).TriggerOnCycle(AbstractDungeon.player.discardPile.getTopCard());
+                }
+            }
+            for (AbstractCard ca : AbstractDungeon.player.exhaustPile.group){
+                if (ca instanceof TriggerOnCycleEffect){
+                    ((TriggerOnCycleEffect) ca).TriggerOnCycle(AbstractDungeon.player.discardPile.getTopCard());
+                }
+            }
         }
     }
 }

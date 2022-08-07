@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.NoDrawPower;
+import org.lwjgl.Sys;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.DamageModifiers.FireDamage;
 import theDragonkin.DamageModifiers.Icons.FireIcon;
@@ -73,6 +74,8 @@ public class Cinderstrike extends AbstractPrimalCard implements TriggerOnCycleEf
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
+        System.out.println("Flarestrike : Sealed Activated");
         baseDamage += magicNumber;
+        damage += magicNumber;
     }
 }

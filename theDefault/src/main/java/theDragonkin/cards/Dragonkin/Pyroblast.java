@@ -78,7 +78,9 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
+            System.out.println("Pyroblast : Sealed Activated");
             this.updateCost(-1);
             baseDamage += magicNumber;
+            damage += magicNumber;
     }
 }
