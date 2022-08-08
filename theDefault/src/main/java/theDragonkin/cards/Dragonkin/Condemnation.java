@@ -38,12 +38,6 @@ public class Condemnation extends AbstractHolyCard implements StormCard {
     private static final int UPGRADE_PLUS_POTENCY = 10;
     private static final int MAGIC = 0;
     private static final int UPGRADE_MAGIC = 0;
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Rune"),BaseMod.getKeywordDescription("thedragonkin:Rune")));
-        return retVal;
-    }
     public Condemnation() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = 40;

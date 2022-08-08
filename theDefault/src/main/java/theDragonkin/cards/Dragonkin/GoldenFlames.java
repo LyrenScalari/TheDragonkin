@@ -39,13 +39,13 @@ public class GoldenFlames extends AbstractHolyCard implements TriggerOnCycleEffe
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
 
-    private static final int POTENCY = 4;
-    private static final int UPGRADE_PLUS_POTENCY = 3;
-    private static final int MAGIC = 6;
-    private static final int UPGRADE_MAGIC = 3;
+    private static final int POTENCY = 6;
+    private static final int UPGRADE_PLUS_POTENCY = 2;
+    private static final int MAGIC = 8;
+    private static final int UPGRADE_MAGIC = 1;
 
     public GoldenFlames() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -71,7 +71,7 @@ public class GoldenFlames extends AbstractHolyCard implements TriggerOnCycleEffe
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_POTENCY);
-            upgradeMagicNumber(UPGRADE_MAGIC);
+            upgradeBlock(2);
             initializeDescription();
         }
     }

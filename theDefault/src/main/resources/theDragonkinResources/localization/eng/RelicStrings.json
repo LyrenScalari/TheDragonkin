@@ -35,16 +35,6 @@
       "Upon pickup, heal #b1 for each relic you have. \n Whenever you obtain a relic, gain #b3 max HP."
     ]
   },
-  "theDragonkin:BottledVoice": {
-    "NAME": "Bottled Voice",
-    "FLAVOR": "\"Zulko,\nGol Ahrk,\nPahfen Honhiin Rein!\" \n - Paarthuunir",
-    "DESCRIPTIONS": [
-      "Upon pickup, choose a #yDragon #yBreath. Play it at the start of each combat.",
-      "Choose a card for ",
-      "Play ",
-      " at the start of combat."
-    ]
-  },
   "theDragonkin:BookOfHymns": {
     "NAME": "Book of Hymns",
     "FLAVOR": "A Book of Crusader Hymns, telling tales of Heroism in the name of Naruuin.",
@@ -63,9 +53,9 @@
 
   "theDragonkin:ObsidianScale": {
     "NAME": "Obsidian Scales",
-    "FLAVOR": "Obsidian power, mastery of flame and acid powers that ruled the primordial world",
+    "FLAVOR": "Obsidian power, mastery of the flame that ruled the primordial world",
     "DESCRIPTIONS": ["Replaces ",
-      ". NL Gain #b1 #yBlock and #yFury after you play an Attack."
+      ". NL After you discard a #yStatus or [#fe513a]Primal[] card Gain #b2 #yBlock and #yVigor"
     ]
   },
 

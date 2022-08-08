@@ -11,11 +11,12 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DragonkinMod;
+import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
 
-public class MoltenScalesPower extends AbstractPower implements CloneablePowerInterface  {
+public class MoltenScalesPower extends AbstractPower implements CloneablePowerInterface, ReciveDamageEffect {
 
     public AbstractCreature source;
 
@@ -47,14 +48,6 @@ public class MoltenScalesPower extends AbstractPower implements CloneablePowerIn
         updateDescription();
     }
 
-    @Override
-    public int onLoseHp(int damageAmount) {
-        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
-            addToBot(new ApplyPowerAction(m,owner,new Scorchpower(m,owner,amount)));
-        }
-        return damageAmount;
-    }
-
     // Note: If you want to apply an effect when a power is being applied you have 3 options:
     //onInitialApplication is "When THIS power is first applied for the very first time only."
     //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."
@@ -67,11 +60,17 @@ public class MoltenScalesPower extends AbstractPower implements CloneablePowerIn
     @Override
     public void updateDescription() {
             description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-
     }
 
     @Override
     public AbstractPower makeCopy() {
         return new MoltenScalesPower(owner, source, amount);
+    }
+
+    @Override
+    public void onReciveDamage(int damage) {
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters){
+            addToBot(new ApplyPowerAction(m,owner,new Scorchpower(m,owner,amount)));
+        }
     }
 }

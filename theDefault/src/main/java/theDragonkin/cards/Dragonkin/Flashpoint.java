@@ -49,8 +49,7 @@ public class Flashpoint extends AbstractPrimalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
             int burncount = 0;
             for (AbstractCard c : AbstractDungeon.player.drawPile.group){
-                if (c instanceof AbstractPrimalCard || c.hasTag(CustomTags.Rune)) {
-                    burncount++;
+                if (c instanceof AbstractPrimalCard || c.type == CardType.STATUS) {
                     if (burncount >= magicNumber) {
                         break;
                     }
@@ -65,6 +64,7 @@ public class Flashpoint extends AbstractPrimalCard {
                         });
                         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
                     }
+                    burncount++;
                 }
             }
         super.use(p,m);

@@ -53,8 +53,6 @@ public class Cinderstrike extends AbstractPrimalCard implements TriggerOnCycleEf
         baseMagicNumber = magicNumber = MAGIC;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         tags.add(CardTags.STRIKE);
-        DamageModifierManager.addModifier(this, new FireDamage(true,true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
     }
 
     @Override

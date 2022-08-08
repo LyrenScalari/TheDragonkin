@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.cards.Dragonkin.AbstractPrimalCard;
 import theDragonkin.powers.Dragonkin.FuryPower;
@@ -28,10 +29,9 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("ObsidianScale.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("ObsidianScale.png"));
-    private  boolean used = false;
     public ObsidianScale() {
         super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.CLINK);
-        counter = 1;
+        counter = 2;
     }
     @Override
     public boolean canSpawn() {return AbstractDungeon.player.hasRelic(GarnetScale.ID);}
@@ -48,6 +48,13 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
 
         return DESCRIPTIONS[0] + sb.toString() + DESCRIPTIONS[1];
     }
+    public void onManualDiscard() {
+        if (AbstractDungeon.player.discardPile.getTopCard() instanceof AbstractPrimalCard ||AbstractDungeon.player.discardPile.getTopCard().type == AbstractCard.CardType.STATUS){
+            this.flash();
+            addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player, new VigorPower(AbstractDungeon.player,counter)));
+            addToBot(new GainBlockAction(AbstractDungeon.player,counter));
+        }
+    }
     @Override
     public void obtain() {
         if (AbstractDungeon.player.hasRelic(GarnetScale.ID)) {
@@ -61,28 +68,6 @@ public class ObsidianScale extends CustomRelic { // You must implement things yo
             super.obtain();
         }
     }
-
-    @Override
-    public void onUseCard(final AbstractCard c , final UseCardAction ca){
-        if (c.type == AbstractCard.CardType.ATTACK){
-            this.flash();
-            used = true;
-            addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player, new FuryPower(AbstractDungeon.player,AbstractDungeon.player,counter)));
-            addToBot(new GainBlockAction(AbstractDungeon.player,counter));
-        }
-    }
-
-    @Override
-    public void onPlayerEndTurn() {
-        used = false;
-    }
-
-
-    @Override
-    public void onVictory() {
-        used = false;
-    }
-
     // Description
 
 }

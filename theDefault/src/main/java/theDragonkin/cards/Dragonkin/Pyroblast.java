@@ -51,7 +51,6 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;
         baseMagicNumber = magicNumber = 10;
-        tags.add(CustomTags.SnekProof);
         DamageModifierManager.addModifier(this, new FireDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
         tags.add(CardTags.HEALING);

@@ -3,6 +3,7 @@ package theDragonkin.cards.Dragonkin;
 
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
@@ -57,10 +59,8 @@ public class DivineGambit extends AbstractPrimalCard {
         baseDamage =DAMAGE;
         magicNumber = baseMagicNumber = 2;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
-        DamageModifierManager.addModifier(this, new FireDamage(true,false));
+        DamageModifierManager.addModifier(this, new FireDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
-        tags.add(CustomTags.Radiant);
-
     }
 
 
@@ -71,7 +71,8 @@ public class DivineGambit extends AbstractPrimalCard {
         addToBot(new SelectCardsInHandAction(magicNumber," Cycle",false,false,(card)->true,(List)-> {
             for (AbstractCard c : List){
                 addToBot(new CycleAction(c,1));
-                addToBot(new DamageRandomEnemyAction(new DamageInfo(p,damage), AbstractGameAction.AttackEffect.LIGHTNING));
+                AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
+                addToBot(new DamageAction(randomMonster, BindingHelper.makeInfo(DivineGambit.this,p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
             }
         }));
         super.use(p,m);

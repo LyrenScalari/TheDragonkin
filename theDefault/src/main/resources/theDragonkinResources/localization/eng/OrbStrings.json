@@ -97,10 +97,10 @@
     ]
   },
   "theDragonkin:Flame": {
-    "NAME": "Flame",
+    "NAME": "Sealed : Incendiary Flow",
     "DESCRIPTION": [
-      "Can be Activated #b",
-      " times", " NL after you discard a card gain #b", " #yBlock.","Yolos"
+      "",
+      "", "After you discard a Status or Primal if Incendiary Flow is in your hand, Cycle it, otherwise deal #b", " Damage to a random enemy.","Yolos"
     ]
   },
   "theDragonkin:Deflection": {

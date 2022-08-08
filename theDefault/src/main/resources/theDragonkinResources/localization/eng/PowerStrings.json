@@ -5,15 +5,10 @@
                 " #yScorch to ALL enemies."
                 ]
         },
-        "theDragonkin:HeatPower": {
-                "NAME": "Heat",
-                "DESCRIPTIONS": ["You may spend #yHeat to Exhaust #yStatuses and draw a card, activates #yCycle activated effects and the Cycled card's end of turn effects."
-                ]
-        },
         "theDragonkin:Scorch": {
                 "NAME": "Scorch",
                 "DESCRIPTIONS": ["When attacked, takes #b",
-                " damage,", " and reduce this by #b1"
+                " damage,", " and reduce this by #b"
                 ]
         },
         "theDragonkin:DivineRetribution": {

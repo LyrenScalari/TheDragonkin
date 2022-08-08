@@ -36,10 +36,11 @@ public class FireDamage extends AbstractDamageModifier {
         return new FireDamage(inherent,automaticBindingForCards);
     }
 
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        addToBot(new ApplyPowerAction(target,info.owner,new Scorchpower(target,info.owner,(int)Math.ceil(unblockedAmount/2))));
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        if (damageAmount/2 > 0){
+            addToBot(new ApplyPowerAction(target,info.owner,new Scorchpower(target,info.owner,(int)Math.ceil(damageAmount/2))));
+        }
     }
-
     public int priority() {
         return 1;
     }

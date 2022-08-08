@@ -6,7 +6,7 @@
     "scorch",
     "scorched"
   ],
-  "DESCRIPTION": "Scorched creatures take damage equal to their scorch and lose #b1 scorch when #yAttacked"
+  "DESCRIPTION": "Scorched creatures take damage equal to their scorch and lose #b25% of their scorch when #yAttacked"
 },
 {
     "PROPER_NAME": "Sacrifice",
@@ -49,7 +49,7 @@
       "Sealed",
       "sealed"
     ],
-    "DESCRIPTION": "#ySealed cards are improved whenever you discard a #yStatus or [#fe513a]Primal[] card."
+    "DESCRIPTION": "#ySealed effects activate whenever you discard a #yStatus or [#fe513a]Primal[] card."
 },
   {
   "PROPER_NAME": "Cycle",

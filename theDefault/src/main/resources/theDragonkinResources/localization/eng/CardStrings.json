@@ -26,7 +26,8 @@
   },
   "theDragonkin:IncendiaryFlow": {
     "NAME": "Incendiary Flow",
-    "DESCRIPTION": "Whenever you discard a card a card this turn, gain !M! Block."
+    "DESCRIPTION": "Unplayable. NL thedragonkin:Sealed: If this is in your hand thedragonkin:Cycle this, otherwise Deal !D! damage to a random enemy.",
+    "EXTENDED_DESCRIPTION": ["I #ycannot do that"]
   },
   "theDragonkin:HeatShield": {
     "NAME": "Heat Shield",
@@ -34,8 +35,8 @@
   },
   "theDragonkin:Cinderstrike": {
     "NAME": "Flarestrike",
-    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Deals !M2! extra damage this combat.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Deals !M2! extra damage this combat."
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Increase this cards damage by !M2! this combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Increase this cards damage by !M2! this combat."
   },
   "theDragonkin:FlameRush": {
     "NAME": "Flareburst",
@@ -48,7 +49,7 @@
   },
   "theDragonkin:Flamestrike": {
     "NAME": "Flamestrike",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Sealed: Deals !M2! extra damage this combat."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL thedragonkin:Sealed: Increase this cards damage by !M2! this combat."
   },
   "theDragonkin:TailSweep": {
     "NAME": "Tail Sweep",
@@ -72,8 +73,8 @@
   },
   "theDragonkin:Pyroblast": {
     "NAME": "Pyroblast",
-    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Deals !M! additional damage. NL Costs 1 less [E].",
-    "UPGRADE_DESCRIPTION": "Retain. NL Deal !D! damage. NL thedragonkin:Sealed: Deals !M! additional damage. NL Costs 1 less [E]."
+    "DESCRIPTION": "Deal !D! damage. NL thedragonkin:Sealed: Increase this cards damage by !M2! this combat. NL Reduce this cards cost by #b1 this combat.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Deal !D! damage. NL thedragonkin:Sealed: Increase this cards damage by !M2! this combat. NL Reduce this cards cost by #b1 this combat."
   },
   "theDragonkin:Sunbeam": {
     "NAME": "Sunbeam",
@@ -141,7 +142,7 @@
   },
   "theDragonkin:HeatBarrier": {
     "NAME": "Magma Armor",
-    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Sealed: Gains !M! extra Block this turn."
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Sealed: Increase this cards Block gain by !M! this turn."
   },
   "theDragonkin:Condemnation": {
     "NAME": "Condemnation",
@@ -249,7 +250,7 @@
   },
   "theDragonkin:GoldenFlames": {
     "NAME": "Golden Flame",
-    "DESCRIPTION": "Deal !D! damage. NL gain !B! . NL thedragonkin:Sealed : Deals !M! additional damage and Grants !M! additional [theDragonkin:LightIcon] this combat."
+    "DESCRIPTION": "Deal !D! damage. NL gain !B! . NL thedragonkin:Sealed : Increase this cards damage and [theDragonkin:LightIcon] Gain by !M! this combat."
   },
   "theDragonkin:HolyBarrier": {
     "NAME": "Divine Shield",
@@ -309,12 +310,16 @@
   },
   "theDragonkin:MagmaScales": {
     "NAME": "Magma Scales",
-    "DESCRIPTION": "Whenever you lose Health, apply !M! thedragonkin:Scorch to ALL enemies."
+    "DESCRIPTION": "Whenever you take damage during your turn, apply !M! thedragonkin:Scorch to ALL enemies."
   },
   "theDragonkin:SteelWill": {
     "NAME": "Steel Will",
     "DESCRIPTION": "Each turn after you receive 15 or more damage, Debuffs applied to you are negated.",
     "UPGRADE_DESCRIPTION":"Innate. NL Each turn after you receive 15 or more damage, Debuffs applied to you are negated."
+  },
+  "theDragonkin:PhotonGeyser": {
+    "NAME": "Photon Geyser",
+    "DESCRIPTION": "Deal damage equal to !M! times your exhaust pile size !M! times. NL Exhaust NL thedragonkin:Sealed : Exhaust the card discarded, return this to your hand if your exhaust pile has at least 9 cards"
   },
 
   "theDragonkin:WindwalkerStrike": {

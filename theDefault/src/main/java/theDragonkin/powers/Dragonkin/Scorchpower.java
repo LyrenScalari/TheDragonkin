@@ -22,6 +22,7 @@ import theDragonkin.DragonkinMod;
 import theDragonkin.relics.Dragonkin.MukySludge;
 import theDragonkin.util.TextureLoader;
 
+import static java.lang.Math.ceil;
 import static theDragonkin.DragonkinMod.makePowerPath;
 
 //Gain 1 dex for the turn for each card played.
@@ -63,7 +64,7 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
             this.flash();
             int temp = amount;
             AbstractDungeon.actionManager.addToTop(
-                    new ReducePowerAction(this.owner, this.owner, this, 1));
+                    new ReducePowerAction(this.owner, this.owner, this, ((int)Math.ceil(this.amount*0.25))));
             AbstractDungeon.actionManager.addToTop(
                     new DamageAction(owner,new DamageInfo(owner,temp, DamageInfo.DamageType.THORNS)));
             return d;
@@ -83,12 +84,12 @@ public class Scorchpower extends AbstractPower implements CloneablePowerInterfac
         if (info.type == DamageInfo.DamageType.NORMAL && AbstractDungeon.player.hasRelic(MukySludge.ID)) {
             this.flash();
             AbstractDungeon.actionManager.addToTop(
-                    new ReducePowerAction(this.owner, this.owner, this, 1));
+                    new ReducePowerAction(this.owner, this.owner, this, ((int)Math.ceil(this.amount*0.25))));
         }
     }
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + ((int)Math.ceil(this.amount*0.25));
     }
     @Override
     public AbstractPower makeCopy() {
