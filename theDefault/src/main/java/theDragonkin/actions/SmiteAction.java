@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import theDragonkin.util.DivineEyeParticle;
 import theDragonkin.util.SmiteEffect;
 import theDragonkin.util.SmiteLightningEffect;
 
@@ -37,8 +38,8 @@ public class SmiteAction extends AbstractGameAction {
         }
         if (!shot) {
             AbstractDungeon.effectList.add(new SmiteEffect(target, this));
-            for (int i = 0; i < AbstractDungeon.miscRng.random(8, 15); ++i) {
-                AbstractDungeon.effectsQueue.add(new DivinityParticleEffect());
+            for (int i = 0; i < AbstractDungeon.miscRng.random(20, 30); ++i) {
+                AbstractDungeon.effectsQueue.add(new DivineEyeParticle());
             }
             shot = true;
         }
@@ -46,9 +47,6 @@ public class SmiteAction extends AbstractGameAction {
             target.damage(info);
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 AbstractDungeon.actionManager.clearPostCombatActions();
-            }
-            if (BonusEffect != null){
-                BonusEffect.get();
             }
         }
         if (doDamage || target.isDying) {

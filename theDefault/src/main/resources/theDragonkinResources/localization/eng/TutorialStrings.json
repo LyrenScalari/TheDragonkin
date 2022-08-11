@@ -2,8 +2,8 @@
   "theDragonkin:DualityTutorial": {
     "TEXT": [
       "The Justicar utilizes two special types of cards [#94bdff]Holy[] and [#fe513a]Primal.[]",
-      "[#fe513a]Primal.[] cards will generate #yVigor equal to the amount of [E] spent to play them.",
-      "[#94bdff]Holy[] cards by contrast generate #ySacrifice equal to [E] spent playing them, which once #b10 is obtained will increase damage and block gain of Holy cards by #b1"
+      "[#fe513a]Primal.[] cards will generate #yVigor equal to twice the amount of [E] spent to play them.",
+      "[#94bdff]Holy[] cards by contrast generate #ySacrifice equal to twice the amount of [E] spent playing them, which once #b10 is obtained will increase damage and block gain of Holy cards by #b1"
     ],
     "LABEL": [
       "Next",

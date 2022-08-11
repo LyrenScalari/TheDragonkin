@@ -54,6 +54,13 @@ public class AncestralSeance extends AbstractPrimalCard {
         baseMagicNumber = magicNumber = MAGIC;
         this.exhaust = true;
         tags.add(CardTags.HEALING);
+        NonHoly.group = (ArrayList<AbstractCard>) CardLibrary.getAllCards()
+                .stream()
+                .filter(c -> c.color == Justicar_Red_COLOR)
+                .filter(c -> c instanceof AbstractPrimalCard)
+                .filter(c -> !c.hasTag(CardTags.HEALING))
+                .filter(c -> !c.rarity.equals(CardRarity.BASIC))
+                .collect(Collectors.toList());
     }
 
     @Override

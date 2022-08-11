@@ -27,7 +27,7 @@ public abstract class AbstractHolyCard extends AbstractDragonkinCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int bonus = 0;
         if (this.costForTurn > 0) {
-            addToBot(new ApplyPowerAction(p, p, new SacrificePower(p, p, this.costForTurn)));
+            addToBot(new ApplyPowerAction(p, p, new SacrificePower(p, p, this.costForTurn*2)));
         }
     }
     @Override

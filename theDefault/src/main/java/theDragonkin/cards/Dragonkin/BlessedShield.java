@@ -48,8 +48,7 @@ public class BlessedShield extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 4;
-        block = baseBlock = 7;
-        selfRetain = true;
+        block = baseBlock = 9;
     }
 
     @Override

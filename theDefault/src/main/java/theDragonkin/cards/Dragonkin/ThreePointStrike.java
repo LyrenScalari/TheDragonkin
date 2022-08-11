@@ -91,9 +91,9 @@ public class ThreePointStrike extends AbstractDragonkinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, BindingHelper.makeInfo(Fire,p,secondDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         addToBot(new SmiteAction(m, BindingHelper.makeInfo(normalDamage,p,damage, DamageInfo.DamageType.NORMAL)));
         addToBot(new DamageAction(m,BindingHelper.makeInfo(normalDamage,p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        addToBot(new DamageAction(m, BindingHelper.makeInfo(Fire,p,secondDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         addToBot(new ApplyPowerAction(m,p,new Scorchpower(m,p,magicNumber)));
         addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
         addToBot(new ApplyPowerAction(p,p,new VulnerablePower(p,1,false)));

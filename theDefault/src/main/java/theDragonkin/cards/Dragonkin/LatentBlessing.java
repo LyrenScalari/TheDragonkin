@@ -55,7 +55,7 @@ public class LatentBlessing extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
-        if (AbstractDungeon.player.hand.size() >= 2){
+        if (AbstractDungeon.player.hand.size() <= 2){
             if (AbstractDungeon.player.hand.getTopCard() instanceof AbstractHolyCard){
                 addToBot(new GainCustomBlockAction(this, p, block));
             }

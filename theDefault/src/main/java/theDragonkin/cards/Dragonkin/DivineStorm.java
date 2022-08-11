@@ -96,6 +96,7 @@ public class DivineStorm extends AbstractHolyCard {
         if (!upgraded) {
             upgradeName();
             selfRetain = true;
+            upgradeMagicNumber(2);
             rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }

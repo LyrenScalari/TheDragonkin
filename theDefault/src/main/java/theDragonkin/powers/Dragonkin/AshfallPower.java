@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.CycleAction;
+import theDragonkin.cards.Dragonkin.HeatBarrier;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
@@ -50,6 +52,9 @@ public class AshfallPower extends AbstractPower implements CloneablePowerInterfa
     public void onCardDraw(AbstractCard c){
         if (c.type == AbstractCard.CardType.STATUS){
             this.flash();
+            if (AbstractDungeon.player.hand.contains(c)){
+                addToBot(new CycleAction(c,1));
+            }
             AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(AbstractDungeon.player, this.amount, DamageInfo.DamageType.THORNS),
                     AbstractGameAction.AttackEffect.FIRE));
         }

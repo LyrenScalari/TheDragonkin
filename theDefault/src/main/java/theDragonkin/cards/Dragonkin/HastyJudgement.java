@@ -4,12 +4,17 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.*;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
+import theDragonkin.powers.Dragonkin.Scorchpower;
+
+import java.util.ArrayList;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -45,17 +50,30 @@ public class HastyJudgement extends AbstractHolyCard {
     public HastyJudgement() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = 2;
+        magicNumber = baseMagicNumber = 4;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
-        tags.add(CustomTags.Radiant);
-        RadiantExchange = 4;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
-        addToBot(new DrawCardAction(defaultSecondMagicNumber));
+        ArrayList<AbstractPower> Burdens = new ArrayList<>();
+        Burdens.add(new WeakPower(p,magicNumber,false));
+        Burdens.add(new VulnerablePower(p,magicNumber,false));
+        Burdens.add(new FrailPower(p,magicNumber,false));
+        Burdens.add(new Scorchpower(p,p,magicNumber));
+        Burdens.add(new PenancePower(p,p,magicNumber));
+        Burdens.add(new ConstrictedPower(p,p,magicNumber));
+        addToBot(new ApplyPowerAction(p,p,Burdens.get(AbstractDungeon.miscRng.random(Burdens.size()-1))));
+        for (AbstractMonster mo: AbstractDungeon.getCurrRoom().monsters.monsters){
+            if(!mo.isDeadOrEscaped()){
+                for (AbstractPower power : mo.powers){
+                    if (power.type == AbstractPower.PowerType.DEBUFF){
+                        power.amount += defaultSecondMagicNumber;
+                    }
+                }
+            }
+        }
         super.use(p,m);
     }
 
@@ -64,7 +82,8 @@ public class HastyJudgement extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
+            upgradeMagicNumber(-1);
+            upgradeDefaultSecondMagicNumber(1);
             initializeDescription();
         }
     }

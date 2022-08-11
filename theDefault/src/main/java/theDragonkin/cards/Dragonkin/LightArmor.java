@@ -36,11 +36,12 @@ public class LightArmor extends AbstractHolyCard {
 
     public LightArmor() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        block = baseBlock = 5;
+        block = baseBlock = 6;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
         RadiantExchange = defaultSecondMagicNumber;
+        exhaust = true;
 
     }
 

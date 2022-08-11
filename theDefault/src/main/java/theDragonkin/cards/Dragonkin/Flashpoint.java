@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.NoDrawPower;
+import com.megacrit.cardcrawl.powers.*;
 import theDragonkin.CardMods.StormEffect;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
@@ -21,6 +21,9 @@ import theDragonkin.characters.TheDefault;
 import theDragonkin.orbs.BlazeRune;
 import theDragonkin.orbs.SparkGlyph;
 import theDragonkin.powers.Dragonkin.HeatPower;
+import theDragonkin.powers.Dragonkin.PenancePower;
+import theDragonkin.powers.Dragonkin.SacrificePower;
+import theDragonkin.powers.Dragonkin.Scorchpower;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,42 +41,35 @@ public class Flashpoint extends AbstractPrimalCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int UPGRADED_COST = 0;
     public Flashpoint() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 5;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-            int burncount = 0;
-            for (AbstractCard c : AbstractDungeon.player.drawPile.group){
-                if (c instanceof AbstractPrimalCard || c.type == CardType.STATUS) {
-                    if (burncount >= magicNumber) {
-                        break;
-                    }
-                    if (!(AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) || !AbstractDungeon.player.hasPower(NoDrawPower.POWER_ID)) {
-                        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                            @Override
-                            public void update() {
-                                AbstractDungeon.player.drawPile.group.remove(c);
-                                AbstractDungeon.player.drawPile.addToTop(c);
-                                isDone = true;
-                            }
-                        });
-                        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
-                    }
-                    burncount++;
-                }
-            }
+        ArrayList<AbstractPower> Burdens = new ArrayList<>();
+        Burdens.add(new WeakPower(p,magicNumber,false));
+        Burdens.add(new VulnerablePower(p,magicNumber,false));
+        Burdens.add(new FrailPower(p,magicNumber,false));
+        Burdens.add(new Scorchpower(p,p,magicNumber));
+        Burdens.add(new PenancePower(p,p,magicNumber));
+        Burdens.add(new ConstrictedPower(p,p,magicNumber));
+        addToBot(new ApplyPowerAction(p,p,Burdens.get(AbstractDungeon.miscRng.random(Burdens.size()-1))));
+        addToBot(new ApplyPowerAction(p,p,new SacrificePower(p,p,defaultSecondMagicNumber)));
+        for (int i = 0; i < magicNumber; i++){
+                addToBot(new GainEnergyAction(1));
+        }
         super.use(p,m);
     }
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            upgradeDefaultSecondMagicNumber(2);
             initializeDescription();
         }
     }

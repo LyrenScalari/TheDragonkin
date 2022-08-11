@@ -141,9 +141,9 @@ public class DualityTurtorial extends FtueTip {
     )
     public static class ShowTemperatureTutorialPatch {
         public static void Postfix(AbstractPlayer __instance) {
-            if (__instance instanceof TheDefault && !DragonkinMod.justicarConfig.getBool("Duality Tutorial Seen")) {
+            if (__instance instanceof TheDefault && DragonkinMod.justicarConfig.getBool("Duality Tutorial Seen")) {
                 if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.FTUE) {
-                    DragonkinMod.justicarConfig.setBool("Duality Tutorial Seen", true);
+                    DragonkinMod.justicarConfig.setBool("Duality Tutorial Seen", false);
                     try { DragonkinMod.justicarConfig.save(); } catch (IOException e) { e.printStackTrace(); }
                     AbstractDungeon.ftue = new DualityTurtorial();
                 }

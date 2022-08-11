@@ -35,13 +35,13 @@ public class AshenArmor extends AbstractPrimalCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-
+        cardsToPreview = new HeatBarrier();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-        new ApplyPowerAction(p,p, new AshenArmorpower(p,p, baseBlock)));
+        new ApplyPowerAction(p,p, new AshenArmorpower(p,p)));
         super.use(p,m);
     }
 

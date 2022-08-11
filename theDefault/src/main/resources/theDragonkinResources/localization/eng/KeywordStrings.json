@@ -62,15 +62,27 @@
   "DESCRIPTION": "Discard a card and draw a new card to replace it."
 },
   {
-    "PROPER_NAME": "Blessing X",
+    "PROPER_NAME": "Tribute X",
     "NAMES": [
-      "Blessing",
-      "blessing",
-      "blessings",
-      "Blessings"
+      "Tribute",
+      "tribute"
       ],
-    "DESCRIPTION": "#yBlessings create a #ySeal that Activates after you take or block X damage during your turns. NL At the end of your turn, if you did not you take or block any damage you will lose #b2 HP."
+    "DESCRIPTION": "#yTribute effects create a #ySeal that Activates after you take or block X damage during your turns. NL At the end of your turn, if you did not you take or block any damage you will lose #b2 HP."
 },
+  {
+    "PROPER_NAME": "Divine Burden",
+    "NAMES": [
+      "Divine Burden",
+      "Divine_Burden",
+      "divine burden",
+      "divine_burden",
+      "Divine Burdens",
+      "Divine_Burdens",
+      "divine burdens",
+      "divine_burdens"
+    ],
+    "DESCRIPTION": "#yDivine #yBurdens are random debuffs from the following list ; #yWeak, #yVulnerable, #yFrail, #yScorch, #yPenance, and #yConstrict"
+  },
   {
     "PROPER_NAME": "Fire [theDragonkin:FireIcon]",
     "NAMES": [

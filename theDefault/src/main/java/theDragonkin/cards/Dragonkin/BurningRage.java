@@ -46,12 +46,6 @@ public class BurningRage extends AbstractHolyCard{
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int MAGIC = 6;
     private static final int UPGRADE_MAGIC = 0;
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        List<TooltipInfo> retVal = new ArrayList<>();
-        retVal.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Blessing"),BaseMod.getKeywordDescription("thedragonkin:Blessing")));
-        return retVal;
-    }
     public BurningRage() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = 1;

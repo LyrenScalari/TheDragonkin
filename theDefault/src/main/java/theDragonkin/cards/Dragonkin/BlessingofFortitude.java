@@ -59,8 +59,8 @@ public class BlessingofFortitude extends AbstractHolyCard {
     public BlessingofFortitude() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        block = baseBlock = 10;
-        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 4;
+        block = baseBlock = 12;
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 5;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
         tags.add(CustomTags.Blessing);

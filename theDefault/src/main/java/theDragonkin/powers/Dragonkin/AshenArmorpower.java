@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.CycleAction;
+import theDragonkin.cards.Dragonkin.HeatBarrier;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
@@ -26,14 +28,14 @@ public class AshenArmorpower extends AbstractPower implements CloneablePowerInte
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("AshArmor.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("AshArmor32.png"));
 
-    public AshenArmorpower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public AshenArmorpower(final AbstractCreature owner, final AbstractCreature source) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = amount;
+        this.amount = -1;
         this.source = source;
-
+        priority = 105;
         type = PowerType.BUFF;
         isTurnBased = false;
 
@@ -48,16 +50,18 @@ public class AshenArmorpower extends AbstractPower implements CloneablePowerInte
     public void onCardDraw(AbstractCard c){
         if (c.type == AbstractCard.CardType.STATUS){
             this.flash();
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner,owner,amount));
+            if (AbstractDungeon.player.hand.contains(c)){
+                addToBot(new CycleAction(c,1,new HeatBarrier()));
+            }
         }
     }
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + DESCRIPTIONS[1];
     }
     @Override
     public AbstractPower makeCopy() {
-        return new AshenArmorpower(owner, source, amount);
+        return new AshenArmorpower(owner, source);
     }
 }
 

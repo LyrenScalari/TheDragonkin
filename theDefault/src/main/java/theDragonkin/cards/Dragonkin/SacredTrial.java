@@ -60,7 +60,6 @@ public class SacredTrial extends AbstractHolyCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = 7;
-        tags.add(CustomTags.Radiant);
     }
 
     // Actions the card should do.

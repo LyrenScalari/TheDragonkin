@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DamageModifiers.BlockModifiers.DivineBlock;
 import theDragonkin.DamageModifiers.DivineDamage;
 import theDragonkin.DragonkinMod;
@@ -45,16 +46,34 @@ public class HolyWrath extends AbstractHolyCard {
     public HolyWrath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        damage = baseDamage = 4;
+        damage = baseDamage = 10;
         exhaust = true;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
     }
+    public void applyPowers() {
+        if(BlockModifierManager.hasCustomBlockType(AbstractDungeon.player) && BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockTypes().get(0) instanceof DivineBlock){
+            int DivineBlock = BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockAmount();
+            damage += DivineBlock;
+            super.applyPowers();
+            damage -= DivineBlock;
+        }
+        super.applyPowers();
+    }
 
+    public void calculateCardDamage(AbstractMonster mo) {
+        if(BlockModifierManager.hasCustomBlockType(AbstractDungeon.player) && BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockTypes().get(0) instanceof DivineBlock){
+            int DivineBlock = BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockAmount();
+            damage += DivineBlock;
+            super.calculateCardDamage(mo);
+            damage -= DivineBlock;
+        }
+        super.calculateCardDamage(mo);
+    }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (BlockModifierManager.hasCustomBlockType(p) && BlockModifierManager.getTopBlockInstance(p).getBlockTypes().get(0) instanceof DivineBlock){
             for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
-                addToBot(new SmiteAction(mo, new DamageInfo(p, BlockModifierManager.getTopBlockInstance(p).getBlockAmount()*2, damageTypeForTurn)));
+                addToBot(new SmiteAction(mo, new DamageInfo(p, damage+ BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockAmount(), damageTypeForTurn)));
             }
             this.addToBot(new AbstractGameAction() {
                 @Override
@@ -67,6 +86,10 @@ public class HolyWrath extends AbstractHolyCard {
                     this.isDone = true;
                 }
             });
+        } else {
+            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+                addToBot(new SmiteAction(mo, new DamageInfo(p, damage, damageTypeForTurn)));
+            }
         }
         super.use(p,m);
     }

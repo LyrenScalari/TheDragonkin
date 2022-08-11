@@ -50,10 +50,8 @@ public class DivineFire extends AbstractHolyCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        DamageModifierManager.addModifier(this, new FireDamage(true,false));
+        DamageModifierManager.addModifier(this, new FireDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
-        tags.add(CustomTags.Radiant);
-        RadiantExchange = 1;
     }
 
     @Override

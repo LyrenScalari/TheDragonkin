@@ -27,7 +27,7 @@ import theDragonkin.util.TriggerOnCycleEffect;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEffect {
+public class Pyroblast extends AbstractPrimalCard implements TriggerOnCycleEffect {
 
     public static final String ID = DragonkinMod.makeID(Pyroblast.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -53,7 +53,6 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
         baseMagicNumber = magicNumber = 10;
         DamageModifierManager.addModifier(this, new FireDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
-        tags.add(CardTags.HEALING);
     }
 
     @Override
@@ -77,7 +76,6 @@ public class Pyroblast extends AbstractDragonkinCard implements TriggerOnCycleEf
 
     @Override
     public void TriggerOnCycle(AbstractCard ca) {
-            System.out.println("Pyroblast : Sealed Activated");
             this.updateCost(-1);
             baseDamage += magicNumber;
             damage += magicNumber;

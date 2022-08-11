@@ -54,7 +54,7 @@ public class BlessingofMight extends AbstractHolyCard{
     public BlessingofMight() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 12;
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 10;
         tags.add(CustomTags.Blessing);
     }
     @Override

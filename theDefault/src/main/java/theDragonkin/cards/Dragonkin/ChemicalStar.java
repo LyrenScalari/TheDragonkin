@@ -38,7 +38,7 @@ public class ChemicalStar extends AbstractDragonkinCard {
     public ChemicalStar() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = 4;
+        magicNumber = baseMagicNumber = 3;
         cardsToPreview = new Burn();
     }
 

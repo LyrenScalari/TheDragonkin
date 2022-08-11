@@ -24,21 +24,21 @@ public class CycleAction extends AbstractGameAction {
     }
     @Override
     public void update() {
-        AbstractDungeon.actionManager.addToTop(new DrawCardAction(drawamt));
-        AbstractDungeon.actionManager.addToTop(new DiscardSpecificCardAction(targetCard));
+        if (!AbstractDungeon.player.hand.contains(targetCard)){
+            isDone = true;
+        }
         if (TransformCard != null){
-            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
                 @Override
                 public void update() {
-                    if (AbstractDungeon.player.drawPile.size() < 1){
-                        AbstractDungeon.player.drawPile.removeCard(targetCard);
-                    } else {
-                        AbstractDungeon.player.discardPile.removeCard(targetCard);
-                    }
+                    AbstractDungeon.player.drawPile.removeCard(targetCard);
+                    AbstractDungeon.player.discardPile.removeCard(targetCard);
                     AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(TransformCard.makeStatEquivalentCopy(),1));
                     isDone = true;
                 }
             });
+        AbstractDungeon.actionManager.addToTop(new DrawCardAction(drawamt));
+        AbstractDungeon.actionManager.addToTop(new DiscardSpecificCardAction(targetCard));
         }
         isDone = true;
     }

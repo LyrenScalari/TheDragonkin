@@ -279,7 +279,7 @@ public class DragonkinMod implements
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
         Properties justicarDefaults = new Properties();
-        justicarDefaults.getProperty("Duality Tutorial Seen","FALSE");
+        justicarDefaults.getProperty("Duality Tutorial Seen","TRUE");
         justicarDefaults.getProperty("Blessing Tutorial Seen","FALSE");
         try {
             justicarConfig = new SpireConfig("The Justicar", "DragonkinMod", justicarDefaults);
@@ -300,17 +300,6 @@ public class DragonkinMod implements
         
         
         logger.info("Adding mod settings");
-        // This loads the mod settings.
-        // The actual mod Button is added below in receivePostInitialize()
-        theDefaultDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
-        try {
-            SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings); // ...right here
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enablePlaceholder = config.getBool(ENABLE_PLACEHOLDER_SETTINGS);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         logger.info("Done adding mod settings");
         
     }
@@ -417,7 +406,7 @@ public class DragonkinMod implements
                 e.printStackTrace();
             }
         });
-        ModLabeledToggleButton BlessingButton = new ModLabeledToggleButton(uiStrings.TEXT[1],
+        /*ModLabeledToggleButton BlessingButton = new ModLabeledToggleButton(uiStrings.TEXT[1],
                 350.0f, 500.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
                 justicarConfig.getBool("Blessing Tutorial Seen"), // Boolean it uses
                 settingsPanel, // The mod panel in which this button will be in
@@ -432,11 +421,11 @@ public class DragonkinMod implements
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                });
+                });*/
         TypeEnergyAtlas.addRegion("[Chi]",ImageMaster.loadImage(Chi_Desc),0,0,22,22);
         TypeEnergyAtlas.addRegion("[Mana]",ImageMaster.loadImage(Mana_Orb),0,0,128,128);
         settingsPanel.addUIElement(DualityButton); // Add the button to the settings panel. Button is a go.
-        settingsPanel.addUIElement(BlessingButton);
+//        settingsPanel.addUIElement(BlessingButton);
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         CustomIntent.add(new CurseAttack());
         

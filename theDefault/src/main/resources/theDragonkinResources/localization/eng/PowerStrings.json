@@ -36,8 +36,8 @@
                 ]
         },
         "theDragonkin:AshenArmor": {
-                "NAME": "Ashen Armor",
-                "DESCRIPTIONS": ["When you draw a #yStatus gain #b", " Block"
+                "NAME": "Molten Core",
+                "DESCRIPTIONS": ["When you draw a #yStatus #yCycle it and replace it with #yMagma #yArmor", ""
                 ]
         },
         "theDragonkin:AcidArmor": {
@@ -46,8 +46,8 @@
                 ]
         },
         "theDragonkin:BurningRain": {
-                "NAME": "Burning Rain",
-                "DESCRIPTIONS": ["When you draw a #yStatus Attack a random enemy for #b", " damage"
+                "NAME": "Fire and Brimstone",
+                "DESCRIPTIONS": ["When you draw a #yStatus #yCycle it and Attack a random enemy for #b", " damage"
                 ]
         },
         "theDragonkin:DivineConvictionpower": {
