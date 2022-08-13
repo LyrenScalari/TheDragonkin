@@ -37,9 +37,9 @@ public class CycleAction extends AbstractGameAction {
                     isDone = true;
                 }
             });
+        }
         AbstractDungeon.actionManager.addToTop(new DrawCardAction(drawamt));
         AbstractDungeon.actionManager.addToTop(new DiscardSpecificCardAction(targetCard));
-        }
         isDone = true;
     }
 }
