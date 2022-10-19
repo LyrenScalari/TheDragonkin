@@ -24,9 +24,8 @@ public class CycleAction extends AbstractGameAction {
     }
     @Override
     public void update() {
-        if (!AbstractDungeon.player.hand.contains(targetCard)){
-            isDone = true;
-        }
+        AbstractDungeon.actionManager.addToTop(new DrawCardAction(drawamt));
+        AbstractDungeon.actionManager.addToTop(new DiscardSpecificCardAction(targetCard));
         if (TransformCard != null){
             AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
                 @Override
@@ -38,8 +37,6 @@ public class CycleAction extends AbstractGameAction {
                 }
             });
         }
-        AbstractDungeon.actionManager.addToTop(new DrawCardAction(drawamt));
-        AbstractDungeon.actionManager.addToTop(new DiscardSpecificCardAction(targetCard));
         isDone = true;
     }
 }

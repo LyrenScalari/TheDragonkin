@@ -50,25 +50,6 @@ public class HolyWrath extends AbstractHolyCard {
         exhaust = true;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
     }
-    public void applyPowers() {
-        if(BlockModifierManager.hasCustomBlockType(AbstractDungeon.player) && BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockTypes().get(0) instanceof DivineBlock){
-            int DivineBlock = BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockAmount();
-            damage += DivineBlock;
-            super.applyPowers();
-            damage -= DivineBlock;
-        }
-        super.applyPowers();
-    }
-
-    public void calculateCardDamage(AbstractMonster mo) {
-        if(BlockModifierManager.hasCustomBlockType(AbstractDungeon.player) && BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockTypes().get(0) instanceof DivineBlock){
-            int DivineBlock = BlockModifierManager.getTopBlockInstance(AbstractDungeon.player).getBlockAmount();
-            damage += DivineBlock;
-            super.calculateCardDamage(mo);
-            damage -= DivineBlock;
-        }
-        super.calculateCardDamage(mo);
-    }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (BlockModifierManager.hasCustomBlockType(p) && BlockModifierManager.getTopBlockInstance(p).getBlockTypes().get(0) instanceof DivineBlock){

@@ -13,7 +13,7 @@
         },
         "theDragonkin:DragonkinRarePotion": {
                 "NAME": "Draught of Fervor",
-                "DESCRIPTIONS": ["Gain #b"," #yZeal"]
+                "DESCRIPTIONS": ["Increase your [#94bdff]Holy[] card damage and block gain by #b",""]
         },
         "theDragonkin:MagicHerbTea": {
                 "NAME": "Magic Herb Tea",

@@ -28,6 +28,7 @@ public class BurnAfterReading extends AbstractPrimalCard {
     public BurnAfterReading() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = 3;
+        exhaust = true;
     }
 
     public void applyPowers() {

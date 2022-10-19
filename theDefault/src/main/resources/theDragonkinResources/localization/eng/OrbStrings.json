@@ -44,7 +44,7 @@
     "NAME": "Lightspeed",
     "DESCRIPTION": [
       "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Flux #b4: Gain [E] and #b"," Block"
+      " damage during your turn", " NL #yBreak : #yCycle #b4 cards, Gain [E] and #b"," Block"
     ]
   },
   "theDragonkin:Sanctuary": {

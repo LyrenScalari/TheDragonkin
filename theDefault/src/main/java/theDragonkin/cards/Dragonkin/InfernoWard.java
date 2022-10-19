@@ -6,10 +6,7 @@ import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -72,7 +69,8 @@ public class InfernoWard extends AbstractPrimalCard {
         addToBot(new ApplyPowerAction(p,p,new VigorPower(p,magicNumber)));
         addToBot(new SelectCardsInHandAction(BaseMod.MAX_HAND_SIZE," Cycle",true,true,(card)->true,(List)-> {
             for (AbstractCard c : List){
-                addToBot(new CycleAction(c,1));
+                addToBot(new DrawCardAction(1));
+                addToBot (new DiscardSpecificCardAction(c));
                 addToBot(new GainBlockAction(p,block));
                 if (AbstractDungeon.player.drawPile.size() < 1){
                     addToBot(new ExhaustSpecificCardAction(c,AbstractDungeon.player.drawPile));

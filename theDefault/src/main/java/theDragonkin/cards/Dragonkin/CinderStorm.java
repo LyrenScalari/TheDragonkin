@@ -8,9 +8,12 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.DamageModifiers.FireDamage;
@@ -45,21 +48,19 @@ public class CinderStorm extends AbstractPrimalCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
-        DamageModifierManager.addModifier(this, new FireDamage(true,true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
         exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-            addToBot(new DamageAction(m,new DamageInfo(p,damage,damageTypeForTurn)));
-        addToBot(new SelectCardsInHandAction(BaseMod.MAX_HAND_SIZE," Cycle",false,false,(card)->true,(List)-> {
+        addToBot(new DamageAction(m,new DamageInfo(p,damage,damageTypeForTurn)));
+        addToBot(new SelectCardsInHandAction(BaseMod.MAX_HAND_SIZE," Cycle",true,true,(card)->true,(List)-> {
             for (AbstractCard c : List){
-                addToBot(new CycleAction(c,1));
+                addToBot(new DrawCardAction(1));
+                addToBot(new DiscardSpecificCardAction(c));
                 addToBot(new DamageRandomEnemyAction(new DamageInfo(p,damage), AbstractGameAction.AttackEffect.LIGHTNING));
             }
         }));
-            addToBot(new InfernoWardAction(10,()->new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE)));
         super.use(p,m);
     }
 

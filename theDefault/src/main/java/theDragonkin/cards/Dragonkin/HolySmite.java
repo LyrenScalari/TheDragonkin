@@ -61,8 +61,8 @@ public class HolySmite extends AbstractHolyCard {
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
 
-    private static final int DAMAGE = 3;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 5;
+    private static final int UPGRADE_PLUS_DMG = 2;
 
     // /STAT DECLARATION/
 
@@ -71,6 +71,7 @@ public class HolySmite extends AbstractHolyCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
     baseDamage =DAMAGE;
     this.magicNumber = this.baseMagicNumber = 2;
+    defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
 }
 
 
@@ -81,6 +82,7 @@ public class HolySmite extends AbstractHolyCard {
         addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false)));
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false)));
+        addToBot(new ApplyPowerAction(p, p, new WeakPower(p, defaultSecondMagicNumber, false)));
         super.use(p,m);
     }
 

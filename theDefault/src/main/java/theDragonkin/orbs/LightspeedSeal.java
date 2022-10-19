@@ -1,6 +1,7 @@
 package theDragonkin.orbs;
 
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -11,7 +12,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.CycleAction;
 import theDragonkin.actions.LightspeedFluxAction;
+import theDragonkin.cards.Dragonkin.AbstractHolyCard;
 import theDragonkin.util.AbstractSeal;
 
 public class LightspeedSeal extends AbstractSeal {
@@ -28,14 +31,15 @@ public class LightspeedSeal extends AbstractSeal {
     }
     public void Break(){
         super.Break();
-        AbstractDungeon.actionManager.addToBottom(new LightspeedFluxAction(5,()-> new AbstractGameAction() {
-            @Override
-            public void update() {
-                addToTop(new GainEnergyAction(1));
-                addToTop(new GainBlockAction(AbstractDungeon.player,BreakAmount));
-                isDone = true;
-            }
-        },Source));
+        if (!AbstractDungeon.player.hand.isEmpty()){
+            AbstractDungeon.actionManager.addToBottom(new SelectCardsInHandAction(5," Cycle",true,false,(card)->true,(List)-> {
+                for (AbstractCard c : List){
+                    AbstractDungeon.actionManager.addToBottom(new CycleAction(c,1));
+                    AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
+                    AbstractDungeon.actionManager.addToTop(new GainBlockAction(AbstractDungeon.player,BreakAmount));
+                }
+            }));
+        }
     }
     public void updateDescription() {
         description = DESCRIPTIONS[0] + PainAmount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + BreakAmount + DESCRIPTIONS[3];
