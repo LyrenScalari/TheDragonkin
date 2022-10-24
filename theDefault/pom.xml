@@ -60,7 +60,13 @@
             <artifactId>colorful</artifactId>
             <version>0.4.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>cardaugments</groupId>
+            <artifactId>CardAugments</artifactId>
+            <version>0.0.6</version>
+            <scope>system</scope>
+            <systemPath>${stsPath}/mods/CardAugments.jar</systemPath>
+        </dependency>
     </dependencies>
 
 

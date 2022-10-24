@@ -48,8 +48,8 @@ public class BlessingofWrath extends AbstractHolyCard {
     public BlessingofWrath() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        damage = baseDamage = 8;
-        magicNumber = baseMagicNumber = 8;
+        damage = baseDamage = 10;
+        magicNumber = baseMagicNumber = 4;
         tags.add(CustomTags.Blessing);
     }
     @Override

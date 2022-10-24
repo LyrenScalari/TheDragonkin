@@ -38,7 +38,7 @@ public class Pyroblast extends AbstractPrimalCard implements TriggerOnCycleEffec
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 9;
+    private static final int COST = 6;
     private static final int UPGRADED_COST = 1;
 
     private static final int POTENCY = 10;

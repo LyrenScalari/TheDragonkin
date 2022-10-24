@@ -17,26 +17,19 @@ import java.util.ArrayList;
 
 public class DivineDamage extends AbstractDamageModifier {
     boolean inherent;
-    public DivineDamage(boolean isinherent, boolean autoAdd){
-        inherent = isinherent;
-        this.automaticBindingForCards = autoAdd;
+    public DivineDamage(){
+        inherent = true;
+        this.automaticBindingForCards = false;
     }
     public boolean isInherent() {
         return inherent;
     }
-    public ArrayList<TooltipInfo> getCustomTooltips() {
-        ArrayList<TooltipInfo> tips = new ArrayList<>();
-        tips.add(new TooltipInfo(BaseMod.getKeywordTitle("thedragonkin:Divine"), BaseMod.getKeywordDescription("thedragonkin:Divine")));
-        return tips;
-    }
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        if (unblockedAmount > 0){
-            addToBot(new ApplyPowerAction(target,info.owner,new PenancePower(target,info.owner,(int)Math.ceil(unblockedAmount/2))));
-        }
+    public String getCardDescriptor() {
+        return BaseMod.getKeywordTitle("thedragonkin:Holy");
     }
     @Override
     public AbstractDamageModifier makeCopy() {
-        return new DivineDamage(inherent,automaticBindingForCards);
+        return new DivineDamage();
     }
     public int priority() {
         return 1;

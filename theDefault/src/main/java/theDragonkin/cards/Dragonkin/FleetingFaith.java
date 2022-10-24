@@ -31,10 +31,7 @@ public class FleetingFaith extends AbstractHolyCard {
 
     public FleetingFaith() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
         block = baseBlock = POTENCY;
-        heal = baseHeal = POTENCY;
-        baseMagicNumber = magicNumber = MAGIC;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 3;
     }
 

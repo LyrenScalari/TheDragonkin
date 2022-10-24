@@ -1,5 +1,7 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -10,12 +12,17 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import theDragonkin.CardMods.AddIconToDescriptionMod;
+import theDragonkin.DamageModifiers.FireDamage;
+import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.orbs.WrathSeal;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class PartingShot extends AbstractPrimalCard {
+public class PartingShot extends AbstractHolyCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -51,23 +58,27 @@ public class PartingShot extends AbstractPrimalCard {
     public PartingShot() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = 8;
-        block = baseBlock = 8;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 4;
         magicNumber = baseMagicNumber = MAGIC;
+        DamageModifierManager.addModifier(this, new FireDamage(true,true));
+        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
     }
 
     // Actions the card should do.
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m,new DamageInfo(p,damage), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        addToBot(new ApplyPowerAction(p,p,new VulnerablePower(p,1,false)));
-        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn){
-            if (c.type == CardType.ATTACK && c != this){
-                addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
-                addToBot(new ApplyPowerAction(p,p,new WeakPower(p,magicNumber,false)));
-                break;
+        AbstractDungeon.actionManager.addToBottom(new SmiteAction(m, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new ApplyPowerAction(p,p,new WeakPower(p,magicNumber,false)));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new WrathSeal(damage,defaultSecondMagicNumber));
+                DragonkinMod.Seals.add(new WrathSeal(damage,defaultSecondMagicNumber));
+                DragonkinMod.Seals.add(new WrathSeal(damage,defaultSecondMagicNumber));
+                isDone = true;
             }
-        }
+        });
         super.use(p,m);
     }
 

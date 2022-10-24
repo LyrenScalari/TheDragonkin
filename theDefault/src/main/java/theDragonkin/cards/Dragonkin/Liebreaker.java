@@ -59,7 +59,6 @@ public class Liebreaker extends AbstractHolyCard {
             addToBot(new DamageAction(p,new DamageInfo(p,defaultSecondMagicNumber, DamageInfo.DamageType.THORNS)));
             for (AbstractCard c : List){
                 addToBot(new CycleAction(c,1));
-                if (c instanceof AbstractHolyCard){
                     addToBot(new AbstractGameAction() {
                         @Override
                         public void update() {
@@ -67,7 +66,6 @@ public class Liebreaker extends AbstractHolyCard {
                             isDone = true;
                         }
                     });
-                }
             }
         }));
 

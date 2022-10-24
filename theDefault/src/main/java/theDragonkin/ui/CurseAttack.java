@@ -84,6 +84,5 @@ public class CurseAttack extends CustomIntent {
     static {
         uiStrings = CardCrawlGame.languagePack.getUIString(ID);
         TEXT = uiStrings.TEXT;
-
     }
 }

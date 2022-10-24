@@ -72,7 +72,6 @@ public class BlazingBreath extends AbstractPrimalCard {
         damage = baseDamage = DAMAGE;
         this.magicNumber = this.baseMagicNumber = 3;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
-        tags.add(CustomTags.Rune);
     }
 
     // Actions the card should do.

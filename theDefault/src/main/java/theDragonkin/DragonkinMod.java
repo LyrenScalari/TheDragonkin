@@ -1,5 +1,6 @@
 package theDragonkin;
 
+import CardAugments.CardAugmentsMod;
 import actlikeit.RazIntent.CustomIntent;
 import basemod.AutoAdd;
 import basemod.BaseMod;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -38,6 +40,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
 import theDragonkin.DamageModifiers.Icons.*;
+import theDragonkin.augments.SinnersMod;
 import theDragonkin.cards.Dragonkin.*;
 import theDragonkin.cards.Drifter.ForetellCard;
 import theDragonkin.characters.TheDefault;
@@ -213,6 +216,12 @@ public class DragonkinMod implements
     public static final String THE_DEFAULT_SKELETON_JSON = "theDragonkinResources/images/char/defaultCharacter/TheDragonkin.json";
     public static final String Windwalker_SKELETON_ATLAS = "theDragonkinResources/images/char/TheWindWalker/TheWindWalker.atlas";
     public static final String Windwalker_SKELETON_JSON = "theDragonkinResources/images/char/TheWindWalker/TheWindWalker.json";
+
+    public static final String ENABLE_CHIMERA_CROSSOVER = "Enable Chimera Crossover";
+    public static boolean enableChimeraCrossover = true;
+
+    public static final String SHOW_SUBTYPE_TUTORIAL = "Duality Tutorial Seen";
+    public static boolean showSubtypeTutorial = true;
     public static SpireConfig justicarConfig;
     public static UIStrings uiStrings;
     // =============== MAKE IMAGE PATHS =================
@@ -280,7 +289,7 @@ public class DragonkinMod implements
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
         Properties justicarDefaults = new Properties();
         justicarDefaults.getProperty("Duality Tutorial Seen","TRUE");
-        justicarDefaults.getProperty("Blessing Tutorial Seen","FALSE");
+        justicarDefaults.getProperty("Enable Chimera Crossover","TRUE");
         try {
             justicarConfig = new SpireConfig("The Justicar", "DragonkinMod", justicarDefaults);
         } catch (IOException e) {
@@ -289,7 +298,7 @@ public class DragonkinMod implements
         }
         logger.info("Justicar CONFIG OPTIONS LOADED:");
         logger.info("Duality tutorial seen: " + justicarConfig.getString("Duality Tutorial Seen") + ".");
-        logger.info("Blessing tutorial seen: " + justicarConfig.getString("Blessing Tutorial Seen") + ".");
+        logger.info("Enable Chimera Crossover: " + justicarConfig.getString("Blessing Tutorial Seen") + ".");
         /*BaseMod.addColor(WindWalker_Jade_COLOR, WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(),
                 WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(), WindWalker_Jade.cpy(),
                 ATTACK_WindWalker, SKILL_WindWalker, Power_WindWalker, ENERGY_ORB_DEFAULT_GRAY,
@@ -389,55 +398,38 @@ public class DragonkinMod implements
         ModPanel settingsPanel = new ModPanel();
         
         // Create the on/off button:
+        float currentYposition = 740f;
+        float spacingY = 55f;
         uiStrings = CardCrawlGame.languagePack.getUIString(modID + ":UIText");
-        ModLabeledToggleButton DualityButton = new ModLabeledToggleButton(uiStrings.TEXT[0],
-                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                justicarConfig.getBool("Duality Tutorial Seen"), // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-                     justicarConfig.setBool("Duality Tutorial Seen",button.enabled); // The boolean true/false will be whether the button is enabled or not
-                     CardCrawlGame.sound.play("UI_CLICK_1");
-            try {
-                // And based on that boolean, set the settings and save them
-                justicarConfig.setString("Duality Tutorial Seen",""+button.enabled);
-                justicarConfig.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        ModLabeledToggleButton DualityButton = new ModLabeledToggleButton(uiStrings.TEXT[0], 350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                justicarConfig.getBool(SHOW_SUBTYPE_TUTORIAL), settingsPanel, (label) -> {}, (button) -> {
+            justicarConfig.setBool(SHOW_SUBTYPE_TUTORIAL, button.enabled);
+            showSubtypeTutorial = button.enabled;
+            try {justicarConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
-        /*ModLabeledToggleButton BlessingButton = new ModLabeledToggleButton(uiStrings.TEXT[1],
-                350.0f, 500.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                justicarConfig.getBool("Blessing Tutorial Seen"), // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-                    justicarConfig.setBool("Blessing Tutorial Seen",button.enabled); // The boolean true/false will be whether the button is enabled or not
-                    CardCrawlGame.sound.play("UI_CLICK_1");
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        justicarConfig.setString("Duality Tutorial Seen",""+button.enabled);
-                        justicarConfig.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });*/
+        currentYposition -= spacingY;
+        //Starting position
+        //Button already multiplies by Settings.scale, so we pass raw X and Y values
+        ModLabeledToggleButton enableChimeraCrossoverButton = new ModLabeledToggleButton(uiStrings.TEXT[1], 350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                justicarConfig.getBool(ENABLE_CHIMERA_CROSSOVER), settingsPanel, (label) -> {}, (button) -> {
+            justicarConfig.setBool(ENABLE_CHIMERA_CROSSOVER, button.enabled);
+            enableChimeraCrossover = button.enabled;
+            try {justicarConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        settingsPanel.addUIElement(DualityButton);
+        settingsPanel.addUIElement(enableChimeraCrossoverButton);
+
+        currentYposition -= spacingY; //reduce the spacing
         TypeEnergyAtlas.addRegion("[Chi]",ImageMaster.loadImage(Chi_Desc),0,0,22,22);
         TypeEnergyAtlas.addRegion("[Mana]",ImageMaster.loadImage(Mana_Orb),0,0,128,128);
-        settingsPanel.addUIElement(DualityButton); // Add the button to the settings panel. Button is a go.
+
 //        settingsPanel.addUIElement(BlessingButton);
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         CustomIntent.add(new CurseAttack());
-        
-        // =============== EVENTS =================
-        
-        // This event will be exclusive to the City (act 2). If you want an event that's present at any
-        // part of the game, simply don't include the dungeon ID
-        // If you want to have a character-specific event, look at slimebound (CityRemoveEventPatch).
-        // Essentially, you need to patch the game and say "if a player is not playing my character class, remove the event from the pool"
-        
-        // =============== /EVENTS/ =================
-        // Add the event
+
+        if (Loader.isModLoaded("CardAugments")) {
+            AugmentHelper.register();
+        }
         logger.info("Done loading badge Image and mod options");
     }
     private static BitmapFont prepFont(FreeTypeFontGenerator g, float size, boolean isLinearFiltering) {

@@ -64,8 +64,8 @@
     "DESCRIPTION": "Deal !theDragonkin:D2! damage twice. NL Deal !D! [theDragonkin:FireIcon] damage.  NL Apply !M! thedragonkin:Scorch and Weak. NL Gain !thedragonkin:M2! Vulnerable."
   },
   "theDragonkin:PartingShot": {
-    "NAME": "Parting Shot",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Vulnerable. NL If you played another *Attack this turn, apply and gain !M! Weak."
+    "NAME": "Branding Smite",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Weak. NL thedragonkin:Tribute !thedragonkin:M2! : Deal !D! damage to a random enemy 3 Times."
   },
   "theDragonkin:Unbroken": {
     "NAME": "Unbroken",
@@ -159,11 +159,11 @@
   },
   "theDragonkin:BlessedShield": {
     "NAME": "Blessed Shield",
-    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Tribute !M2!: Increase this cards Block by !M!."
+    "DESCRIPTION": "Gain !B! Block. NL thedragonkin:Tribute !thedragonkin:M2!: Increase this cards Block by !M!."
   },
   "theDragonkin:SearingLight": {
     "NAME": "Searing Light",
-    "DESCRIPTION": "Take !M2! damage. NL Gain !B! ."
+    "DESCRIPTION": "Take !thedragonkin:M2! damage. NL Gain !B! ."
   },
   "theDragonkin:PowerThrough": {
     "NAME": "Defiant Guard",
@@ -175,11 +175,11 @@
   },
   "theDragonkin:FleetingFaith": {
     "NAME": "Fleeting Faith",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M2! thedragonkin:Penance. NL Gain !M2! thedragonkin:Penance."
+    "DESCRIPTION": "Gain !B! Block. NL Apply !thedragonkin:M2! thedragonkin:Penance. NL Gain !thedragonkin:M2! thedragonkin:Penance."
   },
   "theDragonkin:Flashpoint": {
     "NAME": "Heretical Rites",
-    "DESCRIPTION": "Gain !M! of a thedragonkin:Divine_Burden. NL Gain !M2! thedragonkin:Sacrifice. NL Gain [E] [E]"
+    "DESCRIPTION": "Gain !M! of a thedragonkin:Divine_Burden. NL Gain !thedragonkin:M2! thedragonkin:Sacrifice. NL Gain [E] [E]"
   },
   "theDragonkin:Pandemic": {
     "NAME": "Pandemic",
@@ -214,15 +214,15 @@
   },
   "theDragonkin:WeightofContrition": {
     "NAME": "Weight of Contrition",
-    "DESCRIPTION": "Apply !M2! thedragonkin:Penance. NL *Penance deals !M! additional damage this combat"
+    "DESCRIPTION": "Apply !thedragonkin:M2! thedragonkin:Penance. NL *Penance deals !M! additional damage this combat"
   },
   "theDragonkin:Condem": {
     "NAME": "Condemn",
     "DESCRIPTION": "Apply !M! thedragonkin:Penance."
   },
   "theDragonkin:HastyJudgement": {
-    "NAME": "Tithe of Torment",
-    "DESCRIPTION": "Gain !M! of a thedragonkin:Divine_Burden NL Increase all enemies debuffs by !M2!, twice if you have 6 or more debuffs."
+    "NAME": "Thunderous Smite",
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! Times. NL This strikes an additional time for each thedragonkin:Tribute Seal you currently have."
   },
   "theDragonkin:AshenArmor": {
     "NAME": "Molten Core",
@@ -285,15 +285,15 @@
   },
   "theDragonkin:LatentBlessing": {
     "NAME": "Latent Power",
-    "DESCRIPTION": "thedragonkin:Cycle !M2! cards. NL If any are [#94bdff]Holy[], gain !B! ."
+    "DESCRIPTION": "thedragonkin:Cycle !thedragonkin:M2! cards. NL If any are [#94bdff]Holy[], gain !B! ."
   },
   "theDragonkin:Liebreaker": {
     "NAME": "Inquisitor's Brand",
-    "DESCRIPTION": "Take !M2! damage. NL thedragonkin:Cycle !M! cards. For each [#94bdff]Holy[] card, thedragonkin:Tribute !M2!: Deal !D! damage to a random enemy."
+    "DESCRIPTION": "Take !thedragonkin:M2! damage. NL thedragonkin:Cycle !M! cards. For each, thedragonkin:Tribute !thedragonkin:M2!: Deal !D! damage to a random enemy."
   },
   "theDragonkin:DivineGambit": {
     "NAME": "Blazing Gambit",
-    "DESCRIPTION": "Take !M2! [theDragonkin:FireIcon] damage. NL thedragonkin:Cycle !M! cards. NL Deal !D! damage to a random enemy for each."
+    "DESCRIPTION": "Take !thedragonkin:M2! [theDragonkin:FireIcon] damage. NL thedragonkin:Cycle !M! cards. NL Deal !D! damage to a random enemy for each."
   },
   "theDragonkin:DivineVision": {
     "NAME": "Divine Vision",

@@ -32,7 +32,6 @@ public class Pandemic extends AbstractDragonkinCard {
 
     public Pandemic() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
         this.exhaust = true;
     }

@@ -2,7 +2,7 @@
   "theDragonkin:UIText": {
     "TEXT": [
       "View subtype tutorial during the next combat you enter as the Justicar.",
-      "View blessing tutorial during the next combat you with Blessing card."
+      "Enable Chimera Crossover Modifers."
     ]
   },
   "theDragonkin:MultiIntentStrings": {
@@ -22,12 +22,6 @@
       "Ethereal NL ",
       "Exhaust",
       "Retain NL "
-    ]
-  },
-  "SpellCard": {
-    "TEXT": [
-      "Spell",
-      "Not Enough #rMana"
     ]
   },
   "theDragonkin:PhlyacteryPanel": {
@@ -56,14 +50,39 @@
       "Empower itself."
     ]
   },
-
-  "WitherCard": {
+  "theDragonkin:SinnersMod": {
     "TEXT": [
-      "thedragonkin:Depleted. NL ",
-      "This spell is #rDepleted!",
-      "Cast Count",
-      " NL (Current value: #b",
-      ")"
+      "Sinner's ",
+      "",
+      " NL Apply %d thedragonkin:Penance to EVERYONE."
+    ]
+  },
+  "theDragonkin:ConvectionMod": {
+    "TEXT": [
+      "Convection ",
+      "",
+      " NL thedragonkin:Cycle %d card."
+    ]
+  },
+  "theDragonkin:AgheelsMod": {
+    "TEXT": [
+      "Agheel's ",
+      "",
+      " NL Apply %d thedragonkin:Scorch to to all enemies."
+    ]
+  },
+  "theDragonkin:FlagellantsMod": {
+    "TEXT": [
+      "Flagellant's ",
+      "",
+      " NL thedragonkin:Tribute 5 : Deal %d damage to a random enemy."
+    ]
+  },
+  "theDragonkin:PyroMod": {
+    "TEXT": [
+      "Pyro ",
+      "",
+      " NL When drawn add a *Burn to your hand. NL thedragonkin:Sealed : Reduce this cards cost by 1 this combat, Increase this cards damage by %d this combat."
     ]
   }
 }
