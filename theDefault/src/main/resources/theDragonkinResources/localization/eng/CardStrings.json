@@ -60,8 +60,8 @@
     "DESCRIPTION": "Take !M! damage. NL Gain !B! Block. NL Deal !D! damage to ALL enemies."
   },
   "theDragonkin:ThreePointStrike": {
-    "NAME": "Three Point Strike",
-    "DESCRIPTION": "Deal !theDragonkin:D2! damage twice. NL Deal !D! [theDragonkin:FireIcon] damage.  NL Apply !M! thedragonkin:Scorch and Weak. NL Gain !thedragonkin:M2! Vulnerable."
+    "NAME": "Wrathful Smite",
+    "DESCRIPTION": "Deal !D! [theDragonkin:FireIcon] damage. NL Apply and Gain !M! thedragonkin:scorch. NL thedragonkin:Sealed : Return this card from your discard pile to your hand."
   },
   "theDragonkin:PartingShot": {
     "NAME": "Branding Smite",
@@ -69,7 +69,8 @@
   },
   "theDragonkin:Unbroken": {
     "NAME": "Unbroken",
-    "DESCRIPTION": "At the end of your turn, reduce your Weak, Vulnerable, Frail, thedragonkin:Scorch, and thedragonkin:Penance by !M!"
+    "DESCRIPTION": "While Vulnerable take 20% less damage. NL While Frail gain 10% more Block. NL While Weak deal 10% more damage.",
+    "UPGRADE_DESCRIPTION": "While Vulnerable take 25% less damage. NL While Frail gain 15% more Block. NL While Weak deal 15% more damage."
   },
   "theDragonkin:Pyroblast": {
     "NAME": "Pyroblast",
@@ -226,7 +227,7 @@
   },
   "theDragonkin:AshenArmor": {
     "NAME": "Molten Core",
-    "DESCRIPTION": "When you draw a *Status card, thedragonkin:Cycle it and replace it with *Magma *Armor"
+    "DESCRIPTION": "When you draw a *Status card, thedragonkin:Cycle it and replace it with *Molten *Ember"
   },
   "theDragonkin:AcidArmor": {
     "NAME": "Pain Syphon",
@@ -320,6 +321,11 @@
   "theDragonkin:ScalesofJustice": {
     "NAME": "Scales of Justice",
     "DESCRIPTION": "Deal !D! damage to all enemies for each debuff you have. NL Apply a copy of your debuffs to all enemies."
+  },
+
+  "theDragonkin:MoltenEmber": {
+    "NAME": "Molten Ember",
+    "DESCRIPTION": "Gain !B! Block. NL Exhaust NL thedragonkin:Sealed: Increase this cards Block gain by !M! this turn. NL Deal !M! damage to a random enemy"
   },
 
   "theDragonkin:WindwalkerStrike": {

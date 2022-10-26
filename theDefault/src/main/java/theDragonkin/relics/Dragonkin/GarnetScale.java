@@ -80,7 +80,7 @@ public class GarnetScale extends CustomRelic implements OnReceivePowerRelic { //
 
     @Override
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature) {
-        if (!used){
+        if (!used && abstractPower.type == AbstractPower.PowerType.DEBUFF){
             addToBot(new GainBlockAction(AbstractDungeon.player,counter));
             used = true;
         }

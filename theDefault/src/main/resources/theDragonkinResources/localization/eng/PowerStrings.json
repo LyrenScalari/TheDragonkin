@@ -60,7 +60,7 @@
         },
         "theDragonkin:Unbroken": {
                 "NAME": "Unbroken",
-                "DESCRIPTIONS": ["At the end of your turn reduce your #yWeak, #yVulnerable, #yFrail, #yScorch, and #yPenance by #b"," "]
+                "DESCRIPTIONS": ["While #yWeak deal #b","% additional damage NL ","While #yFrail gain #b","% additional block NL ","While Vulnerable take #b","% less damage."]
         },
         "theDragonkin:Perseverance": {
                 "NAME": "Ignored Pain",

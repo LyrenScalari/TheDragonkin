@@ -7,6 +7,8 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,12 +21,13 @@ import theDragonkin.DragonkinMod;
 import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.Scorchpower;
+import theDragonkin.util.TriggerOnCycleEffect;
 
 import java.util.ArrayList;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class ThreePointStrike extends AbstractDragonkinCard {
+public class ThreePointStrike extends AbstractHolyCard implements TriggerOnCycleEffect {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -48,56 +51,29 @@ public class ThreePointStrike extends AbstractDragonkinCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
-    private static final int COST = 3;
+    private static final int COST = 0;
     private static final int BLOCK = 18;
     private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int MAGIC = 2;
+    private static final int MAGIC = 4;
     private ArrayList<AbstractDamageModifier> Fire = new ArrayList<>();
     // /STAT DECLARATION/
     private final ArrayList<AbstractDamageModifier> normalDamage = new ArrayList<>();
 
     public ThreePointStrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        ThirdDamage = baseThirdDamage = secondDamage = baseSecondDamage = damage = baseDamage = 9;
-        magicNumber = baseMagicNumber = MAGIC;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
+        ThirdDamage = baseThirdDamage = secondDamage = baseSecondDamage = damage = baseDamage = 8;
+        magicNumber = baseMagicNumber = MAGIC;;
         Fire.add(new FireDamage(true, false));
         DamageModifierManager.addModifier(this, new FireDamage(true,false));
     }
-    @Override
-    public void applyPowers() {
-        int d2;
-        DamageModifierManager.removeModifier(this,Fire.get(0));
-        super.applyPowers();
-        d2 = damage;
-        DamageModifierManager.addModifier(this,Fire.get(0));
-        super.applyPowers();
-        secondDamage = d2;
-        isSecondDamageModified = secondDamage != baseSecondDamage;
-    }
 
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        int d2;
-        DamageModifierManager.removeModifier(this,Fire.get(0));
-        super.calculateCardDamage(mo);
-        d2 = damage;
-        DamageModifierManager.addModifier(this,Fire.get(0));
-        super.calculateCardDamage(mo);
-        secondDamage = d2;
-        isSecondDamageModified = secondDamage != baseSecondDamage;
-    }
     // Actions the card should do.
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SmiteAction(m, BindingHelper.makeInfo(normalDamage,p,damage, DamageInfo.DamageType.NORMAL)));
-        addToBot(new DamageAction(m,BindingHelper.makeInfo(normalDamage,p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        addToBot(new DamageAction(m, BindingHelper.makeInfo(Fire,p,secondDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
         addToBot(new ApplyPowerAction(m,p,new Scorchpower(m,p,magicNumber)));
-        addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
-        addToBot(new ApplyPowerAction(p,p,new VulnerablePower(p,1,false)));
-
+        addToBot(new ApplyPowerAction(p,p,new Scorchpower(p,p,magicNumber)));
     }
 
     //Upgraded stats.
@@ -108,6 +84,13 @@ public class ThreePointStrike extends AbstractDragonkinCard {
             upgradeDamage(3);
             upgradeSecondDamage(3);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void TriggerOnCycle(AbstractCard ca) {
+        if (AbstractDungeon.player.discardPile.contains(this)){
+            this.addToBot(new DiscardToHandAction(this));
         }
     }
 }

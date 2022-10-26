@@ -35,7 +35,7 @@ public class AshenArmor extends AbstractPrimalCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        cardsToPreview = new HeatBarrier();
+        cardsToPreview = new MoltenEmber();
     }
 
     @Override

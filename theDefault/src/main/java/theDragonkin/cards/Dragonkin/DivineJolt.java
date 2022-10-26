@@ -85,7 +85,10 @@ public class DivineJolt extends AbstractHolyCard {
         for (int i = 0; i < 2; ++i) {
            m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
            if (m != null) {
-               AbstractMonster finalM = m;
+               addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+               addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
+           } else {
+               m = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
                addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
                addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
            }

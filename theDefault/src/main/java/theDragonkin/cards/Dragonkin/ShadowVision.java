@@ -71,7 +71,7 @@ public class ShadowVision extends AbstractHolyCard {
         if (!upgraded) {
             upgradeName();
             upgradeDefaultSecondMagicNumber(1);
-            upgradeBlock(2);
+            upgradeBlock(4);
             rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
