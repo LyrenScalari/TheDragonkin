@@ -53,6 +53,7 @@ public class HastyJudgement extends AbstractHolyCard {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = 3;
+        tags.add(CustomTags.Smite);
     }
 
     // Actions the card should do.

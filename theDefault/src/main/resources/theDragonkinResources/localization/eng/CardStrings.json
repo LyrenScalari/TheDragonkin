@@ -16,8 +16,8 @@
     "DESCRIPTION": "Deal !D! damage NL Apply !M! thedragonkin:Scorch. NL Discard a card."
   },
   "theDragonkin:HammerOfWrath": {
-    "NAME": "Hammer Of Wrath",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! thedragonkin:Sacrifice."
+    "NAME": "Divine Smite",
+    "DESCRIPTION": "Deal !D! damage. Increase the damage of all your *Smite cards by !M!"
   },
   "theDragonkin:FlameClaw": {
     "NAME": "Flame Claw",
@@ -61,7 +61,7 @@
   },
   "theDragonkin:ThreePointStrike": {
     "NAME": "Wrathful Smite",
-    "DESCRIPTION": "Deal !D! [theDragonkin:FireIcon] damage. NL Apply and Gain !M! thedragonkin:scorch. NL thedragonkin:Sealed : Return this card from your discard pile to your hand."
+    "DESCRIPTION": "Deal !D! [theDragonkin:FireIcon] damage. NL Gain !M! thedragonkin:scorch. NL thedragonkin:Sealed : Return this card from your discard pile to your hand."
   },
   "theDragonkin:PartingShot": {
     "NAME": "Branding Smite",
@@ -69,8 +69,8 @@
   },
   "theDragonkin:Unbroken": {
     "NAME": "Unbroken",
-    "DESCRIPTION": "While Vulnerable take 20% less damage. NL While Frail gain 10% more Block. NL While Weak deal 10% more damage.",
-    "UPGRADE_DESCRIPTION": "While Vulnerable take 25% less damage. NL While Frail gain 15% more Block. NL While Weak deal 15% more damage."
+    "DESCRIPTION": "While Frail gain 10% more Block. NL While Weak deal 10% more damage.",
+    "UPGRADE_DESCRIPTION": "While Frail gain 15% more Block. NL While Weak deal 15% more damage."
   },
   "theDragonkin:Pyroblast": {
     "NAME": "Pyroblast",
@@ -210,8 +210,8 @@
     "DESCRIPTION": "Deal !D! damage and Apply !M! thedragonkin:Penance to a random enemy twice."
   },
   "theDragonkin:DivineStrike": {
-    "NAME": "Divine Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Gain Block equal to unblocked damage dealt."
+    "NAME": "Blinding Smite",
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to all enemies with Weak. Apply !M! Weak."
   },
   "theDragonkin:WeightofContrition": {
     "NAME": "Weight of Contrition",

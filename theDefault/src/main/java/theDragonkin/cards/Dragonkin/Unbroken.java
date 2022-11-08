@@ -34,16 +34,13 @@ public class Unbroken extends AbstractDragonkinCard {
 
     public Unbroken() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = POTENCY;
-        block = baseBlock = POTENCY;
-        heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
 
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new UnbrokenPower(p,magicNumber,magicNumber+10)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new UnbrokenPower(p,magicNumber)));
         super.use(p,m);
     }
 

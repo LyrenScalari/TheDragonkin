@@ -33,7 +33,7 @@ public class UnbrokenPower extends TwoAmountPower implements CloneablePowerInter
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("AcidArmor.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("AcidArmor32.png"));
 
-    public UnbrokenPower(final AbstractCreature owner, final int amount, final int amount2) {
+    public UnbrokenPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -50,30 +50,23 @@ public class UnbrokenPower extends TwoAmountPower implements CloneablePowerInter
 
         updateDescription();
     }
-    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
-        if (type == DamageInfo.DamageType.NORMAL && owner.hasPower(VulnerablePower.POWER_ID)) {
-            return damage * (1.0F - (amount2/10F));
-        } else {
-            return damage;
-        }
-    }
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL && owner.hasPower(WeakPower.POWER_ID)) {
-            return damage * (1.0F + (amount/10F));
+            return damage * (1.0F + (amount/100F));
         } else {
             return damage;
         }
     }
     public float modifyBlock(float blockAmount) {
         if (owner.hasPower(FrailPower.POWER_ID)) {
-            return blockAmount * (1.0F + (amount/10F));
+            return blockAmount * (1.0F + (amount/100F));
         } else {
             return blockAmount;
         }
     }
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]+ DESCRIPTIONS[4] + this.amount2 + DESCRIPTIONS[5];
+        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]+ DESCRIPTIONS[4];
     }
     @Override
     public AbstractPower makeCopy() {
@@ -85,6 +78,6 @@ public class UnbrokenPower extends TwoAmountPower implements CloneablePowerInter
         if (abstractPower instanceof UnbrokenPower){
             amount2 += ((UnbrokenPower) abstractPower).amount2;
         }
-        return false;
+        return true;
     }
 }

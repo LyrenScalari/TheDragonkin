@@ -26,4 +26,4 @@ public String modifyDescription(String rawDescription, AbstractCard card) {
 public AbstractCardModifier makeCopy() {
         return new  EtherealCardMod(duration);
         }
-        }
+}

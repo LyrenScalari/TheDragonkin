@@ -25,7 +25,7 @@ public class MoltenEmber extends AbstractDragonkinCard implements TriggerOnCycle
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
+    public static final CardColor COLOR = CardColor.COLORLESS;
     private static int realBlock = 8;
     private static final int COST = 0;
     private static final int UPGRADED_COST = 1;

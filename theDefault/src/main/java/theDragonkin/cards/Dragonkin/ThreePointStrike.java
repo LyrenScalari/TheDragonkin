@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import theDragonkin.CustomTags;
 import theDragonkin.DamageModifiers.DivineDamage;
 import theDragonkin.DamageModifiers.FireDamage;
 import theDragonkin.DragonkinMod;
@@ -54,7 +55,7 @@ public class ThreePointStrike extends AbstractHolyCard implements TriggerOnCycle
     private static final int COST = 0;
     private static final int BLOCK = 18;
     private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int MAGIC = 4;
+    private static final int MAGIC = 3;
     private ArrayList<AbstractDamageModifier> Fire = new ArrayList<>();
     // /STAT DECLARATION/
     private final ArrayList<AbstractDamageModifier> normalDamage = new ArrayList<>();
@@ -62,9 +63,10 @@ public class ThreePointStrike extends AbstractHolyCard implements TriggerOnCycle
     public ThreePointStrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         ThirdDamage = baseThirdDamage = secondDamage = baseSecondDamage = damage = baseDamage = 8;
-        magicNumber = baseMagicNumber = MAGIC;;
+        magicNumber = baseMagicNumber = MAGIC;
         Fire.add(new FireDamage(true, false));
         DamageModifierManager.addModifier(this, new FireDamage(true,false));
+        tags.add(CustomTags.Smite);
     }
 
     // Actions the card should do.
@@ -72,7 +74,6 @@ public class ThreePointStrike extends AbstractHolyCard implements TriggerOnCycle
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
-        addToBot(new ApplyPowerAction(m,p,new Scorchpower(m,p,magicNumber)));
         addToBot(new ApplyPowerAction(p,p,new Scorchpower(p,p,magicNumber)));
     }
 

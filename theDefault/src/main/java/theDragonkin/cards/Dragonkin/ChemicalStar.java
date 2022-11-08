@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.SmiteAction;
 import theDragonkin.characters.TheDefault;
@@ -40,6 +41,7 @@ public class ChemicalStar extends AbstractDragonkinCard {
         baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = 3;
         cardsToPreview = new Burn();
+        tags.add(CustomTags.Smite);
     }
 
     @Override

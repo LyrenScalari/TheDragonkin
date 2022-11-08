@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -29,6 +30,7 @@ import theDragonkin.relics.Dragonkin.GarnetScale;
 import theDragonkin.ui.EnergyOrbDragonkin;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static theDragonkin.DragonkinMod.*;
 import static theDragonkin.characters.TheDefault.Enums.Justicar_Red_COLOR;
@@ -254,7 +256,13 @@ public class TheDefault extends CustomPlayer {
                 AbstractGameAction.AttackEffect.FIRE,
                 AbstractGameAction.AttackEffect.LIGHTNING};
     }
-
+    public List<CutscenePanel> getCutscenePanels() {
+        List<CutscenePanel> panels = new ArrayList();
+        panels.add(new CutscenePanel("images/scenes/watcher1.png", "ORB_LIGHTNING_EVOKE"));
+        panels.add(new CutscenePanel("images/scenes/watcher2.png", "POWER_MANTRA"));
+        panels.add(new CutscenePanel("images/scenes/watcher3.png", "POWER_MANTRA"));
+        return panels;
+    }
     // Should return a string containing what text is shown when your character is
     // about to attack the heart. For example, the defect is "NL You charge your
     // core to its maximum..."

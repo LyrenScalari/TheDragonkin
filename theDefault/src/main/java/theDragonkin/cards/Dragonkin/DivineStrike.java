@@ -2,11 +2,15 @@ package theDragonkin.cards.Dragonkin;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
+import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
 
@@ -32,7 +36,7 @@ public class DivineStrike extends AbstractHolyCard {
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
-    private static final int COST = 2;  // COST = 1
+    private static final int COST = 1;  // COST = 1
     private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
 
     private static final int DAMAGE = 8;    // DAMAGE = 6
@@ -44,15 +48,21 @@ public class DivineStrike extends AbstractHolyCard {
     public DivineStrike(){
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage =DAMAGE;
-        this.tags.add(CardTags.STRIKE);
+        baseMagicNumber = magicNumber = 2;
+        tags.add(CustomTags.Smite);
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new DamageCallbackAction(m,new DamageInfo(p,damage,damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY,(dmg)->
-                addToBot(new GainBlockAction(p,dmg))));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(m,new DamageInfo(p,damage,damageTypeForTurn)));
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
+            if (mo.hasPower(WeakPower.POWER_ID)){
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(m,new DamageInfo(p,damage,damageTypeForTurn)));
+            }
+        }
+        addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
         super.use(p,m);
     }
 

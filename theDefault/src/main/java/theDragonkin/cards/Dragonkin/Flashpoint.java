@@ -45,7 +45,7 @@ public class Flashpoint extends AbstractPrimalCard {
     private static final int UPGRADED_COST = 0;
     public Flashpoint() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 2;
+        magicNumber = baseMagicNumber = 3;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 5;
     }
 

@@ -1,12 +1,15 @@
 package theDragonkin.cards.Dragonkin;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theDragonkin.CardMods.PlusDamageBlockCardMod;
 import theDragonkin.CustomTags;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
@@ -38,12 +41,27 @@ public class HammerOfWrath extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        tags.add(CustomTags.Radiant);
+        tags.add(CustomTags.Smite);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
+        for (AbstractCard c : AbstractDungeon.player.hand.group){
+            if (c.hasTag(CustomTags.Smite)){
+                CardModifierManager.addModifier(c,new PlusDamageBlockCardMod(magicNumber));
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group){
+            if (c.hasTag(CustomTags.Smite)){
+                CardModifierManager.addModifier(c,new PlusDamageBlockCardMod(magicNumber));
+            }
+        }
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group){
+            if (c.hasTag(CustomTags.Smite)){
+                CardModifierManager.addModifier(c,new PlusDamageBlockCardMod(magicNumber));
+            }
+        }
         super.use(p,m);
     }
 

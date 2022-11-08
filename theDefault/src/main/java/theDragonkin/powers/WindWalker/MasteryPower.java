@@ -55,7 +55,7 @@ public class MasteryPower extends AbstractPower implements CloneablePowerInterfa
                 addToBot(new AbstractGameAction() {
                     @Override
                     public void update() {
-                        CardModifierManager.addModifier(c,new PlusDamageBlockCardMod());
+                        CardModifierManager.addModifier(c,new PlusDamageBlockCardMod(2));
                         isDone = true;
                     }
                 });
@@ -66,7 +66,7 @@ public class MasteryPower extends AbstractPower implements CloneablePowerInterfa
                 addToBot(new AbstractGameAction() {
                     @Override
                     public void update() {
-                        CardModifierManager.addModifier(c,new PlusDamageBlockCardMod());
+                        CardModifierManager.addModifier(c,new PlusDamageBlockCardMod(2));
                         isDone = true;
                     }
                 });
@@ -77,7 +77,7 @@ public class MasteryPower extends AbstractPower implements CloneablePowerInterfa
                 addToBot(new AbstractGameAction() {
                     @Override
                     public void update() {
-                        CardModifierManager.addModifier(c,new PlusDamageBlockCardMod());
+                        CardModifierManager.addModifier(c,new PlusDamageBlockCardMod(2));
                         isDone = true;
                     }
                 });
@@ -88,7 +88,7 @@ public class MasteryPower extends AbstractPower implements CloneablePowerInterfa
                 addToBot(new AbstractGameAction() {
                     @Override
                     public void update() {
-                        CardModifierManager.addModifier(c,new PlusDamageBlockCardMod());
+                        CardModifierManager.addModifier(c,new PlusDamageBlockCardMod(2));
                         isDone = true;
                     }
                 });

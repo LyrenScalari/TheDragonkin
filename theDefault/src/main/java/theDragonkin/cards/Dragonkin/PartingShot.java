@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
+import theDragonkin.CustomTags;
 import theDragonkin.DamageModifiers.FireDamage;
 import theDragonkin.DamageModifiers.Icons.FireIcon;
 import theDragonkin.DragonkinMod;
@@ -62,6 +63,7 @@ public class PartingShot extends AbstractHolyCard {
         magicNumber = baseMagicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new FireDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));
+        tags.add(CustomTags.Smite);
     }
 
     // Actions the card should do.

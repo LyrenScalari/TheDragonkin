@@ -72,6 +72,7 @@ public class HolySmite extends AbstractHolyCard {
     baseDamage =DAMAGE;
     this.magicNumber = this.baseMagicNumber = 2;
     defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
+        tags.add(CustomTags.Smite);
 }
 
 
