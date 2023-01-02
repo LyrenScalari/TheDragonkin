@@ -92,6 +92,7 @@ public class DivineJolt extends AbstractHolyCard {
                addToBot(new SmiteAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
                addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
            }
+
         }
         super.use(p,m);
     }
