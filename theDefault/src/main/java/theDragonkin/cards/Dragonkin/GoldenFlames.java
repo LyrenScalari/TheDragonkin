@@ -28,7 +28,7 @@ import javax.swing.*;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class GoldenFlames extends AbstractHolyCard implements TriggerOnCycleEffect {
+public class GoldenFlames extends AbstractDragonkinCard implements TriggerOnCycleEffect {
 
     public static final String ID = DragonkinMod.makeID(GoldenFlames.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

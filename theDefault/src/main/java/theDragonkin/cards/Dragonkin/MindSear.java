@@ -22,7 +22,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class MindSear extends AbstractDragonkinCard {
+public class MindSear extends AbstractPrimalCard {
 
     public static final String ID = DragonkinMod.makeID(MindSear.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

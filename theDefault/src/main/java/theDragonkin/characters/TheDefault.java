@@ -9,6 +9,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -115,7 +116,6 @@ public class TheDefault extends CustomPlayer {
                 1.0f);
         AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
         AnimationState.TrackEntry e1 = state.setAnimation(1, "WingFlap", true);
-        AnimationState.TrackEntry e2 = state.setAnimation(2, "TailFlick", true);
         e.setTime(e.getEndTime() * MathUtils.random());
 
         // =============== /ANIMATIONS/ =================
@@ -174,7 +174,18 @@ public class TheDefault extends CustomPlayer {
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT,
                 false); // Screen Effect
     }
+    public void damage(DamageInfo info) {
+        if (info.owner != null && info.type != DamageInfo.DamageType.THORNS && info.output - this.currentBlock > 0) {
+            AnimationState.TrackEntry e1 = this.state.setAnimation(1, "Hurt", false);
+            this.state.addAnimation(1, "WingFlap", true, 0.0F);
+            AnimationState.TrackEntry e = this.state.setAnimation(0, "Hurt", false);
+            this.state.addAnimation(0, "animation", true, 0.0F);
+            e.setTimeScale(1.0F);
+            e1.setTimeScale(1.0f);
+        }
 
+        super.damage(info);
+    }
     // character Select on-button-press sound effect
     @Override
     public String getCustomModeCharacterButtonSoundKey() {

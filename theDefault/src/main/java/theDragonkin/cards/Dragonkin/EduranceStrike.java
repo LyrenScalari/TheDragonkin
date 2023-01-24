@@ -7,9 +7,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.*;
 import theDragonkin.DragonkinMod;
 import theDragonkin.characters.TheDefault;
+import theDragonkin.util.Wiz;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
@@ -20,11 +21,11 @@ public class EduranceStrike extends AbstractDragonkinCard {
 
 
     private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
     private static final int POTENCY= 10;
@@ -34,39 +35,15 @@ public class EduranceStrike extends AbstractDragonkinCard {
 
     public EduranceStrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = 10;
-        realBaseDamage = 10;
-        magicNumber = baseMagicNumber = 3;
-    }
-    public void applyPowers() {
-        realBaseDamage = baseDamage;
-        for (AbstractPower p :AbstractDungeon.player.powers){
-            if (p.type == AbstractPower.PowerType.DEBUFF){
-                baseDamage += magicNumber;
-            }
-        }
-        super.applyPowers();
-        baseDamage = realBaseDamage;
-    }
-
-    public void calculateCardDamage(AbstractMonster mo) {
-        realBaseDamage = baseDamage;
-        for (AbstractPower p :AbstractDungeon.player.powers){
-            if (p.type == AbstractPower.PowerType.DEBUFF){
-                baseDamage += magicNumber;
-            }
-        }
-        for (AbstractPower p : mo.powers){
-            if (p.type == AbstractPower.PowerType.DEBUFF){
-                baseDamage += magicNumber;
-            }
-        }
-        super.calculateCardDamage(mo);
-        baseDamage = realBaseDamage;
+        magicNumber = baseMagicNumber = 4;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 10;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage)));
+        Wiz.applyToSelf(new DrawCardNextTurnPower(p,1));
+        Wiz.applyToSelfNextTurn(new StrengthPower(p,defaultSecondMagicNumber));
+        Wiz.applyToSelfNextTurn(new LoseStrengthPower(p,defaultSecondMagicNumber));
     }
 
     @Override

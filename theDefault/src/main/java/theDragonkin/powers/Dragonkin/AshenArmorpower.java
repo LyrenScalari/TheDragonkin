@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
 import theDragonkin.cards.Dragonkin.HeatBarrier;
+import theDragonkin.cards.Dragonkin.MoltenEmber;
 import theDragonkin.util.TextureLoader;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
@@ -51,7 +52,7 @@ public class AshenArmorpower extends AbstractPower implements CloneablePowerInte
         if (c.type == AbstractCard.CardType.STATUS){
             this.flash();
             if (AbstractDungeon.player.hand.contains(c)){
-                addToBot(new CycleAction(c,1,new HeatBarrier()));
+                addToBot(new CycleAction(c,1,new MoltenEmber()));
             }
         }
     }

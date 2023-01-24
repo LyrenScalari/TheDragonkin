@@ -49,23 +49,17 @@ public class BlessingofWrath extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
         damage = baseDamage = 10;
-        magicNumber = baseMagicNumber = 4;
-        tags.add(CustomTags.Blessing);
+        magicNumber = baseMagicNumber = 3;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
-        if (target != null){
-            AbstractDungeon.actionManager.addToBottom(new SFXAction("ORB_LIGHTNING_EVOKE"));
-            addToBot(new SmiteAction(target, new DamageInfo(AbstractDungeon.player, damage, DamageInfo.DamageType.NORMAL)));
-            addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    DragonkinMod.Seals.add(new WrathSeal(damage,magicNumber));
-                    isDone = true;
-                }
-            });
-        }
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                DragonkinMod.Seals.add(new WrathSeal(damage,magicNumber));
+                isDone = true;
+            }
+        });
     }
 
     @Override

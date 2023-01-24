@@ -20,17 +20,16 @@ import theDragonkin.cards.Dragonkin.interfaces.StormCard;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.orbs.BlazeRune;
 import theDragonkin.orbs.SparkGlyph;
-import theDragonkin.powers.Dragonkin.HeatPower;
-import theDragonkin.powers.Dragonkin.PenancePower;
-import theDragonkin.powers.Dragonkin.SacrificePower;
-import theDragonkin.powers.Dragonkin.Scorchpower;
+import theDragonkin.powers.Dragonkin.*;
+import theDragonkin.util.TypeEnergyHelper;
+import theDragonkin.util.Wiz;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class Flashpoint extends AbstractPrimalCard {
+public class Flashpoint extends AbstractHolyCard{
 
     public static final String ID = DragonkinMod.makeID(Flashpoint.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
@@ -45,31 +44,38 @@ public class Flashpoint extends AbstractPrimalCard {
     private static final int UPGRADED_COST = 0;
     public Flashpoint() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 3;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 5;
+        block = baseBlock = 10;
+        magicNumber = baseMagicNumber = 1;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        energyCosts.put(TypeEnergyHelper.Mana.Exalt,magicNumber);
     }
-
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        boolean canUse = super.canUse(p, m);
+        if (!canUse) {
+            return false;
+        } else if (!(p.hasPower(DivineConvictionpower.POWER_ID))) {
+            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+            return false;
+        } else {
+            return canUse;
+        }
+    }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        ArrayList<AbstractPower> Burdens = new ArrayList<>();
-        Burdens.add(new WeakPower(p,magicNumber,false));
-        Burdens.add(new VulnerablePower(p,magicNumber,false));
-        Burdens.add(new FrailPower(p,magicNumber,false));
-        Burdens.add(new Scorchpower(p,p,magicNumber));
-        Burdens.add(new PenancePower(p,p,magicNumber));
-        Burdens.add(new ConstrictedPower(p,p,magicNumber));
-        addToBot(new ApplyPowerAction(p,p,Burdens.get(AbstractDungeon.miscRng.random(Burdens.size()-1))));
-        addToBot(new ApplyPowerAction(p,p,new SacrificePower(p,p,defaultSecondMagicNumber)));
-        for (int i = 0; i < magicNumber; i++){
+        addToBot(new ReducePowerAction(p,p,p.getPower(DivineConvictionpower.POWER_ID),magicNumber));
+        for (int i = 0; i < defaultSecondMagicNumber; i++){
                 addToBot(new GainEnergyAction(1));
         }
+        Wiz.block(p,block);
         super.use(p,m);
     }
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(2);
+            upgradeBlock(4);
+            upgradeDefaultSecondMagicNumber(1);
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

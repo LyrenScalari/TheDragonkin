@@ -20,7 +20,7 @@ public class SanctuarySeal extends AbstractSeal {
     public SanctuarySeal(int Pow, int Pain, AbstractCard source){
         super();
         name = orbString.NAME;
-        PainAmount = Pain;
+        basePainAmount = PainAmount = Pain;
         BreakAmount = Pow;
         Source = source;
     }

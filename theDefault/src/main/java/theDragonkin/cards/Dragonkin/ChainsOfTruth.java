@@ -54,7 +54,7 @@ public class ChainsOfTruth extends AbstractHolyCard {
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p,baseDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.LIGHTNING));
 
             for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters){
-                addToBot(new ApplyPowerAction(mo,p, new VulnerablePower(mo,baseMagicNumber,false)));
+                addToBot(new ApplyPowerAction(mo,p, new VulnerablePower(mo,magicNumber,false)));
                 addToBot(new ApplyPowerAction(mo,p,new PenancePower(mo,p,magicNumber)));
             }
         super.use(p,m);

@@ -1,7 +1,9 @@
 package theDragonkin.powers.Dragonkin;
 
 import basemod.interfaces.CloneablePowerInterface;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -27,8 +29,6 @@ public class DivineConvictionpower extends AbstractPower implements CloneablePow
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Zeal.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Zeal32.png"));
 
     public DivineConvictionpower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -42,12 +42,14 @@ public class DivineConvictionpower extends AbstractPower implements CloneablePow
         isTurnBased = false;
 
         // We load those txtures here.
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.loadRegion("mantra");
 
         updateDescription();
     }
-
+    @Override
+    public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
+        super.renderIcons(sb, x, y, Color.GOLD.cpy());
+    }
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         if (card instanceof AbstractHolyCard){

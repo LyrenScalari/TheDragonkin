@@ -9,7 +9,7 @@ public class AddIconToDescriptionMod extends AbstractCardModifier {
     public static final String DAMAGE = "!D!";
     public static final String BLOCK = "!B!";
     public static final String MAGIC = "!M!";
-    public static final String MAGIC2 = "!M2!";
+    public static final String MAGIC2 = "!thedragonkin:M2!";
 
     final String searchString;
     final String iconCode;

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
@@ -50,7 +51,7 @@ public class HeatShield extends AbstractPrimalCard {
         AbstractCard card = this;
         addToBot(new GainBlockAction(p,block));
         addToBot(new SelectCardsInHandAction(1," Cycle",false,false,(cards)->true,(List)->{
-            addToBot(new CycleAction(List.get(0),1));
+            addToBot(new CycleAction(List.get(0),0));
             if (List.get(0).type == CardType.STATUS){
                 card.returnToHand = true;
             }}));

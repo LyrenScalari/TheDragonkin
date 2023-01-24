@@ -1,5 +1,6 @@
 package theDragonkin.cards.Dragonkin;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
@@ -11,13 +12,14 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.CycleAction;
 import theDragonkin.characters.TheDefault;
 
 import java.util.Iterator;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class PowerThrough extends AbstractDragonkinCard {
+public class PowerThrough extends AbstractPrimalCard {
 
     public static final String ID = DragonkinMod.makeID(PowerThrough.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
@@ -42,60 +44,23 @@ public class PowerThrough extends AbstractDragonkinCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = POTENCY;
         magicNumber = baseMagicNumber = 1;
-        if (CardCrawlGame.dungeon != null && AbstractDungeon.currMapNode != null && !AbstractDungeon.getCurrRoom().isBattleOver) {
-            this.configureCostsOnNewCard();
-        }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p,block));
+        addToBot(new SelectCardsInHandAction(magicNumber," Cycle",false,false,(card)->true,(List)-> {
+            for (AbstractCard c : List){
+                addToBot(new CycleAction(c,1));
+            }
+        }));
         super.use(p,m);
-    }
-    @Override
-    public void applyPowers(){
-        reductionval = 0;
-        for (AbstractPower p : AbstractDungeon.player.powers){
-            if (p.type == AbstractPower.PowerType.DEBUFF){
-                reductionval += 1;
-            }
-        }
-            if ((baseCost-reductionval) != costForTurn){
-                cost = baseCost;
-                this.updateCost(-reductionval);
-            }
-            super.applyPowers();
-        }
-    @Override
-    public void triggerWhenDrawn() {
-        baseCost = costForTurn;
-        for (AbstractPower p : AbstractDungeon.player.powers){
-            if (p.type == AbstractPower.PowerType.DEBUFF){
-                reductionval += 1;
-            }
-        }
-        if ((baseCost-reductionval) != costForTurn){
-            cost = baseCost;
-            this.updateCost(-reductionval);
-        }
-    }
-    public void configureCostsOnNewCard() {
-        reductionval = 0;
-        for (AbstractPower p : AbstractDungeon.player.powers){
-            if (p.type == AbstractPower.PowerType.DEBUFF){
-                reductionval += 1;
-            }
-        }
-        if ((baseCost-reductionval) != costForTurn){
-            cost = baseCost;
-            this.updateCost(-reductionval);
-        }
     }
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(1);
+            upgradeBlock(3);
             initializeDescription();
         }
     }

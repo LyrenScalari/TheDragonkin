@@ -19,8 +19,10 @@ import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.powers.Dragonkin.PenancePower;
+import theDragonkin.powers.Dragonkin.PerseverancePower;
 import theDragonkin.powers.Dragonkin.Scorchpower;
 import theDragonkin.powers.Dragonkin.SteelWillPower;
+import theDragonkin.util.Wiz;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +54,8 @@ public class SteelWill extends AbstractPrimalCard {
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    private static final int COST = 0;
-    private static final int BLOCK = 8;
+    private static final int COST = 2;
+    private static final int BLOCK = 10;
     private static final int UPGRADE_PLUS_BLOCK = 3;
 
 
@@ -62,44 +64,15 @@ public class SteelWill extends AbstractPrimalCard {
 
     public SteelWill() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = 3;
+        magicNumber = baseMagicNumber = 5;
+        block = baseBlock = 12;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        ArrayList<AbstractCard> cards = new ArrayList<>();
-        cards.add(AbstractDungeon.player.drawPile.getTopCard());
-        cards.add(AbstractDungeon.player.drawPile.getNCardFromTop(1));
-        cards.add(AbstractDungeon.player.drawPile.getNCardFromTop(2));
-        ArrayList<AbstractPower> Burdens = new ArrayList<>();
-        Burdens.add(new WeakPower(p,magicNumber,false));
-        Burdens.add(new VulnerablePower(p,magicNumber,false));
-        Burdens.add(new FrailPower(p,magicNumber,false));
-        Burdens.add(new Scorchpower(p,p,magicNumber));
-        Burdens.add(new PenancePower(p,p,magicNumber));
-        Burdens.add(new ConstrictedPower(p,p,magicNumber));
-        addToBot(new SelectCardsCenteredAction(cards,1,"Choose one to add to hand, others will be discarded.",false,card -> true, (List) -> {
-            for (AbstractCard c : List){
-                cards.remove(c);
-                AbstractDungeon.player.drawPile.group.remove(c);
-                AbstractDungeon.player.drawPile.addToTop(c);
-                addToTop(new DrawCardAction(1));
-            }
-            for (AbstractCard c : cards){
-                addToBot(new AbstractGameAction() {
-                             @Override
-                             public void update() {
-                                 AbstractDungeon.player.drawPile.group.remove(c);
-                                 AbstractDungeon.player.discardPile.addToTop(c);
-                                 triggerOnManualDiscard();
-                                 isDone = true;
-                             }
-                         }
-                );
-            }
-        }));
-        addToBot(new ApplyPowerAction(p,p,Burdens.get(AbstractDungeon.miscRng.random(Burdens.size()-1))));
+        Wiz.block(p,block);
+        Wiz.applyToSelf(new PerseverancePower(p,p,magicNumber));
         super.use(p,m);
     }
 
@@ -107,11 +80,6 @@ public class SteelWill extends AbstractPrimalCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            isInnate = true;
-            initializeDescription();
-        }
+        upgradeBlock(4);
     }
 }

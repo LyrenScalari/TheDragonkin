@@ -1,7 +1,9 @@
 package theDragonkin.powers.Dragonkin;
 
 import basemod.interfaces.CloneablePowerInterface;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -40,17 +42,19 @@ public class SacrificePower extends TwoAmountPower implements CloneablePowerInte
         this.owner = owner;
         this.amount = amount;
         this.source = source;
-        amount2 = 10;
+        amount2 = 5;
         type = PowerType.BUFF;
         isTurnBased = false;
 
         // We load those txtures here.
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.loadRegion("sadistic");
 
         updateDescription();
     }
-
+    @Override
+    public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
+        super.renderIcons(sb, x, y, Color.CYAN.cpy());
+    }
     // note: If you want to apply an effect when a power is being applied you have 3 options:
     //onInitialApplication is "When THIS power is first applied for the very first time only."
     //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."

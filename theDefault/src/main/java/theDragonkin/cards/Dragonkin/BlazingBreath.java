@@ -61,7 +61,7 @@ public class BlazingBreath extends AbstractPrimalCard {
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 6;
+    private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 2;
 
     public BlazingBreath() {

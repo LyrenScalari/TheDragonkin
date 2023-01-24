@@ -32,6 +32,7 @@ import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.orbs.FortitudeSeal;
 import theDragonkin.orbs.WisdomSeal;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.util.Wiz;
 
 import java.util.ArrayList;
@@ -50,29 +51,26 @@ public class BlessingofFortitude extends AbstractHolyCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 5;
+    private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 0;
     public BlessingofFortitude() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
-        block = baseBlock = 12;
-        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 5;
-        BlockModifierManager.addModifier(this,new DivineBlock(true));
-        CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
-        tags.add(CustomTags.Blessing);
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 8;
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelfTemp(new DexterityPower(p,defaultSecondMagicNumber));
+        Wiz.applyToSelfTemp(new DivineConvictionpower(p,p,magicNumber));
+        addToBot(new DamageAction(p,new DamageInfo(p,magicNumber, DamageInfo.DamageType.THORNS)));
         AbstractCard that = this;
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                DragonkinMod.Seals.add(new FortitudeSeal(block,magicNumber,that));
+                DragonkinMod.Seals.add(new FortitudeSeal(magicNumber,defaultSecondMagicNumber,that));
                 isDone = true;
             }
         });

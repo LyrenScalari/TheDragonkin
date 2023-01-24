@@ -49,7 +49,7 @@ public class SearingLight extends AbstractHolyCard {
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
 
-    private static final int DAMAGE = 5;
+    private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 0;
 
     // /STAT DECLARATION/
@@ -58,10 +58,10 @@ public class SearingLight extends AbstractHolyCard {
     public SearingLight() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
         baseDamage = damage = DAMAGE;
-        block = baseBlock = 15;
+        block = baseBlock = 11;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 5;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
         tags.add(CustomTags.Radiant);
     }
 

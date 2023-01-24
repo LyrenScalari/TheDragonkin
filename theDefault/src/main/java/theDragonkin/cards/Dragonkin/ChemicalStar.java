@@ -17,7 +17,7 @@ import theDragonkin.characters.TheDefault;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class ChemicalStar extends AbstractDragonkinCard {
+public class ChemicalStar extends AbstractPrimalCard {
 
     public static final String ID = DragonkinMod.makeID(ChemicalStar.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");

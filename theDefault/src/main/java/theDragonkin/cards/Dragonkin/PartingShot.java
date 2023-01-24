@@ -23,7 +23,7 @@ import theDragonkin.orbs.WrathSeal;
 
 import static theDragonkin.DragonkinMod.makeCardPath;
 
-public class PartingShot extends AbstractHolyCard {
+public class PartingShot extends AbstractPrimalCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -59,7 +59,7 @@ public class PartingShot extends AbstractHolyCard {
     public PartingShot() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = 8;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 4;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 10;
         magicNumber = baseMagicNumber = MAGIC;
         DamageModifierManager.addModifier(this, new FireDamage(true,true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, FireIcon.get()));

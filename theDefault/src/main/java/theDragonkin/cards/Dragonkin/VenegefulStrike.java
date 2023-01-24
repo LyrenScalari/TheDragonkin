@@ -47,7 +47,7 @@ public class VenegefulStrike extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
         damage = baseDamage = 10;
-        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 2;
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 8;
         tags.add(CustomTags.Blessing);
 
     }

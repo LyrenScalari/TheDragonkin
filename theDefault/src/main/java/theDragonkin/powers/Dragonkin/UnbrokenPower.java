@@ -8,38 +8,38 @@ import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.*;
 import theDragonkin.DragonkinMod;
+import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.util.TextureLoader;
+import theDragonkin.util.Wiz;
 
 import static theDragonkin.DragonkinMod.makePowerPath;
 
-public class UnbrokenPower extends TwoAmountPower implements CloneablePowerInterface, OnReceivePowerPower {
+public class UnbrokenPower extends AbstractPower implements CloneablePowerInterface, ReciveDamageEffect {
     public AbstractCreature source;
 
     public static final String POWER_ID = DragonkinMod.makeID("Unbroken");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
+    public boolean used = false;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("AcidArmor.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("AcidArmor32.png"));
 
-    public UnbrokenPower(final AbstractCreature owner, final int amount) {
+    public UnbrokenPower(final AbstractCreature owner) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = amount;
-        this.amount2 = amount2;
+        this.amount = -1;
 
         type = PowerType.BUFF;
         isTurnBased = false;
@@ -50,34 +50,23 @@ public class UnbrokenPower extends TwoAmountPower implements CloneablePowerInter
 
         updateDescription();
     }
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        if (type == DamageInfo.DamageType.NORMAL && owner.hasPower(WeakPower.POWER_ID)) {
-            return damage * (1.0F + (amount/100F));
-        } else {
-            return damage;
-        }
-    }
-    public float modifyBlock(float blockAmount) {
-        if (owner.hasPower(FrailPower.POWER_ID)) {
-            return blockAmount * (1.0F + (amount/100F));
-        } else {
-            return blockAmount;
-        }
-    }
+
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + this.amount + DESCRIPTIONS[3]+ DESCRIPTIONS[4];
+        description = DESCRIPTIONS[0];
     }
     @Override
     public AbstractPower makeCopy() {
-        return new AcidArmorpower(owner, source, amount);
+        return new UnbrokenPower(owner);
     }
-
+    public void atStartOfTurnPostDraw() {
+        used = false;
+    }
     @Override
-    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower instanceof UnbrokenPower){
-            amount2 += ((UnbrokenPower) abstractPower).amount2;
+    public void onReciveDamage(int damage) {
+        if (!used) {
+            Wiz.applyToSelf(new NextTurnBlockPower(owner, damage, name));
+            used = true;
         }
-        return true;
     }
 }

@@ -7,22 +7,29 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.PainfulStabsPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.BobEffect;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
+import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
 import theDragonkin.DragonkinMod;
+import theDragonkin.actions.SmiteAction;
 import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.powers.Dragonkin.WingsofLight;
 
 import java.util.ArrayList;
 
 public abstract class AbstractSeal extends AbstractNotOrb implements ReciveDamageEffect {
+    public static boolean DevotionEffects = false;
     public AbstractSeal() {
         this.c = Settings.CREAM_COLOR.cpy();
         this.shineColor = new Color(1.0F, 1.0F, 1.0F, 0.0F);
@@ -32,30 +39,40 @@ public abstract class AbstractSeal extends AbstractNotOrb implements ReciveDamag
         this.fontScale = 0.7F;
         this.showEvokeValue = true;
         this.channelAnimTimer = 0.5F;
+        basePainAmount = PainAmount;
+        baseBreakAmount = BreakAmount;
     }
     public void renderText(SpriteBatch sb) {
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.BreakAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.PainAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale,new Color(0.5F, 0.0F, 3.0F, this.c.a), this.fontScale);
-
     }
     @Override
     public void onReciveDamage(int damage) {
-        if ((!AbstractDungeon.actionManager.turnHasEnded || !DragonkinMod.damagetaken) && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT){
+        if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT){
             PainAmount -= damage;
         }
         if (PainAmount <= 0){
             Break();
         }
     }
+    public void onStartOfTurn() {
+        PainAmount = basePainAmount;
+    }
     public void Break(){
-        AbstractSeal that = this;
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.remove(that);
-                isDone = true;
-            }
-        });
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.GOLDENROD, true)));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new MiracleEffect()));
+        if (!AbstractDungeon.actionManager.turnHasEnded){
+            PainAmount = basePainAmount;
+        } else {
+            AbstractSeal that = this;
+            AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    DragonkinMod.Seals.remove(that);
+                    isDone = true;
+                }
+            });
+        }
         for (AbstractPower p : AbstractDungeon.player.powers){
             if (p instanceof WingsofLight){
                 ((WingsofLight) p).onSealBreak();
@@ -78,14 +95,24 @@ public abstract class AbstractSeal extends AbstractNotOrb implements ReciveDamag
         }
     }
     public void onEndOfTurn() {
+        if (!DevotionEffects){
+            CardCrawlGame.sound.play("POWER_MANTRA", 0.05F);
+            for (int i = 0; i < AbstractDungeon.miscRng.random(10, 15); ++i) {
+                AbstractDungeon.effectsQueue.add(new DivineEyeParticle());
+            }
+            DevotionEffects = true;
+        }
         if (!DragonkinMod.damagetaken){
-            DragonkinMod.damagetaken = true;
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,new DamageInfo(AbstractDungeon.player,2, DamageInfo.DamageType.HP_LOSS)));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new BorderFlashEffect(Color.SCARLET, true)));
             for (AbstractNotOrb notOrb : DragonkinMod.Seals){
                 if (notOrb instanceof AbstractSeal){
-                    PainAmount -= 2;
+                    if (notOrb.PainAmount > 0){
+                        AbstractDungeon.actionManager.addToBottom(new SmiteAction(AbstractDungeon.player,new DamageInfo(AbstractDungeon.player,notOrb.PainAmount, DamageInfo.DamageType.THORNS)));
+                        notOrb.PainAmount = 0;
+                    }
                 }
             }
+            DevotionEffects = true;
         }
     }
     public void updateDescription() {

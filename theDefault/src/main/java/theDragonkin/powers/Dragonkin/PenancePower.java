@@ -59,6 +59,10 @@ public class PenancePower extends TwoAmountPower implements CloneablePowerInterf
         updateDescription();
     }
     @Override
+    public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
+        super.renderIcons(sb, x, y, Color.GOLD.cpy());
+    }
+    @Override
     public void onInitialApplication() {
         amount2 = Power;
         updateDescription();

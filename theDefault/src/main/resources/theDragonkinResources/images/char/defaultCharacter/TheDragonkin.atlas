@@ -1,111 +1,111 @@
 
 TheDragonkin.png
-size: 512,1024
+size: 512,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Neck
   rotate: false
-  xy: 418, 415
-  size: 36, 25
-  orig: 36, 25
+  xy: 261, 293
+  size: 29, 20
+  orig: 29, 20
   offset: 0, 0
   index: -1
 BackArm
   rotate: false
-  xy: 428, 231
-  size: 72, 53
-  orig: 72, 53
+  xy: 240, 249
+  size: 58, 42
+  orig: 58, 42
   offset: 0, 0
   index: -1
 Tail
   rotate: false
-  xy: 223, 231
-  size: 203, 95
-  orig: 203, 95
+  xy: 344, 1
+  size: 162, 76
+  orig: 162, 76
   offset: 0, 0
   index: -1
 WingsOpen
   rotate: false
   xy: 1, 1
-  size: 270, 222
-  orig: 270, 222
+  size: 216, 178
+  orig: 216, 178
   offset: 0, 0
   index: -1
 TorsoU
   rotate: false
-  xy: 223, 328
-  size: 98, 138
-  orig: 98, 138
+  xy: 344, 79
+  size: 78, 110
+  orig: 78, 110
   offset: 0, 0
   index: -1
 Legr
   rotate: false
-  xy: 418, 328
-  size: 91, 85
-  orig: 91, 85
+  xy: 323, 191
+  size: 73, 68
+  orig: 73, 68
   offset: 0, 0
   index: -1
 LegL
   rotate: false
-  xy: 425, 449
-  size: 74, 131
-  orig: 74, 131
+  xy: 179, 185
+  size: 59, 105
+  orig: 59, 105
   offset: 0, 0
   index: -1
 TorsoL
   rotate: false
-  xy: 1, 225
-  size: 220, 152
-  orig: 220, 152
+  xy: 1, 181
+  size: 176, 122
+  orig: 176, 122
   offset: 0, 0
   index: -1
 BackHand
   rotate: false
-  xy: 428, 286
-  size: 46, 36
-  orig: 46, 36
+  xy: 222, 293
+  size: 37, 29
+  orig: 37, 29
   offset: 0, 0
   index: -1
 ShoulderR
   rotate: false
-  xy: 429, 1
-  size: 51, 51
-  orig: 51, 51
+  xy: 179, 292
+  size: 41, 41
+  orig: 41, 41
   offset: 0, 0
   index: -1
 FrontArm
   rotate: false
-  xy: 323, 449
-  size: 100, 110
-  orig: 100, 110
+  xy: 424, 79
+  size: 80, 88
+  orig: 80, 88
   offset: 0, 0
   index: -1
 ShoulderL
   rotate: false
-  xy: 1, 379
-  size: 101, 78
-  orig: 101, 78
+  xy: 240, 185
+  size: 81, 62
+  orig: 81, 62
   offset: 0, 0
   index: -1
 Head
   rotate: false
-  xy: 323, 328
-  size: 93, 119
-  orig: 93, 119
+  xy: 424, 169
+  size: 74, 95
+  orig: 74, 95
   offset: 0, 0
   index: -1
 Mace
   rotate: false
-  xy: 273, 1
-  size: 154, 228
-  orig: 154, 228
+  xy: 219, 1
+  size: 123, 182
+  orig: 123, 182
   offset: 0, 0
   index: -1
 FrontHand
   rotate: false
-  xy: 429, 54
-  size: 47, 55
-  orig: 47, 55
+  xy: 300, 261
+  size: 38, 44
+  orig: 38, 44
   offset: 0, 0
   index: -1

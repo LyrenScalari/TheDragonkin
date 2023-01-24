@@ -7,8 +7,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.util.AbstractSeal;
 
@@ -20,13 +22,13 @@ public class FortitudeSeal extends AbstractSeal {
     public FortitudeSeal(int Pow, int Pain, AbstractCard source){
         super();
         name = orbString.NAME;
-        PainAmount = Pain;
+        basePainAmount = PainAmount = Pain;
         BreakAmount = Pow;
         Source = source;
     }
     public void Break(){
         super.Break();
-        AbstractDungeon.actionManager.addToBottom(new GainCustomBlockAction(Source,AbstractDungeon.player,BreakAmount));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DexterityPower(AbstractDungeon.player,BreakAmount)));
     }
     public void updateDescription() {
         description = DESCRIPTIONS[0] + PainAmount + DESCRIPTIONS[1] + DESCRIPTIONS[2] + BreakAmount + DESCRIPTIONS[3];

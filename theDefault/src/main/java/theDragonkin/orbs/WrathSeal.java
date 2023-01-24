@@ -19,7 +19,7 @@ public class WrathSeal extends AbstractSeal {
     public WrathSeal(int Pow, int Pain){
         super();
         name = orbString.NAME;
-        PainAmount = Pain;
+        basePainAmount = PainAmount = Pain;
         BreakAmount = Pow;
     }
     public void Break(){

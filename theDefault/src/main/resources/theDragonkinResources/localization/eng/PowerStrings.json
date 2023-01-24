@@ -18,7 +18,7 @@
         },
         "theDragonkin:WingsofLight": {
                 "NAME": "Wings of Light",
-                "DESCRIPTIONS": ["The first time"," a [#548dff]Blessings[] Seal breaks this turn gain #b"," [LightIcon] #yBlock",
+                "DESCRIPTIONS": ["The first time"," a Tribute Seal breaks this turn gain #b"," [LightIcon] #yBlock",
                         "The first #b"," times"
                 ]
         },
@@ -37,7 +37,7 @@
         },
         "theDragonkin:AshenArmor": {
                 "NAME": "Molten Core",
-                "DESCRIPTIONS": ["When you draw a #yStatus #yCycle it and replace it with #yMagma #yArmor", ""
+                "DESCRIPTIONS": ["When you draw a #yStatus #yCycle it and replace it with #yMolten #yEmber", ""
                 ]
         },
         "theDragonkin:AcidArmor": {
@@ -63,17 +63,23 @@
                 "DESCRIPTIONS": ["While #yWeak deal #b","% additional damage NL ","While #yFrail gain #b","% additional block NL ","While Vulnerable take #b","% less damage."]
         },
         "theDragonkin:Perseverance": {
-                "NAME": "Ignored Pain",
-                "DESCRIPTIONS": ["Reduce this by #b1 at the end of your turn"]
+                "NAME": "Perseverance",
+                "DESCRIPTIONS": ["Until your next turn, instead of being debuffed take #b"," damage."]
+        },
+        "theDragonkin:ReflectiveScales": {
+                "NAME": "Sanctuary",
+                "DESCRIPTIONS": ["Until your next turn, whenever you are attacked apply #b"," #yPenance to the attacker."]
         },
         "theDragonkin:IncendiaryFlow": {
                 "NAME": "Incendiary Flow",
                 "DESCRIPTIONS": ["After you discard a card this turn gain #b"," Block."
                 ]
         },
-        "theDragonkin:FuryPower": {
-                "NAME": "Fury",
-                "DESCRIPTIONS": ["Can be spent instead of energy for #yStorm cards"]
+        "theDragonkin:BorrowedTime": {
+                "NAME": "Borrowed Time",
+                "DESCRIPTIONS":  [
+                        "Next turn draw #b"," fewer cards."
+                ]
         },
         "theDragonkin:Subdued": {
                 "NAME": "Subdued",
@@ -83,22 +89,7 @@
                 "NAME": "Seraph Form",
                 "DESCRIPTIONS": ["The first card you play each turn gives #b"," #yDivine #yArmor and increase this gain by #b"]
         },
-        "theDragonkin:SteelWill": {
-                "NAME": "Steel Will",
-                "DESCRIPTIONS": ["If you have received #b"," or more damage this turn, replace debuffs applied with one with no effect."," NL (Total damage received : #b"," )"]
-        },
-        "theDragonkin:ReflectiveScales": {
-                "NAME": "Deflecting Scales",
-                "DESCRIPTIONS": ["After you receive damage deal #b"," damage to a random enemy and reduce this by #b1"]
-        },
-        "theDragonkin:AuraFlame": {
-                "NAME": "Auraflame",
-                "DESCRIPTIONS": ["After you play a card deal #b"," damage to a random enemy and reduce this by #b1"]
-        },
-        "theDragonkin:EndlessFlame": {
-                "NAME": "Endless Flame",
-                "DESCRIPTIONS": ["At the start of the next #b", " turns"," turns"," Gains #b"," #yScorch and adds a #yBurn to your discard pile."]
-        },
+
 
         "theDragonkin:BrewingStorm": {
                 "NAME": "Brewing Storm",

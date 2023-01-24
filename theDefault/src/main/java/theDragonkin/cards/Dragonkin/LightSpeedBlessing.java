@@ -44,7 +44,7 @@ public class LightSpeedBlessing extends AbstractHolyCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int UPGRADED_COST = 1;
 
     private static final int UPGRADE_PLUS_POTENCY = 0;
@@ -54,8 +54,8 @@ public class LightSpeedBlessing extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
         block = baseBlock = 5;
-        magicNumber = baseMagicNumber = 3;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 4;
+        magicNumber = baseMagicNumber = 4;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 5;
         tags.add(CustomTags.Blessing);
     }
     @Override

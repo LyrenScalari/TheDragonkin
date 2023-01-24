@@ -1,21 +1,15 @@
 package theDragonkin.orbs;
 
-
-import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.OrbStrings;
-import com.megacrit.cardcrawl.powers.EquilibriumPower;
 import theDragonkin.DragonkinMod;
-import theDragonkin.actions.CycleAction;
-import theDragonkin.actions.LightspeedFluxAction;
-import theDragonkin.cards.Dragonkin.AbstractHolyCard;
+import theDragonkin.powers.Dragonkin.BorrowedTimePower;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.util.AbstractSeal;
+import theDragonkin.util.Wiz;
 
 public class LightspeedSeal extends AbstractSeal {
     public static final String ORB_ID = DragonkinMod.makeID("Lightspeed");
@@ -31,14 +25,17 @@ public class LightspeedSeal extends AbstractSeal {
     }
     public void Break(){
         super.Break();
-        if (!AbstractDungeon.player.hand.isEmpty()){
-            AbstractDungeon.actionManager.addToBottom(new SelectCardsInHandAction(5," Cycle",true,false,(card)->true,(List)-> {
-                for (AbstractCard c : List){
-                    AbstractDungeon.actionManager.addToBottom(new CycleAction(c,1));
-                    AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
-                    AbstractDungeon.actionManager.addToTop(new GainBlockAction(AbstractDungeon.player,BreakAmount));
-                }
-            }));
+        if (AbstractDungeon.player.hasPower(DivineConvictionpower.POWER_ID)){
+            if (AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID).amount >= BreakAmount){
+                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player,AbstractDungeon.player,
+                        AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID),BreakAmount));
+                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(BreakAmount));
+            } else {
+                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(AbstractDungeon.player,AbstractDungeon.player,
+                        AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID),AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID).amount));
+                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID).amount));
+            }
+            Wiz.applyToSelf(new BorrowedTimePower(AbstractDungeon.player,2));
         }
     }
     public void updateDescription() {

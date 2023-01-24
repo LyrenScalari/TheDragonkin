@@ -8,6 +8,7 @@ import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -24,8 +25,10 @@ import theDragonkin.cards.Dragonkin.interfaces.ReciveDamageEffect;
 import theDragonkin.characters.TheDefault;
 import theDragonkin.orbs.ConsecrationSeal;
 import theDragonkin.orbs.SanctuarySeal;
+import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.powers.Dragonkin.PenancePower;
 import theDragonkin.powers.Dragonkin.SinnersBurdenPower;
+import theDragonkin.util.TypeEnergyHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,28 +50,26 @@ public class Absolution extends AbstractHolyCard {
     private static final int UPGRADED_COST = 1;
 
     private static final int UPGRADE_PLUS_POTENCY = 0;
-    private static final int MAGIC = 6;
+    private static final int MAGIC = 8;
     private static final int UPGRADE_MAGIC = 0;
     public Absolution() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = MAGIC;
         block = baseBlock = 8;
-        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 6;
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = 20;
         BlockModifierManager.addModifier(this,new DivineBlock(true));
         CardModifierManager.addModifier(this,new AddIconToDescriptionMod(AddIconToDescriptionMod.BLOCK, LightIcon.get()));
-        tags.add(CustomTags.Blessing);
+        energyCosts.put(TypeEnergyHelper.Mana.Exalt,4);
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m,p,new PenancePower(m,p,magicNumber)));
         addToBot(new GainCustomBlockAction(this,p,block));
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new ConsecrationSeal(defaultSecondMagicNumber,magicNumber));
-                isDone = true;
+        if (p.hasPower(DivineConvictionpower.POWER_ID)) {
+            if (AbstractDungeon.player.getPower(DivineConvictionpower.POWER_ID).amount >= 4){
+                addToBot(new ReducePowerAction(p, p, p.getPower(DivineConvictionpower.POWER_ID), 4));
             }
-        });
+        }
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandActio
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -51,21 +52,26 @@ public class Liebreaker extends AbstractHolyCard {
         block = baseBlock = POTENCY;
         heal = baseHeal = POTENCY;
         baseMagicNumber = magicNumber = MAGIC;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 4;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 7;
+        cardsToPreview = new DivineEmber();
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardsInHandAction(magicNumber," Cycle",false,false,(card)->true,(List)-> {
-            addToBot(new DamageAction(p,new DamageInfo(p,defaultSecondMagicNumber, DamageInfo.DamageType.THORNS)));
+        addToBot(new SelectCardsInHandAction(magicNumber," Discard",false,false,(card)->true,(List)-> {
+            addToBot(new DamageAction(p,new DamageInfo(p,4, DamageInfo.DamageType.THORNS)));
             for (AbstractCard c : List){
-                addToBot(new CycleAction(c,1));
+                if (c instanceof AbstractHolyCard){
                     addToBot(new AbstractGameAction() {
                         @Override
                         public void update() {
-                            DragonkinMod.Seals.add(new WrathSeal(damage,magicNumber));
+                            DragonkinMod.Seals.add(new WrathSeal(damage,defaultSecondMagicNumber));
                             isDone = true;
                         }
                     });
+                }
+                if (c instanceof AbstractPrimalCard || c.type == CardType.STATUS || c.type == CardType.CURSE){
+                    addToBot(new CycleAction(c,0,cardsToPreview.makeStatEquivalentCopy()));
+                }
             }
         }));
 

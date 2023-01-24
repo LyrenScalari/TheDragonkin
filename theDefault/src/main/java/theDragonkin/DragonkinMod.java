@@ -181,7 +181,6 @@ public class DragonkinMod implements
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "theDragonkinResources/images/Badge.png";
-
     // Deahtspeaker card stuff
     public static final String ENERGY_ORB_Acolyte = "theDragonkinResources/images/512/Acolyte/Boss_Acolyte_Cursed_Orb.png";
     public static final String ATTACK_Acolyte = "theDragonkinResources/images/512/Acolyte/Boss_Acolyte_Cursed_Attack.png";
@@ -714,6 +713,7 @@ public class DragonkinMod implements
     @Override
     public void receiveOnPlayerTurnStart() {
         damagetaken = false;
+        AbstractSeal.DevotionEffects = false;
         for (AbstractNotOrb seal : Seals){
             seal.onStartOfTurn();
         }

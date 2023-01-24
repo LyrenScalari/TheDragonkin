@@ -51,7 +51,7 @@ public class Sunbeam extends AbstractHolyCard {
     private static final int COST = 1;
     private static final int BLOCK = 7;
     private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int MAGIC = 1;
+    private static final int MAGIC = 2;
     private static final int UPGRADE_MAGIC = 1;
 
 
@@ -61,8 +61,7 @@ public class Sunbeam extends AbstractHolyCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = BLOCK;
         magicNumber = baseMagicNumber = MAGIC;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 6;
-        tags.add(CustomTags.Blessing);
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 3;
     }
 
     // Actions the card should do.
@@ -71,13 +70,7 @@ public class Sunbeam extends AbstractHolyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(p,damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(m,p,new WeakPower(m,magicNumber,false)));
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                DragonkinMod.Seals.add(new WisdomSeal(1,defaultSecondMagicNumber));
-                isDone = true;
-            }
-        });
+        addToBot(new DamageAction(p,new DamageInfo(p,defaultSecondMagicNumber, DamageInfo.DamageType.THORNS)));
         super.use(p,m);
     }
 

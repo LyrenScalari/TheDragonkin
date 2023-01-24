@@ -5,10 +5,15 @@ import basemod.devcommands.power.Power;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import theDragonkin.DragonkinMod;
 import theDragonkin.powers.Dragonkin.FuryPower;
+import theDragonkin.powers.Dragonkin.Scorchpower;
+import theDragonkin.util.Wiz;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,9 +33,19 @@ public abstract class AbstractPrimalCard extends AbstractDragonkinCard {
         tags.addAll(super.getCardDescriptors());
         return tags;
     }
+    private static final UIStrings holyTooltip = CardCrawlGame.languagePack.getUIString("theDragonkin:PrimalTooltip");
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        List<TooltipInfo> retVal = new ArrayList<>();
+        retVal.add(new TooltipInfo(holyTooltip.TEXT[0], holyTooltip.TEXT[1]));
+        return retVal;
+    }
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.costForTurn > 0) {
-            addToBot(new ApplyPowerAction(p, p, new VigorPower(p, this.costForTurn*2)));
+            for (int i = 0; i < costForTurn; i++){
+                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.getRandomMonster(true);
+                Wiz.applyToEnemy(target,new Scorchpower(target,p,1));
+            }
         }
     }
 }

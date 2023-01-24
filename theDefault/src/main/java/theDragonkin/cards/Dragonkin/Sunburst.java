@@ -4,10 +4,12 @@ import basemod.AutoAdd;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.DragonkinMod;
 import theDragonkin.actions.CycleAction;
@@ -53,8 +55,9 @@ public class Sunburst extends AbstractHolyCard {
     public Sunburst() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = 6;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 2;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = 1;
         block = baseBlock = BLOCK;
+        cardsToPreview = new DivineEmber();
     }
 
     // Actions the card should do.
@@ -62,15 +65,18 @@ public class Sunburst extends AbstractHolyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m,new DamageInfo(m,damage, DamageInfo.DamageType.NORMAL)));
-        addToBot(new SelectCardsInHandAction(defaultSecondMagicNumber," Cycle",false,false,(card)->true,(List)-> {
+        addToBot(new SelectCardsInHandAction(defaultSecondMagicNumber," Sanctify",false,false,(card)->true,(List)-> {
             boolean blessed = false;
             for (AbstractCard c : List){
-                addToBot(new CycleAction(c,1));
+                addToBot(new CycleAction(c,0));
                 if (c instanceof AbstractHolyCard){
                     if (!blessed) {
                         addToBot(new GainBlockAction(p, block));
                         blessed = true;
                     }
+                }
+                if (c instanceof AbstractPrimalCard || c.type == CardType.STATUS || c.type == CardType.CURSE){
+                    addToBot(new CycleAction(c,0,cardsToPreview.makeStatEquivalentCopy()));
                 }
             }
         }));
@@ -82,7 +88,8 @@ public class Sunburst extends AbstractHolyCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDefaultSecondMagicNumber(1);
+            upgradeDamage(2);
+            upgradeBlock(2);
             initializeDescription();
         }
     }

@@ -2,6 +2,7 @@ package theDragonkin.cards.Dragonkin;
 
 
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
@@ -11,6 +12,8 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDragonkin.CardMods.AddIconToDescriptionMod;
 import theDragonkin.CustomTags;
@@ -28,26 +31,15 @@ import theDragonkin.powers.Dragonkin.AuraFlame;
 import theDragonkin.powers.Dragonkin.DivineConvictionpower;
 import theDragonkin.powers.Dragonkin.SacrificePower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static theDragonkin.DragonkinMod.makeCardPath;
 
 public class InnerFire extends AbstractHolyCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * WindWalkerDefend Gain 5 (8) block.
-     */
-
-
-    // TEXT DECLARATION
-
     public static final String ID = DragonkinMod.makeID(InnerFire.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
-
-    // /TEXT DECLARATION/
-
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -60,10 +52,6 @@ public class InnerFire extends AbstractHolyCard {
     private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 1;
 
-
-    // /STAT DECLARATION/
-
-
     public InnerFire() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
@@ -75,10 +63,10 @@ public class InnerFire extends AbstractHolyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardsInHandAction(magicNumber," Cycle",false,false,(card)->true,(List)-> {
+        addToBot(new SelectCardsInHandAction(magicNumber," Discard",false,false,(card)->true,(List)-> {
             addToBot(new DamageAction(p,new DamageInfo(p,2, DamageInfo.DamageType.THORNS)));
             for (AbstractCard c : List){
-                addToBot(new CycleAction(c,1));
+                addToBot(new CycleAction(c,0));
                 if (c instanceof AbstractHolyCard){
                     addToBot(new ApplyPowerAction(p,p,new SacrificePower(p,p,defaultSecondMagicNumber)));
                 }

@@ -20,7 +20,7 @@ public class MightSeal extends AbstractSeal {
     public MightSeal(int Pow, int Pain){
         super();
         name = orbString.NAME;
-        PainAmount = Pain;
+        basePainAmount = PainAmount = Pain;
         BreakAmount = Pow;
     }
     public void Break() {

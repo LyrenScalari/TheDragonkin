@@ -37,7 +37,7 @@
     "NAME": "Fortitude",
     "DESCRIPTION": [
       "#yBreaks after taking #b",
-      " damage during your turn", " NL #yBreak : Gain #b", " [theDragonkin:LightIcon] #yBlock"
+      " damage during your turn", " NL #yBreak : Gain #b", " #yHoly #yPower"
     ]
   },
   "theDragonkin:Lightspeed": {

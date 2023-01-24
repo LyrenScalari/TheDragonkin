@@ -40,7 +40,7 @@ public class TailSweep extends AbstractPrimalCard {
     public static final CardColor COLOR = TheDefault.Enums.Justicar_Red_COLOR;
 
     private static final int COST = 2;
-    private static final int BLOCK = 18;
+    private static final int BLOCK = 10;
     private static final int UPGRADE_PLUS_BLOCK = 4;
     private static final int MAGIC = 1;
 
@@ -61,7 +61,6 @@ public class TailSweep extends AbstractPrimalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new WhirlwindEffect(Color.RED.cpy(),false)));
         addToBot(new GainBlockAction(p,block));
-        addToBot(new ApplyPowerAction(p,p,new VulnerablePower(p,magicNumber,false)));
         for (AbstractMonster M : AbstractDungeon.getCurrRoom().monsters.monsters){
             addToBot(new ApplyPowerAction(M,p,new WeakPower(M,defaultSecondMagicNumber,false)));
         }

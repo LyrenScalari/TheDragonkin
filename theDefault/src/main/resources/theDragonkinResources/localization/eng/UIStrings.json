@@ -24,10 +24,16 @@
       "Retain NL "
     ]
   },
-  "theDragonkin:PhlyacteryPanel": {
+  "theDragonkin:HolyTooltip": {
     "TEXT": [
-      "Lich's Phlyactery",
-      ""
+      "[#94bdff]Holy[]",
+      "Energy spent on [#94bdff]Holy[] cards produces twice as much #ySacrifice, granting [#94bdff]Holy[] [#94bdff]Power[] which increases the damage and block gain of [#94bdff]Holy[] cards for the rest of combat."
+    ]
+  },
+  "theDragonkin:PrimalTooltip": {
+    "TEXT": [
+      "[#fe513a]Primal[]",
+      "Energy spent on [#fe513a]Primal[] cards applies #yScorch to random enemies."
     ]
   },
   "theDragonkin:PurgeAction": {
